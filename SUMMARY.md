@@ -32,6 +32,7 @@
 +   [MIT 6.5630 密码学高级笔记](docs/mit-65630-crpt-adv/README.md)
 +   [MIT 6.858 计算机系统安全讲义 2014 秋季](docs/mit-6858-comp-sec/README.md)
 +   [NDC 安全大会 2025 笔记](docs/ndc-seccon-2025/README.md)
++   [非安全黑客手册](docs/nohackcn/README.md)
 +   [纽约大学网络安全笔记](docs/nyu-cbrsec/README.md)
 +   [SCSP 国家安全的人工智能笔记](docs/scsp-stsec-ai/README.md)
 +   [斯坦福密码学 I 笔记](docs/stf-crpt-1/README.md)
