@@ -49,3 +49,4 @@
 +   [小迪安全课程笔记 2024](docs/xiaodi/README.md)
 +   [郁金香游戏辅助教程笔记](docs/yujinxiang/README.md)
 +   [卓越网络安全教程笔记](docs/zhuoyue/README.md)
++   [石溪 CSE509 系统安全讲义](docs/石溪_CSE509_系统安全讲义/README.md)
