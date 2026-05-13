@@ -50,3 +50,4 @@
 +   [郁金香游戏辅助教程笔记](docs/yujinxiang/README.md)
 +   [卓越网络安全教程笔记](docs/zhuoyue/README.md)
 +   [石溪 CSE509 系统安全讲义](docs/石溪_CSE509_系统安全讲义/README.md)
++   [雪城 CIS643 644 计算机和互联网安全讲义](docs/雪城_CIS643_644_计算机和互联网安全讲义/README.md)
