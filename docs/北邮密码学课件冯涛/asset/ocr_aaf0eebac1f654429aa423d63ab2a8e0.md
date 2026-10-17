@@ -1,0 +1,19 @@
+# 求逆元（X）
+
+```
+EXTENDED EUCLID(m, b)
+1. (A1, A2, A3)=(1, 0, m);
+   (B1, B2, B3)=(0, 1, b)
+2. if B3 = 0
+   return A3 = gcd(m, b); no inverse
+3. if B3 = 1
+   return B3 = gcd(m, b); B2 = b⁻¹ mod m
+4. Q = A3 div B3
+5. (T1, T2, T3)=(A1 - Q B1, A2 - Q B2, A3 - Q B3)
+6. (A1, A2, A3)=(B1, B2, B3)
+7. (B1, B2, B3)=(T1, T2, T3)
+8. goto 2
+```
+
+注意：
+m T1+ b T2 = T3 ； m A1+ b A2 = A3 ； m B1+ b B2 = B3

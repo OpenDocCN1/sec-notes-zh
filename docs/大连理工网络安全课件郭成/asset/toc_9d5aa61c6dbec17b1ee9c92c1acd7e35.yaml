@@ -1,0 +1,771 @@
+- - '##'
+  - 网络信息安全
+- - '##'
+  - Chapter 1 Introduction
+- - '##'
+  - 第1章 引言
+- - '##'
+  - 1.1 安全趋势
+- - '##'
+  - 1.3 安全攻击
+- - '##'
+  - 对安全的攻击
+- - '##'
+  - 1.4 安全服务
+- - '##'
+  - 1.5 安全机制
+- - '##'
+  - 1.6 网络安全模型
+- - '##'
+  - 网络安全模型
+- - '##'
+  - 设计安全服务的内容
+- - '##'
+  - 第1章 一个简单的通信游戏
+- - '###'
+  - 1.1 一个通信游戏
+- - '####'
+  - 性质一：奇妙函数f
+- - '###'
+  - 1.2 描述密码系统和协议的准则
+- - '####'
+  - 1. 保护的程度与应用需求相符合
+- - '####'
+  - 2. 对安全性的信心要依据所建立的 “种系”
+- - '####'
+  - 3. 实际效率
+- - '####'
+  - 6. 明确性
+- - '##'
+  - Part One – Symmetric Ciphers
+- - '##'
+  - 密码学的演变历史(1)
+- - '##'
+  - 密码学的演变历史(2)
+- - '##'
+  - 密码学的演变历史(3)
+- - '##'
+  - 密码学的演变历史(4)
+- - '##'
+  - 密码学基本术语 *Terminologies*
+- - '##'
+  - 理论安全和实际安全
+- - '##'
+  - 对称密码体制和非对称密码体制
+- - '##'
+  - 序列密码体制和分组密码体制
+- - '##'
+  - 其他加密体制
+- - '##'
+  - 现代密码学基本原则
+- - '##'
+  - 2.1 对称密码系统的模型
+- - '##'
+  - 传统密码的简化模型
+- - '##'
+  - 对称密码系统的要求
+- - '##'
+  - 传统密码体制的模型
+- - '##'
+  - Cryptology 密码学
+- - '##'
+  - 穷举攻击
+- - '##'
+  - 2.2 代换技术 (Substitution)
+- - '##'
+  - Caesar Cipher
+- - '##'
+  - 对Caesar密码的攻击
+- - '##'
+  - 对 Caesar 密码的攻击
+- - '##'
+  - 2.2.2 Monoalphabetic Cipher 单表替换密码
+- - '##'
+  - 单表代换密码的安全性分析
+- - '##'
+  - 语言的冗余性和密码攻击
+- - '##'
+  - 英文字母的相对使用频率
+- - '##'
+  - 英文字母使用频率用于密码分析
+- - '##'
+  - 单表代换密码攻击举例
+- - '##'
+  - 栅栏技术 Rail Fence cipher
+- - '##'
+  - 2.5 Steganography隐写术
+- - '##'
+  - 第3章 分组密码和数据加密标准
+- - '##'
+  - 乘积密码的设计思想
+- - '##'
+  - Table 3.1 Encryption and Decryption Tables for Substitution Cipher of Figure 3.4
+- - '##'
+  - 3.1.3 Feistel密码结构
+- - '##'
+  - Feistel加密器设计原则
+- - '##'
+  - Feistel Cipher Encryption and Decryption
+- - '##'
+  - 3.2 数据加密标准DES
+- - '##'
+  - DES加密算法的一般描述
+- - '##'
+  - Table 3.2 Permutation Tables for DES
+- - '###'
+  - (a) Initial Permutation (IP)
+- - '###'
+  - (b) Inverse Initial Permutation (IP⁻¹)
+- - '##'
+  - 扩充置换(E)和置换函数(P)
+- - '###'
+  - (c) Expansion Permutation (E)
+- - '###'
+  - (d) Permutation Function (P)
+- - '##'
+  - Feistel Cipher分组加密循环细节
+- - '##'
+  - Figure 3.5 Single Round of DES Algorithm
+- - '##'
+  - S盒(Substitution Boxes)
+- - '##'
+  - Figure 3.6 Calculation of F(R, K)
+- - '##'
+  - Table 3.3 Definition of DES S-Boxes
+- - '##'
+  - 3.3 DES的安全强度
+- - '###'
+  - 密钥的长度问题
+- - '##'
+  - 本章要点
+- - '##'
+  - 4.1 群，环和域 Groups, Rings, and Fields
+- - '##'
+  - 群、有限群和无限群
+- - '##'
+  - 交换群和循环群
+- - '##'
+  - 域 (Fields)
+- - '##'
+  - 群、环和域的关系
+- - '###'
+  - Figure 4.1 Group, Ring, and Field
+- - '##'
+  - 4.2 Modular Arithmetic
+- - '##'
+  - 同余的性质
+- - '##'
+  - 模算术运算
+- - '##'
+  - 模算术运算
+- - '##'
+  - 加法逆元和乘法逆元
+- - '##'
+  - 4.3欧几里得算法Euclid Algorithm
+- - '##'
+  - gcd(a, b) = gcd(b, a mod b)
+- - '##'
+  - 'Example: 求 gcd(1970, 1066)'
+- - '##'
+  - 4.3扩展的Euclid算法
+- - '##'
+  - Galois Fields GF(p)
+- - '###'
+  - Table 4.3 Arithmetic in GF(7)
+- - '##'
+  - 计算乘法逆元素
+- - '##'
+  - 计算乘法逆元素
+- - '##'
+  - 定理4.1
+- - '##'
+  - 扩展的Euclid算法求逆
+- - '##'
+  - 4.5 多项式运算
+- - '###'
+  - 三种多项式运算
+- - '###'
+  - 普通多项式运算
+- - '###'
+  - Figure 4.4 Examples of Polynomial Arithmetic over GF(2)
+- - '###'
+  - 多项式的模运算
+- - '###'
+  - 求多项式的最大公因式
+- - '##'
+  - 4.6 有限域 GF(2^n)
+- - '###'
+  - Table 4.5 Arithmetic in GF(2^3)
+- - '####'
+  - (a) Addition
+- - '####'
+  - (b) Multiplication
+- - '####'
+  - (c) Additive and multiplicative inverses
+- - '##'
+  - 网络信息安全
+- - '##'
+  - Chapter 6
+- - '##'
+  - More on Symmetric Ciphers
+- - '##'
+  - 本章要点
+- - '##'
+  - 6.1 多重加密与三重DES算法
+- - '##'
+  - 双重DES和三重DES
+- - '##'
+  - 中途相遇攻击(Meet-in-the-Middle Attack)
+- - '##'
+  - 6.1.2 使用两个密钥的三重DES
+- - '##'
+  - 6.1.3 使用三个密钥的三重DES
+- - '##'
+  - 6.2 分组密码的工作模式
+- - '##'
+  - 电子密码本模式Electronic Codebook, ECB
+- - '##'
+  - ECB模式的局限性
+- - '##'
+  - CBC的优点和局限
+- - '##'
+  - 密码反馈模式Cipher FeedBack (CFB)
+- - '##'
+  - Figure 6.5 s-bit Cipher Feedback (CFB) Mode
+- - '###'
+  - (a) Encryption
+- - '###'
+  - (b) Decryption
+- - '##'
+  - 密码反馈模式 Cipher FeedBack (CFB)
+- - '##'
+  - CFB 模式的优点和局限
+- - '##'
+  - 输出反馈模式 Output FeedBack (OFB)
+- - '##'
+  - Figure 6.6 s-bit Output Feedback (OFB) Mode
+- - '##'
+  - OFB 的优点和局限
+- - '##'
+  - （a）Encryption
+- - '##'
+  - （b）Decryption
+- - '##'
+  - Figure 6.7 Counter (CTR) Mode
+- - '##'
+  - CTR 的优点和局限
+- - '##'
+  - 网络信息安全
+- - '##'
+  - Chapter 8
+- - '##'
+  - 第二部分 公钥密码和散列函数
+- - '##'
+  - 本章要点
+- - '##'
+  - 8.1 素数 Prime Numbers
+- - '##'
+  - 小于2000的素数
+- - '##'
+  - One-way Function and One-way Trapdoor Function
+- - '###'
+  - 定义8.1 单向函数 (One-way Function)
+- - '###'
+  - 定义8.2 单向陷井门函数 (One-way Trapdoor Function)
+- - '##'
+  - 单向函数举例
+- - '###'
+  - 1. Discrete Logarithm Problem (DLP) 离散对数问题
+- - '##'
+  - 单向函数举例（续）
+- - '###'
+  - 2. Factorization Problem 因数分解问题
+- - '###'
+  - 3. 背包问题 Knapsack Problem
+- - '##'
+  - 单向函数及其交换性
+- - '###'
+  - 定义8.3 交换性
+- - '##'
+  - 8.2 费马定理和欧拉定理
+- - '###'
+  - 定理8.1 费马定理 Fermat’s Theorem
+- - '##'
+  - 费马定理的等价形式
+- - '##'
+  - 费马小定理（范例）
+- - '###'
+  - （1）计算 $6^{10} \bmod 11$
+- - '###'
+  - （2）计算 $3^{12} \bmod 11$
+- - '##'
+  - 费马大定理（费马最后定理）
+- - '##'
+  - 欧拉定理
+- - '##'
+  - 欧拉函数 $\varphi(n)$ 的证明
+- - '##'
+  - 欧拉定理
+- - '##'
+  - 欧拉定理（证明）
+- - '##'
+  - 8.4 Chinese Remainder Theorem
+- - '##'
+  - 8.4 Chinese Remainder Theorem
+- - '###'
+  - 断言一
+- - '###'
+  - 定理8.7 中国余数定理，Chinese Remainder Theorem
+- - '###'
+  - 孙子定理(孙子算经, 3-5世纪)
+- - '###'
+  - Discrete logarithms
+- - '###'
+  - 模19的整数幂
+- - '##'
+  - 总结
+- - '##'
+  - 网络信息安全
+- - '##'
+  - Chapter 9
+- - '##'
+  - Public-key Cryptography and RSA
+- - '##'
+  - 本章要点
+- - '##'
+  - 9.1 公开密钥密码体制的基本原理
+- - '##'
+  - 公开密钥密码体制
+- - '##'
+  - 公钥算法的主要步骤
+- - '##'
+  - 公开密钥加密过程
+- - '###'
+  - (a) Encryption
+- - '##'
+  - 公开密钥认证过程
+- - '##'
+  - 公钥密码系统·保密性
+- - '##'
+  - '公开密钥密码系统: 保密和认证'
+- - '##'
+  - 公钥密码体制的应用
+- - '##'
+  - Whitfield Diffie and Martin Hellman
+- - '##'
+  - Whitfield Diffie, IACR Fellow (2004)
+- - '##'
+  - Martin Hellman, IACR Fellow, 2006
+- - '##'
+  - 公钥密码的分析
+- - '##'
+  - 9.2 RSA算法
+- - '##'
+  - 9.2 RSA算法
+- - '##'
+  - R-S-A Ron Rivest, Adi Shamir, Len Adleman
+- - '##'
+  - Ron Rivest, IACR Fellow (2004)
+- - '##'
+  - Adi Shamir, IACR Fellow (2004)
+- - '##'
+  - RSA密码体制基本原理
+- - '###'
+  - Key Generation
+- - '###'
+  - Encryption
+- - '###'
+  - Decryption
+- - '###'
+  - Encryption
+- - '###'
+  - Decryption
+- - '###'
+  - 一个例子
+- - '###'
+  - 计算 a^b mod n 的算法和快速取模指数算法
+- - '##'
+  - 密钥的产生和检验素数
+- - '##'
+  - RSA的安全性
+- - '##'
+  - Table 9.4 Progress in Factorization
+- - '##'
+  - 针对RSA的计时攻击
+- - '##'
+  - 几种不同复杂性的算法的代价
+- - '##'
+  - 网络信息安全
+- - '##'
+  - Chapter 10 Key Management; Other Public Key Cryptosystem
+- - '##'
+  - 本章要点
+- - '##'
+  - 10.1.1 密钥管理之公钥的分配
+- - '##'
+  - 自由的公钥发布
+- - '##'
+  - 公开可访问的目录
+- - '##'
+  - 公钥授权
+- - '##'
+  - 公钥分配方案
+- - '##'
+  - 10.1.2 公钥证书
+- - '##'
+  - 公钥证书的交换
+- - '##'
+  - 一种简单的秘密密钥分配方法
+- - '###'
+  - 10.2 Diffie-Hellman密钥交换
+- - '##'
+  - Diffie-Hellman Key Exchange
+- - '##'
+  - Diffie-Hellman Example
+- - '###'
+  - 10.2.2 Diffie-Hellman密钥交换协议
+- - '##'
+  - 中间人攻击
+- - '##'
+  - 基于DLP的概率密码系统
+- - '##'
+  - ElGamal Cryptosystem
+- - '###'
+  - ElGamal Cryptosystem
+- - '##'
+  - 本章要点
+- - '##'
+  - 报文认证Message Authentication
+- - '##'
+  - 11.1 对认证的要求
+- - '###'
+  - 可能有下述攻击
+- - '##'
+  - 11.2 认证函数
+- - '###'
+  - 11.2.1 消息加密
+- - '###'
+  - 解决解密所得消息是否具有可读性的问题
+- - '###'
+  - 公钥加密作为认证手段
+- - '###'
+  - 11.2.2 消息认证码MAC
+- - '###'
+  - 'MAC: 消息认证码的特点'
+- - '###'
+  - 11.2.3 散列函数 Hash Function
+- - '###'
+  - Table 11.3 Basic Uses of Hash Function H (see Figure 11.5)
+- - '##'
+  - 11.3 消息认证码MAC
+- - '##'
+  - 11.4 散列函数
+- - '###'
+  - (a) Using conventional encryption
+- - '###'
+  - (b) Using public-key encryption
+- - '###'
+  - (c) Using secret value
+- - '##'
+  - 对散列函数的要求 h=H(M)
+- - '##'
+  - 强哈希函数
+- - '##'
+  - 网络信息安全
+- - '##'
+  - Chapter 13
+- - '##'
+  - 13.1 数字签名Digital Signature
+- - '##'
+  - 数字签名的基本形式
+- - '##'
+  - 13.1.3 仲裁数字签名
+- - '##'
+  - 13.2 认证协议
+- - '##'
+  - 基本认证方法
+- - '##'
+  - 对称加密方法
+- - '##'
+  - ElGamal的数据加密方法
+- - '##'
+  - ElGamal的数字签名方法
+- - '##'
+  - ElGamal数字签名的验证
+- - '##'
+  - 网络信息安全
+- - '##'
+  - Chapter 14 Authentication Applications
+- - '##'
+  - 本章要点
+- - '##'
+  - KERBEROS
+- - '##'
+  - 14.1.1 Kerberos动机
+- - '##'
+  - 14.1.2 Kerberos 版本4
+- - '##'
+  - 一个更安全的认证会话交互过程
+- - '##'
+  - 认证会话交互过程的信息细节
+- - '##'
+  - Table 14.1 Summary of Kerberos Version 4 Message Exchanges
+- - '##'
+  - Figure 14.1 Overview of Kerberos
+- - '##'
+  - Kerberos 4中所用元素之作用
+- - '##'
+  - Table 14.2 Rationale for the Elements of the Kerberos Version 4 Protocol (page
+    1 of 2)
+- - '##'
+  - (c) Client/Server Authentication Exchange
+- - '###'
+  - Message (5)
+- - '###'
+  - Message (6)
+- - '##'
+  - Kerberos域和多重Kerberos
+- - '##'
+  - Kerberos的安全问题和Kerberos 5
+- - '##'
+  - 14.1.3 Kerberos Version 5
+- - '##'
+  - Kerberos版本5的消息交换
+- - '##'
+  - Table 14.4 Kerberos Version 5 Flags
+- - '##'
+  - 14.2 X.509认证服务
+- - '###'
+  - Figure 14.3 Public-Key Certificate Use
+- - '##'
+  - 14.2.1 X.509证书
+- - '##'
+  - X.509 Certificates
+- - '##'
+  - 证书的层次结构
+- - '##'
+  - CA层次结构的使用
+- - '##'
+  - 证书的撤销
+- - '##'
+  - 14.2.2 认证的过程
+- - '##'
+  - One-Way Authentication
+- - '##'
+  - Two-Way Authentication
+- - '##'
+  - Three-Way Authentication
+- - '##'
+  - 14.2.3 X.509 Version 3
+- - '##'
+  - 14.3 公开密钥的全局管理体制PKI
+- - '##'
+  - Public Key Infrastructure
+- - '##'
+  - PKI (Public Key Infrastructure)
+- - '##'
+  - PKI (Public Key Infrastructure)
+- - '##'
+  - PKI (Public Key Infrastructure)
+- - '###'
+  - PKI的操作模型
+- - '##'
+  - 网络信息安全
+- - '##'
+  - Chapter 1 Introduction
+- - '##'
+  - 1.3 安全攻击
+- - '##'
+  - Passive Attack -- release of contents 被动攻击之消息内容的泄漏
+- - '##'
+  - Passive Attack—traffic analysis 被动攻击之流量分析
+- - '##'
+  - Active Attack—Masquerade 主动攻击之伪装
+- - '##'
+  - Active Attack—Replay 主动攻击之重放
+- - '##'
+  - Active Attack—Modification of messages 主动攻击之消息修改
+- - '##'
+  - Active Attack—Denial of Service 主动攻击之拒绝服务
+- - '##'
+  - 网络信息安全
+- - '##'
+  - Chapter 2 Classical Encryption Techniques
+- - '##'
+  - 理论安全和实际安全
+- - '##'
+  - 对称密码体制和非对称密码体制
+- - '##'
+  - 序列密码体制和分组密码体制
+- - '##'
+  - 其他加密体制
+- - '##'
+  - 现代密码学基本原则
+- - '##'
+  - 传统密码的简化模型
+- - '##'
+  - 传统密码体制的模型
+- - '##'
+  - 网络信息安全
+- - '##'
+  - 第3章 分组密码和数据加密标准
+- - '##'
+  - 乘积密码的设计思想
+- - '##'
+  - Figure 3.5 Single Round of DES Algorithm
+- - '##'
+  - 网络信息安全
+- - '##'
+  - Chapter 4
+- - '##'
+  - Finite Fields
+- - '##'
+  - 4.1群，环和域 Groups, Rings, and Fields
+- - '##'
+  - 交换群和循环群
+- - '##'
+  - 环 (Rings)
+- - '##'
+  - 域 (Fields)
+- - '##'
+  - 模算术运算
+- - '##'
+  - 模算术运算
+- - '##'
+  - 网络信息安全
+- - '##'
+  - 6.1.1 双重DES
+- - '##'
+  - 双重DES和三重DES
+- - '##'
+  - 网络信息安全
+- - '##'
+  - Chapter 8
+- - '##'
+  - Introduction to Number Theory
+- - '##'
+  - 费马小定理（范例）
+- - '###'
+  - （1）计算610 mod 11
+- - '##'
+  - 费马小定理（范例）
+- - '###'
+  - （2）计算3<sup>12</sup> mod 11
+- - '##'
+  - 欧拉函数 \(\Phi(n)\)的证明
+- - '###'
+  - 定理8.2 \(p\)和\(q\)是素数，\(n=p*q\)，\(\Phi(n) = \Phi(p) \Phi(q) = (p-1)(q-1)\)
+- - '###'
+  - 显然，对于素数\(p\)，\(\Phi(p) = p-1\)
+- - '##'
+  - 欧拉定理
+- - '##'
+  - 欧拉定理（证明）
+- - '##'
+  - 欧拉定理（证明）
+- - '##'
+  - 欧拉定理（证明）
+- - '##'
+  - 8.4 Chinese Remainder Theorem
+- - '##'
+  - 8.4 Chinese Remainder Theorem
+- - '###'
+  - 断言一
+- - '###'
+  - 孙子定理(孙子算经，3-5世纪)
+- - '###'
+  - 孙子定理(孙子算经，3-5世纪)
+- - '##'
+  - 公开密钥加密过程
+- - '##'
+  - 公开密钥认证过程
+- - '##'
+  - RSA密码体制基本原理
+- - '##'
+  - Key Generation
+- - '##'
+  - Encryption
+- - '##'
+  - Decryption
+- - '##'
+  - Figure 6.6 Example of RSA Algorithm
+- - '##'
+  - Encryption
+- - '##'
+  - Decryption
+- - '##'
+  - Figure 9.6 Example of RSA Algorithm
+- - '##'
+  - 一个例子
+- - '##'
+  - 一个例子
+- - '##'
+  - RSA密码体制基本原理
+- - '##'
+  - 10.1.1 密钥管理之公钥的分配
+- - '##'
+  - 自由的公钥发布
+- - '##'
+  - 公开可访问的目录
+- - '##'
+  - 公开可访问的目录
+- - '##'
+  - 公钥授权
+- - '##'
+  - 公钥分配方案
+- - '##'
+  - 10.1.2 公钥证书
+- - '##'
+  - 公钥证书的交换
+- - '##'
+  - 10.1.3 利用公钥密码分配传统密码体制的密钥
+- - '##'
+  - 10.2 Diffie-Hellman密钥交换
+- - '##'
+  - Diffie-Hellman Key Exchange
+- - '##'
+  - 10.2.2 Diffie-Hellman密钥交换协议
+- - '##'
+  - 中间人攻击
+- - '##'
+  - 基于DLP的概率密码系统 ElGamal Cryptosystem
+- - '##'
+  - ElGamal Cryptosystem
+- - '##'
+  - ElGamal Cryptosystem
+- - '##'
+  - 网络信息安全
+- - '##'
+  - Chapter 11 Message Authentication and Hash Functions
+- - '##'
+  - 'MAC: 消息认证码的特点'
+- - '##'
+  - Figure 11.4 Basic Uses of Message Authentication Code (MAC)
+- - '##'
+  - 11.2.3 散列函数 Hash Function
+- - '##'
+  - 对散列函数的要求 \( h=H(M) \)
+- - '##'
+  - 强哈希函数
+- - '##'
+  - 网络信息安全
+- - '##'
+  - Chapter 13
+- - '###'
+  - Digital Signature and Authentication Protocols
+- - '##'
+  - 13.1 数字签名Digital Signature
+- - '##'
+  - 数字签名的基本形式
+- - '##'
+  - ElGamal的数据加密方法
+- - '##'
+  - ElGamal的数字签名方法
+- - '##'
+  - ElGamal数字签名的验证
+- - '##'
+  - 网络信息安全
+- - '##'
+  - Chapter 14
+- - '##'
+  - Authentication Applications

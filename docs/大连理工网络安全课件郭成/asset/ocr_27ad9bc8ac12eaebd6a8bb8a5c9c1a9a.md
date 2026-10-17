@@ -1,0 +1,10 @@
+# # RSA密码体制基本原理
+
++   - RSA算法满足公开密钥加密的要求，必须符合下列条件：
++     - 有可能找到e, d, n的值，使得对所有M<n有M<sup>ed</sup> mod n = M
++     - 对于所有M<n的值，要计算M<sup>e</sup>和C<sup>d</sup>是相对容易的
++     - 在给定e和n时，计算d是不可行的
+
++   - 几个关系
++     - φ(n) = φ(pq)=φ(p)φ(q)=(p-1)(q-1), p,q are prime
++     - ed mod φ(n)=1, ed = kφ(n)+1, 即ed≡1 mod φ(n), d≡e<sup>-1</sup> mod φ(n)
