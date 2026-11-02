@@ -1,0 +1,35 @@
+
+# [原创] 华为光猫拨号密码解密
+
+- 原帖: https://www.52pojie.cn/forum.php?mod=viewthread&tid=1852978
+- 抓取时间: 2026-11-01T22:43:46
+
+超级密码的获取过程略掉，可以直接拨打运维师傅电话，一般客气点都会给的。
+
+但是有些运维师傅是不会给拨号密码的。
+
+目前华为的光猫所有的拨号密码都是经过加密的，加密方式为`md5+sha256`
+
+目前大家获取到的拨号密码应该都是加密的，获取方法就是`F12`，修改`password`为`text`即可看到加密后的密码。如图所示
+
+![](https://attach.52pojie.cn/forum/202311/05/151202fq2nwnkbcpy020ew.png)
+
+QQ截图20231105150618.png (454.16 KB, 下载次数: 6)
+
+[forum.php?mod=attachment&aid=MjY1Mzc5M3xiZGEzZDliN3wxNzkzNTczMDIzfDE2ODA4NnwxODUyOTc4&nothumb=yes](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY1Mzc5M3xiZGEzZDliN3wxNzkzNTczMDIzfDE2ODA4NnwxODUyOTc4&nothumb=yes)
+
+2023-11-5 15:12 上传
+
+把这个加密后的字符串复制下来
+
+`e2c5f415a50ea51c4e75f919921f8bbd564b1409567814b140bb3067afa6ec60`
+
+如何解密呢？直接搜索`sha256`解密大概率是解不开的，因为这是经过`md5`加密后的字符串。
+
+又已知拨号密码通常为6为数字，因此我创建了一个excel，从`000000`到`999999`。然后先进行`md5`，再进行`sha256`加密，大家可以直接去excel里匹配加密后的字符串就可以查到加密前的超级密码了
+
+excel在附件中。
+
+因此这个路由器的拨号密码就是`857859`
+
+后续操作相信大家都会。散会
