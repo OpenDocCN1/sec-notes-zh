@@ -1,0 +1,52 @@
+
+# [Web逆向] 菜鸟另类思路打印【有谱么】网站吉他谱
+
+## 原帖信息
+
+- 原帖：[https://www.52pojie.cn/forum.php?mod=viewthread&tid=1806852](https://www.52pojie.cn/forum.php?mod=viewthread&tid=1806852)
+- 抓取时间：2026-11-01T22:50:56
+- 地址：`aHR0cHM6Ly95b3B1LmNvL3ZpZXcvNDFXRUpLTVA=`
+
+## 问题：打印曲谱提示需要会员
+
+![1.jpg](https://attach.52pojie.cn/forum/202307/10/144258rsd84ht04z8g8r4r.jpg)
+
+`1.jpg` (163.66 KB, 下载次数: 1)，[附件下载](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYyNjE2MHwxZTgxNTYxYnwxNzkzNTczNDU0fDE2ODA4NnwxODA2ODUy&nothumb=yes)，2023-7-10 14:42 上传
+
+点击打印曲谱，发现提示需要会员才可以打印，然后直接用浏览器`ctrl+p`打印试一下，结果...
+
+![2.jpg](https://attach.52pojie.cn/forum/202307/10/144400fn9cgw05gbbieaab.jpg)
+
+`2.jpg` (57.67 KB, 下载次数: 1)，[附件下载](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYyNjE2MXwzZDA5MTA3YnwxNzkzNTczNDU0fDE2ODA4NnwxODA2ODUy&nothumb=yes)，2023-7-10 14:44 上传
+
+## 研究过程
+
+开始研究`js`
+
+![3.jpg](https://attach.52pojie.cn/forum/202307/10/144457k7hr7lrz77qgj77l.jpg)
+
+`3.jpg` (116.28 KB, 下载次数: 1)，[附件下载](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYyNjE2Mnw4MzAzMzdkOXwxNzkzNTczNDU0fDE2ODA4NnwxODA2ODUy&nothumb=yes)，2023-7-10 14:44 上传
+
+研究了半小时，奈何小弟`js`基本上属于零基础，开始转头研究页面内容，忽然发现有个这玩意
+
+![5.jpg](https://attach.52pojie.cn/forum/202307/10/144658qa2eani1heweekwh.jpg)
+
+`5.jpg` (26.11 KB, 下载次数: 1)，[附件下载](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYyNjE2NHw0OTgxMjc1OXwxNzkzNTczNDU0fDE2ODA4NnwxODA2ODUy&nothumb=yes)，2023-7-10 14:46 上传
+
+## 发现与解决
+
+试着改成`print`
+
+![6.jpg](https://attach.52pojie.cn/forum/202307/10/144720rh8bhh0dm5bll2is.jpg)
+
+`6.jpg` (21.33 KB, 下载次数: 1)，[附件下载](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYyNjE2NXxlZWU4OThhY3wxNzkzNTczNDU0fDE2ODA4NnwxODA2ODUy&nothumb=yes)，2023-7-10 14:47 上传
+
+再按`crtl+p`，碉堡了，能打印了，去掉页面上无关内容，上个完整的图
+
+![7.jpg](https://attach.52pojie.cn/forum/202307/10/144752rnp5ggpgd84j504j.jpg)
+
+`7.jpg` (170.21 KB, 下载次数: 0)，[附件下载](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYyNjE2NnxjYzBlNzRmOHwxNzkzNTczNDU0fDE2ODA4NnwxODA2ODUy&nothumb=yes)，2023-7-10 14:47 上传
+
+## 总结
+
+本以为需要又研究`js`又研究`xhr`的，结果发现页面`class`标签轻松一改就完事了，以后需要多注意细节，哈哈哈哈
