@@ -1,0 +1,97 @@
+
+# [原创] 对于老牌解压缩软件 WinRAR 的广告弹窗 `CALL` 的一次追溯
+
+- 原帖：[https://www.52pojie.cn/forum.php?mod=viewthread&tid=1776086](https://www.52pojie.cn/forum.php?mod=viewthread&tid=1776086)
+- 抓取时间：2026-11-01T22:55:06
+
+## 前言
+
+一直使用的这款解压软件，习惯了它的压缩包图标，今天对于打开压缩包之后的弹窗忍无可忍了 ![](https://static.52pojie.cn/static/image/smiley/default/sad.gif)。（这是我注册吾爱这么多年以来第一次发帖，各位看官多包涵。![](https://static.52pojie.cn/static/image/smiley/default/16.gif)）
+
+## 分析过程
+
+### 步骤 1
+
+先欣赏一下软件弹窗。为了避免一些不必要的麻烦，我把弹窗藏在主窗口背后了。
+
+![sshot-1.png](https://attach.52pojie.cn/forum/202304/19/212500jle7ermjlyqmk67l.png)
+
+`sshot-1.png` (230.7 KB, 下载次数: 2) [附件](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYwODg5OHxkMDBlOTM5ZHwxNzkzNTczNzA0fDE2ODA4NnwxNzc2MDg2&nothumb=yes)
+
+2023-4-19 21:25 上传
+
+### 步骤 2
+
+我是下载的64位版本的，所以打开 `x64dbg` 附加。我们观察到广告是以窗口的形式显示的，大胆猜测一下可能是调用了 `ShowWindow`，来到这里之后，在 `ret` 上下段，用 `dbg` 重新运行。
+
+![sshot-3.png](https://attach.52pojie.cn/forum/202304/19/213433iax8xa78u75mr2rb.png)
+
+`sshot-3.png` (101.47 KB, 下载次数: 1) [附件](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYwODkwMnxiNzc5Zjg2ZnwxNzkzNTczNzA0fDE2ODA4NnwxNzc2MDg2&nothumb=yes)
+
+2023-4-19 21:34 上传
+
+### 步骤 3
+
+软件启动过程中会多次调用这个函数，我们需要做的是：一直运行到广告窗口载入，大约在主窗口完成载入之后再运行两次就会显示。
+
+![sshot-4.png](https://attach.52pojie.cn/forum/202304/19/214050n4qzu9ubt201pcma.png)
+
+`sshot-4.png` (73.93 KB, 下载次数: 2) [附件](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYwODkwNnwwNTYzOTE2NXwxNzkzNTczNzA0fDE2ODA4NnwxNzc2MDg2&nothumb=yes)
+
+2023-4-19 21:40 上传
+
+### 步骤 4
+
+思路：程序调用载入广告窗口的关键位置一定在这之前，所以我们就直接运行到用户代码。
+
+![sshot-5.png](https://attach.52pojie.cn/forum/202304/19/214912qbdglnficdg82obz.png)
+
+`sshot-5.png` (124.23 KB, 下载次数: 2) [附件](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYwODkwOXxhOGE5YWZmM3wxNzkzNTczNzA0fDE2ODA4NnwxNzc2MDg2&nothumb=yes)
+
+2023-4-19 21:49 上传
+
+### 步骤 5
+
+往上观察这段代码，有非常多的跳转，干脆从函数头部下段。重载程序。我们发现在头部断下之后，广告窗口还是已经创建了，那就执行到返回，再分析上一层，以此类推，最后我们在这个头部断下重载以后，发现第一次运行主窗口还没加载，再次运行广告窗口就加载完毕了，所以从这里开始单步往下跟。
+
+![sshot-7.png](https://attach.52pojie.cn/forum/202304/19/221007atyfujdtfgfrezdv.png)
+
+`sshot-7.png` (118.56 KB, 下载次数: 2) [附件](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYwODkxNHw1YmQ4OWUxZHwxNzkzNTczNzA0fDE2ODA4NnwxNzc2MDg2&nothumb=yes)
+
+2023-4-19 22:10 上传
+
+### 步骤 6
+
+跟到这里的时候发现执行完这个 `Call`，广告窗口就加载了，我们进入这个 `Call` 看一下，看到注释列有大量 `ad` 开头的链接，可以复制链接访问一下。
+
+![sshot-8.png](https://attach.52pojie.cn/forum/202304/19/221508pyykumexx6k9j6x6.png)
+
+`sshot-8.png` (93.38 KB, 下载次数: 1) [附件](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYwODkxNXxmZDcyZjExMXwxNzkzNTczNzA0fDE2ODA4NnwxNzc2MDg2&nothumb=yes)
+
+2023-4-19 22:15 上传
+
+![sshot-9.png](https://attach.52pojie.cn/forum/202304/19/221510libjbd1fdqxzjpzg.png)
+
+`sshot-9.png` (103.33 KB, 下载次数: 2) [附件](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYwODkxNnwyMGVlMjRmZnwxNzkzNTczNzA0fDE2ODA4NnwxNzc2MDg2&nothumb=yes)
+
+2023-4-19 22:15 上传
+
+### 步骤 7
+
+至此，我们就通过回溯找到了广告弹窗的 `Call`，至于如何修改，就不用我多说了罢！
+
+![](https://static.52pojie.cn/static/image/smiley/laohu/laohu34.gif)
+
+不知道写的够不够详细，第一次发帖总觉得很多东西没说清楚又不知道该怎么描述，欢迎提问。
+
+## 下载
+
+原软件下载（单文件）：[https://axigua.lanzouo.com/izpR50tgei0d](https://axigua.lanzouo.com/izpR50tgei0d) 密码：`52pj`
+
+也可以去官网下载。
+
+有朋友说想要成品，一并附上吧。
+
+[https://axigua.lanzouo.com/iUiVi0thzfbi](https://axigua.lanzouo.com/iUiVi0thzfbi)
+
+密码：`52pj`
