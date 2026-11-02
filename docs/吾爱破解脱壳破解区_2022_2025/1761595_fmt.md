@@ -1,0 +1,183 @@
+
+# [Web逆向] 某图网站新版加密分析
+
+- 原帖: https://www.52pojie.cn/forum.php?mod=viewthread&tid=1761595
+- 抓取时间: 2026-11-01T22:58:25
+
+## 1. 前言
+
+网站：`aHR0cHMlM0EvL21tenp0dC5jb20`
+
+关于该网站的 js 加密方式，我在之前分享过。最近发现网站图片链接的获取方式又有所改变，于是再次分析图片的获取方法。
+
+## 2. 解密过程
+
+网站有无限 `debugger`，可以选择本地替换或者 js 注入。
+
+### 2.1 图片链接来源
+
+在之前的分析中，我们找出图片链接的来源是在当前界面的源代码中（comment 中），现在网站改变了获取方式，通过开发者工具可以发现，链接实际来源改由 ajax 获取。
+
+![](https://attach.52pojie.cn/forum/202303/19/212633fqfnkx7krr5r4uqx.png)
+
+屏幕截图 2023-03-19 195151.png (20.83 KB, 下载次数: 0)
+
+[附件](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU5OTY4N3w3ZmM4NWQyYXwxNzkzNTczOTAyfDE2ODA4NnwxNzYxNTk1&nothumb=yes)
+
+2023-3-19 21:26 上传
+
+从上面的请求中可以得知，网站通过当前界面的 `id` 请求加密的图片链接资源，推测网站接下来将会通过 js 解密得到图片链接。在这里需要注意，网站在获取到 `data` 后会储存，因此可能会出现刷新后获取不到数据包的情况。
+
+![](https://attach.52pojie.cn/forum/202303/19/212631f4881n9bk80abkoc.png)
+
+屏幕截图 2023-03-19 200016.png (43.97 KB, 下载次数: 0)
+
+[附件](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU5OTY4NnxmNzczZmUwMnwxNzkzNTczOTAyfDE2ODA4NnwxNzYxNTk1&nothumb=yes)
+
+2023-3-19 21:26 上传
+
+### 2.2 寻找解密代码
+
+经过打断点、查看堆栈后，发现数据解密入口函数 `_0x1ecabc`。
+
+![](https://attach.52pojie.cn/forum/202303/19/212629vp83b5z3ttn88std.png)
+
+屏幕截图 2023-03-19 200953.png (132.91 KB, 下载次数: 1)
+
+[附件](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU5OTY4NXwwNDdiMTc4MXwxNzkzNTczOTAyfDE2ODA4NnwxNzYxNTk1&nothumb=yes)
+
+2023-3-19 21:26 上传
+
+可以看到，`_0x1ecabc` 函数获取两个参数：`id` 和 `data`，通过解密后得到一个包含图片链接关键信息的列表，由于 web 端的限制，该列表只有 20 条数据。接下来，我们进入这个函数分析。
+
+![](https://attach.52pojie.cn/forum/202303/19/212627pj8skckse3qzkeek.png)
+
+屏幕截图 2023-03-19 201319.png (150.16 KB, 下载次数: 0)
+
+[附件](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU5OTY4NHwzNDhmMjUzZHwxNzkzNTczOTAyfDE2ODA4NnwxNzYxNTk1&nothumb=yes)
+
+2023-3-19 21:26 上传
+
+发现实际上是这个函数，我们把它扣下来，放入 vscode 中运行试试。
+
+![](https://attach.52pojie.cn/forum/202303/19/212624mrsnobxfyx9yjy93.png)
+
+屏幕截图 2023-03-19 201709.png (212.2 KB, 下载次数: 1)
+
+[附件](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU5OTY4M3wyOTcxMDcyY3wxNzkzNTczOTAyfDE2ODA4NnwxNzYxNTk1&nothumb=yes)
+
+2023-3-19 21:26 上传
+
+提示 `_0x1708` 未定义，在源代码中搜索。
+
+![](https://attach.52pojie.cn/forum/202303/19/212622wdbrvbvd0v95jdsr.png)
+
+屏幕截图 2023-03-19 201844.png (156.05 KB, 下载次数: 0)
+
+[附件](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU5OTY4Mnw0ZTljZGMzM3wxNzkzNTczOTAyfDE2ODA4NnwxNzYxNTk1&nothumb=yes)
+
+2023-3-19 21:26 上传
+
+![](https://attach.52pojie.cn/forum/202303/19/212620c3ggs121gbg8fqd1.png)
+
+屏幕截图 2023-03-19 201958.png (110.45 KB, 下载次数: 0)
+
+[附件](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU5OTY4MXxhZDQxZjkxMHwxNzkzNTczOTAyfDE2ODA4NnwxNzYxNTk1&nothumb=yes)
+
+2023-3-19 21:26 上传
+
+找到这个函数后同样扣下来，再次运行，发现又缺少 `_0x32ea` 这个函数，再去源代码中找。
+
+![](https://attach.52pojie.cn/forum/202303/19/212617uhy9y325628h9z26.png)
+
+屏幕截图 2023-03-19 202134.png (145.48 KB, 下载次数: 0)
+
+[附件](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU5OTY4MHxhM2FmYmY2OHwxNzkzNTczOTAyfDE2ODA4NnwxNzYxNTk1&nothumb=yes)
+
+2023-3-19 21:26 上传
+
+![](https://attach.52pojie.cn/forum/202303/19/212615y7nsm4bk4vu0nd4y.png)
+
+屏幕截图 2023-03-19 202644.png (106.88 KB, 下载次数: 1)
+
+[附件](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU5OTY3OXw3MGJkNTljNXwxNzkzNTczOTAyfDE2ODA4NnwxNzYxNTk1&nothumb=yes)
+
+2023-3-19 21:26 上传
+
+将 `_0x32ea` 扣下来，并将代码进行一定优化后再次运行，可以看到已经不缺其他的自定义方法了。
+
+### 2.3 代码优化
+
+接下来对代码进行优化并复现解密方法。
+
+![](https://attach.52pojie.cn/forum/202303/19/212613hza0308chzjz0fy0.png)
+
+屏幕截图 2023-03-19 202955.png (145.16 KB, 下载次数: 0)
+
+[附件](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU5OTY3OHw2ZTA4ZGI0MHwxNzkzNTczOTAyfDE2ODA4NnwxNzYxNTk1&nothumb=yes)
+
+2023-3-19 21:26 上传
+
+在简化代码的过程中，可以发现这个地方非常奇怪，尤其是在后面的代码优化中更是如此，于是中途试运行代码打印出运行中使用到的变量，发现完全不符合预期。经过一段时间的寻找，终于发现原来在开头的地方对 `fun1` 中的字符串列表的顺序进行了改变，但是我们不必关心它的方法，只需要在最后把正确顺序的列表抓出来即可。
+
+![](https://attach.52pojie.cn/forum/202303/19/212610kn0dlcnnlsnsc0mc.png)
+
+屏幕截图 2023-03-19 203309.png (110.92 KB, 下载次数: 0)
+
+[附件](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU5OTY3N3w3MDY3M2JlZHwxNzkzNTczOTAyfDE2ODA4NnwxNzYxNTk1&nothumb=yes)
+
+2023-3-19 21:26 上传
+
+得到正确的列表后再次对代码进行优化。
+
+代码的大致思路是：在 `fun1` 中存了一个字符串列表，`fun2` 中使用一个参数，将它减去一个值后作为索引取到 `fun1` 中的字符串，而在最终的 `fun3` 中则大量使用了其中的字符串，此外代码中有大量的 16 进制数字和字符串，看起来十分混乱，简化后的最终代码，只需要最后一个函数即可。
+
+## 3. 解密方法复现
+
+现在我们使用 python 代码复现数据的解密方法，此处我选择使用 chatgpt 将上面的最终代码改写为 python 代码，以下是 chatgpt 给我的并经过我优化改写后的代码。
+
+```
+from Crypto.Cipher import AES
+from Crypto.Hash import MD5
+from Crypto.Util.Padding import unpad
+import base64
+import json
+from loguru import logger
+
+def decrypt(pid: int, data: str) ->str :
+    rel_data = data.split('固定字符')[1]
+    iv = ''
+    for i in range(2, 18):
+        iv += str(pid % i % 9)
+    logger.info(f'IV：{iv}')
+
+    data_bytes = bytes.fromhex(rel_data)
+    data_base = base64.b64encode(data_bytes).decode()
+    key = MD5.new((str(pid) + '固定字符' + iv).encode()).hexdigest()[8:24]
+    logger.info(f'Key：{key}')
+    result = AES.new(key.encode(), AES.MODE_CBC, iv=iv.encode()).decrypt(base64.b64decode(data_base))
+    return json.loads(unpad(result, AES.block_size).decode())
+```
+
+通过以上代码即可成功解密 ajax 传回的 `data` 数据。
+
+## 4. 总结
+
+总体而言，这个网站的加密不算复杂，要说麻烦主要来源于大量的 16 进制数据与混淆的变量和方法名，细心一点还是比较容易。
+
+完整的文件代码：https://lanzout.com/idLC10qj7rdi
+
+![](https://static.52pojie.cn/static/image/filetype/text.gif)
+
+[附件](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU5OTY3NXxlYzY5ZjA0YnwxNzkzNTczOTAyfDE2ODA4NnwxNzYxNTk1)
+
+(50 Bytes, 下载次数: 81)
+
+2023-3-19 21:16 上传
+
+点击文件名下载附件
+下载积分: 吾爱币 -1 CB
+
+## 5. 分享
+
+经过分析，这个网站的 app 确实使用了 ssl 证书双向验证，使用 r0ysue 的项目 [r0capture](https://github.com/r0ysue/r0capture) 可以导出 p12 证书，将证书导入 charles 中可以实现对 app 的抓包，不过返回的依然是加密数据。此外，app 使用了数字加固，并能够检测模拟器和 xposed，分析难度较大。
