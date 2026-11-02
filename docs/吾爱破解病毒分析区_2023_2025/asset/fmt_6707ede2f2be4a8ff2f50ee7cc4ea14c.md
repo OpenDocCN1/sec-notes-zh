@@ -1,0 +1,196 @@
+
+# [PC样本分析] 针对Linux系统 BDFdoor新变种可绕过防火墙
+
+- 原帖: https://www.52pojie.cn/forum.php?mod=viewthread&tid=1859469
+- 抓取时间: 2026-11-01T23:48:49
+
+近期，火绒安全实验室发现了一起针对Linux系统的植入后门病毒攻击，经过分析确认该后门为BDFdoor的变种。
+
+BDFdoor是一种针对Linux和Solaris系统的被动后门，执行隐蔽性的访问控制。由于该后门病毒利用 BerkeleyPacket Filter（BPF）嗅探器以低于本地防火墙的级别嗅探流量，所以其能绕过防火墙的限制，并且可以响应来自任何 IP 的命令而无需新开端口。
+
+目前，火绒安全产品可对上述病毒进行拦截查杀，请企业用户及时更新病毒库以进行防御。
+
+![](https://attach.52pojie.cn/forum/202311/20/173731qn9wrnku3dhyd8ra.png)
+
+`Image-0.png` (104.39 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=MjY1NzgzNXxlNTJhNmQxOXwxNzkzNTc2OTI2fDE2ODA4NnwxODU5NDY5&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY1NzgzNXxlNTJhNmQxOXwxNzkzNTc2OTI2fDE2ODA4NnwxODU5NDY5&nothumb=yes)
+
+2023-11-20 17:37 上传
+
+火绒查杀图
+
+注：Berkeley Packet Filter 提供了一个在内核级别进行网络数据包过滤的框架，其在网络层接口上工作，能够查看和处理所有网络流量。
+
+## 样本分析
+
+### 初始化阶段
+
+样本初始化前，其会经过多层检查以进行权限确认并防止多次启动。`/var/run/haldrund.pid`文件在这里作为该后门已存在的标记，类似于互斥体的作用。
+
+![](https://attach.52pojie.cn/forum/202311/20/173746s2jszcjj922sgzyj.png)
+
+`Image-1.png` (12.6 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=MjY1NzgzNnwyMWNlYmE0NXwxNzkzNTc2OTI2fDE2ODA4NnwxODU5NDY5&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY1NzgzNnwyMWNlYmE0NXwxNzkzNTc2OTI2fDE2ODA4NnwxODU5NDY5&nothumb=yes)
+
+2023-11-20 17:37 上传
+
+互斥标识文件
+
+在执行条件都符合的情况下，进入初始化操作阶段——把自身复制到`/dev/shm`目录下执行并赋予 `--init` 参数，在内存加载后删除执行文件以进行隐蔽。
+
+![](https://attach.52pojie.cn/forum/202311/20/173804m9wjckggckjrrj8j.png)
+
+`Image-2.png` (14.02 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=MjY1NzgzN3w4YWQ0YTFmOXwxNzkzNTc2OTI2fDE2ODA4NnwxODU5NDY5&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY1NzgzN3w4YWQ0YTFmOXwxNzkzNTc2OTI2fDE2ODA4NnwxODU5NDY5&nothumb=yes)
+
+2023-11-20 17:38 上传
+
+初始化执行
+
+样本选择的`/dev/shm`目录是 Linux 系统利用内存虚拟出来的目录，用于提高操作效率，正常情况下该目录并没有文件（且样本已经进行删除处理）。但由于后门程序需要持续运行以监控流量，所以在进程列表中会持续存在。`/proc`目录下包含系统当前正在运行进程的进程号及与进程相关的多个信息文件，从中可以看到被删除的文件。
+
+![](https://attach.52pojie.cn/forum/202311/20/173821r7631j7m350sh1eo.png)
+
+`Image-3.png` (46.59 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=MjY1NzgzOHxhOWU5ZDhhZnwxNzkzNTc2OTI2fDE2ODA4NnwxODU5NDY5&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY1NzgzOHxhOWU5ZDhhZnwxNzkzNTc2OTI2fDE2ODA4NnwxODU5NDY5&nothumb=yes)
+
+2023-11-20 17:38 上传
+
+查看可疑进程
+
+随后，样本进行一系列规避和隐藏操作，包括设定执行文件时间（如果前面删除失败）、清除进程环境变量并根据预设的 Linux 系统守护程序名来伪装进程、将自身设置为后台运行、在终止时通过 `atexit` 函数注册对 `haldrund.pid` 文件的清除操作，确保流程闭环：
+
+![](https://attach.52pojie.cn/forum/202311/20/173837k0d39c8e0cuacc96.png)
+
+`Image-4.png` (73.57 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=MjY1NzgzOXw5NzRmYWE0Y3wxNzkzNTc2OTI2fDE2ODA4NnwxODU5NDY5&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY1NzgzOXw5NzRmYWE0Y3wxNzkzNTc2OTI2fDE2ODA4NnwxODU5NDY5&nothumb=yes)
+
+2023-11-20 17:38 上传
+
+规避和隐藏操作
+
+### 流量捕获和分析阶段
+
+完成上面的流程后便进入到数据包捕获和匹配阶段，通过创建一个原始套接字（`SOCK_RAW`）和使用 `AF_PACKET` 地址族，加上前面 root 权限的设定，使样本能在数据链路层上捕获系统上所有的网络流量，而不仅仅是传递给特定端口或协议的数据包。
+
+![](https://attach.52pojie.cn/forum/202311/20/173852vkga1g6ggpapgz6w.png)
+
+`Image-5.png` (23.03 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=MjY1Nzg0MHw0MzYxODdmZHwxNzkzNTc2OTI2fDE2ODA4NnwxODU5NDY5&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY1Nzg0MHw0MzYxODdmZHwxNzkzNTc2OTI2fDE2ODA4NnwxODU5NDY5&nothumb=yes)
+
+2023-11-20 17:38 上传
+
+原始套接字设定
+
+对于所有捕获的流量，会根据不同的传输层协议进行验证，直到成功提取出特定位置处符合大小的 `magic_packet` 结构后，再另外分支出一个子进程来进行后续操作。然后原进程继续获取和分析匹配的流量，子进程则根据提取出的 `magic_packet` 结构进行后续操作。
+
+![](https://attach.52pojie.cn/forum/202311/20/173908zrnyzy8ooyrrqz0e.png)
+
+`Image-6.png` (49.79 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=MjY1Nzg0MXwxNjliOGQ3MnwxNzkzNTc2OTI2fDE2ODA4NnwxODU5NDY5&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY1Nzg0MXwxNjliOGQ3MnwxNzkzNTc2OTI2fDE2ODA4NnwxODU5NDY5&nothumb=yes)
+
+2023-11-20 17:39 上传
+
+校验符合的流量
+
+`magic_packet` 是病毒作者自定义的一个特征结构体，主要包含攻击者的 flag 标志、IP、Port、通信选择标识符 `pass` 等。其中嵌入的 IP 端口用于后续建立连接和通信，而 `pass` 则在后续与预设字符的匹配中用于决定通信的方式。
+
+![](https://attach.52pojie.cn/forum/202311/20/173926ox1a0hjxjje36bc0.png)
+
+`Image-7.png` (2.39 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=MjY1Nzg0Mnw1ZWRjNTRlYXwxNzkzNTc2OTI2fDE2ODA4NnwxODU5NDY5&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY1Nzg0Mnw1ZWRjNTRlYXwxNzkzNTc2OTI2fDE2ODA4NnwxODU5NDY5&nothumb=yes)
+
+2023-11-20 17:39 上传
+
+原始版本 `magic_packet` 结构体
+
+分支出来的子进程会用新的系统守护进程名 `"postfix"` 来伪装自己，并利用结构体中 `magic_packet->pass` 成员作为 RC4 加密密钥，对后面即将建立的通信流量进行加密。
+
+![](https://attach.52pojie.cn/forum/202311/20/173941g1heud1hjmzj191d.png)
+
+`Image-8.png` (41.56 KB, 下载次数: 1)
+
+[href="forum.php?mod=attachment&aid=MjY1Nzg0M3wwMmQ0MGEzZnwxNzkzNTc2OTI2fDE2ODA4NnwxODU5NDY5&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY1Nzg0M3wwMmQ0MGEzZnwxNzkzNTc2OTI2fDE2ODA4NnwxODU5NDY5&nothumb=yes)
+
+2023-11-20 17:39 上传
+
+fork 进程和 RC4 加密
+
+在通信方式的选择中，也同样利用 `magic_packet` 中的成员值与样本在起始处预设字符串值进行比较，根据不同的标识符来决定不同的处理方式，包括：
+1. 调整 `iptables` 规则，重定向攻击者流量到 shell 进程新端口，建立 C&C 通信并用前面 RC4 加密该通信数据的反向 shell。
+2. 直接连接到攻击者给定 IP 端口。
+3. 发送固定值 `"1"` 的 UDP 应答包作为存活探测。
+
+![](https://attach.52pojie.cn/forum/202311/20/174107huzwbi8mu7pmg88v.png)
+
+`Image-9.png` (75.18 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=MjY1Nzg0NHw2N2Q2NGM1M3wxNzkzNTc2OTI2fDE2ODA4NnwxODU5NDY5&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY1Nzg0NHw2N2Q2NGM1M3wxNzkzNTc2OTI2fDE2ODA4NnwxODU5NDY5&nothumb=yes)
+
+2023-11-20 17:41 上传
+
+执行不同通信操作
+
+### 对比分析
+
+该类后门自披露以来最显著的特征就是其加载 Berkeley Packet Filter（BPF）嗅探器，使其能够在任何本地运行的防火墙前工作以查看数据包（因此被命名为 BPFDoor）。样本使用原始套接字（`SOCK_RAW`）及 root 权限来获取系统的全部流量，并在 `setsockopt` 函数中将转换为 BPF 字节码的过滤器作为过滤参数加载进流量的处理中，因此对于从任何主机 IP 发送过来的数据会先被该类样本捕获，进行过滤匹配和采取后续行动。
+
+而本次分析的样本中，在前面进入流量捕获阶段的起始处，样本加载的过滤器全由 `\x28` 组成，对流量并没有实际性的过滤效果，流量分类全由后续的 IP 协议字段决断：
+
+![](https://attach.52pojie.cn/forum/202311/20/174143fqk92lqhtfkr1h9e.png)
+
+`Image-10.png` (49.41 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=MjY1Nzg0NXwzYTZiYmJkMXwxNzkzNTc2OTI2fDE2ODA4NnwxODU5NDY5&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY1Nzg0NXwzYTZiYmJkMXwxNzkzNTc2OTI2fDE2ODA4NnwxODU5NDY5&nothumb=yes)
+
+2023-11-20 17:41 上传
+
+BPF 过滤器对比
+
+而且在根据不同传输层协议提取数据包中的 `magic_packet` 结构时，对于 TCP 协议的处理，其会根据数据包中是否存在 `magic\x39\x39\x39\x39` 和 `\x0D\x0A\x0D\x0A` 来更改 `magic_packet` 在数据包中的定位，否则，与 UDP 和 ICMP 一样，在恒定的位置提取。
+
+![](https://attach.52pojie.cn/forum/202311/20/174207ddgsijjrfdllivol.png)
+
+`Image-11.png` (50.33 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=MjY1Nzg0Nnw4NGU1MjIxZnwxNzkzNTc2OTI2fDE2ODA4NnwxODU5NDY5&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY1Nzg0Nnw4NGU1MjIxZnwxNzkzNTc2OTI2fDE2ODA4NnwxODU5NDY5&nothumb=yes)
+
+2023-11-20 17:42 上传
+
+提取 `magic_packet` 结构体
+
+另外，在对 `magic_packet->pass` 成员与预设值的比对中，除了 `"justforfun"` 和 `"socket"` 所对应的 "反向shell"、"正向连接" 及其它值对应的 "存活探测"外，在该变种中还新增对预设值 `"icmp"` 的匹配。
+
+![](https://attach.52pojie.cn/forum/202311/20/174255wts1clvgvegncnp3.png)
+
+`Image-12.png` (57.27 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=MjY1Nzg0N3xjYjUwMDcyYnwxNzkzNTc2OTI2fDE2ODA4NnwxODU5NDY5&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY1Nzg0N3xjYjUwMDcyYnwxNzkzNTc2OTI2fDE2ODA4NnwxODU5NDY5&nothumb=yes)
+
+2023-11-20 17:42 上传
+
+新增 icmp 处理
+
+但在对 icmp 流量的处理函数的分析中，发现真正的 BPF 过滤器已被“搬迁”到此处。流量过滤和处理逻辑依旧有迹可循：其在过滤出匹配的流量包后，又会进行新一轮的数据提取，包括控制主机的 ip、端口等。随即填充和对比通信用的版本标识符的 `"3458"`、`"8543"`，并开启线程向远控主机循环发送数据以进行连接存活探测。
+
+![](https://attach.52pojie.cn/forum/202311/20/174314nmue9mxb5gmm5cmm.png)
+
+`Image-13.png` (61.14 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=MjY1Nzg0OHw2MzY5NDEwNXwxNzkzNTc2OTI2fDE2ODA4NnwxODU5NDY5&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY1Nzg0OHw2MzY5NDEwNXwxNzkzNTc2OTI2fDE2ODA4NnwxODU5NDY5&nothumb=yes)
+
+2023-11-20 17:43 上传
+
+icmp 流量处理和过滤
+
+由于该类样本最主要的特点就是利用 BPF 过滤器来过滤流量，可以以该线索进行排查。可以使用 `ss -0pb` 命令来查看当前加载 BPF 过滤器的进程，下图中显示的有 39 条 BPF 指令的可疑程序就是当前分析的样本（此时它已伪装为系统守护程序）。
+
+![](https://attach.52pojie.cn/forum/202311/20/174402df6s116kkck3mk1i.png)
