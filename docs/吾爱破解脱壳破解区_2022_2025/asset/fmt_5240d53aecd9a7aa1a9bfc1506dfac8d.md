@@ -1,0 +1,300 @@
+
+# [原创] 原神抢码，米游社抢码-首发
+
+- 原帖：<https://www.52pojie.cn/forum.php?mod=viewthread&tid=1757987>
+- 抓取时间：2026-11-01T22:58:51
+
+本文章仅供学习使用-侵权请联系删除
+
+本来在深渊12层打不过的我偶然在刷到了一个dy的直播间，看到主播在抢码上号帮忙打深渊还号称痛苦号打不满不送原石的旗号我就决定扫码试试。在直播间内使用了两部手机互相扫码，在扫了一下午的码后发现根本抢不到二维码，心态崩溃后我就想着写一个脚本来帮我抢码（本人py小白）。终于在又白忙活了一下的后终于决定抱着学习的态度写一个程序来帮我进行抢码的操作！
+
+## 原理讲解
+
+- 进行屏幕区域的截图（用来获取二维码）
+- 将获取到的二维码进行解析
+- 将解析后的内容截取出 `ticket`
+- 最后发送给米哈游的服务器
+
+![演示.gif](https://attach.52pojie.cn/forum/202303/15/093814llvv5s2wowzekesk.gif)
+
+`演示.gif`（2.34 MB，下载次数：47）
+
+[附件下载](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU5NzM5NHw1ZDYzYTgwMnwxNzkzNTczOTI4fDE2ODA4NnwxNzU3OTg3&nothumb=yes)
+
+2023-3-15 09:38 上传
+
+## 抢码登陆流程
+
+在抢码登陆中一共分为两步：
+
+1. 第一步：抢码
+2. 第二步：登陆
+
+哈哈听起来像废话，我们首先会进行二维码扫码的认主，先确定这个二维码的主人是谁，只要确认好这个主人后就算等待几分钟再确认登陆也没有问题。
+
+```python
+# 抢码开始
+def Request(ticket):
+    conn = http.client.HTTPSConnection("api-sdk.mihoyo.com")
+    payload = json.dumps({
+        "app_id": 4,
+        "device": "",
+        "ticket": ticket
+    })
+    headers = {}
+    conn.request("POST", "/hk4e_cn/combo/panda/qrcode/scan", payload, headers)
+    res = conn.getresponse()
+    data = res.read()
+    data = json.loads(data.decode("utf-8"))
+    retcode = data["retcode"]
+    return retcode
+```
+
+我们先进行二维码的认主，`ticket` 这个参数为二维码解析后的参数，自行获取。
+
+```python
+# 确认登陆
+def ConfirmRequest(ticket):
+    conn = http.client.HTTPSConnection("api-takumi.miyoushe.com")
+    payload = ''
+    headers = {
+        'DS': '',
+        'cookie': '',
+        'x-rpc-client_type': '',
+        'x-rpc-app_version': '',
+        'x-rpc-sys_version': '',
+        'x-rpc-channel': '',
+        'x-rpc-device_id': '',
+        'x-rpc-device_fp': '',
+        'x-rpc-device_name': '',
+        'x-rpc-device_model': '',
+        'Referer': ' [url=https://app.mihoyo.co]https://app.mihoyo.co[/url]'
+    }
+    conn.request("GET", "/auth/api/getGameToken?uid=",
+                 payload, headers)
+    res = conn.getresponse()
+    data = res.read()
+    # print(data.decode("utf-8"))
+    data = json.loads(data.decode("utf-8"))
+    token = data["data"]["game_token"]
+
+    conn = http.client.HTTPSConnection("api-sdk.mihoyo.com")
+    payload = json.dumps({
+        "app_id": 4,
+        "device": "",
+        "payload": {
+            "proto": "Account",
+            "raw": f"{{\"uid\":\"0000000\",\"token\":\"{token}\"}}"
+        },
+        "ticket": ticket
+    })
+    headers = {
+        'DS': '',
+        'cookie': '',
+        'x-rpc-client_type': '',
+        'x-rpc-app_version': '',
+        'x-rpc-sys_version': '',
+        'x-rpc-channel': 'xiaomi',
+        'x-rpc-device_id': '',
+        'x-rpc-device_fp': '',
+        'x-rpc-device_name': '',
+        'x-rpc-device_model': '',
+        'Referer': ' [url=https://app.mihoyo.com]https://app.mihoyo.com[/url]',
+        'Content-Type': 'application/json'
+    }
+    conn.request("POST", "/hk4e_cn/combo/panda/qrcode/confirm",
+                 payload, headers)
+    res = conn.getresponse()
+```
+
+然后再进行二维码的确认，来进行游戏内的确认登陆。启动后会在屏幕中间显示一个 300x300 像素的框，放入二维码后直接扫码登陆。
+
+由于自己学习就不做成品和优化了。好了，废话不多说了，这里只提供思路，参数在米游社扫码时抓包即可获取，有需要的自行阅读吧。
+
+```python
+import cv2
+from pyzbar.pyzbar import decode
+import pyzbar.pyzbar as pyzbar
+import numpy as np
+from PIL import ImageGrab
+import time
+import tkinter as tk
+import threading
+import re
+import http.client
+import json
+
+# 显示框框 启动线程
+def my_function():
+    import juxing
+
+my_thread = threading.Thread(target=my_function)
+my_thread.start()
+
+# 获取坐标
+root = tk.Tk()
+win_width = 300
+win_height = 300
+screen_width = root.winfo_screenwidth()
+screen_height = root.winfo_screenheight()
+x_pos = (screen_width // 2) - (win_width // 2)
+y_pos = (screen_height // 2) - (win_height // 2)
+
+# 设置扫描区域左上角的坐标和宽高
+left, top, width, height = x_pos, y_pos, win_width, win_height
+right = left + width
+bottom = top + height
+
+# 创建窗口并设置窗口名称
+cv2.namedWindow("QR Code Scanner", cv2.WINDOW_NORMAL)
+cv2.resizeWindow("QR Code Scanner", win_width, win_height)
+
+# 抢码开始
+def Request(ticket):
+    conn = http.client.HTTPSConnection("api-sdk.mihoyo.com")
+    payload = json.dumps({
+        "app_id": 4,
+        "device": "",
+        "ticket": ticket
+    })
+    headers = {}
+    conn.request("POST", "/hk4e_cn/combo/panda/qrcode/scan", payload, headers)
+    res = conn.getresponse()
+    data = res.read()
+    data = json.loads(data.decode("utf-8"))
+    retcode = data["retcode"]
+    return retcode
+
+# 确认登陆
+def ConfirmRequest(ticket):
+    conn = http.client.HTTPSConnection("api-takumi.miyoushe.com")
+    payload = ''
+    headers = {
+        'DS': '',
+        'cookie': '',
+        'x-rpc-client_type': '2',
+        'x-rpc-app_version': '2.46.1',
+        'x-rpc-sys_version': '9',
+        'x-rpc-channel': '',
+        'x-rpc-device_id': '',
+        'x-rpc-device_fp': '',
+        'x-rpc-device_name': '',
+        'x-rpc-device_model': '',
+        'Referer': ' [url=https://app.mihoyo.co]https://app.mihoyo.co[/url]'
+    }
+    conn.request("GET", "/auth/api/getGameToken?uid=",
+                 payload, headers)
+    res = conn.getresponse()
+    data = res.read()
+    # print(data.decode("utf-8"))
+
+    data = json.loads(data.decode("utf-8"))
+    token = data["data"]["game_token"]
+
+    conn = http.client.HTTPSConnection("api-sdk.mihoyo.com")
+    payload = json.dumps({
+        "app_id": 4,
+        "device": "",
+        "payload": {
+            "proto": "Account",
+            "raw": f"{{\"uid\":\"0000000\",\"token\":\"{token}\"}}"
+        },
+        "ticket": ticket
+    })
+    headers = {
+        'DS': '',
+        'cookie': '',
+        'x-rpc-client_type': '2',
+        'x-rpc-app_version': '2.46.1',
+        'x-rpc-sys_version': '9',
+        'x-rpc-channel': ' xiaomi',
+        'x-rpc-device_id': '',
+        'x-rpc-device_fp': '',
+        'x-rpc-device_name': '',
+        'x-rpc-device_model': '',
+        'Referer': ' [url=https://app.mihoyo.com]https://app.mihoyo.com[/url]',
+        'Content-Type': 'application/json'
+    }
+    conn.request("POST", "/hk4e_cn/combo/panda/qrcode/confirm",
+                 payload, headers)
+    res = conn.getresponse()
+    # data = res.read()
+    # print(data.decode("utf-8"))
+
+while True:
+    # 截取指定区域的屏幕截图
+    screenshot = cv2.cvtColor(
+        np.array(ImageGrab.grab(bbox=(left, top, right, bottom))),
+        cv2.COLOR_BGR2RGB
+    )
+
+    # 将截图转换为灰度图像
+    gray = cv2.cvtColor(screenshot, cv2.COLOR_RGB2GRAY)
+
+    # 尝试使用pyzbar库识别二维码
+    codes = decode(gray, symbols=[pyzbar.ZBarSymbol.QRCODE])
+
+    # 如果找到了二维码，输出其内容
+    if codes:
+        print(codes[0].data.decode())
+        pattern = r"ticket=([a-f0-9]+)"
+        match = re.search(pattern, codes[0].data.decode())
+        # 正则请求地址
+        if match:
+            start_time = time.time()
+            # 进入抢码
+            retcode = Request(match.group(1))
+            end_time = time.time()
+            if retcode == 0:
+                # 计算代码执行时间
+                elapsed_time = end_time - start_time
+                #  输出执行时间
+                print("抢码成功耗时 %.3f 秒" % elapsed_time)
+                # 确认登陆
+                ConfirmRequest(match.group(1))
+                time.sleep(1)
+
+    # 等待一段时间再继续扫描
+    time.sleep(0.05)
+
+    # 在窗口中显示截图
+    cv2.imshow("QR Code Scanner", screenshot)
+
+    # 检查是否按下了键盘上的任意键
+    if cv2.waitKey(1) != -1:
+        break
+
+# 关闭窗口
+cv2.destroyAllWindows()
+```
+
+## 显示框部分
+
+```python
+import tkinter as tk
+
+# 创建一个Tkinter窗口
+root = tk.Tk()
+
+# 隐藏窗口标题栏和边框
+root.overrideredirect(True)
+
+# 将窗口置顶
+root.wm_attributes("-topmost", True)
+
+# 设置窗口大小和位置
+win_width = 300
+win_height = 300
+screen_width = root.winfo_screenwidth()
+screen_height = root.winfo_screenheight()
+x_pos = (screen_width // 2) - (win_width // 2)
+y_pos = (screen_height // 2) - (win_height // 2)
+root.geometry('{}x{}+{}+{}'.format(win_width, win_height, x_pos, y_pos))
+
+# 将窗口背景设为透明
+root.attributes('-transparentcolor', 'white')
+
+# 将窗口的画布设为透明
+canvas = tk.Canvas(root, bg='white', highlightthickness=0)
+canvas.pack(fill='both', expand=True)
+```
