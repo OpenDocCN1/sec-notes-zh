@@ -1,0 +1,40 @@
+
+# [Web逆向] 引流公众号密码分析
+
+- 原帖: https://www.52pojie.cn/forum.php?mod=viewthread&tid=1713452
+- 抓取时间: 2026-11-01T23:05:38
+
+首先下载要输入验证码
+
+![](https://attach.52pojie.cn/forum/202211/15/160858f50sraxqxg0kls5x.png)
+图片.png (78.5 KB, 下载次数: 2)
+[href="forum.php?mod=attachment&aid=MjU2OTA1NXwyNjc2Nzc3N3wxNzkzNTc0MzM2fDE2ODA4NnwxNzEzNDUy&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU2OTA1NXwyNjc2Nzc3N3wxNzkzNTc0MzM2fDE2ODA4NnwxNzEzNDUy&nothumb=yes)
+2022-11-15 16:08 上传
+
+返回一个0,大概率是有校验的
+
+![](https://attach.52pojie.cn/forum/202211/15/160932rj01tyyjytajtut3.png)
+图片.png (12.08 KB, 下载次数: 2)
+[href="forum.php?mod=attachment&aid=MjU2OTA1NnxhODg0MTBkZXwxNzkzNTc0MzM2fDE2ODA4NnwxNzEzNDUy&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU2OTA1NnxhODg0MTBkZXwxNzkzNTc0MzM2fDE2ODA4NnwxNzEzNDUy&nothumb=yes)
+2022-11-15 16:09 上传
+
+本人又懒,不想扫码输入验证码,顺手修改一下返回结果
+
+![](https://attach.52pojie.cn/forum/202211/15/161415c8j5j376lala7p77.png)
+图片.png (48.42 KB, 下载次数: 1)
+[href="forum.php?mod=attachment&aid=MjU2OTA1OXwzNjNjNTU4Y3wxNzkzNTc0MzM2fDE2ODA4NnwxNzEzNDUy&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU2OTA1OXwzNjNjNTU4Y3wxNzkzNTc0MzM2fDE2ODA4NnwxNzEzNDUy&nothumb=yes)
+2022-11-15 16:14 上传
+
+实际上返回了一个url
+
+![](https://attach.52pojie.cn/forum/202211/15/161526m6k3olrrs3ougkpe.png)
+图片.png (17.93 KB, 下载次数: 1)
+[href="forum.php?mod=attachment&aid=MjU2OTA2MnwxNTJlNzhlMHwxNzkzNTc0MzM2fDE2ODA4NnwxNzEzNDUy&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU2OTA2MnwxNTJlNzhlMHwxNzkzNTc0MzM2fDE2ODA4NnwxNzEzNDUy&nothumb=yes)
+2022-11-15 16:15 上传
+
+得到正确的结果了,也跳转到百度云了
+
+![](https://attach.52pojie.cn/forum/202211/15/161721zpmm99mcnc3fjnnc.png)
+图片.png (17.03 KB, 下载次数: 2)
+[href="forum.php?mod=attachment&aid=MjU2OTA2M3w5N2U0YjRkNXwxNzkzNTc0MzM2fDE2ODA4NnwxNzEzNDUy&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU2OTA2M3w5N2U0YjRkNXwxNzkzNTc0MzM2fDE2ODA4NnwxNzEzNDUy&nothumb=yes)
+2022-11-15 16:17 上传
