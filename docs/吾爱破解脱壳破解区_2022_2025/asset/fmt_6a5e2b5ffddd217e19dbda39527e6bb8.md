@@ -1,0 +1,158 @@
+
+# [原创] typora 保护机制与注册逆向分析
+
+> 原帖：<https://www.52pojie.cn/forum.php?mod=viewthread&tid=1853380>
+> 抓取时间：2026-11-01T22:43:42
+
+## 一、起因
+
+一直比较喜欢 Typora 的简洁与美观（尝试过用 vscode 搭配插件编辑 markdown 文件，体验还是要差一些的），突然发现自己 windows 机器上很久前安装的 typora 不让用了，提示：
+
+![1.png](https://attach.52pojie.cn/forum/202311/06/154421dyfndoowpnnydyd7.png)
+
+附件：`1.png`（14.97 KB，下载次数：3，2023-11-6 15:44 上传），[下载链接](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY1NDA0NnxiODk0YjA3NnwxNzkzNTczMDE5fDE2ODA4NnwxODUzMzgw&nothumb=yes)
+
+幸好原始安装文件还在，对比一下版本，原始安装文件是 0.9.93 版本，而不让用的是 0.10.11。
+
+在我的 ubuntu22.04 机器上安装有 1.7.4 版本，win10 上安装了 1.7.6 版本。貌似最新的版本开始收费了，还分国内/国外两个版本。（typora.io 这个官网貌似被墙了，真不知道为了个啥。）
+
+本着一个 cracker 无知者无畏的折腾到底的精神，开始瞎整！
+
+## 二、摸底、知识和工具准备
+
+😀 逆向分析的第一步就是要了解目标软件是用啥开发的，架构是啥。
+
+一看 `typora.exe` 好家伙，100 多个 M，这么大的可执行程序还分析个啥？IDA 分析一下都不知道要多久。
+
+由于目前主用 ubuntu22.04 系统，想着顺便从 0 开始学习使用 ghidra 进行 Linux 平台的逆向分析工作。于是从一个小目标开始，需要瞎搞的知识点有了第一次扩充。
+
+- ubuntu 平台，用 ghidra 分析 1.7.4 版本；
+- win7 平台，用 IDA6.8+x64DBG 分析 0.10.11 版本；
+- win10 平台，用 IDA6.8+x64DBG 分析 1.7.6 版本。（1.7.6 在我的 win7 下会出现不能在 `kernel32` 里面定位 `discardVirtualMemory` 的错误）
+
+悲催的是用 ghidra 静态分析 1.7.4 版本的 typora 有 160 多 M，分析了 10 个小时也没结束。这个弯路绕太远了，毫无意义。直接放弃。
+
+😀 正确的打开方式：直接网上搜索
+
+有大神直接用 IDA 分析 `typora.exe`，提示了一些有用的东东。结合两位成功破解的大神的文章，可以确定 typora 是使用 electron + nodejs 框架，用 javascript 开发的跨平台的桌面程序。（和 vscode 类似）
+
+所以，啥是 electron/nodejs/javascript？0 基础的暴走，奇怪的知识点需要进行第二次扩充。
+
+这几个每一个都是大部头，越底层的难度越大。被 V8 引擎绕进去花了不少时间（虽然了解一下好处很多，带着 VM 的思路去了解，能有不少收获），但就 typora 的破解来说，只需要涉猎以下内容：
+
+- electron app 的目录结构。
+- `asar` 打包/解压工具（`npm i -g asar`）。
+- node.js：模块/API/运行环境构建/`npm` 工具；`node` 命令行环境下运行 js 代码（类似 `python` 命令行环境）。
+- V8 引擎：几乎用不到，因为用到了 Addon N-API 接口库。当然了解 V8 的好处还是很多的。真实的托管类数据结构，都是在 V8 引擎里面定义的，有详细的参考手册。
+- node.js Addon：通过 C++ 编写的扩展模块，用于扩展 Node.js 的功能。这个是重点，需要知道怎么写扩展模块的基本逻辑。（至少了解 V8 和 C++ 相互调用变量/函数的一两个例子）
+- N-API（Node-API）是一组稳定的 C 语言 API，用于编写跨平台的 Node.js Addon。N-API 提供了一套抽象层，使得开发者可以更轻松地编写可移植的扩展模块，而无需担心不同版本的 Node.js 或不同平台之间的兼容性问题。
+
+这个是需要重点把握的，熟练查阅 nods.js 中 N-API 的文档。
+
+N-API 实际上是 V8 接口的封装，进行了抽象，但对逆向增加了困难。因为其参数都是一系列 `void**` 之类的指针，具体在 V8 层进行实际的数据类型转换。所以逆向时，对于托管对象的指针，就别想着查看其数据了。重点应该放在 C++ 的本地数据结构上。
+
+## 三、聚焦 `main.node`
+
+node.js Addon 可以在 js 层直接 `require` 一个 `dll`/`so`。electron 入口可能也是 `require` 引入 `package.json` 及里面定义的入口 js 文件的。
+
+0.10.11 版本：PEid 查看算法常数，发现 `sbox`/`rsbox`，基本可以确定使用了 AES 算法。只是 windows 版本去符号，要从 `rbox` 逆推找到 AES 的 `KEY` 和取定其 `mode` 难度还是比较大的。网上也有人分析到这一步放弃的。当然大神可以直接找到 `mode` `CBC` `iv` 和 AES 的 `KEY`。
+
+1.7.4 linux 版本：神奇的是没有去除符号，但与 0.10.11 版本不同，`KEY` 和 `mode` 的地方进行了混淆处理，不知道把 `CBC` 的 `iv` 怎么藏起来了。懒得去反混淆分析了（主要是能力不够）
+
+有大神直接给出了 `main.node` 保护 electron app 的概念验证项目：[electron-asar-encrypt-demo](https://github.com/toyobayashi/electron-asar-encrypt-demo)。
+
+有了第二部分提到的知识准备后，就可以尝试看一下这个项目。当然像我一样 0 基础的，也可以边看边学，借助 N-API 文档和 chatGPT 的帮助。
+
+简单总结一下这个项目的思路：
+
+- 由于 node.js 在 js 层可以 hook API，任意隐藏加解密的手段都会失效，所以要想办法将加解密放到 C++ 层去做。（这里可以只将 `license` 模块放到 addon 里面实现，估计是太过于明显直接暴露攻击目标，所以选择隐藏和加密入口）
+- 通过重载 `V8::_compile()` 函数，实现针对性的解密。具体实现有 `global` 和 `this module` 的发现/遍历/重建 `require` 函数/`require` 原始入口等问题，不是专家，也没搞懂，就破解来说，也不需要搞懂，根据关键字定位 `main.node` 里的关键函数就行。
+
+结合 V8 执行 js 的基本逻辑来理解上面的思路：
+
+```cpp
+// 定义一个 JavaScript 代码字符串
+V8::Local source_code =
+    V8::String::NewFromUtf8(isolate, "'Hello, ' + 'World!'").ToLocalChecked();
+
+// 编译和运行 JavaScript 代码
+V8::Local script = Script::Compile(context, source_code).ToLocalChecked();
+V8::Local result = script->Run(context).ToLocalChecked();
+```
+
+V8 执行 js 代码有两个过程，`Compile` 和 `Run`。`Compile` 只接受 V8 的托管字符串（js 代码），而 C++ 字符串需要在 `isolate`（V8 的一个独立的运行时虚拟机容器）内创建一个托管的 `V8::String`，用 N-API 库的话，相应函数是 `napi_create_string_utf8(...)`。
+
+所以，既然把入口 js 的代码放到 C++ 层加解密，那么要执行它，比然经过上面的三步。重载 `_compile` 函数就是为了在这一步，给传入的 `C++ string`（js code）进行解密并创建对应的托管 `String`，以便传给原来的 `compile` 函数。
+
+理解了这个过程，那么最快、最容易的获取解密后的入口 js code，就在这个过程中。有两个思路，后面介绍。
+
+## 四、分析 `main.node`
+
+### 1、找入口
+
+0.10.11 windows 版本，用 IDA 查看 `exports` 导出表，然后一路跟踪下来：
+
+![2.png](https://attach.52pojie.cn/forum/202311/06/154423xobd612w3e2gdqdc.png)
+
+附件：`2.png`（5.78 KB，下载次数：3，2023-11-6 15:44 上传），[下载链接](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY1NDA0N3w1YWJiNzBmZnwxNzkzNTczMDE5fDE2ODA4NnwxODUzMzgw&nothumb=yes)
+
+![3.png](https://attach.52pojie.cn/forum/202311/06/154425v95ebe8be855ah89.png)
+
+附件：`3.png`（1.22 KB，下载次数：4，2023-11-6 15:44 上传），[下载链接](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY1NDA0OHxkYTU2YmIxNnwxNzkzNTczMDE5fDE2ODA4NnwxODUzMzgw&nothumb=yes)
+
+![4.png](https://attach.52pojie.cn/forum/202311/06/154431az9re93394ai1rop.png)
+
+附件：`4.png`（8.85 KB，下载次数：2，2023-11-6 15:44 上传），[下载链接](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY1NDA0OXw5YTBlMGJjZHwxNzkzNTczMDE5fDE2ODA4NnwxODUzMzgw&nothumb=yes)
+
+![5.png](https://attach.52pojie.cn/forum/202311/06/154439vy4zl8pbhybzts0l.png)
+
+附件：`5.png`（10.45 KB，下载次数：3，2023-11-6 15:44 上传），[下载链接](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY1NDA1MHwzY2VjNWM2OHwxNzkzNTczMDE5fDE2ODA4NnwxODUzMzgw&nothumb=yes)
+
+![6.png](https://attach.52pojie.cn/forum/202311/06/154441w6gy2g9anngi83h3.png)
+
+附件：`6.png`（23.51 KB，下载次数：3，2023-11-6 15:44 上传），[下载链接](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY1NDA1MXwwNmI0OTQ2NHwxNzkzNTczMDE5fDE2ODA4NnwxODUzMzgw&nothumb=yes)
+
+addon 开发最后一个宏 `NODE_API_MODULE(NODE_GYP_MODULE_NAME, Init)` 实现的导出绑定，实际上就是调用 `napi_module_register` 注册了一个 `module`，这个 `module` 结构包含一些源代码开发环境的一些信息，和一个 `__napi_main`，在 `__napi_main` 中传递了 `init` 函数的地址。
+
+1.7.6 win10 版本，导出表里面只有一个 `DllEntryPoint`。需要手动在 `imports` 里面找 `napi_module_register`，剩下的流程和上面一样。可以定位到 `sub_18000492B` 就是 `init` 入口。
+
+![7.png](https://attach.52pojie.cn/forum/202311/06/154443d2ai9a246t159544.png)
+
+附件：`7.png`（13.1 KB，下载次数：3，2023-11-6 15:44 上传），[下载链接](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY1NDA1Mnw1MTM1YTcxY3wxNzkzNTczMDE5fDE2ODA4NnwxODUzMzgw&nothumb=yes)
+
+1.7.4 linux 版本，用 ghidra 查看发现 `exports` 几乎导出了所有的符号名。不过作者还是遵循了 `_init` 这个函数名。
+
+实际上找入口这一步是多余的，有了源代码只要结合关键字符串 `_compile` 和相应的函数调用，就能很快定位到 `init` 函数。只是作为一个 cracker 对流程跟踪的执念，瞎整。
+
+### 2、找 `_compile` 的重载函数：跟着源代码中的关键字符串找，很容易定位
+
+```cpp
+module_prototype.DefineProperty(
+    Napi::PropertyDescriptor::Function(env,
+        Napi::Object::New(env),
+        "_compile",
+        ModulePrototypeCompile,    // 就是这个函数
+        napi_enumerable,           // 实际这个传递参数的地方做了一个wrapper。
+        addon_data));
+```
+
+### 3、作者的 trick 一
+
+疑似的 `ModulePrototypeCompile` 这个函数往里面看的时候，和源代码完全不一致：
+
+![8.png](https://attach.52pojie.cn/forum/202311/06/154445o17atc13axdta3o8.png)
+
+附件：`8.png`（15.39 KB，下载次数：3，2023-11-6 15:44 上传），[下载链接](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY1NDA1M3w2MmE2NDA2MnwxNzkzNTczMDE5fDE2ODA4NnwxODUzMzgw&nothumb=yes)
+
+当时也懵了，因为自己是在 windows 系统上用 IDA 完全对照源码静态分析。使用静态分析工具查看 `refrence to` 和 `refrence from` 都连不上。无奈之下启用 x64DBG 调试。（找到真实的 `ModulePrototypeCompile` 函数还是很容易的，因为根据源代码，这个函数里面有非常明显的字符串 `"app.asar"`，而且是一个对称的 `if ... else ...` 结构。只是想弄清楚开发者到底怎么魔改的。）最后发现真实的 `ModulePrototypeCompile` 地址被打包在了上面替换函数的参数里面。调用变成了 `call qword ptr [r8]`，从而避免了静态分析时候被一撸到底。实际的 trick 是这样的：
+
+![9.png](https://attach.52pojie.cn/forum/202311/06/154449ijfu0gg2002uzue9.png)
+
+附件：`9.png`（15.84 KB，下载次数：3，2023-11-6 15:44 上传），[下载链接](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY1NDA1NHxmZWJlNGE4Y3wxNzkzNTczMDE5fDE2ODA4NnwxODUzMzgw&nothumb=yes)
+
+直到分析 1.7.4 linux 版本的时候，就看的很清楚了。
+
+![10.png](https://attach.52pojie.cn/forum/202311/06/154451awq6337mwm7odofi.png)
+
+附件：`10.png`（20.96 KB，下载次数：4）
+
