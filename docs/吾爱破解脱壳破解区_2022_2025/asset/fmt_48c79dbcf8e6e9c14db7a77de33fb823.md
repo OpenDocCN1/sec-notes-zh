@@ -1,0 +1,27 @@
+
+# [原创] 揪出 CheatEngine 7.4 的离线下载链接
+
+- 原帖: https://www.52pojie.cn/forum.php?mod=viewthread&tid=1702612
+- 抓取时间: 2026-11-01T23:07:48
+
+## 所需工具
+`InnoExtractor`
+`Hex Workshop`
+
+## 操作步骤
+1、官网下载 Cheat Engine 安装器：`CheatEngine74.exe`
+2、右击 `CheatEngine74.exe` 使用 `InnoExtractor` 打开
+在 `InnoExtractor` 界面中使用鼠标拖出 `embedded\CompiledCode.bin` 文件
+![](https://attach.52pojie.cn/forum/202210/22/212702mpm2phqncbryb5nb.png)
+`0.png` (67.82 KB, 下载次数: 0)
+[href="forum.php?mod=attachment&aid=MjU2MjM4MnwxZWE5Zjk1M3wxNzkzNTc0NDY1fDE2ODA4NnwxNzAyNjEy&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU2MjM4MnwxZWE5Zjk1M3wxNzkzNTc0NDY1fDE2ODA4NnwxNzAyNjEy&nothumb=yes)
+2022-10-22 21:27 上传
+
+3、使用 `Hex Workshop` 打开 `CompiledCode.bin`
+`Ctrl + F` 查找
+![](https://attach.52pojie.cn/forum/202210/22/212746ngg4j9pp95296f9c.png)
+`1.png` (62.23 KB, 下载次数: 0)
+[href="forum.php?mod=attachment&aid=MjU2MjM4M3w3Y2U3MTA5OXwxNzkzNTc0NDY1fDE2ODA4NnwxNzAyNjEy&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU2MjM4M3w3Y2U3MTA5OXwxNzkzNTc0NDY1fDE2ODA4NnwxNzAyNjEy&nothumb=yes)
+2022-10-22 21:27 上传
+
+https://d2oq4dwfbh6gxl.cloudfront.net/f/CheatEngine/748/CheatEngine74.exe
