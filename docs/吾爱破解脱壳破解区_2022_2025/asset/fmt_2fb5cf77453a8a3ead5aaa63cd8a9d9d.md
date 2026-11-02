@@ -1,0 +1,190 @@
+
+# [.NET逆向] 记一次steam某挂机游戏破解
+
+- 原帖: https://www.52pojie.cn/forum.php?mod=viewthread&tid=1587122
+- 抓取时间: 2026-11-01T23:37:57
+
+在steam上9.9米购买了某挂机游戏，玩了一段时间后发现里面的经验可以兑换潜能，而且所需的经验是呈指数倍数的，是个大坑啊，看了下本地文件是Unity的游戏，以下是修改部分打怪经验倍率的教程
+
+steam浏览本地文件，打开`Managed`目录打开`Assembly-CSharp.dll`
+
+找到剿匪
+
+![](https://attach.52pojie.cn/forum/202202/13/105412yzzk1sa56dzgugb7.png)
+
+ba36ae1d17859fbb327894639123fc9.png (12.3 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=MjQ5NDQxMXxkYjM3MmY4NXwxNzkzNTc2Mjc0fDE2ODA4NnwxNTg3MTIy&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjQ5NDQxMXxkYjM3MmY4NXwxNzkzNTc2Mjc0fDE2ODA4NnwxNTg3MTIy&nothumb=yes)
+
+2022-2-13 10:54 上传
+
+`jiaofei`
+
+![](https://attach.52pojie.cn/forum/202202/13/105945l9iezliixwtsauae.png)
+
+微信截图_20220213105630.png (41.56 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=MjQ5NDQxNHwxMGQ4ZmUxNnwxNzkzNTc2Mjc0fDE2ODA4NnwxNTg3MTIy&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjQ5NDQxNHwxMGQ4ZmUxNnwxNzkzNTc2Mjc0fDE2ODA4NnwxNTg3MTIy&nothumb=yes)
+
+2022-2-13 10:59 上传
+
+![](https://attach.52pojie.cn/forum/202202/13/105942knd7u7ed4exdpxzj.png)
+
+微信截图_20220213105545.png (78.46 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=MjQ5NDQxM3xlNTAyZDdjYnwxNzkzNTc2Mjc0fDE2ODA4NnwxNTg3MTIy&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjQ5NDQxM3xlNTAyZDdjYnwxNzkzNTc2Mjc0fDE2ODA4NnwxNTg3MTIy&nothumb=yes)
+
+2022-2-13 10:59 上传
+
+## 编辑方法
+
+```csharp
+using System;
+using LitJson;
+using UnityEngine;
+using UnityEngine.UI;
+
+// Token: 0x02000014 RID: 20
+public partial class jiaofei : MonoBehaviour
+{
+        // Token: 0x06000076 RID: 118
+        public void Enter_zhandoujiemian()
+        {
+                GameObject.Find("Canvas").transform.Find("zhandoujiemian").transform.Find("batting").GetComponent().text = "0";
+                Saveplayer saveplayer = JsonMapper.ToObject(GameObject.Find("loaddata").GetComponent().text);
+                int num = saveplayer.player_level[saveplayer.player_canzhan[0]];
+                for (int i = 1; i  num)
+                        {
+                                num = saveplayer.player_level[saveplayer.player_canzhan[i]];
+                        }
+                }
+                if (num >= 10 && saveplayer.player_canzhan.Count > 0)
+                {
+                        GameObject.Find("Canvas").transform.Find("zhandoujiemian").gameObject.SetActive(true);
+                        GameObject.Find("Canvas").transform.Find("shuxingjiemian").gameObject.SetActive(false);
+                        GameObject gameObject = GameObject.Find("Main Camera").gameObject;
+                        Text component = GameObject.Find("Canvas").transform.Find("zhandoujiemian").transform.Find("earning").transform.Find("timeshow").GetComponent();
+                        Text component2 = GameObject.Find("wupin_earning").GetComponent();
+                        Text component3 = GameObject.Find("money_earning").GetComponent();
+                        Text component5 = GameObject.Find("experience_earning").GetComponent();
+                        component.text = "0:0:0";
+                        component2.text = "0";
+                        component3.text = "0";
+                        component5.text = "0";
+                        Text component4 = GameObject.Find("zhandou_level").GetComponent();
+                        Text component6 = GameObject.Find("zhandoubunus").GetComponent();
+                        component6.text = "金钱 200\n";
+                        component6.text += "经验 100\n";
+                        component6.text += "御兽心得 3";
+                        component4.text = num.ToString();
+                        Text component7 = GameObject.Find("monster").GetComponent();
+                        component7.text = "匪首Lv." + component4.text + "#普通攻击1,连击3,呼风唤雨3,针锋相对3#15 10 4 4 2 2 1 1#3#3\n";
+                        component7.text += "二当家#普通攻击1,连击3,焚魔烈焰3,赏善罚恶3#10 7 3 3 2 2 1 1#2#2\n";
+                        component7.text += "三当家#普通攻击1,连击3,焚魔烈焰3,赏善罚恶3#10 7 3 3 2 2 1 1#4#4\n";
+                        component7.text += "狗头军师#普通攻击1,连击3,春风化雨3,夺气3#8 5 2 2 2 2 1 1#1#1\n";
+                        component7.text += "狗头军师#普通攻击1,连击3,春风化雨3,夺气3#8 5 2 2 2 2 1 1#5#5\n";
+                        component7.text += "喽啰#普通攻击1,连击3,赏善罚恶3,涌泉之恨3#4 5 2 2 2 2 1 1#6#10";
+                        GameObject.Find("zhandou_type").GetComponent().text = "0";
+                        foreach (string text in component7.text.Split(new char[]
+                        {
+                                '\n'
+                        }))
+                        {
+                                GameObject.Find("Canvas").transform.Find("zhandoujiemian").GetComponent().zhandoudanyuan_monster(int.Parse(component4.text), text.Split(new char[]
+                                {
+                                        '#'
+                                })[0], text.Split(new char[]
+                                {
+                                        '#'
+                                })[1], text.Split(new char[]
+                                {
+                                        '#'
+                                })[2], int.Parse(text.Split(new char[]
+                                {
+                                        '#'
+                                })[3]), int.Parse(text.Split(new char[]
+                                {
+                                        '#'
+                                })[4]));
+                        }
+                        GameObject.Find("Canvas").transform.Find("zhandoujiemian").GetComponent().zhandoudanyuan_loading();
+                }
+        }
+}
+```
+
+找到经验金钱部分，全都改成增加一千倍，这样打一次相当于一千次100就改成100000，以此类推
+
+```csharp
+using System;
+
+using LitJson;
+
+using UnityEngine;
+
+using UnityEngine.UI;
+
+// Token: 0x02000014 RID: 20
+
+public partial class jiaofei : MonoBehaviour
+
+{
+
+        // Token: 0x06000076 RID: 118
+
+        public void Enter_zhandoujiemian()
+
+        {
+
+                GameObject.Find("Canvas").transform.Find("zhandoujiemian").transform.Find("batting").GetComponent().text = "0";
+
+                Saveplayer saveplayer = JsonMapper.ToObject(GameObject.Find("loaddata").GetComponent().text);
+
+                int num = saveplayer.player_level[saveplayer.player_canzhan[0]];
+
+                for (int i = 1; i  num)
+
+                        {
+
+                                num = saveplayer.player_level[saveplayer.player_canzhan[i]];
+
+                        }
+
+                }
+
+                if (num >= 10 && saveplayer.player_canzhan.Count > 0)
+
+                {
+
+                        GameObject.Find("Canvas").transform.Find("zhandoujiemian").gameObject.SetActive(true);
+
+                        GameObject.Find("Canvas").transform.Find("shuxingjiemian").gameObject.SetActive(false);
+
+                        GameObject gameObject = GameObject.Find("Main Camera").gameObject;
+
+                        Text component = GameObject.Find("Canvas").transform.Find("zhandoujiemian").transform.Find("earning").transform.Find("timeshow").GetComponent();
+
+                        Text component2 = GameObject.Find("wupin_earning").GetComponent();
+
+                        Text component3 = GameObject.Find("money_earning").GetComponent();
+
+                        Text component5 = GameObject.Find("experience_earning").GetComponent();
+
+                        component.text = "0:0:0";
+
+                        component2.text = "0";
+
+                        component3.text = "0";
+
+                        component5.text = "0";
+
+                        Text component4 = GameObject.Find("zhandou_level").GetComponent();
+
+                        Text component6 = GameObject.Find("zhandoubunus").GetComponent();
+
+                        component6.text = "金钱 200000\n";
+
+                        component6.text += "经验 100000\n";
+
+                        component6.text += "御兽心得 3000";
+```
