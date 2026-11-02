@@ -1,0 +1,109 @@
+
+```
+b=[  0x27, 0x44, 0x7F, 0xEB, 0x3A, 0x8F, 0x1A, 0x2E, 0xFB, 0x41, 
+  0xE6, 0x46, 0xFB, 0x59, 0xEE, 0x42, 0xFB, 0x49, 0xD6, 0x46, 
+  0xF9, 0x49, 0xEE, 0x85, 0x72, 0x85, 0xB3, 0xF6, 0x3A, 0x87, 
+  0xB3, 0x16, 0xF9, 0x4C, 0xF2, 0x87, 0x37, 0xF8, 0x31, 0x4B, 
+  0x82, 0x0C, 0xF6, 0x0E, 0x72, 0xCB, 0xB3, 0xE2, 0x0D, 0xA0, 
+  0x9C, 0x89, 0xB5, 0x49, 0x0A, 0x0E, 0x72, 0x0C, 0xF6, 0x85, 
+  0x37, 0xF0, 0xCD, 0x4B, 0x62, 0x03, 0x75, 0x8A, 0x72, 0x0C, 
+  0xF6, 0x85, 0x37, 0xF8, 0x7B, 0x1A, 0xB7, 0x0C, 0xF6, 0x0E, 
+  0x72, 0x87, 0xB3, 0xFA, 0xB3, 0xE4, 0xF0, 0x3F, 0xB0, 0x87, 
+  0xB3, 0xFA, 0x73, 0xCE, 0x7D, 0x4B, 0x82, 0x8F, 0x16, 0x0D, 
+  0x3A, 0x81, 0xFA, 0x8B, 0x72, 0x0C, 0xF6, 0x0E, 0x3A, 0x87, 
+  0xB3, 0x2E, 0x3A, 0x0D, 0x3E, 0x85, 0x7A, 0x87, 0xB3, 0xFE, 
+  0x73, 0xC4, 0xC7, 0xDE, 0x73, 0x49, 0x0E, 0x85, 0x37, 0xE0, 
+  0xF7, 0x4B, 0x82, 0x87, 0xB3, 0xF6, 0xFF, 0x18, 0x33, 0x0E, 
+  0x72, 0x0C, 0xF6, 0x85, 0x37, 0xF4, 0x37, 0xE6, 0x74, 0x3D, 
+  0x34, 0x85, 0x37, 0xF4, 0xF7, 0xCC, 0xF9, 0x49, 0x06, 0xCF, 
+  0x9A, 0x07, 0x7F, 0xCE, 0xF1, 0xEC, 0xF5, 0x46, 0xFF, 0x00, 
+  0x73, 0x0E, 0x72, 0x0C, 0xF6, 0x46, 0xF9, 0x49, 0xD6, 0x46, 
+  0x73, 0xC4, 0x7D, 0x06, 0xF9, 0x49, 0x06, 0x0F, 0xBA, 0x3D, 
+  0x26, 0x0F, 0x37, 0xF8, 0x75, 0x4B, 0x8E, 0x0D, 0x1F, 0x7E, 
+  0x8D, 0xF3, 0x09, 0x46, 0xF9, 0x49, 0xEE, 0x85, 0x27, 0xF4, 
+  0x7F, 0x1E, 0x3A, 0x87, 0xB3, 0x16, 0x3A, 0x8F, 0x36, 0x0A, 
+  0xF9, 0x59, 0x02, 0x87, 0x62, 0x9C, 0xBE, 0x8D, 0xB6, 0x2C, 
+  0xAB, 0xCD]
+
+Str1=[0x72, 0x0C, 0xF6, 0x0E]
+
+address=0x140042000
+for i in range(232):
+    patch_byte(address+i,Str1[i%4]^b[i])
+
+print("success")
+```
+
+[![9851ddc2b9a14dd29ceb05945164629c.png](https://attach.52pojie.cn/forum/202408/12/042900zrg4b9itzifp5hm9.png)](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjcxNjY4MXxiY2VhYTlhOXwxNzkzNTc1Mzc3fDE2ODA4NnwxNjQzNTYw&nothumb=yes)
+
+`9851ddc2b9a14dd29ceb05945164629c.png` (76.4 KB, 下载次数: 275)
+
+2024-8-12 04:29 上传
+
+[![89108689e905402ca1cb2243dac39838.png](https://attach.52pojie.cn/forum/202408/12/042910sezatb87dsjus7ee.png)](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjcxNjY4NXxjZjI4MDU3NnwxNzkzNTc1Mzc3fDE2ODA4NnwxNjQzNTYw&nothumb=yes)
+
+`89108689e905402ca1cb2243dac39838.png` (71.01 KB, 下载次数: 273)
+
+2024-8-12 04:29 上传
+
+最后梳理流程，写解密代码：（代码出自 [//blog.leanote.com/post/xp0int/2022-%E5%B9%BF%E4%B8%9C%E7%9C%81%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%A4%A7%E8%B5%9B%E9%83%A8%E5%88%86#p-4](http://blog.leanote.com/post/xp0int/2022-%E5%B9%BF%E4%B8%9C%E7%9C%81%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%A4%A7%E8%B5%9B%E9%83%A8%E5%88%86#p-4) 师傅）
+
+[![ab677204ff8947589d09858feaae6656.jpg](https://attach.52pojie.cn/forum/202408/12/042855eaq2oyj3d4y7kckl.jpg)](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjcxNjY3OXw4MDJiNjcwMnwxNzkzNTc1Mzc3fDE2ODA4NnwxNjQzNTYw&nothumb=yes)
+
+`ab677204ff8947589d09858feaae6656.jpg` (58.85 KB, 下载次数: 271)
+
+2024-8-12 04:28 上传
+
+[![c7df990385a34cd3be11fe8d5d63cf07.jpg](https://attach.52pojie.cn/forum/202408/12/042924yqrneuewa8d85ji8.jpg)](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjcxNjY5MXw0ZDlmMzZjMnwxNzkzNTc1Mzc3fDE2ODA4NnwxNjQzNTYw&nothumb=yes)
+
+`c7df990385a34cd3be11fe8d5d63cf07.jpg` (60.11 KB, 下载次数: 269)
+
+2024-8-12 04:29 上传
+
+```
+#include 
+
+#include 
+
+void decipher(unsigned int num_rounds,uint32_t v[2],uint32_t const key[4]){
+
+        unsigned int i;
+
+        uint32_t v0 = v[0], v1 = v[1], delta = 0x78955381, sum = delta * -num_rounds;
+
+        for(i = 0; i > 6))+v0) ^ (sum + key[(sum >> 11) & 3]);
+
+        sum += delta;
+
+        v0 -= (((v1 > 6)) + v1) ^ (sum + key[sum & 3]);
+
+        } 
+
+        v[0] = v0; v[1] = v1;
+
+}
+
+uint8_t rebits(uint8_t n)
+
+{
+
+        uint8_t count = 0;
+
+        for(int i = 0; i 
+```
+
+[![8e3d26a679ae446ea7346e34d6242a44.png](https://attach.52pojie.cn/forum/202408/12/042843d89b8gstg8qgqa8a.png)](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjcxNjY3NHxmZTA1YTAwNXwxNzkzNTc1Mzc3fDE2ODA4NnwxNjQzNTYw&nothumb=yes)
+
+`8e3d26a679ae446ea7346e34d6242a44.png` (9 KB, 下载次数: 278)
+
+2024-8-12 04:28 上传
+
+[![29480277f2ab4d6197e086a5a8ebcb19.png](https://attach.52pojie.cn/forum/202408/12/042907tabv2pvptp11nonb.png)](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjcxNjY4NHw0NmViNmIxZnwxNzkzNTc1Mzc3fDE2ODA4NnwxNjQzNTYw&nothumb=yes)
+
+`29480277f2ab4d6197e086a5a8ebcb19.png` (20.16 KB, 下载次数: 257)
+
+2024-8-12 04:29 上传
+
+参考博客：[//blog.leanote.com/post/xp0int/2022-%E5%B9%BF%E4%B8%9C%E7%9C%81%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%A4%A7%E8%B5%9B%E9%83%A8%E5%88%86#p-4](http://blog.leanote.com/post/xp0int/2022-%E5%B9%BF%E4%B8%9C%E7%9C%81%E5%A4%A7%E5%AD%A6%E7%94%9F%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%A4%A7%E8%B5%9B%E9%83%A8%E5%88%86#p-4)
+
+爱飞的猫 edit: 上传原图到论坛，原图有防盗链无法正常显示。
