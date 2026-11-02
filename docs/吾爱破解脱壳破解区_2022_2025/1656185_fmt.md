@@ -1,0 +1,43 @@
+
+# [原创] 提取某漫画阅读器图片
+
+- 原帖: https://www.52pojie.cn/forum.php?mod=viewthread&tid=1656185
+- 抓取时间: 2026-11-01T23:13:15
+
+【文章首发于我的博客文章https://jameshoi.github.io/2021/03/30/note】
+
+这个阅读器的文件是自定义的，一个文件里有很多张图片，貌似还用到了RSA解密，需要账户密码登录正确才能解密。
+
+但假如只是登录后把图片提取出来难度并不大，软件有随机基址，`RVA 0x23FDF`是实例化`QPixmap`，堆栈中有图片裸数据指针和长度。
+
+![](https://attach.52pojie.cn/forum/202207/01/040328ml7h9zk0ll9lww5l.png)
+1.png (15.86 KB, 下载次数: 0)
+[href="forum.php?mod=attachment&aid=MjUzMzg0NnxjMTc1OGQ5Y3wxNzkzNTc0NzkyfDE2ODA4NnwxNjU2MTg1&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjUzMzg0NnxjMTc1OGQ5Y3wxNzkzNTc0NzkyfDE2ODA4NnwxNjU2MTg1&nothumb=yes)
+2022-7-1 04:03 上传
+
+上图`12DAC7`为图片字节长度，`1E511020`是图片数据指针，下图可以看出明显的jpg格式文件头
+
+![](https://attach.52pojie.cn/forum/202207/01/040445s8v826za5bplvoum.png)
+2.png (19.74 KB, 下载次数: 0)
+[href="forum.php?mod=attachment&aid=MjUzMzg0N3w3MzcwYTFmM3wxNzkzNTc0NzkyfDE2ODA4NnwxNjU2MTg1&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjUzMzg0N3w3MzcwYTFmM3wxNzkzNTc0NzkyfDE2ODA4NnwxNjU2MTg1&nothumb=yes)
+2022-7-1 04:04 上传
+
+这个项目已经是1年前写的了，当时还不会hook顺便利用这个机会学习了一波。在`RVA 0x23FDF` hook一下即可导出图片
+
+![](https://attach.52pojie.cn/forum/202207/01/040706ydakwifeweuahsf8.png)
+3.png (19.31 KB, 下载次数: 0)
+[href="forum.php?mod=attachment&aid=MjUzMzg0OHw4ZTQ2OGQ0M3wxNzkzNTc0NzkyfDE2ODA4NnwxNjU2MTg1&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjUzMzg0OHw4ZTQ2OGQ0M3wxNzkzNTc0NzkyfDE2ODA4NnwxNjU2MTg1&nothumb=yes)
+2022-7-1 04:07 上传
+
+上图明显堆栈不平衡，我也不理解我之前为什么能成功hhh
+
+## 效果图
+
+![](https://attach.52pojie.cn/forum/202207/01/041325bnft7re7x77wnr7g.png)
+4.png (498.53 KB, 下载次数: 0)
+[href="forum.php?mod=attachment&aid=MjUzMzg1MHwzNjFmNWE2OHwxNzkzNTc0NzkyfDE2ODA4NnwxNjU2MTg1&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjUzMzg1MHwzNjFmNWE2OHwxNzkzNTc0NzkyfDE2ODA4NnwxNjU2MTg1&nothumb=yes)
+2022-7-1 04:13 上传
+
+Github源码https://github.com/JamesHoi/MelonBooksDumper
+
+小白不易，给Github项目个star吧
