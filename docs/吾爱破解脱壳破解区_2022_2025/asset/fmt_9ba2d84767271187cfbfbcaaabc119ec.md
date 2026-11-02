@@ -1,0 +1,127 @@
+
+# [Web逆向] 蓝奏云分享文件夹解析-PHP
+
+- 原帖: https://www.52pojie.cn/forum.php?mod=viewthread&tid=1701084
+- 抓取时间: 2026-11-01T23:07:53
+
+## 传参分析
+
+1. 打开某蓝奏云文件夹分享链接，输入密码。
+
+[![image.png](https://attach.52pojie.cn/forum/202210/19/102718j5c55c5qf1cx5qfg.png)](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU2MTQxNHw0OTkyM2I5YnwxNzkzNTc0NDcxfDE2ODA4NnwxNzAxMDg0&nothumb=yes)
+
+`image.png` (87.51 KB, 下载次数: 0) · 2022-10-19 10:27 上传
+
+通过分析`filemoreajax.php`可以看出传参：
+
+```
+lx=2  //未知
+fid=2455975 //应该是文件分享ID什么的
+uid=569689 //应该是用户ID
+pg=1 //这是页码，蓝奏云一页显示50条数据
+rep=0 //未知
+t=1666146943 //每次访问会更新
+k=5e30653d4f54227c4856e473e49c3d5b //每次访问会更新
+up=1 //未知
+ls=1 //未知
+pwd=fp0b //分享密码
+```
+
+其中`T`和`K`的参数是通过网页获取的。
+
+## PHP取值
+
+```
+2,
+	'fid'=>$fid[1],
+	'uid'=>$uid[1],
+	'pg'=>$pg,
+	'rep'=>0,
+	't'=>$t[1],
+	'k'=>$k[1],
+	'up'=>1,
+	'ls'=>1,
+	'pwd'=>$pwd
+);
+```
+
+通过获取网页代码获取参数值。
+
+## 获取文件夹列表
+
+```
+$json=post_api('https://www.lanzoui.com/filemoreajax.php',$post_data);
+preg_match_all('/\"id\":\"(.*)\"/U', $json, $id);
+preg_match_all('/\"name_all\":\"(.*)\"/U', $json, $name);
+preg_match_all('/\"size\":\"(.*)\"/U', $json, $size);
+preg_match_all('/\"icon\":\"(.*)\"/U', $json, $icon);
+preg_match_all('/\"ico\":\"(.*)\"/U', $json, $ico);
+$i=0;
+foreach($id[1] as $key){
+	$result[]=array(
+		'id'=>$i,
+		'duan'=>$id[1][$i],
+		'name'=>unicodeDecode($name[1][$i]),
+		'size'=>$size[1][$i],
+		'type'=>$icon[1][$i],
+		'ico'=>$ico[1][$i],
+	);
+	$i++;
+}
+echo json_encode($result);
+function post_api($url,$data=null){ // 模拟提交数据函数
+    $curl = curl_init(); // 启动一个CURL会话
+    curl_setopt($curl, CURLOPT_URL, $url); // 要访问的地址
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0); // 对认证证书来源的检查
+    curl_setopt($curl, CURLOPT_USERAGENT, 'Mozilla/5.0 (Linux; Android 4.4.2; Nexus 4 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.114 Mobile Safari/537.36'); // 模拟用户使用的浏览器
+    curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1); // 使用自动跳转
+    curl_setopt($curl, CURLOPT_AUTOREFERER, 1); // 自动设置Referer
+    curl_setopt($curl, CURLOPT_POST, 1); // 发送一个常规的Post请求
+    curl_setopt($curl, CURLOPT_POSTFIELDS, $data); // Post提交的数据包
+    curl_setopt($curl, CURLOPT_TIMEOUT, 30); // 设置超时限制防止死循环
+    curl_setopt($curl, CURLOPT_HEADER, 0); // 显示返回的Header区域内容
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1); // 获取的信息以文件流的形式返回
+    $tmpInfo = curl_exec($curl); // 执行操作
+    if (curl_errno($curl)) {
+        echo 'error';//捕抓异常
+    }
+    curl_close($curl); // 关闭CURL会话
+    return $tmpInfo; // 返回数据，json格式
+    
+}
+function unicodeDecode($unicode_str){
+    $json = '{"str":"'.$unicode_str.'"}';
+    $arr = json_decode($json,true);
+    if(empty($arr)) return '';
+    return $arr['str'];
+}
+?>
+```
+
+## 分页问题
+
+然后访问发现获取JOSN成功。
+
+[![image.png](https://attach.52pojie.cn/forum/202210/19/103806r8jzr0zzj0xixfpv.png)](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU2MTQxN3w2YjY3Nzg1MHwxNzkzNTc0NDcxfDE2ODA4NnwxNzAxMDg0&nothumb=yes)
+
+`image.png` (230.49 KB, 下载次数: 2) · 2022-10-19 10:38 上传
+
+但是发现直接传参`pg=2`不能实现下一页。
+
+[![image.png](https://attach.52pojie.cn/forum/202210/19/103851jwwht1lj1buwpj6p.png)](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU2MTQxOHwwMjhmNTQ1OHwxNzkzNTc0NDcxfDE2ODA4NnwxNzAxMDg0&nothumb=yes)
+
+`image.png` (19.44 KB, 下载次数: 2) · 2022-10-19 10:38 上传
+
+可能因为`t`、`k`是动态的，应该是要和第一页的`t`、`k`值相同，这里的话直接访问`pg=2`，是刷新了`t`、`k`的值的，而且没有访问第一页，所以导致获取不到第一页内容，但是具体不知道是怎么实现下一页，欢迎大佬修复下一页指点。
+
+## 完整代码
+
+下面送上完整代码：
+
+[![zip](https://static.52pojie.cn/static/image/filetype/zip.gif)](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU2MTQxOXwwZTIyYjQzMnwxNzkzNTc0NDcxfDE2ODA4NnwxNzAxMDg0)
+
+(1.23 KB, 下载次数: 81) · 2022-10-19 10:41 上传
+
+点击文件名下载附件
+
+下载积分: 吾爱币 -1 CB
