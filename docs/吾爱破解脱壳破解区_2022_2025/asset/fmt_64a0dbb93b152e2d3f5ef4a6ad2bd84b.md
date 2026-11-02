@@ -1,0 +1,316 @@
+
+# [Web逆向] 顶象滑块逆向分析——背景图还原分析
+
+- 原帖：https://www.52pojie.cn/forum.php?mod=viewthread&tid=1665936
+- 抓取时间：2026-11-01T23:12:30
+
+本章节内容，是对顶象滑块背景图的还原算法分析。
+
+## 官网Demo地址
+
+[官网Demo地址](https://www.dingxiang-inc.com/business/captcha)
+
+你可以用官网提供的Demo去分析，也可以直接注册一个顶象账号，然后放到本地调用调试。
+
+我是自己注册了一个账号，调用官方SDK做的测试，具体细节可自行查看文档相关SDK，分析代码是通用的，好处是可以防止一些其他东西的干扰，方便调试分析。
+
+## 环境准备
+
+![](https://img-blog.csdnimg.cn/1b89c46b3236405d8ec2d9e13574d975.png)
+
+后台配置是这样噻的。
+
+![](https://img-blog.csdnimg.cn/46950b803943486690fdffe1af7cca60.png)
+
+![](https://img-blog.csdnimg.cn/1ad94a0902ba4394878857d207177144.png)
+
+在本地起一个服务，成功之后就是这个样子。
+
+![](https://img-blog.csdnimg.cn/d187cf90cd914bb5b56d29f92815b2f7.png)
+
+## 开始分析
+
+可以看到，背景图是做了乱序处理的。
+
+![](https://img-blog.csdnimg.cn/0c68b57458b241ab87b30b8145e4d3fa.png)
+
+通过请求堆栈，这里是要去查看第二张请求完的背景图图片的请求堆栈，不要去看第一张的，直接定位到最后一个调用堆栈。
+
+![](https://img-blog.csdnimg.cn/55a5bc708cd74c4ba6a5aad837311352.png)
+
+格式化之后，在此处下断点，可以看到，这是一个赋值操作，断点上面有几个需要注意的可疑点，这里提一嘴，像这种图片还原操作，目前正向开发99%绝壁是会用到`canvas`去操作。
+
+![](https://img-blog.csdnimg.cn/3d3fafde3453473783286d533b73897d.png)
+
+开启Fiddler文件替换调试。
+
+替换之后可能会出现跨域问题，这里的建议是自己制作一个跨域浏览器，简单方便，无视跨域问题，一劳永逸，这种问题就不要花太久时间折腾。
+
+在`basic-Captcha-js.js`文件中：
+
+![](https://img-blog.csdnimg.cn/1d107f77c7d54f13ba93335c197c662b.png)
+
+在`p.toDataURL()`这行代码，这是在获取`canvas`的base64内容，我们输出看一下。
+
+![](https://img-blog.csdnimg.cn/319f50f8d1d44cc18ed7dbe5654df388.png)
+
+再将base64内容显示一下，可以看到，这是他还原之后的内容，那继续往回跟堆栈。
+
+![](https://img-blog.csdnimg.cn/501f208f06174014bd824237ae1e2f97.png)
+
+我们先看一下他的上下文代码，这一块全是逗号表达式调用，而且关键字很多，这里可以手动还原一下。
+
+![](https://img-blog.csdnimg.cn/dcd4d36017ae4ce481835ab5f95eec04.png)
+
+简化之后的代码，这样看他的逻辑就清晰很多了。
+
+```javascript
+n.exports = function (n, e, r, b, x, m, A) {
+      var j = "ous",
+        _ = "8";
+      return new l(function (l, m) {
+        var C = "}";
+        var  y = "l";
+        var w = new Image();
+        var S = d("_r_") + Math.floor(1e10 * Math.random());
+        (window[S] = w),
+          w.setAttribute("crossOrigin", "Anonymous"),
+          g("begin to load img"),
+          g(b),
+          (w.onload = function () {
+            var d = w.width;
+            var u = w.height;
+            try {
+              if (A)
+                (n.innerHTML = ""),
+                  n.appendChild(w),
+                  w.setAttribute("name", "piece-complete");
+              else {
+                n.innerHTML = (function (n, e) {
+                  return (
+                    ''
+                  );
+                })(d, u);
+                var p = n.getElementsByTagName("canvas")[0];
+                !(function (n, e, r, i, o) {
+                  var a = n.getContext("2d");
+                  a.drawImage(e, 0, 0, r, i);
+                  var c = Math["floor"](r / o.length);
+                  h(o, function (n, r) {
+                    for (var t = [2, 0, 1], o = 0; ; ) {
+                      switch (t[o++]) {
+                        case 0:
+                          var s = c;
+                          continue;
+                        case 1:
+                          a.drawImage(e, d, 0, s, i, r * c, 0, s, i);
+                          continue;
+                        case 2:
+                          var d = n * c;
+                          continue;
+                      }
+                      break;
+                    }
+                  });
+                })(p, w, d, u, x),
+                  (p.style.width = e + "px"),
+                  (p.style.height = r + "px"),
+                  g("canvas element"),
+                  g(p),
+                  g("canvas data"),
+                  _dx.inSDK && g(p.toDataURL());
+                  console.log(p.toDataURL())
+                  (window[S] = null);
+                  delete window[S];
+              }
+              l({ w: d, h: u });
+            } catch (v) {}
+          }),
+          (w.onerror = function (n) {
+            m("img_load_error");
+          }),
+          p(b) || (b = b + "&_r=" + Math.random()),
+          (w.src = b),
+          A &&
+            ((w.style.width = e + v(["70,7", _].join(""))),
+            (w.style.height = r + v("70,78")));
+      });
+    };
+```
+
+这里有一个地方需要说明一下，官网Demo和通过SDK调用的代码，会有一些区别。在上面代码中，`!(function (n, e, r, i, o)`这个匿名函数，在官网Demo中会是一个`h`函数，或者其他名字，它的内容是下面这样的。
+
+![](https://img-blog.csdnimg.cn/432c7386bacd4c85bf7f60377b58ca02.png)
+
+![](https://img-blog.csdnimg.cn/58ec31febeb949b596f988641b3f6a31.png)
+
+回到正题，我们稍微瞟一眼这个代码，了解下它大概在干什么：
+
+- `var w = new Image();`：实例化一个图片对象；
+- `w.onload`：图片加载完毕之后，创建`canvas`标签；
+- 然后执行一个匿名函数`!(function (n, e, r, i, o)`；
+- 在匿名函数里面又有画图方法`a.drawImage`，对`canvas`进行画图；
+- 最后执行其他操作，然后结束。
+
+了解了这些之后，我们看一下匿名函数里面的参数，输出一下这几个参数，可以看到，这个参数`o`是一个数组，可以基本判定它就是图片还原的路径列表。
+
+![](https://img-blog.csdnimg.cn/86f30eb978f8463eac1e0e4288f4f3f4.png)
+
+我们知道了这个，还要找出一个东西，路径是怎么生成的？？
+
+继续往回找，它是由这个`x`传进来的。
+
+![](https://img-blog.csdnimg.cn/acfe85bc249e4353a166c22aa81634e6.png)
+
+![](https://img-blog.csdnimg.cn/a35d263c23d24a81809d7c8e50b54662.png)
+
+![](https://img-blog.csdnimg.cn/5381d617817b465d8cf114399ceac0b1.png)
+
+到此，我们基本上把背景还原算法需要的东西都整理出来了。
+
+## 背景还原路径算法
+
+下面是图片URL还原路径的算法：
+
+```javascript
+function En (n, e, r) {
+
+  if (!r) return []
+
+  var t
+
+  var i
+
+  var o = { o: undefined }
+
+  return o.o
+
+    ? _n(o.o)
+
+    : _n(
+
+        e
+
+          ? ((t = 'len'), (i = (i = r.split('/'))[i.length - 1]).split('.')[0])
+
+          : Cn(r)
+
+      )
+
+}
+
+function r (n, e) {
+
+  if (n.includes) return n.includes(e)
+
+  for (var r = 0, t = n.length; r 
+```
+
+验证一下，路径列表一致。
+
+![](https://img-blog.csdnimg.cn/100e8f3201bd4aef95c0a6be40cc1704.png)
+
+## 背景图片还原
+
+拿到路径列表算法之后，我们再去还原图片，部分算法如下，在上面`n.exports = function (n, e, r, b, x, m, A)`的基础上做了一些删改，将不需要的代码简化了，另外做了函数封装处理，完整部分在这个链接：
+
+[完整代码](https://gitcode.net/weixin_45307278/dxslider_test.git)
+
+```javascript
+function getImageBase64 (urlPATH) {
+  function En (n, e, r) {
+    if (!r) return []
+    var t
+    var i
+    var o = { o: undefined }
+    return o.o
+      ? _n(o.o)
+      : _n(
+          e
+            ? ((t = 'len'),
+              (i = (i = r.split('/'))[i.length - 1]).split('.')[0])
+            : Cn(r)
+        )
+  }
+
+  function r (n, e) {
+    if (n.includes) return n.includes(e)
+    for (var r = 0, t = n.length; r '
+    let p = document.getElementById('canvas')
+    !(function (n, e, r, i, o) {
+      var a = n.getContext('2d')
+      a.drawImage(e, 0, 0, r, i)
+      var c = Math.floor(r / o.length)
+      win_h(o, function (n, r) {
+        for (var t = [2, 0, 1], o = 0; ; ) {
+          switch (t[o++]) {
+            case 0:
+              var s = c
+              continue
+            case 1:
+              a.drawImage(e, d, 0, s, i, r * c, 0, s, i)
+              continue
+            case 2:
+              var d = n * c
+              continue
+          }
+          break
+        }
+      })
+    })(p, w, d, u, pathList)
+    console.log(p.toDataURL())
+  }
+}
+
+// 这里的图片链接会失效，请拿最新的链接去测试
+var urlPATH = 'http://static.dingxiang-inc.com/picture/dx/79bBXvCGvU/zib3/4a64f9302585450da279c527c161a35b.webp'
+getImageBase64(urlPATH)
+```
+
+输出验证结果如下。
+
+![](https://img-blog.csdnimg.cn/42a364d4365849a9b8acde7ba7d1cca8.png)
+
+下面是我自己写的识别算法，你也可以使用其他库去识别，这里用的是OpenCV的模型匹配，识别成功率在92%左右，代码我放到了上面的仓库链接中，使用时记得`pip install opencv-python`。
+
+```python
+import cv2
+
+import time
+
+# 顶象滑块识别
+
+def dXImgSlider(origin, sliderImg):
+
+    slider = cv2.imread(sliderImg)
+
+    originImg = cv2.imread(origin)
+
+    bgImg = cv2.cvtColor(originImg, cv2.COLOR_BGR2GRAY)
+
+    sliderImg = cv2.cvtColor(slider, cv2.COLOR_BGR2GRAY)
+
+    # 反相
+
+    frame_gray_c = sliderImg.copy()
+
+    height, width = frame_gray_c.shape
+
+    for i in range(height):
+
+        for j in range(width):
+
+            pv = frame_gray_c[i, j]
+
+            frame_gray_c[i][j] = 255 - pv
+
+    # 高斯滤波
+
+    imgGaussianBlur1 = cv2.GaussianBlur(frame_gray_c, (3, 3), 0)
+
+    imgGaussianBlur2 = cv2.GaussianBlur(bgImg, (7, 7), 0)
+
+    # 获取模板图像的高和宽
+
+    th, tw = sliderImg.shape[:2]
+```
