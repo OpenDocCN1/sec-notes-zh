@@ -1,0 +1,62 @@
+
+# [原创] 某信多开，消息防撤回实现
+
+- 原帖: `https://www.52pojie.cn/forum.php?mod=viewthread&tid=1680752`
+- 抓取时间: `2026-11-01T23:10:40`
+
+废话不多说，简单的讲一下怎么确定到多开的位置和消息撤回的位置。注意：当前使用版本3.7.0.30
+
+首先要对某信进行信息收集确定主模块，很快就能得知某信的主模块是`V2VDaGF0V2luLmRsbAo=`
+
+常用的防多开的方式有进程隐藏、窗口标题修改(使用`FindWindow` API函数)、DLL全局共享、互斥体等，而某信防多开的原理恰好是利用的互斥体 而在Windows系统中创建互斥体的函数是`CreateMutexW()`
+
+所以在`dbg`中在此处下断点，运行到用户代码。汇编代码如下所示
+
+### 根
+
+```
+5D7EDD85  | 50                | push eax                          |
+5D7EDD86  | 6A 00             | push 0x0                          |
+5D7EDD88  | 6A 00             | push 0x0                          |
+5D7EDD8A  | FF15 50A3755E     | call dword ptr ds:[ |
+5D7EDDB8  | EB 06             | jmp wechatwin.5D7EDDC0            |
+5D7EDDBA  | 893D 3876DD5E     | mov dword ptr ds:[0x5EDD7638],edi |
+5D7EDDC0  | 85F6              | test esi,esi                      |
+5D7EDDC2  | 74 09             | je wechatwin.5D7EDDCD             |
+5D7EDDC4  | 56                | push esi                          |
+5D7EDDC5  | E8 4BDED400       | call wechatwin.5E53BC15           |
+```
+
+## 消息防撤回
+
+在该`V2VDaGF0V2luLmRsbAo=`模块中搜素字符串`revokemsg`
+
+然后你可以看到 一堆带有`revokemsg`的字符串，这时候要怎么去确定哪个是的？
+
+可以一个个跳转进去看一下，但是还有个更加简单的。找到只含有`revokemsg`的字符串的。
+
+到汇编代码处尽量向上下个断点调试一下即可
+
+汇编代码如下所示
+
+```
+5CE9D799  | 68 B811915E       | push wechatwin.5E9111B8       | 5E9111B8:"pStrRootName is %s, not sysmsg"
+5CE9D79E  | 68 84A4995E       | push wechatwin.5E99A484       | 5E99A484:"ChatMgr"
+5CE9D7A3  | 68 4CAA995E       | push wechatwin.5E99AA4C       | 5E99AA4C:"ChatMgr::IsRevokemsg"
+5CE9D7A8  | 68 7C040000       | push 0x47C                    |
+5CE9D7AD  | C600 02           | mov byte ptr ds:[eax],0x2     |
+5CE9D7B0  | 8970 08           | mov dword ptr ds:[eax+0x8],es |
+5CE9D7B3  | E8 B8293400       | call wechatwin.5D1E0170       |
+5CE9D7B8  | 83C4 70           | add esp,0x70                  |
+5CE9D7BB  | EB 42             | jmp wechatwin.5CE9D7FF        |
+5CE9D7BD  | 68 8411915E       | push wechatwin.5E911184       | 5E911184:"type"
+5CE9D7C2  | 8BCF              | mov ecx,edi                   |
+5CE9D7C4  | E8 4784F600       | call wechatwin.5DE05C10       |
+5CE9D7C9  | 85C0              | test eax,eax                  |
+5CE9D7CB  | EB 32             | jmp wechatwin.5CE9D7FF        | 修改的地方--je被改为jmp--消息防撤回点
+5CE9D7CD  | B9 14AA995E       | mov ecx,wechatwin.5E99AA14    | 5E99AA14:"revokemsg"
+5CE9D7D2  | 8A10              | mov dl,byte ptr ds:[eax]      |
+5CE9D7D4  | 3A11              | cmp dl,byte ptr ds:[ecx]      |
+```
+
+按照给出的提示修改信息即可
