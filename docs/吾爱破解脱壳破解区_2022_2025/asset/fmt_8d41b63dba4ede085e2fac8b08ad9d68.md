@@ -1,0 +1,227 @@
+
+# [Web逆向] 某图床sign解密
+
+- 原帖: https://www.52pojie.cn/forum.php?mod=viewthread&tid=1735455
+- 抓取时间: 2026-11-01T23:02:31
+
+## 一.前言
+
+大一放寒假了，终于有很多时间可以搞爬虫啦。最近可能更新会频繁，各位看官多多包涵啊多多包涵啊
+
+![](https://static.52pojie.cn/static/image/smiley/mogu/HOHO.gif)
+
+网址：aHR0cHM6Ly93d3cuc3VwZXJiZWQuY24v
+
+技术：手扣去除花指令
+
+## 二：寻找sign值
+
+我们打开F12抓包，然后随便上传个图片，抓到一个post包。post包里面有好几个值，只有sign是加密的。
+
+![](https://attach.52pojie.cn/forum/202301/11/202019tplqppwppgspap22.png)
+
+1.png (24.76 KB, 下载次数: 1)
+
+[href="forum.php?mod=attachment&aid=MjU4NDQ2M3xiNTQ3ZmJhZHwxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU4NDQ2M3xiNTQ3ZmJhZHwxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes)
+
+1
+
+2023-1-11 20:20 上传
+
+通过关键词搜索`sign`并找不到我们想要的关键地方。所以我选择使用`xhr`断点。
+
+## 三：使用XHR断点寻找关键位置
+
+我们把网址添加到`xhr`断点位置之后上传图片。
+
+![](https://attach.52pojie.cn/forum/202301/11/202647albcgvziliz15hgh.png)
+
+2.png (164.72 KB, 下载次数: 2)
+
+[href="forum.php?mod=attachment&aid=MjU4NDQ2NHw4N2ZlNDNhNXwxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU4NDQ2NHw4N2ZlNDNhNXwxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes)
+
+2
+
+2023-1-11 20:26 上传
+
+发现断点已经断了下来。
+
+![](https://attach.52pojie.cn/forum/202301/11/202808pwqwqvzvaevqcyz1.png)
+
+3.png (208.86 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=MjU4NDQ2NXwzYTkyZTA1M3wxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU4NDQ2NXwzYTkyZTA1M3wxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes)
+
+3
+
+2023-1-11 20:28 上传
+
+将混淆后的代码选中可以发现是一个`send`函数，那么小括号里面的数据应该就是发送的数据了。
+
+![](https://attach.52pojie.cn/forum/202301/11/203057rqnnn08nz7tn8nj8.png)
+
+4.png (10.23 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=MjU4NDQ2Nnw5NjUzYmMxNnwxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU4NDQ2Nnw5NjUzYmMxNnwxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes)
+
+4
+
+2023-1-11 20:30 上传
+
+在本文件中搜索`_0x568870`，发现总共有12个。从第665行可以发现`new FormData()`，`_0x568870`是一个对象，从746到752行可以看出数据一个一个被`append`添加到`_0x568870`对象里面。
+
+![](https://attach.52pojie.cn/forum/202301/11/203549q1kzx287z1nn0iwn.png)
+
+5.png (45.62 KB, 下载次数: 1)
+
+[href="forum.php?mod=attachment&aid=MjU4NDQ2N3w3ODQ4MDAxZnwxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU4NDQ2N3w3ODQ4MDAxZnwxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes)
+
+5
+
+2023-1-11 20:35 上传
+
+但是我们要寻找的是`sign`，`sign`到底在哪里呢，混淆的代码我一个个查看了发现`sign`在749行，被混淆过了，所以通过关键词搜索不到。
+
+![](https://attach.52pojie.cn/forum/202301/11/204348u00y4zvzbx0pzc36.png)
+
+6.png (21.45 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=MjU4NDQ3MHxjYzU1MGJkNnwxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU4NDQ3MHxjYzU1MGJkNnwxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes)
+
+6
+
+2023-1-11 20:43 上传
+
+在749行下断点按F8,便可以查看到`sign`的数值`_0x4e837a`，`_0x4e837a`是从上面第745行传进来的。也可以看到很亮眼的记个大字`MD5`，便可以判断那便是`sign`加密的函数。但是那段代码是混淆过的，我们需要解混淆。
+
+![](https://attach.52pojie.cn/forum/202301/11/205157szf01hdf7izk97k1.png)
+
+7.png (47.05 KB, 下载次数: 1)
+
+[href="forum.php?mod=attachment&aid=MjU4NDQ3MnxhMmMyNjIwM3wxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU4NDQ3MnxhMmMyNjIwM3wxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes)
+
+7
+
+2023-1-11 20:51 上传
+
+## 四：手撕去除花指令
+
+将那一行加密代码扣下来。第一个函数`_0x25869b['UFsia']`调用了后面的参数`md5`, `_0x25869b[_0x1ee3('119', '@)]$')](_0x25869b[_0x1ee3('11a', 'a]$L')](_0x25869b['KWyrc'](_0x4fe853, '_'), _0x38facc['ts']), '_') + _0xd5726e`；我们需要去查看`_0x25869b['UFsia']`究竟有什么用，做了什么功能。
+
+![](https://attach.52pojie.cn/forum/202301/11/205721gp4q2ygyjhy2z4fy.png)
+
+8.png (27.54 KB, 下载次数: 1)
+
+[href="forum.php?mod=attachment&aid=MjU4NDQ3NXwxZjBhNDYxZHwxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU4NDQ3NXwxZjBhNDYxZHwxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes)
+
+8
+
+2023-1-11 20:57 上传
+
+将断点下到第745行，然后便去控制台打印`_0x25869b['UFsia']`
+
+![](https://attach.52pojie.cn/forum/202301/11/210019lbibdmmcbkiinvvb.png)
+
+9.png (27.8 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=MjU4NDQ3Nnw4N2YyZTBiNHwxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU4NDQ3Nnw4N2YyZTBiNHwxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes)
+
+9
+
+2023-1-11 21:00 上传
+
+发现`_0x25869b['UFsia']`是一个函数，而且函数的作用是把第二个参数传进第一个参数里面然后返回。
+
+![](https://attach.52pojie.cn/forum/202301/11/210332j448z4jcrjjxwcnc.png)
+
+10.png (27.29 KB, 下载次数: 1)
+
+[href="forum.php?mod=attachment&aid=MjU4NDQ3OXxiOTZkZDU5YnwxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU4NDQ3OXxiOTZkZDU5YnwxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes)
+
+10
+
+2023-1-11 21:03 上传
+
+第一次代码改写：
+
+![](https://attach.52pojie.cn/forum/202301/11/210746antm66g6z6n8jjg6.png)
+
+11.png (45.19 KB, 下载次数: 1)
+
+[href="forum.php?mod=attachment&aid=MjU4NDQ4MXwyN2MzNWUyOHwxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU4NDQ4MXwyN2MzNWUyOHwxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes)
+
+11
+
+2023-1-11 21:07 上传
+
+仔细观察改写后的代码可以发现是`_0x25869b[_0x1ee3('119', '@)]$')]`函数调用了后面的参数`_0x25869b[_0x1ee3('11a', 'a]$L')](_0x25869b['KWyrc'](_0x4fe853, '_'), _0x38facc['ts'])`
+
+那我们便继续寻找`_0x25869b[_0x1ee3('119', '@)]$')]`函数，在控制台打印以后双击便可查看函数，发现这个函数的作用是第一个参数与第二个参数相加。继续改写这段代码
+
+![](https://attach.52pojie.cn/forum/202301/11/211130k8l1i9u8it8tl34o.png)
+
+12.png (24.48 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=MjU4NDQ4M3w1MzFhNjQxNnwxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU4NDQ4M3w1MzFhNjQxNnwxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes)
+
+12
+
+2023-1-11 21:11 上传
+
+第二次代码改写：
+
+![](https://attach.52pojie.cn/forum/202301/11/212121apeeegrhhtlpbdzh.png)
+
+13.png (37.07 KB, 下载次数: 1)
+
+[href="forum.php?mod=attachment&aid=MjU4NDQ4N3w5ODk4MDBjOXwxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU4NDQ4N3w5ODk4MDBjOXwxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes)
+
+13
+
+2023-1-11 21:21 上传
+
+仔细观察改写后的代码可以发现是`_0x25869b[_0x1ee3('11a', 'a]$L')]`函数调用了后面的参数`_0x25869b['KWyrc'](_0x4fe853, '_')`, `_0x38facc['ts']`
+
+那我们便继续寻找`_0x25869b[_0x1ee3('11a', 'a]$L')]`函数，在控制台打印以后双击便可查看函数，发现这个函数的作用是第一个参数与第二个参数相加。继续改写这段代码
+
+![](https://attach.52pojie.cn/forum/202301/11/212319twboy41yy1wyke0d.png)
+
+14.png (27.52 KB, 下载次数: 1)
+
+[href="forum.php?mod=attachment&aid=MjU4NDQ4OXxmZWIzYTMzYnwxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU4NDQ4OXxmZWIzYTMzYnwxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes)
+
+14
+
+2023-1-11 21:23 上传
+
+第三次代码改写：
+
+![](https://attach.52pojie.cn/forum/202301/11/212534kskf3zzk3c34l81s.png)
+
+15.png (28.38 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=MjU4NDQ5MHxiMTU1Y2E5NXwxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU4NDQ5MHxiMTU1Y2E5NXwxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes)
+
+15
+
+2023-1-11 21:25 上传
+
+仔细观察改写后的代码可以发现是`_0x25869b['KWyrc']`函数调用了后面的参数`_0x4fe853`, `'_'`
+
+那我们便继续寻找`_0x25869b['KWyrc']`函数，在控制台打印以后双击便可查看函数，发现这个函数的作用是第一个参数与第二个参数相加。继续改写这段代码
+
+![](https://attach.52pojie.cn/forum/202301/11/212744ti32fbm026h7ik4j.png)
+
+16.png (27.47 KB, 下载次数: 1)
+
+[href="forum.php?mod=attachment&aid=MjU4NDQ5MXw2OTRkZGM2N3wxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjU4NDQ5MXw2OTRkZGM2N3wxNzkzNTc0MTQ5fDE2ODA4NnwxNzM1NDU1&nothumb=yes)
+
+16
+
+2023-1-11 21:27 上传
+
+第四次代码改写：
+
+![](https://attach.52pojie.cn/forum/202301/11/213053bt1eb4bie8bggeea.png)
+
+17.png (23.3 KB, 下载次数: 1)
