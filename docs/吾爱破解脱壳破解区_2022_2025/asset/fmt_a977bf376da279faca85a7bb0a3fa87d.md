@@ -1,0 +1,169 @@
+
+# [Web逆向] 微软文本转语音 Python 命令行工具
+
+- 原帖：<https://www.52pojie.cn/forum.php?mod=viewthread&tid=1602203>
+- 抓取时间：2026-11-01T23:33:49
+
+## 文本转语音的简单 Demo
+
+另外制作了 tampermonkey 脚本，见 [tampermonkey 脚本](https://www.52pojie.cn/thread-1606432-1-1.html)。
+
+### 仓库地址
+
+[仓库地址](https://github.com/skygongque/tts/tree/main/python_cli_demo)
+
+### 使用代码可以不用录音直接下载 MP3 文件
+
+### 视频教程
+
+做了一个简单的视频教程：【【无需录音完全免费】有感情的文本转语音 基于微软 TTS 的 Python 小工具——哔哩哔哩】[视频链接](https://b23.tv/abLjH4G)。
+
+官方地址：[微软文本转语音](https://azure.microsoft.com/zh-cn/services/cognitive-services/text-to-speech/#overview)
+
+## 声明
+
+仅用于学习交流禁止商用。
+
+## 项目的目的和相关说明
+
+- 项目的核心功能是，可以直接下载转换后的 MP3 文件，微软官方的网页版 demo 不能直接下载转换后的 MP3 文件（直接录音对于转换文字较多时不是很方便）。
+
+### 使用方法
+
+安装依赖：
+
+```bash
+pip install -r requirements.txt
+```
+
+运行：
+
+```bash
+python tts.py --input SSML.xml
+```
+
+> 使用 `python` 运行 `tts.py`，通过参数 `input` 传入 `SSML.xml` 文件的路径。
+
+或者可以通过传入 `output` 传入希望保存的文件名：
+
+```bash
+python tts.py --input SSML.xml --output 保存文件名
+```
+
+`SSML.xml` 文件的示例如下：
+
+```text
+        这个是 SSML 语音合成标记语言
+        这个是晓晓的声音
+        这个是云扬的声音。
+```
+
+- `voice name`：声音的名字
+- `rate`：速度
+- `pitch`：语调
+
+## 如果对 JS 逆向感兴趣
+
+核心的请求是这个 `wss://eastus.tts.speech.microsoft.com/cognitiveservices/websocket/v1`。
+
+![image-20220313185522719.png](https://attach.52pojie.cn/forum/202203/13/191507w9ja22sii9mar2g4.png)
+
+image-20220313185522719.png（580.73 KB，下载次数：3；[附件下载](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjUwMjAxNXwyZGNiZDhkOXwxNzkzNTc2MDI2fDE2ODA4NnwxNjAyMjAz&nothumb=yes)）
+
+2022-3-13 19:15 上传
+
+这个请求有两个参数 `Authorization` 和 `X-ConnectionId`。
+
+其中 `Authorization` 来自网页源代码 `token`，可以直接用正则取。
+
+![image-20220313184024591.png](https://attach.52pojie.cn/forum/202203/13/191540oi0qh4huqy4yhxq5.png)
+
+image-20220313184024591.png（131.53 KB，下载次数：1；[附件下载](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjUwMjAxNnwwMDkwNjUwNnwxNzkzNTc2MDI2fDE2ODA4NnwxNjAyMjAz&nothumb=yes)）
+
+2022-3-13 19:15 上传
+
+`X-ConnectionId` 稍微复杂一点，搜索 `cognitiveservices/websocket/v1` 定位到如下位置，发现已经生成，往下追一步。
+
+![image-20220313184200274.png](https://attach.52pojie.cn/forum/202203/13/191605v6v7rrdt1uirr82a.png)
+
+image-20220313184200274.png（541.25 KB，下载次数：2；[附件下载](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjUwMjAxN3w5MTEwMzU2N3wxNzkzNTc2MDI2fDE2ODA4NnwxNjAyMjAz&nothumb=yes)）
+
+2022-3-13 19:16 上传
+
+发现是 `createNoDashGuid()` 生成的。
+
+![image-20220313184347146.png](https://attach.52pojie.cn/forum/202203/13/191626w1us5szu9lscnc1c.png)
+
+image-20220313184347146.png（463.61 KB，下载次数：3；[附件下载](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjUwMjAxOHxlMGNkZjVlMHwxNzkzNTc2MDI2fDE2ODA4NnwxNjAyMjAz&nothumb=yes)）
+
+2022-3-13 19:16 上传
+
+继续追发现是一个 `uuid4()`。
+
+![image-20220313184505031.png](https://attach.52pojie.cn/forum/202203/13/192803te2i2leqa2x1qqmk.png)
+
+image-20220313184505031.png（114.58 KB，下载次数：2；[附件下载](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjUwMjAyMHw0YzA0ZmU4ZHwxNzkzNTc2MDI2fDE2ODA4NnwxNjAyMjAz&nothumb=yes)）
+
+2022-3-13 19:28 上传
+
+Python 模拟非常简单：
+
+```python
+import uuid
+print(uuid.uuid4().hex.upper())
+```
+
+### WebSocket 部分
+
+上述请求之后，改成 WebSocket 传递。
+
+客户端发送文本，服务端返回二进制。
+
+发送的内容示例：
+
+```text
+Path: speech.config
+X-RequestId: 1570E9705B67461494126EE84ED36CD9
+X-Timestamp: 2022-03-13T10:48:30.067Z
+Content-Type: application/json
+
+{"context":{"system":{"name":"SpeechSDK","version":"1.19.0","build":"JavaScript","lang":"JavaScript"},"os":{"platform":"Browser/Win32","name":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36","version":"5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36"}}}
+```
+
+```text
+Path: synthesis.context
+X-RequestId: 1570E9705B67461494126EE84ED36CD9
+X-Timestamp: 2022-03-13T10:48:30.068Z
+Content-Type: application/json
+
+{"synthesis":{"audio":{"metadataOptions":{"bookmarkEnabled":false,"sentenceBoundaryEnabled":false,"visemeEnabled":false,"wordBoundaryEnabled":false},"outputFormat":"audio-24khz-160kbitrate-mono-mp3"},"language":{"autoDetection":false}}}
+```
+
+第三个发送的包中包含需要转换的文本：
+
+```text
+Path: ssml
+X-RequestId: 1570E9705B67461494126EE84ED36CD9
+X-Timestamp: 2022-03-13T10:48:30.068Z
+Content-Type: application/ssml+xml
+
+You can replace this text with any text you wish. You can either write in this text box or paste your own text here.
+
+Try different languages and voices. Change the speed and the pitch of the voice. You can even tweak the SSML (Speech Synthesis Markup Language) to control how the different sections of the text sound. Click on SSML above to give it a try!
+
+Enjoy using Text to Speech!
+```
+
+然后服务器返回一段二进制，只需要提取 `Path:audio` 后面的内容拼接就是我们需要的 MP3 文件。
+
+![image-20220313184910519.png](https://attach.52pojie.cn/forum/202203/13/192825jvs23mvltbt323zt.png)
+
+image-20220313184910519.png（447.46 KB，下载次数：3；[附件下载](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjUwMjAyMXwwNThlMTZhMXwxNzkzNTc2MDI2fDE2ODA4NnwxNjAyMjAz&nothumb=yes)）
+
+2022-3-13 19:28 上传
+
+## 完整代码
+
+```text
+https://github.com/skygongque/tts
+```
