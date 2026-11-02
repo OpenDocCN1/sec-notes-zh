@@ -1,0 +1,205 @@
+
+# [游戏安全] 游戏安全之Unity3D-GameObjectManage
+
+- 原帖: https://www.52pojie.cn/forum.php?mod=viewthread&tid=1775881
+
+- 抓取时间: 2026-11-01T21:56:47
+
+## 简介：
+
+在Unity3D游戏中，最基本的就是寻找Unity3D中的`GameObjectManage`。
+
+## 如何寻找GameObjectManage:
+
+在Unity游戏中通常存在`UnityPlayer.dll`文件，我们在运行游戏后在运行`Unity PDB Downloader.exe`来获取游戏符号文件
+
+![](https://attach.52pojie.cn/forum/202304/19/144241ri2v7toirtip1i2t.png)
+
+unity1.png (35.79 KB, 下载次数: 4)
+
+[href="forum.php?mod=attachment&aid=MjYwODgxMHwxZDBlMDBiM3wxNzkzNTcwMjA1fDE2ODA4NnwxNzc1ODgx&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYwODgxMHwxZDBlMDBiM3wxNzkzNTcwMjA1fDE2ODA4NnwxNzc1ODgx&nothumb=yes)
+
+2023-4-19 14:42 上传
+
+在获取到文件后导入刀`ida pro`中直接搜索`GetGameObject`就能找到函数了：
+
+![](https://attach.52pojie.cn/forum/202304/19/144248fcxbcrrrci5autv5.png)
+
+unity4.png (48.33 KB, 下载次数: 4)
+
+[href="forum.php?mod=attachment&aid=MjYwODgxMXxkZDI2OWRmZnwxNzkzNTcwMjA1fDE2ODA4NnwxNzc1ODgx&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYwODgxMXxkZDI2OWRmZnwxNzkzNTcwMjA1fDE2ODA4NnwxNzc1ODgx&nothumb=yes)
+
+2023-4-19 14:42 上传
+
+找到该函数后，通过`CE`跳转过去拿到基础地址：
+
+![](https://attach.52pojie.cn/forum/202304/19/144257jq77phih2pdd1agp.png)
+
+unity5.png (81.97 KB, 下载次数: 4)
+
+[href="forum.php?mod=attachment&aid=MjYwODgxMnxhZjE4OWEyZHwxNzkzNTcwMjA1fDE2ODA4NnwxNzc1ODgx&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYwODgxMnxhZjE4OWEyZHwxNzkzNTcwMjA1fDE2ODA4NnwxNzc1ODgx&nothumb=yes)
+
+2023-4-19 14:42 上传
+
+## GOM数据结构：
+
+通过`ida pro`能查看到`GOM`的数据结构为：
+
+```
+GameObjectManager{
+
+List
+- > m_TaggedNodes;
+List
+- > m_ActiveNodes;
+
+}
+```
+
+内存中如下所示：
+
+![](https://attach.52pojie.cn/forum/202304/19/144312jwz37byx5fz9troz.png)
+
+unity6.png (88.87 KB, 下载次数: 4)
+
+[href="forum.php?mod=attachment&aid=MjYwODgxM3xiZDY2MzdkZHwxNzkzNTcwMjA1fDE2ODA4NnwxNzc1ODgx&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYwODgxM3xiZDY2MzdkZHwxNzkzNTcwMjA1fDE2ODA4NnwxNzc1ODgx&nothumb=yes)
+
+2023-4-19 14:43 上传
+
+很明显的双链表结构，其中每个元素都是`GameObject`：
+
+```
+class BaseObject
+
+{
+
+public:
+
+BaseObject* m_lastObject; //0x0000
+
+BaseObject* m_nextObjects; //0x0008
+
+GameObject* m_objectEntity; //0x0010
+
+};
+```
+
+从`0x10`的位置才是该对象的`Entry`，`GameObject`在`ida`中如下所示：
+
+```
+00000000 GameObject struc ; (sizeof=0x88, align=0x8, copyof_11640)
+00000000                                         ; XREF: ?BuildGenericAvatar@AvatarBuilderBindings@@YA?AVScriptingObjectPtr@@PEAVGameObject@@AEBV?$basic_string@DV?$StringStorageDefault@D@core@@@core@@@Z/r
+00000000 baseclass_0 EditorExtension ?           ; XREF: AvatarBuilderBindings::BuildGenericAvatar(GameObject *,core::basic_string> const &)+87/w
+00000000                                         ; AvatarBuilderBindings::BuildGenericAvatar(GameObject *,core::basic_string> const &)+8C/w ...
+00000030 m_Component dynamic_array ?
+00000030                                         ; XREF: AvatarBuilderBindings::BuildGenericAvatar(GameObject *,core::basic_string> const &)+A3/w
+00000030                                         ; AvatarBuilderBindings::BuildGenericAvatar(GameObject *,core::basic_string> const &)+AB/w ...
+00000050 m_CullSceneMask dq ?                    ; XREF: AvatarBuilderBindings::BuildGenericAvatar(GameObject *,core::basic_string> const &):HumanDescription__Reset_0/o
+00000050                                         ; AvatarBuilderBindings::BuildGenericAvatar(GameObject *,core::basic_string> const &)+B6/w ...
+00000058 m_Layer dd ?                            ; XREF: AvatarBuilderBindings::BuildGenericAvatar(GameObject *,core::basic_string> const &)+BE/w
+00000058                                         ; AvatarBuilderBindings::BuildGenericAvatar(GameObject *,core::basic_string> const &)+128/r ...
+0000005C m_Tag dw ?
+0000005E m_IsActive db ?
+0000005F m_IsActiveCached db ?
+00000060 m_ActivationState dd ?                  ; enum GameObject::ActivationState
+00000064 m_SupportedMessages dd ?
+00000068 m_Name ConstantString ?                 ; XREF: AvatarBuilderBindings::BuildGenericAvatar(GameObject *,core::basic_string> const &)+BA/w
+00000068                                         ; AvatarBuilderBindings::BuildGenericAvatar(GameObject *,core::basic_string> const &)+13A/w
+00000070 m_ActiveGONode ListNode ?   ; XREF: AvatarBuilderBindings::BuildGenericAvatar(GameObject *,core::basic_string> const &):core__basic_string_char_core__StringStorageDefault_char______ctor__1380/w
+00000070                                         ; AvatarBuilderBindings::BuildGenericAvatar(GameObject *,core::basic_string> const &)+F5/w ...
+00000088 GameObject ends
+```
+
+`+0x68`为对象的名称：
+
+![](https://attach.52pojie.cn/forum/202304/19/144321zr0cbkczc90bd6sb.png)
+
+unity7.png (88.46 KB, 下载次数: 3)
+
+[href="forum.php?mod=attachment&aid=MjYwODgxNHxmM2M2OTE1OHwxNzkzNTcwMjA1fDE2ODA4NnwxNzc1ODgx&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYwODgxNHxmM2M2OTE1OHwxNzkzNTcwMjA1fDE2ODA4NnwxNzc1ODgx&nothumb=yes)
+
+2023-4-19 14:43 上传
+
+### 遍历：
+
+通过上面的知识，我们很容易就能遍历出unity中所有的对象
+
+![](https://attach.52pojie.cn/forum/202304/19/144333obggie35kghkmtle.png)
+
+unity8.png (40.14 KB, 下载次数: 3)
+
+[href="forum.php?mod=attachment&aid=MjYwODgxNnxiZThjMDk3YnwxNzkzNTcwMjA1fDE2ODA4NnwxNzc1ODgx&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYwODgxNnxiZThjMDk3YnwxNzkzNTcwMjA1fDE2ODA4NnwxNzc1ODgx&nothumb=yes)
+
+2023-4-19 14:43 上传
+
+### 代码：
+
+```
+#include 
+
+#include 
+
+using namespace std;
+
+HANDLE pHandle = 0;
+
+bool ReadMemory(PVOID address, PVOID buffer, size_t size)
+
+{
+
+    SIZE_T ret_size;
+
+    return ReadProcessMemory(pHandle, address, buffer, size, &ret_size);
+
+}
+
+ULONG64 ReadMemoryULong64(PVOID address)
+
+{
+
+    ULONG64 returnUlong = 0;
+
+    SIZE_T ret_size;
+
+    ReadProcessMemory(pHandle, address, &returnUlong, sizeof(ULONG64), &ret_size);
+
+    return returnUlong;
+
+}
+
+void main() {
+
+    pHandle = OpenProcess(PROCESS_ALL_ACCESS,FALSE,0x244c);
+
+    ULONG64 GameObjectManageBase = 0x7FF89C2D44E8;
+
+    ULONG64 GameObjectManageValue = ReadMemoryULong64((PVOID)GameObjectManageBase);
+
+    ULONG64 NextObject,GameEntry,NameAddress = 0;
+
+    NextObject = ReadMemoryULong64((PVOID)(GameObjectManageValue + 0x8));
+
+    char* NameBuffer = (char*)malloc(40);
+
+    memset(NameBuffer,0,40);
+
+    while (true)
+
+    {
+
+        if (NextObject == GameObjectManageValue)
+
+        {
+
+            break;
+
+        }
+
+        GameEntry = ReadMemoryULong64((PVOID)(NextObject + 0x10));
+
+        NameAddress = ReadMemoryULong64((PVOID)(GameEntry + 0x68));
+
+        ReadMemory((PVOID)NameAddress, NameBuffer, 40);
+
+        cout 
+```
