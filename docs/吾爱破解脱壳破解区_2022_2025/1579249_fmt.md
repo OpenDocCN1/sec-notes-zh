@@ -1,0 +1,52 @@
+
+# [原创] 怎么去用x64dbg的脚本判断当前运行到的行（`rip`）异常？
+
+- 原帖: https://www.52pojie.cn/forum.php?mod=viewthread&tid=1579249
+- 抓取时间: 2026-11-01T23:38:29
+
+本想发求助贴的，我们在实验室里一折腾突然自己明白了，所以还是分享下经验吧：怎么去用x64dbg的脚本判断当前运行到的行（`RIP`）异常？
+
+试验过程如下：
+
+我们随便打开一个64位的程序
+
+![](https://attach.52pojie.cn/forum/202201/22/101901xo9c932g2g9b9gb2.png)
+
+image.png (225.2 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=MjM2NzYwOXxhYWQyZjFjY3wxNzkzNTc2MzA2fDE2ODA4NnwxNTc5MjQ5&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjM2NzYwOXxhYWQyZjFjY3wxNzkzNTc2MzA2fDE2ODA4NnwxNTc5MjQ5&nothumb=yes)
+
+2022-1-22 10:19 上传
+
+把汇编窗口第二行，随便改成`CCCCCCCC`来触发异常
+
+```
+msg {ex.firstchance()} //结果是1 //最后一个异常是否是首次偶发异常
+msg {ex.addr()} //这个得到的是最后一个异常地址=====》有用
+msg {ex.code()} //这个得到的是异常的代码==>感觉不实用！
+msg {ex.flags()} //结果是0
+msg {ex.infocount()} //结果是1 //最后一个异常信息计数
+msg {ex.info(index)} //结果是？？？
+```
+
+所以，貌似得用`ex.addr()`这个来做比较了~~~
+
+这样写对吧？`cmp rip,ex.addr()` //`rip`是谁？ 当前运行到的VA地址前啦
+
+后面的`ex.addr()`就是最后一次异常的地址啊 ~~
+
+所以想想，貌似有问题啊 ~~
+
+我们把选中的`00007FF7C5A367EC`行直接给`NOP`了，它就变成了 5行（5个异常的行啦）
+
+当我们在第二行原样按F8的时候 ，就会触发异常 ，`rip = 00007FF7C5A367EC` (也就是运行到了`00007FF7C5A367EC`)
+
+再按一下F8 ,`rip=00007FF7C5A367ED`, 第一次异常地址 是`00007FF7C5A367EC`
+
+看到没？ 发现问题了吧？
+
+所以，我们只要再定义一个变量来存储上一次的那个`rip`的地址，再和我们的变量做比较这个问题就解决了啊。
+
+所以遇到问题不要慌张，做试验和对比，自己就能不求人自己找到解决办法了。
+
+后面异常小节就可以愉快的使用`skin`命令来自动化的跳过了。
