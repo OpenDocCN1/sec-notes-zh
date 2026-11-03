@@ -1,0 +1,129 @@
+
+# [原创] CF付费骗子挂破解学习
+
+- 原帖: https://www.52pojie.cn/forum.php?mod=viewthread&tid=1990678
+- 抓取时间: 2026-11-01T22:18:08
+
+![](https://static.52pojie.cn/static/image/smiley/laohu/laohu35.gif)
+
+注册吾爱都已经有5个年头了第一次[//www.52pojie.cn" target="_blank" class="relatedlink"](https://www.52pojie.cn:href="https)，本来是在研究一个`upx`壳的程序结果发现研究半天搞不定就上吾爱划划水，结果发现了这个帖子https://www.52pojie.cn/forum.php?mod=viewthread&tid=1903101&highlight=%CD%E2%B9%D2，
+
+本着反正也没事干它又没壳字符串也没加密就试试看的心态万一进去了这不学破解又有信心了呢
+
+首先礼貌的查壳养成好习惯
+
+![](https://attach.52pojie.cn/forum/202412/12/154536h84ca5k5mcb415cb.png)
+
+`WIN10LTSB-2024-12-12-15-44-08.png` (57.09 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=Mjc0MzE5OXwyZGVjY2QxYXwxNzkzNTcxNDg2fDE2ODA4NnwxOTkwNjc4&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=Mjc0MzE5OXwyZGVjY2QxYXwxNzkzNTcxNDg2fDE2ODA4NnwxOTkwNjc4&nothumb=yes)
+
+2024-12-12 15:45 上传
+
+直接把程序跑起来
+
+![](https://attach.52pojie.cn/forum/202412/12/154905x11pmqmxqupo8ur2.png)
+
+`WIN10LTSB-2024-12-12-15-48-58.png` (397.58 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=Mjc0MzIwMHw0OGZmZGI4OHwxNzkzNTcxNDg2fDE2ODA4NnwxOTkwNjc4&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=Mjc0MzIwMHw0OGZmZGI4OHwxNzkzNTcxNDg2fDE2ODA4NnwxOTkwNjc4&nothumb=yes)
+
+2024-12-12 15:49 上传
+
+既然知道没有壳，直接丢进`dbg`查询当前模块的字符串有没有能用的地方，没加壳看什么都清楚了
+
+![](https://static.52pojie.cn/static/image/smiley/laohu/laohu35.gif)
+
+![](https://attach.52pojie.cn/forum/202412/12/155236spptjxkw3rutrprs.png)
+
+`WIN10LTSB-2024-12-12-15-51-32.png` (253.35 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=Mjc0MzIwMXxlOGY5YjY5NnwxNzkzNTcxNDg2fDE2ODA4NnwxOTkwNjc4&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=Mjc0MzIwMXxlOGY5YjY5NnwxNzkzNTcxNDg2fDE2ODA4NnwxOTkwNjc4&nothumb=yes)
+
+2024-12-12 15:52 上传
+
+直接搜索它提示的卡密
+
+![](https://attach.52pojie.cn/forum/202412/12/155246wsas7daxmqk8vmo8.png)
+
+`WIN10LTSB-2024-12-12-15-52-01.png` (98.02 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=Mjc0MzIwMnw4NTUxODJlZnwxNzkzNTcxNDg2fDE2ODA4NnwxOTkwNjc4&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=Mjc0MzIwMnw4NTUxODJlZnwxNzkzNTcxNDg2fDE2ODA4NnwxOTkwNjc4&nothumb=yes)
+
+2024-12-12 15:52 上传
+
+判断下能直接进入影响到进入程序的地址我就直接找他提示还没输入卡密，我现在奔着的是直接`jmp`进入程序中
+
+![](https://attach.52pojie.cn/forum/202412/12/160110evfvwehaee71ekjh.png)
+
+`WIN10LTSB-2024-12-12-16-00-58.png` (299.42 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=Mjc0MzIwM3w0ZDZjNDI0ZXwxNzkzNTcxNDg2fDE2ODA4NnwxOTkwNjc4&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=Mjc0MzIwM3w0ZDZjNDI0ZXwxNzkzNTcxNDg2fDE2ODA4NnwxOTkwNjc4&nothumb=yes)
+
+2024-12-12 16:01 上传
+
+按我的想法他直接进入验证环节，我再给它验证直接`nop`了也算是暴力破解成了吧，可惜想法很美好现实就是它`nop`之后程序直接卡住了
+
+![](https://static.52pojie.cn/static/image/smiley/laohu/laohu10.gif)
+
+我尝试了进入`call`看看里面的洞天
+
+![](https://attach.52pojie.cn/forum/202412/12/161009dedx27d282ouqls4.png)
+
+`WIN10LTSB-2024-12-12-16-10-03.png` (306.74 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=Mjc0MzIwNnw3YTBiMTViMXwxNzkzNTcxNDg2fDE2ODA4NnwxOTkwNjc4&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=Mjc0MzIwNnw3YTBiMTViMXwxNzkzNTcxNDg2fDE2ODA4NnwxOTkwNjc4&nothumb=yes)
+
+2024-12-12 16:10 上传
+
+看了半天全是验证从头到尾的一直验证
+
+![](https://static.52pojie.cn/static/image/smiley/laohu/laohu20.gif)
+
+我寻思就那么点东西需要判断那么多次吗，心灰意冷之际我又莫名其妙的想起来`esp`定律`papad`之后接大跳到程序入口
+
+![](https://static.52pojie.cn/static/image/smiley/laohu/laohu10.gif)
+
+[//www.52pojie.cn/forum-5-1.html" target="_blank" class="relatedlink"](https://www.52pojie.cn/forum-5-1.html:href="https)哪有不疯的啊，然后我就突然想到是不是我直接把他`call`的地址改成`jmp`直接跳到程序入口是否可行？？？
+
+![](https://attach.52pojie.cn/forum/202412/12/161409bf99ahz66ow6wyfs.png)
+
+`WIN10LTSB-2024-12-12-16-13-54.png` (294.9 KB, 下载次数: 1)
+
+[href="forum.php?mod=attachment&aid=Mjc0MzIwN3xhOTIwMDA1ZnwxNzkzNTcxNDg2fDE2ODA4NnwxOTkwNjc4&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=Mjc0MzIwN3xhOTIwMDA1ZnwxNzkzNTcxNDg2fDE2ODA4NnwxOTkwNjc4&nothumb=yes)
+
+2024-12-12 16:14 上传
+
+这里也正好看到入口了，我直接找到验证卡密的地方
+
+![](https://attach.52pojie.cn/forum/202412/12/161653c4lkk36g004lzazx.png)
+
+`WIN10LTSB-2024-12-12-16-16-35.png` (304.5 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=Mjc0MzIwOHw2YzM2OTYyYnwxNzkzNTcxNDg2fDE2ODA4NnwxOTkwNjc4&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=Mjc0MzIwOHw2YzM2OTYyYnwxNzkzNTcxNDg2fDE2ODA4NnwxOTkwNjc4&nothumb=yes)
+
+2024-12-12 16:16 上传
+
+反正破解失败了也就失败了
+
+![](https://static.52pojie.cn/static/image/smiley/laohu/laohu4.gif)
+
+丢人大家也不认识我就对了
+
+![](https://attach.52pojie.cn/forum/202412/12/161747i2dh0gdxmmd4gse2.png)
+
+`WIN10LTSB-2024-12-12-16-16-47.png` (322.85 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=Mjc0MzIwOXxmODU4MjEzMHwxNzkzNTcxNDg2fDE2ODA4NnwxOTkwNjc4&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=Mjc0MzIwOXxmODU4MjEzMHwxNzkzNTcxNDg2fDE2ODA4NnwxOTkwNjc4&nothumb=yes)
+
+2024-12-12 16:17 上传
+
+但好在也还是进去了，从老被骗的第一感觉这种充天卡还只支持win8的铁骗子了，让你花两次钱被骗两次
+
+![](https://static.52pojie.cn/static/image/smiley/laohu/laohu19.gif)
+
+第一次的破解实战也就这样告一段落了，没有任何的思路就是感觉自己在乱撞想到什么做什么，喜欢有老哥能分析下那个验证`call`单纯的学习学习
+
+![](https://static.52pojie.cn/static/image/smiley/laohu/laohu12.gif)
+
+这个就纯当是没照着教程破解的第一次成功吧，继续研究脱壳去了
