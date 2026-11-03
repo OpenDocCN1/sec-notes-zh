@@ -1,0 +1,66 @@
+
+```
+E6F6549E5DCCB8429ED2169032665B6B
+E6F6FE9E5D89B84222D2169032665B37
+E69F549EDACCB8429ED216B832662A6B
+E6F6549E5DCCB8429ED2169032665B6B
+E6F6549E5DCCB8429ED2169032665B6B
+E68B549EE2CCB8429ED2168532664D6B
+E609549E5FCCB8429ED216843266386B
+E6F6549E5DCCB8429ED2169032665B6B
+E6F6549E5DCCB8429ED2169032665B6B
+94F6549E5DCCB8D09ED20F9032AA5B6B
+E6F6549E5DCCB8429ED2169032665B6B
+E6F6545B5DCCC9429EFA169022665B6B
+E6F6549E5DCCB8429ED2169032665B6B
+E6F6549E5DCCB8429ED2169032665B6B
+E6F6549E5DCCB8429ED2169032665B6B
+E6F6549E5DCCB8429ED2169032665B6B
+E6B2549E8BCCB8429ED2161A3266F96B
+E6F654435DCCC6429E011690CA665B6B
+1CF6549E5DCCB8829ED2089032545B6B
+E6F6549E5DCCB8429ED2169032665B6B
+E6F6549E5DCCB8429ED2169032665B6B
+E6F6829E5D62B842A2D2169032665B75
+E6F6549E5DCCB8429ED2169032665B6B""".encode())
+
+phoenixAES.crack_file('data', [], True, False, 3)
+```
+
+- 结果如下：
+
+  ![](https://www.xiayutian.xyz/usr/assets/android/byd%E7%8E%8B%E6%9C%9D%E7%99%BD%E7%9B%92AES_img/image-20251111163405844.png)
+
+- 所以`k10`就是：`AA648D03D06D1AC2CA9DEB861AC1388D`；如果这里没推导出来就说明注入位置太单一了，换位置注入就好；
+
+- 这还只是`k10`，最初的`key`应该是`k0`，这个也有工具可以实现；
+
+项目地址：[//github.com/SideChannelMarvels/Stark](https://github.com/SideChannelMarvels/Stark:https)
+
+- 里面有一个`aes_keyschedule.c`文件，将其拷贝到本地并编译为可执行文件就可以使用命令行：
+
+  ```
+  gcc aes_keyschedule.c -o WhiteBoxAes
+  ```
+
+- 使用方式跟上秘钥和轮数就好；
+
+![](https://www.xiayutian.xyz/usr/assets/android/byd%E7%8E%8B%E6%9C%9D%E7%99%BD%E7%9B%92AES_img/image-20251111163808907.png)
+
+- 初始的`key`就是：`A87F1002B7DBC9FF882DC51F8A7DCFAD`；结合之前分析的`iv`应该是全0，去测试一下；
+
+![](https://www.xiayutian.xyz/usr/assets/android/byd%E7%8E%8B%E6%9C%9D%E7%99%BD%E7%9B%92AES_img/image-20251111164113728.png)
+
+- 响应也是正常解密的；
+
+![](https://www.xiayutian.xyz/usr/assets/android/byd%E7%8E%8B%E6%9C%9D%E7%99%BD%E7%9B%92AES_img/image-20251111164147941.png)
+
+## 4. 总结
+
+- 白盒AES的分析大概就是这么多，几百个字实际上分析起来没那么简单，还是花费了不少时间，你能独立把秘钥找出来白盒aes就基本不是难事了；
+
+- 另外，参数里有大量未知数据，还有个不知道哪来的`checkcode`，看着像`md5`，感兴趣的读者可自行去分析；我不想再看了；
+
+- 整体的逻辑可能不是特别通顺，毕竟分析的时候踩坑了到了写文章却会直奔正确答案，多多担待；
+
+- by：2025-11-11；
