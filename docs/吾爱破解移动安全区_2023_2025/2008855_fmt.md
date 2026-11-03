@@ -1,0 +1,137 @@
+
+# [Android 原创] 一些简单的近源攻击分享
+
+- 原帖：https://www.52pojie.cn/forum.php?mod=viewthread&tid=2008855
+- 抓取时间：2026-11-01T23:57:44
+
+## 一、钓鱼 WiFi 攻击
+
+### （1）前置知识
+
+钓鱼 WiFi 是一种网络攻击手法，通常通过模拟合法的 WiFi 网络来欺骗用户连接，从而窃取其敏感信息或进行其他恶意活动。攻击者会创建一个看似正常的无线网络，以引诱用户连接并输入个人信息，例如用户名、密码或信用卡信息。
+
+攻击者可以使用各种手段创建钓鱼 WiFi，包括伪造公共 WiFi 热点、模仿商家或机构提供的网络，或者使用社交工程手段欺骗用户。一旦用户连接到这样的网络，攻击者就能够拦截和监视其数据流量，可能导致个人隐私泄露、身份盗窃或其他不良后果。
+
+为了防范钓鱼 WiFi 攻击，用户应该谨慎选择连接的 WiFi 网络，避免连接不熟悉的公共网络，尤其是不加密或未经验证的网络。此外，使用虚拟专用网络（VPN）等安全措施也可以提高个人网络安全性。
+
+### （2）所用工具
+
+1. 可发射的无线网卡（最好是在 `kail` 中免驱动的）
+2. 攻击机 `kail`，手机一部
+
+### （3）详细步骤
+
+首先在 `kail` 中安装 `wifipumpkin3`：
+
+```
+apt-get install wifipumpkin3
+```
+
+将网卡与电脑连接，注意要连进 `kail` 虚拟机中。
+
+![](https://attach.52pojie.cn/forum/202502/23/194249kbglv0c2r2wd23pp.png)
+
+`image-20240114164942814.png` (13.12 KB, 下载次数: 0)
+
+[附件链接](https://www.52pojie.cn/forum.php?mod=attachment&aid=Mjc1Njk4N3xmNTY4ZTE0NHwxNzkzNTc3NDYxfDE2ODA4NnwyMDA4ODU1&nothumb=yes)
+
+2025-2-23 19:42 上传
+
+使用 `ifconfig` 命令查看网卡信息。
+
+![](https://attach.52pojie.cn/forum/202502/23/194251afl4429olz4hwj44.png)
+
+`image-20240114165054495.png` (159.09 KB, 下载次数: 0)
+
+[附件链接](https://www.52pojie.cn/forum.php?mod=attachment&aid=Mjc1Njk4OHxkNzhkNDY3NHwxNzkzNTc3NDYxfDE2ODA4NnwyMDA4ODU1&nothumb=yes)
+
+2025-2-23 19:42 上传
+
+可以看到 `wlan0` 已经正常运行，接下来运行 `wifipumpkin3`。
+
+![](https://attach.52pojie.cn/forum/202502/23/194253lzq9ddxlrnxvdzc3.png)
+
+`image-20240114165221859.png` (114.16 KB, 下载次数: 0)
+
+[附件链接](https://www.52pojie.cn/forum.php?mod=attachment&aid=Mjc1Njk4OXw4MGRjZGIyM3wxNzkzNTc3NDYxfDE2ODA4NnwyMDA4ODU1&nothumb=yes)
+
+2025-2-23 19:42 上传
+
+接下来进行钓鱼 WiFi 的相关配置，更多的配置以及插件可由同学们自行探索，作者仅作最简单的示范。
+
+```
+wp3 > set interface wlan0 # 设置使用的网卡
+wp3 > set ssid QFNU_free # 这里设置钓鱼 wifi 的名称
+wp3 > set proxy noproxy
+wp3 > ignore pydns_server
+wp3 > start # 启动钓鱼 wifi
+```
+
+启动后即可等待目标连接钓鱼 WIFI，在目标的手机端已经可以看到该网络。
+
+![](https://attach.52pojie.cn/forum/202502/23/194257r3zmmbfu5uu5755u.png)
+
+`image-20240114171850828.png` (40.04 KB, 下载次数: 0)
+
+[附件链接](https://www.52pojie.cn/forum.php?mod=attachment&aid=Mjc1Njk5MXwwYWM3YzQwNHwxNzkzNTc3NDYxfDE2ODA4NnwyMDA4ODU1&nothumb=yes)
+
+2025-2-23 19:42 上传
+
+目标连接钓鱼 WIFI 网络 `QFNU_free`，目标连接钓鱼 WiFi 后网路连接正常。
+
+![](https://attach.52pojie.cn/forum/202502/23/194302srtj222ej8doz5dx.png)
+
+`image-20240114172024753.png` (54.14 KB, 下载次数: 0)
+
+[附件链接](https://www.52pojie.cn/forum.php?mod=attachment&aid=Mjc1Njk5M3wxZjM2NTBkYXwxNzkzNTc3NDYxfDE2ODA4NnwyMDA4ODU1&nothumb=yes)
+
+2025-2-23 19:43 上传
+
+我们在攻击者这段可以看到目标的一些访问数据，成功完成本次钓鱼 wifi 攻击。
+
+![](https://attach.52pojie.cn/forum/202502/23/194255xoig5wumu9h5w77h.png)
+
+`image-20240114171816537.png` (361.14 KB, 下载次数: 0)
+
+[附件链接](https://www.52pojie.cn/forum.php?mod=attachment&aid=Mjc1Njk5MHwwMTE3YWIyNnwxNzkzNTc3NDYxfDE2ODA4NnwyMDA4ODU1&nothumb=yes)
+
+2025-2-23 19:42 上传
+
+参考文章：[https://www.freebuf.com/articles/wireless/269933.html](https://www.freebuf.com/articles/wireless/269933.html)
+
+## 二、WIIF 暴力破解实验
+
+### （1）前置知识
+
+普通的无线路由器，加密方法一般使用 wpa、wpa2 或 wep，wep 因为太不安全极易被破解在现行的无线路由器上已基本取消。所以我们搜索到的待破 WiFi 基本都是 wpa 或 wpa2 加密的。至于使用认证服务器（如 radius 等）的 wpa 认证在个人无线 WiFi 领域基本不可能，所以通常我们能搜索到的待破 WiFi 都是基于本地密码的 wpa 或 wpa2 加密 WiFi。
+
+破解 wpa 和 wpa2 加密的 WiFi 网络的基本原理通俗来讲，我们需要先在无线网卡监听模式下搜集目标 WiFi 的信息，例如 `ssid`（WiFi 名称）、`BSSID`（也就是目标 WiFi 无线路由器的 `MAC`）、已连接的客户端 `mac`、信号强度等信息。然后发送伪造的取消关联的数据包迫使已连接到该 WiFi 的客户端与 WiFi 断开连接，重点是，断开连接后，客户端会重新尝试发起连接到该 WiFi 网络，这时客户端会发送一个带有认证密码的数据包以便请求重新连入 WiFi，这个包俗称为握手包。这时我们的攻击机利用攻击程序和无线网卡监听抓取到这个握手包，这个握手包里就含有 WiFi 密码，但这个密码当然是经过加密的，所以后续就需要我们使用攻击程序调用密码字典结合获取到的 `BSSID`、客户端 `MAC` 等信息进行运算，不断运算字典中的每一个密码，直到有一个密码使用 wpa 算法能算出一个与抓到的握手包中一致的加密字串，这个就是目标 WiFi 的密码了。如果把字典里的每一个密码都算过一遍仍然没有一个与抓取到的握手包加密字串一致的，就破解失败，退出，构造新的字典再试。
+
+### （2）所用工具
+
+- `kali` 攻击机
+- 无线网卡
+
+### （3）详细步骤
+
+将虚拟机连接上网卡，查看本机网卡情况
+
+启动 `wifite`：
+
+![](https://attach.52pojie.cn/forum/202502/23/194306o4pi8cyzbrfp2wio.png)
+
+`image-20240114181802763.png` (126.91 KB, 下载次数: 0)
+
+[附件链接](https://www.52pojie.cn/forum.php?mod=attachment&aid=Mjc1Njk5NXwzNGFiNjA4MnwxNzkzNTc3NDYxfDE2ODA4NnwyMDA4ODU1&nothumb=yes)
+
+2025-2-23 19:43 上传
+
+`wifite` 使用比较简单，选择需要暴力破解的 wifi 即可，这里以 `4455` 这个热点为例，`ctrl+C` 后我们输入前面的序号 `1`，选择该 wifi，经过一段时间的暴力破解后即可得到目的 wifi 的密码，这里可以看到 `4455` 的密码是 `qwe123456`
+
+![](https://attach.52pojie.cn/forum/202502/23/194308et7x1if2zuxvxsuy.png)
+
+`image-20240114182848652.png` (128.63 KB, 下载次数: 0)
+
+[附件链接](https://www.52pojie.cn/forum.php?mod=attachment&aid=Mjc1Njk5Nnw5ZjAzMmQ4NXwxNzkzNTc3NDYxfDE2ODA4NnwyMDA4ODU1&nothumb=yes)
+
+2025-2-23 19:43 上传

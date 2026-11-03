@@ -1,0 +1,111 @@
+
+# [Android 原创] 安卓协议逆向之frida hook百例三
+
+- 原帖: https://www.52pojie.cn/forum.php?mod=viewthread&tid=1865664
+- 抓取时间: 2026-11-01T21:36:21
+
+## 安卓协议逆向之frida hook百例三
+
+这次的例子是一个能模拟定位的沙箱App，其中我们使用这个功能是需要消费的而且有一个试用功能不过只能试用5次，本章会介绍怎么绕过和无限试用。由于法律问题以后的帖子除了笔者自己写的样本可能都不会贴出来了，所以我会尽可能的详细带大家一步步分析，（本文章偏入门，大佬勿喷）
+
+### frida配置
+
+```
+1.VS Code
+2.安卓模拟器（觉得哪个好用就用哪个）笔者这里使用的是真机
+3.frida配置（frida是配置在python的）笔者的Frida版本是14.2.14 Android版本11
+
+3> 分析工具
+```
+
+1. `jadx-gui` (反编译工具)
+2. `Charles`（抓包工具）
+（这期就差不多这么多工具）
+3> 分析过程
+4> 梦开始的地方
+
+![](https://attach.52pojie.cn/forum/202312/05/200920c6lh00uudlf0g060.png)
+图片1.png (60.31 KB, 下载次数: 0)
+[href="forum.php?mod=attachment&aid=MjY2MTkwNHxlYjZkNmUxNnwxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY2MTkwNHxlYjZkNmUxNnwxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes)
+2023-12-5 20:09 上传
+
+这里能看到我已经没有机会继续试用了，下面贴一张成功绕过的图
+![](https://attach.52pojie.cn/forum/202312/05/200931j4e4aqwzrnnqq0n7.jpg)
+图片2.jpg (54.69 KB, 下载次数: 0)
+[href="forum.php?mod=attachment&aid=MjY2MTkwNXwxYWUzMjdlZHwxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY2MTkwNXwxYWUzMjdlZHwxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes)
+2023-12-5 20:09 上传
+
+绕过之后功能都是正常使用的，OK，我们步入正题，拖入`IDA` 因为我们要做无限试用，所以直接搜试用，
+![](https://attach.52pojie.cn/forum/202312/05/200949ce7b2vasb8b2rs8t.jpg)
+图片3.jpg (71.38 KB, 下载次数: 0)
+[href="forum.php?mod=attachment&aid=MjY2MTkwNnxkNDhjNGRjZXwxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY2MTkwNnxkNDhjNGRjZXwxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes)
+2023-12-5 20:09 上传
+
+搜索结果如图，我们点进去是能看到这是一个 对象下的一个静态方法返回的是一个字符串，那么好我们查看交叉引用，往回跟
+是一个`OnClick`方法，按钮点击事件，注意看到下面这张图我们会意识到这是一个被混淆了的App，但是这个`OnClick`方法里面又获取了我们刚才搜到的字符串，所以可以直接确定 这是一个我们点击试用后的那个按钮，看图解分析流程吧
+![](https://attach.52pojie.cn/forum/202312/05/200958tht2g30551jmjjfz.jpg)
+图片4.jpg (25.92 KB, 下载次数: 0)
+[href="forum.php?mod=attachment&aid=MjY2MTkwN3xkZmM2NmJiZnwxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY2MTkwN3xkZmM2NmJiZnwxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes)
+2023-12-5 20:09 上传
+![](https://attach.52pojie.cn/forum/202312/05/201000ynx84c5p4bnbud4r.png)
+图片5.png (67.53 KB, 下载次数: 0)
+[href="forum.php?mod=attachment&aid=MjY2MTkwOHwwMDE1NTRmYnwxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY2MTkwOHwwMDE1NTRmYnwxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes)
+2023-12-5 20:10 上传
+![](https://attach.52pojie.cn/forum/202312/05/201021t099d00ldm5hdhkt.png)
+图片6-1.png (9.57 KB, 下载次数: 0)
+[href="forum.php?mod=attachment&aid=MjY2MTkxMXxlM2E4NmQyZXwxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY2MTkxMXxlM2E4NmQyZXwxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes)
+2023-12-5 20:10 上传
+![](https://attach.52pojie.cn/forum/202312/05/201016unsss1j13bju1thz.jpg)
+图片6-2.jpg (89.05 KB, 下载次数: 0)
+[href="forum.php?mod=attachment&aid=MjY2MTkwOXwzOThhZmE1YXwxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY2MTkwOXwzOThhZmE1YXwxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes)
+2023-12-5 20:10 上传
+![](https://attach.52pojie.cn/forum/202312/05/201018oucpjzrv59bl9111.png)
+图片7.png (28.26 KB, 下载次数: 1)
+[href="forum.php?mod=attachment&aid=MjY2MTkxMHxiYzFmZjJmY3wxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY2MTkxMHxiYzFmZjJmY3wxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes)
+2023-12-5 20:10 上传
+![](https://attach.52pojie.cn/forum/202312/05/200402sapvmvmd4qqpq8vy.png)
+图片8.png (55.96 KB, 下载次数: 0)
+[href="forum.php?mod=attachment&aid=MjY2MTg3NXw4OTc0NTUwMHwxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY2MTg3NXw4OTc0NTUwMHwxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes)
+2023-12-5 20:04 上传
+![](https://attach.52pojie.cn/forum/202312/05/200405d26dryfxr4d8ttr4.png)
+图片9.png (58.78 KB, 下载次数: 0)
+[href="forum.php?mod=attachment&aid=MjY2MTg3NnwzNzgyMjA3ZnwxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY2MTg3NnwzNzgyMjA3ZnwxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes)
+2023-12-5 20:04 上传
+![](https://attach.52pojie.cn/forum/202312/05/200707qoezczqgz0rtjt7q.png)
+图片10.png (75.67 KB, 下载次数: 0)
+[href="forum.php?mod=attachment&aid=MjY2MTkwM3wxNDZiM2JlN3wxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY2MTkwM3wxNDZiM2JlN3wxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes)
+2023-12-5 20:07 上传
+![](https://attach.52pojie.cn/forum/202312/05/200647jtwihhltf5hyeh94.png)
+图片11.png (60.42 KB, 下载次数: 0)
+[href="forum.php?mod=attachment&aid=MjY2MTg5NXxjMzZiMWRiZnwxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY2MTg5NXxjMzZiMWRiZnwxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes)
+2023-12-5 20:06 上传
+![](https://attach.52pojie.cn/forum/202312/05/200649sppqijtdqqz31tie.png)
+图片12.png (13.64 KB, 下载次数: 0)
+[href="forum.php?mod=attachment&aid=MjY2MTg5NnwwZTE3ZjBiZXwxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY2MTg5NnwwZTE3ZjBiZXwxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes)
+2023-12-5 20:06 上传
+![](https://attach.52pojie.cn/forum/202312/05/200652rcsmt0zz6jaju55j.png)
+图片13.png (121.09 KB, 下载次数: 0)
+[href="forum.php?mod=attachment&aid=MjY2MTg5N3xiYzVhOTUzZHwxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY2MTg5N3xiYzVhOTUzZHwxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes)
+2023-12-5 20:06 上传
+![](https://attach.52pojie.cn/forum/202312/05/201120nw1wazxpwurwxdm3.png)
+图片8.png (55.96 KB, 下载次数: 0)
+[href="forum.php?mod=attachment&aid=MjY2MTkxMnxkNDRkMGZkYnwxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY2MTkxMnxkNDRkMGZkYnwxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes)
+2023-12-5 20:11 上传
+![](https://attach.52pojie.cn/forum/202312/05/201122isih4bbg9gpmwin6.png)
+图片9.png (58.78 KB, 下载次数: 0)
+[href="forum.php?mod=attachment&aid=MjY2MTkxM3w3ODc5NzdmOXwxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY2MTkxM3w3ODc5NzdmOXwxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes)
+2023-12-5 20:11 上传
+![](https://attach.52pojie.cn/forum/202312/05/201125eooebs9n3aq38990.png)
+图片10.png (75.67 KB, 下载次数: 0)
+[href="forum.php?mod=attachment&aid=MjY2MTkxNHw4NGM5OTljN3wxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY2MTkxNHw4NGM5OTljN3wxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes)
+2023-12-5 20:11 上传
+![](https://attach.52pojie.cn/forum/202312/05/200654qtnsfs6gsg35htgf.jpg)
+图片14.jpg (35.88 KB, 下载次数: 0)
+[href="forum.php?mod=attachment&aid=MjY2MTg5OHwyMjMzMWQ4Y3wxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY2MTg5OHwyMjMzMWQ4Y3wxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes)
+2023-12-5 20:06 上传
+![](https://attach.52pojie.cn/forum/202312/05/200657ns18h3z53hbbw3oi.png)
+图片14.png (83.32 KB, 下载次数: 0)
+[href="forum.php?mod=attachment&aid=MjY2MTg5OXwzM2E5YTBjZHwxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY2MTg5OXwzM2E5YTBjZHwxNzkzNTY4OTc5fDE2ODA4NnwxODY1NjY0&nothumb=yes)
+2023-12-5 20:06 上传
+![](https://attach.52pojie.cn/forum/202312/05/200659o34b3bb1ud3r3du3.png)
+图片15.png (104.78 KB, 下载次数: 0)

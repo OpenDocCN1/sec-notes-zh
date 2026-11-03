@@ -1,0 +1,43 @@
+
+# [Android 原创] 《安卓逆向这档事》番外实战篇1-某电影视全家桶
+
+- 原帖: https://www.52pojie.cn/forum.php?mod=viewthread&tid=1814917
+- 抓取时间: 2026-11-01T21:41:17
+
+![](https://pic.rmb.bdstatic.com/bjh/806bdcfee5aaf91ed799d9848e39bc631049.png)
+
+## 一、课程目标
+
+借助已学知识完成样本软件的去除签名校验、去广告与更新、布局优化
+
+## 二、工具
+
+1. 样本软件
+2. `jadx-gui`
+3. MT管理器/NP管理器
+4. 算法助手
+5. 开发助手
+
+## 三、课程内容
+
+全家桶：顾名思义，这些影视app都是一套源码开发的，多个渠道分发只是换了个包名和皮肤
+
+[www.52pojie.cn/thread-1811344-1-1.html](https://www.52pojie.cn/thread-1811344-1-1.html)
+
+[www.bilibili.com/video/BV1G8411e7HT/?share_source=copy_web&vd_source=3bc2e3777e91ab913d8a64fe4871a3b1](https://www.bilibili.com/video/BV1G8411e7HT/?share_source=copy_web&vd_source=3bc2e3777e91ab913d8a64fe4871a3b1)
+
+[www.bilibili.com/video/BV1Cp4y157bY/?share_source=copy_web&vd_source=3bc2e3777e91ab913d8a64fe4871a3b1](https://www.bilibili.com/video/BV1Cp4y157bY/?share_source=copy_web&vd_source=3bc2e3777e91ab913d8a64fe4871a3b1)
+
+PS:讲得特别好，建议对于`smali`还不熟悉的朋友可以多看几遍！！！
+
+### 1.去除广告
+
+关键字：`initsdk`、`loadad`、`initad`等
+
+广告关键词 |
+
+厂商 |
+
+文档 |
+
+`com.qq.e.ads`

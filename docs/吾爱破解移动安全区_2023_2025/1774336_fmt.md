@@ -1,0 +1,97 @@
+
+# [Android 原创] 唐僧英语另一种思路
+
+- 原帖：https://www.52pojie.cn/forum.php?mod=viewthread&tid=1774336
+- 抓取时间：2026-11-01T21:45:11
+
+今天看到 [@](https://www.52pojie.cn/home.php?mod=space&uid=1232186) 这位老哥分享了一个英语学习app，抱着一颗我也想学英语的心，下载了下来。安装，打开一气呵成。准备签到赚点流量，由于我在模拟器安装的，不想第三次就弹出了分享界面。WTF? 不能忍，不想再签到了。办它！
+
+![11.png](https://attach.52pojie.cn/forum/202304/15/180740i8zdvorqolodg8sq.png)
+
+`11.png` (40.54 KB, 下载次数: 2)  
+[附件](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYwNzgwOXxiNTk5MmM3MnwxNzkzNTY5NTA5fDE2ODA4NnwxNzc0MzM2&nothumb=yes)  
+2023-4-15 18:07 上传
+
+首先，卸载再安装，发现剩余流量和卸载前一样。可以推出，数据肯定是和服务器关联了，还绑定了IMEI。不多说，直接打开小黄鸟。通过分析，主要有下面两个请求。
+
+### 第一个请求
+
+第一个：第一次安装，将 `imei` 传给 `host`，返回剩余流量和已使用流量，然后将数据写到本地 `SharedPreference` 文件中保存。以后逻辑都是通过本地处理计算。
+
+![request1.png](https://attach.52pojie.cn/forum/202304/15/183434rtf3x300yx0yrfzy.png)
+
+`request1.png` (85.41 KB, 下载次数: 1)  
+[附件](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYwNzgyMnxiMDUzYWE3Y3wxNzkzNTY5NTA5fDE2ODA4NnwxNzc0MzM2&nothumb=yes)  
+2023-4-15 18:34 上传
+
+![response1.png](https://attach.52pojie.cn/forum/202304/15/183436zii4besr7xseivui.png)
+
+`response1.png` (42.6 KB, 下载次数: 1)  
+[附件](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYwNzgyM3wzZDQwMTg2ZXwxNzkzNTY5NTA5fDE2ODA4NnwxNzc0MzM2&nothumb=yes)  
+2023-4-15 18:34 上传
+
+### 第二个请求
+
+第二个接口，主要用于提交修改后台的总流量和已使用流量数据。进行同步，下载视频和签到都会调用这个接口将本地数据上传到后台保存。
+
+![request2.png](https://attach.52pojie.cn/forum/202304/15/184230ncfjk4mq4ccb4bbb.png)
+
+`request2.png` (48.3 KB, 下载次数: 1)  
+[附件](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYwNzgyNnwzMjA3OWRiOXwxNzkzNTY5NTA5fDE2ODA4NnwxNzc0MzM2&nothumb=yes)  
+2023-4-15 18:42 上传
+
+![response2.png](https://attach.52pojie.cn/forum/202304/15/184222romfmw9ih9fpthv6.png)
+
+`response2.png` (65.51 KB, 下载次数: 1)  
+[附件](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYwNzgyNXxmOTJkNWQ3ZHwxNzkzNTY5NTA5fDE2ODA4NnwxNzc0MzM2&nothumb=yes)  
+2023-4-15 18:42 上传
+
+## 修改本地数据
+
+好了，知道逻辑就好办了。只需要在第一个接口从后台获取的数据之后，修改保存到本地 `SP` 中的值，然后每次上传数据到后台的时候，将参数修改为我们想要的总流量和已使用流量给后台。
+
+直接打开MT，搜索第一个请求的 `url`。得到如下结果：`w()` 方法是联网请求方法，我们找到调用的地方，修改保存到本地的 `flow_total` 和 `flow_used` 的值。
+
+![1111.png](https://attach.52pojie.cn/forum/202304/15/184921wnavovgf1ov5fk8a.png)
+
+`1111.png` (138.14 KB, 下载次数: 2)  
+[附件](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYwNzgyOXxhNmNhYjE2YXwxNzkzNTY5NTA5fDE2ODA4NnwxNzc0MzM2&nothumb=yes)  
+2023-4-15 18:49 上传
+
+![2222.png](https://attach.52pojie.cn/forum/202304/15/185249e257fn51bbzf65gg.png)
+
+`2222.png` (97.69 KB, 下载次数: 2)  
+[附件](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYwNzgzMHw4ZjNjMWUzZXwxNzkzNTY5NTA5fDE2ODA4NnwxNzc0MzM2&nothumb=yes)  
+2023-4-15 18:52 上传
+
+![3333.png](https://attach.52pojie.cn/forum/202304/15/185426dptttpbp79dbytyp.png)
+
+`3333.png` (111 KB, 下载次数: 0)  
+[附件](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYwNzgzMXwzNjRkNTljZHwxNzkzNTY5NTA5fDE2ODA4NnwxNzc0MzM2&nothumb=yes)  
+2023-4-15 18:54 上传
+
+## 修改调用位置
+
+一样的方法找到第二个接口，修改这两个值。然后我们还需要把第一个接口的调用位置修改一下，让他每次启动应用都会调用一次，而不是只有第一次安装的时候调用。这样每次打开应用，剩余流量都会会变成你修改的值。
+
+![4444.png](https://attach.52pojie.cn/forum/202304/15/185808r2h3ffbfmwbrggmj.png)
+
+`4444.png` (151.28 KB, 下载次数: 1)  
+[附件](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYwNzgzMnw4Njg5ZTY2ZnwxNzkzNTY5NTA5fDE2ODA4NnwxNzc0MzM2&nothumb=yes)  
+2023-4-15 18:58 上传
+
+![6666.png](https://attach.52pojie.cn/forum/202304/15/190531iz2mja0fifs000wa.png)
+
+`6666.png` (124.17 KB, 下载次数: 2)  
+[附件](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYwNzgzN3w5ZjkzOTAwZXwxNzkzNTY5NTA5fDE2ODA4NnwxNzc0MzM2&nothumb=yes)  
+2023-4-15 19:05 上传
+
+## 完工
+
+完工，这下不用再签到了。enjoy~~, 永远的2048。
+
+![7777.png](https://attach.52pojie.cn/forum/202304/15/190720xu9s0sclsnu69emr.png)
+
+`7777.png` (259.86 KB, 下载次数: 1)  
+[附件](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYwNzgzOHw4Njk0MjJiM3wxNzkzNTY5NTA5fDE2ODA4NnwxNzc0MzM2&nothumb=yes)  
+2023-4-15 19:07 上传

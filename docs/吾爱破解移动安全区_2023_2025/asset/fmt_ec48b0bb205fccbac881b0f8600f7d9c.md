@@ -1,0 +1,274 @@
+
+# [Android 原创] luckfollowme arm学习篇 9 --在C内写arm介绍
+
+- 原帖: https://www.52pojie.cn/forum.php?mod=viewthread&tid=1780461
+- 抓取时间: 2026-11-01T21:44:46
+
+## luckfollowme arm学习篇 9 --在C内写arm介绍
+
+这章是为了给手写 `inline Hook` 做些准备的,要手写 `inline hook` 无非两种,
+
+一种就像 `dobby` 那样插入字节码
+
+```
+void EmitInt64(int64_t value) {
+    buffer_->Emit64(value);
+}
+```
+
+还有一种就是内联汇编 `asm` 或者通过 `gnu assembly`
+
+本次目标就是做到能够在 `C` 内联 `ARM`
+
+### Inline ASM
+
+`Inline Assembly` 一般来说 `c/c++` 的编译器都自带汇编编译器
+
+最明显的关键字就是 `asm`
+
+为了我们能够使用 `asm`
+
+您需要在 `CMakeLists.txt` 中加入:
+
+```
+# 启动支持 asm 汇编
+enable_language(ASM)
+```
+
+而 `asm` 一般跟 `volatile` 一起使用,来告诉编译器编译的时候不要进行优化。
+
+并且它还可以根据输出操作数和输入操作数来跟 `C/C++` 的变量进行交互
+
+```
+asm volatile("add %0,%1,%2":输出操作符:输入操作符1,输入操作符2)
+```
+
+组合起来就是这样:
+
+```
+int a = 100;
+int b = 10;
+int sum;
+asm volatile("add %0,%1,%2":"=r"(sum):"r"(a),"r"(b)); # sum = a + b
+```
+
+其中 `r` 代表通用寄存器 `=r` 表示输出到的位置
+
+下面是一个完整的例子:
+
+首先您创建一个 `AssemblyDemo.cpp`
+
+代码如下:
+
+```
+#include "stdio.h"
+#include "stdint.h"
+
+uint64_t _global_sum;
+
+int sum(int a,int b){
+    int _sum;
+    asm volatile("add %w0 ,%w1,%w2":"=r"(_sum):"r"(a),"r"(b));
+    return _sum;
+}
+
+int main()
+{
+
+    //1. 测试b 指令 死循环
+    while (true)
+    {
+        int ret = sum(10,99);
+        //3. 测试传参 和 调用方法
+        printf("sum:%d\n",  ret);
+        getchar();
+    }
+    return 0;
+}
+```
+
+随后您修改 `ndk_builder.py` 和 `CMakeLists.txt`
+
+```
+# CMakeLists.txt
+set(assmbly_demo1 
+    ./source/AssemblyDemo1.cpp
+)
+add_executable(assmblyDemo1 ${assmbly_demo1})
+```
+
+记住,我们只测试 `arm64` 的,您应该修改 `abis` 否则如果变成其他 `arch` 架构的平台,您写的汇编指令肯定是不通过的。
+
+```
+# abis = ["x86", "x86_64", "armeabi-v7a", "arm64-v8a"]
+abis = ["arm64-v8a"]
+```
+
+编译出来后,我们拖入到 `ida pro` 静态分析一下:
+
+![](https://attach.52pojie.cn/forum/202305/01/123130o6d6v5qn4vnzhs4n.png)
+
+01.png (62.2 KB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=MjYxMTU4NXw1MGIzOTAxY3wxNzkzNTY5NDg0fDE2ODA4NnwxNzgwNDYx&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjYxMTU4NXw1MGIzOTAxY3wxNzkzNTY5NDg0fDE2ODA4NnwxNzgwNDYx&nothumb=yes)
+
+2023-5-1 12:31 上传
+
+可以看到生成的 `add` 貌似并不是一条指令,这是正常的,因为它涉及到读取和写入局部变量也就是输出操作符和输出操作符的位置
+
+```
+# 分配局部变量空间
+SUB             SP, SP, #0x10
+# 储存 x0-x1 的参数
+STR             W0, [SP,#0xC]
+STR             W1, [SP,#8]
+# 读取 x0-x1 的参数
+LDR             W8, [SP,#0xC]
+LDR             W9, [SP,#8]
+# a + b
+ADD             W8, W8, W9
+# _sum = a + b
+STR             W8, [SP,#4]
+# 读取 _sum 到 x0 准备返回值
+LDR             W0, [SP,#4]
+# 释放局部变量空间
+ADD             SP, SP, #0x10
+# 返回
+RET
+```
+
+### GAS
+
+一般来说写 `gas` 更方便一点,它的全称叫 `GNU ASM`
+
+它里面有很多 `Assembly Directive` (汇编指示符) 来帮助我们编写各种格式的汇编
+
+汇编指示符有点多,直接说长篇大论有点麻烦,也不容易理解,我们通过将原有代码转换成 `GAS` 的汇编文件进行分析
+
+为了分析的更方便,后面我都写成 `.c` 文件而不是 `.cpp`
+
+1. 首先我们编写简单的 `HelloAssembly.c` 文件
+
+```
+#include 
+int add(int a,int b){
+    return a + b + 100;
+}
+int main(int argc, char const *argv[])
+{
+    while (1)
+    {
+        int a = 10;
+        int b = 30;
+        int sum = add(a,b);
+        printf("sum:%d\n",sum);
+        getchar();
+    }
+    /* code */
+    return 0;
+}
+```
+
+2. 通过 `llvm` 的 `aarch64` 交叉编译器转换成 `gas` 的汇编文件
+
+`aarch64` 的教程编译器我们使用 `clang` 它位于 `ndk` 的
+
+`ndk\25.1.8937393\toolchains\llvm\prebuilt\windows-x86_64\bin\aarch64-linux-android21-clang.cmd`
+
+使用方式如下:
+
+```
+aarch64-linux-android21-clang -S 转换成assembly -o 输出位置 来源文件
+```
+
+以下是我写的 `arrch64-assembly.bat` 下的脚本:
+
+```
+C:\Users\hp\AppData\Local\Android\Sdk\ndk\25.1.8937393\toolchains\llvm\prebuilt\windows-x86_64\bin\aarch64-linux-android21-clang  -S -o ./helloassembly.S    HelloAssembly.c
+```
+
+运行完您的 `helloassmbly.S` 内容如下:
+
+```
+    .text
+    .file   "HelloAssembly.c"
+    .globl  add                             // -- Begin function add
+    .p2align    2
+    .type   add,@function
+add:                                    // @add
+    .cfi_startproc
+// %bb.0:
+    sub sp, sp, #16
+    .cfi_def_cfa_offset 16
+    str w0, [sp, #12]
+    str w1, [sp, #8]
+    ldr w8, [sp, #12]
+    ldr w9, [sp, #8]
+    add w8, w8, w9
+    add w0, w8, #100
+    add sp, sp, #16
+    ret
+.Lfunc_end0:
+    .size   add, .Lfunc_end0-add
+    .cfi_endproc
+                                        // -- End function
+    .globl  main                            // -- Begin function main
+    .p2align    2
+    .type   main,@function
+main:                                   // @main
+    .cfi_startproc
+// %bb.0:
+    sub sp, sp, #48
+    stp x29, x30, [sp, #32]             // 16-byte Folded Spill
+    add x29, sp, #32
+    .cfi_def_cfa w29, 16
+    .cfi_offset w30, -8
+    .cfi_offset w29, -16
+    stur    wzr, [x29, #-4]
+    stur    w0, [x29, #-8]
+    str x1, [sp, #16]
+    b   .LBB1_1
+.LBB1_1:                                // =>This Inner Loop Header: Depth=1
+    mov w8, #10
+    str w8, [sp, #12]
+    mov w8, #30
+    str w8, [sp, #8]
+    ldr w0, [sp, #12]
+    ldr w1, [sp, #8]
+    bl  add
+    str w0, [sp, #4]
+    ldr w1, [sp, #4]
+    adrp    x0, .L.str
+    add x0, x0, :lo12:.L.str
+    bl  printf
+    bl  getchar
+    b   .LBB1_1
+.Lfunc_end1:
+    .size   main, .Lfunc_end1-main
+    .cfi_endproc
+                                        // -- End function
+    .type   .L.str,[//www.52pojie.cn/home.php?mod=space&uid=245521" target="_blank"](https://www.52pojie.cn/home.php?mod=space&uid=245521:href="https)                  // @.str
+    .section    .rodata.str1.1,"aMS",@progbits,1
+.L.str:
+    .asciz  "sum:%d\n"
+    .size   .L.str, 8
+    .ident  "Android (8490178, based on r450784d) clang version 14.0.6 (https://android.googlesource.com/toolchain/llvm-project 4c603efb0cca074e9238af8b4106c30add4418f6)"
+    .section    ".note.GNU-stack","",@progbits
+```
+
+然后我们通过这个 `.S` 的 `gas` 汇编文件通过 `cmake` 生成:
+
+```
+set(assmbly_gas_demo1
+    ./source/assembly/helloassembly.S
+)
+add_executable(assmblygasdemo1 ${assmbly_gas_demo1})
+```
+
+您可以发现它依旧可以生成可执行程序。
+
+也就是说我们可以通过 `gas` 汇编文件写出跟 `c` 一样的效果
+
+汇编各位目前都看的懂吧,那么就差一点, `gas` 的 `assembly directive` 汇编助记符
+
+下章我们将会逐步分析

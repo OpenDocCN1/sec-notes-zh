@@ -1,0 +1,39 @@
+
+# [Android 原创] 《安卓逆向这档事》十、不是我说，有了IDA还要什么女朋友？
+
+- 原帖: https://www.52pojie.cn/forum.php?mod=viewthread&tid=1787667
+- 抓取时间: 2026-11-01T21:43:01
+
+![](http://pic.rmb.bdstatic.com/bjh/cc9934d4392e49ed2c51e35cf94ab8e2.png)
+
+## 一、课程目标
+
+1. 初识`ELF`文件格式、常见节区
+2. 了解`NDK`开发，写一个简单的`so`
+3. 学习`IDA Pro`工具的使用来分析`so`文件
+4. 通过学习`ARM`基础知识，能进行简单的修改
+5. 通过`ChatGPT`&`IDA`快速分析二进制文件
+
+## 二、工具
+
+1. 教程Demo(更新)
+2. MT管理器/NP管理器
+3. `IDA Pro`
+4. 雷电模拟器
+5. `Android Studio`
+
+## 三、课程内容
+
+### 1. 初识ELF文件格式
+
+`ELF`（Executable and Linkable Format）是一种可执行和可链接的文件格式，是linux底下二进制文件，可以理解为windows下的`PE`文件，在Android中可以比作`SO`，方便函数的移植，在常用于保护Android软件，增加逆向难度。
+
+`ELF`文件的主要组成部分包括：
+
+- `ELF Header`：文件头，描述文件的基本信息
+- `Program Header Table`：程序头表，描述进程映像的布局
+- `Section Header Table`：节区头表，描述文件的各个节区
+
+节区名 |
+描述 |
+`.text`

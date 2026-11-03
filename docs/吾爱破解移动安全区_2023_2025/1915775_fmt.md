@@ -1,0 +1,70 @@
+
+# [Android 分享] 长安二代CS75Plus，自签app安装app到车机
+
+- 原帖：https://www.52pojie.cn/forum.php?mod=viewthread&tid=1915775
+- 抓取时间：2026-11-02T01:15:15
+
+## 声明
+
+> 本文章中所有内容仅供研究、学习交流使用，不能用作其他任何目的，严禁用于商业用途和非法用途，否则一切后果自负，与作者无关。如有侵权请联系作者删除文章。
+
+## 前言
+
+手里有长安的都知道，长安汽车除了部分车机有应用商店，自己想安装软件，要费点功夫，老版本可以解锁后挂载 `system` 分区用 `adb root` 安装 app，很多人叫这种方式为扎根。但是新版本限制了这部分权限，导致无法解锁挂载 `system` 分区。
+
+那为啥不用 `adb install` 直接安装呢？因为安装会验证证书这些，导致不能成功安装，所以本文就是想办法解除该限制。
+
+## 流程
+
+如何定位到关键点这里不过多赘述，最终定位到 `boot-ext.vdex` 这个文件，然后转为 `dex`，丢到 `JEB` 里面，找到 `com.vecentek.security.CertificateManager` 这个包。
+
+![](https://attach.52pojie.cn/forum/202404/20/135815lkpsuhx9w4fxstkf.png)
+
+QQ截图20240420135011.png (69.87 KB, 下载次数: 0)
+
+[附件链接](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY5MDYzMHxkZjEzNDU4MXwxNzkzNTgyMTE1fDE2ODA4NnwxOTE1Nzc1&nothumb=yes)
+
+2024-4-20 13:58 上传
+
+找到 `isCheckAuth()` 这个方法，可以看到会检查指定包名是否在白名单，不在的话后面会 `parseSignature()` 解析签名，然后 `getSerialNumber()` 获取 `SerialNumber` 并和系统 app 的比对，所以这个签名序列号应该就是突破点，那我们尝试按照这个序列号生成一个签名，签一个 app 推进去试试。
+
+备注：`boot-ext` 这部分属于为辰加密，不知道这样写是长安要求还是怎样，反正这个也算留了个后手吧。
+
+## 生成证书
+
+先提取一个系统 app 的签名，然后打印信息瞧瞧序列号是多少。
+
+```
+keytool -printcert -file CERT.RSA
+```
+
+![](https://attach.52pojie.cn/forum/202404/20/140547nv0jcsqttc0hlhmh.png)
+
+QQ截图20240420140532.png (268.52 KB, 下载次数: 1)
+
+[附件链接](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY5MDYzMXwzMWNhYjM3MHwxNzkzNTgyMTE1fDE2ODA4NnwxOTE1Nzc1&nothumb=yes)
+
+2024-4-20 14:05 上传
+
+```
+#生成私钥
+openssl genrsa -out private.key 2048
+
+#生成v1证书
+openssl req -new -key private.key -out csr.csr -subj "/emailAddress=auto_release@auto-pai.com/CN=SCM/OU=Software/O=WTCL/L=HaiDian/ST=Beijing/C=CN"
+
+openssl x509 -req -in csr.csr -signkey private.key -out certificate.crt -days 18250 -set_serial 0xddb66eefd98476f3
+
+#将证书和私钥导出到 PKCS12 格式的密钥库文件
+openssl pkcs12 -export -in certificate.crt -inkey private.key -out cert.p12 -name cert
+
+#生成jks
+keytool -importkeystore -srckeystore cert.p12 -srcstorepass 123456789 -srcstoretype PKCS12 -destkeystore cert.jks -deststoretype JKS -deststorepass 123456789 -noprompt
+
+#签名
+java -jar apksigner.jar sign --ks cert.jks --ks-pass env:password --ks-key-alias "cert" --out "test_sign.apk" "test.apk"
+```
+
+### 提示
+
+此方法可以应用于长安大部分车型，弊端是安装的软件不能卸载，因为这样修改签名会被识别成系统应用不允许卸载，只能恢复出厂。

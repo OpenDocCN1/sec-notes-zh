@@ -1,0 +1,31 @@
+
+# [Android 分享] 去除HyperOS2对第三方应用安装系统应用的限制 论坛关于安卓系统的相关分析文章好少...
+
+- 原帖: https://www.52pojie.cn/forum.php?mod=viewthread&tid=2029216
+- 抓取时间: 2026-11-01T15:51:59.889Z
+
+## 去除 澎湃OS HyperOS2对第三方应用安装系统应用的限制
+
+`/system_ext/framework/miui-services.jar`
+
+搜 `not allow to install` 然后跳转
+
+![](https://attach.52pojie.cn/forum/202505/05/230957gio23n11573y5ddc.jpg)
+
+点第一个
+
+![](https://attach.52pojie.cn/forum/202505/05/231031vppxzeoje9r6oo56.jpg)
+
+然后继续跳转
+
+![](https://attach.52pojie.cn/forum/202505/05/231054mnjtmvi1jrjy2v9i.jpg)
+
+给 `v2` 赋值 0
+
+![](https://attach.52pojie.cn/forum/202505/05/231149u8kl07oo4ikf4tx8.jpg)
+
+![](https://attach.52pojie.cn/forum/202505/05/231151lwodzxyyxmxmzwxz.jpg)
+
+论坛关于安卓系统的相关分析文章好少 为什么呐
+
+仅有的分享 system super 相关的知识的也很少，
