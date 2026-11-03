@@ -1,0 +1,57 @@
+
+# [Web逆向] 记录一次某标准规范网的逆向分析
+
+原帖: https://www.52pojie.cn/forum.php?mod=viewthread&tid=2002450
+抓取时间: 2026-11-01T22:16:26
+本文章中所有内容仅供学习交流使用，不提供完整代码，旨在思路分析；
+前面由于工作需要搜索建筑规范的时候无意找到了这个网站，一时兴起就研究了一下；现在把分析思路整理一下交流学习，因为非专业纯爱好，如有不足还请指教；
+目标网址：
+aHR0cHM6Ly9vcGVuc3RkLnNhbXIuZ292LmNuLw==
+
+## 目录
+一、验证分析
+二、页面内容分析
+三、整体流程分析
+
+## 一、验证分析
+任意选了一篇可在线预览的规范；先走一遍流程：点在线预览之后直接是验证码，输入正确验证码之后会加载规范内容；
+![](https://attach.52pojie.cn/forum/202501/25/161108deskn5s9k2n9yann.png)
+然后想着看看源码：按 `F12` 无效，点击开发者工具直接跳转空白页；看到这里反而增加了分析代码的信心，猜想源码应该不会太难；使用 `Fiddler` 抓包发现两个反爬代码，一个跳转空白页，一个禁止 `F12`；
+![](https://attach.52pojie.cn/forum/202501/25/161111yk8h6gzdpeq60s0e.png)
+然后 `Fiddler` 设置自动断点在请求之后，刷新页面，把这两段代码删掉，就可以打开调试了；（可以在 `Fiddler` 设置自动替换，不然每次刷新都要删一遍）
+![](https://attach.52pojie.cn/forum/202501/25/161114j5vq5uvjpp4ojjjb.png)
+任意输入验证码后发现向该网址发送验证，验证失败返回 `error`，验证成功返回 `success`；
+![](https://attach.52pojie.cn/forum/202501/25/161122oeeir8j1tjt3wwwi.png)
+验证失败后会刷新图片，点击刷新会得到新的图片；
+![](https://attach.52pojie.cn/forum/202501/25/161125nh3zuzmqrr5ch3c8.png)
+这里图片和验证肯定是有联系的，不然怎么知道验证的是哪张图片，所以想到查看 `cookie`；
+![](https://attach.52pojie.cn/forum/202501/25/161128l3v6svq3xsq6ssy7.png)
+有两个参数，先看第一个参数，通过 URL 解码发现数据里有 7 个参数；
+![](https://attach.52pojie.cn/forum/202501/25/161130n30w94v30jefb9xp.png)
+直接搜 `_yfx_firsttime` 代码，发现所有的参数都在这里；前 5 个是时间戳，第 6 个是固定值，最后是调用 `re()` 和 `oe()` 字符串组合；
+![](https://attach.52pojie.cn/forum/202501/25/161135ye66vmxs0o4s8o30.png)
+根据逻辑转成 `python` 代码就得到了 `_yfx_cookie` 的值；
+![](https://attach.52pojie.cn/forum/202501/25/161140rd7yyga2wx4u8xf6.png)
+然后看 `JSESSIONID` 的值，搜了一遍发现没有，然后百度发现他是访问网页的时候生成在 `cookie` 里的，于是代码获取；
+![](https://attach.52pojie.cn/forum/202501/25/161143hqqgjggjdrk11z72.png)
+参数齐全写入 `cookie` 就可以请求验证码了，
+![](https://attach.52pojie.cn/forum/202501/25/161148xdfasopozgpgokyi.png)
+返回验证结果，验证成功；
+![](https://attach.52pojie.cn/forum/202501/25/161150zygwp4uyktxp4urp.png)
+这时再次请求网址返回就是目标网页源代码了；
+![](https://attach.52pojie.cn/forum/202501/25/161154xry3imyayo0ywhyt.png)
+验证就分析完了，然后进入页面内容的逻辑分析；
+
+## 二、页面内容分析
+进入页面分析发现他是很多小图片拼在一起的，并且每一块都有编号；
+![](https://attach.52pojie.cn/forum/202501/25/161201k8ulbbxessndyd6a.png)
+然后翻到源代码，分析发现他的规则很清晰；
+![](https://attach.52pojie.cn/forum/202501/25/161209rihuiqbzcq1b2bdu.png)
+然后他前面已经把编码的规则排好了；
+![](https://attach.52pojie.cn/forum/202501/25/161214otei4knjkfw7ijw7.png)
+那就按他这个规则来写；
+![](https://attach.52pojie.cn/forum/202501/25/161220g9iin8frdimm999m.png)
+因为不同的规范他的小图高宽都不一样，但是又没有直接提取高宽的地方，所以提取所有页面的坐标排序筛选；
+![](https://attach.52pojie.cn/forum/202501/25/161223t7vcapqack7kdj7d.png)
+现在我们获取乱序大图，抓包发现；
+![](https://attach.52pojie.cn/forum/202501/25/161228vkx40wskkjfzq3v3.png)

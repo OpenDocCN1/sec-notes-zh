@@ -1,0 +1,203 @@
+
+# [Web逆向] 【web逆向】优某愿 字体反混淆
+
+- 原帖: https://www.52pojie.cn/forum.php?mod=viewthread&tid=2015241
+- 抓取时间: 2026-11-01T22:12:22
+
+地址：aHR0cHM6Ly93d3cueW91enkuY24vY29sbGVnZXMvc2NvcmVsaW5lP2NvbGxlZ2VDb2RlPTEwMDAzJm5hbWU9JUU2JUI4JTg1JUU1JThEJThFJUU1JUE0JUE3JUU1JUFEJUE2​
+
+## 接口分析
+
+接口：eW91enkuZG1zLmRhdGFsaWIuYXBpLmVucm9sbGRhdGEuZW50ZXIuY29sbGVnZS5lbmNyeXB0ZWQudjIuZ2V0​
+
+![](https://gitlab.com/hansaes/aumanimage/-/raw/main/pictures/2025/03/16_10_32_12_20250316103211771.png)
+
+## 代码分析
+
+先下一个xhr断点
+
+![](https://gitlab.com/hansaes/aumanimage/-/raw/main/pictures/2025/03/16_10_33_51_20250316103350745.png)
+
+我们往上面找 可以看到有一个`promise.then`​异步，一般有这个异步的话，很多函数都是封装起来的。好比如你写代码的话，不会重复写同样的代码，这样会给我们逆向带来一些分析的难度
+
+可以看到这个地方显示了我们接口，我们就可以保证待会异步走的话也是我们对应的接口，我们先在这个位置打上一个断点，刷新页面
+
+> 
+
+在 JavaScript 中，`Promise` 是一个代表异步操作最终完成（或失败）及其结果的对象。它主要用于处理异步操作，例如网络请求、文件读取、定时器等，以避免传统回调函数带来的“回调地狱”（callback hell）问题，并提供更清晰和结构化的方式来管理异步代码。
+
+![](https://gitlab.com/hansaes/aumanimage/-/raw/main/pictures/2025/03/16_11_7_59_20250316110758708.png)
+
+断电断住了，我们打印一下`n`​发现是一个异步返回 我们就需要使用`then`关键词来获取里面返回的信息
+
+下面是一个`promise`示例
+
+> 
+
+```
+const promiseA = new Promise((resolve, reject) => {
+  resolve(777);
+});
+// 此时，“promiseA”已经敲定了
+promiseA.then((val) => console.log("异步日志记录有值：", val));
+console.log("立即记录");
+
+// 按以下顺序产生输出：
+// 立即记录
+// 异步日志记录有值：777
+```
+
+![](https://gitlab.com/hansaes/aumanimage/-/raw/main/pictures/2025/03/16_11_8_25_20250316110824713.png)
+
+在控制台输出之后放开断点
+
+```
+/* 自行修改 */
+n({
+    url: "youzy.dms.datalib.api.enrolldata.*************.encrypted.v2.get",
+    data: e
+}).then(res => console.log(res))
+```
+
+![](https://gitlab.com/hansaes/aumanimage/-/raw/main/pictures/2025/03/16_11_9_16_20250316110915848.png)
+
+可以看到`n`​的数据还是没有解密的，那这个函数应该只是返回请求之后的数据，我们继续往上面找
+
+![](https://gitlab.com/hansaes/aumanimage/-/raw/main/pictures/2025/03/16_11_23_19_20250316112318775.png)
+
+可以看到这里有一个平坦流
+
+> 
+
+平坦流通常指的是一种将嵌套或复杂的数据结构“扁平化”为简单的、线性的数据流或事件流
+
+```
+var t = Object(n.a)(regeneratorRuntime.mark((function t(e) {  无视
+    var r, n;
+    return regeneratorRuntime.wrap((function(t) {   无视
+        for (; ; )
+            switch (t.prev = t.next) {   这里来判断走哪个逻辑的
+            case 0:
+                return t.next = 2,   这里会走到 case2
+                i.api.sdk.dms.datalib.enrolldata.encryptedCollegeV2Get(e);
+            case 2:
+                return r = t.sent,   这里t.send 就相当于获取到上面 case0的 返回 encryptedCollegeV2Get 就是上面这个函数的返回值
+                n = r.result,
+                p(n),
+                t.abrupt("return", r);   这里就是整个函数的返回了
+            case 6:
+            case "end":
+                return t.stop()
+            }
+    }
+    ), t)
+}
+```
+
+![](https://gitlab.com/hansaes/aumanimage/-/raw/main/pictures/2025/03/16_11_24_28_20250316112427984.png)
+
+我们在 `t.abrupt("return", r)`​ 打上断点，可以发现返回的值已经发生了变化，可以推测是上面 `p`​函数来处理的
+
+![](https://gitlab.com/hansaes/aumanimage/-/raw/main/pictures/2025/03/16_11_28_32_20250316112832147.png)
+
+进到`p`函数里面，他应该是把上面的对象传进来一个个处理了, 继续进 `o`​ 函数里面看
+
+> 
+
+如果 `e.courses || e.fractions`​ 的结果是假值（意味着 `e`​ 既没有 `courses`​ 属性，也没有 `fractions`​ 属性，或者它们的值都是假值），那么就会调用函数 `o`​，并将当前数组元素 `e`​ 作为参数传递给 `o`​。
+
+![](https://gitlab.com/hansaes/aumanimage/-/raw/main/pictures/2025/03/16_11_29_36_20250316112935355.png)
+
+> 
+
+遍历对象 `t`​ 的自身属性。对于每个属性 `e`​：
+
+- 获取属性值 `r`​。
+- 如果 `r`​ 不是一个对象，不是 "-"​，不是 "—"​，并且是一个 truthy 值，同时属性名 `e`​ 不是 "`year`"​、"`dataType`"​、"`course`"​、"`batch`"​ 或 "`majorCode`"​ 中的任何一个，那么就使用函数 `Object(a.a)`​ 对 `t[e]`​ 的值进行处理并更新 `t[e]`​。
+- 无论之前的条件是否满足，如果 `t[e]`​ 的值是 "఺"​，则将其替换为 "—"​。
+
+![](https://gitlab.com/hansaes/aumanimage/-/raw/main/pictures/2025/03/16_11_32_31_20250316113230826.png)
+
+进入这个最后的`a`函数里看看
+
+![](https://gitlab.com/hansaes/aumanimage/-/raw/main/pictures/2025/03/16_11_33_58_20250316113357721.png)
+
+可以看到这个就是他的解密函数
+
+![](https://gitlab.com/hansaes/aumanimage/-/raw/main/pictures/2025/03/16_11_34_26_20250316113425783.png)
+
+在`w`的位置下一个断点，可以看到被解密了内容
+
+![](https://gitlab.com/hansaes/aumanimage/-/raw/main/pictures/2025/03/16_11_34_53_20250316113452916.png)
+
+其实到这里就已经解密完成了，我之前不知道还在一直在别的解密位置，后面发现别的就是字体混淆了，浪费了很多时间
+
+## 字体混淆
+
+可以看到f12中，查看网页的字不是一个正常的文字，应该是应该字体混淆了
+
+![](https://gitlab.com/hansaes/aumanimage/-/raw/main/pictures/2025/03/16_11_37_9_20250316113708983.png)
+
+进入他的css文件里面查看
+
+![](https://gitlab.com/hansaes/aumanimage/-/raw/main/pictures/2025/03/16_11_37_53_20250316113752510.png)
+
+可以看到在他的样式下面有一个`font-face`​，但是他对应的是 `cntext5`​不是我们要的，所以我们重新刷新页面，全局搜索一下
+
+> 
+
+`@font-face`​ 是一个 CSS at-rule，用于在网页中嵌入自定义字体。它的主要作用是允许开发者在用户的设备上没有安装特定字体的情况下，仍然可以使用这些字体来渲染网页上的文本。
+
+![](https://gitlab.com/hansaes/aumanimage/-/raw/main/pictures/2025/03/16_11_38_14_20250316113813683.png)
+
+可以搜索到三四个`woff2`，我们都可以下载看看里面都是什么内容，但是在scoreline中可以看到，里面有一个动态用js加载字体的代码。那么大概率就是这个`yfe2.woff2`​字体了
+
+![](https://gitlab.com/hansaes/aumanimage/-/raw/main/pictures/2025/03/16_11_40_7_20250316114007217.png)
+
+![](https://gitlab.com/hansaes/aumanimage/-/raw/main/pictures/2025/03/16_11_41_0_20250316114059900.png)
+
+直接下载这个字体
+
+![](https://gitlab.com/hansaes/aumanimage/-/raw/main/pictures/2025/03/16_11_42_18_20250316114217834.png)
+
+![](https://gitlab.com/hansaes/aumanimage/-/raw/main/pictures/2025/03/16_11_42_38_20250316114237250.png)
+
+可以用这个网站打开 https://www.bejson.com/ui/font/​ `woff2`文字的格式
+
+![](https://gitlab.com/hansaes/aumanimage/-/raw/main/pictures/2025/03/16_14_23_42_20250316142341976.png)
+
+复制这个到网站里面查询一下，发现查询就是对应的
+
+![](https://gitlab.com/hansaes/aumanimage/-/raw/main/pictures/2025/03/16_14_24_24_20250316142423057.png)
+
+![](https://gitlab.com/hansaes/aumanimage/-/raw/main/pictures/2025/03/16_14_25_6_20250316142505998.png)
+
+在从请求接口里面获取到这个加密的数据，`enterNum`​就可以猜测是录取数
+
+![](https://gitlab.com/hansaes/aumanimage/-/raw/main/pictures/2025/03/16_14_36_47_20250316143646265.png)
+
+前面扣出来的加密算法
+
+```
+function cnDeCryptV2(str) {
+    var k = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ", l = k.length, b, b0, b1, b2, b3, d = 0, s;
+    s = new Array(Math.floor(str.length / 4)),
+    b = s.length;
+    for (var i = 0; i  0 && (-1 != e.search(/【(.*?)】/) ? w += e.replace("【", "").replace("】", "") : e.length > 0 && (w += "&#x" + e + ";"))
+    }
+    )),
+    w
+}
+str = "001H0039001H0032001G001I001C001H002R001I002Z0034001E00380034001H003G002R002U002T002T"
+console.log(cnDeCryptV2(str))
+```
+
+结果是：&#xcfee​     &#x​这个前缀没啥用
+
+在网页里面搜索  \ucfee​  正好可以对应
+
+![](https://gitlab.com/hansaes/aumanimage/-/raw/main/pictures/2025/03/16_14_37_37_20250316143736411.png)
+
+接下来我们需要做一个映射表来实现比如 上面的 `{"ceff":5}`​ 就是对应的5 我们要获取全部的字编码和这个是什么字
+
+我们需要借助`fontTools`​库和`ddddocr`​库来实现，运行代码请自行配置好环境

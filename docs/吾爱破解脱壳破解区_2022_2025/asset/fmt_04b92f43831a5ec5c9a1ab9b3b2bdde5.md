@@ -1,0 +1,73 @@
+
+# [.NET逆向] 简单修改一下Fatbeans抓包软件
+
+- 原帖: https://www.52pojie.cn/forum.php?mod=viewthread&tid=2008016
+- 抓取时间: 2026-11-01T22:14:40
+
+这是一片入门帖子，大佬直接忽略。
+
+原帖地址：https://www.52pojie.cn/forum.php?mod=viewthread&tid=1989121
+
+感谢作者，此工具很好用，但是我在内网调试时，该软件打不开，必须联网才可以。根据自己需求稍微改动一下。
+
+![](https://attach.52pojie.cn/forum/202502/20/161713smjrxjxjmzyqt0qy.png)
+
+`2001.png` (861.77 KB, 下载次数: 1)
+
+[href="forum.php?mod=attachment&aid=Mjc1NjI1NXxlOGFmMmE4M3wxNzkzNTcxMjc4fDE2ODA4NnwyMDA4MDE2&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=Mjc1NjI1NXxlOGFmMmE4M3wxNzkzNTcxMjc4fDE2ODA4NnwyMDA4MDE2&nothumb=yes)
+
+2025-2-20 16:17 上传
+
+反编译发现混淆了。查一下 用`reactor`反混淆一下
+
+![](https://attach.52pojie.cn/forum/202502/20/161804qf7c2x1s7z2967zf.png)
+
+`2002.png` (930.47 KB, 下载次数: 1)
+
+[href="forum.php?mod=attachment&aid=Mjc1NjI1NnxkMGEyOGJjYXwxNzkzNTcxMjc4fDE2ODA4NnwyMDA4MDE2&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=Mjc1NjI1NnxkMGEyOGJjYXwxNzkzNTcxMjc4fDE2ODA4NnwyMDA4MDE2&nothumb=yes)
+
+2025-2-20 16:18 上传
+
+成功率还是蛮大的。
+
+![](https://attach.52pojie.cn/forum/202502/20/161829ehba0lub59f55ef0.png)
+
+`2003.png` (700.32 KB, 下载次数: 1)
+
+[href="forum.php?mod=attachment&aid=Mjc1NjI1N3w5YzhiOTZhNXwxNzkzNTcxMjc4fDE2ODA4NnwyMDA4MDE2&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=Mjc1NjI1N3w5YzhiOTZhNXwxNzkzNTcxMjc4fDE2ODA4NnwyMDA4MDE2&nothumb=yes)
+
+2025-2-20 16:18 上传
+
+下断点调试。`f11`跟着。跟到下面这里。
+
+![](https://attach.52pojie.cn/forum/202502/20/161854nib2ep8im7vve7b8.png)
+
+`2004.png` (1.47 MB, 下载次数: 1)
+
+[href="forum.php?mod=attachment&aid=Mjc1NjI1OHxiYmI4OTZhZHwxNzkzNTcxMjc4fDE2ODA4NnwyMDA4MDE2&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=Mjc1NjI1OHxiYmI4OTZhZHwxNzkzNTcxMjc4fDE2ODA4NnwyMDA4MDE2&nothumb=yes)
+
+2025-2-20 16:18 上传
+
+点进`axngdprUoT`看一眼
+
+![](https://attach.52pojie.cn/forum/202502/20/161929u6w8z84hqqlvtzlz.png)
+
+`2005.png` (1.27 MB, 下载次数: 0)
+
+[href="forum.php?mod=attachment&aid=Mjc1NjI2MHxhZmZjZGEwZHwxNzkzNTcxMjc4fDE2ODA4NnwyMDA4MDE2&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=Mjc1NjI2MHxhZmZjZGEwZHwxNzkzNTcxMjc4fDE2ODA4NnwyMDA4MDE2&nothumb=yes)
+
+2025-2-20 16:19 上传
+
+发现是更新方法，返回编辑刚才的函数。
+
+![](https://attach.52pojie.cn/forum/202502/20/162008qajo60rqp163964k.png)
+
+`2006.png` (1.89 MB, 下载次数: 1)
+
+[href="forum.php?mod=attachment&aid=Mjc1NjI2MXxkNWEyOTgwN3wxNzkzNTcxMjc4fDE2ODA4NnwyMDA4MDE2&nothumb=yes" target="_blank"](https://www.52pojie.cn/forum.php?mod=attachment&aid=Mjc1NjI2MXxkNWEyOTgwN3wxNzkzNTcxMjc4fDE2ODA4NnwyMDA4MDE2&nothumb=yes)
+
+2025-2-20 16:20 上传
+
+编辑完成，保存一下。断网运行，可以打开了。
+
+成品连接：下载:https://q11.lanzoub.com/ic25E2ofweyh 密码:bc27

