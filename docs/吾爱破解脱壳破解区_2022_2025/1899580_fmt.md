@@ -1,0 +1,45 @@
+
+# \[原创\] mac版解析视频号视频可在线播放
+
+- 原帖：<https://www.52pojie.cn/forum.php?mod=viewthread&tid=1899580>
+- 抓取时间：2026-11-01T22:36:24
+
+看到这个帖子觉得思路还挺新颖的，看到评论区有人问mac能不能用，于是试了下mac也是可以的
+
+解析视频号视频可在线播放or下载无需解密小白也能玩（纯手动版本） - 『[//www.52pojie.cn/forum-5-1.html](https://www.52pojie.cn/forum-5-1.html) [//www.52pojie.cn](https://www.52pojie.cn)区』 - [//www.52pojie.cn](https://www.52pojie.cn) - LCG - LSG |安卓破解|[//www.52pojie.cn/forum-32-1.html](https://www.52pojie.cn/forum-32-1.html)|[//www.52pojie.cn](http://www.52pojie.cn)
+
+我用的抓包工具是 `surge` 自带的 `surge dashboard`
+
+![](https://attach.52pojie.cn/forum/202403/12/141427nt0zhp9lhv9clc4s.png)
+
+`image.png` (1018.64 KB, 下载次数: 1)
+
+[附件下载](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY4MTExNnw1NzMwYTBiYnwxNzkzNTcyNTgyfDE2ODA4NnwxODk5NTgw&nothumb=yes)
+
+2024-3-12 14:14 上传
+
+然后就能看到数据包了：
+
+![](https://attach.52pojie.cn/forum/202403/12/141519wnw26xj2cxiuuyf7.png)
+
+`image.png` (743.52 KB, 下载次数: 0)
+
+[附件下载](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY4MTExN3w1NjJkYjNmOHwxNzkzNTcyNTgyfDE2ODA4NnwxODk5NTgw&nothumb=yes)
+
+2024-3-12 14:15 上传
+
+就是顺序有点乱，但还是能找到
+
+<https://findermp.video.qq.com/251/20302/stodownload?encfilekey=Cvvj5Ix3eewK0tHtibORqcsqchXNh0Gf3sJcaYqC2rQDibJSGv1CEcp2icUic9kicHAKRicg5KGgWLicribPzUOnsrQD61ymQM2UPCzr6fONLVic6hT96mgzJ5iaVE7VlKCQ2ppumY&adaptivelytrans=0&bizid=1023&dotrans=0&hy=SH&idx=1&m=&partscene=4&X-snsvideoflag=xW29&token=x5Y29zUxcibDZLFKmJR8KbzibS2ibuPaEeuRmP0kMibSn9Eu9B0eZpJO8xiayowtGsIlts14b4VeBAQw>
+
+如果用 `charles` 的话，因为 `charles` 数据包都混在一起，你可以设置下过滤规则
+
+![](https://attach.52pojie.cn/forum/202403/12/141803s9sdz4lkdkoj33z9.png)
+
+`image.png` (89.42 KB, 下载次数: 0)
+
+[附件下载](https://www.52pojie.cn/forum.php?mod=attachment&aid=MjY4MTExOXxhMjhkYmFkN3wxNzkzNTcyNTgyfDE2ODA4NnwxODk5NTgw&nothumb=yes)
+
+2024-3-12 14:18 上传
+
+这样就能看到视频号的链接了
