@@ -1,4 +1,5 @@
 +   [Dixie IT4500 信息安全讲义](docs/Dixie_IT4500_信息安全讲义/README.md)
++   [AI 逆向系列课程笔记](docs/aire/README.md)
 +   [ASU CSE365 网络安全导论笔记](docs/asu-cse365-cbrsec-intro/README.md)
 +   [ASU CSE466 计算机系统安全笔记](docs/asu-cse466-compsys-sec/README.md)
 +   [BlackHat 2020 会议笔记](docs/blackhat-2020/README.md)
