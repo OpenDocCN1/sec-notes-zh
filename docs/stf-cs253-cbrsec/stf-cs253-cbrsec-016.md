@@ -207,12 +207,12 @@ app.use((err, req, res, next) => {
 
 开发时，确保服务器只监听本地回环地址，防止同一网络下的其他机器访问。
 
-```javascript
-// 危险：监听所有网络接口（包括外部网络）
-app.listen(3000);
 
 ![](img/12d073e2d010137ccf484460158dc864_78.png)
 
+```javascript
+// 危险：监听所有网络接口（包括外部网络）
+app.listen(3000);
 // 安全：仅限本机访问
 app.listen(3000, 'localhost'); // 或 '127.0.0.1'
 ```

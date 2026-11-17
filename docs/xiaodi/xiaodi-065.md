@@ -472,10 +472,6 @@ SSTI是模板引擎的问题，而SPEL注入是Spring框架特有的表达式注
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_314.png)
 
 **漏洞代码示例：**
-```java
-import org.springframework.expression.Expression;
-import org.springframework.expression.ExpressionParser;
-import org.springframework.expression.spel.standard.SpelExpressionParser;
 
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_316.png)
 
@@ -487,6 +483,10 @@ import org.springframework.expression.spel.standard.SpelExpressionParser;
 
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_324.png)
 
+```java
+import org.springframework.expression.Expression;
+import org.springframework.expression.ExpressionParser;
+import org.springframework.expression.spel.standard.SpelExpressionParser;
 @GetMapping("/eval")
 public String eval(@RequestParam String expr) {
     ExpressionParser parser = new SpelExpressionParser();

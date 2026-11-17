@@ -240,11 +240,6 @@ NSE 允许用户使用 Lua 语言编写脚本，对发现的主机和端口进�
 
 ![](img/a7df427e55f695eab8b0dd8069b1cc49_177.png)
 
-```lua
--- 定义一个简单的测试脚本 test.nse
-prerule = function()
-    print("prerule 执行")
-end
 
 ![](img/a7df427e55f695eab8b0dd8069b1cc49_179.png)
 
@@ -252,14 +247,6 @@ end
 
 ![](img/a7df427e55f695eab8b0dd8069b1cc49_183.png)
 
-portrule = function(host, port)
-    -- 只对开放状态的 TCP 端口执行操作
-    if port.state == "open" and port.protocol == "tcp" then
-        print("端口扫描到: " .. host.ip .. ":" .. port.number)
-        return true -- 返回 true 以触发 action
-    end
-    return false
-end
 
 ![](img/a7df427e55f695eab8b0dd8069b1cc49_185.png)
 
@@ -267,10 +254,6 @@ end
 
 ![](img/a7df427e55f695eab8b0dd8069b1cc49_189.png)
 
-action = function(host, port)
-    print("action 执行于 " .. host.ip .. ":" .. port.number)
-    -- 这里可以插入实际的扫描或利用逻辑
-end
 
 ![](img/a7df427e55f695eab8b0dd8069b1cc49_191.png)
 
@@ -288,6 +271,23 @@ end
 
 ![](img/a7df427e55f695eab8b0dd8069b1cc49_205.png)
 
+```lua
+-- 定义一个简单的测试脚本 test.nse
+prerule = function()
+    print("prerule 执行")
+end
+portrule = function(host, port)
+    -- 只对开放状态的 TCP 端口执行操作
+    if port.state == "open" and port.protocol == "tcp" then
+        print("端口扫描到: " .. host.ip .. ":" .. port.number)
+        return true -- 返回 true 以触发 action
+    end
+    return false
+end
+action = function(host, port)
+    print("action 执行于 " .. host.ip .. ":" .. port.number)
+    -- 这里可以插入实际的扫描或利用逻辑
+end
 postrule = function()
     print("postrule 执行")
 end

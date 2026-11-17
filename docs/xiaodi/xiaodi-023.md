@@ -155,10 +155,6 @@ Cookie是一种将用户身份凭证存储在客户端（浏览器）的技术�
 
 在`login_c.php`中，我们需要处理以下步骤：
 
-```php
-// 1. 接收用户输入的账号密码
-$user = $_POST['username'];
-$pass = $_POST['password'];
 
 ![](img/98cd56e0aa66705d6a7914d44da5fdd7_100.png)
 
@@ -172,10 +168,6 @@ $pass = $_POST['password'];
 
 ![](img/98cd56e0aa66705d6a7914d44da5fdd7_110.png)
 
-// 2. 判定账号密码正确性（连接数据库查询）
-include '../config.php'; // 包含数据库配置文件
-$sql = "SELECT * FROM admin WHERE username='$user' AND password='$pass'";
-$result = mysqli_query($conn, $sql);
 
 ![](img/98cd56e0aa66705d6a7914d44da5fdd7_112.png)
 
@@ -183,6 +175,14 @@ $result = mysqli_query($conn, $sql);
 
 ![](img/98cd56e0aa66705d6a7914d44da5fdd7_116.png)
 
+```php
+// 1. 接收用户输入的账号密码
+$user = $_POST['username'];
+$pass = $_POST['password'];
+// 2. 判定账号密码正确性（连接数据库查询）
+include '../config.php'; // 包含数据库配置文件
+$sql = "SELECT * FROM admin WHERE username='$user' AND password='$pass'";
+$result = mysqli_query($conn, $sql);
 // 3. 如果正确，生成Cookie并保存
 if(mysqli_num_rows($result) > 0) {
     // 设置Cookie，存活时间为30天
@@ -211,11 +211,6 @@ if(mysqli_num_rows($result) > 0) {
 
 首页需要验证Cookie，防止未登录用户直接访问。
 
-```php
-// index_c.php
-// 1. 接收Cookie值
-$cookie_user = $_COOKIE['username'];
-$cookie_pass = $_COOKIE['password'];
 
 ![](img/98cd56e0aa66705d6a7914d44da5fdd7_128.png)
 
@@ -225,6 +220,11 @@ $cookie_pass = $_COOKIE['password'];
 
 ![](img/98cd56e0aa66705d6a7914d44da5fdd7_134.png)
 
+```php
+// index_c.php
+// 1. 接收Cookie值
+$cookie_user = $_COOKIE['username'];
+$cookie_pass = $_COOKIE['password'];
 // 2. 判定Cookie合法性（应与数据库存储值一致）
 if($cookie_user != 'admin' || $cookie_pass != '123456'){
     // 非法用户，跳转回登录页

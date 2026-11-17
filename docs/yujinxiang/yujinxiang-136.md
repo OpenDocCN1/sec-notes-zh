@@ -83,6 +83,9 @@ if (bSuccess) {
 1.  使用工具（如CE）找到检测数据的地址。
 2.  在代码中，使用 `WriteProcessMemory` 函数向该地址写入新数据。
 
+
+![](img/d93eb983c618728b667ede1148e95996_3.png)
+
 ```cpp
 // 假设检测标志的地址是 0x449714
 DWORD dwDetectFlagAddr = 0x449714;
@@ -101,9 +104,6 @@ BOOL bWriteOK = WriteProcessMemory(
     sizeof(bNewData),       // 要写入的字节数
     &bytesWritten           // 实际写入的字节数
 );
-
-![](img/d93eb983c618728b667ede1148e95996_3.png)
-
 // 恢复内存属性
 VirtualProtectEx(pi.hProcess, (LPVOID)dwDetectFlagAddr, 1, dwOldProtect, &dwOldProtect);
 
@@ -129,6 +129,14 @@ if (bWriteOK && bytesWritten > 0) {
 
 以下是生成和写入新路径的示例：
 
+
+![](img/d93eb983c618728b667ede1148e95996_7.png)
+
+
+![](img/d93eb983c618728b667ede1148e95996_9.png)
+
+![](img/d93eb983c618728b667ede1148e95996_11.png)
+
 ```cpp
 // 假设路径字符串的起始写入地址是 0x449714 + 0x09
 DWORD dwPathAddr = 0x44971D;
@@ -140,17 +148,9 @@ _stprintf(szNewPath, _T("X:\\Game\\Client\\game_%02d.exe"), iIndex);
 
 // 计算字符串长度（包含结束符）
 SIZE_T pathLen = (_tcslen(szNewPath) + 1) * sizeof(TCHAR);
-
-![](img/d93eb983c618728b667ede1148e95996_7.png)
-
 // 修改内存属性并写入
 DWORD dwOldProtect = 0;
 VirtualProtectEx(pi.hProcess, (LPVOID)dwPathAddr, pathLen, PAGE_EXECUTE_READWRITE, &dwOldProtect);
-
-![](img/d93eb983c618728b667ede1148e95996_9.png)
-
-![](img/d93eb983c618728b667ede1148e95996_11.png)
-
 BOOL bWriteOK = WriteProcessMemory(
     pi.hProcess,
     (LPVOID)dwPathAddr,

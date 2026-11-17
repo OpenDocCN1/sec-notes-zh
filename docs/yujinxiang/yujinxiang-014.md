@@ -77,15 +77,15 @@
 3.  **选中新对象**：调用“选中对象”函数，为新对象设置选中状态并显示血条等标志。
 
 **伪代码逻辑描述：**
+
+![](img/c43afaa72939a6b0ee8d3a9b568cf9e9_17.png)
+
 ```cpp
 // 1. 取消之前选中的对象
 call CancelSelectFunction(ObjectIndex_Previous);
 
 // 2. 将新对象的Index写入目标地址
 WriteMemory(TargetSelectAddress, ObjectIndex_New);
-
-![](img/c43afaa72939a6b0ee8d3a9b568cf9e9_17.png)
-
 // 3. 选中新的对象
 call SelectFunction(ObjectIndex_New);
 ```
@@ -101,25 +101,25 @@ call SelectFunction(ObjectIndex_New);
 ![](img/c43afaa72939a6b0ee8d3a9b568cf9e9_21.png)
 
 **关键代码示例（概念）：**
+
+![](img/c43afaa72939a6b0ee8d3a9b568cf9e9_23.png)
+
+
+![](img/c43afaa72939a6b0ee8d3a9b568cf9e9_25.png)
+
+![](img/c43afaa72939a6b0ee8d3a9b568cf9e9_27.png)
+
 ```cpp
 // 假设已知的函数地址和偏移量
 DWORD dwCancelFunc = 0xXXXXXX; // 取消选中函数地址
 DWORD dwSelectFunc = 0xYYYYYY; // 选中函数地址
 DWORD dwPlayerBase = 0xZZZZZZ; // 玩家对象基地址
 DWORD dwTargetAddr = dwPlayerBase + 0x1498; // 写入新对象ID的目标地址
-
-![](img/c43afaa72939a6b0ee8d3a9b568cf9e9_23.png)
-
 // 步骤1：取消当前选中（参数为之前对象的Index）
 __asm {
     mov ecx, [dwPlayerBase + 0x0C] // 获取当前选中对象的Index
     call [dwCancelFunc]
 }
-
-![](img/c43afaa72939a6b0ee8d3a9b568cf9e9_25.png)
-
-![](img/c43afaa72939a6b0ee8d3a9b568cf9e9_27.png)
-
 // 步骤2：写入新对象的Index（例如 0x12B3）
 DWORD dwNewObjectIndex = 0x12B3;
 WriteProcessMemory(..., dwTargetAddr, &dwNewObjectIndex, ...);

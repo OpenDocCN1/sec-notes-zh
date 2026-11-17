@@ -151,13 +151,13 @@ Filter是Java Web中的核心组件之一，用于**在请求到达Servlet或资
 **1. 创建Filter类**
 创建一个类实现 `javax.servlet.Filter` 接口，并重写其方法。
 
-```java
-package com.demo.filter;
 
 ![](img/23e3753a0c3bf2e9237690c7ba63441e_68.png)
 
 ![](img/23e3753a0c3bf2e9237690c7ba63441e_70.png)
 
+```java
+package com.demo.filter;
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
@@ -312,17 +312,17 @@ Listener主要分为三类：
 **1. 创建Session监听器类**
 实现 `HttpSessionListener` 接口。
 
+
+![](img/23e3753a0c3bf2e9237690c7ba63441e_128.png)
+
+![](img/23e3753a0c3bf2e9237690c7ba63441e_130.png)
+
 ```java
 package com.demo.listener;
 
 import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
-
-![](img/23e3753a0c3bf2e9237690c7ba63441e_128.png)
-
-![](img/23e3753a0c3bf2e9237690c7ba63441e_130.png)
-
 @WebListener // 标记为监听器，无需配置URL
 public class MySessionListener implements HttpSessionListener {
 

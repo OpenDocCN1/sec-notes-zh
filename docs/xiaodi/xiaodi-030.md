@@ -202,10 +202,6 @@ Express是Node.js中一个简洁的Web应用开发框架。以下是创建一个
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_113.png)
 
-```javascript
-const express = require('express');
-const bodyParser = require('body-parser'); // 引入body-parser库
-const app = express();
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_115.png)
 
@@ -213,11 +209,15 @@ const app = express();
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_119.png)
 
-// 使用body-parser中间件来解析POST请求的`application/x-www-form-urlencoded`数据
-app.use(bodyParser.urlencoded({ extended: true }));
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_121.png)
 
+```javascript
+const express = require('express');
+const bodyParser = require('body-parser'); // 引入body-parser库
+const app = express();
+// 使用body-parser中间件来解析POST请求的`application/x-www-form-urlencoded`数据
+app.use(bodyParser.urlencoded({ extended: true }));
 // 渲染登录页面 (GET请求)
 app.get('/login', (req, res) => {
     res.sendFile(__dirname + '/login.html');
@@ -559,9 +559,6 @@ JavaScript中每个对象都有一个内部属性 `__proto__`（原型），指�
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_286.png)
 
 **污染示例**：
-```javascript
-const obj1 = {};
-const obj2 = {};
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_288.png)
 
@@ -573,8 +570,6 @@ const obj2 = {};
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_296.png)
 
-// 正常情况下，obj2没有foo属性
-console.log(obj2.foo); // undefined
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_298.png)
 
@@ -582,8 +577,6 @@ console.log(obj2.foo); // undefined
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_302.png)
 
-// 通过obj1的原型链污染全局Object原型
-obj1.__proto__.foo = 'polluted value';
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_304.png)
 
@@ -591,6 +584,13 @@ obj1.__proto__.foo = 'polluted value';
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_308.png)
 
+```javascript
+const obj1 = {};
+const obj2 = {};
+// 正常情况下，obj2没有foo属性
+console.log(obj2.foo); // undefined
+// 通过obj1的原型链污染全局Object原型
+obj1.__proto__.foo = 'polluted value';
 // 此时，所有对象（包括obj2）都有了foo属性
 console.log(obj2.foo); // 输出: polluted value
 ```

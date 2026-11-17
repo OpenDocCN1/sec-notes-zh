@@ -133,12 +133,12 @@ echo count($cars);
 
 ![](img/2a743c42ed74b0f053f05f674934d208_42.png)
 
-```php
-$cars = array("Volvo", "BMW", "Toyota");
-$arrlength = count($cars);
 
 ![](img/2a743c42ed74b0f053f05f674934d208_44.png)
 
+```php
+$cars = array("Volvo", "BMW", "Toyota");
+$arrlength = count($cars);
 for($i = 0; $i < $arrlength; $i++) {
     echo $cars[$i];
     echo "<br>";

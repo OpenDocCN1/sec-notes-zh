@@ -98,8 +98,6 @@ SO文件在加载到内存时，系统会主动调用一些特定的函数来完
 ![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_41.png)
 
 例如，在C代码中：
-```c
-int global_var = 10; // 存储在内存数据段
 
 ![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_43.png)
 
@@ -109,6 +107,8 @@ int global_var = 10; // 存储在内存数据段
 
 ![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_46.png)
 
+```c
+int global_var = 10; // 存储在内存数据段
 void func() {
     int local_var = 20; // 存储在栈上
 }

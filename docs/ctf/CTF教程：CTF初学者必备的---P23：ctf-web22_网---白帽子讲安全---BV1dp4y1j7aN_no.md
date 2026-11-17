@@ -101,11 +101,11 @@ tshark -r 05.pcap -Y "icmp" -T fields -e data.data | awk '{printf "%c", strtonum
 如果你不熟悉复杂的命令行工具，使用Python脚本是更直观的方法。
 
 以下是实现相同功能的Python脚本示例：
-```python
-import binascii
 
 ![](img/96e615a9ee86afaf5399ed9ac4abc99e_13.png)
 
+```python
+import binascii
 with open('output.txt', 'r') as f:
     data = f.read().splitlines()
 

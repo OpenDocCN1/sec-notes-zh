@@ -20,7 +20,6 @@
 
 ![](img/b5699eacd861f8c16fd7689a3d74a340_4.png)
 
-```
 ![](img/b5699eacd861f8c16fd7689a3d74a340_0.png)
 ![](img/b5699eacd861f8c16fd7689a3d74a340_2.png)
 ![](img/b5699eacd861f8c16fd7689a3d74a340_4.png)
@@ -28,6 +27,8 @@
 ![](img/b5699eacd861f8c16fd7689a3d74a340_7.png)
 ![](img/b5699eacd861f8c16fd7689a3d74a340_9.png)
 ![](img/b5699eacd861f8c16fd7689a3d74a340_11.png)
+
+```
 ```
 
 ## 解题思路分析

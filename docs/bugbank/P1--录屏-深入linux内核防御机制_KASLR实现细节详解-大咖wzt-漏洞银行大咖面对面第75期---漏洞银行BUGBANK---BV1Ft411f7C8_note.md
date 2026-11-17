@@ -46,10 +46,6 @@ KASLR 源于用户空间的地址随机化（ASLR）。按时间顺序来看：
 
 在支持 KASLR 的 Linux 系统（如 4.18 内核）中，内核符号的地址在每次启动时都会变化。例如，进程创建函数 `do_fork` 的地址在两次启动后是不同的。
 
-```bash
-# 第一次启动后查看 do_fork 地址
-cat /proc/kallsyms | grep do_fork
-# 输出可能为：ffffffff8109b2c0 T do_fork
 
 ![](img/52c992f9dc81ff181a606b128c18ed84_13.png)
 
@@ -57,6 +53,10 @@ cat /proc/kallsyms | grep do_fork
 
 ![](img/52c992f9dc81ff181a606b128c18ed84_17.png)
 
+```bash
+# 第一次启动后查看 do_fork 地址
+cat /proc/kallsyms | grep do_fork
+# 输出可能为：ffffffff8109b2c0 T do_fork
 # 重启后再次查看
 cat /proc/kallsyms | grep do_fork
 # 输出可能变为：ffffffff8f09b2c0 T do_fork

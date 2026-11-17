@@ -144,8 +144,6 @@ truffle init
 
 **步骤2：编写智能合约**
 在`contracts/`目录下创建`HelloWorld.sol`文件，并输入以下Solidity代码：
-```solidity
-pragma solidity ^0.8.0;
 
 ![](img/f7f6f6ed9c1792d6afe4cd164e95f3b9_31.png)
 
@@ -159,6 +157,8 @@ pragma solidity ^0.8.0;
 
 ![](img/f7f6f6ed9c1792d6afe4cd164e95f3b9_41.png)
 
+```solidity
+pragma solidity ^0.8.0;
 contract HelloWorld {
     string public message;
 
@@ -189,13 +189,13 @@ contract HelloWorld {
 truffle compile
 ```
 在`migrations/`目录下创建部署脚本（如`2_deploy_contracts.js`）：
-```javascript
-const HelloWorld = artifacts.require("HelloWorld");
 
 ![](img/f7f6f6ed9c1792d6afe4cd164e95f3b9_49.png)
 
 ![](img/f7f6f6ed9c1792d6afe4cd164e95f3b9_50.png)
 
+```javascript
+const HelloWorld = artifacts.require("HelloWorld");
 module.exports = function (deployer) {
   deployer.deploy(HelloWorld);
 };

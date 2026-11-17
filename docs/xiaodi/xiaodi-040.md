@@ -167,10 +167,6 @@ JWT的全称是JSON Web Token。它通过特定算法构造出一串数据，用
 
 ![](img/d8f07c05240027d10c48a3c4f2867a06_124.png)
 
-```java
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import java.util.Date;
 
 ![](img/d8f07c05240027d10c48a3c4f2867a06_126.png)
 
@@ -190,6 +186,10 @@ import java.util.Date;
 
 ![](img/d8f07c05240027d10c48a3c4f2867a06_142.png)
 
+```java
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import java.util.Date;
 public String createJWT() {
     String secretKey = "your-secret-key"; // 密钥
     long nowMillis = System.currentTimeMillis();
@@ -225,12 +225,12 @@ public String createJWT() {
 
 ![](img/d8f07c05240027d10c48a3c4f2867a06_158.png)
 
-```java
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
 
 ![](img/d8f07c05240027d10c48a3c4f2867a06_160.png)
 
+```java
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
 public Claims parseJWT(String token) {
     String secretKey = "your-secret-key"; // 必须与创建时使用的密钥一致
     try {
@@ -571,9 +571,6 @@ java -jar target/your-app-name.jar
 
 ![](img/d8f07c05240027d10c48a3c4f2867a06_402.png)
 
-```java
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 ![](img/d8f07c05240027d10c48a3c4f2867a06_404.png)
 
@@ -595,6 +592,9 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 
 ![](img/d8f07c05240027d10c48a3c4f2867a06_421.png)
 
+```java
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 public class Application extends SpringBootServletInitializer { // 继承此类
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {

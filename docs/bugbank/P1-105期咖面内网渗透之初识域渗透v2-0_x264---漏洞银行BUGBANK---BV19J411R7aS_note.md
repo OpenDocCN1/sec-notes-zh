@@ -191,10 +191,6 @@
 ![](img/55c47fb1b8593331d1e94bc4f624a467_73.png)
 
 **基本流程代码描述**：
-```plaintext
-1. 信息收集 (Information Gathering)
-   -> 执行命令：`net view /domain` 查看域名称
-   -> 执行命令：`net group “domain computers” /domain` 查看域内计算机
 
 ![](img/55c47fb1b8593331d1e94bc4f624a467_74.png)
 
@@ -202,8 +198,6 @@
 
 ![](img/55c47fb1b8593331d1e94bc4f624a467_76.png)
 
-2. 权限提升 (Privilege Escalation)
-   -> 在本地计算机寻找漏洞，从普通用户提权为本地管理员。
 
 ![](img/55c47fb1b8593331d1e94bc4f624a467_77.png)
 
@@ -213,9 +207,6 @@
 
 ![](img/55c47fb1b8593331d1e94bc4f624a467_80.png)
 
-3. 凭证窃取 (Credential Theft)
-   -> 转储内存中的密码哈希：使用工具如 Mimikatz
-   -> 代码示例（概念）：`sekurlsa::logonpasswords`
 
 ![](img/55c47fb1b8593331d1e94bc4f624a467_81.png)
 
@@ -225,9 +216,6 @@
 
 ![](img/55c47fb1b8593331d1e94bc4f624a467_84.png)
 
-4. 横向移动 (Lateral Movement)
-   -> 利用窃取的凭证，尝试登录域内其他计算机。
-   -> 例如使用：`psexec \\目标IP -u 域用户 -p 密码 cmd`
 
 ![](img/55c47fb1b8593331d1e94bc4f624a467_85.png)
 
@@ -237,8 +225,6 @@
 
 ![](img/55c47fb1b8593331d1e94bc4f624a467_88.png)
 
-5. 定位域管理员 (Find Domain Admin)
-   -> 寻找域管理员登录的机器，并设法控制它。
 
 ![](img/55c47fb1b8593331d1e94bc4f624a467_89.png)
 
@@ -248,6 +234,20 @@
 
 ![](img/55c47fb1b8593331d1e94bc4f624a467_92.png)
 
+```plaintext
+1. 信息收集 (Information Gathering)
+   -> 执行命令：`net view /domain` 查看域名称
+   -> 执行命令：`net group “domain computers” /domain` 查看域内计算机
+2. 权限提升 (Privilege Escalation)
+   -> 在本地计算机寻找漏洞，从普通用户提权为本地管理员。
+3. 凭证窃取 (Credential Theft)
+   -> 转储内存中的密码哈希：使用工具如 Mimikatz
+   -> 代码示例（概念）：`sekurlsa::logonpasswords`
+4. 横向移动 (Lateral Movement)
+   -> 利用窃取的凭证，尝试登录域内其他计算机。
+   -> 例如使用：`psexec \\目标IP -u 域用户 -p 密码 cmd`
+5. 定位域管理员 (Find Domain Admin)
+   -> 寻找域管理员登录的机器，并设法控制它。
 6. 攻击域控制器 (Attack Domain Controller)
    -> 利用获取的高权限，最终攻陷域控制器。
 ```

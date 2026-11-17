@@ -224,13 +224,13 @@ echo "Welcome, " . $name;
 
 **后端代码示例与防护：**
 存在漏洞的代码可能在存储和读取时都未过滤：
+
+![](img/a5d5f7a5324736ec4594dbde1c7b082f_146.png)
+
 ```php
 // 存储留言（未过滤）
 $message = $_POST['message'];
 $sql = "INSERT INTO guestbook (message) VALUES ('$message')";
-
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_146.png)
-
 // 读取并显示留言（未过滤）
 $result = mysqli_query($conn, "SELECT message FROM guestbook");
 while($row = mysqli_fetch_assoc($result)) {

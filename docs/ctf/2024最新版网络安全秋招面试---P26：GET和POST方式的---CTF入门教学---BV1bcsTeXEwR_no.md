@@ -34,20 +34,20 @@ GET和POST是HTTP协议中用于向服务器提交或请求数据的两种主要
     *   相对于GET，**安全性较高**。
 
 以下是两种方式的直观对比：
+
+![](img/3a67ca79740f5ea5b9659de99c1dab12_10.png)
+
+
+![](img/3a67ca79740f5ea5b9659de99c1dab12_12.png)
+
 ```http
 # GET请求示例（参数在URL中）
 GET /login.php?username=gaga&password=123456 HTTP/1.1
 Host: example.com
-
-![](img/3a67ca79740f5ea5b9659de99c1dab12_10.png)
-
 # POST请求示例（参数在请求体中）
 POST /login.php HTTP/1.1
 Host: example.com
 Content-Type: application/x-www-form-urlencoded
-
-![](img/3a67ca79740f5ea5b9659de99c1dab12_12.png)
-
 username=gaga&password=123456
 ```
 

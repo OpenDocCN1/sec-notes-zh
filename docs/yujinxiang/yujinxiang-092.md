@@ -20,20 +20,20 @@
 
 ![](img/d5b78ea0bf56cfbc6d6db91b22a1ec7a_3.png)
 
+
+![](img/d5b78ea0bf56cfbc6d6db91b22a1ec7a_5.png)
+
+
+![](img/d5b78ea0bf56cfbc6d6db91b22a1ec7a_7.png)
+
 ```cpp
 // 假设变量定义
 float targetX, targetY;
 // 从UI控件更新目标坐标
 targetX = GetFloatFromEditControl("editTargetX");
 targetY = GetFloatFromEditControl("editTargetY");
-
-![](img/d5b78ea0bf56cfbc6d6db91b22a1ec7a_5.png)
-
 // 调用寻路函数
 bool result = PathFindTo(targetX, targetY);
-
-![](img/d5b78ea0bf56cfbc6d6db91b22a1ec7a_7.png)
-
 // 输出调试信息
 float distance = CalculateDistance(GetCurrentX(), GetCurrentY(), targetX, targetY);
 DebugPrint("寻路结果: %d, 当前距离: %f, 目标坐标: (%f, %f)", result, distance, targetX, targetY);

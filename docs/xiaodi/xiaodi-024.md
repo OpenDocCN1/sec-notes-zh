@@ -156,10 +156,6 @@ $error = $_FILES['file']['error'];   // 错误代码
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_110.png)
 
-```php
-// 定义目标路径
-$target_dir = "uploads/";
-$target_file = $target_dir . basename($name);
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_112.png)
 
@@ -173,6 +169,10 @@ $target_file = $target_dir . basename($name);
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_121.png)
 
+```php
+// 定义目标路径
+$target_dir = "uploads/";
+$target_file = $target_dir . basename($name);
 // 移动文件
 if (move_uploaded_file($tmp_name, $target_file)) {
     echo "文件上传成功！";
@@ -290,20 +290,20 @@ if (move_uploaded_file($tmp_name, $target_file)) {
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_210.png)
 
-```php
-// 定义黑名单后缀
-$black_ext = array('php', 'asp', 'jsp', 'aspx');
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_212.png)
 
-// 获取上传文件的后缀名
-$filename = $_FILES['file']['name'];
-$ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_214.png)
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_216.png)
 
+```php
+// 定义黑名单后缀
+$black_ext = array('php', 'asp', 'jsp', 'aspx');
+// 获取上传文件的后缀名
+$filename = $_FILES['file']['name'];
+$ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
 // 判断是否在黑名单中
 if (in_array($ext, $black_ext)) {
     die("非法后缀文件，禁止上传！");
@@ -355,9 +355,6 @@ if (in_array($ext, $black_ext)) {
 
 以下是实现代码：
 
-```php
-// 定义白名单后缀
-$white_ext = array('jpg', 'jpeg', 'png', 'gif');
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_246.png)
 
@@ -373,14 +370,17 @@ $white_ext = array('jpg', 'jpeg', 'png', 'gif');
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_257.png)
 
-// 获取上传文件的后缀名
-$filename = $_FILES['file']['name'];
-$ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_259.png)
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_261.png)
 
+```php
+// 定义白名单后缀
+$white_ext = array('jpg', 'jpeg', 'png', 'gif');
+// 获取上传文件的后缀名
+$filename = $_FILES['file']['name'];
+$ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
 // 判断是否在白名单中
 if (!in_array($ext, $white_ext)) {
     die("非法文件类型，仅允许上传图片！");
@@ -430,16 +430,11 @@ MIME类型是浏览器在HTTP头中声明的文件类型。我们可以通过检
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_289.png)
 
-```php
-// 定义允许的MIME类型
-$allowed_mime = array('image/jpeg', 'image/png', 'image/gif');
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_291.png)
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_293.png)
 
-// 获取上传文件的MIME类型
-$file_mime = $_FILES['file']['type'];
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_295.png)
 
@@ -447,6 +442,11 @@ $file_mime = $_FILES['file']['type'];
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_299.png)
 
+```php
+// 定义允许的MIME类型
+$allowed_mime = array('image/jpeg', 'image/png', 'image/gif');
+// 获取上传文件的MIME类型
+$file_mime = $_FILES['file']['type'];
 // 判断MIME类型是否合法
 if (!in_array($file_mime, $allowed_mime)) {
     die("非法文件类型，禁止上传！");

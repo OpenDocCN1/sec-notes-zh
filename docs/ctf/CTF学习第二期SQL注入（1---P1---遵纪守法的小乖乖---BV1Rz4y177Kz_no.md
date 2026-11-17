@@ -21,12 +21,12 @@ SQL注入发生在Web应用程序未能对用户输入进行有效验证或过�
 ![](img/c88105d2ac362e9b4392f9ddc6210447_7.png)
 
 其核心过程可以概括为以下代码逻辑：
-```sql
--- 应用程序预期的查询（例如用户登录）
-SELECT * FROM users WHERE username = ‘用户输入的用户名’ AND password = ‘用户输入的密码’;
 
 ![](img/c88105d2ac362e9b4392f9ddc6210447_9.png)
 
+```sql
+-- 应用程序预期的查询（例如用户登录）
+SELECT * FROM users WHERE username = ‘用户输入的用户名’ AND password = ‘用户输入的密码’;
 -- 攻击者输入：在用户名处输入 `admin‘ --`
 -- 最终拼接成的恶意查询
 SELECT * FROM users WHERE username = ‘admin’ -- ’ AND password = ‘任意密码’;

@@ -102,11 +102,11 @@ url = “http://target.com/vuln_page.php”
 5.  发送请求并检查响应长度或内容：如果响应特征与“真”状态匹配（例如响应长度是1764），则说明该字符正确，将其追加到当前表名中，并跳出内层循环2，继续猜下一个位置。
 
 **代码结构示例**：
-```python
-import requests
 
 ![](img/6d75f9c0dfc731c41811872242c365e0_21.png)
 
+```python
+import requests
 def get_table_name():
     tables = []
     for offset in range(0, 2): # 获取前两个表

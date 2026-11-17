@@ -96,6 +96,12 @@ if(result == 0) {
 ![](img/21ea2d715e714ef665a9d86ba8ccd7ba_27.png)
 
 代码示例：
+
+![](img/21ea2d715e714ef665a9d86ba8ccd7ba_29.png)
+
+
+![](img/21ea2d715e714ef665a9d86ba8ccd7ba_31.png)
+
 ```c
 // 更新数据到变量
 UpdateData(TRUE);
@@ -105,15 +111,9 @@ int daysAdded = 0, pointsAdded = 0;
 
 // 调用充值函数
 int rechargeResult = a_t_t_t(m_strCardNumber.GetBuffer(200), m_strUsername.GetBuffer(200), NULL, &daysAdded, &pointsAdded);
-
-![](img/21ea2d715e714ef665a9d86ba8ccd7ba_29.png)
-
 // 释放缓冲区
 m_strCardNumber.ReleaseBuffer();
 m_strUsername.ReleaseBuffer();
-
-![](img/21ea2d715e714ef665a9d86ba8ccd7ba_31.png)
-
 // 处理结果
 if(rechargeResult == 0) {
     // 充值成功，daysAdded和pointsAdded已被填充
@@ -143,21 +143,21 @@ if(rechargeResult == 0) {
 *   同样，使用完毕后需要释放字符串缓冲区。
 
 代码示例：
+
+![](img/21ea2d715e714ef665a9d86ba8ccd7ba_41.png)
+
+
+![](img/21ea2d715e714ef665a9d86ba8ccd7ba_42.png)
+
 ```c
 // 更新数据到变量
 UpdateData(TRUE);
 
 // 调用登录函数
 int loginResult = login_function(m_strUsername.GetBuffer(200), m_strPassword.GetBuffer(200));
-
-![](img/21ea2d715e714ef665a9d86ba8ccd7ba_41.png)
-
 // 释放缓冲区
 m_strUsername.ReleaseBuffer();
 m_strPassword.ReleaseBuffer();
-
-![](img/21ea2d715e714ef665a9d86ba8ccd7ba_42.png)
-
 if(loginResult == 0) {
     // 登录成功，执行后续操作
 }

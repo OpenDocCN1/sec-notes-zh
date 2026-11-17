@@ -69,6 +69,11 @@ public function __wakeup() {
 
 ![](img/ea3534616268f3d9d55059a31988b627_39.png)
 
+
+![](img/ea3534616268f3d9d55059a31988b627_41.png)
+
+![](img/ea3534616268f3d9d55059a31988b627_43.png)
+
 ```php
 <?php
 class Demo {
@@ -99,11 +104,6 @@ class Demo {
 $obj = new Demo('123', 'get');
 $serialized = serialize($obj);
 echo "序列化后的字符串：\n" . $serialized . "\n\n";
-
-![](img/ea3534616268f3d9d55059a31988b627_41.png)
-
-![](img/ea3534616268f3d9d55059a31988b627_43.png)
-
 // 反序列化过程
 echo "开始反序列化：\n";
 unserialize($serialized);
@@ -151,6 +151,13 @@ unserialize($serialized);
 
 以下是题目核心代码逻辑：
 
+
+![](img/ea3534616268f3d9d55059a31988b627_67.png)
+
+![](img/ea3534616268f3d9d55059a31988b627_69.png)
+
+![](img/ea3534616268f3d9d55059a31988b627_71.png)
+
 ```php
 <?php
 highlight_file(__FILE__);
@@ -170,13 +177,6 @@ class Demo {
         }
     }
 }
-
-![](img/ea3534616268f3d9d55059a31988b627_67.png)
-
-![](img/ea3534616268f3d9d55059a31988b627_69.png)
-
-![](img/ea3534616268f3d9d55059a31988b627_71.png)
-
 $input = $_GET['a'];
 if (isset($input) && !empty($input)) {
     $serialized = base64_decode($input);

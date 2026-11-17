@@ -419,12 +419,12 @@ php -r "$c=file_get_contents('http://example.com/file.txt'); file_put_contents('
 ![](img/926f6e594ba6daa8d534b730eec7335d_212.png)
 
 Python使用 `urllib` 或 `requests` 库。
-```bash
-# Python 2
-python -c "import urllib; urllib.urlretrieve('http://example.com/file.txt', 'local.txt')"
 
 ![](img/926f6e594ba6daa8d534b730eec7335d_214.png)
 
+```bash
+# Python 2
+python -c "import urllib; urllib.urlretrieve('http://example.com/file.txt', 'local.txt')"
 # Python 3
 python3 -c "import urllib.request; urllib.request.urlretrieve('http://example.com/file.txt', 'local.txt')"
 ```
@@ -437,14 +437,14 @@ python3 -c "import urllib.request; urllib.request.urlretrieve('http://example.co
 ![](img/926f6e594ba6daa8d534b730eec7335d_218.png)
 
 这两种脚本语言也能实现类似功能。
-```bash
-# Perl
-perl -e "use LWP::Simple; getstore('http://example.com/file.txt', 'local.txt');"
 
 ![](img/926f6e594ba6daa8d534b730eec7335d_220.png)
 
 ![](img/926f6e594ba6daa8d534b730eec7335d_222.png)
 
+```bash
+# Perl
+perl -e "use LWP::Simple; getstore('http://example.com/file.txt', 'local.txt');"
 # Ruby
 ruby -e "require 'open-uri'; File.write('local.txt', URI.open('http://example.com/file.txt').read)"
 ```

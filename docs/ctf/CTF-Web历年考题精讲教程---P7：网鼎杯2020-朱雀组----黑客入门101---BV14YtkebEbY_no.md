@@ -8,6 +8,9 @@
 
 首先，我们来看一下题目的核心源代码。代码的主要逻辑是接收两个参数，并对传入的函数名进行黑名单检查，然后动态调用函数。
 
+
+![](img/6499c0787657daf064f94b0ceae62a3b_3.png)
+
 ```php
 // 示例代码结构
 $func = $_REQUEST['func'];
@@ -15,9 +18,6 @@ $p = $_REQUEST['p'];
 
 // 黑名单数组
 $blacklist = ["system", "exec", "shell_exec", "passthru", ...];
-
-![](img/6499c0787657daf064f94b0ceae62a3b_3.png)
-
 if (!in_array($func, $blacklist)) {
     // 动态调用函数
     $result = call_user_func($func, $p);

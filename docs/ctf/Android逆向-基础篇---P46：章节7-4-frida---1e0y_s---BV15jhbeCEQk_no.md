@@ -49,6 +49,14 @@ Log.i("TAG", "刷新后的内容: " + getWelcomeText());
 
 以下是为本次演示准备的完整Python脚本，我们将逐段解析其作用：
 
+
+![](img/30b8c8083e56b69a5b46fa22fb295585_13.png)
+
+![](img/30b8c8083e56b69a5b46fa22fb295585_15.png)
+
+
+![](img/30b8c8083e56b69a5b46fa22fb295585_17.png)
+
 ```python
 import frida
 import sys
@@ -58,11 +66,6 @@ def on_message(message, data):
         print(f"[*] {message['payload']}")
     else:
         print(message)
-
-![](img/30b8c8083e56b69a5b46fa22fb295585_13.png)
-
-![](img/30b8c8083e56b69a5b46fa22fb295585_15.png)
-
 # JavaScript Hook 代码
 jscode = """
 Java.perform(function () {
@@ -77,9 +80,6 @@ Java.perform(function () {
     };
 });
 """
-
-![](img/30b8c8083e56b69a5b46fa22fb295585_17.png)
-
 # 连接到USB设备
 device = frida.get_usb_device()
 # 附加到目标应用进程

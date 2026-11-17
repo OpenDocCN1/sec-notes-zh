@@ -405,6 +405,11 @@ truffle test
 
 ![](img/3240d77ebb9dd9a14111406bce3a787e_71.png)
 
+
+![](img/3240d77ebb9dd9a14111406bce3a787e_73.png)
+
+![](img/3240d77ebb9dd9a14111406bce3a787e_74.png)
+
 ```solidity
 // 事件：用于在前端监听打赏
 event ImageTipped(
@@ -414,11 +419,6 @@ event ImageTipped(
     uint tipAmount,
     address payable author
 );
-
-![](img/3240d77ebb9dd9a14111406bce3a787e_73.png)
-
-![](img/3240d77ebb9dd9a14111406bce3a787e_74.png)
-
 function tipImageOwner(uint _id) public payable {
     // 验证ID有效
     require(_id > 0 && _id <= imageCount, 'Invalid image ID');

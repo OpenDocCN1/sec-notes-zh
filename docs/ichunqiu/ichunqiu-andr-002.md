@@ -185,12 +185,12 @@ startActivity(intent);
 ![](img/cf495bfa417e2038cf8bee4cba13d2a2_81.png)
 
 我们还可以修改界面元素，例如为一个按钮添加点击事件来修改文本框的内容：
-```java
-Button myButton = findViewById(R.id.my_button);
-EditText myEditText = findViewById(R.id.my_edit_text);
 
 ![](img/cf495bfa417e2038cf8bee4cba13d2a2_83.png)
 
+```java
+Button myButton = findViewById(R.id.my_button);
+EditText myEditText = findViewById(R.id.my_edit_text);
 myButton.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
@@ -217,17 +217,11 @@ Smali文件有固定的格式。我们以之前创建的 `HelloActivity` 对应�
 
 ![](img/cf495bfa417e2038cf8bee4cba13d2a2_90.png)
 
-```
-.class <访问权限> <类名>;
-.super <父类>;
-.source <源文件名>
 
 ![](img/cf495bfa417e2038cf8bee4cba13d2a2_91.png)
 
 ![](img/cf495bfa417e2038cf8bee4cba13d2a2_93.png)
 
-# 字段定义
-.field ...
 
 ![](img/cf495bfa417e2038cf8bee4cba13d2a2_95.png)
 
@@ -235,6 +229,12 @@ Smali文件有固定的格式。我们以之前创建的 `HelloActivity` 对应�
 
 ![](img/cf495bfa417e2038cf8bee4cba13d2a2_99.png)
 
+```
+.class <访问权限> <类名>;
+.super <父类>;
+.source <源文件名>
+# 字段定义
+.field ...
 # 方法定义
 .method <访问权限> <方法名>(<参数类型>)<返回类型>
     .registers <寄存器数量> # 声明本方法中使用的寄存器总数

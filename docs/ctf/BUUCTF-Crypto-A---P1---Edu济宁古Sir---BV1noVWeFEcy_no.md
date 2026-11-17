@@ -74,11 +74,14 @@
 
 以下是使用Python计算的示例代码：
 
-```python
-import hashlib
 
 ![](img/4c24f960f6af38cbbda2ad2a9fbc838b_18.png)
 
+
+![](img/4c24f960f6af38cbbda2ad2a9fbc838b_20.png)
+
+```python
+import hashlib
 # 假设分解得到的两个质数
 p = 966233
 q = 101999
@@ -86,9 +89,6 @@ q = 101999
 # 按小到大顺序拼接
 result_str = str(min(p, q)) + str(max(p, q))
 print("拼接后的字符串:", result_str)
-
-![](img/4c24f960f6af38cbbda2ad2a9fbc838b_20.png)
-
 # 计算MD5哈希值
 md5_hash = hashlib.md5(result_str.encode()).hexdigest()
 print("MD5哈希值（flag）:", md5_hash)

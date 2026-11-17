@@ -190,12 +190,12 @@ def read_file(request):
 1.  **净化输入**：过滤用户输入中的 `../` 等特殊路径字符。
 2.  **限定基础目录**：使用 `os.path.join` 将用户输入的文件名拼接到一个安全的、预定义的目录之后。
 3.  **白名单验证**：如果可能，只允许访问已知、安全的文件列表。
-```python
-import os
-from django.conf import settings
 
 ![](img/75c90f0c148b8af42688bbcb18ef788f_15.png)
 
+```python
+import os
+from django.conf import settings
 def safe_read_file(request):
     filename = request.GET.get(‘file’)
     # 过滤路径遍历字符

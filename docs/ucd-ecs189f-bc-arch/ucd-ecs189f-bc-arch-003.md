@@ -325,9 +325,6 @@ if(networkData) {
 
 ![](img/7527852448b62b40f94952190cd9680e_137.png)
 
-```javascript
-const videoCount = await dvideo.methods.videoCount().call();
-this.setState({ videoCount });
 
 ![](img/7527852448b62b40f94952190cd9680e_139.png)
 
@@ -339,6 +336,9 @@ this.setState({ videoCount });
 
 ![](img/7527852448b62b40f94952190cd9680e_147.png)
 
+```javascript
+const videoCount = await dvideo.methods.videoCount().call();
+this.setState({ videoCount });
 // 加载视频
 for (var i = videoCount; i >= 1; i--) {
     const video = await dvideo.methods.videos(i).call();

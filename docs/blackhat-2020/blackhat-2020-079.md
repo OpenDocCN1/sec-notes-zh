@@ -134,8 +134,9 @@ NextCloud的共享URL功能允许包含端口号。虽然自动添加了`https:/
 **演示：针对Django开发者的钓鱼攻击**
 这个演示展示了攻击的威力。攻击者只需在邮件中嵌入一个图片标签，其`src`指向攻击者控制的域名。
 
-```
 <img src="https://attacker-controlled-domain/badge.png" />
+
+```
 ```
 
 当开发者查看邮件时，邮件客户端会自动加载该图片，触发整个攻击链：

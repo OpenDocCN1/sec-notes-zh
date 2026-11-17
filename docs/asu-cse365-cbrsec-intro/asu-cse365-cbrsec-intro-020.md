@@ -67,14 +67,14 @@ while (num_args > 0) {
 ![](img/cc2417c31d648339e7093c49cead1f1e_21.png)
 
 以下是修改的核心部分：
+
+![](img/cc2417c31d648339e7093c49cead1f1e_23.png)
+
 ```assembly
 ; 将参数计数和偏移量存入被保留的寄存器
 mov r12, [rsp]      ; r12 = argc
 mov r13, 16         ; r13 = 参数地址偏移量
 dec r12             ; r12 = 剩余文件数 (argc - 1)
-
-![](img/cc2417c31d648339e7093c49cead1f1e_23.png)
-
 loop_over_args:
     cmp r12, 0
     je exit

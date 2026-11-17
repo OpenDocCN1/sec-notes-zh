@@ -108,12 +108,12 @@ end
 
 ![](img/8ce0c6072335d486c12c32ad0c9231b7_7.png)
 
-```lua
-local a = 33
-local b = 33
 
 ![](img/8ce0c6072335d486c12c32ad0c9231b7_8.png)
 
+```lua
+local a = 33
+local b = 33
 if a == b then
     print("a 等于 b")
 else

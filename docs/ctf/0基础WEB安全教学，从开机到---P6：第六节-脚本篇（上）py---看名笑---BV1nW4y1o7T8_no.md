@@ -181,11 +181,11 @@ print(str[1:4:2]) # 输出 ‘UO’ (从索引1到3，每隔一个取一个)
 
 **发送请求的基本格式：**
 一个HTTP请求包含请求头（Headers）、请求方法（GET/POST）、参数（Params/Data）等部分。
-```python
-import requests
 
 ![](img/b362a1d102a0b803d18529ca29049ef1_38.png)
 
+```python
+import requests
 url = “http://example.com/login”
 # 定义请求头，例如模拟浏览器访问
 headers = {

@@ -126,15 +126,15 @@
 
 我们尝试修改相关寄存器的值来影响跳转结果。例如，将决定跳转条件的 `ECX` 值从0改为1。
 
-```assembly
-; 原始可能代码
-CMP ECX, 0
-JE SHOW_REGISTER_BOX ; 如果ECX==0，则跳转到显示注册框
 
 ![](img/db6c25bb892286a2fa384e9919d8c361_42.png)
 
 ![](img/db6c25bb892286a2fa384e9919d8c361_44.png)
 
+```assembly
+; 原始可能代码
+CMP ECX, 0
+JE SHOW_REGISTER_BOX ; 如果ECX==0，则跳转到显示注册框
 ; 修改思路：让ECX不为0，从而使跳转不成立
 MOV ECX, 1
 ```

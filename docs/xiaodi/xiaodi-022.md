@@ -201,6 +201,14 @@ if(isset($_POST['username'])){
 
 ![](img/5c22f2a66639ef69bfe4f8581ae405cf_94.png)
 
+
+![](img/5c22f2a66639ef69bfe4f8581ae405cf_96.png)
+
+![](img/5c22f2a66639ef69bfe4f8581ae405cf_98.png)
+
+
+![](img/5c22f2a66639ef69bfe4f8581ae405cf_100.png)
+
 ```php
 <?php
 // 数据库配置信息
@@ -208,16 +216,8 @@ $db_ip = “127.0.0.1”; // 数据库服务器地址
 $db_user = “root”;    // 数据库用户名
 $db_pass = “root”;    // 数据库密码
 $db_name = “dm01”;    // 要使用的数据库名
-
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_96.png)
-
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_98.png)
-
 // 创建数据库连接
 $conn = mysqli_connect($db_ip, $db_user, $db_pass, $db_name);
-
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_100.png)
-
 // 检查连接是否成功
 if (!$conn) {
     die(“连接失败：” . mysqli_connect_error()); // 连接失败则终止脚本并报错
@@ -268,18 +268,11 @@ $ua = $_SERVER[‘HTTP_USER_AGENT’];
 
 ![](img/5c22f2a66639ef69bfe4f8581ae405cf_126.png)
 
-```php
-// 构造SQL插入语句
-// 使用双引号以便解析变量 $u, $c, $ip, $ua
-// 字符串类型的值需要用单引号括起来
-$sql = “INSERT INTO gb (username, content, ipaddr, useragent) VALUES (‘$u’, ‘$c’, ‘$ip’, ‘$ua’)”;
 
 ![](img/5c22f2a66639ef69bfe4f8581ae405cf_128.png)
 
 ![](img/5c22f2a66639ef69bfe4f8581ae405cf_130.png)
 
-// 执行SQL语句
-$result = mysqli_query($conn, $sql);
 
 ![](img/5c22f2a66639ef69bfe4f8581ae405cf_132.png)
 
@@ -289,6 +282,13 @@ $result = mysqli_query($conn, $sql);
 
 ![](img/5c22f2a66639ef69bfe4f8581ae405cf_138.png)
 
+```php
+// 构造SQL插入语句
+// 使用双引号以便解析变量 $u, $c, $ip, $ua
+// 字符串类型的值需要用单引号括起来
+$sql = “INSERT INTO gb (username, content, ipaddr, useragent) VALUES (‘$u’, ‘$c’, ‘$ip’, ‘$ua’)”;
+// 执行SQL语句
+$result = mysqli_query($conn, $sql);
 // 判断执行结果
 if ($result) {
     echo “<script>alert(‘留言成功！’);</script>”;
@@ -330,22 +330,27 @@ if ($result) {
 
 ![](img/5c22f2a66639ef69bfe4f8581ae405cf_156.png)
 
-```php
-<?php
-// ... 之前的插入代码 ...
 
 ![](img/5c22f2a66639ef69bfe4f8581ae405cf_158.png)
 
 ![](img/5c22f2a66639ef69bfe4f8581ae405cf_160.png)
 
-// 查询所有留言
-$sql_select = “SELECT * FROM gb ORDER BY id DESC”; // 假设有自增id字段，按新到旧排序
-$result_select = mysqli_query($conn, $sql_select);
 
 ![](img/5c22f2a66639ef69bfe4f8581ae405cf_162.png)
 
 ![](img/5c22f2a66639ef69bfe4f8581ae405cf_164.png)
 
+
+![](img/5c22f2a66639ef69bfe4f8581ae405cf_166.png)
+
+![](img/5c22f2a66639ef69bfe4f8581ae405cf_168.png)
+
+```php
+<?php
+// ... 之前的插入代码 ...
+// 查询所有留言
+$sql_select = “SELECT * FROM gb ORDER BY id DESC”; // 假设有自增id字段，按新到旧排序
+$result_select = mysqli_query($conn, $sql_select);
 // 判断查询是否成功并有数据
 if ($result_select && mysqli_num_rows($result_select) > 0) {
     echo “<hr><h3>留言列表：</h3>”;
@@ -360,11 +365,6 @@ if ($result_select && mysqli_num_rows($result_select) > 0) {
 } else {
     echo “暂无留言。”;
 }
-
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_166.png)
-
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_168.png)
-
 // 关闭数据库连接（非必需，脚本结束会自动关闭，但显式关闭是好习惯）
 mysqli_close($conn);
 ?>
@@ -405,11 +405,6 @@ mysqli_close($conn);
 
 后台页面也需要显示留言，但在每条留言后增加一个“删除”链接。
 
-```php
-// admin/gb.php
-<?php
-// 包含公共的数据库配置文件，避免重复代码
-require_once ‘../config.php’; // 假设config.php里包含了数据库连接代码 $conn
 
 ![](img/5c22f2a66639ef69bfe4f8581ae405cf_190.png)
 
@@ -419,6 +414,11 @@ require_once ‘../config.php’; // 假设config.php里包含了数据库连接
 
 ![](img/5c22f2a66639ef69bfe4f8581ae405cf_195.png)
 
+```php
+// admin/gb.php
+<?php
+// 包含公共的数据库配置文件，避免重复代码
+require_once ‘../config.php’; // 假设config.php里包含了数据库连接代码 $conn
 $sql = “SELECT * FROM gb”;
 $result = mysqli_query($conn, $sql);
 
@@ -540,15 +540,18 @@ if(isset($_GET[‘del_id’])){
 
 ![](img/5c22f2a66639ef69bfe4f8581ae405cf_261.png)
 
-```html
-<!-- 在gb.php的<head>标签内引入UEditor的JS文件 -->
-<script type=“text/javascript” src=“ueditor/ueditor.config.js”></script>
-<script type=“text/javascript” src=“ueditor/ueditor.all.js”></script>
 
 ![](img/5c22f2a66639ef69bfe4f8581ae405cf_263.png)
 
 ![](img/5c22f2a66639ef69bfe4f8581ae405cf_265.png)
 
+
+![](img/5c22f2a66639ef69bfe4f8581ae405cf_267.png)
+
+```html
+<!-- 在gb.php的<head>标签内引入UEditor的JS文件 -->
+<script type=“text/javascript” src=“ueditor/ueditor.config.js”></script>
+<script type=“text/javascript” src=“ueditor/ueditor.all.js”></script>
 <!-- 修改表单中的内容输入框 -->
 <form action=“” method=“post”>
     用户名：<input type=“text” name=“username”><br><br>
@@ -558,9 +561,6 @@ if(isset($_GET[‘del_id’])){
     <br><br>
     <input type=“submit” value=“提交留言”>
 </form>
-
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_267.png)
-
 <!-- 在页面底部实例化编辑器 -->
 <script type=“text/javascript”>
     var ue = UE.getEditor(‘editor’); // ‘editor’ 是上面script标签的id

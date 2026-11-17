@@ -107,10 +107,6 @@ $_SESSION['demo3'] = 'test';
 ![](img/8a3d53cdc3410729e301af737e2ff24a_64.png)
 
 首先，分析`index.php`的核心代码：
-```php
-<?php
-ini_set('session.serialize_handler', 'php');
-session_start();
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_66.png)
 
@@ -120,15 +116,6 @@ session_start();
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_72.png)
 
-class CF {
-    public $cmd = 'echo “This is a test”;';
-    public function __construct($cmd) {
-        $this->cmd = $cmd;
-    }
-    public function __destruct() {
-        eval($this->cmd);
-    }
-}
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_74.png)
 
@@ -140,10 +127,6 @@ class CF {
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_81.png)
 
-if(isset($_GET['phpinfo'])) {
-    highlight_file(__FILE__);
-    exit();
-}
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_82.png)
 
@@ -155,9 +138,6 @@ if(isset($_GET['phpinfo'])) {
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_89.png)
 
-if(isset($_POST['PHP_SESSION_UPLOAD_PROGRESS']) && isset($_FILES['file'])) {
-    // 文件上传处理逻辑，可用来写入Session
-}
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_91.png)
 
@@ -167,6 +147,26 @@ if(isset($_POST['PHP_SESSION_UPLOAD_PROGRESS']) && isset($_FILES['file'])) {
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_97.png)
 
+```php
+<?php
+ini_set('session.serialize_handler', 'php');
+session_start();
+class CF {
+    public $cmd = 'echo “This is a test”;';
+    public function __construct($cmd) {
+        $this->cmd = $cmd;
+    }
+    public function __destruct() {
+        eval($this->cmd);
+    }
+}
+if(isset($_GET['phpinfo'])) {
+    highlight_file(__FILE__);
+    exit();
+}
+if(isset($_POST['PHP_SESSION_UPLOAD_PROGRESS']) && isset($_FILES['file'])) {
+    // 文件上传处理逻辑，可用来写入Session
+}
 // 其他代码...
 ?>
 ```

@@ -55,22 +55,22 @@
 ![](img/70eab26c4353e882321a971488d34e6d_14.png)
 
 **核心代码逻辑如下：**
-```c
-// 以 CREATE_SUSPENDED 标志创建进程，使其主线程暂停
-CreateProcess(..., CREATE_SUSPENDED, ...);
 
 ![](img/70eab26c4353e882321a971488d34e6d_16.png)
 
-// 在内存中找到检测代码地址（例如 0x407BFA），将 0x75 修改为 0xEB
-WriteProcessMemory(..., 0x407BFA, &patch_byte_EB, 1, ...);
 
 ![](img/70eab26c4353e882321a971488d34e6d_18.png)
 
-// 恢复进程线程，让其继续运行
-ResumeThread(...);
 
 ![](img/70eab26c4353e882321a971488d34e6d_20.png)
 
+```c
+// 以 CREATE_SUSPENDED 标志创建进程，使其主线程暂停
+CreateProcess(..., CREATE_SUSPENDED, ...);
+// 在内存中找到检测代码地址（例如 0x407BFA），将 0x75 修改为 0xEB
+WriteProcessMemory(..., 0x407BFA, &patch_byte_EB, 1, ...);
+// 恢复进程线程，让其继续运行
+ResumeThread(...);
 // （可选）运行一段时间后，将代码恢复原状，以应对更强的检测
 Sleep(...);
 WriteProcessMemory(..., 0x407BFA, &original_byte_75, 1, ...);
@@ -107,12 +107,12 @@ for /l %%i in (0,1,3) do (
 在调试器中，这个参数通常可以在调用 `CreateProcess` 或 `ShellExecute` 的函数附近找到。我们需要在代码中动态修改这个路径字符串。
 
 **核心代码逻辑如下：**
-```c
-// 格式化生成新的客户端路径，例如 "C:\Game\client%02d\game.exe"
-sprintf(new_client_path, "C:\\Game\\client%02d\\game.exe", instance_id);
 
 ![](img/70eab26c4353e882321a971488d34e6d_26.png)
 
+```c
+// 格式化生成新的客户端路径，例如 "C:\Game\client%02d\game.exe"
+sprintf(new_client_path, "C:\\Game\\client%02d\\game.exe", instance_id);
 // 在启动客户端进程时，使用新的路径替换原始路径
 ```
 这样，每个游戏客户端进程都运行在独一无二的路径下，从而绕过了基于路径的检测。

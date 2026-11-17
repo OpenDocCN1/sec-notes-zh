@@ -146,12 +146,12 @@ printf("c = %d, Hex = %s\n", c, hexBuffer);
 
 ![](img/27eb916b60a77671287e0fe96bea88e3_30.png)
 
-```c
-// 替换前
-// sprintf(tempHex, "%02X", data[i]);
 
 ![](img/27eb916b60a77671287e0fe96bea88e3_32.png)
 
+```c
+// 替换前
+// sprintf(tempHex, "%02X", data[i]);
 // 替换后
 ByteToHex(tempHex, data[i]);
 ```

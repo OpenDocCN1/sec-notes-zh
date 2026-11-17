@@ -77,8 +77,9 @@ copy /b normal.png + webshell.php merged.png
 1.  **上传图片木马**：使用上述命令生成图片木马，在靶场上传该文件。
 2.  **获取文件路径**：上传成功后，右键复制图片的访问地址。
 3.  **利用文件包含漏洞执行**：访问文件包含页面，并通过参数指向我们上传的图片木马路径。例如：
-    ```
     http://靶场地址/include.php?file=./upload/merged.png
+
+    ```
     ```
 4.  此时，文件包含漏洞会读取`merged.png`的内容并将其作为PHP代码执行，从而触发其中的Webshell。
 

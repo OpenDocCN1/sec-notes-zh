@@ -64,16 +64,16 @@ PHP支持两种主要的注释方式。
 
 ![](img/c899a51491356b6b2f68395c3aae8c7b_13.png)
 
-```php
-// 声明变量并赋值
-$x = 5;      // 将数字5存入变量$x
-$y = 10;     // 将数字10存入变量$y
-$text = "Hello"; // 将字符串"Hello"存入变量$text
 
 ![](img/c899a51491356b6b2f68395c3aae8c7b_15.png)
 
 ![](img/c899a51491356b6b2f68395c3aae8c7b_16.png)
 
+```php
+// 声明变量并赋值
+$x = 5;      // 将数字5存入变量$x
+$y = 10;     // 将数字10存入变量$y
+$text = "Hello"; // 将字符串"Hello"存入变量$text
 // 使用变量
 echo $x + $y; // 输出：15
 echo $text;   // 输出：Hello
@@ -119,11 +119,11 @@ echo "变量 y 是：$y"; // 这里无法访问局部变量 $y，会报错
 
 ![](img/c899a51491356b6b2f68395c3aae8c7b_24.png)
 
-```php
-$x = 5;
 
 ![](img/c899a51491356b6b2f68395c3aae8c7b_26.png)
 
+```php
+$x = 5;
 function myTest() {
     global $x; // 使用 global 关键字声明要使用全局变量 $x
     echo "函数内访问全局变量 x：$x"; // 输出：5
@@ -166,15 +166,15 @@ testStatic(); // 输出：3
 
 如果不使用 `static` 关键字：
 
+
+![](img/c899a51491356b6b2f68395c3aae8c7b_38.png)
+
 ```php
 function testNonStatic() {
     $count = 0; // 每次调用都会重新初始化为0
     $count++;
     echo $count . "\n";
 }
-
-![](img/c899a51491356b6b2f68395c3aae8c7b_38.png)
-
 testNonStatic(); // 输出：1
 testNonStatic(); // 输出：1
 testNonStatic(); // 输出：1

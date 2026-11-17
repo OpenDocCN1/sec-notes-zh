@@ -104,6 +104,17 @@ RDP主要支持三种连接类型：
 
 ![](img/7fcd2d360e8f549b1125ef603363385b_39.png)
 
+
+![](img/7fcd2d360e8f549b1125ef603363385b_41.png)
+
+
+![](img/7fcd2d360e8f549b1125ef603363385b_43.png)
+
+
+![](img/7fcd2d360e8f549b1125ef603363385b_45.png)
+
+![](img/7fcd2d360e8f549b1125ef603363385b_47.png)
+
 ```python
 # 1. 进行ARP欺骗或流量转发，实现中间人位置
 subprocess.call(‘iptables -t nat -A PREROUTING …’)
@@ -113,21 +124,10 @@ fake_cert = generate_certificate(microsoft_private_key)
 
 # 3. 拦截Client Hello报文，将客户端支持的加密套件修改为最弱的一种（如仅支持RC4）
 modified_packet = downgrade_crypto_suite(original_packet)
-
-![](img/7fcd2d360e8f549b1125ef603363385b_41.png)
-
 # 4. 在TLS握手时，将服务器证书替换为自己的伪造证书
 send_to_client(fake_cert)
-
-![](img/7fcd2d360e8f549b1125ef603363385b_43.png)
-
 # 5. 使用已知私钥解密客户端发送的加密预主密钥，计算出会话密钥
 session_key = decrypt_with_private_key(encrypted_pre_master_secret, known_private_key)
-
-![](img/7fcd2d360e8f549b1125ef603363385b_45.png)
-
-![](img/7fcd2d360e8f549b1125ef603363385b_47.png)
-
 # 6. 使用会话密钥解密应用层数据，提取RDP登录凭据和键盘输入
 credentials = parse_rdp_data(decrypted_traffic)
 ```

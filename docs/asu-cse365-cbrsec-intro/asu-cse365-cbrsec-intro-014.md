@@ -34,13 +34,6 @@ CBC模式通过引入一个初始化向量和将前一个密文块与当前明�
 *   **解密过程**：`Plaintext[i] = Decrypt(Ciphertext[i], Key) XOR Ciphertext[i-1]`。同样，第一个块使用IV。
 
 在代码中，使用PyCryptodome库创建CBC模式密码器的示例如下：
-```python
-from Crypto.Cipher import AES
-from Crypto.Util.Padding import pad
-import os
-
-key = os.urandom(16) # 生成随机密钥
-iv = os.urandom(16)  # 生成随机初始化向量
 
 ![](img/1e8b17e499701fd44a3dc51a8f258f8d_23.png)
 
@@ -48,6 +41,13 @@ iv = os.urandom(16)  # 生成随机初始化向量
 
 ![](img/1e8b17e499701fd44a3dc51a8f258f8d_27.png)
 
+```python
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import pad
+import os
+
+key = os.urandom(16) # 生成随机密钥
+iv = os.urandom(16)  # 生成随机初始化向量
 cipher = AES.new(key, AES.MODE_CBC, iv)
 plaintext = b"Happy Birthday Students"
 padded_plaintext = pad(plaintext, AES.block_size)

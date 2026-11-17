@@ -116,14 +116,14 @@
 6.  **获取Flag**：最终接收程序返回的胜利信息（Flag）。
 
 一个简化的脚本框架如下：
+
+![](img/0f8ecb80719eddd4e82e8f58442731ae_29.png)
+
 ```python
 from pwn import * # 导入pwn库
 
 # 1. 连接远程服务器
 io = remote(‘目标IP‘, 端口号)
-
-![](img/0f8ecb80719eddd4e82e8f58442731ae_29.png)
-
 # 2. 接收初始提示
 io.recvuntil(‘Welcome‘)
 

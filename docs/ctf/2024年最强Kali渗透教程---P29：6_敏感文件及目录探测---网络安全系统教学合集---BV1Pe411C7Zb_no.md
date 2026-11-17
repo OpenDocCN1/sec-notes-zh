@@ -55,15 +55,15 @@ Git 是一个全球流行的代码版本管理工具。开发人员有时会将�
 Dirsearch 工具可以通过 Git 克隆获取。其基本使用方法如下。
 
 以下是 Dirsearch 的基本命令格式：
-```bash
-# 克隆工具
-git clone https://github.com/maurosoria/dirsearch.git
-cd dirsearch
 
 ![](img/d3008f8691c7d5470b011e1e60580850_15.png)
 
 ![](img/d3008f8691c7d5470b011e1e60580850_17.png)
 
+```bash
+# 克隆工具
+git clone https://github.com/maurosoria/dirsearch.git
+cd dirsearch
 # 基础扫描命令
 python3 dirsearch.py -u http://target.com -e php,html,zip
 ```

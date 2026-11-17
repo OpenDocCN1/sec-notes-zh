@@ -102,15 +102,15 @@ JNZ SHORT xxxxxx ; 如果不相等则跳转（通常是跳向失败流程）
 
 ![](img/f5613dfcaac07602d8d8f72bd5a6f7ba_32.png)
 
+
+![](img/f5613dfcaac07602d8d8f72bd5a6f7ba_34.png)
+
 ```assembly
 ; 修改前
 JNZ SHORT 失败地址
 
 ; 修改后（方法一：强制跳转）
 JMP SHORT 成功地址
-
-![](img/f5613dfcaac07602d8d8f72bd5a6f7ba_34.png)
-
 ; 修改后（方法二：直接无效化）
 NOP
 NOP

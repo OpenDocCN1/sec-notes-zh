@@ -48,22 +48,22 @@ TPM是一种安全元素，它支持标准功能，并能够抵御物理攻击�
 
 **代码**：
 
+
+![](img/cf916e86b564ac4a05e545cf0779ec8f_23.png)
+
+![](img/cf916e86b564ac4a05e545cf0779ec8f_25.png)
+
+
+![](img/cf916e86b564ac4a05e545cf0779ec8f_27.png)
+
 ```python
 # 生成CDSA密钥
 key = generate_cdsa_key()
 
 # 程序TPM设备
 program_tpm_device(key)
-
-![](img/cf916e86b564ac4a05e545cf0779ec8f_23.png)
-
-![](img/cf916e86b564ac4a05e545cf0779ec8f_25.png)
-
 # 测量签名操作的时间
 timing = measure_signature_time()
-
-![](img/cf916e86b564ac4a05e545cf0779ec8f_27.png)
-
 # 分析时间数据
 leakage = analyze_timing_data(timing)
 ```

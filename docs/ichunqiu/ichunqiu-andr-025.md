@@ -215,20 +215,20 @@ for (u4 i = 0; i < pDexFile->pHeader->classDefsSize; ++i) {
 
 ![](img/5b940375f5810110fc6f34272c6ad053_67.png)
 
-```c
-#include <sys/mman.h>
 
 ![](img/5b940375f5810110fc6f34272c6ad053_69.png)
 
 ![](img/5b940375f5810110fc6f34272c6ad053_71.png)
 
+
+![](img/5b940375f5810110fc6f34272c6ad053_73.png)
+
+```c
+#include <sys/mman.h>
 // 计算内存页大小
 long page_size = sysconf(_SC_PAGESIZE);
 // 计算指令指针所在页的起始地址（按页对齐）
 uintptr_t page_start = (uintptr_t)targetInsnsPtr & ~(page_size - 1);
-
-![](img/5b940375f5810110fc6f34272c6ad053_73.png)
-
 // 修改内存页属性为可读可写可执行
 if (mprotect((void*)page_start, page_size, PROT_READ | PROT_WRITE | PROT_EXEC) == 0) {
     // 修改成功，写入新指令

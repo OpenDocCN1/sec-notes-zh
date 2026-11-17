@@ -102,14 +102,14 @@ Host: www.example.com
 ```
 
 **POST请求示例**：
+
+![](img/b08e0a46708cf2c56354db8bb398c433_22.png)
+
 ```
 POST /login HTTP/1.1
 Host: www.example.com
 Content-Type: application/x-www-form-urlencoded
 Content-Length: 27
-
-![](img/b08e0a46708cf2c56354db8bb398c433_22.png)
-
 username=admin&password=123456
 ```
 

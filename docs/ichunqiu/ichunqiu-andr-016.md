@@ -101,21 +101,21 @@ public class MainActivity extends AppCompatActivity {
 ```
 
 接着，在 `src/main/jni` 目录下创建对应的C/C++源文件（例如 `hello.c`），并实现函数。函数名由 `Java_`、包名、类名和方法名拼接而成。
-```c
-#include <jni.h>
 
 ![](img/f3f1012c50c8250de4910c7f1f5b1600_42.png)
 
 ![](img/f3f1012c50c8250de4910c7f1f5b1600_44.png)
 
+
+![](img/f3f1012c50c8250de4910c7f1f5b1600_46.png)
+
+```c
+#include <jni.h>
 // 对应静态方法 helloFromJNI
 JNIEXPORT jstring JNICALL
 Java_com_example_app_MainActivity_helloFromJNI(JNIEnv *env, jclass clazz) {
     return (*env)->NewStringUTF(env, "Hello from static JNI!");
 }
-
-![](img/f3f1012c50c8250de4910c7f1f5b1600_46.png)
-
 // 对应实例方法 helloFromJNI2
 JNIEXPORT jstring JNICALL
 Java_com_example_app_MainActivity_helloFromJNI2(JNIEnv *env, jobject thiz) {
@@ -159,9 +159,6 @@ public native String helloDynamic();
 ![](img/f3f1012c50c8250de4910c7f1f5b1600_60.png)
 
 然后，在C/C++层，我们不再使用复杂的固定函数名，而是实现一个函数映射表和一个初始化函数。
-```cpp
-#include <jni.h>
-#include <string>
 
 ![](img/f3f1012c50c8250de4910c7f1f5b1600_62.png)
 
@@ -169,6 +166,16 @@ public native String helloDynamic();
 
 ![](img/f3f1012c50c8250de4910c7f1f5b1600_66.png)
 
+
+![](img/f3f1012c50c8250de4910c7f1f5b1600_68.png)
+
+![](img/f3f1012c50c8250de4910c7f1f5b1600_70.png)
+
+![](img/f3f1012c50c8250de4910c7f1f5b1600_72.png)
+
+```cpp
+#include <jni.h>
+#include <string>
 // 实际执行的Native函数
 jstring native_hello(JNIEnv *env, jobject thiz) {
     return env->NewStringUTF("Hello from dynamic JNI!");
@@ -178,13 +185,6 @@ jstring native_hello(JNIEnv *env, jobject thiz) {
 static JNINativeMethod gMethods[] = {
         {"helloDynamic", "()Ljava/lang/String;", (void *)native_hello}
 };
-
-![](img/f3f1012c50c8250de4910c7f1f5b1600_68.png)
-
-![](img/f3f1012c50c8250de4910c7f1f5b1600_70.png)
-
-![](img/f3f1012c50c8250de4910c7f1f5b1600_72.png)
-
 // SO库加载时自动调用的初始化函数
 JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
     JNIEnv* env = nullptr;

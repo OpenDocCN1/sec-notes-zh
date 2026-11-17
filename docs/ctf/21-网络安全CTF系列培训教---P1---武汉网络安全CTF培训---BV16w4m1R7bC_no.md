@@ -51,13 +51,13 @@ print(f"加密结果: {ciphertext}")  # 输出: KHOO3
 
 以下是解密的Python脚本示例：
 
+
+![](img/b99d9d6b7bf1d2612f207096d86d2aa7_1.png)
+
 ```python
 def caesar_decrypt(text, shift):
     # 解密即反向加密（前移shift位）
     return caesar_encrypt(text, -shift)
-
-![](img/b99d9d6b7bf1d2612f207096d86d2aa7_1.png)
-
 # 示例：解密“KHOO3”，偏移量为3
 ciphertext = "KHOO3"
 shift_key = 3

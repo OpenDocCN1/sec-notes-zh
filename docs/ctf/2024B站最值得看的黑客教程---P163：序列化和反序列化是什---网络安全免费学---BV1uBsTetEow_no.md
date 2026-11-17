@@ -38,6 +38,9 @@
 
 ![](img/566a1c42b8fbd95a4ac18e23219efd7a_8.png)
 
+
+![](img/566a1c42b8fbd95a4ac18e23219efd7a_10.png)
+
 ```python
 import pickle
 
@@ -47,9 +50,6 @@ data_to_save = {
     ‘level‘: 100,
     ‘skills‘: [‘渗透测试‘, ‘漏洞分析‘]
 }
-
-![](img/566a1c42b8fbd95a4ac18e23219efd7a_10.png)
-
 # 序列化过程：将对象转换为字节流（字符串）
 serialized_data = pickle.dumps(data_to_save)
 print(“序列化后的数据（字节流）:“, serialized_data)

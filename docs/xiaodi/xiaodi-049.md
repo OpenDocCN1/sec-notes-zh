@@ -162,10 +162,6 @@
 ![](img/ed608405f952f7c5f0a52b719f084cbc_129.png)
 
 **核心概念代码（PHP示例）：**
-```php
-// 上传处理代码片段
-$fileData = base64_encode(file_get_contents($_FILES['file']['tmp_name']));
-// 存储 $fileData 到数据库
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_131.png)
 
@@ -175,6 +171,10 @@ $fileData = base64_encode(file_get_contents($_FILES['file']['tmp_name']));
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_137.png)
 
+```php
+// 上传处理代码片段
+$fileData = base64_encode(file_get_contents($_FILES['file']['tmp_name']));
+// 存储 $fileData 到数据库
 // 显示图片代码片段
 $imageData = getImageDataFromDatabase(); // 从数据库获取Base64字符串
 echo '<img src="data:image/jpeg;base64,' . $imageData . '">';

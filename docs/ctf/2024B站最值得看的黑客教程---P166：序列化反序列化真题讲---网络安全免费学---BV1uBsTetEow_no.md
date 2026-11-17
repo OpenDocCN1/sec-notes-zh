@@ -20,6 +20,11 @@
 
 首先，我们来看演示程序 `demo.php` 的源代码逻辑。
 
+
+![](img/ea6c781373bd7245d7ef87fcaaa59f36_9.png)
+
+![](img/ea6c781373bd7245d7ef87fcaaa59f36_11.png)
+
 ```php
 // 显示文件内容，此处不报错（与我们关系不大）
 // ... 部分代码 ...
@@ -44,11 +49,6 @@ class demo {
         $this->func = "e"; // 构造函数将 func 属性默认设置为 "e"
     }
 }
-
-![](img/ea6c781373bd7245d7ef87fcaaa59f36_9.png)
-
-![](img/ea6c781373bd7245d7ef87fcaaa59f36_11.png)
-
 // 通过GET方式接收参数a
 $obj = unserialize($_GET['a']);
 // 对反序列化得到的对象执行run方法

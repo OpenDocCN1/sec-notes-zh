@@ -108,30 +108,30 @@ with open(‘data.txt‘, ‘w‘, encoding=‘utf-8‘) as f:
 2.  **解析数据**：本例使用正则表达式从HTML中提取所需数据。
 
 以下是完整代码示例：
+
+![](img/481d4e4ae559688feb0a1c916bf9ab26_32.png)
+
+
+![](img/481d4e4ae559688feb0a1c916bf9ab26_34.png)
+
+
+![](img/481d4e4ae559688feb0a1c916bf9ab26_36.png)
+
+![](img/481d4e4ae559688feb0a1c916bf9ab26_38.png)
+
 ```python
 import requests
 import re
 
 # 1. 确定目标URL
 url = ‘http://127.0.0.1:135/‘ # 替换为你的目标地址
-
-![](img/481d4e4ae559688feb0a1c916bf9ab26_32.png)
-
 # 2. 发送请求，获取响应
 response = requests.get(url)
 html_code = response.text
-
-![](img/481d4e4ae559688feb0a1c916bf9ab26_34.png)
-
 # 3. 编写正则表达式解析数据
 # 假设数据在形如 <li><a href=“/path/01“>Item 1</a></li> 的标签中
 pattern = r‘<li><a href=“/path/(.*?)“>.*?</a></li>‘
 results = re.findall(pattern, html_code, re.S)
-
-![](img/481d4e4ae559688feb0a1c916bf9ab26_36.png)
-
-![](img/481d4e4ae559688feb0a1c916bf9ab26_38.png)
-
 # 4. 输出结果
 print(“提取到的数据：“)
 for item in results:
@@ -160,31 +160,31 @@ for item in results:
 ![](img/481d4e4ae559688feb0a1c916bf9ab26_46.png)
 
 以下是修改后的代码，添加了请求头信息：
-```python
-import requests
-import re
 
 ![](img/481d4e4ae559688feb0a1c916bf9ab26_48.png)
 
-url = ‘https://www.dangdang.com/‘ # 以当当网为例
 
 ![](img/481d4e4ae559688feb0a1c916bf9ab26_50.png)
 
-# 定义请求头，模拟Chrome浏览器
-headers = {
-    ‘User-Agent‘: ‘Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36‘
-}
 
 ![](img/481d4e4ae559688feb0a1c916bf9ab26_52.png)
 
-# 在get请求中传入headers参数
-response = requests.get(url, headers=headers)
-html_code = response.text
 
 ![](img/481d4e4ae559688feb0a1c916bf9ab26_54.png)
 
 ![](img/481d4e4ae559688feb0a1c916bf9ab26_55.png)
 
+```python
+import requests
+import re
+url = ‘https://www.dangdang.com/‘ # 以当当网为例
+# 定义请求头，模拟Chrome浏览器
+headers = {
+    ‘User-Agent‘: ‘Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36‘
+}
+# 在get请求中传入headers参数
+response = requests.get(url, headers=headers)
+html_code = response.text
 # 后续解析步骤...
 print(html_code[:500]) # 打印前500字符查看是否成功
 ```
@@ -218,28 +218,33 @@ print(html_code[:500]) # 打印前500字符查看是否成功
 ![](img/481d4e4ae559688feb0a1c916bf9ab26_66.png)
 
 以下是使用 `BeautifulSoup` 解析和 `Session` 保持会话的示例代码：
-```python
-import requests
-from bs4 import BeautifulSoup
 
 ![](img/481d4e4ae559688feb0a1c916bf9ab26_68.png)
 
 ![](img/481d4e4ae559688feb0a1c916bf9ab26_70.png)
 
+
+![](img/481d4e4ae559688feb0a1c916bf9ab26_72.png)
+
+
+![](img/481d4e4ae559688feb0a1c916bf9ab26_74.png)
+
+
+![](img/481d4e4ae559688feb0a1c916bf9ab26_76.png)
+
+![](img/481d4e4ae559688feb0a1c916bf9ab26_78.png)
+
+```python
+import requests
+from bs4 import BeautifulSoup
 login_url = ‘https://example.com/login‘ # 替换为真实的登录地址
 target_url = ‘https://example.com/dashboard‘ # 登录后要访问的地址
 
 # 创建Session对象，用于保持会话（自动处理Cookies）
 session = requests.Session()
-
-![](img/481d4e4ae559688feb0a1c916bf9ab26_72.png)
-
 # 1. 第一次请求，获取登录页面的HTML和token
 login_page_response = session.get(login_url)
 soup = BeautifulSoup(login_page_response.text, ‘html.parser‘)
-
-![](img/481d4e4ae559688feb0a1c916bf9ab26_74.png)
-
 # 假设token在一个name=‘token‘的input标签的value属性里
 token_input = soup.find(‘input‘, {‘name‘: ‘token‘})
 token = token_input[‘value‘] if token_input else ‘‘
@@ -250,11 +255,6 @@ login_data = {
     ‘password‘: ‘your_password‘,
     ‘token‘: token
 }
-
-![](img/481d4e4ae559688feb0a1c916bf9ab26_76.png)
-
-![](img/481d4e4ae559688feb0a1c916bf9ab26_78.png)
-
 # 3. 发送POST请求进行登录
 login_response = session.post(login_url, data=login_data)
 

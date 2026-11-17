@@ -97,9 +97,6 @@
 ![](img/d63de5b7e8735f2e8ee2af8af338d37f_49.png)
 
 **关键Python代码（DFS前序遍历）**：
-```python
-import os
-import base64
 
 ![](img/d63de5b7e8735f2e8ee2af8af338d37f_51.png)
 
@@ -107,6 +104,12 @@ import base64
 
 ![](img/d63de5b7e8735f2e8ee2af8af338d37f_54.png)
 
+
+![](img/d63de5b7e8735f2e8ee2af8af338d37f_56.png)
+
+```python
+import os
+import base64
 def dfs(path):
     # 读取当前节点的数据
     data_path = os.path.join(path, ‘data’)
@@ -125,9 +128,6 @@ def dfs(path):
     right_path = os.path.join(path, ‘right’)
     if os.path.exists(right_path):
         dfs(right_path)
-
-![](img/d63de5b7e8735f2e8ee2af8af338d37f_56.png)
-
 # 从根目录开始遍历
 dfs(‘./unzip_folder’)
 ```

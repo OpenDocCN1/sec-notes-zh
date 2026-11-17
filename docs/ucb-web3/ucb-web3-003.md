@@ -72,6 +72,9 @@ component main {public [x]} = Multiply();
 Circom支持模板参数、数组和循环，这些在编译时确定，有助于构建参数化电路。
 
 以下是一个检查重复平方的电路示例：
+
+![](img/7e675554079f9a478746f31cbb2d4710_1.png)
+
 ```circom
 template RepeatedSquare(n) {
     signal input x;
@@ -84,9 +87,6 @@ template RepeatedSquare(n) {
     }
     y <== xs[n];
 }
-
-![](img/7e675554079f9a478746f31cbb2d4710_1.png)
-
 component main {public [x]} = RepeatedSquare(1000);
 ```
 

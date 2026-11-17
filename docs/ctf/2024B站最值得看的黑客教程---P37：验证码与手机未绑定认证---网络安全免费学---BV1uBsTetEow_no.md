@@ -19,6 +19,9 @@
 ![](img/10086433658a27d1b40d1a4c3e7e9148_4.png)
 
 用简单的伪代码表示漏洞逻辑：
+
+![](img/10086433658a27d1b40d1a4c3e7e9148_6.png)
+
 ```python
 # 漏洞代码示例（错误逻辑）
 def verify(sms_code, phone_number):
@@ -27,9 +30,6 @@ def verify(sms_code, phone_number):
         return True # 验证通过
     else:
         return False
-
-![](img/10086433658a27d1b40d1a4c3e7e9148_6.png)
-
 # 正确逻辑应同时验证手机号
 def verify_correctly(sms_code, phone_number):
     stored_code = get_code_for_phone(phone_number) # 根据手机号取出对应的验证码

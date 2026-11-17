@@ -52,10 +52,6 @@ SpringBoot是一个Java Web开发框架。它之所以成为主流，是因为�
 
 ![](img/8ee6635d5b991869a10fd77d40be2da5_36.png)
 
-```java
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 ![](img/8ee6635d5b991869a10fd77d40be2da5_38.png)
 
@@ -65,6 +61,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 ![](img/8ee6635d5b991869a10fd77d40be2da5_44.png)
 
+```java
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/demo")
 public class IndexController {

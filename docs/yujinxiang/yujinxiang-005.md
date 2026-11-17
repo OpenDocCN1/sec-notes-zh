@@ -109,16 +109,16 @@ UINT HackThread(LPVOID pParam) {
 
 以下是具体的代码实现：
 
-```cpp
-#include <windows.h>
 
 ![](img/87f6741e8df76abd422916900d460da2_3.png)
 
-// 1. 定义临界区变量
-CRITICAL_SECTION g_cs;
 
 ![](img/87f6741e8df76abd422916900d460da2_5.png)
 
+```cpp
+#include <windows.h>
+// 1. 定义临界区变量
+CRITICAL_SECTION g_cs;
 // 初始化函数中
 InitializeCriticalSection(&g_cs);
 

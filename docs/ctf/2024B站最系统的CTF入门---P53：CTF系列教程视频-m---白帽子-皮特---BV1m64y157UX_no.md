@@ -46,20 +46,20 @@
 
 ![](img/61ddc876410545db11533aad024b0793_7.png)
 
-```python
-import re
 
 ![](img/61ddc876410545db11533aad024b0793_9.png)
 
-pattern = re.compile(r'^(\d{4})\s+(\w)\s+(\d+|\w+)\s+data\s*\r?\n:\s+((?:[\s\S]*?))$', re.MULTILINE)
 
 ![](img/61ddc876410545db11533aad024b0793_11.png)
 
-with open('题目文件.txt', 'r') as f:
-    content = f.read()
 
 ![](img/61ddc876410545db11533aad024b0793_13.png)
 
+```python
+import re
+pattern = re.compile(r'^(\d{4})\s+(\w)\s+(\d+|\w+)\s+data\s*\r?\n:\s+((?:[\s\S]*?))$', re.MULTILINE)
+with open('题目文件.txt', 'r') as f:
+    content = f.read()
 matches = pattern.findall(content)
 for match in matches:
     number, letter, length, data = match

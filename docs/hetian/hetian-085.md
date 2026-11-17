@@ -189,14 +189,14 @@ Linux中，登录和认证相关的日志非常重要，主要涉及以下命令
 
 **清除方法：**
 这些日志文件是二进制格式，无法直接编辑。需要管理员权限将其清空或删除。
+
+![](img/42f55880bd5368bca007f165518b0feb_58.png)
+
 ```bash
 # 清空登录日志文件（使用空文件覆盖）
 > /var/log/wtmp
 > /var/log/btmp
 > /var/log/lastlog
-
-![](img/42f55880bd5368bca007f165518b0feb_58.png)
-
 # 或直接删除文件（系统可能会自动重建）
 rm /var/log/wtmp /var/log/btmp /var/log/lastlog
 ```
@@ -239,13 +239,13 @@ rm /var/log/wtmp /var/log/btmp /var/log/lastlog
 
 **定时任务日志（`/var/log/cron`）：**
 如果利用了定时任务（cron）进行持久化，需要清理此日志。
+
+![](img/42f55880bd5368bca007f165518b0feb_70.png)
+
 ```bash
 # 查看日志
 cat /var/log/cron
 # 或 tail -f /var/log/cron
-
-![](img/42f55880bd5368bca007f165518b0feb_70.png)
-
 # 使用sed删除包含特定命令（如bash反弹shell）的行
 sed -i '/bash.*-i.*>&/d' /var/log/cron
 ```
@@ -281,22 +281,22 @@ Bash会记录用户执行的命令历史，这是非常关键的痕迹。历史�
 ![](img/42f55880bd5368bca007f165518b0feb_78.png)
 
 **查看与清除方法：**
-```bash
-# 查看当前会话的历史命令
-history
 
 ![](img/42f55880bd5368bca007f165518b0feb_80.png)
 
-# 清空当前会话的内存中的历史记录（但未写入文件）
-history -c
 
 ![](img/42f55880bd5368bca007f165518b0feb_82.png)
 
-# 将当前历史记录写入 .bash_history 文件
-history -w
 
 ![](img/42f55880bd5368bca007f165518b0feb_84.png)
 
+```bash
+# 查看当前会话的历史命令
+history
+# 清空当前会话的内存中的历史记录（但未写入文件）
+history -c
+# 将当前历史记录写入 .bash_history 文件
+history -w
 # 彻底清除：先清空内存，再将空记录写入文件
 history -c && history -w
 
@@ -315,13 +315,9 @@ history -d 105
 
 **无痕模式（临时禁用历史记录）：**
 在执行敏感操作前，可以临时关闭历史记录功能。
-```bash
-# 关闭当前会话的历史记录
-set +o history
 
 ![](img/42f55880bd5368bca007f165518b0feb_88.png)
 
-# ... 执行你的敏感命令 ...
 
 ![](img/42f55880bd5368bca007f165518b0feb_90.png)
 
@@ -329,6 +325,10 @@ set +o history
 
 ![](img/42f55880bd5368bca007f165518b0feb_94.png)
 
+```bash
+# 关闭当前会话的历史记录
+set +o history
+# ... 执行你的敏感命令 ...
 # 重新开启历史记录
 set -o history
 ```

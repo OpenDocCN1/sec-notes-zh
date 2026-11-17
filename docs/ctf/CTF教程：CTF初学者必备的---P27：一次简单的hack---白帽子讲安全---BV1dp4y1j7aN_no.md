@@ -64,6 +64,9 @@ file ret2libc3
 
 发现漏洞后，我们需要编写攻击脚本（Exploit）来利用它。以下是利用脚本的一个示例框架：
 
+
+![](img/06a0c7b89845f7164bf0f4010bed926e_15.png)
+
 ```python
 from pwn import * # 导入pwntools模块，它是编写Pwn脚本的利器
 
@@ -75,9 +78,6 @@ payload = b'A' * 100 + p32(0xdeadbeef) # 示例：填充数据+覆盖返回地�
 
 # 发送Payload
 io.sendlineafter(b'something:', payload)
-
-![](img/06a0c7b89845f7164bf0f4010bed926e_15.png)
-
 # 如果攻击成功，我们将获得一个Shell（命令行交互接口）
 io.interactive()
 ```

@@ -96,18 +96,18 @@ sigcheck.exe -m C:\Windows\System32\msconfig.exe
 
 ![](img/44b278fac026d3f397d08b5f93e99db3_30.png)
 
+
+![](img/44b278fac026d3f397d08b5f93e99db3_32.png)
+
+
+![](img/44b278fac026d3f397d08b5f93e99db3_34.png)
+
 ```powershell
 # 定义sigcheck工具路径和系统目录
 $sigcheckPath = "C:\Tools\sigcheck.exe"
 $systemPath = "C:\Windows\System32\"
-
-![](img/44b278fac026d3f397d08b5f93e99db3_32.png)
-
 # 获取系统目录下所有.exe文件
 $exeFiles = Get-ChildItem -Path $systemPath -Filter *.exe
-
-![](img/44b278fac026d3f397d08b5f93e99db3_34.png)
-
 # 遍历检查每个文件
 foreach ($file in $exeFiles) {
     $fullPath = $file.FullName

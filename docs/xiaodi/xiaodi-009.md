@@ -156,9 +156,6 @@ MD5("123456") = "e10adc3949ba59abbe56e057f20f883e"
 如果缺少任一条件，解密将失败。
 
 **代码示例（AES 加密）：**
-```python
-from Crypto.Cipher import AES
-import base64
 
 ![](img/fb9d3bfbb995b0497730949a719ee5ee_103.png)
 
@@ -166,6 +163,9 @@ import base64
 
 ![](img/fb9d3bfbb995b0497730949a719ee5ee_107.png)
 
+```python
+from Crypto.Cipher import AES
+import base64
 key = b'1234567890123456'
 iv = b'1234567890123456'
 cipher = AES.new(key, AES.MODE_CBC, iv)
@@ -215,12 +215,12 @@ print(base64.b64encode(ciphertext))
 ![](img/fb9d3bfbb995b0497730949a719ee5ee_130.png)
 
 **代码示例（RSA 加密）：**
-```python
-from Crypto.PublicKey import RSA
-from Crypto.Cipher import PKCS1_OAEP
 
 ![](img/fb9d3bfbb995b0497730949a719ee5ee_132.png)
 
+```python
+from Crypto.PublicKey import RSA
+from Crypto.Cipher import PKCS1_OAEP
 key = RSA.generate(2048)
 public_key = key.publickey()
 cipher = PKCS1_OAEP.new(public_key)

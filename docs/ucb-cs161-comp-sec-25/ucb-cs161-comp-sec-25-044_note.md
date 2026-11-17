@@ -12,8 +12,6 @@
 
 我们有一个定义在函数外部的缓冲区`buff`，它位于内存的静态区域。此外，我们有一个名为`vulnerable`的函数。
 
-```c
-char buff[64]; // 定义在函数外部的缓冲区
 
 ![](img/9f80d669b7ca2f2957c2b5e8bfcb1836_2.png)
 
@@ -21,6 +19,8 @@ char buff[64]; // 定义在函数外部的缓冲区
 
 ![](img/9f80d669b7ca2f2957c2b5e8bfcb1836_4.png)
 
+```c
+char buff[64]; // 定义在函数外部的缓冲区
 void vulnerable() {
     char* secret_string = "PANCAKE";
     int secret_number = 42;

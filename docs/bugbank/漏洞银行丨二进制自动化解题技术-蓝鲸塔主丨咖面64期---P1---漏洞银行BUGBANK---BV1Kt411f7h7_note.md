@@ -118,22 +118,16 @@ pip install angr
 ![](img/680ae1ed515966b15d367bd1a71209f2_41.png)
 
 **核心代码模板**：
-```python
-import angr
 
 ![](img/680ae1ed515966b15d367bd1a71209f2_43.png)
 
 ![](img/680ae1ed515966b15d367bd1a71209f2_45.png)
 
-# 加载二进制文件，不自动加载依赖库（适用于大部分CTF题）
-proj = angr.Project('./r100', auto_load_libs=False)
 
 ![](img/680ae1ed515966b15d367bd1a71209f2_47.png)
 
 ![](img/680ae1ed515966b15d367bd1a71209f2_49.png)
 
-# 创建初始状态（从程序入口开始）
-state = proj.factory.entry_state()
 
 ![](img/680ae1ed515966b15d367bd1a71209f2_51.png)
 
@@ -143,8 +137,6 @@ state = proj.factory.entry_state()
 
 ![](img/680ae1ed515966b15d367bd1a71209f2_57.png)
 
-# 创建模拟管理器，用于路径探索
-simgr = proj.factory.simulation_manager(state)
 
 ![](img/680ae1ed515966b15d367bd1a71209f2_59.png)
 
@@ -154,15 +146,23 @@ simgr = proj.factory.simulation_manager(state)
 
 ![](img/680ae1ed515966b15d367bd1a71209f2_65.png)
 
+
+![](img/680ae1ed515966b15d367bd1a71209f2_67.png)
+
+```python
+import angr
+# 加载二进制文件，不自动加载依赖库（适用于大部分CTF题）
+proj = angr.Project('./r100', auto_load_libs=False)
+# 创建初始状态（从程序入口开始）
+state = proj.factory.entry_state()
+# 创建模拟管理器，用于路径探索
+simgr = proj.factory.simulation_manager(state)
 # 指定目标地址和避免的地址（需通过IDA分析获得）
 find_addr = 0x400844  # 例如 "Nice!" 的地址
 avoid_addr = 0x400855 # 例如 "Incorrect password" 的地址
 
 # 开始探索，寻找通向 find_addr 的路径，避开 avoid_addr
 simgr.explore(find=find_addr, avoid=avoid_addr)
-
-![](img/680ae1ed515966b15d367bd1a71209f2_67.png)
-
 # 打印找到的解决方案（即正确输入）
 if simgr.found:
     solution_state = simgr.found[0]
@@ -201,11 +201,6 @@ else:
 ![](img/680ae1ed515966b15d367bd1a71209f2_81.png)
 
 **核心代码模板**：
-```python
-import angr
-import claripy  # Angr 的约束求解模块，用于创建符号
-
-proj = angr.Project('./ais3_crackme', auto_load_libs=False)
 
 ![](img/680ae1ed515966b15d367bd1a71209f2_83.png)
 
@@ -219,31 +214,36 @@ proj = angr.Project('./ais3_crackme', auto_load_libs=False)
 
 ![](img/680ae1ed515966b15d367bd1a71209f2_93.png)
 
-# 创建一个长度为 50*8 比特的符号向量，代表命令行参数（字符串）
-# BVS 表示 BitVector Symbol
-arg1 = claripy.BVS('arg1', 50 * 8)
 
 ![](img/680ae1ed515966b15d367bd1a71209f2_95.png)
 
-# 创建初始状态，并设置参数：第一个是程序名，第二个是我们的符号参数
-state = proj.factory.entry_state(args=['./ais3_crackme', arg1])
 
 ![](img/680ae1ed515966b15d367bd1a71209f2_97.png)
 
 ![](img/680ae1ed515966b15d367bd1a71209f2_99.png)
 
-simgr = proj.factory.simulation_manager(state)
 
 ![](img/680ae1ed515966b15d367bd1a71209f2_101.png)
 
 ![](img/680ae1ed515966b15d367bd1a71209f2_103.png)
 
-# 通过IDA分析找到成功和失败地址
-find_addr = 0x400602  # "Correct" 地址
-avoid_addr = 0x4005F7 # "I'm sorry" 地址
 
 ![](img/680ae1ed515966b15d367bd1a71209f2_105.png)
 
+```python
+import angr
+import claripy  # Angr 的约束求解模块，用于创建符号
+
+proj = angr.Project('./ais3_crackme', auto_load_libs=False)
+# 创建一个长度为 50*8 比特的符号向量，代表命令行参数（字符串）
+# BVS 表示 BitVector Symbol
+arg1 = claripy.BVS('arg1', 50 * 8)
+# 创建初始状态，并设置参数：第一个是程序名，第二个是我们的符号参数
+state = proj.factory.entry_state(args=['./ais3_crackme', arg1])
+simgr = proj.factory.simulation_manager(state)
+# 通过IDA分析找到成功和失败地址
+find_addr = 0x400602  # "Correct" 地址
+avoid_addr = 0x4005F7 # "I'm sorry" 地址
 simgr.explore(find=find_addr, avoid=avoid_addr)
 
 if simgr.found:
@@ -282,6 +282,11 @@ Z3 可以直接求解方程组和逻辑约束。例如，求解：
 *   `2*x == 3*y + 6`
 
 **Z3 求解代码**：
+
+![](img/680ae1ed515966b15d367bd1a71209f2_121.png)
+
+![](img/680ae1ed515966b15d367bd1a71209f2_123.png)
+
 ```python
 from z3 import *
 
@@ -291,11 +296,6 @@ y = Real('y')
 
 # 创建求解器
 s = Solver()
-
-![](img/680ae1ed515966b15d367bd1a71209f2_121.png)
-
-![](img/680ae1ed515966b15d367bd1a71209f2_123.png)
-
 # 添加约束条件
 s.add(x + y == 6)
 s.add(2*x == 3*y + 6)

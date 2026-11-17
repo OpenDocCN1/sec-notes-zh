@@ -27,6 +27,9 @@ public function __isset($name) {
 
 ![](img/bb5c878c08142bc20ee199eef5cac48e_5.png)
 
+
+![](img/bb5c878c08142bc20ee199eef5cac48e_7.png)
+
 ```php
 <?php
 class Person {
@@ -48,9 +51,6 @@ class Person {
         return isset($this->$content);
     }
 }
-
-![](img/bb5c878c08142bc20ee199eef5cac48e_7.png)
-
 $person = new Person("小明", 25, '女'); // 初始赋值
 echo isset($person->sex) . '<br>'; // 公有属性，正常检测
 echo isset($person->name) . '<br>'; // 私有属性，触发__isset()
@@ -95,6 +95,9 @@ public function __unset($name) {
 
 ![](img/bb5c878c08142bc20ee199eef5cac48e_18.png)
 
+
+![](img/bb5c878c08142bc20ee199eef5cac48e_20.png)
+
 ```php
 <?php
 class Person {
@@ -116,9 +119,6 @@ class Person {
         echo "我叫{$this->name}，今年{$this->age}岁了<br>";
     }
 }
-
-![](img/bb5c878c08142bc20ee199eef5cac48e_20.png)
-
 $person = new Person("小明", 25, '女');
 unset($person->sex); // 公有属性，正常销毁
 unset($person->name); // 私有属性，触发__unset()

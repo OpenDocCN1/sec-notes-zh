@@ -124,14 +124,17 @@ headers = {
 ![](img/c9caf156e3d92e984692837ed60f2d4c_58.png)
 
 以下是添加目标的函数示例：
-```python
-import requests
-import json
 
 ![](img/c9caf156e3d92e984692837ed60f2d4c_60.png)
 
 ![](img/c9caf156e3d92e984692837ed60f2d4c_62.png)
 
+
+![](img/c9caf156e3d92e984692837ed60f2d4c_64.png)
+
+```python
+import requests
+import json
 def add_target(api_url, token, target_address, description):
     url = f“{api_url}/api/v1/targets“
     headers = {
@@ -145,9 +148,6 @@ def add_target(api_url, token, target_address, description):
     # 忽略SSL证书验证（根据实际情况调整）
     response = requests.post(url, headers=headers, data=json.dumps(data), verify=False)
     return response.json() # 返回响应信息
-
-![](img/c9caf156e3d92e984692837ed60f2d4c_64.png)
-
 # 调用函数
 result = add_target(‘https://your-awvs-host‘, ‘your-token-here‘, ‘http://test.com‘, ‘测试目标‘)
 print(result)
@@ -173,6 +173,11 @@ print(result)
 ![](img/c9caf156e3d92e984692837ed60f2d4c_76.png)
 
 以下是设置扫描速度的函数示例：
+
+![](img/c9caf156e3d92e984692837ed60f2d4c_78.png)
+
+![](img/c9caf156e3d92e984692837ed60f2d4c_80.png)
+
 ```python
 def set_scan_speed(api_url, token, target_id, speed):
     url = f“{api_url}/api/v1/targets/{target_id}/configuration“
@@ -186,11 +191,6 @@ def set_scan_speed(api_url, token, target_id, speed):
     }
     response = requests.patch(url, headers=headers, data=json.dumps(data), verify=False)
     return response.status_code # 通常成功返回204
-
-![](img/c9caf156e3d92e984692837ed60f2d4c_78.png)
-
-![](img/c9caf156e3d92e984692837ed60f2d4c_80.png)
-
 # 类似地，可以编写设置登录凭证、代理等函数
 ```
 **小技巧**：如果不清楚API提交的具体数据格式，可以使用浏览器的开发者工具（F12），在扫描器Web界面进行操作时，于“网络”标签页中查看实际发送的请求。
@@ -268,8 +268,6 @@ def start_scan(api_url, token, target_id, scan_profile_id):
 ![](img/c9caf156e3d92e984692837ed60f2d4c_114.png)
 
 以下是使用Python连接数据库的示例：
-```python
-import psycopg2
 
 ![](img/c9caf156e3d92e984692837ed60f2d4c_116.png)
 
@@ -277,6 +275,8 @@ import psycopg2
 
 ![](img/c9caf156e3d92e984692837ed60f2d4c_119.png)
 
+```python
+import psycopg2
 # 连接参数
 conn = psycopg2.connect(
     database=“wvs“,
@@ -321,15 +321,15 @@ cursor = conn.cursor()
 ![](img/c9caf156e3d92e984692837ed60f2d4c_135.png)
 
 以下是从 `vulnerabilities` 表中提取关键信息的示例：
-```python
-# 假设已建立数据库连接 conn
-cursor.execute(“SELECT url, attack, proof, request FROM vulnerabilities WHERE scan_id=xxx“)
-vuln_records = cursor.fetchall()
 
 ![](img/c9caf156e3d92e984692837ed60f2d4c_137.png)
 
 ![](img/c9caf156e3d92e984692837ed60f2d4c_138.png)
 
+```python
+# 假设已建立数据库连接 conn
+cursor.execute(“SELECT url, attack, proof, request FROM vulnerabilities WHERE scan_id=xxx“)
+vuln_records = cursor.fetchall()
 for record in vuln_records:
     vuln_url = record[0]
     vuln_attack_param = record[1]

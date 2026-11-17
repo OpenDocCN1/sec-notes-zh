@@ -139,9 +139,6 @@ python sqlmap.py -u “http://target.com?id=1” --tamper=my_tamper.py
 
 **如何编写tamper脚本？**
 sqlmap自带了许多tamper脚本（位于`tamper/`目录），我们可以参考它们进行编写。一个简单的tamper脚本结构如下：
-```python
-#!/usr/bin/env python
-from lib.core.enums import PRIORITY
 
 ![](img/155a20681598ba0e71ba588653cd80fc_62.png)
 
@@ -151,15 +148,18 @@ from lib.core.enums import PRIORITY
 
 ![](img/155a20681598ba0e71ba588653cd80fc_68.png)
 
-__priority__ = PRIORITY.NORMAL
-
-def dependencies():
-    pass
 
 ![](img/155a20681598ba0e71ba588653cd80fc_70.png)
 
 ![](img/155a20681598ba0e71ba588653cd80fc_72.png)
 
+```python
+#!/usr/bin/env python
+from lib.core.enums import PRIORITY
+__priority__ = PRIORITY.NORMAL
+
+def dependencies():
+    pass
 def tamper(payload, **kwargs):
     # 这里是核心的变形逻辑
     # 例如，将空格替换为注释

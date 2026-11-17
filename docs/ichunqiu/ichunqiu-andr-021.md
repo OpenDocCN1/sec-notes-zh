@@ -78,8 +78,6 @@ Cydia Substrate（简称Substrate或Cydia）是一个强大的代码修改框架
 3.  **编写Hook代码**：Hook的执行时机通常选择在SO库被加载的初始化阶段。我们可以使用Substrate提供的宏`MSInitialize`或类似`__attribute__((constructor))`的特性来定义初始化函数。
 
 以下是Hook的核心代码示例：
-```c
-#include <substrate.h>
 
 ![](img/336ec5bc5e232e9587a64d31161a675e_41.png)
 
@@ -87,13 +85,6 @@ Cydia Substrate（简称Substrate或Cydia）是一个强大的代码修改框架
 
 ![](img/336ec5bc5e232e9587a64d31161a675e_45.png)
 
-// 1. 声明原函数和目标函数
-int (*old_hello3)(int); // 用于保存原函数指针
-int new_hello3(int x) { // 新的钩子函数
-    // 可以在此处添加自定义逻辑，例如修改参数、记录日志等
-    int result = old_hello3(x * 2); // 调用原函数，但传入参数加倍
-    return result + 100; // 修改返回值
-}
 
 ![](img/336ec5bc5e232e9587a64d31161a675e_47.png)
 
@@ -105,6 +96,15 @@ int new_hello3(int x) { // 新的钩子函数
 
 ![](img/336ec5bc5e232e9587a64d31161a675e_52.png)
 
+```c
+#include <substrate.h>
+// 1. 声明原函数和目标函数
+int (*old_hello3)(int); // 用于保存原函数指针
+int new_hello3(int x) { // 新的钩子函数
+    // 可以在此处添加自定义逻辑，例如修改参数、记录日志等
+    int result = old_hello3(x * 2); // 调用原函数，但传入参数加倍
+    return result + 100; // 修改返回值
+}
 // 2. 在初始化函数中进行挂钩
 MSInitialize {
     MSImageRef image = MSGetImageByName("/data/app/com.example.hellojni-1/lib/arm/libhello-jni.so");

@@ -59,11 +59,14 @@ app="目标应用名称"
 4.  **输出结果**：将存在漏洞的目标地址单独保存到结果文件中。
 
 一个简单的Python脚本框架如下：
-```python
-import requests
 
 ![](img/5d277daf99da68b1fa7cc35c52ec433d_11.png)
 
+
+![](img/5d277daf99da68b1fa7cc35c52ec433d_13.png)
+
+```python
+import requests
 # 读取目标列表
 with open('targets.txt', 'r') as f:
     targets = f.readlines()
@@ -79,9 +82,6 @@ for target in targets:
             print(f"[+] 发现漏洞: {target}")
     except:
         continue
-
-![](img/5d277daf99da68b1fa7cc35c52ec433d_13.png)
-
 # 保存结果
 with open('vulnerable.txt', 'w') as f:
     for item in vuln_list:

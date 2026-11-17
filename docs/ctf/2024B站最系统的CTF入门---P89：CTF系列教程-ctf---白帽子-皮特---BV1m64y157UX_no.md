@@ -90,15 +90,15 @@ tshark -r file.pcap -Y "icmp"
 如果不熟悉复杂的命令行工具，编写Python脚本是另一种灵活有效的方法。
 
 以下是使用Python分析ICMP流量的基本框架：
+
+![](img/5faba6435cb8c3cc1ba1b6ab2b475166_19.png)
+
 ```python
 import base64
 
 # 1. 读取导出的数据文件
 with open('output.txt', 'r') as f:
     lines = f.readlines()
-
-![](img/5faba6435cb8c3cc1ba1b6ab2b475166_19.png)
-
 # 2. 提取每行固定位置的字符
 flag_chars = []
 for line in lines:

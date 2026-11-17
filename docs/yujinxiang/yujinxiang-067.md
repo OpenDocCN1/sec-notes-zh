@@ -107,6 +107,9 @@ B7 A3 A9 4A  // 物品ID (例如金创药小)
 
 ![](img/20f72bb5accc4408ea2ec479b92a5493_16.png)
 
+
+![](img/20f72bb5accc4408ea2ec479b92a5493_18.png)
+
 ```assembly
 ; 分配缓冲区空间
 sub esp, 0x90
@@ -122,9 +125,6 @@ mov dword ptr [eax+0x0C], 0x0C000000  ; 物品数量 (12个)
 push 0x86
 push eax
 call dword ptr [0xXXXXXXXX]  ; 替换为实际函数地址
-
-![](img/20f72bb5accc4408ea2ec479b92a5493_18.png)
-
 ; 释放缓冲区空间
 add esp, 0x90
 ```

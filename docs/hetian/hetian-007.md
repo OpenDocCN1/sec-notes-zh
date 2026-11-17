@@ -150,11 +150,6 @@ echo "Welcome, " . $name; // 危险：未对$name进行过滤
 **利用场景与示例**：
 常见于留言板、评论系统、用户昵称等会保存数据并展示给其他用户的功能。
 
-```php
-// 存储留言的后端代码 (存储时未过滤)
-$message = $_POST['message'];
-$sql = "INSERT INTO guestbook (message) VALUES ('$message')";
-// ... 执行SQL语句存入数据库
 
 ![](img/521b67090e917bfb21e4cb7456eb2dda_77.png)
 
@@ -162,6 +157,11 @@ $sql = "INSERT INTO guestbook (message) VALUES ('$message')";
 
 ![](img/521b67090e917bfb21e4cb7456eb2dda_81.png)
 
+```php
+// 存储留言的后端代码 (存储时未过滤)
+$message = $_POST['message'];
+$sql = "INSERT INTO guestbook (message) VALUES ('$message')";
+// ... 执行SQL语句存入数据库
 // 展示留言的后端代码 (输出时未过滤)
 $result = // ... 从数据库读取留言
 while($row = // ... 遍历结果) {

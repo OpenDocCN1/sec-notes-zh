@@ -91,33 +91,33 @@ arping 192.168.1.1
 ![](img/7a049b2c585e3d9d5b16d868a92934ee_13.png)
 
 以下是脚本内容 `arping.sh`：
-```bash
-#!/bin/bash
 
 ![](img/7a049b2c585e3d9d5b16d868a92934ee_15.png)
 
-if [ $# -ne 1 ]; then
-    echo “用法: $0 <网卡名称>”
-    echo “示例: $0 eth0”
-    exit 1
-fi
 
 ![](img/7a049b2c585e3d9d5b16d868a92934ee_17.png)
 
-interface=$1
-prefix=$(ifconfig $interface | grep “inet ” | cut -d “ “ -f 10 | cut -d “.” -f 1-3)
 
 ![](img/7a049b2c585e3d9d5b16d868a92934ee_19.png)
 
-if [ -z “$prefix” ]; then
-    echo “无法获取网卡 $interface 的IP地址前缀。”
-    exit 1
-fi
 
 ![](img/7a049b2c585e3d9d5b16d868a92934ee_21.png)
 
 ![](img/7a049b2c585e3d9d5b16d868a92934ee_23.png)
 
+```bash
+#!/bin/bash
+if [ $# -ne 1 ]; then
+    echo “用法: $0 <网卡名称>”
+    echo “示例: $0 eth0”
+    exit 1
+fi
+interface=$1
+prefix=$(ifconfig $interface | grep “inet ” | cut -d “ “ -f 10 | cut -d “.” -f 1-3)
+if [ -z “$prefix” ]; then
+    echo “无法获取网卡 $interface 的IP地址前缀。”
+    exit 1
+fi
 for addr in $(seq 1 254); do
     arping -c 1 $prefix.$addr | grep “from” | cut -d “ “ -f 5 | cut -d “(” -f 2 | cut -d “)” -f 1
 done

@@ -72,15 +72,15 @@
 
 我们通过一个简单的测试来比较不同语言执行相同操作（创建和删除符号链接）的性能：
 
-```bash
-# Bash 脚本示例
-ln -s /tmp/A /tmp/B
-rm /tmp/B
 
 ![](img/4a358785758a0b33ea0fee9ff89b1c77_25.png)
 
 ![](img/4a358785758a0b33ea0fee9ff89b1c77_27.png)
 
+```bash
+# Bash 脚本示例
+ln -s /tmp/A /tmp/B
+rm /tmp/B
 # C 程序示例（调用系统调用）
 symlink(“/tmp/B”, “/tmp/A”);
 unlink(“/tmp/B”);

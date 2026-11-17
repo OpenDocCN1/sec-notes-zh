@@ -53,6 +53,9 @@ x = true           -- x 现在是布尔类型
 
 以下是作用域测试代码：
 
+
+![](img/c1fa583ab66cee005d18e95ec156357a_7.png)
+
 ```lua
 local d = 5
 f = 1
@@ -63,9 +66,6 @@ do
     local f = 23
     print(d, f)    -- 输出: 11  23 (此处的f是新的局部变量)
 end
-
-![](img/c1fa583ab66cee005d18e95ec156357a_7.png)
-
 print(d, f)        -- 输出: 5   1 (回到外层作用域)
 ```
 

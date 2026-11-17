@@ -111,9 +111,6 @@ SSTI全称为Server-Side Template Injection，即服务器端模板注入。这�
 ![](img/4f35c1213d1007e26878f35f72713efc_85.png)
 
 ### 漏洞代码示例
-```python
-from flask import Flask, request, render_template_string
-app = Flask(__name__)
 
 ![](img/4f35c1213d1007e26878f35f72713efc_87.png)
 
@@ -125,11 +122,6 @@ app = Flask(__name__)
 
 ![](img/4f35c1213d1007e26878f35f72713efc_95.png)
 
-@app.route('/')
-def index():
-    name = request.args.get('name', '小迪')
-    template = '<h1>Hello {{ s }}!</h1>'
-    return render_template_string(template, s=name)
 
 ![](img/4f35c1213d1007e26878f35f72713efc_97.png)
 
@@ -149,6 +141,14 @@ def index():
 
 ![](img/4f35c1213d1007e26878f35f72713efc_112.png)
 
+```python
+from flask import Flask, request, render_template_string
+app = Flask(__name__)
+@app.route('/')
+def index():
+    name = request.args.get('name', '小迪')
+    template = '<h1>Hello {{ s }}!</h1>'
+    return render_template_string(template, s=name)
 if __name__ == '__main__':
     app.run()
 ```

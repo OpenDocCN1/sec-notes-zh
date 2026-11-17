@@ -85,15 +85,15 @@ User-Agent: Mozilla/5.0
 *   **头部字段**：以键值对形式提供附加信息，如`Host`（必需）、`User-Agent`（浏览器标识）、`Referer`（来源页面）等。
 
 服务器响应也包含状态行、头部和正文：
-```http
-HTTP/1.1 200 OK
-Content-Type: text/html
-...其他头部...
 
 ![](img/0105acc003df6642cebcaaad562a5568_30.png)
 
 ![](img/0105acc003df6642cebcaaad562a5568_32.png)
 
+```http
+HTTP/1.1 200 OK
+Content-Type: text/html
+...其他头部...
 <!DOCTYPE html><html>...</html>
 ```
 *   **状态码**：

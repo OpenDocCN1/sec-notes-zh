@@ -8,15 +8,20 @@
 
 首先，我们来看一下存在漏洞的示例代码。这段代码的核心功能是接收一个参数，对其进行反序列化操作。
 
-```php
-<?php
-error_reporting(0); // 屏蔽错误信息
-highlight_file(__FILE__); // 高亮显示当前文件源代码
 
 ![](img/efee96cfbabe38f351af4e6dcd5b4008_3.png)
 
 ![](img/efee96cfbabe38f351af4e6dcd5b4008_5.png)
 
+
+![](img/efee96cfbabe38f351af4e6dcd5b4008_7.png)
+
+![](img/efee96cfbabe38f351af4e6dcd5b4008_9.png)
+
+```php
+<?php
+error_reporting(0); // 屏蔽错误信息
+highlight_file(__FILE__); // 高亮显示当前文件源代码
 class Demo {
     public $var = ‘123’;
     function __construct() {
@@ -25,11 +30,6 @@ class Demo {
         fclose($f);
     }
 }
-
-![](img/efee96cfbabe38f351af4e6dcd5b4008_7.png)
-
-![](img/efee96cfbabe38f351af4e6dcd5b4008_9.png)
-
 $code = $_GET[‘code’];
 if (isset($code)) {
     $str = unserialize($code);
@@ -83,6 +83,13 @@ if (isset($code)) {
 
 ![](img/efee96cfbabe38f351af4e6dcd5b4008_31.png)
 
+
+![](img/efee96cfbabe38f351af4e6dcd5b4008_33.png)
+
+![](img/efee96cfbabe38f351af4e6dcd5b4008_34.png)
+
+![](img/efee96cfbabe38f351af4e6dcd5b4008_36.png)
+
 ```php
 <?php
 class Demo {
@@ -93,13 +100,6 @@ class Demo {
         fclose($f);
     }
 }
-
-![](img/efee96cfbabe38f351af4e6dcd5b4008_33.png)
-
-![](img/efee96cfbabe38f351af4e6dcd5b4008_34.png)
-
-![](img/efee96cfbabe38f351af4e6dcd5b4008_36.png)
-
 // 实例化类
 $obj = new Demo();
 // 修改属性值为我们想要写入的PHP代码

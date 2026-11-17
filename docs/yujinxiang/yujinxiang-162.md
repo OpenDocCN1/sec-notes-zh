@@ -22,15 +22,15 @@ Lua脚本可以在记事本或专业编辑器中编写。函数体外的代码�
 
 以下是一个简单的无参函数定义与调用示例：
 
-```lua
-function myFun()
-    print("Hello from function!")
-end
 
 ![](img/bcd5c29ebe234562737105b5ab19644e_4.png)
 
 ![](img/bcd5c29ebe234562737105b5ab19644e_5.png)
 
+```lua
+function myFun()
+    print("Hello from function!")
+end
 myFun() -- 调用函数
 ```
 

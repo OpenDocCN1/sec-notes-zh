@@ -52,14 +52,14 @@
 
 以下是`.gdbinit`文件的一个示例配置：
 
-```bash
-# 设置汇编语法为Intel格式（推荐）
-set disassembly-flavor intel
 
 ![](img/0d197ea6a8154b9c57a98cca495b046e_23.png)
 
 ![](img/0d197ea6a8154b9c57a98cca495b046e_25.png)
 
+```bash
+# 设置汇编语法为Intel格式（推荐）
+set disassembly-flavor intel
 # 加载gef插件（如果已安装）
 source /opt/gef/gef.py
 ```

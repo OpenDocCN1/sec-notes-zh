@@ -23,6 +23,9 @@ public function __call($method_name, $arguments) {
 ### 代码示例与解析
 我们通过一个具体例子来理解。假设有一个`Person`类：
 
+
+![](img/21c8f50e77ec0634989cb4fbdf2ea6be_3.png)
+
 ```php
 class Person {
     public function say() {
@@ -34,9 +37,6 @@ class Person {
         print_r($arguments);
     }
 }
-
-![](img/21c8f50e77ec0634989cb4fbdf2ea6be_3.png)
-
 $teacher = new Person();
 $teacher->say();      // 输出：Hello World
 $teacher->run("fast"); // 触发 __call
@@ -51,6 +51,9 @@ $teacher->eat("apple", "banana"); // 触发 __call
 ![](img/21c8f50e77ec0634989cb4fbdf2ea6be_6.png)
 
 为了对比，如果我们移除`__call`方法，再次尝试调用不存在的`run()`方法：
+
+![](img/21c8f50e77ec0634989cb4fbdf2ea6be_8.png)
+
 ```php
 class Person {
     public function say() {
@@ -58,9 +61,6 @@ class Person {
     }
     // 移除了 __call 方法
 }
-
-![](img/21c8f50e77ec0634989cb4fbdf2ea6be_8.png)
-
 $teacher = new Person();
 $teacher->run();
 ```

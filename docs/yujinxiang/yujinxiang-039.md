@@ -66,6 +66,14 @@ int codeByteLen = (strlen(upperCode) + 1) / 3; // 简单估算，实际需处理
 
 以下是内存读取和搜索循环的核心结构：
 
+
+![](img/08cd0e0e04aad7fd791b99d497b8adbb_10.png)
+
+![](img/08cd0e0e04aad7fd791b99d497b8adbb_12.png)
+
+
+![](img/08cd0e0e04aad7fd791b99d497b8adbb_14.png)
+
 ```cpp
 // 定义每页读取的大小
 const int PAGE_SIZE = 1024;
@@ -74,11 +82,6 @@ int bufferSize = PAGE_SIZE + codeByteLen + 1;
 BYTE* buffer = new BYTE[bufferSize]; // 动态分配缓冲区
 
 SIZE_T bytesRead; // 实际读取的字节数
-
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_10.png)
-
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_12.png)
-
 // 从起始地址开始循环读取，直到结束地址
 for (DWORD curAddr = startAddr; curAddr < (endAddr - codeByteLen); curAddr += PAGE_SIZE) {
     // 读取进程内存到缓冲区
@@ -102,9 +105,6 @@ for (DWORD curAddr = startAddr; curAddr < (endAddr - codeByteLen); curAddr += PA
         }
     }
 }
-
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_14.png)
-
 // 循环结束未找到
 delete[] buffer;
 return NULL;
@@ -120,6 +120,24 @@ return NULL;
 
 以下是测试步骤的代码框架：
 
+
+![](img/08cd0e0e04aad7fd791b99d497b8adbb_20.png)
+
+![](img/08cd0e0e04aad7fd791b99d497b8adbb_22.png)
+
+
+![](img/08cd0e0e04aad7fd791b99d497b8adbb_24.png)
+
+
+![](img/08cd0e0e04aad7fd791b99d497b8adbb_26.png)
+
+![](img/08cd0e0e04aad7fd791b99d497b8adbb_28.png)
+
+
+![](img/08cd0e0e04aad7fd791b99d497b8adbb_29.png)
+
+![](img/08cd0e0e04aad7fd791b99d497b8adbb_31.png)
+
 ```cpp
 // 1. 获取游戏窗口句柄
 HWND hWnd = FindWindow(NULL, "游戏窗口标题");
@@ -127,11 +145,6 @@ if (hWnd == NULL) {
     printf("未找到游戏窗口。\n");
     return -1;
 }
-
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_20.png)
-
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_22.png)
-
 // 2. 获取进程ID和具有读取权限的进程句柄
 DWORD pid;
 GetWindowThreadProcessId(hWnd, &pid);
@@ -140,9 +153,6 @@ if (hProcess == NULL) {
     printf("无法打开进程。\n");
     return -1;
 }
-
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_24.png)
-
 // 3. 定义要搜索的特征码（示例）
 const char* myFeatureCode = "6A 19 D1 ..."; // 替换为实际特征码
 
@@ -151,11 +161,6 @@ const char* myFeatureCode = "6A 19 D1 ..."; // 替换为实际特征码
 DWORD startAddr = 0x400000;
 DWORD endAddr = 0x7FFFFFFF; // 32位用户空间大致范围
 DWORD foundAddress = ScanFeatureCode(hProcess, myFeatureCode, startAddr, endAddr);
-
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_26.png)
-
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_28.png)
-
 // 5. 输出结果
 if (foundAddress != NULL) {
     printf("找到特征码！地址：0x%X\n", foundAddress);
@@ -167,11 +172,6 @@ if (foundAddress != NULL) {
 } else {
     printf("未找到特征码。\n");
 }
-
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_29.png)
-
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_31.png)
-
 // 7. 清理资源
 CloseHandle(hProcess);
 ```

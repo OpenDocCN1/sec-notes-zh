@@ -158,6 +158,9 @@ private:
 
 在对话框的源文件中，实现初始化和执行脚本的功能。
 
+
+![](img/49877e28e50c179a37dc571022e0e080_5.png)
+
 ```cpp
 // YourDlg.cpp
 void CYourDlg::InitLua() {
@@ -167,9 +170,6 @@ void CYourDlg::InitLua() {
         RegisterMyFunctions(m_pLuaState); // 注册我们的自定义函数
     }
 }
-
-![](img/49877e28e50c179a37dc571022e0e080_5.png)
-
 void CYourDlg::DoLuaFile() {
     if (m_pLuaState) {
         // 假设脚本文件放在游戏客户端目录下

@@ -81,9 +81,6 @@ public class UserDemo implements Serializable {
 
 ![](img/8e001ed0233ce08a104ed89af096e536_29.png)
 
-```java
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
 
 ![](img/8e001ed0233ce08a104ed89af096e536_31.png)
 
@@ -97,6 +94,9 @@ import java.io.ObjectOutputStream;
 
 ![](img/8e001ed0233ce08a104ed89af096e536_41.png)
 
+```java
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 public class SerializeTest {
     // 序列化方法
     public static void serializeObject(Object obj, String fileName) throws Exception {
@@ -212,12 +212,12 @@ public class UnserializeTest {
 
 ![](img/8e001ed0233ce08a104ed89af096e536_82.png)
 
-```java
-import java.io.IOException;
-import java.io.Serializable;
 
 ![](img/8e001ed0233ce08a104ed89af096e536_84.png)
 
+```java
+import java.io.IOException;
+import java.io.Serializable;
 public class EvilUserDemo implements Serializable {
     private String name;
 
@@ -323,15 +323,15 @@ public class EvilUserDemo2 implements Serializable {
 
 ![](img/8e001ed0233ce08a104ed89af096e536_144.png)
 
-```java
-import java.io.*;
-import java.net.URL;
-import java.util.HashMap;
 
 ![](img/8e001ed0233ce08a104ed89af096e536_146.png)
 
 ![](img/8e001ed0233ce08a104ed89af096e536_148.png)
 
+```java
+import java.io.*;
+import java.net.URL;
+import java.util.HashMap;
 public class URLDNS {
     public static void main(String[] args) throws Exception {
         HashMap<URL, Integer> hashMap = new HashMap<>();

@@ -940,12 +940,12 @@ Private Sub Form_Load()
         Me.Print Num(i)         ' 在窗体中打印出数组元素的值
     Next i
 End Sub
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_19_0.png)
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_19_1.png)
 
+```
 - 1. 问：上面的 Me 是什么意思？  
   答：关键字 Me 代表当前的窗体，上面的例子中 Me 等同于 Form1。
 - 2. 问：AutoRedraw 属性有什么用？  
@@ -963,10 +963,10 @@ For...Next 是一种循环语句，笔者在后面的语法基础中有专门的
 Private Sub Command1_Click(Index As Integer)
     MsgBox "您单击了第" & Index & "个按钮"
 End Sub
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_20_0.png)
 
+```
 图 1-17 控件数组的代码中多了 Index 参数
 
 问：上面的 “&” 符号是什么意思？  
@@ -1026,10 +1026,10 @@ If 条件 Then
 Else
     语句2
 End If
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_21_0.png)
 
+```
 这里，如果条件成立，那么执行语句 1，否则（Else），执行语句 2，看下面的例子：
 
 ```vb
@@ -3416,14 +3416,14 @@ FSO 对象模型不支持二进制文件的创建和操作。要操作二进制�
 
 ```vb
 Dim Fso As New FileSystemObject    ' 将变量 Fso 声明为 FSO 对象
-```
-
-不过，若此时你运行该代码，可能会出现错误提示“用户定义类型未定义”，如图 2-38 所示。这是我们还没有加入对 Scripting Runtime 类型库的引用。引用的方法是，在菜单栏中选择“工程(P)”→“引用”，此时，出现如图 2-39 所示的对话窗口。在列表中找到“Microsoft Scripting Runtime”，勾选之，确定即可。这样我们就添加了对 Scripting Runtime 类型库的引用，若再运行上面的代码，就会发现不会出错了。
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_75_0.png)
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_75_1.png)
 
+```
+
+不过，若此时你运行该代码，可能会出现错误提示“用户定义类型未定义”，如图 2-38 所示。这是我们还没有加入对 Scripting Runtime 类型库的引用。引用的方法是，在菜单栏中选择“工程(P)”→“引用”，此时，出现如图 2-39 所示的对话窗口。在列表中找到“Microsoft Scripting Runtime”，勾选之，确定即可。这样我们就添加了对 Scripting Runtime 类型库的引用，若再运行上面的代码，就会发现不会出错了。
 - 2. 使用 CreateObject 函数来创建一个 FSO 对象
 
 使用 CreateObject 函数可以创建诸多对象，FSO 对象包括在内。请参考下面的代码：
@@ -3488,14 +3488,14 @@ Private Sub Form_Load()
     Set mydrives = Fso.Drives
     MsgBox "磁盘的总个数是：" & mydrives.Count   ' 使用 Count 方法返回磁盘总数
 End Sub
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_77_0.png)
 
-图 2-40 使用 For…Each 语句遍历 Drives 对象集合
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_77_1.png)
 
+```
+图 2-40 使用 For…Each 语句遍历 Drives 对象集合
 图 2-41 使用 Count 方法返回磁盘总数
 
 上面的代码运行后如图 2-41 所示，可以正确返回磁盘的总个数。
@@ -3529,14 +3529,14 @@ Dim MyDrive As Object
 Set MyDrive = Fso.GetDrive("D")                        ' 使用 GetDrive 方法返回一个 Drive 对象
 MsgBox "卷标名为：" & MyDrive.VolumeName               ' 获取卷标名
 MsgBox "还剩下" & MyDrive.FreeSpace / 1024 / 1024 / 1024 & "GB 空间可用"
-```
-
-上面的代码中，VolumeName 是 Drive 对象的卷标名属性，而 FreeSpace 则是 Drive 对象的剩余容量属性。程序运行后如图 2-42 和 2-43 所示。当然了，Drive 对象还有其他好几个属性，在这里不作介绍，此处介绍的只是 FileSystemObject 对象，后面会较详细地介绍 Drive 对象的。
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_78_0.png)
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_78_1.png)
 
+```
+
+上面的代码中，VolumeName 是 Drive 对象的卷标名属性，而 FreeSpace 则是 Drive 对象的剩余容量属性。程序运行后如图 2-42 和 2-43 所示。当然了，Drive 对象还有其他好几个属性，在这里不作介绍，此处介绍的只是 FileSystemObject 对象，后面会较详细地介绍 Drive 对象的。
 ##### d) GetDriveName 方法
 
 该方法用于返回一个包含指定路径的驱动器名字的字符串。它的基本形式是：`FSO 对象名.GetDriveName(路径)`。例如，如果参数路径的值是 “D:\Temp3\1111.txt”，则会返回 “D:” 。
@@ -3587,12 +3587,12 @@ End Sub
 
 ```vb
 Fso.CopyFolder "D:\Temp3", "D:\Temp4"
-```
-
-这样就可以将 D:\Temp3 复制到 D:\Temp4，包括 D:\Temp3 下的所有文件和子文件夹。如果文件夹 D:\Temp4 已经存在，而我们在复制的时候将参数“覆盖”设置成 False，则会出错，使用下面的代码：
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_79_0.png)
 
+```
+
+这样就可以将 D:\Temp3 复制到 D:\Temp4，包括 D:\Temp3 下的所有文件和子文件夹。如果文件夹 D:\Temp4 已经存在，而我们在复制的时候将参数“覆盖”设置成 False，则会出错，使用下面的代码：
 图 2-44 不允许覆盖文件夹时出错
 
 ```vb
@@ -3907,12 +3907,12 @@ Set Fso = CreateObject("Scripting.FileSystemObject")
 Set MyDrive = Fso.getdrive("D:")
 ' 返回 AvailableSpace 属性的值，转换为 GB
 MsgBox "大哥你还有" & Int(MyDrive.AvailableSpace / 1024 / 1024 / 1024) & "GB可用"
-```
-
-上面的代码运行后如图 2-49 所示。该属性的返回值是以 Byte 为单位的，除以 1024 则为 KB，再除以 1024 则为 MB，再除以 1024 则为 GB。所以，上面的代码中我们除以了 3 个 1024。
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_86_0.png)
 
+```
+
+上面的代码运行后如图 2-49 所示。该属性的返回值是以 Byte 为单位的，除以 1024 则为 KB，再除以 1024 则为 MB，再除以 1024 则为 GB。所以，上面的代码中我们除以了 3 个 1024。
 #### b) DriveLetter 属性
 
 该属性可以返回某个物理本地驱动器或网络共享的驱动器字母。它只返回一个字符。例如，下面的代码将只返回“D”。
@@ -3955,10 +3955,10 @@ Select Case MyDrive.DriveType                              ' 下面对DriveType�
     Case 5: MyDriveType = "RAM Disk"
 End Select
 MsgBox MyDriveType                                          ' 提示G盘的驱动器类型
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_87_0.png)
 
+```
 运行上面的程序，结果如图 2-50 所示。
 
 #### d) FileSystem 属性
@@ -4014,10 +4014,10 @@ Dim Fso As Object, MyDrive As Object
 Set Fso = CreateObject("Scripting.FileSystemObject")
 Set MyDrive = Fso.getdrive("D:")
 MsgBox MyDrive.SerialNumber    ' 返回磁盘序列号
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_88_0.png)
 
+```
 运行后如图 2-51 所示。
 
 这个属性在一些加密程序中有使用到。通过获取 U 盘的序列号，然后再通过该序列号加密即可。
@@ -4035,10 +4035,13 @@ Dim Fso As Object, MyDrive As Object
 Set Fso = CreateObject("Scripting.FileSystemObject")    ' 创建FSO对象
 Set MyDrive = Fso.getdrive("D:")                        ' 返回驱动器对象
 MsgBox "D盘的总大小是" & MyDrive.TotalSize / 1024 / 1024 / 1024 & " GB"   ' 提示大小
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_89_0.png)
 
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_89_1.png)
+
+```
 图 2-52 获取磁盘的总大小
 
 运行后如图 2-52 所示。
@@ -4046,9 +4049,6 @@ MsgBox "D盘的总大小是" & MyDrive.TotalSize / 1024 / 1024 / 1024 & " GB"   
 #### l) VolumeName 属性
 
 该属性设置或返回指定驱动器的卷标名，既可读又可写。当写入卷标名时候，基本形式是：驱动器对象名.VolumeName = 新的名字。例如，我这里有一个 U 盘，它的名字是“冰域剑客2”，现在我来将它改为“黑客手册”：
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_89_1.png)
-
 图 2-53 修改驱动器的卷标名
 
 ```vb
@@ -4142,12 +4142,12 @@ Dim Fso As Object, MyFile As Object
 Set Fso = CreateObject("Scripting.FileSystemObject")    ' 创建FSO对象
 Set MyFile = Fso.getfile("D:\Temp2\1.txt")              ' 返回文件对象
 MsgBox MyFile.DateCreated                                ' 得到创建日期和时间
-```
-
-上面的代码运行后如图 2-54 所示，日期时间格式也请大家参考下图。
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_91_0.png)
 
+```
+
+上面的代码运行后如图 2-54 所示，日期时间格式也请大家参考下图。
 - **c) DateLastAccessed 属性**  
   该属性用于返回最后一次访问指定文件或文件夹的日期和时间，是一个只读属性。
 
@@ -4198,10 +4198,19 @@ MsgBox " 文件的路径是" & MyFile.Path
 MsgBox " 文件的短路径是" & MyFile.ShortPath
 MsgBox " 文件的大小是" & MyFile.Size
 MsgBox " 文件的类型是" & MyFile.Type
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_92_0.png)
 
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_92_1.png)
+
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_92_2.png)
+
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_92_3.png)
+
+```
 图2-55 获取文件的文件名
 
 问：这里文件名和短文件名、路径和短路径有什么区别？
@@ -4209,21 +4218,12 @@ MsgBox " 文件的类型是" & MyFile.Type
 答：在早期的命名规则中，如果文件名或路径超过一定的长度，那么它的真实值将被部分替代为“~”。
 
 举个例子，我们在程序目录新建一个文本文件，它的名字是：11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111.txt。很长哦，如果此时我们获取对应文件对象的 Name 属性，返回值将如图2-55所示。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_92_1.png)
-
 图2-56 获取文件的短文件名
 
 而此时，如果我们获取它的短文件名，得到的结果将如图2-56所示。
 
 路径和短路径的区别亦在于此。此时，返回的 Path 属性值如图2-57所示。若返回的是 ShortPath 短路径的属性，则结果如图2-58所示。相信大家已经理解它们的区别了。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_92_2.png)
-
 图2-57 文件的 Path 属性值
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_92_3.png)
-
 图2-58 文件的 ShortPath 属性值
 
 上面的文字中，我们介绍 Folder 对象和 File 对象共同具有的一些属性。下面，我们来介绍 Folder 对象私有的 3 个属性，这三个属性文件对象并不具有。请参考下面的表格：
@@ -4249,14 +4249,14 @@ Set MyFolder = Fso.getfolder("D:\Temp2\")                 ' 返回文件夹对�
 For Each MyFile In MyFolder.Files                          ' 遍历每一个文件对象元素
     List1.AddItem MyFile.Name                              ' 添加文件对象的Name属性到List1中
 Next
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_93_0.png)
+
 ```
 
 运行上面的代码，可以发现列表已成功添加，如图2-59所示。
 
 上面的代码中，`MyFolder.Files` 是一个文件对象的集合体。使用 `For Each...Next` 语句，我们访问到了所有的文件对象，并获取了它们的 `Name` 属性。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_93_0.png)
-
 ### b) IsRootFolder 属性
 
 该属性用于判断指定的文件夹是否是根文件夹，如果是返回 `True`，否则返回 `False`。例如，`D:\` 是一个根文件夹；而 `D:\Temp2` 则不是，因为它还有上级文件夹 `D:\`。下面示例判断一个文件夹是否是一个根文件夹：
@@ -4281,14 +4281,14 @@ Set MyFolder = Fso.getfolder("D:\Music")                  ' 返回文件夹对�
 For Each ChildFolder In MyFolder.SubFolders               ' 遍历文件夹对象
     List1.AddItem ChildFolder.Path                        ' 添加每个文件夹对象的Path属性的值到List1中
 Next
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_94_0.png)
+
 ```
 
 上面的代码运行后如图2-60所示。
 
 以上我们介绍了文件夹对象和文件对象的各种属性。大家可以先总结回顾一下，然后接着看后面的内容。现在我们来介绍它们共有的几个方法，请参考下面的表格：
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_94_0.png)
-
 | 方法名 | 功能描述 |
 |---|---|
 | Copy 方法 | 用于复制一个文件或文件夹。 |
@@ -4477,10 +4477,10 @@ Set MyTextStream = Fso.OpenTextFile("D:\Temp2\lijiejie.txt")   ' 返回 TextStre
 MyTextStream.Skip (2)                                           ' 跳过 2 个字符
 MsgBox MyTextStream.ReadLine                                    ' 读取一行内容
 MyTextStream.Close                                              ' 关闭文件
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_98_0.png)
 
+```
 图 2-61 使用 Skip 方法跳过字符
 
 运行上面的代码，结果如图 2-61 所示。可以看到，前两个字符“J u”已经被跳过而没有读取出来。
@@ -4536,6 +4536,15 @@ While Not MyTextStream.AtEndOfStream                           ' 循环直到文
 Wend
 MyTextStream.Close
 MsgBox AllText                                                  ' 提示文本的所有内容
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_100_0.png)
+
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_101_0.png)
+
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_101_1.png)
+
 ```
 
 ## 4．使用 TextStream 对象写入数据
@@ -4569,9 +4578,6 @@ TextStream 对象在写入数据时，可以利用下面的 3 种方法：
 ## 第三章
 
 ## 网络编程
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_100_0.png)
-
 ## 3.1 引言
 
 网络编程是黑客编程中最重要的部分之一，因为很多的入侵工具都是基于网络的应用，例如游戏外挂、注入工具、扫描工具等。同时，也正是因为有了网络，才会有黑客的存在。在网络编程这一章节中，我们将着重介绍两个非常重要的控件：WebBrowser（浏览器控件）和 Internet Transfer 控件。
@@ -4585,17 +4591,11 @@ TextStream 对象在写入数据时，可以利用下面的 3 种方法：
 WebBrowser 控件包含了多种可以用来实现 Internet Explorer 中功能的属性、方法和事件。例如，可以使用 Navigate 方法实现访问网页，使用 GoBack（后退）、GoForward（前进）、Stop（停止）和 Refresh（刷新）这几个方法实现工具栏中的导航按钮。
 
 WebBrowser 可以处理 Navigated 事件，以便使用 URL 属性的值更新地址栏，使用 DocumentTitle 属性的值更新标题栏。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_101_0.png)
-
 图 3-1 添加 WebBrowser 控件到工具箱中
 
 我们之所以举这些例子是想说明 Internet Explorer 浏览器能实现的大部分功能，WebBrowser 控件都是能够实现的。WebBrowser 翻译为中文即“网页浏览器”。读者朋友们一定很期待了吧？
 
 WebBrowser 控件不是基本控件，而是一个 ActiveX 控件，我们必须自行添加到工具箱中。在工具箱中单击右键，选择菜单中的“部件”，出现如图 3-1 所示的窗体。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_101_1.png)
-
 图 3-2 勾选 Microsoft Internet Controls
 
 在“控件”这个选项卡中勾选“Microsoft Internet Controls”，如图 3-2 所示。然后点击“确定”，可以发现一个地球状的图标加入到了我们的工具箱中，这就是我们要介绍的主角“WebBrowser 控件”。将一个 WebBrowser 控件画到窗体中的方法与其他的基本控件类似。
@@ -4606,12 +4606,15 @@ WebBrowser 控件不是基本控件，而是一个 ActiveX 控件，我们必须
 Private Sub Form_Load()
     WebBrowser1.Navigate "http://www.baidu.com"   ' 打开网页
 End Sub
-```
-
-运行后网页在 WebBrowser 中被打开，如图 3-3 所示。上面的代码使用到了 WebBrowser 控件的 Navigate 方法，这在后面会有详细介绍。
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_102_0.png)
 
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_102_1.png)
+
+```
+
+运行后网页在 WebBrowser 中被打开，如图 3-3 所示。上面的代码使用到了 WebBrowser 控件的 Navigate 方法，这在后面会有详细介绍。
 图 3-3 使用 WebBrowser 打开网页
 
 ### 3.2.1 WebBrowser 控件的常用方法
@@ -4627,9 +4630,6 @@ WebBrowser 控件常用的方法请参考下面的表格：
 | Navigate | 连接到指定的 URL |
 | Refresh | 刷新当前页面 |
 | Stop | 相当于 IE 的“停止”按钮，停止当前页面及其内容的载入 |
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_102_1.png)
-
 图 3-4 窗体中添加的控件
 
 下面我们对上面的几种方法一一介绍。
@@ -4650,6 +4650,9 @@ End Sub
 Private Sub Command3_Click()
     WebBrowser1.GoBack                            ' 单击按钮3，后退
 End Sub
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_103_0.png)
+
 ```
 
 运行程序后，我们单击“打开 Google”，再单击“打开 baidu”，依次打开两个网站。当我们接下来单击“后退”按钮时，可以发现 WebBrowser 后退到了 Google 的页面。这里 GoBack 方法实现的功能跟 IE 浏览器中的“后退”是一样的。但是请注意，这里后退并不是重新打开，只是显示之前打开过的页面而已，并非再一次连接这个页面的 URL。
@@ -4669,9 +4672,6 @@ End Sub
 ### e）Navigate 方法
 
 该方法用于打开一个指定的 URL。它的基本形式是：WebBrowser 对象名.Navigate URL[, Flags][, TargetFrameName][, PostData][, Headers]。上面的所有参数，除了 URL 以外，其他的都是可选的。参数 URL 代表了我们需要打开的网址。事实上，我们也可以输入一个本地文件的地址，例如 D:\WebServer\index.HTML。参数 PostData 是我们需要向页面提交的数据，它可以是以 Post 方式提交的数据，类似于 username=nohack 或者 username=nohack&password=123456。多个参数中间以“&”符号隔开。参数 Headers 是提交 HTTP 数据时的头信息。如果是以 Post 方法提交，则可以设置成“Content-Type: application/x-www-form-urlencoded”。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_103_0.png)
-
 使用 WebBrowser 控件除了能直接打开某个网页外，还可以向这个网页提交参数。请看下面的例子。页面 http://www.lijiejie.cn/hackgame/four/index.ASP 是一个动态 ASP 页，它要求我们可以提交一个 1 到 1000 之间的数字，如图 3-5 所示。
 
 通过查看这个页面的源代码，可以发现表单中有一个元素 NumPass 是用于提交数字的，如下：
@@ -4682,10 +4682,10 @@ End Sub
 <input type=text name=numpass>
 <input type=submit value="提交">
 </form>
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_103_1.png)
 
+```
 上面是一段很简单的 HTML 代码，它指明了我们需要提交的这个参数名称为 numpass（如果大家对 HTML 不熟悉，亦不必深究）。所以，如果我们要提交一个数字 100，就可以提交这种形式的数据：Numpass=100。接下来进行实战吧！
 
 首先，在工具箱中单击右键，添加“部件”，将 WebBrowser 控件添加到工具箱中。然后画一个 WebBrowser 和一个按钮到窗体中，为按钮的单击事件添加下面的代码：
@@ -4700,6 +4700,9 @@ PostData = "numpass=122"
 PostData = StrConv(PostData, vbFromUnicode)
 Headers = "Content-Type: application/x-www-form-urlencoded"
 WebBrowser1.Navigate URL, 0, "", PostData, Headers
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_104_0.png)
+
 ```
 
 运行上面的代码，会提示“密码错误”，如图 3-6 所示。
@@ -4707,9 +4710,6 @@ WebBrowser1.Navigate URL, 0, "", PostData, Headers
 可以看出，我们的密码已经成功提交了，因为如果没有提交任何数据，这个网页不会返回任何提示的。
 
 > 提示：上面的例子中，PostData 默认为 Unicode 字符串，我们必须使用 StrConv 函数将字符串由 Unicode 转成系统的缺省码页。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_104_0.png)
-
 上面的例子中，我们只提交了一个参数，下面再示例提交两个参数。我们使用 WebBrowser 来实现网页的登录，只要设置好我们的 PostData 参数，就非常简单了。首先查看登录页面，如图 3-7 所示，需要填写用户名和密码。然后查看该登录页面的 HTML 代码，找出表单中的元素：
 
 ```html
@@ -4725,10 +4725,10 @@ WebBrowser1.Navigate URL, 0, "", PostData, Headers
 <input type=submit name=submit value="提交">
 <input type=reset name=reset value="重置">
 </form>
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_104_1.png)
 
+```
 提示一下，`<form>` 和 `</form>` 两个标签之间的部分是表单的信息。可以看出，两个元素的名称分别是：username 和 pass，action 提交的地址是 login.ASP。我自己有一个账号，用户名为 admin，密码为 yes。因此我们需要提交的数据形式是：username=admin&pass=yes。
 
 > 提示：表单是一个容器，它用于收集和传递数据。对于动态网页编程来讲，表单是极为重要的，因为用户提交数据必须使用到表单。
@@ -4746,6 +4746,9 @@ Private Sub Command1_Click()
     Headers = "Content-Type: application/x-www-form-urlencoded"
     WebBrowser1.Navigate URL, 0, "", PostData, Headers
 End Sub
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_105_0.png)
+
 ```
 
 运行上面的程序，然后按下按钮，可以发现我们的账号已经登录成功了，如图 3-8 所示。Navigate 方法是 WebBrowser 最重要的方法之一，我们对 Navigate 方法的介绍到此结束。
@@ -4782,9 +4785,6 @@ WebBrowser 控件最常用的几个属性及其功能说明请参考下面的表
 #### a) Document
 
 该属性用于返回一个 Document 文档对象，即我们正在浏览的页面。通过这个 Document 对象，我们可以获取网页上许多元素的属性值。例如，我们需要获取页面中的 Cookies，就可以使用代码：WebBrowser1.Document.cookie。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_105_0.png)
-
 简单示例其使用方法。在窗体中画一个 WebBrowser 控件和一个按钮，添加如下代码：
 
 ```vb
@@ -4795,12 +4795,15 @@ End Sub
 Private Sub Form_Load()
     WebBrowser1.Navigate "http://www.baidu.com"    ' 在窗体载入时打开百度
 End Sub
-```
-
-运行后如图 3-9 所示。
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_105_1.png)
 
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_106_0.png)
+
+```
+
+运行后如图 3-9 所示。
 > **提示：** 为什么我们要先打开百度？这是因为，我们必须先打开一个页面，才能成功地返回 Document 对象，否则会出现错误。
 
 如果我们不打开任何页面，而直接使用 WebBrowser1.Document.cookie，则会出现如图 3-10 所示的错误。关于 Document 对象的使用，我们会在后面作详细介绍。
@@ -4810,9 +4813,6 @@ End Sub
 
 - **c) Type**  
   该属性返回已被 WebBrowser 控件加载的对象类型。例如，如果加载 .doc 文件，就会返回 Microsoft Word Document，即我们打开的文件类型。例如，我们使用 WebBrowser 打开一个 HTML 页面，再返回 WebBrowser 的 Type 属性，就会得到“HTML 文档”，如图 3-11 所示。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_106_0.png)
-
 - **d) Left、Top、Width、Height**  
   上面的四个属性跟其他控件类似，都是用于设置控件在窗体中显示的位置。
 
@@ -4829,12 +4829,15 @@ End Sub
 Private Sub Form_Load()
     WebBrowser1.Navigate "http://www.baidu.com"    ' 打开百度首页
 End Sub
-```
-
-上面的代码运行后如图 3-12 所示。
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_106_1.png)
 
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_107_0.png)
+
+```
+
+上面的代码运行后如图 3-12 所示。
 - **f) LocationURL**  
   该属性用于返回 WebBrowser 当前正在显示资源的 URL。
 
@@ -4869,9 +4872,6 @@ End Sub
 
 - **d) StatusTextChange**  
   当 WebBrowser 的状态发生改变时就会触发该事件，但程序是否有状态栏对该事件并无影响。IE 的状态栏在最下端，如图 3-13 所示。浏览器在打开一个页面时，状态会发生多次改变，也就会多次触发该事件。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_107_0.png)
-
 - **e) TitleChange 事件**  
   该事件是在网页的标题发生改变时被触发。例如，我们先打开了百度首页，标题是“百度一下，你就知道”，若我们再打开 Google，网页的标题变为“Google”，此时网页标题发生改变，就会触发 TitleChange 事件。
 
@@ -4924,24 +4924,24 @@ Private Sub Form_Load()
     ' 窗体载入时打开页面
     WebBrowser1.Navigate "http://www.class18.com.cn/class18/admin/login.asp"
 End Sub
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_108_0.png)
 
-如图 3-14 所示，这是打开后的页面。我们单击用户名输入框，再单击命令按钮，此时返回用户名输入框对象的 Name 属性，如图 3-15 所示。可以看到，获取焦点的输入框 Name 属性的值是 username。
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_108_1.png)
 
+```
+如图 3-14 所示，这是打开后的页面。我们单击用户名输入框，再单击命令按钮，此时返回用户名输入框对象的 Name 属性，如图 3-15 所示。可以看到，获取焦点的输入框 Name 属性的值是 username。
 ##### b) alinkColor 属性
 
 该属性可以用于设置或获取元素中所有激活链接的颜色，也就是一个超链接被点击之后的颜色。请注意，它不仅可以返回值，同时还可以设置一个颜色值。这里返回的是一个十六进制值，我们在设置值的时候，可以使用十六进制颜色值，也可以使用颜色名称，诸如 White、Blue、Black、Grey、Pink 等。网页上可以使用的有名称颜色可参考“网页颜色选择器”：http://www.k369.com/qt/webedit/color.htm，我们可以将颜色值设定成其中的任何一个值：
 
 ```vb
 MsgBox WebBrowser1.Document.alinkColor   ' 返回链接被点击后的颜色
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_108_2.png)
 
+```
 我们设置一个网页中超链接被点击之后的颜色为白色，使用代码：
 
 ```vb
@@ -4976,16 +4976,19 @@ Private Sub Form_Load()
     ' 窗体载入时打开页面
     WebBrowser1.Navigate "http://www.lijiejie.cn/hackgame"
 End Sub
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_109_0.png)
 
-运行后如图 3-17 所示。
-
-> 提示：请注意，这里获得的代码并不是 100% 完整的代码，而是位于 `<Body>` 和 `</Body>` 之间的这部分代码。要想获取完整的代码，我们另有方法。这里只是获取 InnerHTML，只要使用 OuterHTML，就是完整的代码了。
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_109_1.png)
 
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_109_2.png)
+
+```
+运行后如图 3-17 所示。
+
+> 提示：请注意，这里获得的代码并不是 100% 完整的代码，而是位于 `<Body>` 和 `</Body>` 之间的这部分代码。要想获取完整的代码，我们另有方法。这里只是获取 InnerHTML，只要使用 OuterHTML，就是完整的代码了。
 ##### f) fileCreatedDate 属性
 
 该属性用于获取文件创建的日期，但无法设置，它是一个只读属性。例如，我们可以打开本地的一个 HTML 页面，然后使用 fileCreatedDate 属性返回它的创建日期。
@@ -4993,9 +4996,6 @@ End Sub
 ##### g) fileSize 属性
 
 该属性用于返回文档的大小，以字节为单位。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_109_2.png)
-
 ##### h) protocol 属性
 
 该属性用于设置或获取 URL 的协议部分。例如，我们打开一个 HTTP 页面，得到的 protocol 属性值就是：HyperText Transfer Protocol，如图 3-18 所示。而如果打开一个 HTTPS 页面，例如网银的登录页面，获取的属性值则是：HyperText Transfer Protocol with Privacy，如图 3-19 所示。
@@ -5074,10 +5074,13 @@ Private Sub Form_Load()
     ' 窗体载入时打开页面
     WebBrowser1.Navigate "http://www.baidu.com"
 End Sub
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_111_0.png)
 
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_111_1.png)
+
+```
 图 3-20 遍历百度首页上的所有元素
 
 上面的代码中，`WebBrowser1.Document.All.length` 是返回页面中元素的总个数。在 Document 的所有集合对象中，都可以使用 Length 属性返回它们的长度，而 `WebBrowser1.Document.All.Item(i-1).tagname` 则是返回第 i-1 个元素的 TagName，即标签的类型。如果标签是 A，表明这个元素是超链接，把它的 href 属性添加到 List1 中即可。程序运行后如图 3-21 所示。
@@ -5085,9 +5088,6 @@ End Sub
 > 提示：HTML 标签中，A 是代表超链接的标签，而 href 参数则是超链接的地址。
 
 触类旁通一下，还可以获取网页中的所有按钮、输入框、图片等，只需要对某一筛选条件进行判断即可。例如，需要获取所有的图片，就可以修改判断条件为：
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_111_1.png)
-
 图 3-21 获取页面中的所有超链接
 
 ```vb
@@ -5205,12 +5205,12 @@ Private Sub Form_Load()
     ' 窗体载入时打开页面
     WebBrowser1.Navigate "http://www.lijiejie.cn/hackgame"
 End Sub
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_113_0.png)
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_113_1.png)
 
+```
 运行上面的代码，如图 3-22 和图 3-23 所示。可以看到，我们获取的页面中脚本的总个数是 4，但是，在 List1 中列出来的只有 3 个。其原因是，某些时候我们在编写 HTML 页面中的脚本时，会省略 Language 参数不写，浏览器会自动识别其到底是 VBScript 还是 JavaScript。但因为这个参数没有被赋值，所以我们获得的最终脚本类型就是空字符串了。
 
 ##### g) 总结
@@ -5283,10 +5283,10 @@ Private Sub Form_Load()
     ' 窗体载入时打开程序目录下的 test.HTML
     WebBrowser1.Navigate App.Path & "\\test.HTML"
 End Sub
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_115_0.png)
 
+```
 图 3-24 getElementById 方法返回对象
 
 运行上面的代码，如图 3-24，确实是第一个 Id 为 Nohack 的 Div 标签中的 HTML 代码。使用 getElementById 方法只能返回第一个指定 id 值的对象，它并不能返回一个对象的集合。
@@ -5318,14 +5318,14 @@ Private Sub Form_Load()
     ' 窗体载入时打开页面
     WebBrowser1.Navigate App.Path & "\\test.HTML"
 End Sub
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_115_1.png)
 
-图 3-25 getElementsByName 方法返回的集合中对象的总个数
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_115_2.png)
 
+```
+图 3-25 getElementsByName 方法返回的集合中对象的总个数
 图 3-26 第一个元素的 Value 属性的值
 
 运行以上代码，分别如图 3-25 和图 3-26 所示。我们通过 `obj(0).Value` 返回了第一个 Name 参数为“LiJiejie”的对象的 Value 值，这里也体现出 getElementsByName 方法返回的是一个对象数组。
@@ -5936,6 +5936,9 @@ b() = Inet1.OpenURL(strURL, icByteArray)
 Open "C:\Temp\China.exe" For Binary Access Write As #1
 Put #1, , b()
 Close #1
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_128_0.png)
+
 ```
 
 使用上面的方法可以很容易地实现从匿名 FTP 服务器上下载文件。这里所说的匿名 FTP 服务器，是指我们不需要密码登录就可以访问服务器。
@@ -5945,9 +5948,6 @@ Close #1
 Text1 = Inet1.OpenURL("http://www.lijiejie.com", icString)。运行代码后如图 3-40 所示。
 
 这里返回的是完整的源代码，跟大家在 IE 中查看源代码所获得的结果是一样的。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_128_0.png)
-
 ### 3.4.3 Inet 控件的事件
 
 Inet 控件只有唯一的一个事件——StateChanged 事件。当连接中状态发生改变，就会引发该事件。它的基本形式是：`Inet控件名_StateChanged(ByVal State As Integer)`。这里有一个参数 `State`，它表示当前 Inet 控件的连接状态，它的可能值如下表所示：
@@ -6022,6 +6022,13 @@ End Sub
 Dim URL As String
 URL = "http://www.baidu.com/1.txt"
 Text1 = Inet1.OpenURL(URL, icString)
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_131_0.png)
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_131_1.png)
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_131_2.png)
+
 ```
 
 ### 3.5.2 使用 Inet 编写简易后台扫描工具
@@ -6092,13 +6099,6 @@ Text1 = Inet1.OpenURL(URL, icString)
     - 507 Insufficient Storage
     - 509 Bandwidth Limit Exceeded
     - 510 Not Extended
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_131_0.png)
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_131_1.png)
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_131_2.png)
-
 如果我们连接一个存在的页面，Inet 的 GetHeader 方法返回的信息如图 3-41 所示。
 
 可以看到，是“200 OK”。若我们连接一个不存在的页面，则返回信息如图3-42所示。返回的是“404 Not Found”。
@@ -6120,10 +6120,10 @@ Private Sub Form_Load()
     Wend
     Close #1
 End Sub
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_132_0.png)
 
+```
 窗体中的所有控件布局如图3-44所示。
 
 在窗体的通用部分添加代码：
@@ -6172,12 +6172,12 @@ Private Sub Inet1_StateChanged(ByVal State As Integer)
         End If
     End If
 End Sub
-```
-
-我们尝试扫描网站“http://www.scncgz.net”，扫描的结果如图3-45，得到了有用的连接。
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_133_0.png)
 
+```
+
+我们尝试扫描网站“http://www.scncgz.net”，扫描的结果如图3-45，得到了有用的连接。
 总结一下。这里为了说明 Inet 控件在扫描后台方面的应用，我们编写了一个非常简单的后台扫描工具。这个工具还是有很多缺陷的，但限于篇幅，我们无法在此一一进行解决。其中一个问题是，对于 404 页面自定义的网站，即使我们打开一个不存在的页面，也会返回 200，也就是“OK”，此时我们再用这个工具扫描，就会得到错误的结果了。其实“啊D注入工具”和“明小子旁注工具”都有这样的缺陷，解决的方法是，我们从网站上任意抓取一个不存在的页面，例如“Nohack1234567890.HTML”，看它是否返回 200，如果返回 200，则表明它的 404 页面是自定义的。第二个问题是，这里只使用了一个 Inet 控件，所以它的效率是很有限的。如果我们能够建立一个 Inet 控件数组，也就能实现多线程的扫描，这样程序的效率将大大提高。相关的代码已附在光盘中，读者朋友们可以参考并改进一下程序。
 
 ### 3.5.3 Inet 基于 FTP 的应用简单举例
@@ -6193,12 +6193,12 @@ While Inet1.StillExecuting              ' 如果正忙，则继续该操作
     DoEvents
 Wend
 Text1.Text = Inet1.GetChunk(1000)       ' 从Inet1中返回前1000字节的结果到Text1中
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_133_1.png)
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_133_2.png)
 
+```
 上面的代码中，Execute 的第一个参数省略，第二个参数被设置成了“ls”，也就是列根目录。While...Wend 循环用于判断程序是否正忙，如果正忙，则继续执行当前操作。当操作完成，就使用 Inet 的 GetChunk 方法返回 1000 字节的数据到 Text1 中。运行上面的代码，如图3-46所示。可以看出，根目录下有 3 个文件夹，分别是：db、log 和 web。如果我们使用一个错误的密码进行连接，则会出现如图3-47所示的错误。继续介绍 Inet 在 FTP 方面的使用。
 
 刚才我们列出根目录时，看到有一个 web 目录，现在我们来列 web 目录：
@@ -6212,10 +6212,10 @@ While Inet1.StillExecuting           ' 如果正忙，继续当前操作
     DoEvents
 Wend
 Text1.Text = Inet1.GetChunk(1000)    ' 返回1000字节数据
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_134_0.png)
 
+```
 图3-48 使用 Inet 列出 FTP 服务器上的目录
 
 列出的结果如图3-48所示。
@@ -6240,6 +6240,9 @@ While FtpData <> ""                   ' 循环直到FtpData变为空
     Text1.Text = Text1.Text & FtpData
     FtpData = Inet1.GetChunk(10)      ' 返回下10个字节到FtpData变量中
 Wend
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_135_0.png)
+
 ```
 
 上面的代码利用的原理是，GetChunk 方法在返回完一定字节量的数据后，如果数据仍有剩余，则可以第二次调用 GetChunk 方法返回剩余的数据。直到没有剩余的数据，GetChunk 方法返回的就是空字符串。当然了，读者朋友们在实际编程中不用每次只返回 10 字节的数据，设置成 500 是比较合适的。
@@ -6257,9 +6260,6 @@ FTP 密码破解程序实现起来是十分简单的，使用 Inet 代码不会�
 在程序中我们需要载入密码字典，字典文件保存在程序目录下的 `pass.txt` 中，它的形式是一行一个密码，如图3-50所示。
 
 将 Timer 控件的 Interval 属性设置成 1，也就是 1ms，前面说过，它的作用只是用来使破解继续下去，并不是用来延时的，所以设置成 1 毫秒就行了。然后将它的 Enabled 属性默认设置成 False，否则在还没有点按钮时它就会自动破解起来了。下面来编写我们的核心代码：
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_135_0.png)
-
 图3-49 控件的基本布局
 
 ```vb
@@ -6303,10 +6303,13 @@ End Sub
 Private Sub Timer1_Timer()
     Call Command1_Click
 End Sub
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_135_1.png)
 
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_136_0.png)
+
+```
 图3-50 密码的保存形式是一行一个
 
 我们对上面的代码做一些说明：
@@ -6319,9 +6322,6 @@ End Sub
 运行此密码破解程序，我在列表中插入正确的密码，如图3-51所示，破解成功。
 
 这里只是给大家做一个演示，功能是不完善的，很多缺陷其实是可以进行改良的。读者朋友们在看示例的基础上一定要有自己的理解。源代码已附在光盘中，有兴趣的读者朋友可以拿去改一改，做一个强大的 FTP 密码破解工具。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_136_0.png)
-
 如图3-51 FTP 密码破解成功
 
 ### 3.5.5 使用 Inet 实现 Web 页面上的暴力破解
@@ -6345,10 +6345,13 @@ Inet 使用得最普遍的其实是基于 Web 上的破解。“沸雪”是一�
     <input name=loginuser type="text">
     <input name=password type=password>
 </form>
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_136_1.png)
 
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_137_0.png)
+
+```
 图3-52 亿邮系统登录界面
 
 #### 编程实现
@@ -6356,9 +6359,6 @@ Inet 使用得最普遍的其实是基于 Web 上的破解。“沸雪”是一�
 破解程序的控件布局如图3-53所示，除了命令按钮，还需要一个 TextBox，用于输入用户名，三个 ListBox，第一个用于载入最常用的密码，第二个用于显示工作进度，第三个用来显示破解成果。除此之外，还需要一个 Inet 控件，使用它采用 POST 方法向页面提交数据。另外，一个 CommonDialog 控件则是用来让用户载入密码字典的。进度条 ProgressBar 控件可以显示密码破解进度。
 
 接下来我们看看关键的代码部分。密码是从外部文件载入到 ListBox 里面的，因此可以在 Form1 的 Load 事件中添加下面的代码：
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_137_0.png)
-
 图3-53 控件的基本布局
 
 ```vb
@@ -6456,6 +6456,9 @@ If CommonDialog1.FileName <> "" Then
 Else
     MsgBox "您没有选中任何文件", vbInformation, "冰域剑客 Bingker Union"
 End If
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_139_0.png)
+
 ```
 
 #### 总结
@@ -6463,9 +6466,6 @@ End If
 这样下来，程序就基本完成了。大家可以看到，Inet 控件在网络编程方面的应用是非常广泛的，学习 VB 网络编程的读者朋友都应该好好掌握一下。
 
 我用这篇文章为大家说明一下使用 Inet 进行 Web 暴力破解的知识，如果在这个程序中建立控件数组，也就是建立多个 Inet 控件，是可以实现多线程暴力破解的。在光盘中附上了笔者近期写的一个多线程 Web 弱口令扫描工具，它是通过建立 Inet 控件数组来实现暴力破解的。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_139_0.png)
-
 ### 3.5.6 参考资料
 
 下面为大家提供一个参考资料，里面有 Inet 控件详细的使用方法，全英文的资料，标题为 Microsoft Internet Transfer Control，网址是 http://msdn.microsoft.com/zh-cn/library/aa239740(en-us,VS.60).ASPx。
@@ -6485,6 +6485,9 @@ End If
 <input name="TextBox1" type="text" maxlength="11" id="TextBox1"/>
 <input type="submit" name="Button1" value="确定" id="Button1" />
 </form>
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_139_1.png)
+
 ```
 
 表单的名称是 Form1，提交到 Default.ASPx 这个页面。手机号码输入框的名称是 TextBox1，确定按钮的名称是 Button1。
@@ -6492,9 +6495,6 @@ End If
 我们要做的，就是在这个页面上，反复提交某一个人的手机号码，让程序反复发送。程序中控件的基本布局如图 3-55 所示。
 
 我们需要两个 TextBox（输入手机号码和发送条数）、一个按钮、一个 ListBox（名称是 statelist，显示当前发送的进度）、一个 WebBrowser（用于发送短信，我们将它的宽和高设置成了 1，所以窗体上看不见）、一个 Timer（Enabled 属性设置成 False，Interval 属性设置成 3000）。下面来编写代码：
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_139_1.png)
-
 ```vb
 ' 在通用部分进行变量的声明
 Option Explicit      ' 强制变量声明
@@ -6590,12 +6590,12 @@ state = 1                         ' 程序当前状态为 1
 pagecount = 1                     ' 百度搜索结果已经打开一页
 baidupage = 1                     ' 当前搜索页初始为第一页
 WebBrowser1.Navigate "http://www.baidu.com/s?wd=" & Text1.Text   ' 进行关键字搜索
-```
-
-当 WebBrowser 打开这个搜索页面时，会产生一个 DocumentComplete 事件，此时页面已经下载完毕，我们可以从中提取出有用的信息。该事件的代码为：
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_141_0.png)
 
+```
+
+当 WebBrowser 打开这个搜索页面时，会产生一个 DocumentComplete 事件，此时页面已经下载完毕，我们可以从中提取出有用的信息。该事件的代码为：
 ```vb
 Private Sub WebBrowser1_DocumentComplete(ByVal pDisp As Object, URL As Variant)
     On Error Resume Next
@@ -6768,6 +6768,26 @@ Private Sub Timer1_Timer()
         & baidupage * 10 & "&ver=0&cl=3&uim=0&usm=0"
     Timer1.Enabled = False        ' Timer1 恢复为不可用
 End Sub
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_147_0.png)
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_147_1.png)
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_147_2.png)
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_147_3.png)
+
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_147_4.png)
+
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_147_5.png)
+
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_148_0.png)
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_148_1.png)
+
 ```
 
 #### 总结
@@ -6796,25 +6816,10 @@ End Sub
 - 2. **字段**：数据表中的一列称为一个字段。字段名必须是唯一的。一个字段中存放同一类型的数据，不同字段存放的数据类型则可以不同。一个字段中所存放的数据类型、数值大小及字段长度是该字段属性。
 - 3. **记录**：数据表中的每一行为一个记录。
 - 4. **主键**：每个表都有一个主键，主键字段的数据是表中一条记录的唯一标识。标识了主键的数据表中，各条记录是唯一的。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_147_0.png)
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_147_1.png)
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_147_2.png)
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_147_3.png)
-
 下面我们来一步一步地使用 Access 2003 建立一个数据库。
 
 打开 Access 2003，首先在工具栏中单击“新建”按钮，此时软件右侧出现新建文件的选项，如图 4-1 所示。我们选择“空数据库”，程序会提示保存本地数据库的路径，如图 4-2 所示。在保存类型选项中，选择“Microsoft Office Access 数据库”，它的文件扩展名是 mdb。选择一个合适的文件夹保存文件即可。此处示例将数据库文件保存在 D 盘根目录下，文件名为 db1.mdb。保存文件之后，我们会进入设计视图，如图 4-3 所示。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_147_4.png)
-
 选择“使用设计器”创建表。此时要求我们输入表中的字段名称和数据类型，如图 4-4 所示。可选的数据类型如图 4-5 所示。比如说，我们要创建一个保存管理员信息的表，就可以创建三个字段：ID（自动编号）、UserName（文本）、PassWord（文本）。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_147_5.png)
-
 填写好的结果如图 4-6 所示。
 
 填写完字段信息，我们单击工具栏中的“保存”按钮，会弹出一个对话框，要求输入表的名称，如图 4-7 所示，我们输入“Admin”即可。
@@ -6826,11 +6831,6 @@ End Sub
 此时单击保存，我们添加的所有记录就都保存到数据库中了。接着关闭 Microsoft Access 即可。
 
 在创建好数据库之后，我们还可以使用 Access 2003 随时修改数据库的结构以及数据表中的内容。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_148_0.png)
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_148_1.png)
-
 ## 4.3 Data 控件
 
 VB 中的 Data 控件可以提供对数据库的连接和访问，它使用起来非常方便。设计人员只需编写极少的代码就可以取得对数据库的访问。
@@ -7071,6 +7071,26 @@ Data 控件的所有事件请参考下面的表格内容：
 
 ```vb
 Private Sub Data控件名_Validate ([index As Integer,] action As Integer, save As Integer)
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_154_0.png)
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_154_1.png)
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_154_2.png)
+
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_154_3.png)
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_154_4.png)
+
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_154_5.png)
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_154_6.png)
+
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_154_7.png)
+
 ```
 
 Validate 事件的语法有下列部分：
@@ -7111,31 +7131,11 @@ save 的设置为：
 Data 控件使用十分方便，我们只需要编写少量的代码，就可以实现丰富的功能。请读者朋友注意操作的步骤。
 
 首先要很遗憾地告诉读者朋友，使用 Access 2003 建立的数据库是不能直接使用 Data 控件来连接的。所以，首先我们必须转换一下数据库的格式。打开我们之前建立的数据库 D:\db1.mdb，在工具栏中找到“工具”->“数据库实用工具”->“转换数据库”->“转为 Access 97 文件格式”。这样就可以把数据库转换为较低版本的 Access 97 数据库，也就能够使用 Data 控件来连接了。我们将 Access 97 数据库转换到 D:\db2.mdb。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_154_0.png)
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_154_1.png)
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_154_2.png)
-
 使用 VB 6.0 新建一个工程，窗体中的控件基本布局如图 4-10 所示。
 
 我们需要绘制 4 个 TextBox（前三个用于显示 Id、UserName、Password，最后一个用于输入查询的用户名）、一个 Data 控件、5 个按钮（依次是下一条、上一条、新增记录、删除记录、查找）。绘制好控件后，我们来设置各控件的属性。将之前建立的数据库放到程序根目录下，这样可以方便连接。然后选择 Data 控件的 Database 属性来设置需要连接的数据库路径，如图 4-11 所示。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_154_3.png)
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_154_4.png)
-
 接下来设置 Data 控件的 RecordSource 属性，如图 4-12 所示，选择一个表即可，这里我们选择“Admin”表。下一步设置 Data1 的 RecordsetType 为 1，也就是 Dynaset，这也是默认的设置，如图 4-13 所示。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_154_5.png)
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_154_6.png)
-
 为了使 Text1、Text2、Text3 与 Data1 绑定，我们需要设置它们的 DataSource 属性，如图 4-14 所示，我们设置成 Data1。要想在 Text1 中显示 Id 信息，就需要设置 Text1 的 DataField 属性为“ID”，如图 4-15 所示。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_154_7.png)
-
 同样的方法，我们再设置 Text2 的 DataField 属性为“UserName”，Text3 的 DataField 属性为“Password”。此时我们运行程序，可以发现，使用 Data 控件上的各个按钮，已经可以浏览每一条记录了，如图 4-16 所示。
 
 下面为各个按钮添加代码。首先为“下一条”和“上一条”按钮添加代码：
@@ -7263,6 +7263,23 @@ CommandTimeout 属性用于指示在终止尝试和产生错误之前执行命�
 ```
 Ado Data 控件名.CommandTimeout = [Value]
 Ado Data 控件名.ConnectionTimeout = [Value]
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_159_0.png)
+
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_159_1.png)
+
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_159_2.png)
+
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_159_3.png)
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_159_4.png)
+
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_159_5.png)
+
 ```
 
 使用 Connection 对象或者 Command 的 CommandTimeout 属性，允许由于网络阻塞或者服务器过载产生的延迟而取消 Execute 方法的调用。
@@ -7343,29 +7360,12 @@ WillMove 事件在挂起操作更改 RecordSet 中的当前位置前触发，而
 ### 4.4.4 Ado Data 控件使用示例
 
 我们先来看看怎样使用 Ado Data 控件浏览和增删记录。它跟 Data 控件的使用方法类似。先在窗体中绘制好控件，控件的基本布局如图 4-17 所示。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_159_0.png)
-
 我们需要向窗体中加入一个 Ado Data 控件、4 个 TextBox、5 个按钮以及若干 Label 标签。接着设置 Ado Data 控件的属性。在窗体中选中 Ado Data 控件，右键查看属性（Ado Data Properties），出现属性页，如图 4-18 所示。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_159_1.png)
-
 此时，我们来设置 Connection String，即使用连接字符串来连接到数据库。点击“Build”按钮，在出现的数据连接属性中选择“Microsoft JET 4.0 OLE DB Provider”，如图 4-19 所示。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_159_2.png)
-
 单击“下一步”，设置“连接”选项，如图 4-20 所示。单击后面的浏览按钮可以选择数据库；如果数据库就在程序所在目录下，则只需要输入数据库的名称，例如“db1.mdb”。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_159_3.png)
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_159_4.png)
-
 > 提示：使用 Ado Data 控件可以直接连接 Access 2003 建立的数据库，而不必将它转换为 Access 97 格式。需要注意的是，Data 控件无法直接连接 Access 2003 建立的数据库，必须先将数据库转换为 Access 97 格式。
 
 如果数据库设置了密码，则取消勾选“空白密码”，并在密码输入框中输入密码，此时可勾选“允许保存密码”。设置完毕，单击测试连接，如果连接成功，则单击“确定”，如图 4-21 所示。这个时候，编译器会自动生成一个连接字符串，如图 4-22 所示。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_159_5.png)
-
 接着在 ADO Data 属性页中设置“RecordSource”属性，如图 4-23 所示。我们在 CommandType 选项中，选择 2-adCmdTable，在 Table Or Stored Procedure Name 选项中，选择一个数据表的名称，我们在前面建立了一个“Admin”表，此处选择“Admin”。如此一来，我们便设置好了 ADO Data 的各项属性。
 
 下面将数据绑定到 TextBox 控件上，设置 TextBox 的属性。首先设置 Text1 的 DataSource 属性为 Adodc1，如图 4-24 所示。设置 Text1 的 DataField 属性为 ID，如图 4-25 所示。这样，就将 Text1 和数据库中的 ID 字段绑定了。使用同样的方法，我们可以将 Text2 和 Text3 分别与 UserName 和 PassWord 绑定。
@@ -7987,6 +7987,9 @@ Private Sub Form_Load()
         Adodc1.Recordset.MoveNext
     Wend
 End Sub
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_176_0.png)
+
 ```
 
 上面的代码运行结果如图 4-37 所示。在 Select 语句当中我们还可以附加筛选条件，使用关键词 where 连接即可。例如，我们需要查询 Admin 表中 ID 值为 1 的用户，就可以使用：`select * from admin where id=1`，运行后的结果如图 4-38 所示。当然了，我们也可以只查询 Admin 表中的 Password 字段，使用 `select password from admin`。Select 就是筛选的意思，该语句从 Admin 表中筛选出 Password 字段的所有数据。
@@ -8074,9 +8077,6 @@ Delete 语句用于从数据库中删除记录。它的基本形式是：`DELETE
 到此，我们对数据库方面的内容就介绍完了。本书只对 ACCESS 数据库操作做了简单说明，但事实上，如果我们要对数据库方面的内容做更多了解，还可以学习 MSSQL、MYSQL、Oracle 等中型和大型数据库。如果读者朋友们对数据库感兴趣，请参阅相关资料。
 
 ## 第五章 API编程
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_176_0.png)
-
 ## 5.1 引言
 
 在一些情况下，仅仅使用控件和 VB 的内部函数进行编程会遇到困难，例如，用户想要获取本机的进程列表、本机的用户列表，或者想要编写一个程序来关闭计算机等。此时，使用 API 函数可以解决问题。了解完 API 函数，我们可以利用 VB 编写出更实用、更加强大的程序。
@@ -8123,10 +8123,24 @@ Kernel32.DLL 是动态链接库的名称，它省略了扩展名 DLL，此处写
 
 ```vb
 Private Declare Function Beep Lib "C:\Windows\system32\kernel32.DLL" (ByVal dwFreq As Long, ByVal dwDuration As Long) As Long
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_178_0.png)
 
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_178_1.png)
+
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_178_2.png)
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_178_3.png)
+
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_178_4.png)
+
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_179_0.png)
+
+```
 当然了，这里 System32 文件夹不一定在 C 盘，根据你的系统磁盘不同是有所差别的。
 
 在声明中，`ByVal dwFreq As Long`、`ByVal dwDuration As Long` 表明函数有两个参数，分别是 dwFreq 和 dwDuration，它们都是长整型的。函数的返回值是一个 Long 类型的整数。
@@ -8134,33 +8148,19 @@ Private Declare Function Beep Lib "C:\Windows\system32\kernel32.DLL" (ByVal dwFr
 有了上面的声明，我们就可以在程序中使用这个 Beep 函数了，该函数的作用是利用系统喇叭发出声音。
 
 Windows 提供了非常多的 API 函数，难道每一个函数的声明我们都需要记住吗？当然不是。对于这么多的 API 函数声明，VB6.0 自带了 API 浏览器——API Viewer，可以使用它来查看各个 API 函数的声明，并可以复制这些声明到程序当中。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_178_1.png)
-
 在开始菜单中找到“Microsoft Visual Basic 6.0 中文版”下的“Microsoft Visual Basic 6.0 中文版工具”，单击“API 文本浏览器”，就可以打开 API 浏览器了，如图 5-1 所示。
 
 API 浏览器的视图如图 5-2 所示。
 
 在查询一个函数之前，需要加载文本或数据库到浏览器，具体的做法是，选择 API 浏览器中的“文件”菜单下的“加载文本文件”，如图 5-3 所示。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_178_2.png)
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_178_3.png)
-
 再选择“WIN32API.TXT”，如图 5-4 所示，这样就可以把文件中数据加载到浏览器中。加载完毕之后“可用项”中就会列出所有的 API 函数名，如图 5-5 所示。
 
 在“声明范围”选项中选择合适的范围，再双击一个可用项，就会在下面的“选定项”中列出对应 API 函数的声明。此时，单击“复制”按钮，就可以把 API 函数声明复制到剪贴板了，接着在代码编辑窗口中单击“粘贴”即可。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_178_4.png)
-
 当读者朋友们对 API 函数的了解更加深入的时候，就会发现，API 函数的使用跟其他函数一样方便。
 
 API 函数的声明可以写在窗体的通用部分（以 Private 声明），也可以在模块中（以 Public 声明）。怎么新建一个模块呢？在 VB 菜单栏中选择“工程”菜单下的“添加模块”，在出现的对话框中，选择“打开”即可，如图 5-6 所示。
 
 新建模块之后，就可以在模块中粘贴 API 函数的声明了。下面我们就来展示 API 函数的使用。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_179_0.png)
-
 ## 5.4 API函数使用示例
 
 笔者选取了若干 API 函数，为读者朋友介绍它们的用法。熟悉这些 API 函数的使用方法，可以为我们了解和学习其他函数打下基础，也可以帮助我们在编程中提高程序的性能。
@@ -8184,10 +8184,10 @@ Declare Function GetComputerName Lib "kernel32" Alias "GetComputerNameA" (ByVal 
 
 ```vb
 Private Declare Function GetComputerName Lib "kernel32" Alias "GetComputerNameA" (ByVal lpBuffer As String, nSize As Long) As Long
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_179_1.png)
 
+```
 上面的示例中，因为是在窗体中声明，所以必须用 Private 来声明，默认情况下是以 Public 进行 API 函数声明的。
 
 在窗体的载入事件中添加如下代码：
@@ -8236,10 +8236,10 @@ Private Sub Form_Load()
     GetUserName UserName, 50
     Form1.Caption = Left(UserName, InStr(UserName, Chr(0)))
 End Sub
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_180_0.png)
 
+```
 图 5-8 返回当前系统用户名
 
 运行上面的代码，效果如图 5-8 所示。
@@ -9382,6 +9382,18 @@ Private Sub Form_Load()
         End If
     End If
 End Sub
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_203_0.png)
+
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_203_1.png)
+
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_204_0.png)
+
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_204_1.png)
+
 ```
 
 请读者朋友们注意，上面 `OpenProcess` 函数中，笔者使用了常数值，而没有对常数名进行定义。`OpenProcess(1&, -1&, ByVal 6240)` 最终的效果跟使用常数名称的结果是一样的。
@@ -9395,9 +9407,6 @@ End Sub
 ## 5.6 利用 API 函数读写注册表
 
 在 Windows 操作系统中，注册表可谓一个极为关键的数据库。在这个数据库中，保存了系统和应用程序的各项配置信息，例如：注册表中保存了部分开机启动项的信息、IE 的配置信息、软件的安装和卸载信息等。熟悉掌握对注册表的操作，我们可以实现拥有更多功能的程序。这一小节我们介绍怎样使用 API 函数来对注册表进行读写操作。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_203_0.png)
-
 图 5-26 注册表编辑器视图
 
 你想知道怎样获取开机启动项吗？你想获取系统中的软件列表吗？API 函数可以帮助你实现这一切。当然，掌握好注册表，你能做的远不止这一些。因为注册表可以看成操作系统的一个“肺”，操作系统的运转对它有极大的依赖。
@@ -9409,9 +9418,6 @@ End Sub
 打开 Cmd 命令行，输入“RegEdit”并回车（或在开始菜单的运行里面输入 RegEdit），可以打开注册表编辑器，其视图如图 5-26 所示。
 
 图片中，左侧目前可以看到的是 5 个主键（主键是所保存信息大的分类），而右侧为项的值。这 5 个主键保存着不同的信息，是不同的分类：
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_203_1.png)
-
 图 5-27 双击展开主键下面的子键
 
 - 1. **HKEY_CLASSES_ROOT 主键**：主要记录 Windows 操作系统中所有数据文件的格式和关联信息（文件后缀与对应应用程序）。其子键可分为已注册文件扩展名（前有“.”）和文件类型相关信息两类。
@@ -9425,9 +9431,6 @@ End Sub
 双击一个项的名称，可以查看并修改它的值，如图 5-29 所示。
 
 通过 API 函数同样可以实现读取和写入注册表键值。对于子键，我们可以使用分隔符“\\”来分隔，例如，我们可以表示 `HKEY_CURRENT_CONFIG` 主键下的子键 `SoftWare` 为 `HKEY_CURRENT_CONFIG\\SoftWare`。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_204_0.png)
-
 在注册表中，项目的数据类型可以为以下四种：
 
 | 显示类型（在编辑器中） | 数据类型 | 说明 |
@@ -9436,9 +9439,6 @@ End Sub
 | REG_MULTI_SZ | 多字符串 | 含有多个文本值的字符串 |
 | REG_BINARY | 二进制数 | 二进制值，以十六进制显示 |
 | REG_DWORD | 双字 | 一个 32 位的二进制值，显示为 8 位的十六进制值 |
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_204_1.png)
-
 我们对注册表的介绍就这么多吧，如果需要更深入的了解，请读者朋友们参考相关资料。如果要对注册表进行操作，我们大致需要了解以下的几个 API 函数：
 
 - 1. 对子键进行操作的 API 函数：`RegCreateKey`、`RegDeleteKey`、`RegEnumKey`
@@ -9480,10 +9480,10 @@ Private Sub Form_Load()
         MsgBox "新建子键成功!"
     End If
 End Sub
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_205_0.png)
 
+```
 图 5-30 程序运行结果
 
 运行如图 5-30 所示，子键创建成功。
@@ -9799,6 +9799,9 @@ End Sub
 ```vb
 MsgBox KeyValue
 End Sub
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_211_0.png)
+
 ```
 
 运行上面的代码，同样可以正确取得“Content Type”项的值。对上面的代码，进行如下几点说明：
@@ -9808,9 +9811,6 @@ End Sub
 - 我在初始化 KeyValue 时，使用了 LenKeyValue + 1，为什么要多一个 1？这是因为，一个字符串结尾的标志是 Chr(0)，前面长度为 LenKeyValue 的缓冲是用于保存项的实际值，而作为字符串结尾标志，我们还需要加一个 Chr(0) 在字符串的后面。为了使大家更好地理解这一点，请看代码：`MsgBox "黑客手册" & Chr(0) & "Nohack"`。
 
 上面的代码运行结果是什么呢？是“黑客手册Nohack”吗？答案是否定的。因为 Chr(0) 是作为字符串结尾标志的，程序读到 Chr(0)，就认为字符串结束了，不会再读取后续字符。所以，上面的代码运行结果应该是“黑客手册”。运行结果如图 5-36 所示。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_211_0.png)
-
 图 5-36 运行结果
 
 由于在字符串后面添加了作为结尾标志的 Chr(0)，所以我们应该避免对它进行字符串连接操作。
@@ -9819,6 +9819,9 @@ End Sub
 
 ```vb
 Declare Function ExpandEnvironmentStrings Lib "kernel32" Alias "ExpandEnvironmentStringsA" (ByVal lpSrc As String, ByVal lpDst As String, ByVal nSize As Long) As Long
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_212_0.png)
+
 ```
 
 其中的 3 个参数说明如下：
@@ -9866,9 +9869,6 @@ Declare Function ExpandEnvironmentStrings Lib "kernel32" Alias "ExpandEnvironmen
 | %USERNAME% | 返回当前登录用户名。 |
 | %USERPROFILE% | 返回当前用户配置文件位置。 |
 | %WINDIR% | 返回操作系统目录位置。 |
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_212_0.png)
-
 下面示例展开 `%OS%`，以获取操作系统的版本：
 
 ```vb
@@ -9881,14 +9881,14 @@ Private Sub Form_Load()
     ExpandEnvironmentStrings "%OS%", OsInfor, 255  ' 调用函数
     MsgBox OsInfor
 End Sub
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_212_1.png)
+
 ```
 
 上面的代码运行后的结果如图 5-37 所示。可以看出，程序只能得到大的版本，而无法具体到 Vista 或 XP；但使用 `GetVersionEx` 函数则可以获取具体的操作系统版本。
 
 了解完了怎样展开环境变量，下面来使用 `RegQueryValueEx` 函数读取 `REG_EXPAND_SZ` 类型的值。此处示例读取子键 `HKEY_CLASSES_ROOT\.txt\ShellNew` 下的项 `ItemName`，它的值是 `@%SystemRoot%\system32\notepad.exe,-470`，我们在读取后将其展开，如图 5-38 所示。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_212_1.png)
-
 我们编写如下代码：
 
 ```vb
@@ -9925,10 +9925,10 @@ Private Sub Form_Load()
 
     MsgBox StrResult
 End Sub
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_213_0.png)
 
+```
 运行上面的代码，结果如图 5-39 所示。对比图 5-38，可以看到，`%SystemRoot%` 已经被展开为 `C:\Windows`，它是系统所在目录。
 
 上面的代码综合应用函数 `RegQueryValueEx` 和 `ExpandEnvironmentStrings`，希望读者朋友们可以理解掌握。
@@ -9941,6 +9941,9 @@ End Sub
 
 ```vb
 Declare Function RegSetValue Lib "advapi32.dll" Alias "RegSetValueA" (ByVal hKey As Long, ByVal lpSubKey As String, ByVal dwType As Long, ByVal lpData As String, ByVal cbData As Long) As Long
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_214_0.png)
+
 ```
 
 对于其中的几个参数，我们做如下说明：
@@ -9952,9 +9955,6 @@ Declare Function RegSetValue Lib "advapi32.dll" Alias "RegSetValueA" (ByVal hKey
 | dwType | Long，必须是 REG_SZ |
 | lpData | String，新值 |
 | cbData | Long，指定 lpData 的长度，不包括空中止字符 |
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_214_0.png)
-
 可以看到，这里只能设置字符串类型的值，而且是设置默认的项。首先在 `HKEY_CURRENT_CONFIG\Nohack` 子键下编辑默认项的值为“www.nohack.cn”，然后编写程序来设置，如图 5-40 所示。
 
 请看下面的代码：
@@ -9975,10 +9975,10 @@ Private Sub Form_Load()
     ' 调用函数设置默认项的值
     RegSetValue HKEY_CURRENT_CONFIG, "Nohack", REG_SZ, "黑客手册", LenB("黑客手册")
 End Sub
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_214_1.png)
 
+```
 运行上面的代码，再查看注册表中的项，可以看到它的值已经变成了“黑客手册”，如图 5-41 所示。
 
 > 注意：此处想看到修改后的效果，请按 F5 来刷新注册表。当然，也可以通过重新打开注册表来查看修改后的效果。
@@ -9989,6 +9989,9 @@ End Sub
 
 ```vb
 Declare Function RegSetValueEx Lib "advapi32.dll" Alias "RegSetValueExA" (ByVal hKey As Long, ByVal lpValueName As String, ByVal Reserved As Long, ByVal dwType As Long, lpData As Any, ByVal cbData As Long) As Long
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_215_0.png)
+
 ```
 
 其中的几个参数做如下说明：
@@ -10008,9 +10011,6 @@ Declare Function RegSetValueEx Lib "advapi32.dll" Alias "RegSetValueExA" (ByVal 
 > 第二，将程序放在启动文件夹同样可以实现开机启动。  
 > 第三，修改 `Boot.ini` 文件亦可实现开机启动。  
 > 方法不限于此。如果需要编写开机启动程序，通常写入 `...\Run` 子键；若编写木马，则不会使用如此明显的方法，将木马作为服务启动亦是一种选择。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_215_0.png)
-
 请看下面的代码：
 
 ```vb
@@ -10044,6 +10044,9 @@ End Sub
 
 ```vb
 Declare Function RegDeleteValue Lib "advapi32.dll" Alias "RegDeleteValueA" (ByVal hKey As Long, ByVal lpValueName As String) As Long
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_215_1.png)
+
 ```
 
 它的两个参数：
@@ -10052,9 +10055,6 @@ Declare Function RegDeleteValue Lib "advapi32.dll" Alias "RegDeleteValueA" (ByVa
 |---|---|
 | hKey | Long，一个已打开项的句柄（或标准项名之一） |
 | lpValueName | String，要删除的值名。可设为 `VBNullString` 或空串，表示删除该项的默认值 |
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_215_1.png)
-
 它的返回值为 Long，零（ERROR_SUCCESS）表示成功，其他任何值都代表一个错误代码。
 
 下面示例删除之前建立的 Bingker 启动项。使用下面的代码：
@@ -10145,12 +10145,12 @@ Private Sub Form_Load()
         ValueName = String(255, Chr(0))    ' 再次初始化项的名称
     Wend
 End Sub
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_217_0.png)
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_217_1.png)
 
+```
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run 子键下面的所有项如图 5-44 所示。我们编写的程序运行后的结果如图 5-45 所示。
 
 > **注意：** 上面每次调用完函数之后，都重新初始化 ValueName 和 DataValue，有意义吗？答案是肯定的，因为如果我们先在变量中保存了较长的数据，第二次调用时不清空，则新的数据只会覆盖前面的部分，后面的部分将不会改变，那么此时我们得到的数据将是错误的。
@@ -10190,10 +10190,13 @@ Private Sub Form_Load()
         ValueName = String(255, Chr(0)) ' 再次初始化项的名称
     Wend
 End Sub
-```
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_218_0.png)
 
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_219_0.png)
+
+```
 运行上面的代码，结果如图 5-46 所示。可以看到，项 Windows Defender 中的环境变量已经被展开了。亲爱的读者朋友，到此，对注册表操作的介绍就全部结束了。你已经会新建和删除子键了吗？你又会枚举子键了吗？你了解怎样读取注册表键值了吗？是否知道怎样枚举注册表键值呢？
 
 ## 5.7 本章小结
@@ -10205,9 +10208,6 @@ End Sub
 ## 第六章
 
 ### 综合应用
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_219_0.png)
-
 ## 6.1 引言
 
 本章是对前面所学内容的综合应用，事实上，我们在前面已经有过一些较综合的应用了，这里做一些总结和补充。
@@ -10294,6 +10294,9 @@ Private Sub Timer1_Timer()
         Form1.Line (Form1.Width * 0.5, Form1.Height * 0.5)-(Form1.Width * 0.5 + Cos(hudu) * r, Form1.Height * 0.5 + Sin(hudu) * r), RGB(c1, c2, c3)
     End If
 End Sub
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_223_0.png)
+
 ```
 
 代码每一句都非常简单，但要理解这段代码可能并不容易。看完注释及说明，如果你还不能理解程序实现的原理，那么，请读者朋友运行光盘中附带的源代码，查看程序的效果。然后，再回过头来看看这段代码，就非常容易理解了。
@@ -10364,9 +10367,6 @@ End Sub
 | F14 | `{F14}` |
 | F15 | `{F15}` |
 | F16 | `{F16}` |
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_223_0.png)
-
 图6-1 窗体的基本布局
 
 为了指定那些与 SHIFT、CTRL 及 ALT 等按键结合的组合键，可在这些按键码的前面放置一个或多个代码，代码列举如下：
@@ -11286,6 +11286,12 @@ Public Function UpdataRes(ByVal lFileName As String, ByVal ResNumber As Long, Da
     UpdateResource hRes, "CUSTOM", ResNumber, 2052, DataToWrite(0), DataLength
     EndUpdateResource hRes, False
 End Function
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_242_0.png)
+
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_242_1.png)
+
 ```
 
 UpdataRes 是我们的自定义函数，它的参数 lFileName 表示文件的完整路径，参数 ResNumber 表示资源的标识号，参数 DataToWrite 表示需要改写进去的字节数组，参数 DataLength 表示需要改写进去的数据的字节长度。
@@ -11301,9 +11307,6 @@ UpdataRes 是我们的自定义函数，它的参数 lFileName 表示文件的�
 ### 6.8.1 程序实现的原理
 
 程序定时枚举系统顶级窗口，如果在这些窗口中发现了非法关键词，则将其关闭。再者，若用户正在浏览网页，则获取网页的源代码，在代码中发现关键词，同样关闭之。非法的关键词可以经过简单处理后放入数据库中，程序每次运行的时候从数据库中读取这些关键词，然后加入一个列表框中。当发现用户正在浏览一个 HTTP 页面时，则可以使用 Internet Transfer 控件获取网页源代码，判断是否存在关键词。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_242_0.png)
-
 图6-18　非法关键词简单处理后写入数据库
 
 ### 6.8.2 编程实现
@@ -11311,9 +11314,6 @@ UpdataRes 是我们的自定义函数，它的参数 lFileName 表示文件的�
 第一步，将非法关键词写入数据库，这里不能写入明文，至少需要经过简单的处理。如图6-18所示，我取了每个字的 ASCII 码，中间用逗号隔开。例如 ID 为 113 的这一项，它就是“色情网站”这四个字经过处理后的结果。
 
 从图6-18可以看出，表的名称为 ParentsControl，其中存放非法关键词的字段是 NotAllowedWords，这个在后面加入关键词的时候需要用到。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_242_1.png)
-
 图6-19　控件的基本布局
 
 控件的基本布局如图6-19所示，需要用到一个 listbox（用来列出系统顶级窗口），一个 combo（用于列出非法的关键词），一个 adodc（用于连接数据库），一个 inet 控件（用于获取用户浏览的网页源代码），一个 timer（定时刷新及监控）。
@@ -11467,6 +11467,16 @@ Private Sub InetCheckWebSources_StateChanged(ByVal State As Integer)
         InetCheckWebSources.Cancel            ' 如果连接出错则退出 Inet 进程
     End If
 End Sub
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_245_0.png)
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_245_1.png)
+
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_246_0.png)
+
+![](img/9a242554fad48ef96d64a3b5154a6d3a_246_1.png)
+
 ```
 
 ### 6.8.3 总结
@@ -11476,11 +11486,6 @@ End Sub
 ## 6.9 用 VB 编写 404 自定义增强后台扫描工具
 
 几乎所有的注入工具中都集成了后台扫描的功能，但是这些工具多半是根据返回的 HTTP 标头来判断页面是否存在的，如果返回的不是 404，就判定页面存在，这样做有非常大的局限性。如果网站自定义了 404 出错页，那么所有页面返回的 HTTP 标头都是 200（成功），程序就会判定所有的页面都存在。这也是“啊D 注入工具”和“明小子旁注工具”的一大 BUG。如图 6-20 和图 6-21 所示，我使用自己的网站作为示例，啊D 和明小子列出了所有预设的连接。今天我们用 VB 编写一个小程序，克服一般扫描器中的 404 自定义的缺陷。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_245_0.png)
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_245_1.png)
-
 ### 6.9.1 了解一下 HTTP 头
 
 我们先来了解一下各种 HTTP 头都表示什么意思。返回 200 表示页面存在，404 表示文件不存在，403 表示拒绝访问或者拒绝列目录。大家可以参考一下详细的列表：
@@ -11529,11 +11534,6 @@ End Sub
 - 416——所请求的范围无法满足。
 - 417——执行失败。
 - 423——锁定。
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_246_0.png)
-
-![](img/9a242554fad48ef96d64a3b5154a6d3a_246_1.png)
-
 ### 6.9.2 程序实现的原理
 
 程序实现的原理是，我们任意抓取一个不存在的页面。比如说 hacker123456789.html。如果返回的 HTTP 标头不是 404，则表明其 404 页面已经自定义。此时从返回数据中取出前 500 字节数据作为关键字符，之后在扫描每一个连接的时候，直接将返回数据的前 500 字节数据与之对照，如果相同，则表明文件不存在，如果不相同，则文件存在。

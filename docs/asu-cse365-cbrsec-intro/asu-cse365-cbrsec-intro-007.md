@@ -75,9 +75,6 @@ tcpdump是一个强大的命令行数据包分析器。
 ![](img/7ff6387ba273e682f357701e488cd6a9_16.png)
 
 以下是tcpdump的一些常用命令示例：
-```bash
-# 监听所有接口的流量
-tcpdump -i any
 
 ![](img/7ff6387ba273e682f357701e488cd6a9_18.png)
 
@@ -87,13 +84,16 @@ tcpdump -i any
 
 ![](img/7ff6387ba273e682f357701e488cd6a9_24.png)
 
-# 显示IP地址而非主机名
-tcpdump -n
 
 ![](img/7ff6387ba273e682f357701e488cd6a9_26.png)
 
 ![](img/7ff6387ba273e682f357701e488cd6a9_27.png)
 
+```bash
+# 监听所有接口的流量
+tcpdump -i any
+# 显示IP地址而非主机名
+tcpdump -n
 # 以十六进制和ASCII格式显示数据包内容
 tcpdump -XX
 ```

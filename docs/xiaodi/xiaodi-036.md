@@ -91,8 +91,6 @@ Log4j是Apache的一个开源项目，它是Java应用程序中广泛使用的�
 
 ![](img/8fb3472c5a8ac5ca875d00e3c9073d83_57.png)
 
-```java
-import org.apache.log4j.Logger;
 
 ![](img/8fb3472c5a8ac5ca875d00e3c9073d83_59.png)
 
@@ -102,6 +100,8 @@ import org.apache.log4j.Logger;
 
 ![](img/8fb3472c5a8ac5ca875d00e3c9073d83_65.png)
 
+```java
+import org.apache.log4j.Logger;
 public class Log4jTest {
     private static final Logger logger = Logger.getLogger(Log4jTest.class);
     public static void main(String[] args) {
@@ -179,12 +179,6 @@ logger.error(code);
 
 ![](img/8fb3472c5a8ac5ca875d00e3c9073d83_109.png)
 
-```java
-import org.apache.log4j.Logger;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 ![](img/8fb3472c5a8ac5ca875d00e3c9073d83_111.png)
 
@@ -192,6 +186,12 @@ import java.io.IOException;
 
 ![](img/8fb3472c5a8ac5ca875d00e3c9073d83_115.png)
 
+```java
+import org.apache.log4j.Logger;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 public class Log4jServlet extends HttpServlet {
     private static final Logger logger = Logger.getLogger(Log4jServlet.class);
 
@@ -258,11 +258,11 @@ FastJson是阿里巴巴开源的一个高性能JSON处理库，用于实现Java�
 ![](img/8fb3472c5a8ac5ca875d00e3c9073d83_135.png)
 
 首先，我们创建一个简单的Java Bean类 `User`：
-```java
-package com.xiaodi;
 
 ![](img/8fb3472c5a8ac5ca875d00e3c9073d83_137.png)
 
+```java
+package com.xiaodi;
 public class User {
     private String name;
     private int age;
@@ -274,15 +274,15 @@ public class User {
 }
 ```
 然后，我们编写测试代码来演示FastJson的基本功能：
-```java
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.xiaodi.User;
 
 ![](img/8fb3472c5a8ac5ca875d00e3c9073d83_139.png)
 
 ![](img/8fb3472c5a8ac5ca875d00e3c9073d83_141.png)
 
+```java
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.xiaodi.User;
 public class FastJsonTest {
     public static void main(String[] args) {
         // 1. 创建对象

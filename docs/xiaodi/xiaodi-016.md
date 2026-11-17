@@ -254,8 +254,6 @@ CDN（内容分发网络）通过在全球部署缓存节点来加速网站访�
 ![](img/f076121a9805ee5772314bd8b38edd53_163.png)
 
 **代码示例（简易Python HTTP监听）**：
-```python
-from http.server import HTTPServer, BaseHTTPRequestHandler
 
 ![](img/f076121a9805ee5772314bd8b38edd53_165.png)
 
@@ -265,15 +263,17 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 
 ![](img/f076121a9805ee5772314bd8b38edd53_171.png)
 
+
+![](img/f076121a9805ee5772314bd8b38edd53_173.png)
+
+```python
+from http.server import HTTPServer, BaseHTTPRequestHandler
 class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         print(f"[+] Received request from: {self.client_address[0]}")
         self.send_response(200)
         self.end_headers()
         self.wfile.write(b'OK')
-
-![](img/f076121a9805ee5772314bd8b38edd53_173.png)
-
 server = HTTPServer(('0.0.0.0', 8080), Handler)
 server.serve_forever()
 ```

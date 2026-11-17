@@ -344,19 +344,11 @@ python sqlmap.py -u "http://target.com/page.php?id=1" --tamper=base64encode,spac
 当内置脚本无法绕过时，需要自己编写。Tamper脚本本质是一个Python文件，核心是 `tamper(payload, **kwargs)` 函数，对输入的 `payload` 进行变换并返回。
 
 以下是一个简单的示例，将 `UNION` 转换为大小写混合 `UnIoN` 以绕过简单的关键字过滤：
-```python
-#!/usr/bin/env python
-"""
-自定义Tamper脚本：将SQL关键字转换为大小写混合
-"""
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_212.png)
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_214.png)
 
-from lib.core.enums import PRIORITY
-
-__priority__ = PRIORITY.NORMAL
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_216.png)
 
@@ -364,6 +356,14 @@ __priority__ = PRIORITY.NORMAL
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_220.png)
 
+```python
+#!/usr/bin/env python
+"""
+自定义Tamper脚本：将SQL关键字转换为大小写混合
+"""
+from lib.core.enums import PRIORITY
+
+__priority__ = PRIORITY.NORMAL
 def tamper(payload, **kwargs):
     retVal = payload
     if payload:

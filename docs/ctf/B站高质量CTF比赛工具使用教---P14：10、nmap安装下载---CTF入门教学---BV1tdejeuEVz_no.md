@@ -42,12 +42,12 @@ Nmap支持多种平台，包括Windows、macOS和Linux。其主要运行方式�
 ![](img/913324d299e52c0bfceabced61bd2583_6.png)
 
 打开终端，输入以下命令进行安装或验证：
-```bash
-# 对于已预装Nmap的系统（如Kali），直接运行即可
-nmap
 
 ![](img/913324d299e52c0bfceabced61bd2583_8.png)
 
+```bash
+# 对于已预装Nmap的系统（如Kali），直接运行即可
+nmap
 # 如果需要安装，可以使用包管理器（例如在Ubuntu/Debian上）
 sudo apt update
 sudo apt install nmap

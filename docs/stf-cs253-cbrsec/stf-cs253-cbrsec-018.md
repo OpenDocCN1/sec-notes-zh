@@ -164,15 +164,24 @@ document.querySelector('#attackBtn').addEventListener('click', () => {
 
 以下是一个Node.js Express服务器的中间件示例，用于防御DNS重绑定攻击：
 
-```javascript
-const express = require('express');
-const app = express();
-const PORT = 8080;
 
 ![](img/1bb76722691ddd2e6b1a537a70a84c3a_85.png)
 
 ![](img/1bb76722691ddd2e6b1a537a70a84c3a_87.png)
 
+
+![](img/1bb76722691ddd2e6b1a537a70a84c3a_89.png)
+
+![](img/1bb76722691ddd2e6b1a537a70a84c3a_91.png)
+
+![](img/1bb76722691ddd2e6b1a537a70a84c3a_93.png)
+
+![](img/1bb76722691ddd2e6b1a537a70a84c3a_95.png)
+
+```javascript
+const express = require('express');
+const app = express();
+const PORT = 8080;
 // 防御DNS重绑定的中间件
 app.use((req, res, next) => {
     const expectedHost = `localhost:${PORT}`; // 期望服务的主机名
@@ -190,15 +199,6 @@ app.put('/launch', (req, res) => {
     // 执行敏感操作...
     res.send('操作成功\n');
 });
-
-![](img/1bb76722691ddd2e6b1a537a70a84c3a_89.png)
-
-![](img/1bb76722691ddd2e6b1a537a70a84c3a_91.png)
-
-![](img/1bb76722691ddd2e6b1a537a70a84c3a_93.png)
-
-![](img/1bb76722691ddd2e6b1a537a70a84c3a_95.png)
-
 app.listen(PORT, () => {
     console.log(`本地服务器运行在 http://localhost:${PORT}`);
 });

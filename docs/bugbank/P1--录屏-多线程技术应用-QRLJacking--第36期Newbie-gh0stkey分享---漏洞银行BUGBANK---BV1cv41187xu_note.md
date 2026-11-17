@@ -126,8 +126,9 @@ https://login.wx.qq.com/cgi-bin/mmwebwx-bin/login?loginicon=true&uuid={UUID}&tip
 SSRF（服务器端请求伪造）漏洞允许攻击者诱使服务器向内部或其它系统发起请求。常出现在加载远程图片、文件下载等功能处。
 
 一个典型的SSRF漏洞参数可能如下：
-```
 http://vulnerable-site.com/loadImage?url=http://attacker-controlled.com/image.jpg
+
+```
 ```
 
 ![](img/4a1af3ed8c50ad8f2627a44299486efb_21.png)

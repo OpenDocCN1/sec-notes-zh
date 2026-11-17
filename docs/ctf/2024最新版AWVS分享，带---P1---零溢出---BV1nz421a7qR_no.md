@@ -97,12 +97,12 @@
 
 如果你的系统尚未安装Docker，请按以下步骤操作。
 
-```bash
-# 更新软件包索引
-sudo apt update
 
 ![](img/9fb2274bd322feea49926962f4106145_17.png)
 
+```bash
+# 更新软件包索引
+sudo apt update
 # 安装Docker
 sudo apt install docker.io
 ```

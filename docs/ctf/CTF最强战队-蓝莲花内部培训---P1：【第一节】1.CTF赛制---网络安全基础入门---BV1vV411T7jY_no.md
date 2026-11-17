@@ -37,14 +37,14 @@
 ACFun（A站）曾发生数据库被盗事件。数据库对一个网站至关重要，它存储了多年积累的所有用户数据。黑客获取数据库后，会进行“撞库”攻击，即用泄露的用户名和密码去尝试登录其他网站（如微信、QQ），因为很多人习惯在不同平台使用相同密码。这会导致连锁反应，造成更大范围的隐私泄露和财产损失。当时，约800万条用户数据在暗网标价40万人民币出售。
 
 **撞库攻击**的核心逻辑可以用伪代码描述：
-```python
-# 假设获取了A站的用户数据
-leaked_accounts = [('user1@mail.com', 'password123'), ...]
 
 ![](img/bcd816f030dcf2673feb3c5fb4c06b17_15.png)
 
 ![](img/bcd816f030dcf2673feb3c5fb4c06b17_16.png)
 
+```python
+# 假设获取了A站的用户数据
+leaked_accounts = [('user1@mail.com', 'password123'), ...]
 # 尝试用这些凭证登录其他网站
 for email, password in leaked_accounts:
     if try_login('wechat.com', email, password):

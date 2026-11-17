@@ -155,14 +155,14 @@ npm run start
 
 ![](img/84667de9984b90e1ba962183151f4b9e_37.png)
 
+
+![](img/84667de9984b90e1ba962183151f4b9e_39.png)
+
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
 import "./ERC721Full.sol";
-
-![](img/84667de9984b90e1ba962183151f4b9e_39.png)
-
 contract MemoryToken is ERRC721Full {
     constructor() ERRC721Full("Memory Token", "MEMORY") public {
     }
@@ -305,13 +305,13 @@ name
 
 ![](img/84667de9984b90e1ba962183151f4b9e_97.png)
 
-```javascript
-const MemoryToken = artifacts.require('MemoryToken')
 
 ![](img/84667de9984b90e1ba962183151f4b9e_99.png)
 
 ![](img/84667de9984b90e1ba962183151f4b9e_101.png)
 
+```javascript
+const MemoryToken = artifacts.require('MemoryToken')
 require('chai')
   .use(require('chai-as-promised'))
   .should()

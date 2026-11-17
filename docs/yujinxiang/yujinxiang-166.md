@@ -23,6 +23,9 @@ Lua 5.3.2版本对某些脚本的支持不够完善，尤其是在处理变参�
 为了说明问题，我们首先编写一段使用变参的Lua脚本。
 
 以下是示例脚本代码：
+
+![](img/6b2b3deb284b48b7c558632f417d4bef_10.png)
+
 ```lua
 -- 这是一个支持变参的累加函数
 function sum(...)
@@ -33,9 +36,6 @@ function sum(...)
     end
     return total
 end
-
-![](img/6b2b3deb284b48b7c558632f417d4bef_10.png)
-
 -- 在主程序中调用并打印结果
 print(sum(1, 3, 5, 9))
 ```

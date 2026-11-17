@@ -59,21 +59,9 @@ print(hex_digest) # 输出固定长度的哈希值
 
 以下是实现该思路的简化代码：
 
-```python
-import hashlib
-import itertools
 
 ![](img/3ea434461efc5ef2e98d1891eda81a6a_27.png)
 
-def find_hash_with_leading_zeros(target_zeros):
-    prefix = "happy birthday "
-    for i in itertools.count():
-        guess = f"{prefix}{i}".encode()
-        hash_output = hashlib.sha256(guess).hexdigest()
-        if hash_output.startswith('0' * target_zeros):
-            print(f"Found! Input: {guess}, Hash: {hash_output}")
-            return guess, hash_output
-    return None
 
 ![](img/3ea434461efc5ef2e98d1891eda81a6a_29.png)
 
@@ -85,6 +73,18 @@ def find_hash_with_leading_zeros(target_zeros):
 
 ![](img/3ea434461efc5ef2e98d1891eda81a6a_36.png)
 
+```python
+import hashlib
+import itertools
+def find_hash_with_leading_zeros(target_zeros):
+    prefix = "happy birthday "
+    for i in itertools.count():
+        guess = f"{prefix}{i}".encode()
+        hash_output = hashlib.sha256(guess).hexdigest()
+        if hash_output.startswith('0' * target_zeros):
+            print(f"Found! Input: {guess}, Hash: {hash_output}")
+            return guess, hash_output
+    return None
 # 尝试寻找哈希值以3个零开头的输入
 find_hash_with_leading_zeros(3)
 ```

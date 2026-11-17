@@ -88,21 +88,21 @@ echo $object; // 这里会触发 __toString 方法
 
 ![](img/85bc626a79f6448305457a25d02b5f40_39.png)
 
-```php
-<?php
-highlight_file(__FILE__);
 
 ![](img/85bc626a79f6448305457a25d02b5f40_41.png)
 
+
+![](img/85bc626a79f6448305457a25d02b5f40_43.png)
+
+```php
+<?php
+highlight_file(__FILE__);
 class ReadFile {
     public $filename;
     public function __toString() {
         return file_get_contents($this->filename);
     }
 }
-
-![](img/85bc626a79f6448305457a25d02b5f40_43.png)
-
 if (isset($_COOKIE['c'])) {
     $c = $_COOKIE['c'];
     $h = substr($c, 0, 32); // 取前32位作为MD5

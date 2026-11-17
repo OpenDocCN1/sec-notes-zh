@@ -34,12 +34,12 @@
 ![](img/7e94cd4a89ab0e9f7f877b4a6f62298e_15.png)
 
 **代码示例：**
-```php
-// 方法一：使用array()函数
-$age = array("Peter"=>"35", "Ben"=>"37", "Joe"=>"43");
 
 ![](img/7e94cd4a89ab0e9f7f877b4a6f62298e_17.png)
 
+```php
+// 方法一：使用array()函数
+$age = array("Peter"=>"35", "Ben"=>"37", "Joe"=>"43");
 // 方法二：使用简写语法
 $age = ["Peter"=>"35", "Ben"=>"37", "Joe"=>"43"];
 ```

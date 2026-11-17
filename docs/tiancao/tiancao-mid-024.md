@@ -83,13 +83,13 @@ JNZ  XXXXXX ; 或直接 JMP XXXXXX
 
 **方法二：绕过校验逻辑**
 直接修改指令，将`AL`的值设置为`1`（或其他非零值），然后继续执行。
+
+![](img/e469bef188b3cd9e7995f15c4e285f60_5.png)
+
 ```assembly
 ; 原指令
 ... (某些操作影响了AL)
 TEST AL, AL
-
-![](img/e469bef188b3cd9e7995f15c4e285f60_5.png)
-
 ; 修改后
 MOV AL, 1
 NOP ; 或跳过原操作

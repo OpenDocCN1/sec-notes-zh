@@ -77,6 +77,12 @@
 3.  `puts`会一直打印直到遇到空字节（`\x00`）。由于我们填充了整个块C，打印会继续进入重叠的受害者块V区域，从而将秘密值一起打印出来。
 
 **核心概念代码（逻辑描述）：**
+
+![](img/d9d9f6dd0999d96cffa62174be64fb5d_27.png)
+
+
+![](img/d9d9f6dd0999d96cffa62174be64fb5d_29.png)
+
 ```python
 # 假设操作原语
 malloc(idx, size)
@@ -98,14 +104,8 @@ free(1)
 
 # 3. 分配一个大块，与B重叠，并覆盖到V
 malloc(3, 0xf0 - 0x10) # 分配块C，大小对应篡改后的size
-
-![](img/d9d9f6dd0999d96cffa62174be64fb5d_27.png)
-
 # 4. 向块C写入数据，覆盖到V的部分区域
 write(3, b‘B‘*0xe0)
-
-![](img/d9d9f6dd0999d96cffa62174be64fb5d_29.png)
-
 # 5. 泄露信息：通过打印块C，连带读出V中的秘密数据
 leak = read_leak(3)
 secret = extract_secret_from_leak(leak) # 从输出中解析出秘密值

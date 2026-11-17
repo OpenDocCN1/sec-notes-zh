@@ -56,16 +56,16 @@ JavaEE（Java Platform, Enterprise Edition）是用于企业级Web开发的Java�
 
 ![](img/d270ca8a0ad4fb982f330c718b2f9ad4_33.png)
 
-```java
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 ![](img/d270ca8a0ad4fb982f330c718b2f9ad4_35.png)
 
 ![](img/d270ca8a0ad4fb982f330c718b2f9ad4_37.png)
 
+```java
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 public class IndexServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -293,8 +293,6 @@ JDBC（Java Database Connectivity）是Java语言中用于连接和操作数据�
 
 ![](img/d270ca8a0ad4fb982f330c718b2f9ad4_167.png)
 
-```java
-import java.sql.*;
 
 ![](img/d270ca8a0ad4fb982f330c718b2f9ad4_169.png)
 
@@ -302,6 +300,8 @@ import java.sql.*;
 
 ![](img/d270ca8a0ad4fb982f330c718b2f9ad4_173.png)
 
+```java
+import java.sql.*;
 public class JdbcExample {
     public static void main(String[] args) {
         String url = "jdbc:mysql://localhost:3306/demo";

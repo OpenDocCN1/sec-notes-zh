@@ -60,6 +60,9 @@ echo “Base64编码字符串” | base64 -d > flag.jpg
 ![](img/d3135a7f4d773b8e6a93b55caa659e09_5.png)
 
 **核心代码片段（思路示例）**：
+
+![](img/d3135a7f4d773b8e6a93b55caa659e09_7.png)
+
 ```python
 import re
 import urllib.parse
@@ -67,9 +70,6 @@ import urllib.parse
 # 假设 urls 是提取出的所有注入请求URL列表
 urls = [...]
 flag_chars = [None] * 50  # 假设Flag长度不超过50
-
-![](img/d3135a7f4d773b8e6a93b55caa659e09_7.png)
-
 for url in urls:
     decoded_url = urllib.parse.unquote(url)
     # 使用正则匹配Payload中的索引和ASCII值

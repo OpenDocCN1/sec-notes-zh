@@ -173,16 +173,16 @@ User-Agent: Mozilla/5.0
 ```
 
 **POST请求示例**：
-```
-POST /login HTTP/1.1
-Host: www.example.com
-Content-Type: application/x-www-form-urlencoded
-Content-Length: 27
 
 ![](img/0dacc5eae12477c9e7c51eaea381c0a6_97.png)
 
 ![](img/0dacc5eae12477c9e7c51eaea381c0a6_99.png)
 
+```
+POST /login HTTP/1.1
+Host: www.example.com
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 27
 username=admin&password=123456
 ```
 
@@ -275,10 +275,6 @@ Set-Cookie: sessionId=abc123; Path=/
 ![](img/0dacc5eae12477c9e7c51eaea381c0a6_142.png)
 
 **PUT方法示例（上传文件）**：
-```
-PUT /uploads/info.php HTTP/1.1
-Host: target.com
-Content-Length: 20
 
 ![](img/0dacc5eae12477c9e7c51eaea381c0a6_144.png)
 
@@ -294,6 +290,10 @@ Content-Length: 20
 
 ![](img/0dacc5eae12477c9e7c51eaea381c0a6_156.png)
 
+```
+PUT /uploads/info.php HTTP/1.1
+Host: target.com
+Content-Length: 20
 <?php phpinfo(); ?>
 ```
 

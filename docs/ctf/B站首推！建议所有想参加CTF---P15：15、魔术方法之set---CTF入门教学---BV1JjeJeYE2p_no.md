@@ -45,6 +45,9 @@ echo $a->name; // 这里会报错：Cannot access private property Person::$name
 
 ![](img/3d7f2a82add13d3f4f644270116cf0be_6.png)
 
+
+![](img/3d7f2a82add13d3f4f644270116cf0be_7.png)
+
 ```php
 <?php
 class Person {
@@ -66,9 +69,6 @@ class Person {
         }
     }
 }
-
-![](img/3d7f2a82add13d3f4f644270116cf0be_7.png)
-
 $a = new Person("小明", 60);
 echo $a->name; // 输出：小明
 echo $a->age;  // 输出：60

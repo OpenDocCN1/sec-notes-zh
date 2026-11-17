@@ -54,26 +54,26 @@
 
 以下是调用该函数的代码逻辑示例：
 
+
+![](img/685895c595f4cf7cf3a866382e3c9c4b_9.png)
+
+
+![](img/685895c595f4cf7cf3a866382e3c9c4b_11.png)
+
+
+![](img/685895c595f4cf7cf3a866382e3c9c4b_13.png)
+
 ```cpp
 // 假设：
 // g_QuickBarBase 是快捷栏数组的基址，通过逆向分析得到。
 // g_SkillUseCall 是技能调用函数的地址。
 // index 是要使用的快捷栏格子下标（0-9对应F1-F10）。
-
-![](img/685895c595f4cf7cf3a866382e3c9c4b_9.png)
-
 // 1. 获取技能对象指针
 DWORD skillObjectPtr = *(DWORD*)(g_QuickBarBase + index * 4);
-
-![](img/685895c595f4cf7cf3a866382e3c9c4b_11.png)
-
 // 2. 检查格子是否为空
 if (skillObjectPtr == 0) {
     return; // 格子为空，无法使用
 }
-
-![](img/685895c595f4cf7cf3a866382e3c9c4b_13.png)
-
 // 3. 准备调用（__stdcall 调用约定示例）
 __asm {
     mov ecx, g_QuickBarBase // 设置ECX为基址

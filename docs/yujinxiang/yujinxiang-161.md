@@ -55,6 +55,11 @@
 
 ![](img/4bccc80ed190dda61de46ed7f90f8716_13.png)
 
+
+![](img/4bccc80ed190dda61de46ed7f90f8716_15.png)
+
+![](img/4bccc80ed190dda61de46ed7f90f8716_17.png)
+
 ```c
 // 定义给Lua调用的C函数
 static int add_number(lua_State *L) {
@@ -66,11 +71,6 @@ static int add_number(lua_State *L) {
     lua_pushinteger(L, sum); // 将结果压入栈顶
     return 1; // 返回值的个数为1
 }
-
-![](img/4bccc80ed190dda61de46ed7f90f8716_15.png)
-
-![](img/4bccc80ed190dda61de46ed7f90f8716_17.png)
-
 int main() {
     lua_State *L = luaL_newstate(); // 创建Lua状态机
     luaL_openlibs(L); // 打开标准库
@@ -90,6 +90,11 @@ int main() {
 注册函数后，我们需要在 C 代码中主动调用它。这需要使用 `lua_pcall` 函数。
 
 以下是调用 `add_number` 并传入 8 个参数的完整步骤：
+
+![](img/4bccc80ed190dda61de46ed7f90f8716_23.png)
+
+![](img/4bccc80ed190dda61de46ed7f90f8716_25.png)
+
 ```c
 // 1. 将需要调用的函数（add_number）压入栈顶
 lua_getglobal(L, "add_number");
@@ -108,11 +113,6 @@ lua_pushinteger(L, 8);
 if (lua_pcall(L, 8, 1, 0) != LUA_OK) {
     printf("调用错误: %s\n", lua_tostring(L, -1));
 }
-
-![](img/4bccc80ed190dda61de46ed7f90f8716_23.png)
-
-![](img/4bccc80ed190dda61de46ed7f90f8716_25.png)
-
 // 4. 调用成功，返回值位于栈顶
 int result = lua_tointeger(L, -1);
 printf("累加结果为: %d\n", result);
@@ -153,26 +153,26 @@ static int add_number(lua_State *L) {
 }
 ```
 调用时，我们需要相应地修改 `lua_pcall` 并获取所有返回值：
-```c
-// 调用函数，期望3个返回值
-lua_pcall(L, 8, 3, 0);
 
 ![](img/4bccc80ed190dda61de46ed7f90f8716_35.png)
 
 ![](img/4bccc80ed190dda61de46ed7f90f8716_37.png)
 
+
+![](img/4bccc80ed190dda61de46ed7f90f8716_39.png)
+
+
+![](img/4bccc80ed190dda61de46ed7f90f8716_41.png)
+
+```c
+// 调用函数，期望3个返回值
+lua_pcall(L, 8, 3, 0);
 // 返回值按正序入栈。栈底是第一个返回值，栈顶是最后一个。
 // 索引 -3, -2, -1 分别对应三个返回值。
 int sum = lua_tointeger(L, -3);
 double avg = lua_tonumber(L, -2);
 int count = lua_tointeger(L, -1);
-
-![](img/4bccc80ed190dda61de46ed7f90f8716_39.png)
-
 printf("和:%d, 平均值:%.2f, 参数个数:%d\n", sum, avg, count);
-
-![](img/4bccc80ed190dda61de46ed7f90f8716_41.png)
-
 // 弹出三个返回值
 lua_pop(L, 3);
 ```

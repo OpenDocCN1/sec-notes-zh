@@ -32,16 +32,16 @@
 3.  `ret`指令从堆栈中弹出返回地址，并跳转回去。
 
 用代码可以简单模拟这个过程：
-```assembly
-; 假设调用 call sub_proc
-call sub_proc    ; 1. 将下一行地址（00401005）压栈，然后跳转到sub_proc
-next_instruction: ; 2. 这是要返回的地址
-...
 
 ![](img/0a0c5060ff383763b648e30ae9a086bc_1.png)
 
 ![](img/0a0c5060ff383763b648e30ae9a086bc_2.png)
 
+```assembly
+; 假设调用 call sub_proc
+call sub_proc    ; 1. 将下一行地址（00401005）压栈，然后跳转到sub_proc
+next_instruction: ; 2. 这是要返回的地址
+...
 sub_proc:
     ... ; 3. 子程序代码
     ret ; 4. 从堆栈弹出00401005，并跳转回去
@@ -66,13 +66,13 @@ sub_proc:
 ![](img/0a0c5060ff383763b648e30ae9a086bc_9.png)
 
 以下是程序的核心算法逻辑（伪代码）：
+
+![](img/0a0c5060ff383763b648e30ae9a086bc_11.png)
+
 ```pascal
 // 读取输入
 reg = StrToFloat(Edit2.Text); // 注册码转换为浮点数
 temp = StrToFloat(Edit1.Text); // 机器码转换为浮点数
-
-![](img/0a0c5060ff383763b648e30ae9a086bc_11.png)
-
 // 验证算法
 if (reg * temp == 823729842936.0) {
     Memo1.Enabled := True; // 控件启用，变色

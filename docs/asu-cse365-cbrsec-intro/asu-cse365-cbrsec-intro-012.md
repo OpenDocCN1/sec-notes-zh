@@ -96,10 +96,6 @@ AES是一种分组密码，它将固定长度的明文块（128位，即16字节
 
 ![](img/a8f6d5af7855743b798a20d09f8e2ea7_27.png)
 
-```python
-from Crypto.Cipher import AES
-from Crypto.Util.Padding import pad, unpad
-import os
 
 ![](img/a8f6d5af7855743b798a20d09f8e2ea7_29.png)
 
@@ -111,6 +107,10 @@ import os
 
 ![](img/a8f6d5af7855743b798a20d09f8e2ea7_35.png)
 
+```python
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import pad, unpad
+import os
 key = os.urandom(16) # 生成一个128位（16字节）的随机密钥
 cipher = AES.new(key, AES.MODE_ECB) # 创建一个AES加密器对象（使用ECB模式，仅作演示）
 

@@ -262,16 +262,16 @@ Host: www.example.com
 ![](img/230c533489eacd9afc29bee45a0952ee_115.png)
 
 **POST请求示例**：
-```
-POST /login.php HTTP/1.1
-Host: www.example.com
-Content-Type: application/x-www-form-urlencoded
-Content-Length: 30
 
 ![](img/230c533489eacd9afc29bee45a0952ee_117.png)
 
 ![](img/230c533489eacd9afc29bee45a0952ee_119.png)
 
+```
+POST /login.php HTTP/1.1
+Host: www.example.com
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 30
 username=admin&password=123456
 ```
 
@@ -326,11 +326,6 @@ HTTP响应报文同样由四个部分组成：
 ![](img/230c533489eacd9afc29bee45a0952ee_135.png)
 
 **响应示例**：
-```
-HTTP/1.1 200 OK
-Server: nginx/1.18.0
-Content-Type: application/json
-Set-Cookie: sessionid=abc123; Path=/
 
 ![](img/230c533489eacd9afc29bee45a0952ee_137.png)
 
@@ -342,6 +337,11 @@ Set-Cookie: sessionid=abc123; Path=/
 
 ![](img/230c533489eacd9afc29bee45a0952ee_145.png)
 
+```
+HTTP/1.1 200 OK
+Server: nginx/1.18.0
+Content-Type: application/json
+Set-Cookie: sessionid=abc123; Path=/
 {"status": "success", "message": "Login successful"}
 ```
 

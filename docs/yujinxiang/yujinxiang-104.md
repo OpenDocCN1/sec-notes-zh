@@ -45,12 +45,12 @@
 首先，我们创建一个字符串变量来保存最终的配置内容，并创建一个临时字符串用于格式化每一行数据。
 
 **代码示例：格式化并拼接数据**
-```cpp
-CString strConfigData; // 用于保存最终的配置字符串
-CString strTemp;       // 临时字符串，用于格式化每一行
 
 ![](img/2fcce7f3a580a54babd91b03189c13e7_13.png)
 
+```cpp
+CString strConfigData; // 用于保存最终的配置字符串
+CString strTemp;       // 临时字符串，用于格式化每一行
 // 示例：格式化一个布尔值选项
 strTemp.Format(_T("AutoFight=%d\n"), m_bAutoFight);
 strConfigData += strTemp;
@@ -75,13 +75,13 @@ strConfigData += strTemp;
 数据拼接完成后，我们需要将其写入文件。可以选择相对路径（如游戏主程序目录）或绝对路径。这里我们选择相对路径。
 
 **代码示例：打开文件并写入数据**
+
+![](img/2fcce7f3a580a54babd91b03189c13e7_15.png)
+
 ```cpp
 FILE* pFile = NULL;
 // 使用 _tfopen 打开文件，指定写入模式("w")
 errno_t err = _tfopen_s(&pFile, _T("MyConfig.ini"), _T("w"));
-
-![](img/2fcce7f3a580a54babd91b03189c13e7_15.png)
-
 if (pFile != NULL && err == 0) {
     // 将整个配置字符串写入文件
     _fputts(strConfigData, pFile);

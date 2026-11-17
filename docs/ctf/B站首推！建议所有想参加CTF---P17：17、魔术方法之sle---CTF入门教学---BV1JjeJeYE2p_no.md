@@ -74,6 +74,12 @@ O:6:"Person":2:{s:4:"name";s:3:"ABC";s:3:"age";i:25;}
 
 在序列化漏洞中，`__sleep()` 和 `__wakeup()` 经常成对出现。以下是一个同时使用两者的例子：
 
+
+![](img/19b369fbdca31b3521be389c868ffd8c_19.png)
+
+
+![](img/19b369fbdca31b3521be389c868ffd8c_21.png)
+
 ```php
 class Person {
     public $name;
@@ -93,16 +99,10 @@ class Person {
         echo "反序列化前调用 __wakeup()\n";
     }
 }
-
-![](img/19b369fbdca31b3521be389c868ffd8c_19.png)
-
 // 序列化
 $person = new Person('小明', 25);
 $serialized = serialize($person);
 echo "序列化结果: " . $serialized . "\n";
-
-![](img/19b369fbdca31b3521be389c868ffd8c_21.png)
-
 // 反序列化
 $unserialized = unserialize($serialized);
 echo "反序列化后对象: ";
@@ -135,6 +135,11 @@ var_dump($unserialized);
 
 ![](img/19b369fbdca31b3521be389c868ffd8c_28.png)
 
+
+![](img/19b369fbdca31b3521be389c868ffd8c_29.png)
+
+![](img/19b369fbdca31b3521be389c868ffd8c_30.png)
+
 ```php
 class Person {
     public $name = '小明';
@@ -145,11 +150,6 @@ class Person {
         return "Person对象: 姓名={$this->name}, 年龄={$this->age}";
     }
 }
-
-![](img/19b369fbdca31b3521be389c868ffd8c_29.png)
-
-![](img/19b369fbdca31b3521be389c868ffd8c_30.png)
-
 $person = new Person();
 // 直接输出对象，会触发 __toString()
 echo $person;
@@ -174,15 +174,15 @@ Person对象: 姓名=小明, 年龄=25
 
 这个特性在 **PHP 5.3+** 版本中有效。它的一个常见用途是提供更清晰的错误提示，防止程序因错误调用而直接终止。
 
+
+![](img/19b369fbdca31b3521be389c868ffd8c_37.png)
+
 ```php
 class Person {
     public function __invoke($param) {
         echo "这是一个对象，不能像函数一样被调用。你传递的参数是: {$param}\n";
     }
 }
-
-![](img/19b369fbdca31b3521be389c868ffd8c_37.png)
-
 $person = new Person();
 // 以函数方式调用对象，触发 __invoke()
 $person('test');
@@ -211,6 +211,11 @@ $person('test');
 
 “克隆”对象相当于创建该对象的一个副本。新对象拥有原对象的所有属性值（在克隆发生时）。`__clone()` 方法通常用于处理一些复制对象时需要特殊处理的资源，例如，如果对象包含一个文件句柄或网络连接，你可能需要在克隆时创建新的资源，而不是共享原来的资源。
 
+
+![](img/19b369fbdca31b3521be389c868ffd8c_47.png)
+
+![](img/19b369fbdca31b3521be389c868ffd8c_49.png)
+
 ```php
 class Person {
     public $name;
@@ -231,11 +236,6 @@ class Person {
 $person1 = new Person('小明', 25);
 // 克隆对象
 $person2 = clone $person1;
-
-![](img/19b369fbdca31b3521be389c868ffd8c_47.png)
-
-![](img/19b369fbdca31b3521be389c868ffd8c_49.png)
-
 echo "person1: ";
 var_dump($person1);
 echo "person2: ";

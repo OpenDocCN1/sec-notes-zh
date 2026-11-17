@@ -21,6 +21,9 @@
 
 整个过程的核心逻辑可以用以下伪代码描述：
 
+
+![](img/41d5ce33b6fbbd83373d154831d5bc69_0.png)
+
 ```python
 # 1. 获取用户输入
 software_name = input("请输入软件名称: ")
@@ -31,9 +34,6 @@ prompt = f"为 {software_name} 版本 {software_version} 生成一个漏洞利�
 
 # 3. 调用AI模型生成代码（此处为示意）
 # exploit_code = chatgpt.generate(prompt)
-
-![](img/41d5ce33b6fbbd83373d154831d5bc69_0.png)
-
 # 4. 输出结果
 # print(exploit_code)
 ```

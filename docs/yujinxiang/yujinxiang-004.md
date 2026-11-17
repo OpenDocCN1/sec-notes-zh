@@ -23,12 +23,12 @@
 
 下面是一个简单的示例函数 `DebugPrintMan`：
 
-```c
-#include <stdio.h>
-#include <stdarg.h>
 
 ![](img/34d1fc2444035e30f39c0555c1cb731d_3.png)
 
+```c
+#include <stdio.h>
+#include <stdarg.h>
 void DebugPrintMan(const char* format, ...)
 {
     // 定义一个参数列表
@@ -72,14 +72,14 @@ DebugPrintMan("参数：%d, %d, %s\n", 111, 222, "abc");
 
 以下是使用 `vsprintf_s` 的改进版本：
 
-```c
-#include <stdio.h>
-#include <stdarg.h>
 
 ![](img/34d1fc2444035e30f39c0555c1cb731d_13.png)
 
 ![](img/34d1fc2444035e30f39c0555c1cb731d_15.png)
 
+```c
+#include <stdio.h>
+#include <stdarg.h>
 void DebugPrintMan(const char* format, ...)
 {
     char buffer[1024]; // 定义一个足够大的缓冲区
@@ -128,13 +128,13 @@ DebugPrintMan("调试信息：%d, %s\n", 123, "测试");
 
 ![](img/34d1fc2444035e30f39c0555c1cb731d_33.png)
 
+
+![](img/34d1fc2444035e30f39c0555c1cb731d_35.png)
+
 ```c
 #include <Windows.h>
 #include <stdio.h>
 #include <stdarg.h>
-
-![](img/34d1fc2444035e30f39c0555c1cb731d_35.png)
-
 void DbgPrintMine(const char* format, ...)
 {
     char buffer[1024];

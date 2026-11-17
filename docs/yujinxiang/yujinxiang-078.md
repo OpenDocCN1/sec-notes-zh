@@ -59,6 +59,9 @@
 3.  在输出任务信息时，将等级一并打印出来。
 
 关键代码片段如下：
+
+![](img/980339975b153d468847d7217de1fac6_9.png)
+
 ```assembly
 ; 假设 ebx 保存了基地址，edx 保存了索引偏移
 ; 读取任务等级 (BYTE)
@@ -68,9 +71,6 @@ mov [local_task_level], eax ; 存储到局部变量
 ; 读取任务名称地址/字符串
 mov eax, [ebx+edx+0x4]
 ; ... 后续判断和名称处理代码 ...
-
-![](img/980339975b153d468847d7217de1fac6_9.png)
-
 ; 打印时包含等级
 invoke wsprintf, addr buffer, addr szTaskFormat, [local_task_name], [local_task_level]
 ```

@@ -65,6 +65,9 @@ RSA是一种非对称加密算法。与对称加密算法不同，RSA使用两�
 
 我们可以使用Python脚本快速完成计算。以下是解题脚本示例：
 
+
+![](img/c73ca4c172ce84915151343fac40fb5e_7.png)
+
 ```python
 import gmpy2
 
@@ -78,9 +81,6 @@ phi_n = (p - 1) * (q - 1)
 
 # 计算 d，即 e 关于模 φ(n) 的模逆元
 d = gmpy2.invert(e, phi_n)
-
-![](img/c73ca4c172ce84915151343fac40fb5e_7.png)
-
 print("Flag is: ", d)
 ```
 

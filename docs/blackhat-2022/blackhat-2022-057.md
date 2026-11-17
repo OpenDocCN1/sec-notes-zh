@@ -37,12 +37,12 @@ HTTP请求是一个非常有用的抽象概念。但在HTTP/1.1中，这种抽�
 这种行为本身可能不是一个直接的漏洞，但它可以被用来攻击任何后端。例如，攻击者可以先发送一个带有合法`Host`头的请求，建立连接，然后发送第二个请求，其中包含恶意的`Host`头或针对后端漏洞的载荷，从而绕过前端的路由限制。
 
 **核心概念示例：**
-```
-请求1: GET / HTTP/1.1
-Host: legitimate-site.com
 
 ![](img/b34a6e440c65fcf843fee21d655f4b7a_8.png)
 
+```
+请求1: GET / HTTP/1.1
+Host: legitimate-site.com
 请求2: POST /reset-password HTTP/1.1
 Host: internal-backend.com
 X-Forwarded-Host: evil.com
@@ -97,13 +97,13 @@ X-Forwarded-Host: evil.com
 在这种攻击中，后端服务器完全**忽略**了请求的`Content-Length`头。这意味着，即使攻击者发送的`Content-Length`值大于实际正文长度，后端也会立即处理请求，而前端则根据`Content-Length`值等待更多数据。这种差异导致了异步。
 
 **公式描述：**
+
+![](img/b34a6e440c65fcf843fee21d655f4b7a_22.png)
+
 ```
 攻击者发送: POST /path HTTP/1.1
 Content-Length: 100
 （实际正文只有50字节）
-
-![](img/b34a6e440c65fcf843fee21d655f4b7a_22.png)
-
 前端： 等待接收剩余的50字节。
 后端： 忽略Content-Length，处理已收到的50字节并回复。
 ```

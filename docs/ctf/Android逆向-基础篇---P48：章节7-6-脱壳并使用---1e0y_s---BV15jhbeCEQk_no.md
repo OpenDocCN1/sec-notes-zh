@@ -110,20 +110,26 @@ Java.perform(function() {
 
 ![](img/437e3f0bf7a0e5c65f366be9451ccb82_27.png)
 
-```python
-import frida
-import sys
-import time
 
 ![](img/437e3f0bf7a0e5c65f366be9451ccb82_29.png)
 
 ![](img/437e3f0bf7a0e5c65f366be9451ccb82_31.png)
 
-def on_message(message, data):
-    print(message)
 
 ![](img/437e3f0bf7a0e5c65f366be9451ccb82_33.png)
 
+
+![](img/437e3f0bf7a0e5c65f366be9451ccb82_35.png)
+
+
+![](img/437e3f0bf7a0e5c65f366be9451ccb82_37.png)
+
+```python
+import frida
+import sys
+import time
+def on_message(message, data):
+    print(message)
 # 这是我们的Frida JS脚本代码
 jscode = """
 Java.perform(function() {
@@ -133,9 +139,6 @@ Java.perform(function() {
     };
 });
 """
-
-![](img/437e3f0bf7a0e5c65f366be9451ccb82_35.png)
-
 # 连接到设备并附加到目标进程
 device = frida.get_usb_device()
 pid = device.spawn(["com.example.app"])
@@ -145,9 +148,6 @@ session = device.attach(pid)
 script = session.create_script(jscode)
 script.on('message', on_message)
 script.load()
-
-![](img/437e3f0bf7a0e5c65f366be9451ccb82_37.png)
-
 # 保持脚本运行
 sys.stdin.read()
 ```

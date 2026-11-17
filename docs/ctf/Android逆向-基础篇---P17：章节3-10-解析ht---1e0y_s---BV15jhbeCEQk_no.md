@@ -114,6 +114,12 @@ if (bundle != null) {
 
 在发起请求的地方（如MainActivity），添加如下代码：
 
+
+![](img/5d15512b3e7c6d2d3fab50500eb30aa9_21.png)
+
+
+![](img/5d15512b3e7c6d2d3fab50500eb30aa9_22.png)
+
 ```java
 // 1. 创建指向目标Activity的Intent
 Intent intent = new Intent(MainActivity.this, BlogActivity.class);
@@ -122,14 +128,8 @@ Intent intent = new Intent(MainActivity.this, BlogActivity.class);
 Bundle bundle = new Bundle();
 // 数据来源于解析后的对象：blogResult.result.body
 bundle.putString("blog_text", blogResult.getResult().getBody());
-
-![](img/5d15512b3e7c6d2d3fab50500eb30aa9_21.png)
-
 // 3. 将Bundle附加到Intent上
 intent.putExtras(bundle);
-
-![](img/5d15512b3e7c6d2d3fab50500eb30aa9_22.png)
-
 // 4. 启动目标Activity
 startActivity(intent);
 ```

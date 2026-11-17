@@ -187,11 +187,11 @@ int main() {
 我们编写逆向程序：先复制出比较的字符串，然后**反向执行**核心操作（即先交换位置，再对每个字符加5），最后进行Base64解码。
 
 **解密代码示例（Python）:**
-```python
-import base64
 
 ![](img/fb8877bd689964c6e9f469a9ea7be23d_36.png)
 
+```python
+import base64
 # 从IDA中复制的比较字符串
 encoded_str = “...”
 # 1. 交换位置 (假设是前后对称交换)

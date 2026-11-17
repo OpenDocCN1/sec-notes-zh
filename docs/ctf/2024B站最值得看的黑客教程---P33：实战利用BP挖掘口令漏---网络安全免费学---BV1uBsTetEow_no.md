@@ -130,15 +130,15 @@
 ![](img/967e469aaa6fcf5de388e10a4f2294ed_25.png)
 
 以下是配置攻击的代码逻辑示意（非实际代码，用于理解过程）：
+
+![](img/967e469aaa6fcf5de388e10a4f2294ed_27.png)
+
 ```http
 # 原始拦截的请求（密码位置已被标记）
 POST /login HTTP/1.1
 Host: target.com
 ...
 username=admin&password=§wrongpassword§
-
-![](img/967e469aaa6fcf5de388e10a4f2294ed_27.png)
-
 # Intruder的工作就是不断替换 §wrongpassword§ 部分
 # 第一次尝试：password=123456
 # 第二次尝试：password=password

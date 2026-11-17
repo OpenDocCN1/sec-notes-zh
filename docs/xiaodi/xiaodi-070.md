@@ -396,11 +396,6 @@
 ![](img/a53f930152f1beb30c75097d9275ab2a_307.png)
 
 **危险示例：**
-```python
-# 假设模板字符串来自用户输入
-user_input = "{__import__('os').system('calc.exe')}"
-# 使用f-string进行格式化
-result = f"Result: {user_input}" # 这不会执行命令，因为user_input整体被当作字符串
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_309.png)
 
@@ -426,6 +421,11 @@ result = f"Result: {user_input}" # 这不会执行命令，因为user_input整�
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_330.png)
 
+```python
+# 假设模板字符串来自用户输入
+user_input = "{__import__('os').system('calc.exe')}"
+# 使用f-string进行格式化
+result = f"Result: {user_input}" # 这不会执行命令，因为user_input整体被当作字符串
 # 危险的正确示例：直接控制f-string表达式部分
 code = "__import__('os').system('calc.exe')"
 # 如果程序这样构造f-string（极度危险，仅作演示）：
@@ -455,11 +455,6 @@ eval(f"f'{{{code}}}'") # 这将执行命令
 
 **`format()`方法的安全问题：**
 `str.format()`方法允许通过位置或关键字访问属性。如果格式化模板可控，攻击者可能访问到不应暴露的对象属性。
-```python
-class User:
-    def __init__(self):
-        self.secret = "Sensitive Data"
-        self.name = "Alice"
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_352.png)
 
@@ -469,6 +464,11 @@ class User:
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_358.png)
 
+```python
+class User:
+    def __init__(self):
+        self.secret = "Sensitive Data"
+        self.name = "Alice"
 user = User()
 # 用户可控的格式化字符串
 malicious_template = "{0.secret}"

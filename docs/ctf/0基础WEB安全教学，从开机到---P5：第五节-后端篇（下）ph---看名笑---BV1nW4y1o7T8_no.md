@@ -180,42 +180,20 @@ CREATE TABLE yyds (
 创建一个名为 `process.php` 的文件，编写后端逻辑。
 
 **PHP代码示例：**
-```php
-<?php
-// 1. 连接数据库
-$link = mysqli_connect("localhost", "root", "你的密码", "test_db");
-// 设置字符集为UTF-8，防止中文乱码
-mysqli_set_charset($link, "utf8");
 
 ![](img/c635577666de1f24584abb3eeb42676b_44.png)
 
 ![](img/c635577666de1f24584abb3eeb42676b_45.png)
 
-// 检查连接是否成功
-if ($link->connect_error) {
-    die("连接失败: " . $link->connect_error);
-}
 
 ![](img/c635577666de1f24584abb3eeb42676b_47.png)
 
-// 2. 接收前端POST过来的数据
-$fans = $_POST[‘fans_name‘];
-$blogger = $_POST[‘blogger_name‘];
 
 ![](img/c635577666de1f24584abb3eeb42676b_49.png)
 
-// 3. 构造SQL插入语句
-// 注意：变量值需要用单引号包裹，以满足SQL语法
-$sql = "INSERT INTO yyds (fans, blogger) VALUES (‘$fans‘, ‘$blogger‘)";
 
 ![](img/c635577666de1f24584abb3eeb42676b_51.png)
 
-// 4. 执行SQL语句
-if (mysqli_query($link, $sql)) {
-    echo "数据插入成功！粉丝是：" . $fans . "，博主是：" . $blogger;
-} else {
-    echo "错误: " . $sql . "<br>" . mysqli_error($link);
-}
 
 ![](img/c635577666de1f24584abb3eeb42676b_53.png)
 
@@ -223,6 +201,28 @@ if (mysqli_query($link, $sql)) {
 
 ![](img/c635577666de1f24584abb3eeb42676b_57.png)
 
+```php
+<?php
+// 1. 连接数据库
+$link = mysqli_connect("localhost", "root", "你的密码", "test_db");
+// 设置字符集为UTF-8，防止中文乱码
+mysqli_set_charset($link, "utf8");
+// 检查连接是否成功
+if ($link->connect_error) {
+    die("连接失败: " . $link->connect_error);
+}
+// 2. 接收前端POST过来的数据
+$fans = $_POST[‘fans_name‘];
+$blogger = $_POST[‘blogger_name‘];
+// 3. 构造SQL插入语句
+// 注意：变量值需要用单引号包裹，以满足SQL语法
+$sql = "INSERT INTO yyds (fans, blogger) VALUES (‘$fans‘, ‘$blogger‘)";
+// 4. 执行SQL语句
+if (mysqli_query($link, $sql)) {
+    echo "数据插入成功！粉丝是：" . $fans . "，博主是：" . $blogger;
+} else {
+    echo "错误: " . $sql . "<br>" . mysqli_error($link);
+}
 // 5. 关闭数据库连接
 mysqli_close($link);
 ?>

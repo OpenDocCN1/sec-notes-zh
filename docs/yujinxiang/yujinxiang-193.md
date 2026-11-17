@@ -118,15 +118,18 @@ if(hGame) {
 4.  **传递其他消息**：对于非自定义消息，调用原窗口过程函数，确保游戏正常运行。
 
 以下是自定义窗口过程函数的示例框架：
+
+![](img/9155e0c30793b7fa7a6d79cdb14d4fca_21.png)
+
+
+![](img/9155e0c30793b7fa7a6d79cdb14d4fca_23.png)
+
 ```cpp
 // 自定义命令标识，需与控制台端 dwData 值匹配
 #define MY_COMMAND_ID 1
 
 // 原窗口过程指针
 WNDPROC g_oldWndProc = NULL;
-
-![](img/9155e0c30793b7fa7a6d79cdb14d4fca_21.png)
-
 // 新的窗口过程函数
 LRESULT CALLBACK NewGameWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
     if(uMsg == WM_COPYDATA) {
@@ -143,9 +146,6 @@ LRESULT CALLBACK NewGameWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPar
     // 其他消息交给原窗口过程处理
     return CallWindowProc(g_oldWndProc, hWnd, uMsg, wParam, lParam);
 }
-
-![](img/9155e0c30793b7fa7a6d79cdb14d4fca_23.png)
-
 // 安装钩子的函数
 void InstallHook(HWND hGameWnd) {
     if(hGameWnd && !g_oldWndProc) {

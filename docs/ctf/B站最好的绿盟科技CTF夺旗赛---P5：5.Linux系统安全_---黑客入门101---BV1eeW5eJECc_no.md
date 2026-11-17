@@ -135,12 +135,12 @@ cat /var/log/secure | grep sshd
 **实战示例：排查Webshell**
 假设我们知道一句话木马（Webshell）中包含`eval(`和`POST`这两个关键字。
 我们可以使用`grep`命令对Web应用目录进行检查：
-```bash
-# 方法一：直接使用grep递归搜索
-grep -r -i “eval(.*POST” /var/www/html/
 
 ![](img/8b0d178fde8c420c1a423f72b5d6be86_23.png)
 
+```bash
+# 方法一：直接使用grep递归搜索
+grep -r -i “eval(.*POST” /var/www/html/
 # 方法二：结合find命令
 find /var/www/html/ -type f -name “*.php” | xargs grep -l “eval(.*POST”
 ```

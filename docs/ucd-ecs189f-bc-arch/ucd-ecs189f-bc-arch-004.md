@@ -267,10 +267,6 @@ const ipfs = new IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' })
 
 ![](img/42765643d30b926b61467dd8d1f5adec_100.png)
 
-```javascript
-// 步骤2和3的示例代码
-const result = await this.state.ipfs.add(this.state.buffer);
-const fileHash = result[0].hash;
 
 ![](img/42765643d30b926b61467dd8d1f5adec_102.png)
 
@@ -278,10 +274,14 @@ const fileHash = result[0].hash;
 
 ![](img/42765643d30b926b61467dd8d1f5adec_106.png)
 
-this.setState({ loading: true });
 
 ![](img/42765643d30b926b61467dd8d1f5adec_108.png)
 
+```javascript
+// 步骤2和3的示例代码
+const result = await this.state.ipfs.add(this.state.buffer);
+const fileHash = result[0].hash;
+this.setState({ loading: true });
 // 调用智能合约
 this.state.dstorage.methods.uploadFile(fileHash, fileSize, fileType, fileName, fileDescription).send({ from: this.state.account })
 .on('transactionHash', (hash) => {

@@ -88,11 +88,11 @@ Wireshark还提供丰富的统计功能（如“统计”->“对话”），有
 
 **简单脚本示例**：
 以下Python脚本实现了与上述TShark命令类似的功能：
-```python
-import pyshark
 
 ![](img/e53fe306cc08e614d7fc83f03f752d92_14.png)
 
+```python
+import pyshark
 cap = pyshark.FileCapture(‘capture.pcap’, display_filter=“http”)
 for pkt in cap:
     if hasattr(pkt.http, ‘file_data’):

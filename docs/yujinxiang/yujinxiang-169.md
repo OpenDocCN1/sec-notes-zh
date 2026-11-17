@@ -28,6 +28,9 @@
 
 ![](img/7cec48798f8140f1c1fa8bfb6c4b5515_11.png)
 
+
+![](img/7cec48798f8140f1c1fa8bfb6c4b5515_13.png)
+
 ```lua
 local function createFile()
     local myFile = io.open("test.lua", "w")
@@ -40,9 +43,6 @@ local function createFile()
         print("文件创建失败。")
     end
 end
-
-![](img/7cec48798f8140f1c1fa8bfb6c4b5515_13.png)
-
 createFile()
 ```
 
@@ -96,6 +96,9 @@ Lua 的 `io.lines` 函数或 `file:lines()` 方法可以返回一个迭代器，
 
 ![](img/7cec48798f8140f1c1fa8bfb6c4b5515_23.png)
 
+
+![](img/7cec48798f8140f1c1fa8bfb6c4b5515_25.png)
+
 ```lua
 local function readFileWithFor()
     local fileName = "test.lua"
@@ -107,9 +110,6 @@ local function readFileWithFor()
         file:close()
     end
 end
-
-![](img/7cec48798f8140f1c1fa8bfb6c4b5515_25.png)
-
 readFileWithFor()
 ```
 

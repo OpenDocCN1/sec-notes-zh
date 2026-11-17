@@ -95,16 +95,16 @@ C函数会依次获取并打印每个参数，然后计算总和。
 
 掌握了参数传递的方法后，我们就可以在C函数中调用其他更复杂的逻辑。例如，我们可以单独写一个执行加法运算的函数，然后在注册函数中获取Lua参数，调用这个加法函数，最后处理结果。
 
-```c
-// 一个独立的加法函数
-double add_numbers(double a, double b) {
-    return a + b;
-}
 
 ![](img/270b4bd62e5be83d02284ba74909391b_19.png)
 
 ![](img/270b4bd62e5be83d02284ba74909391b_21.png)
 
+```c
+// 一个独立的加法函数
+double add_numbers(double a, double b) {
+    return a + b;
+}
 // 注册到Lua的函数
 static int lua_add(lua_State *L) {
     // 获取前两个参数

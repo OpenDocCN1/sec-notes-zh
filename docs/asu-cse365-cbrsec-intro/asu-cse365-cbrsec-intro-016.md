@@ -9,6 +9,13 @@
 
 上一节概述了课程目标，本节中我们来看看Linux文件权限的基本操作。我们创建一个文件，并修改其权限。
 
+
+![](img/c79ba3d24df0394e1cfedc30b7977009_3.png)
+
+![](img/c79ba3d24df0394e1cfedc30b7977009_5.png)
+
+![](img/c79ba3d24df0394e1cfedc30b7977009_7.png)
+
 ```bash
 # 创建一个文件并查看其默认权限
 touch myfile.txt
@@ -19,13 +26,6 @@ ls -l myfile.txt
 chmod 000 myfile.txt
 ls -l myfile.txt
 # 输出：---------- 1 user user 0 Oct 16 12:00 myfile.txt
-
-![](img/c79ba3d24df0394e1cfedc30b7977009_3.png)
-
-![](img/c79ba3d24df0394e1cfedc30b7977009_5.png)
-
-![](img/c79ba3d24df0394e1cfedc30b7977009_7.png)
-
 # 尝试读取文件（权限被拒绝）
 cat myfile.txt
 ```
@@ -55,17 +55,17 @@ cat /proc/$$/status | grep Cap
 
 ![](img/c79ba3d24df0394e1cfedc30b7977009_9.png)
 
-```bash
-# 将CAP_DAC_OVERRIDE能力赋予给`cat`命令（需要root权限）
-sudo setcap cap_dac_override=ep /bin/cat
 
 ![](img/c79ba3d24df0394e1cfedc30b7977009_11.png)
 
-# 现在，即使用户身份不是root，使用这个cat也能读取无权限的文件
-/bin/cat myfile.txt
 
 ![](img/c79ba3d24df0394e1cfedc30b7977009_13.png)
 
+```bash
+# 将CAP_DAC_OVERRIDE能力赋予给`cat`命令（需要root权限）
+sudo setcap cap_dac_override=ep /bin/cat
+# 现在，即使用户身份不是root，使用这个cat也能读取无权限的文件
+/bin/cat myfile.txt
 # 查看已赋予能力的文件
 getcap /bin/cat
 ```
@@ -125,11 +125,11 @@ ls -ld shared_dir
 
 首先，导入库并启动一个进程。
 
-```python
-from pwn import *
 
 ![](img/c79ba3d24df0394e1cfedc30b7977009_21.png)
 
+```python
+from pwn import *
 # 启动目标程序
 p = process(‘./challenge_binary’)
 ```

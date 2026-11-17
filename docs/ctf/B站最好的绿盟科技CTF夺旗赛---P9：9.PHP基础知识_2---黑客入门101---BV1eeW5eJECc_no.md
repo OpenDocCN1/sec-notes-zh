@@ -135,17 +135,17 @@ echo “Peter is ” . $ages[‘Peter’] . “ years old.”;
 *   变量被 `unset()` 函数销毁。
 
 以下是空类型的示例：
+
+![](img/3c68c92a7b9e1ec10b7a487e44a635dc_21.png)
+
+
+![](img/3c68c92a7b9e1ec10b7a487e44a635dc_23.png)
+
 ```php
 <?php
 $var1 = null;        // 显式赋值为null
 var_dump($var1);     // 输出：NULL
-
-![](img/3c68c92a7b9e1ec10b7a487e44a635dc_21.png)
-
 var_dump($var2);     // 未赋值的变量，输出：NULL
-
-![](img/3c68c92a7b9e1ec10b7a487e44a635dc_23.png)
-
 $var3 = “test”;
 unset($var3);        // 销毁变量
 var_dump($var3);     // 输出：NULL

@@ -45,11 +45,11 @@
 
 以下是处理该文件的Python脚本示例：
 
-```python
-import re
 
 ![](img/4eb4153aa400c54348cbd8220e939cd6_13.png)
 
+```python
+import re
 pattern = re.compile(r'^(\d+)\s+(\S+)\s+(\d+)\s+datalen\s+(\d+)\s+data:\s+(.+)$', re.MULTILINE)
 
 with open('challenge.txt', 'r', encoding='utf-8') as f:

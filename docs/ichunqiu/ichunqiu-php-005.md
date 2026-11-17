@@ -67,13 +67,13 @@ glob($pattern, $flags);
 
 ![](img/32bf2e0564967235d25e07b5238ab36b_14.png)
 
+
+![](img/32bf2e0564967235d25e07b5238ab36b_16.png)
+
 ```php
 // 查找当前目录下所有以 .php 结尾的文件
 $files = glob("*.php");
 print_r($files);
-
-![](img/32bf2e0564967235d25e07b5238ab36b_16.png)
-
 // 查找当前目录下以 T 开头并以 .php 结尾的文件
 $filesT = glob("T*.php");
 print_r($filesT);

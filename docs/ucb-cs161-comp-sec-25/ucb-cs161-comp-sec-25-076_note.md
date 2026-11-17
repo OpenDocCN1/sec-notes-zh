@@ -29,15 +29,15 @@
 为了更好地理解地址泄露，让我们看一个具体的代码漏洞例子。
 
 以下是一段存在漏洞的C代码示例：
+
+![](img/9e561039072a8cb3027a4df1bc81e3a1_1.png)
+
 ```c
 void vulnerable() {
     char buff[64];
     // 假设攻击者可以控制buff的内容
     printf(buff); // 危险！格式化字符串漏洞
 }
-
-![](img/9e561039072a8cb3027a4df1bc81e3a1_1.png)
-
 int main() {
     vulnerable();
     return 0;

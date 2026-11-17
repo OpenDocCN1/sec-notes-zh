@@ -74,12 +74,12 @@ for i in range(32,127):
 
 将以上修改整合，得到修复后的完整代码：
 
-```python
-# -*- coding: utf-8 -*-
-import hashlib
 
 ![](img/2d1bc1bd644e6528b5777eb69cd6ad20_9.png)
 
+```python
+# -*- coding: utf-8 -*-
+import hashlib
 for i in range(32, 127):
     for j in range(32, 127):
         for k in range(32, 127):

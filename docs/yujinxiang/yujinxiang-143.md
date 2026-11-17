@@ -52,15 +52,18 @@ if (i >= 1000) {
 
 一种有效的方法是检测登录界面某个特定像素点的颜色变化。输入正确的账号密码后，界面通常会切换，导致特定位置颜色改变。
 
+
+![](img/4f4ddb8237fb581d36cce2281faa41bf_7.png)
+
+
+![](img/4f4ddb8237fb581d36cce2281faa41bf_9.png)
+
 ```cpp
 // 伪代码示例：检测密码输入后的界面变化
 COLORREF targetColor = 0x00FF00; // 登录成功后目标点的颜色
 POINT checkPoint = {296, 418}; // 需要检测的坐标点
 int retryCount = 0;
 bool loginSuccess = false;
-
-![](img/4f4ddb8237fb581d36cce2281faa41bf_7.png)
-
 while (retryCount < 50) { // 最大检测约2.5秒
     COLORREF currentColor = GetPixel(hDC, checkPoint.x, checkPoint.y);
     if (currentColor == targetColor) {
@@ -70,9 +73,6 @@ while (retryCount < 50) { // 最大检测约2.5秒
     Sleep(50);
     retryCount++;
 }
-
-![](img/4f4ddb8237fb581d36cce2281faa41bf_9.png)
-
 if (!loginSuccess) {
     // 账号密码可能错误，或登录失败
     return false;

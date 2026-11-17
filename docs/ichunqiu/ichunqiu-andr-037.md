@@ -116,10 +116,6 @@
 ![](img/4a477490ce41e63f66bd84d354bb5aed_47.png)
 
 脚本的核心逻辑伪代码如下：
-```python
-# 1. 定位 gDvm 和 userDexFiles
-gDvm_addr = idaapi.get_name_ea(idaapi.BADADDR, “gDvm”)
-userDexFiles_addr = gDvm_addr + OFFSET_USER_DEX_FILES  # OFFSET_USER_DEX_FILES 需要自行确定
 
 ![](img/4a477490ce41e63f66bd84d354bb5aed_49.png)
 
@@ -129,15 +125,19 @@ userDexFiles_addr = gDvm_addr + OFFSET_USER_DEX_FILES  # OFFSET_USER_DEX_FILES �
 
 ![](img/4a477490ce41e63f66bd84d354bb5aed_54.png)
 
-# 2. 读取 HashTable 结构
-table_size = read_memory_dword(userDexFiles_addr)
-num_entries = read_memory_dword(userDexFiles_addr + 4)
-p_entries = read_memory_pointer(userDexFiles_addr + 8)  # 假设偏移，需根据结构定义调整
 
 ![](img/4a477490ce41e63f66bd84d354bb5aed_56.png)
 
 ![](img/4a477490ce41e63f66bd84d354bb5aed_57.png)
 
+```python
+# 1. 定位 gDvm 和 userDexFiles
+gDvm_addr = idaapi.get_name_ea(idaapi.BADADDR, “gDvm”)
+userDexFiles_addr = gDvm_addr + OFFSET_USER_DEX_FILES  # OFFSET_USER_DEX_FILES 需要自行确定
+# 2. 读取 HashTable 结构
+table_size = read_memory_dword(userDexFiles_addr)
+num_entries = read_memory_dword(userDexFiles_addr + 4)
+p_entries = read_memory_pointer(userDexFiles_addr + 8)  # 假设偏移，需根据结构定义调整
 # 3. 遍历条目
 for i in range(table_size):
     entry_addr = p_entries + i * ENTRY_SIZE

@@ -123,9 +123,6 @@
 ![](img/88f1c0c6675b4fc40effcecc05abff56_69.png)
 
 以下是一个返回字符串的Smali类示例代码框架：
-```smali
-.class public Lcom/example/Hello; # 类声明
-.super Ljava/lang/Object; # 父类声明
 
 ![](img/88f1c0c6675b4fc40effcecc05abff56_71.png)
 
@@ -133,6 +130,9 @@
 
 ![](img/88f1c0c6675b4fc40effcecc05abff56_75.png)
 
+```smali
+.class public Lcom/example/Hello; # 类声明
+.super Ljava/lang/Object; # 父类声明
 # 接下来可以定义字段(field)和方法(method)
 ```
 

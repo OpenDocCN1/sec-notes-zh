@@ -62,12 +62,12 @@ SQL注入可以根据不同的维度进行分类：
 
 以下是使用 `sqlmap` 的基本命令流程：
 
-```bash
-# 1. 探测当前数据库名称
-sqlmap -r request.txt --dbs
 
 ![](img/f6c673130b909400c6d40c42072ec077_3.png)
 
+```bash
+# 1. 探测当前数据库名称
+sqlmap -r request.txt --dbs
 # 执行后，工具可能会发现两个数据库：dvwa 和 information_schema。
 
 # 2. 获取指定数据库（如dvwa）中的所有表名

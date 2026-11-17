@@ -72,12 +72,12 @@
 
 ![](img/d9a1f2044803b96c8fb75d0f06934fda_1.png)
 
-```python
-# 第一步：获取僵尸主机(1.54)初始IP ID，探测其45端口
-r1 = sr1(IP(dst=“192.168.1.54”)/TCP(dport=45, flags=“SA”), timeout=2, verbose=0)
 
 ![](img/d9a1f2044803b96c8fb75d0f06934fda_3.png)
 
+```python
+# 第一步：获取僵尸主机(1.54)初始IP ID，探测其45端口
+r1 = sr1(IP(dst=“192.168.1.54”)/TCP(dport=45, flags=“SA”), timeout=2, verbose=0)
 # 第二步：伪装成僵尸主机(1.54)，探测目标主机(1.63)的22端口
 send(IP(src=“192.168.1.54”, dst=“192.168.1.63”)/TCP(dport=22, flags=“S”), timeout=1, verbose=0)
 

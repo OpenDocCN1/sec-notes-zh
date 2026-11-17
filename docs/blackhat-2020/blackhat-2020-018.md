@@ -72,10 +72,6 @@ Plundervolt攻击是一种无需Rowhammer即可从软件中翻转位的技术。
 
 ![](img/7b957fca6b8ad4c58c4ad990e3f0e20d_52.png)
 
-```c
-#include <stdio.h>
-#include <stdint.h>
-#include <unistd.h>
 
 ![](img/7b957fca6b8ad4c58c4ad990e3f0e20d_54.png)
 
@@ -87,6 +83,10 @@ Plundervolt攻击是一种无需Rowhammer即可从软件中翻转位的技术。
 
 ![](img/7b957fca6b8ad4c58c4ad990e3f0e20d_62.png)
 
+```c
+#include <stdio.h>
+#include <stdint.h>
+#include <unistd.h>
 int main() {
     // 设置频率为1 GHz
     // ...

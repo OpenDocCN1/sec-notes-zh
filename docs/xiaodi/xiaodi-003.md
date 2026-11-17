@@ -372,11 +372,6 @@ location / {
 ### 负载均衡效果演示
 
 以Nginx的负载均衡配置为例：
-```nginx
-upstream backend_servers { # 定义后端服务器组
-    server 192.168.1.101:80 weight=3; # 服务器1，权重3
-    server 192.168.1.102:80 weight=1; # 服务器2，权重1
-}
 
 ![](img/625cefca01c2a81dfe9c0be5a8f4d4eb_251.png)
 
@@ -386,6 +381,11 @@ upstream backend_servers { # 定义后端服务器组
 
 ![](img/625cefca01c2a81dfe9c0be5a8f4d4eb_257.png)
 
+```nginx
+upstream backend_servers { # 定义后端服务器组
+    server 192.168.1.101:80 weight=3; # 服务器1，权重3
+    server 192.168.1.102:80 weight=1; # 服务器2，权重1
+}
 server {
     location / {
         proxy_pass http://backend_servers; # 将请求转发至服务器组

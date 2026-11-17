@@ -99,14 +99,14 @@ if ($data->key == $key) {
 
 **自动化脚本示例（Python）**：
 
+
+![](img/b4f5fa4c32bea2a271183dc1b77c18c0_5.png)
+
 ```python
 import requests
 import json
 
 url = ‘http://target.com/challenge‘
-
-![](img/b4f5fa4c32bea2a271183dc1b77c18c0_5.png)
-
 for i in range(10000): # 假设密钥转换后的数字在0-9999之间
     data = {‘message‘: json.dumps({‘key‘: i})}
     response = requests.post(url, data=data).text

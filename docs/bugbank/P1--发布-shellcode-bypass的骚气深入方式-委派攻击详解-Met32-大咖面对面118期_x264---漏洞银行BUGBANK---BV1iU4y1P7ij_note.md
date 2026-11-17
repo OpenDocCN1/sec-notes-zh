@@ -96,17 +96,17 @@ Shellcode的原理类似于摩斯密码。摩斯密码通过敲击的长短组�
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_69.png)
 
 **核心概念代码（栈溢出原理示意）：**
+
+![](img/bb78e449116e217a9a2a5001a0cfd82a_71.png)
+
+![](img/bb78e449116e217a9a2a5001a0cfd82a_73.png)
+
 ```c
 // 假设存在缓冲区溢出漏洞的函数
 void vulnerable_function(char *input) {
     char buffer[64];
     strcpy(buffer, input); // 未检查长度的拷贝，导致溢出
 }
-
-![](img/bb78e449116e217a9a2a5001a0cfd82a_71.png)
-
-![](img/bb78e449116e217a9a2a5001a0cfd82a_73.png)
-
 // 攻击者构造的输入
 char exploit[] = {
     ... // 填充缓冲区的无用数据
@@ -192,13 +192,13 @@ int main() {
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_110.png)
 
 **示例代码（使用`jmp`或`call`指令）：**
-```c
-unsigned char shellcode[] = "\xfc\x68\x...";
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_112.png)
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_114.png)
 
+```c
+unsigned char shellcode[] = "\xfc\x68\x...";
 int main() {
     __asm {
         lea eax, shellcode  // 将shellcode地址加载到eax寄存器
