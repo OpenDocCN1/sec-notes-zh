@@ -8,7 +8,6 @@
 
 ## 系统服务 🛠️
 
-![](img/ddf0437fdacc9cf2282f426d672c5a32_3.png)
 
 上一节我们介绍了Windows系统安全的基础概念，本节中我们来看看如何管理系统服务。系统服务是Windows操作系统中在后台运行的程序，负责执行特定功能。
 
@@ -26,7 +25,6 @@
 
 
 
-![](img/ddf0437fdacc9cf2282f426d672c5a32_5.png)
 
 
 
@@ -38,7 +36,6 @@
 
 
 
-![](img/ddf0437fdacc9cf2282f426d672c5a32_7.png)
 
 ![](img/ddf0437fdacc9cf2282f426d672c5a32_7.png)
 
@@ -49,13 +46,11 @@
 *   **print spooler** 服务：存在MS10-061漏洞，是Windows打印机远程服务代码执行漏洞。
 *   其他非必需服务。
 
-![](img/ddf0437fdacc9cf2282f426d672c5a32_9.png)
 
 遵循最小化安装原则，停止不使用的服务，可以降低系统被攻击的风险。
 
 
 
-![](img/ddf0437fdacc9cf2282f426d672c5a32_9.png)
 
 
 
@@ -65,13 +60,11 @@
 
 
 
-![](img/ddf0437fdacc9cf2282f426d672c5a32_11.png)
 
 ---
 
 ## 服务于进程安全 🔄
 
-![](img/ddf0437fdacc9cf2282f426d672c5a32_11.png)
 
 了解了系统服务的管理后，本节我们来看看服务与进程之间的安全关联。进程是正在运行的程序实例，而服务通常以后台进程的形式运行。
 
@@ -79,7 +72,6 @@
 
 
 
-![](img/ddf0437fdacc9cf2282f426d672c5a32_15.png)
 
 
 
@@ -88,13 +80,11 @@
 2.  记下占用特定端口（例如443端口）的PID。
 3.  打开任务管理器，在“详细信息”或“进程”选项卡中，按PID排序，找到对应的进程名称。
 
-![](img/ddf0437fdacc9cf2282f426d672c5a32_13.png)
 
 例如，执行 `netstat -ano` 后发现443端口被PID为4368的进程占用。在任务管理器中找到PID 4368，即可看到对应的进程名称为“vmware-hostd.exe”。
 
 
 
-![](img/ddf0437fdacc9cf2282f426d672c5a32_15.png)
 
 ![](img/ddf0437fdacc9cf2282f426d672c5a32_19.png)
 
@@ -114,17 +104,14 @@ Windows日志主要存放在以下位置：
 
 
 
-![](img/ddf0437fdacc9cf2282f426d672c5a32_21.png)
 
 
 
-![](img/ddf0437fdacc9cf2282f426d672c5a32_21.png)
 
 可以通过“事件查看器”（运行 `eventvwr.msc`）来查看和分析这些日志。
 
 
 
-![](img/ddf0437fdacc9cf2282f426d672c5a32_23.png)
 
 
 
@@ -134,15 +121,12 @@ Windows日志主要存放在以下位置：
 
 ![](img/ddf0437fdacc9cf2282f426d672c5a32_23.png)
 
-![](img/ddf0437fdacc9cf2282f426d672c5a32_25.png)
 
-![](img/ddf0437fdacc9cf2282f426d672c5a32_25.png)
 
 ---
 
 ## 文件权限控制 🔐
 
-![](img/ddf0437fdacc9cf2282f426d672c5a32_27.png)
 
 在配置好日志审核后，最后我们来学习Windows文件系统的权限控制。本节内容主要针对NTFS文件系统。
 
@@ -155,9 +139,7 @@ NTFS权限具有以下特点：
 
 
 
-![](img/ddf0437fdacc9cf2282f426d672c5a32_29.png)
 
-![](img/ddf0437fdacc9cf2282f426d672c5a32_29.png)
 
 
 
@@ -165,7 +147,6 @@ NTFS文件权限可以进行细粒度控制。右键点击文件或文件夹，�
 
 
 
-![](img/ddf0437fdacc9cf2282f426d672c5a32_31.png)
 
 
 
@@ -178,9 +159,7 @@ NTFS文件权限可以进行细粒度控制。右键点击文件或文件夹，�
 
 
 
-![](img/ddf0437fdacc9cf2282f426d672c5a32_31.png)
 
-![](img/ddf0437fdacc9cf2282f426d672c5a32_33.png)
 
 ---
 
@@ -198,12 +177,9 @@ NTFS文件权限可以进行细粒度控制。右键点击文件或文件夹，�
 
 
 
-![](img/ddf0437fdacc9cf2282f426d672c5a32_35.png)
 
 
 
-![](img/ddf0437fdacc9cf2282f426d672c5a32_35.png)
 
-![](img/ddf0437fdacc9cf2282f426d672c5a32_36.png)
 
 ![](img/ddf0437fdacc9cf2282f426d672c5a32_36.png)

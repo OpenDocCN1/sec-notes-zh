@@ -7,7 +7,6 @@
 
 ## 请求题中直接包含的信息
 
-![](img/27139da2326772199fa066e20b2d5be6_1.png)
 
 上一节我们介绍了网络流量分析的基础，本节中我们来看看最简单的一种情况：Flag直接隐藏在HTTP请求或响应中。
 
@@ -15,7 +14,6 @@
 
 以下是解题的一般步骤：
 
-![](img/27139da2326772199fa066e20b2d5be6_3.png)
 
 1.  使用Wireshark打开流量包文件（`.pcap`或`.pcapng`）。
 2.  在过滤器中输入 `http` 来筛选出所有HTTP流量。
@@ -49,13 +47,11 @@ print(decoded_data)  # 输出: TEST
 
 面对包含大量数据包的流量文件，我们需要使用Wireshark的过滤功能。首先，通过观察找到攻击特征，例如URL中包含 `id=1' AND 1=1--` 这类 payload。
 
-![](img/27139da2326772199fa066e20b2d5be6_5.png)
 
 我们可以使用过滤器 `http.request.uri` 来只显示HTTP请求的URI部分，从而集中分析攻击payload。
 
 以下是分析SQL注入流量的步骤：
 
-![](img/27139da2326772199fa066e20b2d5be6_7.png)
 
 1.  **过滤请求**：在Wireshark过滤栏输入 `http.request.uri`，查看所有请求的URL。
 2.  **识别模式**：观察URL，找到进行SQL注入测试的部分。例如，可能会看到利用 `substr()` 函数和二分法盲注的payload：

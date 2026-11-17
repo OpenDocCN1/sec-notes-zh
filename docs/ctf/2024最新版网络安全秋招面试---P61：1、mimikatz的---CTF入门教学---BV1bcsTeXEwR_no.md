@@ -14,7 +14,6 @@
 
 以下是几种常见的Windows凭证获取工具，本节课我们将重点学习第一种：
 
-![](img/f929f4508934f7365d578cfbf43399a0_1.png)
 
 *   **mimikatz**：功能强大的开源工具，可直接从内存中提取明文密码、哈希、PIN码和Kerberos票据。
 *   **PowerShell脚本**：例如`Invoke-Mimikatz`等，利用PowerShell加载mimikatz功能，便于在受限环境中使用。
@@ -26,37 +25,29 @@
 
 ### 场景一：获取本地哈希值 (NTLM Hash)
 
-![](img/f929f4508934f7365d578cfbf43399a0_3.png)
 
 这个场景的目标是读取本地SAM数据库中存储的用户密码哈希值。由于操作需要高权限，**务必以管理员身份运行命令提示符或mimikatz本身**。
 
-![](img/f929f4508934f7365d578cfbf43399a0_5.png)
 
 ![](img/f929f4508934f7365d578cfbf43399a0_7.png)
 
 以下是核心操作命令的分解与解释：
 
-![](img/f929f4508934f7365d578cfbf43399a0_9.png)
 
-![](img/f929f4508934f7365d578cfbf43399a0_11.png)
 
 ```bash
 mimikatz # privilege::debug
 ```
 此命令尝试启用`SeDebugPrivilege`权限。这是mimikatz与系统内存交互、提取凭据所必需的一步。执行成功会返回“`Privilege ‘20’ OK`”。
 
-![](img/f929f4508934f7365d578cfbf43399a0_12.png)
 
-![](img/f929f4508934f7365d578cfbf43399a0_14.png)
 
 ```bash
 mimikatz # token::elevate
 ```
 此命令用于窃取或模拟系统级（SYSTEM）令牌。SAM数据库等敏感信息通常只允许SYSTEM权限访问，提升令牌权限后，我们便能以更高身份执行后续操作。
 
-![](img/f929f4508934f7365d578cfbf43399a0_16.png)
 
-![](img/f929f4508934f7365d578cfbf43399a0_17.png)
 
 ```bash
 mimikatz # lsadump::sam
@@ -71,7 +62,6 @@ mimikatz # lsadump::sam
 3.  在mimikatz交互界面中，依次输入上述三条命令。
 4.  在`lsadump::sam`的输出中，找到目标用户的NTLM哈希（例如，`Administrator`的哈希）。
 
-![](img/f929f4508934f7365d578cfbf43399a0_20.png)
 
 ![](img/f929f4508934f7365d578cfbf43399a0_22.png)
 
@@ -89,7 +79,6 @@ mimikatz # lsadump::sam
 
 操作命令更为直接：
 
-![](img/f929f4508934f7365d578cfbf43399a0_29.png)
 
 ```bash
 mimikatz # privilege::debug
@@ -99,11 +88,9 @@ mimikatz # sekurlsa::logonpasswords
 
 ![](img/f929f4508934f7365d578cfbf43399a0_31.png)
 
-![](img/f929f4508934f7365d578cfbf43399a0_33.png)
 
 **执行结果**：在输出信息中，寻找`Authentication Id`下的`Username`和`Password`字段。如果用户近期成功进行过交互式登录（如远程桌面、控制台登录），且系统未打特定补丁，这里很可能直接显示明文密码。
 
-![](img/f929f4508934f7365d578cfbf43399a0_35.png)
 
 ## 注意事项与防御
 

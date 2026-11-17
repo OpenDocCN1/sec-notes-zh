@@ -1,6 +1,5 @@
 # 037：从错误中学习
 
-![](img/9afb46635cd6588d5f567faa8b00a512_0.png)
 
 ![](img/9afb46635cd6588d5f567faa8b00a512_0.png)
 

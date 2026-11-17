@@ -26,7 +26,6 @@ MySQL是一种开源的、基于SQL的关系型数据库管理系统。它专门
 
 PHPStudy将这些组件集成在一起，提供了一个便捷的开发环境。
 
-![](img/137dcc1f4ef40a8f5ed7391ac338df10_1.png)
 
 ---
 
@@ -34,7 +33,6 @@ PHPStudy将这些组件集成在一起，提供了一个便捷的开发环境。
 
 在PHPStudy中启动MySQL服务非常简单。
 
-![](img/137dcc1f4ef40a8f5ed7391ac338df10_3.png)
 
 以下是启动步骤：
 1.  打开PHPStudy软件。

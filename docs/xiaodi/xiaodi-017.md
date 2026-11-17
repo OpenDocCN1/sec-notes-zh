@@ -1,6 +1,5 @@
 #  017：Web应用框架与组件识别技术
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_1.png)
 
 在本节课中，我们将学习如何识别Web应用所使用的开发框架和第三方组件。这对于后续的安全测试至关重要，因为许多安全漏洞都源于这些框架和组件本身。
 
@@ -22,7 +21,6 @@
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_15.png)
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_17.png)
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_19.png)
 
@@ -32,9 +30,7 @@
 2.  **开发框架**（如ThinkPHP、Django）是代码的“模板”，其安全性直接影响整个应用。
 3.  **第三方组件**（如FastJson、Shiro）用于实现特定功能（如数据解析、身份验证），它们自身也可能存在漏洞。
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_23.png)
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_25.png)
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_26.png)
 
@@ -74,7 +70,6 @@
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_43.png)
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_45.png)
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_47.png)
 
@@ -88,23 +83,19 @@
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_55.png)
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_57.png)
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_59.png)
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_61.png)
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_63.png)
 
 在深入识别之前，我们需要理解一个Web应用源码的三种常见组成模式，这决定了我们的测试重点：
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_65.png)
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_67.png)
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_69.png)
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_71.png)
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_72.png)
 
@@ -124,17 +115,14 @@
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_84.png)
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_86.png)
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_87.png)
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_89.png)
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_91.png)
 
 **核心思路**：识别出框架和组件，就等于找到了可能存在的“漏洞说明书”。
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_93.png)
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_95.png)
 
@@ -170,7 +158,6 @@ Python常见的Web开发框架有Django和Flask。识别它们主要依靠一些
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_121.png)
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_123.png)
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_125.png)
 
@@ -184,11 +171,9 @@ Python常见的Web开发框架有Django和Flask。识别它们主要依靠一些
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_129.png)
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_131.png)
 
 ### Flask框架识别
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_133.png)
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_135.png)
 
@@ -201,7 +186,6 @@ Python常见的Web开发框架有Django和Flask。识别它们主要依靠一些
 *   **错误信息**：在调试模式下，Flask的错误页面会明确显示“Flask”字样。
 *   **插件识别**：同样可借助Wappalyzer等插件。
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_141.png)
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_143.png)
 
@@ -219,9 +203,7 @@ Python常见的Web开发框架有Django和Flask。识别它们主要依靠一些
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_152.png)
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_154.png)
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_156.png)
 
 国内主流的PHP框架包括ThinkPHP、Laravel和Yii。它们都有比较明显的识别特征。
 
@@ -322,9 +304,7 @@ Python常见的Web开发框架有Django和Flask。识别它们主要依靠一些
 
 ## ☕ 第五部分：Java应用组件与框架识别
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_228.png)
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_230.png)
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_232.png)
 
@@ -348,7 +328,6 @@ Java生态庞大，大量使用第三方组件和框架，其中许多都曾曝�
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_250.png)
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_252.png)
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_254.png)
 
@@ -358,7 +337,6 @@ Java生态庞大，大量使用第三方组件和框架，其中许多都曾曝�
 
 ### 常见Java漏洞组件/框架列表
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_260.png)
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_262.png)
 
@@ -382,9 +360,7 @@ Java生态庞大，大量使用第三方组件和框架，其中许多都曾曝�
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_274.png)
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_275.png)
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_277.png)
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_279.png)
 
@@ -396,7 +372,6 @@ Java生态庞大，大量使用第三方组件和框架，其中许多都曾曝�
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_284.png)
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_285.png)
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_286.png)
 
@@ -420,15 +395,10 @@ Java生态庞大，大量使用第三方组件和框架，其中许多都曾曝�
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_302.png)
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_304.png)
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_306.png)
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_308.png)
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_310.png)
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_312.png)
 
 识别Shiro最直接的方法是检查Cookie。
 **特征**：观察浏览器Cookie或HTTP请求包，如果存在名为 `rememberMe` 的Cookie，则很可能使用了Shiro框架。其值通常是加密后的内容，删除时为 `deleteMe`。
@@ -459,7 +429,6 @@ rememberMe=deleteMe
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_326.png)
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_328.png)
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_330.png)
 
@@ -471,7 +440,6 @@ rememberMe=deleteMe
 
 #### Solr组件识别
 
-![](img/bb2771965646bd8880a6d3555d0b2aef_337.png)
 
 ![](img/bb2771965646bd8880a6d3555d0b2aef_339.png)
 

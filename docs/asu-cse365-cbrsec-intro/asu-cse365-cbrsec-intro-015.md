@@ -32,7 +32,6 @@
 
 ![](img/96bfe343916d39737f98749f509a2a76_15.png)
 
-![](img/96bfe343916d39737f98749f509a2a76_17.png)
 
 **公式**：`C = P^e mod n`（加密）和 `P = C^d mod n`（解密），其中 `(e, n)` 是公钥，`(d, n)` 是私钥。
 
@@ -115,7 +114,6 @@ encrypted_key = pow(key_as_int, e, n)  # 使用服务器公钥加密
 **证书简化结构**：`证书数据 = (域名, 服务器公钥, 有效期等信息)`
 **签名**：`signature = (SHA256(证书数据))^d_ca mod n_ca`，其中 `(d_ca, n_ca)` 是CA的私钥。
 
-![](img/96bfe343916d39737f98749f509a2a76_28.png)
 
 客户端收到证书后：
 1.  使用CA的公钥 `(e_ca, n_ca)` 对签名进行验证：`hash_recovered = signature^e_ca mod n_ca`。

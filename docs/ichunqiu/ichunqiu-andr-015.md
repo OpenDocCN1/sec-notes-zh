@@ -1,14 +1,9 @@
 #  015：课时3 Android源码修改与刷机介绍 🛠️
 
-![](img/56428c97bee3ac6a9371641c8172e954_1.png)
 
-![](img/56428c97bee3ac6a9371641c8172e954_2.png)
 
-![](img/56428c97bee3ac6a9371641c8172e954_4.png)
 
-![](img/56428c97bee3ac6a9371641c8172e954_5.png)
 
-![](img/56428c97bee3ac6a9371641c8172e954_7.png)
 
 在本节课中，我们将学习如何下载和编译Android内核源码，并将其与AOSP源码整合，最终完成刷机操作。这是修改Android系统底层功能的关键步骤。
 
@@ -16,17 +11,12 @@
 
 上一节我们介绍了如何下载基础的AOSP源码。本节中我们来看看如何下载对应设备的内核源码。
 
-![](img/56428c97bee3ac6a9371641c8172e954_9.png)
 
-![](img/56428c97bee3ac6a9371641c8172e954_10.png)
 
-![](img/56428c97bee3ac6a9371641c8172e954_11.png)
 
-![](img/56428c97bee3ac6a9371641c8172e954_13.png)
 
 一个完整的Android系统源码不仅包含AOSP，还包含设备特定的内核代码。内核代码因手机型号或模拟器版本而异，需要根据设备信息选择下载。
 
-![](img/56428c97bee3ac6a9371641c8172e954_15.png)
 
 我们可以通过以下网址查看不同设备对应的内核源码信息：
 
@@ -49,15 +39,11 @@ git clone https://android.googlesource.com/kernel/msm.git
 git clone https://aosp.tuna.tsinghua.edu.cn/kernel/msm.git
 ```
 
-![](img/56428c97bee3ac6a9371641c8172e954_17.png)
 
-![](img/56428c97bee3ac6a9371641c8172e954_18.png)
 
 ## 内核源码编译
 
-![](img/56428c97bee3ac6a9371641c8172e954_20.png)
 
-![](img/56428c97bee3ac6a9371641c8172e954_22.png)
 
 下载完内核源码后，下一步是进行编译。这个过程与编译AOSP类似，但需要特定的环境配置。
 
@@ -65,7 +51,6 @@ git clone https://aosp.tuna.tsinghua.edu.cn/kernel/msm.git
 
 以下是编译内核源码的步骤：
 
-![](img/56428c97bee3ac6a9371641c8172e954_24.png)
 
 1.  **切换内核分支**：进入内核源码目录，查看可用的远程分支，并切换到与你的AOSP版本匹配的分支。
     ```bash
@@ -94,29 +79,19 @@ git clone https://aosp.tuna.tsinghua.edu.cn/kernel/msm.git
     ```
 编译成功后，会在`arch/arm/boot/`目录下生成内核镜像文件`zImage`。
 
-![](img/56428c97bee3ac6a9371641c8172e954_26.png)
 
-![](img/56428c97bee3ac6a9371641c8172e954_27.png)
 
-![](img/56428c97bee3ac6a9371641c8172e954_29.png)
 
-![](img/56428c97bee3ac6a9371641c8172e954_31.png)
 
-![](img/56428c97bee3ac6a9371641c8172e954_33.png)
 
 ## 整合内核与刷机准备
 
-![](img/56428c97bee3ac6a9371641c8172e954_35.png)
 
-![](img/56428c97bee3ac6a9371641c8172e954_37.png)
 
 编译出新的内核后，需要将其替换到AOSP源码中，并准备好设备驱动，才能进行完整的系统编译和刷机。
 
-![](img/56428c97bee3ac6a9371641c8172e954_39.png)
 
-![](img/56428c97bee3ac6a9371641c8172e954_41.png)
 
-![](img/56428c97bee3ac6a9371641c8172e954_43.png)
 
 1.  **替换内核镜像**：将新编译的`zImage`文件重命名为`kernel`，并复制到AOSP源码中对应设备的预编译内核目录下，覆盖原有文件。
     ```bash
@@ -131,17 +106,13 @@ git clone https://aosp.tuna.tsinghua.edu.cn/kernel/msm.git
     ./extract-broadcom.sh # 执行提取脚本（示例）
     ```
 
-![](img/56428c97bee3ac6a9371641c8172e954_45.png)
 
 ## 完整系统编译与刷机
 
 完成内核替换和驱动准备后，就可以重新编译完整的Android系统镜像了。
 
-![](img/56428c97bee3ac6a9371641c8172e954_47.png)
 
-![](img/56428c97bee3ac6a9371641c8172e954_48.png)
 
-![](img/56428c97bee3ac6a9371641c8172e954_50.png)
 
 1.  **设置编译目标**：在AOSP根目录下，初始化环境并选择要编译的设备目标。
     ```bash
@@ -162,7 +133,6 @@ git clone https://aosp.tuna.tsinghua.edu.cn/kernel/msm.git
     ```
     **注意**：刷机有风险，请确保USB连接稳定，刷机过程中不要断开连接。`-w`选项会清空用户数据。
 
-![](img/56428c97bee3ac6a9371641c8172e954_52.png)
 
 ## 常用编译指令
 

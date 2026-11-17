@@ -1,8 +1,6 @@
 #  098：109 - 修改回城补给界面和更新窗口数据到对象列表 🛠️📋
 
-![](img/c168dae0000f99813fbfeecaf8f7d2f0_1.png)
 
-![](img/c168dae0000f99813fbfeecaf8f7d2f0_3.png)
 
 在本节课中，我们将学习如何修复一个程序错误，并设计一个物品处理结构。核心任务是将回城补给界面（NIST country控件）中的数据，更新到玩家挂机位的一个动态对象列表中。
 
@@ -77,11 +75,8 @@ std::vector<ItemProcess> m_vItemProcessList;
 
 ## 测试数据读取功能 ✅
 
-![](img/c168dae0000f99813fbfeecaf8f7d2f0_5.png)
 
-![](img/c168dae0000f99813fbfeecaf8f7d2f0_7.png)
 
-![](img/c168dae0000f99813fbfeecaf8f7d2f0_9.png)
 
 数据保存完成后，我们需要验证是否能正确地从Vector中读取并还原出设置信息。
 

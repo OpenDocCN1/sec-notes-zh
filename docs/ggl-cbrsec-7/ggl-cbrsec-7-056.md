@@ -1,6 +1,5 @@
 # 056：在函数中使用参数
 
-![](img/811d20dc2dc116efc74f7ddb51f8f189_0.png)
 
 ![](img/811d20dc2dc116efc74f7ddb51f8f189_0.png)
 
@@ -73,7 +72,6 @@ greet_employee_full("Kiara", "Karu")
 
 让我们运行这些代码来欢迎Kiara Karu。正如我们刚刚探索的，使用多个参数只需要进行一些调整。
 
-![](img/811d20dc2dc116efc74f7ddb51f8f189_2.png)
 
 ![](img/811d20dc2dc116efc74f7ddb51f8f189_2.png)
 

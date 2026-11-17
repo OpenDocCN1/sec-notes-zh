@@ -15,7 +15,6 @@
 
 ---
 
-![](img/9aeb75e0226383dec5757bd012bce7e7_10.png)
 
 ![](img/9aeb75e0226383dec5757bd012bce7e7_11.png)
 
@@ -23,7 +22,6 @@
 
 ![](img/9aeb75e0226383dec5757bd012bce7e7_14.png)
 
-![](img/9aeb75e0226383dec5757bd012bce7e7_16.png)
 
 ![](img/9aeb75e0226383dec5757bd012bce7e7_18.png)
 
@@ -33,7 +31,6 @@
 
 ![](img/9aeb75e0226383dec5757bd012bce7e7_22.png)
 
-![](img/9aeb75e0226383dec5757bd012bce7e7_24.png)
 
 ![](img/9aeb75e0226383dec5757bd012bce7e7_26.png)
 
@@ -43,7 +40,6 @@
 
 ![](img/9aeb75e0226383dec5757bd012bce7e7_30.png)
 
-![](img/9aeb75e0226383dec5757bd012bce7e7_32.png)
 
 二次注入的核心特点是：攻击者先将恶意SQL代码通过正常的“插入”操作（如用户注册、留言提交）存入数据库。之后，当应用程序从数据库中取出这些被污染的数据，并将其用于构建新的SQL查询时，才会触发注入。
 
@@ -51,46 +47,36 @@
 
 ![](img/9aeb75e0226383dec5757bd012bce7e7_36.png)
 
-![](img/9aeb75e0226383dec5757bd012bce7e7_38.png)
 
-![](img/9aeb75e0226383dec5757bd012bce7e7_40.png)
 
-![](img/9aeb75e0226383dec5757bd012bce7e7_42.png)
 
 ![](img/9aeb75e0226383dec5757bd012bce7e7_44.png)
 
-![](img/9aeb75e0226383dec5757bd012bce7e7_46.png)
 
 ### 核心流程
 1.  **植入阶段**：通过INSERT语句将恶意数据写入数据库。
 2.  **触发阶段**：应用程序在后续逻辑（如用户登录后修改信息）中，从数据库取出该数据并拼接到新的SQL语句（如UPDATE、SELECT）中执行，从而触发注入。
 
-![](img/9aeb75e0226383dec5757bd012bce7e7_48.png)
 
 ![](img/9aeb75e0226383dec5757bd012bce7e7_50.png)
 
 ![](img/9aeb75e0226383dec5757bd012bce7e7_52.png)
 
-![](img/9aeb75e0226383dec5757bd012bce7e7_54.png)
 
 ### 关键利用条件
 二次注入的成功需要满足两个关键条件：
 *   **数据插入时有转义**：在第一次插入恶意数据时，代码中必须存在转义函数（如`addslashes`）或开启了魔术引号（`magic_quotes_gpc`）。这确保了包含单引号等特殊字符的恶意数据能够“正常”地存入数据库，而不会在插入阶段就因SQL语法错误而失败。
 *   **后续存在调用点**：存入数据库的恶意数据必须在后续某个功能点（如信息更新、查询）中被取出并拼接到新的SQL语句中。
 
-![](img/9aeb75e0226383dec5757bd012bce7e7_56.png)
 
-![](img/9aeb75e0226383dec5757bd012bce7e7_58.png)
 
 ![](img/9aeb75e0226383dec5757bd012bce7e7_60.png)
 
 ![](img/9aeb75e0226383dec5757bd012bce7e7_62.png)
 
-![](img/9aeb75e0226383dec5757bd012bce7e7_64.png)
 
 ![](img/9aeb75e0226383dec5757bd012bce7e7_66.png)
 
-![](img/9aeb75e0226383dec5757bd012bce7e7_67.png)
 
 ![](img/9aeb75e0226383dec5757bd012bce7e7_69.png)
 
@@ -114,9 +100,7 @@ UPDATE users SET password='newpass' WHERE username='admin'#'
 
 ![](img/9aeb75e0226383dec5757bd012bce7e7_73.png)
 
-![](img/9aeb75e0226383dec5757bd012bce7e7_75.png)
 
-![](img/9aeb75e0226383dec5757bd012bce7e7_77.png)
 
 ![](img/9aeb75e0226383dec5757bd012bce7e7_79.png)
 
@@ -136,9 +120,7 @@ UPDATE users SET password='newpass' WHERE username='admin'#'
 
 ![](img/9aeb75e0226383dec5757bd012bce7e7_89.png)
 
-![](img/9aeb75e0226383dec5757bd012bce7e7_91.png)
 
-![](img/9aeb75e0226383dec5757bd012bce7e7_93.png)
 
 ![](img/9aeb75e0226383dec5757bd012bce7e7_95.png)
 
@@ -146,9 +128,7 @@ UPDATE users SET password='newpass' WHERE username='admin'#'
 
 ![](img/9aeb75e0226383dec5757bd012bce7e7_97.png)
 
-![](img/9aeb75e0226383dec5757bd012bce7e7_99.png)
 
-![](img/9aeb75e0226383dec5757bd012bce7e7_101.png)
 
 ### 核心概念
 利用SQL语句中的分号`;`表示语句结束的特性，在注入点后构造新的、独立的SQL语句。
@@ -157,9 +137,7 @@ UPDATE users SET password='newpass' WHERE username='admin'#'
 原始查询; 攻击者构造的新SQL语句;
 ```
 
-![](img/9aeb75e0226383dec5757bd012bce7e7_103.png)
 
-![](img/9aeb75e0226383dec5757bd012bce7e7_105.png)
 
 ![](img/9aeb75e0226383dec5757bd012bce7e7_107.png)
 
@@ -174,7 +152,6 @@ UPDATE users SET password='newpass' WHERE username='admin'#'
 
 ![](img/9aeb75e0226383dec5757bd012bce7e7_113.png)
 
-![](img/9aeb75e0226383dec5757bd012bce7e7_115.png)
 
 ![](img/9aeb75e0226383dec5757bd012bce7e7_117.png)
 
@@ -211,15 +188,11 @@ SELECT * FROM products WHERE id=1; DROP TABLE users;
 
 ---
 
-![](img/9aeb75e0226383dec5757bd012bce7e7_134.png)
 
-![](img/9aeb75e0226383dec5757bd012bce7e7_136.png)
 
-![](img/9aeb75e0226383dec5757bd012bce7e7_138.png)
 
 ## 📡 第三节：DNS带外注入原理与利用
 
-![](img/9aeb75e0226383dec5757bd012bce7e7_140.png)
 
 ![](img/9aeb75e0226383dec5757bd012bce7e7_142.png)
 
@@ -305,11 +278,9 @@ DNS带外注入的利用条件非常严格：
 
 ![](img/9aeb75e0226383dec5757bd012bce7e7_199.png)
 
-![](img/9aeb75e0226383dec5757bd012bce7e7_201.png)
 
 ---
 
-![](img/9aeb75e0226383dec5757bd012bce7e7_203.png)
 
 ![](img/9aeb75e0226383dec5757bd012bce7e7_205.png)
 

@@ -6,7 +6,6 @@
 
 Kali Linux是一个专为渗透测试和网络安全评估设计的Linux发行版。它预装了大量的安全工具，为安全从业者提供了一个开箱即用的强大平台。
 
-![](img/6703dbaf958bbe5563dd912256982a15_1.png)
 
 ## Kali Linux的核心价值
 
@@ -24,15 +23,12 @@ Kali Linux是一个专为渗透测试和网络安全评估设计的Linux发行�
 
 上一节我们介绍了Kali Linux的开发者。本节中，我们来具体看看这家公司及其提供的价值。
 
-![](img/6703dbaf958bbe5563dd912256982a15_3.png)
 
 Offensive Security不仅维护Kali Linux，还提供一项国际公认的认证：**OSCP**（Offensive Security Certified Professional）。
 
-![](img/6703dbaf958bbe5563dd912256982a15_4.png)
 
 如果你已经具备工作经验，获取OSCP证书对于实现安全领域的高级岗位目标，包括寻找境外的工作机会，非常有帮助。
 
-![](img/6703dbaf958bbe5563dd912256982a15_5.png)
 
 因此，Kali Linux是值得学习的。
 

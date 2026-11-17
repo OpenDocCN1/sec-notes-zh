@@ -2,9 +2,7 @@
 
 在本节课中，我们将学习访问控制与授权的基本概念，并了解开放网络应用安全项目（OWASP）及其在提升软件安全可见性方面的作用。
 
-![](img/9b00b29dd441ce70418fcfac439a84de_0.png)
 
-![](img/9b00b29dd441ce70418fcfac439a84de_0.png)
 
 在模块3中，Elio和John将继续围绕访问控制和授权展开网络安全讨论。
 
@@ -28,11 +26,9 @@
 
 让我们开始吧。
 
-![](img/9b00b29dd441ce70418fcfac439a84de_2.png)
 
 ![](img/9b00b29dd441ce70418fcfac439a84de_2.png)
 
-![](img/9b00b29dd441ce70418fcfac439a84de_3.png)
 
 ![](img/9b00b29dd441ce70418fcfac439a84de_3.png)
 

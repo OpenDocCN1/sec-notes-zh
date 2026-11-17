@@ -1,8 +1,6 @@
 # 011：Fiat-Shamir范式与零知识证明（第二部分）
 
-![](img/eaecd974a61543d19bbcf22b89631963_0.png)
 
-![](img/eaecd974a61543d19bbcf22b89631963_1.png)
 
 ![](img/eaecd974a61543d19bbcf22b89631963_2.png)
 

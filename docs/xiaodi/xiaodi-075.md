@@ -2,13 +2,11 @@
 
 ![](img/3e12d43bed5d839ef458fb7361185fa4_1.png)
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_3.png)
 
 ![](img/3e12d43bed5d839ef458fb7361185fa4_5.png)
 
 ![](img/3e12d43bed5d839ef458fb7361185fa4_7.png)
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_9.png)
 
 ![](img/3e12d43bed5d839ef458fb7361185fa4_11.png)
 
@@ -40,17 +38,13 @@
 
 模糊测试，专业上称为Fuzz Testing，等同于我们常说的“爆破”概念。它是一种通过大量、批量的测试数据，对软件或网站的安全措施进行探测的技术。其核心思想是“盲猜”，即在未知目标内部结构的情况下，通过枚举各种可能的输入（如账号、密码、目录、参数、Payload等），并根据响应差异来判断是否存在可利用的点。
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_32.png)
 
 ![](img/3e12d43bed5d839ef458fb7361185fa4_34.png)
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_36.png)
 
 ![](img/3e12d43bed5d839ef458fb7361185fa4_38.png)
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_40.png)
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_41.png)
 
 在Web渗透测试中，Fuzz技术主要体现在以下四个方面：
 *   **弱口令爆破**
@@ -58,7 +52,6 @@
 *   **隐藏参数枚举**
 *   **Payload利用测试**
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_43.png)
 
 ![](img/3e12d43bed5d839ef458fb7361185fa4_45.png)
 
@@ -72,11 +65,9 @@
 
 ![](img/3e12d43bed5d839ef458fb7361185fa4_51.png)
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_53.png)
 
 ## 一、Fuzz在用户口令爆破中的应用 🔑
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_55.png)
 
 ![](img/3e12d43bed5d839ef458fb7361185fa4_57.png)
 
@@ -84,7 +75,6 @@
 
 以下是几种常见的口令爆破场景及应对方法：
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_59.png)
 
 ![](img/3e12d43bed5d839ef458fb7361185fa4_61.png)
 
@@ -121,9 +111,7 @@
 
 ![](img/3e12d43bed5d839ef458fb7361185fa4_84.png)
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_86.png)
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_88.png)
 
 3.  **使用自定义JS算法加密的口令爆破**
     当密码被网站自定义的JavaScript算法加密时（算法可能包含密钥、偏移量等），我们需要先逆向分析出加密逻辑，然后通过插件让Burp Suite在爆破时模拟该加密过程。
@@ -134,11 +122,8 @@
         *   在Intruder模块中，选择使用该自定义插件作为Payload Processing规则。
     *   **核心代码/公式概念**：这通常涉及调用一个自定义的JavaScript函数，例如 **`function encrypt(pwd) { return custom_js_algorithm(pwd); }`**，并在Burp插件中调用它。
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_90.png)
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_92.png)
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_94.png)
 
 **过渡**：掌握了针对各种登录框的Fuzz爆破后，我们来看看Fuzz如何应用于发现网站上那些“看不见”的资源和入口点。
 
@@ -152,13 +137,10 @@
 
 ![](img/3e12d43bed5d839ef458fb7361185fa4_102.png)
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_104.png)
 
 ## 二、Fuzz在发现未知目录与文件中的应用 📁
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_106.png)
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_108.png)
 
 ![](img/3e12d43bed5d839ef458fb7361185fa4_110.png)
 
@@ -186,9 +168,7 @@
     将目标URL的路径部分设置为变量，使用庞大的目录和文件名字典进行爆破。通过观察HTTP状态码（如200、403）或响应长度差异，来判断该路径是否存在。
     *   **常用字典**：`directory-list-*.txt`, `fuzzdb` 项目中的发现类字典。
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_128.png)
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_130.png)
 
 ![](img/3e12d43bed5d839ef458fb7361185fa4_132.png)
 
@@ -244,13 +224,11 @@
 
 ![](img/3e12d43bed5d839ef458fb7361185fa4_166.png)
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_168.png)
 
 **过渡**：从目录扫描到参数爆破，Fuzz展现了一种系统性的黑盒探测方法。为了加深理解，我们最后来看几个真实的安全案例，看看Fuzz思路如何在实际漏洞挖掘中发挥作用。
 
 ![](img/3e12d43bed5d839ef458fb7361185fa4_170.png)
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_172.png)
 
 ![](img/3e12d43bed5d839ef458fb7361185fa4_174.png)
 
@@ -266,23 +244,17 @@
 
 ![](img/3e12d43bed5d839ef458fb7361185fa4_184.png)
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_186.png)
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_188.png)
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_190.png)
 
 ## 三、Fuzz实战案例分享 🎯
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_192.png)
 
 ![](img/3e12d43bed5d839ef458fb7361185fa4_194.png)
 
 ![](img/3e12d43bed5d839ef458fb7361185fa4_196.png)
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_198.png)
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_200.png)
 
 ![](img/3e12d43bed5d839ef458fb7361185fa4_202.png)
 
@@ -296,13 +268,11 @@
     *   **场景**：某登录系统提示“手机号未绑定”，无法触发短信验证码。
     *   **Fuzz应用**：利用手机号段字典（如1380000-1389999）对手机号字段进行Fuzz，通过响应差异（如“该用户不存在”与“验证码已发送”）找出已注册的手机号。随后对该号码进行验证码爆破，最终成功登录。
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_208.png)
 
 *   **案例二：后台路径未授权访问**
     *   **场景**：某系统后台路径为 `/admin/index.php`。
     *   **Fuzz应用**：对 `index.php` 部分进行Fuzz，尝试替换为其他常见后台文件名（如 `view.php`, `manage.php`）。发现 `/admin/view.php` 可直接访问，存在未授权访问漏洞。
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_210.png)
 
 *   **案例三：基于信息收集的密码组合爆破**
     *   **场景**：某学校系统提示“账号为学号，密码为特定字符+身份证后六位”。
@@ -321,13 +291,9 @@
 
 这些案例表明，Fuzz不仅是一种技术工具，更是一种解决问题的思维模式，可以灵活应用于信息收集、漏洞探测和利用的各个环节。
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_220.png)
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_222.png)
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_224.png)
 
-![](img/3e12d43bed5d839ef458fb7361185fa4_226.png)
 
 ![](img/3e12d43bed5d839ef458fb7361185fa4_228.png)
 

@@ -6,9 +6,7 @@
 
 我们将从下载并配置靶场环境开始，然后通过修改前端代码来绕过文件类型检查，最终上传一个PHP信息文件（WebShell）到服务器。
 
-![](img/a43d1ce1d13bfcd4c60c3763acf43a07_1.png)
 
-![](img/a43d1ce1d13bfcd4c60c3763acf43a07_2.png)
 
 ---
 
@@ -18,7 +16,6 @@
 
 #### 步骤一：解压与放置靶场文件
 
-![](img/a43d1ce1d13bfcd4c60c3763acf43a07_4.png)
 
 ![](img/a43d1ce1d13bfcd4c60c3763acf43a07_5.png)
 
@@ -43,7 +40,6 @@
 
 ![](img/a43d1ce1d13bfcd4c60c3763acf43a07_11.png)
 
-![](img/a43d1ce1d13bfcd4c60c3763acf43a07_13.png)
 
 为了使Apache服务正常运行，必须将 `PHPStudy` 的网站目录指向靶场文件。
 
@@ -62,9 +58,7 @@
 
 环境配置成功后，即可在浏览器中访问靶场。
 
-![](img/a43d1ce1d13bfcd4c60c3763acf43a07_19.png)
 
-![](img/a43d1ce1d13bfcd4c60c3763acf43a07_20.png)
 
 操作如下：
 1.  打开浏览器。
@@ -75,19 +69,14 @@
 
 至此，本地靶场环境已搭建完成。
 
-![](img/a43d1ce1d13bfcd4c60c3763acf43a07_23.png)
 
 ---
 
-![](img/a43d1ce1d13bfcd4c60c3763acf43a07_25.png)
 
 ### 第一关：JS前端验证绕过
 
-![](img/a43d1ce1d13bfcd4c60c3763acf43a07_27.png)
 
-![](img/a43d1ce1d13bfcd4c60c3763acf43a07_28.png)
 
-![](img/a43d1ce1d13bfcd4c60c3763acf43a07_29.png)
 
 环境准备好后，我们开始挑战第一关。这一关存在前端JS验证，只允许上传图片格式（如.jpg, .png, .gif）的文件。
 
@@ -133,7 +122,6 @@
     ```
 *   保存修改后的HTML文件。
 
-![](img/a43d1ce1d13bfcd4c60c3763acf43a07_31.png)
 
 **5. 使用本地页面上传**
 *   **重要**：在浏览器中直接打开**修改后的本地HTML文件**（文件路径类似 `file:///C:/Users/.../桌面/upload_labs.html`），而不是再次访问 `localhost`。
@@ -147,18 +135,15 @@
 
 ---
 
-![](img/a43d1ce1d13bfcd4c60c3763acf43a07_33.png)
 
 ### 总结
 
-![](img/a43d1ce1d13bfcd4c60c3763acf43a07_35.png)
 
 本节课中我们一起学习了CTF文件上传漏洞第一关的突破方法。
 1.  **环境搭建**：我们配置了本地的PHPStudy环境和upload-labs靶场。
 2.  **漏洞原理**：第一关是**前端JS验证绕过**，验证仅在浏览器端执行，容易被绕过。
 3.  **突破方法**：通过“保存页面 -> 修改JS验证逻辑 -> 本地提交”的三步流程，成功绕过了前端限制，上传了WebShell文件。
 
-![](img/a43d1ce1d13bfcd4c60c3763acf43a07_36.png)
 
 ![](img/a43d1ce1d13bfcd4c60c3763acf43a07_38.png)
 

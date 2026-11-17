@@ -1,8 +1,6 @@
 # 课程2：《网络安全角色、流程与操作系统安全》：31：macOS安全设置 🔒
 
-![](img/dacd5bb20ebbfc34336f03cda6b81803_0.png)
 
-![](img/dacd5bb20ebbfc34336f03cda6b81803_0.png)
 
 在本节课程中，我们将学习macOS操作系统中的各项安全设置。我们将逐一探索系统偏好设置中与安全和隐私相关的核心功能，了解如何通过这些设置来增强计算机的安全性。
 
@@ -50,13 +48,10 @@
 
 关于其他安全设置，我们将在下一个视频中继续探讨。
 
-![](img/dacd5bb20ebbfc34336f03cda6b81803_2.png)
 
-![](img/dacd5bb20ebbfc34336f03cda6b81803_3.png)
 
 ---
 
-![](img/dacd5bb20ebbfc34336f03cda6b81803_2.png)
 
 ![](img/dacd5bb20ebbfc34336f03cda6b81803_3.png)
 

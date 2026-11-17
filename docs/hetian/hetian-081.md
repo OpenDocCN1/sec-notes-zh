@@ -1,62 +1,40 @@
 #  081：域认证及HASH传递攻击
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_1.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_3.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_5.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_6.png)
 
 在本节课中，我们将要学习Windows操作系统的认证机制，以及一种重要的横向移动攻击方法——哈希传递攻击。理解这些核心概念对于进行内网渗透测试至关重要。
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_8.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_9.png)
 
 ![](img/2c9086d26a3ad77db1b71abc28219bcc_11.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_13.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_14.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_15.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_16.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_17.png)
 
 ## 🔐 Windows认证机制概述
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_18.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_19.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_21.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_22.png)
 
 ![](img/2c9086d26a3ad77db1b71abc28219bcc_23.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_25.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_27.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_29.png)
 
 上一节我们回顾了横向移动的基础知识，本节中我们来看看Windows系统是如何验证用户身份的。Windows认证主要分为三个部分：本地认证、网络认证和域认证。
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_31.png)
 
 ![](img/2c9086d26a3ad77db1b71abc28219bcc_33.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_35.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_37.png)
 
 ### 本地认证
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_39.png)
 
 ![](img/2c9086d26a3ad77db1b71abc28219bcc_41.png)
 
@@ -66,9 +44,7 @@
 
 ![](img/2c9086d26a3ad77db1b71abc28219bcc_44.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_46.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_48.png)
 
 1.  **用户输入密码**：用户在登录界面输入用户名和密码。
 2.  **系统计算哈希值**：Windows系统将用户输入的密码通过特定算法（如NTLM）计算成哈希值。其公式可表示为：
@@ -76,13 +52,10 @@
 3.  **与SAM数据库比对**：系统将计算出的哈希值与存储在本地`SAM`文件数据库中的对应账户哈希值进行比对。
 4.  **验证结果**：如果哈希值匹配，则认证成功，允许登录；否则失败。
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_50.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_52.png)
 
 本地认证的密码哈希存储在`C:\Windows\System32\config\SAM`文件中。`lsass.exe`进程负责处理此认证流程，并会在内存中临时保存明文密码，这也是Mimikatz等工具能够抓取明文密码的原理。
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_54.png)
 
 ### 网络认证（NTLM挑战-响应机制）
 
@@ -115,9 +88,7 @@ hashcat -m 5600 netntlm_hash.txt password_dict.txt -o found.txt
 
 以下是Kerberos认证的关键步骤与核心票据：
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_60.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_62.png)
 
 ![](img/2c9086d26a3ad77db1b71abc28219bcc_64.png)
 
@@ -148,13 +119,9 @@ hashcat -m 5600 netntlm_hash.txt password_dict.txt -o found.txt
 
 ![](img/2c9086d26a3ad77db1b71abc28219bcc_66.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_68.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_70.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_72.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_74.png)
 
 ### 攻击方法
 
@@ -194,33 +161,23 @@ python wmiexec.py -hashes [LM哈希:NT哈希] [域名]/[用户名]@[目标IP] "w
 python psexec.py -hashes [LM哈希:NT哈希] [域名]/[用户名]@[目标IP]
 ```
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_76.png)
 
 #### 5. 利用PowerShell脚本批量检测
 
 可以使用类似`Invoke-TheHash`的PowerShell脚本，对域内所有主机批量尝试哈希传递，快速定位可被攻击的目标。
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_78.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_80.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_82.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_84.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_86.png)
 
 ## 📚 课程总结
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_88.png)
 
 本节课中我们一起学习了Windows系统的核心认证机制，包括本地认证、网络认证和复杂的域认证，并深入探讨了利用哈希值而非明文密码进行横向移动的哈希传递攻击方法。
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_90.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_92.png)
 
-![](img/2c9086d26a3ad77db1b71abc28219bcc_94.png)
 
 ![](img/2c9086d26a3ad77db1b71abc28219bcc_96.png)
 

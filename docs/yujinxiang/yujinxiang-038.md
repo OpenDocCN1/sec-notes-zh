@@ -4,7 +4,6 @@
 
 ---
 
-![](img/85eb3f174fb170a121aa9f80e3419883_1.png)
 
 ## 回顾与目标 🎯
 
@@ -27,9 +26,7 @@ int len2 = strlen(str2);
 int minLen = (len1 < len2) ? len1 : len2;
 ```
 
-![](img/85eb3f174fb170a121aa9f80e3419883_3.png)
 
-![](img/85eb3f174fb170a121aa9f80e3419883_4.png)
 
 然后，我们开始循环比较每个字符。如果所有字符都相等，则函数返回 `true`；否则，返回 `false`。
 
@@ -42,11 +39,9 @@ for (int i = 0; i < minLen; i++) {
 return true;
 ```
 
-![](img/85eb3f174fb170a121aa9f80e3419883_6.png)
 
 以下是完整的函数实现示例：
 
-![](img/85eb3f174fb170a121aa9f80e3419883_8.png)
 
 ```cpp
 bool HexStrCmp(const char* str1, const char* str2) {
@@ -86,19 +81,15 @@ char ToUpper(char c) {
 }
 ```
 
-![](img/85eb3f174fb170a121aa9f80e3419883_10.png)
 
 这个函数检查字符是否在小写字母 `'a'` 到 `'z'` 的范围内。如果是，则通过加上 `('A' - 'a')` 的差值将其转换为大写字母。
 
-![](img/85eb3f174fb170a121aa9f80e3419883_11.png)
 
 ### 整个字符串转换函数
 
-![](img/85eb3f174fb170a121aa9f80e3419883_13.png)
 
 接下来，我们编写一个函数，用于将整个字符串中的小写字母全部转换为大写字母。
 
-![](img/85eb3f174fb170a121aa9f80e3419883_14.png)
 
 ```cpp
 void StrToUpper(char* str) {
@@ -123,21 +114,17 @@ void StrToUpper(char* str) {
 2.  调用 `StrToUpper` 函数将两个临时字符串转换为大写。
 3.  使用 `HexStrCmp` 函数比较转换后的字符串。
 
-![](img/85eb3f174fb170a121aa9f80e3419883_16.png)
 
 ![](img/85eb3f174fb170a121aa9f80e3419883_18.png)
 
 通过这种方式，无论输入字符串是大写、小写还是混合大小写，我们都能进行正确的比较。
 
-![](img/85eb3f174fb170a121aa9f80e3419883_20.png)
 
 ---
 
 ## 总结 📝
 
-![](img/85eb3f174fb170a121aa9f80e3419883_22.png)
 
-![](img/85eb3f174fb170a121aa9f80e3419883_24.png)
 
 本节课中我们一起学习了两个核心内容：
 

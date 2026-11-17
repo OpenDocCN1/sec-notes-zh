@@ -2,7 +2,6 @@
 
 ![](img/512c5ae9aced253b71ef06aeb4f52bc8_1.png)
 
-![](img/512c5ae9aced253b71ef06aeb4f52bc8_3.png)
 
 在本节课中，我们将从信息安全的角度，系统地学习计算机端口的相关知识。我们将探讨端口的基本概念、为何需要重视端口安全、攻击者如何利用端口，以及未来端口安全的发展与防护设想。
 
@@ -112,17 +111,13 @@ exploit
 
 这个设想的核心是**通过驱动实现深度系统监控和智能学习**，从而在恶意行为发生前或发生时进行拦截。
 
-![](img/512c5ae9aced253b71ef06aeb4f52bc8_9.png)
 
-![](img/512c5ae9aced253b71ef06aeb4f52bc8_11.png)
 
 ---
 
-![](img/512c5ae9aced253b71ef06aeb4f52bc8_13.png)
 
 ## 总结 🎯
 
-![](img/512c5ae9aced253b71ef06aeb4f52bc8_15.png)
 
 ![](img/512c5ae9aced253b71ef06aeb4f52bc8_17.png)
 

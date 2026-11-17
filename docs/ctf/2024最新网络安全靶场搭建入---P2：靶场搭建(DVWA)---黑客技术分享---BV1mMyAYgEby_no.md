@@ -21,29 +21,23 @@ DVWA（Damn Vulnerable Web Application）是一个开源的Web应用程序，专
 *   文件包含
 *   文件上传
 
-![](img/65ae2de8d9d601c1bb38ff1fe9d3cf1b_1.png)
 
 ## 搭建准备
 
-![](img/65ae2de8d9d601c1bb38ff1fe9d3cf1b_3.png)
 
 在开始搭建之前，我们需要准备相应的软件和工具。
 
-![](img/65ae2de8d9d601c1bb38ff1fe9d3cf1b_5.png)
 
 以下是搭建DVWA靶场所需的核心组件：
 1.  **DVWA源码**：靶场的应用程序代码。
 2.  **PHPStudy**：一个集成了Apache、MySQL和PHP的服务器环境，用于在Windows上快速搭建Web运行环境。
 
-![](img/65ae2de8d9d601c1bb38ff1fe9d3cf1b_7.png)
 
 ## 安装PHPStudy
 
 首先，我们需要安装PHPStudy来创建本地服务器环境。
 
-![](img/65ae2de8d9d601c1bb38ff1fe9d3cf1b_9.png)
 
-![](img/65ae2de8d9d601c1bb38ff1fe9d3cf1b_10.png)
 
 1.  解压提供的`PHPStudy`安装包。
 2.  运行安装程序，按照提示点击“下一步”完成安装。
@@ -59,15 +53,11 @@ DVWA（Damn Vulnerable Web Application）是一个开源的Web应用程序，专
 
 ## 配置DVWA
 
-![](img/65ae2de8d9d601c1bb38ff1fe9d3cf1b_12.png)
 
-![](img/65ae2de8d9d601c1bb38ff1fe9d3cf1b_13.png)
 
-![](img/65ae2de8d9d601c1bb38ff1fe9d3cf1b_15.png)
 
 部署完源码后，需要对DVWA进行配置，使其能够连接数据库。
 
-![](img/65ae2de8d9d601c1bb38ff1fe9d3cf1b_17.png)
 
 1.  进入 `DVWA/config` 目录。
 2.  找到名为 `config.inc.php.dist` 的文件。
@@ -90,28 +80,21 @@ DVWA（Damn Vulnerable Web Application）是一个开源的Web应用程序，专
 4.  滚动到页面底部，点击 **Create / Reset Database** 按钮。
 5.  系统将自动创建所需的数据库表。成功后，页面会跳转到登录界面 (`login.php`)。
 
-![](img/65ae2de8d9d601c1bb38ff1fe9d3cf1b_19.png)
 
-![](img/65ae2de8d9d601c1bb38ff1fe9d3cf1b_20.png)
 
 ## 登录与验证
 
-![](img/65ae2de8d9d601c1bb38ff1fe9d3cf1b_22.png)
 
-![](img/65ae2de8d9d601c1bb38ff1fe9d3cf1b_24.png)
 
 数据库初始化成功后，即可登录DVWA开始使用。
 
-![](img/65ae2de8d9d601c1bb38ff1fe9d3cf1b_26.png)
 
 1.  在登录页面，使用默认凭证登录：
     *   用户名：`admin`
     *   密码：`password`
 2.  登录成功后，你将看到 “Welcome to Damn Vulnerable Web Application!” 的界面。这标志着DVWA靶场已成功搭建并运行。
 
-![](img/65ae2de8d9d601c1bb38ff1fe9d3cf1b_28.png)
 
-![](img/65ae2de8d9d601c1bb38ff1fe9d3cf1b_29.png)
 
 ## 总结
 

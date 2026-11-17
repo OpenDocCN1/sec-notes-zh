@@ -19,13 +19,9 @@
 
 
 
-![](img/37a47955f08ff44cc0f433fbad8056b1_1.png)
 
-![](img/37a47955f08ff44cc0f433fbad8056b1_2.png)
 
-![](img/37a47955f08ff44cc0f433fbad8056b1_1.png)
 
-![](img/37a47955f08ff44cc0f433fbad8056b1_2.png)
 
 ---
 
@@ -77,6 +73,5 @@
 
 
 
-![](img/37a47955f08ff44cc0f433fbad8056b1_4.png)
 
 ![](img/37a47955f08ff44cc0f433fbad8056b1_4.png)

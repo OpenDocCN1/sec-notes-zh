@@ -2,7 +2,6 @@
 
 在本节课中，我们将学习Android应用中的Service组件，以及如何在Android Studio中进行运行和调试操作。Service是Android四大组件之一，理解其概念对于分析应用后台行为至关重要。
 
-![](img/8fac12566bb3a205d8ef48e2e8631b92_0.png)
 
 ## Service组件介绍
 
@@ -21,7 +20,6 @@
 
 ## 运行与调试应用
 
-![](img/8fac12566bb3a205d8ef48e2e8631b92_2.png)
 
 了解了Service的基本概念后，我们来看看如何在开发环境中运行和调试一个Android应用。这部分操作在Android逆向工程中常用于验证分析和动态测试。
 
@@ -33,17 +31,13 @@
 
 调试应用和分析其行为主要依赖于查看日志。日志信息会显示在Android Studio底部的 **Logcat** 面板中。
 
-![](img/8fac12566bb3a205d8ef48e2e8631b92_2.png)
 
 Logcat会根据日志的等级（如Verbose, Debug, Info, Warn, Error）显示不同内容。你可以通过顶部的搜索框过滤特定的日志信息。
 
-![](img/8fac12566bb3a205d8ef48e2e8631b92_4.png)
 
 一个关键技巧是，必须通过下拉菜单选择当前正在调试的应用的**包名**。如果不进行筛选，Logcat会显示设备上所有进程的日志，信息量会非常庞大，导致难以找到需要的内容。
 
-![](img/8fac12566bb3a205d8ef48e2e8631b92_4.png)
 
-![](img/8fac12566bb3a205d8ef48e2e8631b92_5.png)
 
 ![](img/8fac12566bb3a205d8ef48e2e8631b92_5.png)
 

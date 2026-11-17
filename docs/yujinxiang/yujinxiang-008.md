@@ -1,10 +1,7 @@
 #  008：019-封装怪物对象及怪物列表 🧟‍♂️
 
-![](img/f04b947a7abba6c1a3389714f695dafd_1.png)
 
-![](img/f04b947a7abba6c1a3389714f695dafd_3.png)
 
-![](img/f04b947a7abba6c1a3389714f695dafd_4.png)
 
 在本节课中，我们将学习如何封装怪物对象和怪物列表。我们将基于上一节课的分析，将怪物属性转化为代码结构，并编写函数来初始化和打印怪物信息，以验证我们的分析是否正确。
 
@@ -93,7 +90,6 @@ BOOL PrintMonsterInfo() {
 
 为了测试上述功能，我们需要在代码中调用这些函数。
 
-![](img/f04b947a7abba6c1a3389714f695dafd_6.png)
 
 ```cpp
 void TestMonsterList() {
@@ -104,9 +100,7 @@ void TestMonsterList() {
 }
 ```
 
-![](img/f04b947a7abba6c1a3389714f695dafd_8.png)
 
-![](img/f04b947a7abba6c1a3389714f695dafd_10.png)
 
 最后，在程序界面中添加一个按钮来调用这个测试函数。
 

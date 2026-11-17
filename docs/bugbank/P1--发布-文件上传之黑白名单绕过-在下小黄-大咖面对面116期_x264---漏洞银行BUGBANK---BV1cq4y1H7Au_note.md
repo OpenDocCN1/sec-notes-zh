@@ -10,26 +10,19 @@
 
 文件上传功能是Web应用中的常见模块，如果验证机制不完善，攻击者可能上传恶意文件（如Webshell），从而获取服务器控制权。本课程将首先介绍常规的验证机制，然后重点分析黑白名单验证的绕过技术。
 
-![](img/45644d2a916581dd40edf5c497e6438a_4.png)
 
 ## 一、常规文件上传验证机制
 
-![](img/45644d2a916581dd40edf5c497e6438a_6.png)
 
-![](img/45644d2a916581dd40edf5c497e6438a_8.png)
 
 文件上传的验证机制通常存在于客户端和服务端，目的是确保上传文件的合法性。以下是几种常见的验证方式。
 
 ### 1. 客户端JavaScript验证
 客户端验证通常在浏览器端执行，用于快速检查用户选择的文件格式是否符合要求。其原理是通过JavaScript代码检查文件扩展名。
 
-![](img/45644d2a916581dd40edf5c497e6438a_10.png)
 
-![](img/45644d2a916581dd40edf5c497e6438a_11.png)
 
-![](img/45644d2a916581dd40edf5c497e6438a_13.png)
 
-![](img/45644d2a916581dd40edf5c497e6438a_15.png)
 
 **示例代码：**
 ```javascript
@@ -43,20 +36,15 @@ function checkFile() {
 }
 ```
 
-![](img/45644d2a916581dd40edf5c497e6438a_16.png)
 
 ![](img/45644d2a916581dd40edf5c497e6438a_18.png)
 
 **绕过方法：**
 由于客户端验证完全依赖于浏览器脚本，攻击者可以通过禁用浏览器JavaScript或使用代理工具（如Burp Suite）直接发送请求来绕过。
 
-![](img/45644d2a916581dd40edf5c497e6438a_20.png)
 
-![](img/45644d2a916581dd40edf5c497e6438a_22.png)
 
-![](img/45644d2a916581dd40edf5c497e6438a_24.png)
 
-![](img/45644d2a916581dd40edf5c497e6438a_26.png)
 
 ![](img/45644d2a916581dd40edf5c497e6438a_27.png)
 
@@ -82,7 +70,6 @@ function checkFile() {
 
 ![](img/45644d2a916581dd40edf5c497e6438a_36.png)
 
-![](img/45644d2a916581dd40edf5c497e6438a_38.png)
 
 ![](img/45644d2a916581dd40edf5c497e6438a_40.png)
 
@@ -98,13 +85,10 @@ function checkFile() {
 
 ![](img/45644d2a916581dd40edf5c497e6438a_42.png)
 
-![](img/45644d2a916581dd40edf5c497e6438a_44.png)
 
-![](img/45644d2a916581dd40edf5c497e6438a_45.png)
 
 上一节我们介绍了文件上传的常规验证机制，本节中我们来看看如何利用一句话木马进行测试。
 
-![](img/45644d2a916581dd40edf5c497e6438a_47.png)
 
 ## 二、一句话木马简介与利用 🐚
 
@@ -114,17 +98,13 @@ function checkFile() {
 
 ![](img/45644d2a916581dd40edf5c497e6438a_51.png)
 
-![](img/45644d2a916581dd40edf5c497e6438a_52.png)
 
-![](img/45644d2a916581dd40edf5c497e6438a_53.png)
 
 一句话木马是一种简短的Web后门脚本，攻击者上传后可通过它向服务器发送指令。
 
 ![](img/45644d2a916581dd40edf5c497e6438a_55.png)
 
-![](img/45644d2a916581dd40edf5c497e6438a_57.png)
 
-![](img/45644d2a916581dd40edf5c497e6438a_58.png)
 
 **PHP一句话木马示例：**
 ```php
@@ -143,12 +123,10 @@ function checkFile() {
 2.  使用中国菜刀、蚁剑等连接工具，或直接使用`curl`等命令行工具，向该文件地址发送POST请求，并在`cmd`参数中携带要执行的系统命令。
 3.  服务器会执行命令并返回结果。
 
-![](img/45644d2a916581dd40edf5c497e6438a_64.png)
 
 **连接测试与排错：**
 如果无法连接一句话木马，可先通过浏览器直接访问该文件，并在URL中传递测试命令，例如：`http://target.com/shell.php?cmd=phpinfo();`。观察是否能正确输出`phpinfo`信息，以验证脚本是否被执行。
 
-![](img/45644d2a916581dd40edf5c497e6438a_66.png)
 
 ![](img/45644d2a916581dd40edf5c497e6438a_68.png)
 
@@ -162,9 +140,7 @@ function checkFile() {
 
 ## 三、绕过客户端JavaScript验证 🎯
 
-![](img/45644d2a916581dd40edf5c497e6438a_75.png)
 
-![](img/45644d2a916581dd40edf5c497e6438a_77.png)
 
 我们以Upload-Labs靶场的第一关为例。该关卡在前端使用JavaScript验证文件扩展名。
 
@@ -188,7 +164,6 @@ function checkFile() {
 
 ![](img/45644d2a916581dd40edf5c497e6438a_87.png)
 
-![](img/45644d2a916581dd40edf5c497e6438a_88.png)
 
 成功绕过前端验证后，我们面临的是服务端的MIME类型检查。
 
@@ -221,9 +196,7 @@ function checkFile() {
 
 ![](img/45644d2a916581dd40edf5c497e6438a_98.png)
 
-![](img/45644d2a916581dd40edf5c497e6438a_100.png)
 
-![](img/45644d2a916581dd40edf5c497e6438a_102.png)
 
 ![](img/45644d2a916581dd40edf5c497e6438a_104.png)
 
@@ -232,16 +205,12 @@ function checkFile() {
 
 ![](img/45644d2a916581dd40edf5c497e6438a_106.png)
 
-![](img/45644d2a916581dd40edf5c497e6438a_107.png)
 
-![](img/45644d2a916581dd40edf5c497e6438a_109.png)
 
-![](img/45644d2a916581dd40edf5c497e6438a_111.png)
 
 **绕过方法：**
 将后缀名改为大小写混合形式，如`Php`、`pHp`、`pHP`。在Windows服务器上，文件系统对大小写不敏感，`shell.PHP`依然会被当作`.php`文件解析。
 
-![](img/45644d2a916581dd40edf5c497e6438a_113.png)
 
 ![](img/45644d2a916581dd40edf5c497e6438a_115.png)
 
@@ -260,7 +229,6 @@ function checkFile() {
 
 ![](img/45644d2a916581dd40edf5c497e6438a_125.png)
 
-![](img/45644d2a916581dd40edf5c497e6438a_127.png)
 
 ![](img/45644d2a916581dd40edf5c497e6438a_129.png)
 
@@ -270,7 +238,6 @@ function checkFile() {
 *   **点绕过**：在文件名后添加点，如`shell.php.`。系统保存时会自动去除末尾的点。
 *   **`::$DATA`绕过**：在文件名后添加`::$DATA`，如`shell.php::$DATA`。这是NTFS文件系统的流特性，保存时会去除该部分。
 
-![](img/45644d2a916581dd40edf5c497e6438a_131.png)
 
 ![](img/45644d2a916581dd40edf5c497e6438a_132.png)
 
@@ -292,22 +259,18 @@ function checkFile() {
 
 ## 六、绕过白名单验证 ⚪
 
-![](img/45644d2a916581dd40edf5c497e6438a_140.png)
 
 白名单只允许指定的少数扩展名，因此绕过难度更大，通常需要结合其他漏洞。
 
-![](img/45644d2a916581dd40edf5c497e6438a_142.png)
 
 ### 1. 截断上传绕过
 在特定条件下，通过注入截断字符（`%00`，即空字符）来截断文件名，使服务器只检查截断前的部分。
 
-![](img/45644d2a916581dd40edf5c497e6438a_144.png)
 
 **条件：**
 *   PHP版本 < 5.3.4。
 *   `magic_quotes_gpc`配置为`off`。
 
-![](img/45644d2a916581dd40edf5c497e6438a_146.png)
 
 **绕过方法（GET请求）：**
 上传文件时，将文件名改为`shell.jpg%00.php`。经过URL解码后，服务器在检查扩展名时看到的是`.jpg`（在白名单内），但在保存文件时，`%00`会告诉系统字符串在此结束，最终保存的文件名实际为`shell.jpg`，但其内容会被当作`.php`执行。**注意**：在Burp Suite中修改时，需要先对`%00`进行URL解码（选中字符，右键选择`Convert Selection` -> `URL` -> `URL-decode`）。
@@ -327,9 +290,7 @@ POST请求中的数据不会自动URL解码，因此需要直接使用空字符�
 
 ## 总结 📝
 
-![](img/45644d2a916581dd40edf5c497e6438a_148.png)
 
-![](img/45644d2a916581dd40edf5c497e6438a_150.png)
 
 本节课我们系统性地探讨了文件上传漏洞的攻防：
 1.  **验证机制**：了解了客户端JS验证、服务端MIME类型验证、扩展名黑白名单验证及文件内容验证。

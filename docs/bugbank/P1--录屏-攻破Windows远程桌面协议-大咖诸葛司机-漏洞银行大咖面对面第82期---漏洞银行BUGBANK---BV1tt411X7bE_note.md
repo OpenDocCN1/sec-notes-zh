@@ -2,15 +2,12 @@
 
 ![](img/7fcd2d360e8f549b1125ef603363385b_0.png)
 
-![](img/7fcd2d360e8f549b1125ef603363385b_2.png)
 
 在本节课中，我们将学习如何从协议层面分析和攻击Windows远程桌面协议。我们将通过抓包分析协议结构，探讨其存在的安全漏洞，并演示一个实际的攻击工具。课程内容力求简单直白，适合初学者理解。
 
 ## 概述
 
-![](img/7fcd2d360e8f549b1125ef603363385b_4.png)
 
-![](img/7fcd2d360e8f549b1125ef603363385b_6.png)
 
 Windows远程桌面协议是用于远程控制Windows系统的标准协议。本节课将深入其协议细节，揭示其加密机制中存在的固有缺陷，并展示如何利用这些缺陷进行中间人攻击，从而获取明文凭据和键盘记录。
 
@@ -20,7 +17,6 @@ Windows远程桌面协议是用于远程控制Windows系统的标准协议。本
 
 上一节我们介绍了课程目标，本节中我们来看看如何通过抓包来理解RDP协议的工作流程。
 
-![](img/7fcd2d360e8f549b1125ef603363385b_8.png)
 
 ![](img/7fcd2d360e8f549b1125ef603363385b_10.png)
 
@@ -43,7 +39,6 @@ Windows远程桌面协议是用于远程控制Windows系统的标准协议。本
 
 ## 2. RDP的三种安全协议
 
-![](img/7fcd2d360e8f549b1125ef603363385b_16.png)
 
 在分析了基础通信后，我们来看看RDP协议提供的三种不同安全层级。
 
@@ -111,9 +106,7 @@ RDP主要支持三种连接类型：
 ![](img/7fcd2d360e8f549b1125ef603363385b_43.png)
 
 
-![](img/7fcd2d360e8f549b1125ef603363385b_45.png)
 
-![](img/7fcd2d360e8f549b1125ef603363385b_47.png)
 
 ```python
 # 1. 进行ARP欺骗或流量转发，实现中间人位置
@@ -132,7 +125,6 @@ session_key = decrypt_with_private_key(encrypted_pre_master_secret, known_privat
 credentials = parse_rdp_data(decrypted_traffic)
 ```
 
-![](img/7fcd2d360e8f549b1125ef603363385b_49.png)
 
 该工具通过`iptables`进行流量重定向，并内置了RDP协议解析和修改模块，能够自动完成证书替换、协议降级和流量解密。
 
@@ -159,7 +151,6 @@ credentials = parse_rdp_data(decrypted_traffic)
 
 ![](img/7fcd2d360e8f549b1125ef603363385b_57.png)
 
-![](img/7fcd2d360e8f549b1125ef603363385b_59.png)
 
 **攻击结果展示**：
 *   **用户名**: `test`
@@ -171,7 +162,6 @@ credentials = parse_rdp_data(decrypted_traffic)
     *   `[I down]`
     *   `[U down]`
 
-![](img/7fcd2d360e8f549b1125ef603363385b_61.png)
 
 可以看到，攻击成功获取了明文的用户名和密码，并记录了所有的键盘输入，这意味着攻击者完全获得了该RDP账户的控制权。
 
@@ -187,9 +177,7 @@ credentials = parse_rdp_data(decrypted_traffic)
 *   **必须在内网**：此攻击属于中间人攻击，要求攻击者与客户端、服务器在同一局域网内。
 *   **依赖用户行为**：需要用户忽略或接受无效的证书警告。
 
-![](img/7fcd2d360e8f549b1125ef603363385b_65.png)
 
-![](img/7fcd2d360e8f549b1125ef603363385b_67.png)
 
 **防御建议**：
 1.  **使用有效的证书**：为RDP服务器配置由可信证书颁发机构（CA）签名的证书，并强制客户端验证证书。这样用户会看到明确的警告，且伪造证书无法通过验证。

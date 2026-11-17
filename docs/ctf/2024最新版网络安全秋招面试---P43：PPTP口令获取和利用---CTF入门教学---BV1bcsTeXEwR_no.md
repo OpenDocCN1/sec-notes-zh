@@ -2,7 +2,6 @@
 
 在本节课中，我们将学习在Windows渗透测试中，如何获取和利用PPTP（点对点隧道协议）的凭证。掌握这项技术有助于我们在获得系统权限后，进一步横向移动到目标内网。
 
-![](img/e8d8eba61b237055d9bc7da6f694c77c_1.png)
 
 ## 什么是PPTP？
 
@@ -21,9 +20,7 @@ PPTP是“点对点隧道协议”的简称。它是一种网络协议，主要�
 
 这样，系统中就保存了一条PPTP连接记录，我们可以模拟攻击者来获取其凭证。
 
-![](img/e8d8eba61b237055d9bc7da6f694c77c_3.png)
 
-![](img/e8d8eba61b237055d9bc7da6f694c77c_4.png)
 
 ## 获取PPTP口令的方法
 
@@ -37,7 +34,6 @@ PPTP是“点对点隧道协议”的简称。它是一种网络协议，主要�
 
 我们可以直接读取系统存储PPTP配置的文件来获取信息。
 
-![](img/e8d8eba61b237055d9bc7da6f694c77c_9.png)
 
 执行以下命令：
 ```cmd
@@ -47,7 +43,6 @@ cmdkey /list
 
 ### 方法二：使用Mimikatz工具
 
-![](img/e8d8eba61b237055d9bc7da6f694c77c_11.png)
 
 Mimikatz是一款功能强大的凭据提取工具。在获得目标系统权限后，可以上传并运行它。
 
@@ -74,7 +69,6 @@ Password : admin123
 
 成功获取PPTP账号和密码后，就可以在命令行中直接连接目标VPN。
 
-![](img/e8d8eba61b237055d9bc7da6f694c77c_15.png)
 
 使用以下命令格式进行连接：
 ```cmd
@@ -89,7 +83,6 @@ rasdial “MyCompanyVPN” admin admin123
 rasdial “你的VPN连接名称” /disconnect
 ```
 
-![](img/e8d8eba61b237055d9bc7da6f694c77c_17.png)
 
 ## 总结
 

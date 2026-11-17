@@ -2,87 +2,61 @@
 
 ![](img/bd320506450f7ed91192c7df69bd661f_1.png)
 
-![](img/bd320506450f7ed91192c7df69bd661f_2.png)
 
-![](img/bd320506450f7ed91192c7df69bd661f_4.png)
 
 在本节课中，我们将学习Android系统如何将DEX文件优化为ODEX文件，并探讨如何修复因优化导致的脱壳问题。课程将从源码层面分析优化过程，并讲解如何通过修改系统设置来获取原始的、未经优化的DEX数据。
 
-![](img/bd320506450f7ed91192c7df69bd661f_6.png)
 
-![](img/bd320506450f7ed91192c7df69bd661f_7.png)
 
 ---
 
 ## 脚本脱壳方法的补充与扩展 🔍
 
-![](img/bd320506450f7ed91192c7df69bd661f_9.png)
 
 上一节我们介绍了使用脚本进行脱壳的方法。本节中，我们来看看如何将该方法应用于更复杂的壳，例如360加固，并指出脚本的局限性。
 
-![](img/bd320506450f7ed91192c7df69bd661f_11.png)
 
 以下是使用脚本脱360加固壳的尝试过程：
 
-![](img/bd320506450f7ed91192c7df69bd661f_13.png)
 
-![](img/bd320506450f7ed91192c7df69bd661f_14.png)
 
-![](img/bd320506450f7ed91192c7df69bd661f_15.png)
 
 1.  按照上节课的方法，在程序运行后挂接IDA进行脱壳。
 2.  运行脚本后，发现脚本无法找到某些类的原始代码数据，提示 `is past` 并跳过对这些类的提取。
 3.  分析导出的DEX文件，发现许多类的 `class data` 数据为0，表明其真实数据已被清空。
 4.  尝试用IDA打开导出的DEX文件，会提示为无效的DEX文件。通过先反编译再重新编译可以修复文件结构错误，但函数内容仍然是空的或异常的。
 
-![](img/bd320506450f7ed91192c7df69bd661f_17.png)
 
 面对这种情况，与手工脱壳一样，使用脚本也需要找到正确的脱壳时机点。
 
-![](img/bd320506450f7ed91192c7df69bd661f_19.png)
 
 我们通过手动调试的方式来定位这个时机点：
 
-![](img/bd320506450f7ed91192c7df69bd661f_20.png)
 
-![](img/bd320506450f7ed91192c7df69bd661f_22.png)
 
 1.  使用 `am start -D -n` 选项以调试模式启动应用，并用IDA挂接。
 2.  在程序运行初期（如 `JNI_OnLoad` 处），运行脚本查看当前只加载了3个DEX文件。
 3.  单步执行，直到经过某个关键函数（该函数负责解密并加载真实的DEX）后，再次运行脚本。
 4.  此时发现内存中加载了新的DEX文件。在这个时机点（即刚加载完真实DEX时）下断点并运行脱壳脚本，即可成功导出未被清空数据的原始DEX文件。
 
-![](img/bd320506450f7ed91192c7df69bd661f_24.png)
 
-![](img/bd320506450f7ed91192c7df69bd661f_25.png)
 
-![](img/bd320506450f7ed91192c7df69bd661f_27.png)
 
-![](img/bd320506450f7ed91192c7df69bd661f_28.png)
 
 这个补充说明强调了脚本脱壳同样依赖于准确的脱壳点。
 
-![](img/bd320506450f7ed91192c7df69bd661f_30.png)
 
-![](img/bd320506450f7ed91192c7df69bd661f_31.png)
 
-![](img/bd320506450f7ed91192c7df69bd661f_33.png)
 
-![](img/bd320506450f7ed91192c7df69bd661f_34.png)
 
 ---
 
-![](img/bd320506450f7ed91192c7df69bd661f_36.png)
 
-![](img/bd320506450f7ed91192c7df69bd661f_38.png)
 
-![](img/bd320506450f7ed91192c7df69bd661f_40.png)
 
-![](img/bd320506450f7ed91192c7df69bd661f_41.png)
 
 ## DEX文件优化机制分析 📖
 
-![](img/bd320506450f7ed91192c7df69bd661f_43.png)
 
 上一节我们成功脱壳，得到了两份DEX文件：一份是加载前的原始数据，另一份是加载后的内存数据。理论上它们应该相同，但实际上存在差异。这是因为Android系统在加载DEX时会对其进行优化和校验。
 
@@ -106,15 +80,11 @@ invoke-direct/range {v0 .. v5}, Ljava/lang/Object;-><init>()V
 return-object-barrier v1
 ```
 
-![](img/bd320506450f7ed91192c7df69bd661f_45.png)
 
-![](img/bd320506450f7ed91192c7df69bd661f_46.png)
 
 可以看到，`invoke-direct` 被优化为 `invoke-direct/range`，`return` 被优化为 `return-object-barrier`。这些优化指令在反编译回Java代码时会导致逻辑错误。
 
-![](img/bd320506450f7ed91192c7df69bd661f_48.png)
 
-![](img/bd320506450f7ed91192c7df69bd661f_50.png)
 
 ---
 
@@ -122,9 +92,7 @@ return-object-barrier v1
 
 接下来，我们从Android源码（以 `dexopt` 相关代码为例）分析优化和校验的具体实现。
 
-![](img/bd320506450f7ed91192c7df69bd661f_52.png)
 
-![](img/bd320506450f7ed91192c7df69bd661f_54.png)
 
 ### 代码优化过程
 
@@ -154,13 +122,10 @@ for (each instruction in method) {
 
 ### 代码校验过程
 
-![](img/bd320506450f7ed91192c7df69bd661f_56.png)
 
 校验的入口函数是 `VerifyClass`。其流程与优化类似，但目的是检查指令的合法性：
 
-![](img/bd320506450f7ed91192c7df69bd661f_57.png)
 
-![](img/bd320506450f7ed91192c7df69bd661f_59.png)
 
 1.  同样遍历方法的每条指令及其Opcode。
 2.  检查指令格式、寄存器使用等是否符合规范。
@@ -188,17 +153,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 ---
 
-![](img/bd320506450f7ed91192c7df69bd661f_61.png)
 
 ## 总结 📝
 
-![](img/bd320506450f7ed91192c7df69bd661f_63.png)
 
-![](img/bd320506450f7ed91192c7df69bd661f_64.png)
 
 本节课我们一起学习了以下内容：
 
-![](img/bd320506450f7ed91192c7df69bd661f_66.png)
 
 1.  **脚本脱壳的补充**：使用脚本脱壳也需要寻找准确的脱壳时机点，并以360加固为例进行了演示。
 2.  **DEX优化机制**：了解了Android系统为了提升性能和稳定性，会对DEX指令进行优化（如替换Opcode）和校验。
@@ -206,7 +167,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 4.  **源码级分析**：从 `dexopt` 源码层面剖析了优化 (`OptimizeClass`) 和校验 (`VerifyClass`) 的具体实现过程。
 5.  **解决方案**：通过修改Android系统的编译配置（如 `dalvik.vm.dexopt-flags`），可以禁用DEX的优化和校验，从而在脱壳时获取到原始的、未被修改的DEX代码数据。
 
-![](img/bd320506450f7ed91192c7df69bd661f_68.png)
 
 ![](img/bd320506450f7ed91192c7df69bd661f_70.png)
 

@@ -12,7 +12,6 @@ MySQL是一种开源的、基于SQL的关系型数据库管理系统。它专门
 
 所以就有很多顶级的互联网网站和基于Web的应用，都采用了MySQL作为数据库管理系统。
 
-![](img/cd8ee95f316501badafd9124fb7236d9_1.png)
 
 ## MySQL的安装与启动 🚀
 
@@ -20,7 +19,6 @@ MySQL是一种开源的、基于SQL的关系型数据库管理系统。它专门
 
 关于安装，如果大家之前已经安装了PHPStudy，就不需要再专门进行MySQL数据库的安装了。因为PHPStudy是一个集成环境，它集成了MySQL。它就是一个WAMP环境。
 
-![](img/cd8ee95f316501badafd9124fb7236d9_3.png)
 
 以下是关于WAMP环境的解释：
 *   **W** 代表 Windows 操作系统。

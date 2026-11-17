@@ -8,7 +8,6 @@
 
 上一节我们介绍了TCP协议的分析，本节中我们来看看其上层应用协议——HTTP。首先，我们需要在WireShark中设置过滤器来捕获HTTP相关的流量。
 
-![](img/53cfaba4c32c04eb59aa9213e80cd5c2_1.png)
 
 因为HTTP协议建立在TCP协议之上，所以我们可以使用 `tcp` 过滤器，它也会包含HTTP协议的数据包。
 
@@ -18,7 +17,6 @@
 
 ---
 
-![](img/53cfaba4c32c04eb59aa9213e80cd5c2_3.png)
 
 ## 生成HTTP流量
 
@@ -36,7 +34,6 @@ curl -I www.baidu.com
 
 `curl` 是一个在命令行下工作的文件传输工具，我们用它来发送HTTP请求，从而产生可供分析的HTTP协议数据包。
 
-![](img/53cfaba4c32c04eb59aa9213e80cd5c2_5.png)
 
 ---
 
@@ -44,9 +41,7 @@ curl -I www.baidu.com
 
 停止抓包后，我们来看WireShark捕获到的数据。
 
-![](img/53cfaba4c32c04eb59aa9213e80cd5c2_7.png)
 
-![](img/53cfaba4c32c04eb59aa9213e80cd5c2_5.png)
 
 在数据包列表中，我们可以清晰地看到TCP连接建立的“三次握手”和连接关闭的“四次挥手”过程。
 

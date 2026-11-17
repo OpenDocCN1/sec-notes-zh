@@ -49,9 +49,7 @@ python2 sqlmap.py --version
 
 关于环境变量，如果配置好了Python的环境变量，你也可以在任何目录直接运行`python sqlmap.py`。我们也可以直接进入到它的目录里面，打开一个CMD，然后去运行它。
 
-![](img/3e1970edb56183b105a815a7d1810762_5.png)
 
-![](img/3e1970edb56183b105a815a7d1810762_7.png)
 
 ## 总结
 

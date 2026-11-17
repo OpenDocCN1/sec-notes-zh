@@ -1,10 +1,7 @@
 # 课程3：《网络安全合规框架与系统管理》：90：探索Shell
 
-![](img/14284b4effceea98485125d9139b828d_0.png)
 
-![](img/14284b4effceea98485125d9139b828d_2.png)
 
-![](img/14284b4effceea98485125d9139b828d_0.png)
 
 在本节课程中，我们将学习Linux操作系统中的Shell。你将能够描述Linux中常见的Shell类型及其特点。
 

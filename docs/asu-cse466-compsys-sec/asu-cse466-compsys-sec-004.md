@@ -155,9 +155,7 @@ lea rdi, [rsp]    ; load address from stack
 
 ![](img/db2a240f7239f38229334474c4366a18_54.png)
 
-![](img/db2a240f7239f38229334474c4366a18_56.png)
 
-![](img/db2a240f7239f38229334474c4366a18_57.png)
 
 ### 缓冲区溢出示例
 
@@ -261,7 +259,6 @@ checksec ./a.out
 
 ![](img/db2a240f7239f38229334474c4366a18_85.png)
 
-![](img/db2a240f7239f38229334474c4366a18_86.png)
 
 ![](img/db2a240f7239f38229334474c4366a18_88.png)
 

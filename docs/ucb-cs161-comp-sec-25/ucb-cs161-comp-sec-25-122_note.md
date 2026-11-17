@@ -11,21 +11,16 @@
 因此，在IND-CPA中，一个加密方案被认为是安全的，当且仅当任何攻击者赢得游戏的概率**不比0.5好**，即：
 **公式：** `Pr[Win] ≤ 0.5 + negligible(λ)`
 
-![](img/2351ee5ff6bd59729ac4f29ea2a78c7d_1.png)
 
 这里的`neglible(λ)`代表一个可忽略的函数。
 
-![](img/2351ee5ff6bd59729ac4f29ea2a78c7d_2.png)
 
 ---
 
-![](img/2351ee5ff6bd59729ac4f29ea2a78c7d_3.png)
 
-![](img/2351ee5ff6bd59729ac4f29ea2a78c7d_4.png)
 
 ### EU-CPA游戏的核心区别
 
-![](img/2351ee5ff6bd59729ac4f29ea2a78c7d_5.png)
 
 本节中我们来看看EU-CPA（Existential Unforgeability under Chosen Plaintext Attack）游戏。它与IND-CPA有本质不同。
 
@@ -51,25 +46,19 @@
 因此，如果Mallory能够以**任何显著高于0的概率**（例如10%）成功伪造，这已经远远优于随机攻击了。所以，在EU-CPA中，我们设定：
 **公式：** `Pr[Forge] ≤ negligible(λ)`
 
-![](img/2351ee5ff6bd59729ac4f29ea2a78c7d_7.png)
 
 这意味着，一个方案是EU-CPA安全的，当且仅当任何攻击者成功伪造的概率是可忽略的（即，几乎为0）。
 
-![](img/2351ee5ff6bd59729ac4f29ea2a78c7d_8.png)
 
 ---
 
-![](img/2351ee5ff6bd59729ac4f29ea2a78c7d_9.png)
 
-![](img/2351ee5ff6bd59729ac4f29ea2a78c7d_10.png)
 
 ### 总结
 
-![](img/2351ee5ff6bd59729ac4f29ea2a78c7d_11.png)
 
 本节课中我们一起学习了EU-CPA安全定义中获胜概率阈值的设定逻辑。
 
-![](img/2351ee5ff6bd59729ac4f29ea2a78c7d_12.png)
 
 *   **IND-CPA（不可区分性）**：攻击者进行二选一猜测，随机成功率为`0.5`。因此安全阈值是`0.5`。
 *   **EU-CPA（不可伪造性）**：攻击者需要伪造有效标签，随机成功率几乎为`0`。因此安全阈值是`0.0`。

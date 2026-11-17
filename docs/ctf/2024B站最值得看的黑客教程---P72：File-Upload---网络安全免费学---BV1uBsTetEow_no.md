@@ -1,6 +1,5 @@
 # 网络安全：P72：File Upload 防御 high
 
-![](img/cbcfd09e79573f7d97d4892c624a678a_1.png)
 
 在本节课中，我们将学习DVWA中文件上传漏洞的“High”级别防御机制。我们将分析其代码逻辑，理解其如何通过更严格的检查来阻止恶意文件上传，并探讨一种可能的组合攻击绕过方法。
 
@@ -14,7 +13,6 @@
 
 首先，代码获取上传文件的名称，这一点没有改变。关键的变化在于对文件类型的判断方式。
 
-![](img/cbcfd09e79573f7d97d4892c624a678a_3.png)
 
 **代码示例：获取文件扩展名**
 ```php
@@ -22,7 +20,6 @@ $uploaded_ext = substr($uploaded_name, strrpos($uploaded_name, '.') + 1);
 ```
 这段代码的作用是：从上传的文件名中，以最后一个点号`.`为分隔符，截取后面的部分，即**文件扩展名**（如 `php`, `jpg`, `png`）。
 
-![](img/cbcfd09e79573f7d97d4892c624a678a_5.png)
 
 接下来，代码会判断这个扩展名是否在允许的列表内。
 
@@ -33,7 +30,6 @@ $uploaded_ext = substr($uploaded_name, strrpos($uploaded_name, '.') + 1);
 
 如果文件扩展名不是以上三者之一，上传请求会被直接拒绝。这严格限制了可上传文件的类型。
 
-![](img/cbcfd09e79573f7d97d4892c624a678a_7.png)
 
 然后，代码使用了 `getimagesize()` 函数。有同学可能会问，前面不是已经获取过文件大小了吗？这里的关键区别在于：
 *   之前获取的是**上传文件的大小**，任何文件（如图片、音乐、木马）都有大小。
@@ -45,7 +41,6 @@ $uploaded_ext = substr($uploaded_name, strrpos($uploaded_name, '.') + 1);
 
 ![](img/cbcfd09e79573f7d97d4892c624a678a_9.png)
 
-![](img/cbcfd09e79573f7d97d4892c624a678a_10.png)
 
 ![](img/cbcfd09e79573f7d97d4892c624a678a_11.png)
 
@@ -63,7 +58,6 @@ $uploaded_ext = substr($uploaded_name, strrpos($uploaded_name, '.') + 1);
 
 那么，如何绕过呢？核心思路是：**制作一个包含木马代码的真实图片文件**。
 
-![](img/cbcfd09e79573f7d97d4892c624a678a_19.png)
 
 以下是制作图片木马的步骤：
 1.  准备一张真实的图片（如 `1.jpg`）。
@@ -79,7 +73,6 @@ copy /b 1.jpg + webshell.php 2.jpg
 
 ![](img/cbcfd09e79573f7d97d4892c624a678a_21.png)
 
-![](img/cbcfd09e79573f7d97d4892c624a678a_23.png)
 
 生成的 `2.jpg` 仍然是一个有效的图片文件，可以正常预览。同时，木马代码被隐藏在图片文件的末尾，不会影响图片的正常显示。此时，这个文件可以通过“High”级别的检查成功上传。
 

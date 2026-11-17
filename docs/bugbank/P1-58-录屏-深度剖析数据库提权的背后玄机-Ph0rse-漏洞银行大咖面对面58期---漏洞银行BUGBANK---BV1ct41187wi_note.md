@@ -1,6 +1,5 @@
 # 数据库提权技术深度剖析教程 🛡️➡️👑
 
-![](img/f37932b51576497bc406dde1ab8f4f24_1.png)
 
 在本节课中，我们将要学习数据库提权背后的核心原理与实战操作。课程内容源自漏洞银行大咖面对面第58期，由Ph0rse带来的技术分享。我们将从MySql入手，逐步深入，剖析多种数据库的提权玄机。
 
@@ -16,7 +15,6 @@
 
 ### 1. MOF提权原理与利用
 
-![](img/f37932b51576497bc406dde1ab8f4f24_7.png)
 
 ![](img/f37932b51576497bc406dde1ab8f4f24_8.png)
 
@@ -45,7 +43,6 @@ MOF提权利用了Windows低版本系统（如XP、2000、2003）中“Windows�
 
 **关键操作**：写入文件需使用`INTO DUMPFILE`而非`INTO OUTFILE`，因为后者会添加换行符等冗余数据，可能破坏二进制文件（如.dll）或脚本的执行。
 
-![](img/f37932b51576497bc406dde1ab8f4f24_20.png)
 
 **防御与清除**：若服务器已被利用，管理员需停止`winmgmt`服务，删除`C:\Windows\system32\wbem\Repository\`目录下的存储库文件，再重启服务。但根本防御在于杜绝SQL注入漏洞。
 
@@ -53,7 +50,6 @@ MOF提权利用了Windows低版本系统（如XP、2000、2003）中“Windows�
 
 ![](img/f37932b51576497bc406dde1ab8f4f24_23.png)
 
-![](img/f37932b51576497bc406dde1ab8f4f24_25.png)
 
 ![](img/f37932b51576497bc406dde1ab8f4f24_26.png)
 
@@ -82,29 +78,21 @@ CREATE FUNCTION cmdshell RETURNS STRING SONAME ‘udf.dll’;
 
 **自动化工具**：除了手动操作，可使用 `sqlmap` 的 `--os-shell` 参数或专用工具如 `pythonscript-fuck-mysql` 进行自动化提权。
 
-![](img/f37932b51576497bc406dde1ab8f4f24_34.png)
 
-![](img/f37932b51576497bc406dde1ab8f4f24_36.png)
 
 ---
 
-![](img/f37932b51576497bc406dde1ab8f4f24_38.png)
 
-![](img/f37932b51576497bc406dde1ab8f4f24_39.png)
 
 ## 第二部分：MySql新型提权与MSSql提权概览 ⚡
 
-![](img/f37932b51576497bc406dde1ab8f4f24_41.png)
 
-![](img/f37932b51576497bc406dde1ab8f4f24_43.png)
 
 上一节我们探讨了传统的MOF和UDF提权，本节中我们来看看更新颖的提权方式以及其他数据库。
 
 ### 3. MySql配置文件提权（CVE-2016-6662/6663/6664）
 
-![](img/f37932b51576497bc406dde1ab8f4f24_45.png)
 
-![](img/f37932b51576497bc406dde1ab8f4f24_47.png)
 
 这套组合漏洞影响MySql 5.5, 5.6, 5.7及衍生版本（如MariaDB, Percona Server），在实战中成功率较高。
 
@@ -120,9 +108,7 @@ CREATE FUNCTION cmdshell RETURNS STRING SONAME ‘udf.dll’;
 3.  执行exp，将当前进程权限提升至`mysql`用户。
 4.  进一步利用其他exp（如`.sh`脚本），将`mysql`用户权限提升至`root`。
 
-![](img/f37932b51576497bc406dde1ab8f4f24_52.png)
 
-![](img/f37932b51576497bc406dde1ab8f4f24_53.png)
 
 ![](img/f37932b51576497bc406dde1ab8f4f24_55.png)
 
@@ -132,19 +118,14 @@ CREATE FUNCTION cmdshell RETURNS STRING SONAME ‘udf.dll’;
 
 ![](img/f37932b51576497bc406dde1ab8f4f24_59.png)
 
-![](img/f37932b51576497bc406dde1ab8f4f24_60.png)
 
-![](img/f37932b51576497bc406dde1ab8f4f24_61.png)
 
 MSSql（SQL Server）提权通常通过其丰富的“存储过程”实现。存储过程是为完成复杂功能而预编译的SQL语句集合。
 
-![](img/f37932b51576497bc406dde1ab8f4f24_62.png)
 
-![](img/f37932b51576497bc406dde1ab8f4f24_64.png)
 
 ![](img/f37932b51576497bc406dde1ab8f4f24_65.png)
 
-![](img/f37932b51576497bc406dde1ab8f4f24_67.png)
 
 **核心原理**：寻找并利用具有高执行权限的存储过程（如`xp_cmdshell`），让其执行我们的恶意命令。其本质与MySql提权一致：让高权限进程执行我们的代码。
 
@@ -159,11 +140,8 @@ MSSql（SQL Server）提权通常通过其丰富的“存储过程”实现。�
 *   `xp_regread` / `xp_regwrite`：读写注册表。
 *   `sp_add_job` / `sp_add_jobstep`：创建代理作业执行命令。
 
-![](img/f37932b51576497bc406dde1ab8f4f24_73.png)
 
-![](img/f37932b51576497bc406dde1ab8f4f24_75.png)
 
-![](img/f37932b51576497bc406dde1ab8f4f24_77.png)
 
 ![](img/f37932b51576497bc406dde1ab8f4f24_78.png)
 
@@ -178,7 +156,6 @@ EXEC xp_cmdshell ‘whoami’;
 
 **自动化工具**：推荐使用 `PowerUpSQL` 工具包，它能自动化探测和利用MSSql中的多种配置缺陷与存储过程进行提权。
 
-![](img/f37932b51576497bc406dde1ab8f4f24_80.png)
 
 ---
 
@@ -188,19 +165,16 @@ EXEC xp_cmdshell ‘whoami’;
 
 ### 5. 提权的核心思想与资源
 
-![](img/f37932b51576497bc406dde1ab8f4f24_82.png)
 
 所有数据库提权，乃至系统提权，其**核心思想**都是相同的：**找到一个以较高权限运行的进程或线程，并诱使或利用它来执行我们的恶意代码，从而继承其权限**。
 
 因此，不要将思路局限于某几种数据库的特定方法。真正的渗透测试人员需要：
 
-![](img/f37932b51576497bc406dde1ab8f4f24_84.png)
 
 1.  **结合操作系统漏洞**：例如，在获得Webshell后，可以尝试使用如Dirty Cow、内核提权EXP等系统漏洞直接提权。资源网站如 `Seclists.org` 的 `Windows-Exploit-Suggester` 和 `Linux-Exploit-Suggester` 是很好的EXP来源。
 2.  **扩大知识面**：研究Oracle、NoSQL（如Redis、MongoDB）的提权技术。Oracle可通过Java存储过程执行系统命令，Redis可写SSH密钥或计划任务。
 3.  **灵活运用**：根据目标环境，混合使用数据库提权、系统提权、应用软件配置错误等多种技术。
 
-![](img/f37932b51576497bc406dde1ab8f4f24_86.png)
 
 **思维导图**：建议参考国外安全研究者整理的提权思维导图，系统化地梳理从信息收集到获取SYSTEM/ROOT权限的各类可能路径。
 

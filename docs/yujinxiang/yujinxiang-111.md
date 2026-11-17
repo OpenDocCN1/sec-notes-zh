@@ -30,11 +30,9 @@ MOV DWORD PTR [EDI], ECX  ; 将ECX中的坐标值写入EDI指向的目的地地�
 
 ![](img/15809837f9f3c7c9c42f1698276d7aba_3.png)
 
-![](img/15809837f9f3c7c9c42f1698276d7aba_5.png)
 
 ## 分析坐标数组的结构
 
-![](img/15809837f9f3c7c9c42f1698276d7aba_7.png)
 
 ![](img/15809837f9f3c7c9c42f1698276d7aba_9.png)
 
@@ -101,7 +99,6 @@ MOV DWORD PTR [EDI], ECX  ; 将ECX中的坐标值写入EDI指向的目的地地�
 *   **单个坐标点结构体大小**：`0xEC` 字节
 *   **目的地坐标写入地址**：例如 `[EDI]`（具体地址需动态分析）
 
-![](img/15809837f9f3c7c9c42f1698276d7aba_25.png)
 
 ![](img/15809837f9f3c7c9c42f1698276d7aba_27.png)
 

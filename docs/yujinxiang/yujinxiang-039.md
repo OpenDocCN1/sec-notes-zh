@@ -1,18 +1,13 @@
 #  039：050 - 动态定位技术 - ScanFeatureCode 🔍
 
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_1.png)
 
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_3.png)
 
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_4.png)
 
 在本节课中，我们将学习如何编写一个用于在游戏进程内存中搜索特定特征码的主函数。我们将基于之前课程中编写的辅助函数，构建一个完整的动态定位功能。
 
 ---
 
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_6.png)
 
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_8.png)
 
 ## 概述 📋
 
@@ -67,12 +62,9 @@ int codeByteLen = (strlen(upperCode) + 1) / 3; // 简单估算，实际需处理
 以下是内存读取和搜索循环的核心结构：
 
 
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_10.png)
-
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_12.png)
 
 
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_14.png)
+
 
 ```cpp
 // 定义每页读取的大小
@@ -112,31 +104,22 @@ return NULL;
 
 ### 3. 整合与测试
 
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_16.png)
 
 编写完主函数后，我们需要编写测试代码来验证其功能。
 
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_18.png)
 
 以下是测试步骤的代码框架：
 
 
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_20.png)
-
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_22.png)
 
 
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_24.png)
 
 
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_26.png)
-
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_28.png)
 
 
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_29.png)
 
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_31.png)
+
+
 
 ```cpp
 // 1. 获取游戏窗口句柄
@@ -176,29 +159,22 @@ if (foundAddress != NULL) {
 CloseHandle(hProcess);
 ```
 
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_33.png)
 
 ## 性能优化思考 💡
 
 在测试中，我们发现搜索速度可能较慢。性能瓶颈很可能出现在内层循环的**字节到十六进制字符串的转换**部分。频繁调用 `sprintf` 等格式化函数在大量循环中会显著影响效率。
 
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_35.png)
 
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_37.png)
 
 优化思路是：**编写一个高效的自定义函数来替代通用的格式化转换**。这个函数应专门针对将少量字节快速转换为十六进制字符串的场景进行优化，避免在循环中调用开销较大的库函数。
 
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_39.png)
 
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_41.png)
 
 ## 总结 🎯
 
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_43.png)
 
 本节课中我们一起学习了如何构建 `ScanFeatureCode` 函数来实现动态内存特征码定位。我们掌握了以下关键点：
 
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_45.png)
 
 1.  **函数设计**：明确了输入参数（进程句柄、特征码、地址范围）和输出结果（找到的地址）。
 2.  **核心逻辑**：采用**分页读取**的方式遍历内存，并在每个页面内进行**逐字节比较**以查找特征码。
@@ -206,9 +182,7 @@ CloseHandle(hProcess);
 4.  **测试验证**：通过获取游戏进程、调用搜索函数并解析结果，验证了功能的正确性。
 5.  **优化方向**：识别了当前实现中可能存在的性能瓶颈，并提出了通过编写高效转换函数来提升搜索速度的优化方案。
 
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_46.png)
 
-![](img/08cd0e0e04aad7fd791b99d497b8adbb_47.png)
 
 ![](img/08cd0e0e04aad7fd791b99d497b8adbb_48.png)
 

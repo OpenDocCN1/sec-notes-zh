@@ -6,9 +6,7 @@
 
 ## 连接Redis服务
 
-![](img/4abca7808bcfba19e8f94f9ceb124adf_3.png)
 
-![](img/4abca7808bcfba19e8f94f9ceb124adf_5.png)
 
 上一节我们介绍了Redis未授权访问漏洞的原理，本节中我们来看看如何实际连接存在漏洞的Redis服务。
 
@@ -49,13 +47,10 @@
 
 如果连接成功且未要求密码，则说明存在未授权访问漏洞。连接后可以执行 `info` 命令查看服务器信息以确认。
 
-![](img/4abca7808bcfba19e8f94f9ceb124adf_22.png)
 
 ## 写入Webshell
 
-![](img/4abca7808bcfba19e8f94f9ceb124adf_24.png)
 
-![](img/4abca7808bcfba19e8f94f9ceb124adf_25.png)
 
 ![](img/4abca7808bcfba19e8f94f9ceb124adf_27.png)
 
@@ -128,9 +123,7 @@
 
 如果Redis服务是以root权限运行的，我们可以通过写入SSH公钥到目标服务器的 `~/.ssh/authorized_keys` 文件中，实现免密码登录。
 
-![](img/4abca7808bcfba19e8f94f9ceb124adf_43.png)
 
-![](img/4abca7808bcfba19e8f94f9ceb124adf_45.png)
 
 此方法的前提是目标服务器开启了SSH服务，并且 `~/.ssh` 目录存在或可创建。
 
@@ -171,9 +164,7 @@
 
 完成后，攻击者即可使用对应的私钥直接SSH免密登录到目标服务器。
 
-![](img/4abca7808bcfba19e8f94f9ceb124adf_51.png)
 
-![](img/4abca7808bcfba19e8f94f9ceb124adf_53.png)
 
 ![](img/4abca7808bcfba19e8f94f9ceb124adf_55.png)
 
@@ -220,18 +211,14 @@ Redis 4.x/5.x 版本存在主从复制漏洞。攻击者可以伪装成Redis主�
 
 这些手法的成功都依赖于Redis服务缺乏有效的认证机制。在防御层面，务必为Redis设置强密码、禁止外网访问、以低权限运行服务。
 
-![](img/4abca7808bcfba19e8f94f9ceb124adf_68.png)
 
-![](img/4abca7808bcfba19e8f94f9ceb124adf_70.png)
 
 **课后作业**：
 1.  尝试在提供的实验环境中，利用Redis未授权访问漏洞写入一个PHP Webshell并成功连接。
 2.  搜索并了解如何利用Redis漏洞攻击内网中的其他服务（如通过写入定时任务攻击其他机器）。
 3.  （选做）在本地搭建环境，测试主从复制RCE漏洞的利用过程。
 
-![](img/4abca7808bcfba19e8f94f9ceb124adf_72.png)
 
-![](img/4abca7808bcfba19e8f94f9ceb124adf_73.png)
 
 ![](img/4abca7808bcfba19e8f94f9ceb124adf_75.png)
 

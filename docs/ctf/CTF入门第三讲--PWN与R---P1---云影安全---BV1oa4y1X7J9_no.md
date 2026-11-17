@@ -10,7 +10,6 @@
 
 ## 汇编语言基础
 
-![](img/0f8ecb80719eddd4e82e8f58442731ae_7.png)
 
 ![](img/0f8ecb80719eddd4e82e8f58442731ae_9.png)
 
@@ -22,9 +21,7 @@
 
 ### 核心汇编指令
 
-![](img/0f8ecb80719eddd4e82e8f58442731ae_14.png)
 
-![](img/0f8ecb80719eddd4e82e8f58442731ae_15.png)
 
 以下是几个最基础且重要的汇编指令及其功能：
 
@@ -61,7 +58,6 @@
 
 ## 实例分析：整数溢出漏洞
 
-![](img/0f8ecb80719eddd4e82e8f58442731ae_21.png)
 
 ![](img/0f8ecb80719eddd4e82e8f58442731ae_23.png)
 
@@ -166,7 +162,6 @@ print(flag)
 
 ![](img/0f8ecb80719eddd4e82e8f58442731ae_33.png)
 
-![](img/0f8ecb80719eddd4e82e8f58442731ae_35.png)
 
 ![](img/0f8ecb80719eddd4e82e8f58442731ae_37.png)
 

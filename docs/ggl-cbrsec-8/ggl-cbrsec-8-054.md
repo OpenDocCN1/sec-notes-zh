@@ -1,6 +1,5 @@
 **谷歌网络安全专业证书第八课：8：投入实践：为网络安全工作做好准备**
 
-![](img/8a99093ebde713e88ebc0756edd2f5a4_0.png)
 
 **P54：11_01_wrap-up.en_subtitled**
 
@@ -20,7 +19,6 @@
 
 😊
 
-![](img/8a99093ebde713e88ebc0756edd2f5a4_2.png)
 
 ![](img/8a99093ebde713e88ebc0756edd2f5a4_2.png)
 

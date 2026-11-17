@@ -2,11 +2,9 @@
 
 ![](img/7d89f845c58dc67d22bf475f4f0885be_0.png)
 
-![](img/7d89f845c58dc67d22bf475f4f0885be_2.png)
 
 ![](img/7d89f845c58dc67d22bf475f4f0885be_3.png)
 
-![](img/7d89f845c58dc67d22bf475f4f0885be_5.png)
 
 ![](img/7d89f845c58dc67d22bf475f4f0885be_7.png)
 

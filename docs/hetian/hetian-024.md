@@ -4,7 +4,6 @@
 
 ![](img/6f092c4b8b9eb4deeacd4543e7745284_3.png)
 
-![](img/6f092c4b8b9eb4deeacd4543e7745284_5.png)
 
 ![](img/6f092c4b8b9eb4deeacd4543e7745284_7.png)
 
@@ -63,7 +62,6 @@
 
 ![](img/6f092c4b8b9eb4deeacd4543e7745284_29.png)
 
-![](img/6f092c4b8b9eb4deeacd4543e7745284_31.png)
 
 本实验通过上传一个特制的JSP Webshell（POC）来执行系统命令。
 
@@ -103,7 +101,6 @@
 
 ![](img/6f092c4b8b9eb4deeacd4543e7745284_43.png)
 
-![](img/6f092c4b8b9eb4deeacd4543e7745284_45.png)
 
 **1. 漏洞检测**
 使用现有POC进行测试。在URL后附加以下参数：
@@ -143,7 +140,6 @@ system('whoami');
 
 ![](img/6f092c4b8b9eb4deeacd4543e7745284_56.png)
 
-![](img/6f092c4b8b9eb4deeacd4543e7745284_58.png)
 
 ![](img/6f092c4b8b9eb4deeacd4543e7745284_60.png)
 
@@ -158,7 +154,6 @@ system('whoami');
 
 ---
 
-![](img/6f092c4b8b9eb4deeacd4543e7745284_65.png)
 
 ![](img/6f092c4b8b9eb4deeacd4543e7745284_66.png)
 
@@ -166,17 +161,14 @@ system('whoami');
 
 ![](img/6f092c4b8b9eb4deeacd4543e7745284_69.png)
 
-![](img/6f092c4b8b9eb4deeacd4543e7745284_71.png)
 
 ## 进阶技巧与问题解答 🛠️
 
 ![](img/6f092c4b8b9eb4deeacd4543e7745284_73.png)
 
-![](img/6f092c4b8b9eb4deeacd4543e7745284_75.png)
 
 本节我们补充一个上节课未详细说明的过滤绕过技巧，并解答一些常见问题。
 
-![](img/6f092c4b8b9eb4deeacd4543e7745284_77.png)
 
 ![](img/6f092c4b8b9eb4deeacd4543e7745284_79.png)
 
@@ -206,13 +198,11 @@ preg_replace(‘/.*/e‘, $data, ‘‘);
 
 ![](img/6f092c4b8b9eb4deeacd4543e7745284_89.png)
 
-![](img/6f092c4b8b9eb4deeacd4543e7745284_91.png)
 
 ### 常见问题汇总
 
 ![](img/6f092c4b8b9eb4deeacd4543e7745284_93.png)
 
-![](img/6f092c4b8b9eb4deeacd4543e7745284_95.png)
 
 以下是针对同学们提出的问题的解答：
 
@@ -224,21 +214,17 @@ preg_replace(‘/.*/e‘, $data, ‘‘);
 
 ![](img/6f092c4b8b9eb4deeacd4543e7745284_97.png)
 
-![](img/6f092c4b8b9eb4deeacd4543e7745284_98.png)
 
 ![](img/6f092c4b8b9eb4deeacd4543e7745284_99.png)
 
 ## 课程总结 📚
 
-![](img/6f092c4b8b9eb4deeacd4543e7745284_101.png)
 
-![](img/6f092c4b8b9eb4deeacd4543e7745284_102.png)
 
 ![](img/6f092c4b8b9eb4deeacd4543e7745284_103.png)
 
 ![](img/6f092c4b8b9eb4deeacd4543e7745284_105.png)
 
-![](img/6f092c4b8b9eb4deeacd4543e7745284_107.png)
 
 本节课我们一起学习了多个命令执行漏洞实验的考核要点：
 1.  回顾了Struts2、ImageMagick、ThinkPHP等常见组件的RCE漏洞利用方法。
@@ -246,7 +232,6 @@ preg_replace(‘/.*/e‘, $data, ‘‘);
 3.  掌握了通过双引号字符串解析绕过大小写过滤等进阶技巧。
 4.  强调了动手实践、记录笔记和发散思维在安全学习中的重要性。
 
-![](img/6f092c4b8b9eb4deeacd4543e7745284_109.png)
 
 ![](img/6f092c4b8b9eb4deeacd4543e7745284_111.png)
 

@@ -6,11 +6,9 @@
 
 网络爬虫是一种自动获取网页内容的程序。其核心流程可以概括为：确定需求、找到数据地址、发送请求获取数据、解析数据以及最终保存数据。我们将通过具体的代码示例，一步步演示这个过程。
 
-![](img/481d4e4ae559688feb0a1c916bf9ab26_1.png)
 
 ---
 
-![](img/481d4e4ae559688feb0a1c916bf9ab26_3.png)
 
 ## 爬虫核心流程 🔄
 
@@ -28,7 +26,6 @@
 
 确定需求后，需要找到目标数据在网页中的具体位置。数据可能直接存在于初始加载的HTML代码中，也可能通过动态加载（如Ajax请求）获取。
 
-![](img/481d4e4ae559688feb0a1c916bf9ab26_9.png)
 
 *   **静态数据**：直接包含在网页源代码中。
 *   **动态数据**：通过额外的网络请求（通常是XHR/Fetch类型）获取。当你在网页上点击“加载更多”或翻页时，浏览器会向服务器发送新的请求，服务器返回新数据，这就是动态加载。
@@ -40,7 +37,6 @@
 ```
 我们的爬虫需要模拟这个过程，找到并请求正确的数据地址。
 
-![](img/481d4e4ae559688feb0a1c916bf9ab26_11.png)
 
 ### 3. 爬取数据 ⬇️
 
@@ -73,7 +69,6 @@ pattern = r‘<a.*?href=“/item/(.*?)“.*?>‘ # 示例：匹配链接
 results = re.findall(pattern, response.text, re.S)
 ```
 
-![](img/481d4e4ae559688feb0a1c916bf9ab26_21.png)
 
 ### 5. 保存数据 💾
 
@@ -88,7 +83,6 @@ with open(‘data.txt‘, ‘w‘, encoding=‘utf-8‘) as f:
 
 ## 基础实践：静态页面爬取 🧪
 
-![](img/481d4e4ae559688feb0a1c916bf9ab26_23.png)
 
 ![](img/481d4e4ae559688feb0a1c916bf9ab26_24.png)
 
@@ -115,9 +109,7 @@ with open(‘data.txt‘, ‘w‘, encoding=‘utf-8‘) as f:
 ![](img/481d4e4ae559688feb0a1c916bf9ab26_34.png)
 
 
-![](img/481d4e4ae559688feb0a1c916bf9ab26_36.png)
 
-![](img/481d4e4ae559688feb0a1c916bf9ab26_38.png)
 
 ```python
 import requests
@@ -141,7 +133,6 @@ for item in results:
 
 ![](img/481d4e4ae559688feb0a1c916bf9ab26_40.png)
 
-![](img/481d4e4ae559688feb0a1c916bf9ab26_41.png)
 
 ---
 
@@ -157,14 +148,11 @@ for item in results:
 
 **解决方法**是模拟浏览器的请求头：
 
-![](img/481d4e4ae559688feb0a1c916bf9ab26_46.png)
 
 以下是修改后的代码，添加了请求头信息：
 
-![](img/481d4e4ae559688feb0a1c916bf9ab26_48.png)
 
 
-![](img/481d4e4ae559688feb0a1c916bf9ab26_50.png)
 
 
 ![](img/481d4e4ae559688feb0a1c916bf9ab26_52.png)
@@ -198,11 +186,9 @@ print(html_code[:500]) # 打印前500字符查看是否成功
 
 有些数据需要登录后才能访问。本节我们来看如何模拟登录过程。这通常涉及两个步骤：首先获取登录所需的令牌（如 `token`），然后携带账号、密码和该令牌发送POST请求。
 
-![](img/481d4e4ae559688feb0a1c916bf9ab26_59.png)
 
 我们以一个需要 `token` 的登录页面为例。
 
-![](img/481d4e4ae559688feb0a1c916bf9ab26_60.png)
 
 ![](img/481d4e4ae559688feb0a1c916bf9ab26_62.png)
 

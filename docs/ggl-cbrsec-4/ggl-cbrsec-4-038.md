@@ -1,6 +1,5 @@
 # 038：使用AND、OR和NOT进行筛选
 
-![](img/b87f8e2a64f7268959aa6617e292b4ef_0.png)
 
 ![](img/b87f8e2a64f7268959aa6617e292b4ef_0.png)
 
@@ -34,7 +33,6 @@ FROM Machines
 WHERE operating_system = ‘OS1’ AND email_client = ‘EmailClient1’;
 ```
 
-![](img/b87f8e2a64f7268959aa6617e292b4ef_2.png)
 
 ![](img/b87f8e2a64f7268959aa6617e292b4ef_2.png)
 
@@ -58,7 +56,6 @@ FROM Machines
 WHERE operating_system = ‘OS1’ OR operating_system = ‘OS3’;
 ```
 
-![](img/b87f8e2a64f7268959aa6617e292b4ef_6.png)
 
 ![](img/b87f8e2a64f7268959aa6617e292b4ef_6.png)
 
@@ -84,7 +81,6 @@ FROM Machines
 WHERE NOT operating_system = ‘OS3’;
 ```
 
-![](img/b87f8e2a64f7268959aa6617e292b4ef_10.png)
 
 ![](img/b87f8e2a64f7268959aa6617e292b4ef_10.png)
 

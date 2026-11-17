@@ -30,21 +30,16 @@ Jboss应用服务器默认将管理控制台（Web Console）开放于**8080**�
 
 以下是Jboss常见的默认页面示例，不同版本界面有所不同，但通常包含“JBoss”标识：
 
-![](img/b793a0c679a5bbe3dc6cda956e7b015a_1.png)
 *（Jboss 6.x 版本默认页面）*
 
-![](img/b793a0c679a5bbe3dc6cda956e7b015a_8.png)
 *（Jboss 7.x 版本默认页面）*
 
 通过端口扫描（如使用Nmap）或网络空间搜索引擎（如FoFa、Shodan）搜索特定特征，也可以发现Jboss服务。搜索关键词可包含 `port:8080` 和 `title:“JBoss”`。
 
-![](img/b793a0c679a5bbe3dc6cda956e7b015a_19.png)
 
 ## 批量漏洞检测脚本的使用 🛠️
 
-![](img/b793a0c679a5bbe3dc6cda956e7b015a_21.png)
 
-![](img/b793a0c679a5bbe3dc6cda956e7b015a_23.png)
 
 识别出Jboss服务后，下一步是检测其是否存在已知漏洞。我们将使用一个Python编写的批量检测脚本。
 
@@ -79,13 +74,10 @@ python3 jboss_scan.py
 
 ![](img/b793a0c679a5bbe3dc6cda956e7b015a_31.png)
 
-![](img/b793a0c679a5bbe3dc6cda956e7b015a_33.png)
 
 在批量检测结果中，如果提示存在 **CVE-2017-12149** 漏洞，则可以进行深入利用。该漏洞是Jboss中一个Java反序列化错误，位于HTTP Invoker组件的过滤器中。
 
-![](img/b793a0c679a5bbe3dc6cda956e7b015a_35.png)
 
-![](img/b793a0c679a5bbe3dc6cda956e7b015a_37.png)
 
 ### 漏洞验证
 手动验证漏洞是否存在，可以访问以下URL路径：
@@ -97,9 +89,7 @@ http://<目标IP>:8080/invoker/readonly
 ### 漏洞利用（获取Shell）
 此漏洞可导致远程命令执行，攻击者能够获取服务器权限。我们将使用一个公开的漏洞利用脚本进行反弹Shell。
 
-![](img/b793a0c679a5bbe3dc6cda956e7b015a_39.png)
 
-![](img/b793a0c679a5bbe3dc6cda956e7b015a_41.png)
 
 利用步骤如下：
 1.  **在攻击机上监听端口**：使用Netcat工具监听一个端口，准备接收反弹回来的Shell连接。
@@ -130,13 +120,10 @@ http://<目标IP>:8080/invoker/readonly
 
 ![](img/b793a0c679a5bbe3dc6cda956e7b015a_53.png)
 
-![](img/b793a0c679a5bbe3dc6cda956e7b015a_55.png)
 
-![](img/b793a0c679a5bbe3dc6cda956e7b015a_57.png)
 
 **重要提示**：在实际渗透测试中，必须在获得明确授权的前提下进行所有操作。未经授权的攻击是违法行为。
 
-![](img/b793a0c679a5bbe3dc6cda956e7b015a_59.png)
 
 ![](img/b793a0c679a5bbe3dc6cda956e7b015a_60.png)
 

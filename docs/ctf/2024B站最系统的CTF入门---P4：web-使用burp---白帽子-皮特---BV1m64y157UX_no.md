@@ -1,28 +1,21 @@
 # CTF入门教程：P4：Web安全工具Burp Suite使用指南 🛠️
 
-![](img/42fbab50a8e82f8931820f9ef7876bba_1.png)
 
-![](img/42fbab50a8e82f8931820f9ef7876bba_3.png)
 
 在本节课中，我们将学习网络安全测试中一个至关重要的工具——Burp Suite。我们将重点了解其核心模块的功能与使用方法，特别是如何利用它拦截、修改和重放HTTP请求，以及进行暴力破解攻击。
 
-![](img/42fbab50a8e82f8931820f9ef7876bba_5.png)
 
 ## 代理模块：拦截与查看流量 🔍
 
 上一节我们介绍了Burp Suite的安装与基本配置，本节中我们来看看其核心功能模块。Burp Suite的核心工作原理是作为浏览器和服务器之间的“中间人”。这意味着，当浏览器配置了Burp代理后，所有发送到服务器的请求和接收到的响应都会经过Burp Suite。
 
-![](img/42fbab50a8e82f8931820f9ef7876bba_7.png)
 
 ### 代理模块详解
 
 以下是代理模块的主要组成部分及其功能：
 
-![](img/42fbab50a8e82f8931820f9ef7876bba_9.png)
 
-![](img/42fbab50a8e82f8931820f9ef7876bba_10.png)
 
-![](img/42fbab50a8e82f8931820f9ef7876bba_12.png)
 
 1.  **拦截控制**：通过“Intercept is on/off”开关控制是否拦截请求。当开启拦截时，请求会在Burp处暂停，允许用户查看和修改。
 2.  **流量记录**：无论拦截是否开启，所有经过Burp的HTTP/HTTPS流量都会被记录在“HTTP history”和“WebSockets history”中，供后续分析。
@@ -32,29 +25,21 @@
     *   **Action**：将请求发送到其他模块，如Intruder或Repeater。
 4.  **选项设置**：在“Options”标签页中，可以配置代理监听地址、端口等参数。
 
-![](img/42fbab50a8e82f8931820f9ef7876bba_14.png)
 
-![](img/42fbab50a8e82f8931820f9ef7876bba_16.png)
 
 ## 爆破模块：自动化攻击测试 💣
 
-![](img/42fbab50a8e82f8931820f9ef7876bba_18.png)
 
 了解了如何捕获流量后，我们来看看如何利用Burp Suite进行自动化测试，例如暴力破解登录口令。
 
-![](img/42fbab50a8e82f8931820f9ef7876bba_20.png)
 
-![](img/42fbab50a8e82f8931820f9ef7876bba_22.png)
 
-![](img/42fbab50a8e82f8931820f9ef7876bba_24.png)
 
 ### 爆破流程演示
 
-![](img/42fbab50a8e82f8931820f9ef7876bba_26.png)
 
 我们以DVWA靶场中的暴力破解漏洞为例，演示Intruder模块的使用。
 
-![](img/42fbab50a8e82f8931820f9ef7876bba_28.png)
 
 1.  **捕获请求**：首先，在代理模块中捕获一次登录尝试的HTTP请求包。
 2.  **发送至Intruder**：右键点击捕获到的请求包，选择“Send to Intruder”。
@@ -73,11 +58,9 @@
 
 除了自动化爆破，手动修改和重复发送单个请求进行测试也是常见需求，这就要用到Repeater模块。
 
-![](img/42fbab50a8e82f8931820f9ef7876bba_30.png)
 
 ### Repeater模块功能
 
-![](img/42fbab50a8e82f8931820f9ef7876bba_32.png)
 
 1.  **发送请求**：从代理历史记录或Intruder中，将请求包发送到Repeater模块。
 2.  **灵活修改**：在Repeater界面中，可以方便地修改请求的任何部分，包括URL、参数、请求头（如User-Agent、Host）、Cookie等。
@@ -86,16 +69,13 @@
 
 ## 其他实用模块
 
-![](img/42fbab50a8e82f8931820f9ef7876bba_34.png)
 
 Burp Suite还包含其他有用的模块，例如：
 *   **Decoder**：一个强大的编码解码工具，支持Base64、URL、HTML、Hex等多种编码的转换与散列计算。
 *   **Comparer**：用于比较两次请求或响应之间的差异。
 *   **Sequencer**：用于分析会话令牌等随机数据的随机性。
 
-![](img/42fbab50a8e82f8931820f9ef7876bba_36.png)
 
-![](img/42fbab50a8e82f8931820f9ef7876bba_38.png)
 
 ## 总结 📝
 
@@ -104,7 +84,6 @@ Burp Suite还包含其他有用的模块，例如：
 2.  **Intruder**：用于自动化攻击测试，如暴力破解、模糊测试，通过配置攻击位置、模式和载荷来实现。
 3.  **Repeater**：用于手动重放和修改单个HTTP请求，是进行精细漏洞测试和调试的利器。
 
-![](img/42fbab50a8e82f8931820f9ef7876bba_40.png)
 
 ![](img/42fbab50a8e82f8931820f9ef7876bba_42.png)
 

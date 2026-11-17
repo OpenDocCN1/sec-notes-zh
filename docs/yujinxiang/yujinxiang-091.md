@@ -1,6 +1,5 @@
 #  091：102-完善回城补给功能 GoToCityForSupply 🛒
 
-![](img/a5def9fd477d6312272508f4acbf58a4_1.png)
 
 在本节课中，我们将继续完善自动挂机系统中的“回城补给”功能。我们将重点实现根据药品数量判断是否需要补给、计算购买数量、执行购买流程以及返回挂机点等逻辑。
 
@@ -12,11 +11,9 @@
 
 ---
 
-![](img/a5def9fd477d6312272508f4acbf58a4_3.png)
 
 ## 完善回城补给函数
 
-![](img/a5def9fd477d6312272508f4acbf58a4_5.png)
 
 首先，我们打开第101课的代码，并定位到挂机类中的回城补给函数 `GoToCityForSupply`。
 
@@ -83,14 +80,12 @@ bool HangUpClass::NeedSupply()
 }
 ```
 
-![](img/a5def9fd477d6312272508f4acbf58a4_7.png)
 
 **公式说明**：
 补给条件可以表示为：
 **当前药品数量 < 预设最低保有量**
 当此条件为真时，触发回城补给流程。
 
-![](img/a5def9fd477d6312272508f4acbf58a4_9.png)
 
 ---
 
@@ -113,11 +108,9 @@ HangUpClass::HangUpClass()
 
 在测试时，可以暂时调整 `m_minHPItemCount` 的值（例如设为比当前数量稍高的值），以便快速触发补给逻辑进行功能验证。
 
-![](img/a5def9fd477d6312272508f4acbf58a4_11.png)
 
 ---
 
-![](img/a5def9fd477d6312272508f4acbf58a4_12.png)
 
 ## 集成到自动挂机循环
 
@@ -125,7 +118,6 @@ HangUpClass::HangUpClass()
 
 在挂机的主逻辑函数（例如一个循环或定时器回调）中，定期调用条件判断：
 
-![](img/a5def9fd477d6312272508f4acbf58a4_14.png)
 
 ```cpp
 void HangUpClass::MainHangUpLoop()
@@ -151,7 +143,6 @@ void HangUpClass::MainHangUpLoop()
 
 ---
 
-![](img/a5def9fd477d6312272508f4acbf58a4_16.png)
 
 ## 调试与问题处理
 

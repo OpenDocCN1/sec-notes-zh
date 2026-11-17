@@ -8,9 +8,7 @@
 ## QRadar Advisor with Watson 简介
 QRadar Advisor with Watson 能够赋能安全分析师，驱动一致的调查流程，并做出更快速、更果断的事件升级决策。这最终减少了事件处理时间，并提升了分析师的工作效率。
 
-![](img/8b7e0abb76a304a3a2fbac05eea47090_1.png)
 
-![](img/8b7e0abb76a304a3a2fbac05eea47090_1.png)
 
 上一节我们介绍了该工具的基本定位，接下来我们具体看看它带来的主要优势。
 
@@ -21,9 +19,7 @@ QRadar Advisor with Watson 能够赋能安全分析师，驱动一致的调查�
 2.  **驱动一致且深入的调查**：无论是周五下午4点还是周一上午10点，Advisor都能增强分析师的人工智能，确保每一次调查都保持一致性和彻底性。
 3.  **减少事件处理时间**：通过更快速、更果断的升级流程，它有助于缩短事件响应周期。同时，通过将攻击映射到MITRE ATT&CK模型，它能自信地确定根本原因并规划后续步骤。
 
-![](img/8b7e0abb76a304a3a2fbac05eea47090_3.png)
 
-![](img/8b7e0abb76a304a3a2fbac05eea47090_3.png)
 
 了解了核心优势后，我们来看看它在实际调查中是如何工作的。
 
@@ -34,7 +30,6 @@ QRadar Advisor with Watson 能够赋能安全分析师，驱动一致的调查�
 2.  **咨询Watson进行外部发现**：然后，它就其对事件所做的离散观察，咨询Watson for Cybersecurity，以执行外部知识和威胁发现。
 3.  **交付解决方案**：最终，它通过由Watson for Cybersecurity驱动的IBM Security App Exchange，提供一个可快速部署、易于使用的解决方案，从而改变安全运营模式。
 
-![](img/8b7e0abb76a304a3a2fbac05eea47090_5.png)
 
 ![](img/8b7e0abb76a304a3a2fbac05eea47090_5.png)
 
@@ -47,7 +42,6 @@ QRadar Advisor with Watson 通过以下步骤处理数据并生成洞察：
 *   **清理与提取**：随后，它移除不必要的信息，并对收集到的数据进行提取和注释。
 *   **生成调查洞察**：最终结果是实现快速且全面的调查洞察。
 
-![](img/8b7e0abb76a304a3a2fbac05eea47090_7.png)
 
 ![](img/8b7e0abb76a304a3a2fbac05eea47090_7.png)
 

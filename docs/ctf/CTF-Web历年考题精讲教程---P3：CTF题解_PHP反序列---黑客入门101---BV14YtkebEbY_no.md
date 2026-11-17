@@ -6,33 +6,22 @@
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_3.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_5.png)
 
 ## PHP Session的三种存储模式 📂
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_7.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_9.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_11.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_12.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_14.png)
 
 上一节我们介绍了PHP反序列化的基础，本节中我们来看看Session的存储机制。PHP Session数据可以以三种不同的序列化格式存储在服务器端，其模式由`session.serialize_handler`配置决定。
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_16.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_18.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_20.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_22.png)
 
 以下是三种主要的Session处理模式：
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_24.png)
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_26.png)
 
@@ -46,13 +35,9 @@
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_30.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_31.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_33.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_35.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_37.png)
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_39.png)
 
@@ -82,9 +67,7 @@ $_SESSION['demo3'] = 'test';
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_45.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_47.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_49.png)
 
 ## CTF例题解析：利用Session反序列化 🎯
 
@@ -98,7 +81,6 @@ $_SESSION['demo3'] = 'test';
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_57.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_58.png)
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_60.png)
 
@@ -112,38 +94,27 @@ $_SESSION['demo3'] = 'test';
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_68.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_70.png)
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_72.png)
 
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_74.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_76.png)
-
-![](img/8a3d53cdc3410729e301af737e2ff24a_77.png)
-
-![](img/8a3d53cdc3410729e301af737e2ff24a_79.png)
-
-![](img/8a3d53cdc3410729e301af737e2ff24a_81.png)
 
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_82.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_84.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_85.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_87.png)
+
+
+
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_89.png)
 
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_91.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_93.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_95.png)
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_97.png)
 
@@ -180,9 +151,7 @@ if(isset($_POST['PHP_SESSION_UPLOAD_PROGRESS']) && isset($_FILES['file'])) {
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_101.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_103.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_105.png)
 
 攻击的关键在于，我们可以控制写入Session的数据。如果能让服务器反序列化我们精心构造的Session数据，就能实例化`CF`类并执行任意代码。
 
@@ -192,33 +161,25 @@ if(isset($_POST['PHP_SESSION_UPLOAD_PROGRESS']) && isset($_FILES['file'])) {
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_111.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_113.png)
 
 ## 构造与利用攻击链 ⛓️
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_115.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_117.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_119.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_121.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_123.png)
 
 本节中我们来看看如何一步步构造攻击。核心思路是利用文件上传进度功能向Session写入恶意序列化数据，然后诱导服务器反序列化它。
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_125.png)
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_126.png)
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_128.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_130.png)
 
 以下是攻击步骤：
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_132.png)
 
 1.  **构造恶意序列化字符串**：首先，我们需要创建一个包含恶意命令的`CF`对象并序列化。
     ```php
@@ -251,7 +212,6 @@ if(isset($_POST['PHP_SESSION_UPLOAD_PROGRESS']) && isset($_FILES['file'])) {
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_144.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_146.png)
 
 4.  **读取Flag**：将恶意命令改为读取`flag.php`的内容即可。
     ```php
@@ -262,9 +222,7 @@ if(isset($_POST['PHP_SESSION_UPLOAD_PROGRESS']) && isset($_FILES['file'])) {
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_148.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_150.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_152.png)
 
 ## 关键配置与注意事项 ⚠️
 
@@ -291,9 +249,7 @@ if(isset($_POST['PHP_SESSION_UPLOAD_PROGRESS']) && isset($_FILES['file'])) {
 *   **`session.upload_progress.cleanup`**：如果为On，上传完成后会立即清理Session中的进度信息，可能需要利用条件竞争。为Off则更稳定。
 *   **字符转义**：在通过POST字段传递序列化字符串时，要注意引号等特殊字符的转义，确保数据完整写入。
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_169.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_171.png)
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_173.png)
 
@@ -303,9 +259,7 @@ if(isset($_POST['PHP_SESSION_UPLOAD_PROGRESS']) && isset($_FILES['file'])) {
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_177.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_179.png)
 
-![](img/8a3d53cdc3410729e301af737e2ff24a_181.png)
 
 ![](img/8a3d53cdc3410729e301af737e2ff24a_182.png)
 

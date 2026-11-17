@@ -2,76 +2,50 @@
 
 在本节课中，我们将要学习HTTP协议的另一半——响应消息。上一节我们介绍了客户端如何向服务器发送请求，本节中我们来看看服务器是如何回应客户端的。响应消息是服务器返回给客户端的数据，它包含了我们访问网站时看到的图片、文字、视频等内容。理解响应消息的结构和状态码，是分析网络通信和排查问题的基础。
 
-![](img/ec47df5efa87182076a0717b8c06adef_1.png)
 
-![](img/ec47df5efa87182076a0717b8c06adef_2.png)
 
-![](img/ec47df5efa87182076a0717b8c06adef_3.png)
 
-![](img/ec47df5efa87182076a0717b8c06adef_4.png)
 
-![](img/ec47df5efa87182076a0717b8c06adef_5.png)
 
 ## 响应消息概述
 
-![](img/ec47df5efa87182076a0717b8c06adef_6.png)
 
-![](img/ec47df5efa87182076a0717b8c06adef_7.png)
 
-![](img/ec47df5efa87182076a0717b8c06adef_8.png)
 
-![](img/ec47df5efa87182076a0717b8c06adef_9.png)
 
 当我们向服务器（例如百度）发送请求后，服务器需要将网站内容返回给客户端。这个过程需要遵循一个规范的格式，这个格式被称为响应、响应消息或Response。响应消息的内容通常就是我们访问的网站内容，例如图片、视频流数据或新闻文本。
 
-![](img/ec47df5efa87182076a0717b8c06adef_10.png)
 
-![](img/ec47df5efa87182076a0717b8c06adef_11.png)
 
-![](img/ec47df5efa87182076a0717b8c06adef_12.png)
 
-![](img/ec47df5efa87182076a0717b8c06adef_13.png)
 
 与请求消息相比，响应消息的结构更为简单。它主要分为几个部分：响应行、响应头、响应空行和响应体。
 
 ## 响应消息结构解析
 
-![](img/ec47df5efa87182076a0717b8c06adef_15.png)
 
-![](img/ec47df5efa87182076a0717b8c06adef_16.png)
 
 响应消息的结构清晰，每一部分都有其特定作用。以下是响应消息的主要组成部分：
 
-![](img/ec47df5efa87182076a0717b8c06adef_17.png)
 
-![](img/ec47df5efa87182076a0717b8c06adef_18.png)
 
-![](img/ec47df5efa87182076a0717b8c06adef_19.png)
 
-![](img/ec47df5efa87182076a0717b8c06adef_20.png)
 
 *   **响应行**：位于消息的第一行，包含协议版本和状态码。
 *   **响应头**：包含一系列键值对，描述了服务器和响应体的元信息。
 *   **响应空行**：用于分隔响应头和响应体。
 *   **响应体**：服务器返回的实际数据内容，如HTML、图片等。
 
-![](img/ec47df5efa87182076a0717b8c06adef_21.png)
 
-![](img/ec47df5efa87182076a0717b8c06adef_22.png)
 
-![](img/ec47df5efa87182076a0717b8c06adef_23.png)
 
-![](img/ec47df5efa87182076a0717b8c06adef_24.png)
 
-![](img/ec47df5efa87182076a0717b8c06adef_25.png)
 
 ### 响应行详解
 
 响应行是响应消息的开端，它提供了本次响应的核心状态信息。
 
-![](img/ec47df5efa87182076a0717b8c06adef_27.png)
 
-![](img/ec47df5efa87182076a0717b8c06adef_28.png)
 
 响应行的基本格式如下：
 ```
@@ -82,19 +56,13 @@ HTTP/1.1 200 OK
 2.  **状态码**：例如 `200`，是一个三位数字代码，表示请求的处理结果。
 3.  **状态描述**：例如 `OK`，是对状态码的简短文字说明。
 
-![](img/ec47df5efa87182076a0717b8c06adef_29.png)
 
-![](img/ec47df5efa87182076a0717b8c06adef_30.png)
 
-![](img/ec47df5efa87182076a0717b8c06adef_31.png)
 
-![](img/ec47df5efa87182076a0717b8c06adef_32.png)
 
 状态码 `200` 表示访问成功，这是最常见的正常状态码。
 
-![](img/ec47df5efa87182076a0717b8c06adef_33.png)
 
-![](img/ec47df5efa87182076a0717b8c06adef_34.png)
 
 ![](img/ec47df5efa87182076a0717b8c06adef_35.png)
 

@@ -12,11 +12,9 @@
 
 ## 数据库基础与网站结构
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_9.png)
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_11.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_13.png)
 
 上一节我们介绍了Web安全的基础概念，本节中我们来看看SQL注入的起点——数据库与网站交互。
 
@@ -30,7 +28,6 @@
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_17.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_19.png)
 
 在这个过程中，如果用户提交的请求参数被直接拼接到数据库查询语句中，且没有经过严格的过滤，就可能产生SQL注入漏洞。
 
@@ -64,7 +61,6 @@
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_47.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_49.png)
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_51.png)
 
@@ -72,7 +68,6 @@
 
 ## 什么是数据库？🗄️
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_54.png)
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_56.png)
 
@@ -96,7 +91,6 @@
 
 ### 数据库操控语言：SQL
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_74.png)
 
 SQL（Structured Query Language）是用来与数据库进行交互的语言。常见的数据库系统有：
 *   **MySQL**
@@ -105,7 +99,6 @@ SQL（Structured Query Language）是用来与数据库进行交互的语言。�
 
 虽然数据库系统各有不同，但其操控原理基本相通。本节课我们以 **MySQL** 为例进行讲解。
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_76.png)
 
 ### 数据库的结构
 
@@ -127,7 +120,6 @@ SQL（Structured Query Language）是用来与数据库进行交互的语言。�
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_88.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_90.png)
 
 **核心结构公式：**
 ```
@@ -138,9 +130,7 @@ SQL（Structured Query Language）是用来与数据库进行交互的语言。�
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_94.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_96.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_98.png)
 
 ---
 
@@ -158,7 +148,6 @@ SQL（Structured Query Language）是用来与数据库进行交互的语言。�
 
 ## MySQL基础操作与核心语句
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_112.png)
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_114.png)
 
@@ -172,7 +161,6 @@ SQL（Structured Query Language）是用来与数据库进行交互的语言。�
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_124.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_126.png)
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_128.png)
 
@@ -192,7 +180,6 @@ SQL（Structured Query Language）是用来与数据库进行交互的语言。�
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_142.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_144.png)
 
 以下是操作数据库的四个核心动作，简称 **“增删改查”**：
 
@@ -200,9 +187,7 @@ SQL（Structured Query Language）是用来与数据库进行交互的语言。�
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_147.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_149.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_151.png)
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_153.png)
 
@@ -212,7 +197,6 @@ SQL（Structured Query Language）是用来与数据库进行交互的语言。�
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_159.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_161.png)
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_163.png)
 
@@ -264,9 +248,7 @@ SQL（Structured Query Language）是用来与数据库进行交互的语言。�
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_194.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_196.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_198.png)
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_200.png)
 
@@ -307,11 +289,9 @@ SQL（Structured Query Language）是用来与数据库进行交互的语言。�
 
 ---
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_219.png)
 
 ## SQL注入原理与利用流程
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_221.png)
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_223.png)
 
@@ -325,23 +305,15 @@ SQL（Structured Query Language）是用来与数据库进行交互的语言。�
 
 ### 什么是SQL注入？
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_231.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_233.png)
 
 SQL注入的根本原因是：**程序将用户输入的数据，未经充分过滤就直接拼接到SQL查询语句中并执行**。
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_235.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_237.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_239.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_241.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_243.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_245.png)
 
 **攻击原理模拟：**
 假设一个网站根据文章ID查询内容的代码如下：
@@ -356,7 +328,6 @@ SELECT * FROM articles WHERE id = ‘id‘ UNION SELECT database() -- ‘
 *   `--` 是SQL注释符，会使后面的单引号失效。
 *   这样，原本的查询被改变，额外执行了 `UNION SELECT database()`，从而泄露数据库名。
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_247.png)
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_249.png)
 
@@ -366,7 +337,6 @@ SELECT * FROM articles WHERE id = ‘id‘ UNION SELECT database() -- ‘
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_255.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_257.png)
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_259.png)
 
@@ -383,11 +353,8 @@ SELECT * FROM articles WHERE id = ‘id‘ UNION SELECT database() -- ‘
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_267.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_269.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_271.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_273.png)
 
 ### 手工注入基本流程
 
@@ -397,9 +364,7 @@ SELECT * FROM articles WHERE id = ‘id‘ UNION SELECT database() -- ‘
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_278.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_280.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_282.png)
 
 以下是发现和利用一个SQL注入漏洞的典型步骤：
 
@@ -417,9 +382,7 @@ SELECT * FROM articles WHERE id = ‘id‘ UNION SELECT database() -- ‘
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_285.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_287.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_289.png)
 
 **第三步：确定字段数（ORDER BY）**
 使用 `ORDER BY` 子句猜测查询结果返回的列数。
@@ -428,21 +391,13 @@ SELECT * FROM articles WHERE id = ‘id‘ UNION SELECT database() -- ‘
 ```
 逐渐增加数字（4,5,6...），直到页面报错，报错前的数字即为列数。
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_291.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_293.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_295.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_297.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_299.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_301.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_302.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_304.png)
 
 **第四步：联合查询（UNION SELECT）获取信息**
 利用 `UNION SELECT` 将我们想要查询的信息合并到原结果中显示。
@@ -456,7 +411,6 @@ SELECT * FROM articles WHERE id = ‘id‘ UNION SELECT database() -- ‘
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_308.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_310.png)
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_312.png)
 
@@ -483,25 +437,17 @@ SELECT * FROM articles WHERE id = ‘id‘ UNION SELECT database() -- ‘
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_314.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_316.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_318.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_320.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_322.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_324.png)
 
 ---
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_326.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_328.png)
 
 ## 盲注与报错注入
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_330.png)
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_332.png)
 
@@ -513,13 +459,10 @@ SELECT * FROM articles WHERE id = ‘id‘ UNION SELECT database() -- ‘
 
 上一节我们介绍了有回显的联合查询注入，本节中我们来看看当页面没有直接数据回显时，如何利用SQL注入。
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_340.png)
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_342.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_344.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_346.png)
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_348.png)
 
@@ -548,7 +491,6 @@ SELECT * FROM articles WHERE id = ‘id‘ UNION SELECT database() -- ‘
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_359.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_360.png)
 
 ### 时间盲注（Time-Based Blind）
 
@@ -572,11 +514,8 @@ SELECT * FROM articles WHERE id = ‘id‘ UNION SELECT database() -- ‘
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_378.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_380.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_382.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_384.png)
 
 **攻击原理：**
 利用 `IF()` 条件语句和 `SLEEP()` 延时函数，如果条件为真，则让数据库等待一段时间再响应。
@@ -593,13 +532,9 @@ SELECT * FROM articles WHERE id = ‘id‘ UNION SELECT database() -- ‘
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_392.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_394.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_396.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_398.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_400.png)
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_402.png)
 
@@ -613,7 +548,6 @@ SELECT * FROM articles WHERE id = ‘id‘ UNION SELECT database() -- ‘
 *   `updatexml()`： 第二个参数格式错误时会报错，并显示参数内容。
 *   `extractvalue()`： 第二个参数格式错误时会报错，并显示参数内容。
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_406.png)
 
 **利用示例（爆数据库名）：**
 ```sql
@@ -642,11 +576,8 @@ SELECT * FROM articles WHERE id = ‘id‘ UNION SELECT database() -- ‘
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_418.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_420.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_422.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_424.png)
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_426.png)
 
@@ -699,21 +630,14 @@ SELECT * FROM articles WHERE id = ‘id‘ UNION SELECT database() -- ‘
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_440.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_442.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_444.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_446.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_448.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_449.png)
 
 这是一种主要针对使用GBK等宽字符编码的数据库的注入技巧。当程序使用 `addslashes()` 或 `mysql_real_escape_string()` 等函数对单引号进行转义（在单引号前加反斜杠 `\‘`）时，可以通过构造特殊字符，使反斜杠被“吃掉”，从而让单引号生效。
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_451.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_453.png)
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_455.png)
 
@@ -734,11 +658,9 @@ SELECT * FROM articles WHERE id = ‘id‘ UNION SELECT database() -- ‘
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_468.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_470.png)
 
 ### 堆叠注入（Stacked Queries）
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_472.png)
 
 在某些特定情况下（如PHP的 `mysqli_multi_query()` 函数），可以一次性执行多条用分号 `;` 隔开的SQL语句。
 ```sql
@@ -750,7 +672,6 @@ SELECT * FROM articles WHERE id = ‘id‘ UNION SELECT database() -- ‘
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_476.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_478.png)
 
 ---
 
@@ -791,9 +712,7 @@ SELECT * FROM articles WHERE id = ‘id‘ UNION SELECT database() -- ‘
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_494.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_496.png)
 
-![](img/2b97b92a7619b51ad6741db2e384b7cb_498.png)
 
 ![](img/2b97b92a7619b51ad6741db2e384b7cb_500.png)
 

@@ -28,7 +28,6 @@
 
 接着是`assert`函数。中间的代码是执行`phpinfo()`函数和`whoami`命令。
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_3.png)
 
 ![](img/c93ebe53fbd2cc30c5976f56d04b231f_5.png)
 
@@ -73,7 +72,6 @@ call_user_func('system', 'whoami');
 ```
 执行后也能够成功执行系统命令。
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_9.png)
 
 ![](img/c93ebe53fbd2cc30c5976f56d04b231f_9.png)
 
@@ -123,7 +121,6 @@ call_user_func('system', 'whoami');
 
 ![](img/c93ebe53fbd2cc30c5976f56d04b231f_17.png)
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_15.png)
 
 我们使用`php://filter`来读取`index.php`的源码，并经过`base64`编码。
 
@@ -132,17 +129,13 @@ include(‘php://filter/read=convert.base64-encode/resource=index.php’);
 ```
 执行后，得到一串`base64`编码的字符串。
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_19.png)
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_17.png)
 
 将其解码后，即可得到`index.php`文件的源代码内容。这就是利用包含函数进行任意文件读取的原理。
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_21.png)
 
 ## 三、命令执行函数 ⚙️
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_19.png)
 
 看过了包含函数，我们进入第三部分：命令执行函数。这类函数可以调用外部系统命令或程序，如果其参数可控，将导致命令注入漏洞。
 
@@ -167,37 +160,31 @@ system(“ping ” . $_GET[‘ip’]);
 
 下面我们通过代码来演示命令执行与注入。
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_23.png)
 
 这里使用`shell_exec`函数。首先，我们执行`ping 127.0.0.1`命令。
 
 ![](img/c93ebe53fbd2cc30c5976f56d04b231f_23.png)
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_25.png)
 
 ![](img/c93ebe53fbd2cc30c5976f56d04b231f_25.png)
 
 由于编码问题，我们在网页端查看。刷新后，成功显示了`ping`命令的执行结果。
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_27.png)
 
 ![](img/c93ebe53fbd2cc30c5976f56d04b231f_27.png)
 
 接下来看存在风险的代码。`ping`命令后的IP地址来自用户输入的`$_GET[‘v’]`变量。
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_29.png)
 
 ![](img/c93ebe53fbd2cc30c5976f56d04b231f_29.png)
 
 如果这个输入没有经过严格检查，攻击者可以注入命令。例如，输入`127.0.0.1 | whoami`。
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_31.png)
 
 ![](img/c93ebe53fbd2cc30c5976f56d04b231f_31.png)
 
 执行后，系统会先执行`ping 127.0.0.1`，然后通过管道符`|`执行`whoami`命令，最终输出的是`whoami`命令的结果。
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_32.png)
 
 ![](img/c93ebe53fbd2cc30c5976f56d04b231f_32.png)
 
@@ -225,37 +212,26 @@ system(“ping ” . $_GET[‘ip’]);
 
 ![](img/c93ebe53fbd2cc30c5976f56d04b231f_36.png)
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_34.png)
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_38.png)
 
 首先，使用`file_put_contents`函数将字符串“test”写入到`fpcc.txt`文件中。
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_40.png)
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_36.png)
 
 执行前，当前目录下没有`fpcc.txt`文件。
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_42.png)
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_38.png)
 
 执行代码。
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_40.png)
 
 执行后，目录下生成了`fpcc.txt`文件，其内容正是“test”。
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_44.png)
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_42.png)
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_46.png)
 
 接着，演示读取远程文件。使用`file_get_contents`函数读取百度首页的内容，并输出到文件中。
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_48.png)
 
 ```php
 file_put_contents(‘fpcc.txt’, file_get_contents(‘http://www.baidu.com’));
@@ -268,17 +244,14 @@ file_put_contents(‘fpcc.txt’, file_get_contents(‘http://www.baidu.com’))
 unlink(‘fpcc.txt’);
 ```
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_44.png)
 
 执行后，之前生成的文件已被删除。
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_46.png)
 
 ![](img/c93ebe53fbd2cc30c5976f56d04b231f_50.png)
 
 如果文件路径参数可控，我们就可以对服务器上的任意文件进行这些操作。其他如重命名等功能，原理类似。
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_48.png)
 
 ![](img/c93ebe53fbd2cc30c5976f56d04b231f_52.png)
 
@@ -292,7 +265,6 @@ unlink(‘fpcc.txt’);
 *   **`symlink()`**：创建符号链接（软链接）。在Linux服务器上，可以利用它为某个目标文件建立链接，然后通过读取这个链接来间接读取目标文件的内容。
 *   **`getenv()` / `putenv()`**：获取或设置环境变量。`getenv()`可以获取系统或自定义的环境变量；`putenv()`可以在当前请求期间临时设置环境变量。
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_54.png)
 
 我们通过代码来理解环境变量函数。
 
@@ -302,7 +274,6 @@ unlink(‘fpcc.txt’);
 
 执行代码。首先，因为没有“test”变量，所以返回`false`。设置后，再次输出就变成了“123”。
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_56.png)
 
 ![](img/c93ebe53fbd2cc30c5976f56d04b231f_52.png)
 
@@ -311,7 +282,6 @@ unlink(‘fpcc.txt’);
 
 来看配置相关函数的代码。
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_58.png)
 
 ![](img/c93ebe53fbd2cc30c5976f56d04b231f_54.png)
 
@@ -319,7 +289,6 @@ unlink(‘fpcc.txt’);
 
 执行代码。一开始`display_errors`默认是`On`（代码审计时常需要打开此选项以查看错误信息）。临时关闭后，再次输出时显示为`Off`。
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_60.png)
 
 ![](img/c93ebe53fbd2cc30c5976f56d04b231f_56.png)
 
@@ -341,7 +310,6 @@ unlink(‘fpcc.txt’);
 输入科学计数法“1e11”，`is_numeric()`返回`true`，`intval()`转换后为1。
 这表明`is_numeric()`的判断并不完全可靠，在安全校验时应结合`intval()`等函数进行严格处理。
 
-![](img/c93ebe53fbd2cc30c5976f56d04b231f_62.png)
 
 *   **`in_array()`**：检查某个值是否存在于数组中。此函数在比较前默认会进行“松散比较”（自动类型转换）。例如，字符串`”1″`和数字`1`会被判断为相等。如果未设置第三个参数`$strict`为`true`（强制严格比较），可能导致绕过检查。
 

@@ -2,27 +2,20 @@
 
 ![](img/8a8d9358c3ed264cba2b9ef5eea0eabf_1.png)
 
-![](img/8a8d9358c3ed264cba2b9ef5eea0eabf_2.png)
 
 ## 概述
 在本节课程中，我们将继续学习内网渗透测试中的信息收集环节。上一节我们介绍了系统层面的基础信息收集，本节我们将重点学习如何收集网络配置、防火墙策略以及安全软件等更深层次的信息，这些信息对于后续的内网横向移动至关重要。
 
-![](img/8a8d9358c3ed264cba2b9ef5eea0eabf_4.png)
 
-![](img/8a8d9358c3ed264cba2b9ef5eea0eabf_6.png)
 
 ## 系统信息深度收集
 在控制目标主机后，除了基础信息，还需要收集更详细的系统配置。
 
-![](img/8a8d9358c3ed264cba2b9ef5eea0eabf_8.png)
 
-![](img/8a8d9358c3ed264cba2b9ef5eea0eabf_10.png)
 
-![](img/8a8d9358c3ed264cba2b9ef5eea0eabf_12.png)
 
 以下是关于系统连接和补丁信息的收集命令：
 
-![](img/8a8d9358c3ed264cba2b9ef5eea0eabf_14.png)
 
 ![](img/8a8d9358c3ed264cba2b9ef5eea0eabf_16.png)
 
@@ -44,11 +37,9 @@
 ## 安全环境信息收集
 了解目标主机的安全防护措施，有助于我们规避检测和选择攻击方式。
 
-![](img/8a8d9358c3ed264cba2b9ef5eea0eabf_20.png)
 
 以下是关于安全软件和策略的收集命令：
 
-![](img/8a8d9358c3ed264cba2b9ef5eea0eabf_22.png)
 
 *   **查看已安装的杀毒软件**：使用 `WMIC` 命令可以查询系统中安装的安全产品。
     ```cmd
@@ -94,7 +85,6 @@
     net share
     ```
 
-![](img/8a8d9358c3ed264cba2b9ef5eea0eabf_24.png)
 
 ## 防火墙策略信息收集
 防火墙是常见的网络访问控制手段，收集其策略有助于我们绕过防护。

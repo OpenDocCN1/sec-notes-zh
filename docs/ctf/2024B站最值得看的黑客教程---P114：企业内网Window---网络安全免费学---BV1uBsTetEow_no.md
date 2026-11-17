@@ -10,7 +10,6 @@
 
 ![](img/4b2db27af9fb5d5fb58c217562ba4b0d_4.png)
 
-![](img/4b2db27af9fb5d5fb58c217562ba4b0d_5.png)
 
 在渗透测试或日常工作中，当我们遇到Windows系统时，通常的目标是获取用户权限。在不考虑域环境的情况下，我们可以将Windows账户权限主要分为四类。理解这些分类对于后续的提权操作至关重要。
 
@@ -18,9 +17,7 @@
 
 ![](img/4b2db27af9fb5d5fb58c217562ba4b0d_7.png)
 
-![](img/4b2db27af9fb5d5fb58c217562ba4b0d_8.png)
 
-![](img/4b2db27af9fb5d5fb58c217562ba4b0d_10.png)
 
 ## 四种Windows账户权限详解
 
@@ -36,13 +33,10 @@
 
 ### 1. 本地普通用户权限
 
-![](img/4b2db27af9fb5d5fb58c217562ba4b0d_19.png)
 
-![](img/4b2db27af9fb5d5fb58c217562ba4b0d_21.png)
 
 本地普通用户是指在Windows系统中没有管理员权限的账户。这类用户能执行的操作非常有限，通常只能进行基本的文件操作和运行非特权应用程序。
 
-![](img/4b2db27af9fb5d5fb58c217562ba4b0d_23.png)
 
 ![](img/4b2db27af9fb5d5fb58c217562ba4b0d_25.png)
 
@@ -65,7 +59,6 @@ net user testuser Password123! /add
 
 ### 2. 本地普通管理员权限
 
-![](img/4b2db27af9fb5d5fb58c217562ba4b0d_32.png)
 
 ![](img/4b2db27af9fb5d5fb58c217562ba4b0d_33.png)
 
@@ -88,7 +81,6 @@ net user testuser Password123! /add
 
 ![](img/4b2db27af9fb5d5fb58c217562ba4b0d_41.png)
 
-![](img/4b2db27af9fb5d5fb58c217562ba4b0d_42.png)
 
 ![](img/4b2db27af9fb5d5fb58c217562ba4b0d_43.png)
 
@@ -102,13 +94,11 @@ net user testuser2 Password123! /add
 
 ![](img/4b2db27af9fb5d5fb58c217562ba4b0d_46.png)
 
-![](img/4b2db27af9fb5d5fb58c217562ba4b0d_48.png)
 
 ### 3. 本地最高管理员权限
 
 ![](img/4b2db27af9fb5d5fb58c217562ba4b0d_49.png)
 
-![](img/4b2db27af9fb5d5fb58c217562ba4b0d_50.png)
 
 ![](img/4b2db27af9fb5d5fb58c217562ba4b0d_52.png)
 
@@ -138,9 +128,7 @@ net user Administrator
 *   在权限层级上，**SYSTEM** 账户与 **Administrator** 账户被认为是**同权**的。它们分别掌管不同领域（用户交互 vs. 系统服务），但权限高度相当，并且可以相互切换。
 *   在渗透测试中，获取 **SYSTEM** 权限与获取 **Administrator** 权限具有同等价值，都意味着已完全掌控目标主机。
 
-![](img/4b2db27af9fb5d5fb58c217562ba4b0d_57.png)
 
-![](img/4b2db27af9fb5d5fb58c217562ba4b0d_58.png)
 
 通过任务管理器查看进程，可以发现许多关键系统进程（如 `csrss.exe`, `services.exe`）的用户名都是 **SYSTEM**，这体现了其运行底层服务的角色。
 

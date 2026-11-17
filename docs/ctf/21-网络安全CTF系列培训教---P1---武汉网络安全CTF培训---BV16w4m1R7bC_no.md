@@ -52,7 +52,6 @@ print(f"加密结果: {ciphertext}")  # 输出: KHOO3
 以下是解密的Python脚本示例：
 
 
-![](img/b99d9d6b7bf1d2612f207096d86d2aa7_1.png)
 
 ```python
 def caesar_decrypt(text, shift):
@@ -69,13 +68,11 @@ print(f"解密结果: {plaintext}")  # 输出: HELL0
 
 ## 🛠️ 凯撒密码实战演练
 
-![](img/b99d9d6b7bf1d2612f207096d86d2aa7_3.png)
 
 了解了原理和代码实现后，我们来进行一次实战演练。以下是CTF中一道典型的凯撒密码题目。
 
 **题目描述**： 密文为 `fllaag`，请找出flag。
 
-![](img/b99d9d6b7bf1d2612f207096d86d2aa7_5.png)
 
 **解题思路**： 由于凯撒密码的偏移量（密钥）未知，我们可以尝试遍历所有可能的偏移量（1到25），观察解密后的结果，寻找有意义的明文。
 

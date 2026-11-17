@@ -1,12 +1,9 @@
 #  116：CPU优化降低游戏CPU占用率方法二 🔍
 
-![](img/e34f3b86dc34f9e2beb4d34d5cb52943_1.png)
 
 在本节课中，我们将继续学习如何通过分析游戏的消息循环来降低其CPU占用率。我们将使用调试工具定位关键函数，并通过注入代码（Hook）的方式，在非关键消息处理流程中让线程休眠，从而有效降低CPU负载。
 
-![](img/e34f3b86dc34f9e2beb4d34d5cb52943_3.png)
 
-![](img/e34f3b86dc34f9e2beb4d34d5cb52943_5.png)
 
 ---
 
@@ -14,7 +11,6 @@
 
 ![](img/e34f3b86dc34f9e2beb4d34d5cb52943_9.png)
 
-![](img/e34f3b86dc34f9e2beb4d34d5cb52943_11.png)
 
 ![](img/e34f3b86dc34f9e2beb4d34d5cb52943_13.png)
 
@@ -22,7 +18,6 @@
 
 ## 概述
 
-![](img/e34f3b86dc34f9e2beb4d34d5cb52943_17.png)
 
 上一节我们分析了定时器与CPU占用的关系。本节中，我们将深入游戏的消息处理循环，定位图形更新和逻辑处理的关键代码，并探索通过干预消息处理流程来降低CPU使用率的方法。
 
@@ -76,15 +71,11 @@ while (true) {
 *   一个与角色动作更新相关的函数（`Call_UpdateActor`）。
 *   几个与Direct3D图形渲染和贴图相关的函数（`Call_D3D9_Render`）。
 
-![](img/e34f3b86dc34f9e2beb4d34d5cb52943_29.png)
 
-![](img/e34f3b86dc34f9e2beb4d34d5cb52943_31.png)
 
 初步测试发现，直接禁用图形渲染函数会严重破坏画面，但CPU占用下降不明显。这说明单纯阻止渲染不是最优解。
 
-![](img/e34f3b86dc34f9e2beb4d34d5cb52943_33.png)
 
-![](img/e34f3b86dc34f9e2beb4d34d5cb52943_35.png)
 
 ## 优化思路：Hook消息循环
 

@@ -18,7 +18,6 @@
 
 Dan Kaminsky因在2008年发现DNS关键漏洞并推动全行业修复而闻名。Dan Kaminsky奖学金旨在纪念他的遗产，通过资助改善世界安全性的开源工作。
 
-![](img/63657aa9d34513faa3f9d11e07419eb0_8.png)
 
 ---
 
@@ -26,7 +25,6 @@ Dan Kaminsky因在2008年发现DNS关键漏洞并推动全行业修复而闻名�
 
 ## 从一个简单的漏洞开始
 
-![](img/63657aa9d34513faa3f9d11e07419eb0_12.png)
 
 我们的故事从一个简单的漏洞开始：在Gradle或Maven构建文件中使用HTTP协议下载依赖项。
 
@@ -74,7 +72,6 @@ select gbf
 
 获得项目列表后，下一步是自动生成修复的拉取请求（Pull Request）。我们编写了一个Python机器人，它封装了GitHub CLI，用于自动创建PR。
 
-![](img/63657aa9d34513faa3f9d11e07419eb0_28.png)
 
 ![](img/63657aa9d34513faa3f9d11e07419eb0_30.png)
 
@@ -89,7 +86,6 @@ vulnerable_code = re.sub(r'http://', 'https://', original_build_file_content)
 
 虽然“使用正则表达式解决问题会带来两个问题”是一句业内玩笑，但这种方法在此场景下是有效的。
 
-![](img/63657aa9d34513faa3f9d11e07419eb0_32.png)
 
 通过这项技术，我们为大量项目生成了修复补丁。例如，针对此HTTP漏洞，生成了1596个拉取请求，合并率约为40%。这项工作也获得了GitHub安全实验室的奖金。
 
@@ -160,7 +156,6 @@ template InsertSecurityCheck {
 
 ## 实战：修复三类安全漏洞
 
-![](img/63657aa9d34513faa3f9d11e07419eb0_56.png)
 
 ![](img/63657aa9d34513faa3f9d11e07419eb0_58.png)
 
@@ -237,7 +232,6 @@ OpenRewrite集成了数据流分析API，其设计类似于CodeQL，便于安全
 
 ![](img/63657aa9d34513faa3f9d11e07419eb0_84.png)
 
-![](img/63657aa9d34513faa3f9d11e07419eb0_86.png)
 
 ### 3. ZIP Slip漏洞
 
@@ -286,11 +280,9 @@ if (!targetPath.startsWith(destinationDir.toPath().toRealPath())) {
 2.  **提交更改**：在分支上提交修复。
 3.  **创建PR**：向原仓库发起拉取请求。
 
-![](img/63657aa9d34513faa3f9d11e07419eb0_98.png)
 
 为了高效、可持续地运行，需要精心设计逻辑来处理速率限制和错误重试。
 
-![](img/63657aa9d34513faa3f9d11e07419eb0_100.png)
 
 ---
 
@@ -330,7 +322,6 @@ Moderne目前索引了约7000个项目，但世界上有更多的开源仓库。
 
 ![](img/63657aa9d34513faa3f9d11e07419eb0_118.png)
 
-![](img/63657aa9d34513faa3f9d11e07419eb0_120.png)
 
 通过结合CodeQL（发现）、OpenRewrite（修复）、Moderne（规模化执行）以及自定义机器人（处理API），我们已经取得了显著成果。
 
@@ -338,7 +329,6 @@ Moderne目前索引了约7000个项目，但世界上有更多的开源仓库。
 
 **成果示例**：我们已经针对临时目录劫持、部分路径遍历、ZIP Slip等漏洞，生成了数百个拉取请求。在2022年，仅个人就生成了超过5000个拉取请求，对开源安全产生了实质性影响。
 
-![](img/63657aa9d34513faa3f9d11e07419eb0_124.png)
 
 在与开源维护者互动时，遵循一些最佳实践至关重要：
 1.  **签署提交（GPG签名）**：这能验证提交者身份，增加可信度，并可能避免一些法律层面的顾虑。

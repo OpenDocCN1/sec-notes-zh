@@ -6,9 +6,7 @@
 
 QRadar Advisor with Watson 旨在赋能安全分析师，推动调查流程的一致性，并实现更快速、更果断的事件升级。其结果是**减少平均处置时间（MTTR）**并**提升分析师效率**。
 
-![](img/ef1540205cb4181e6c117f26b8a598ec_1.png)
 
-![](img/ef1540205cb4181e6c117f26b8a598ec_1.png)
 
 ## 核心优势
 
@@ -19,11 +17,9 @@ QRadar Advisor with Watson 旨在赋能安全分析师，推动调查流程的�
 *   **加速处置流程**：通过更快速、更果断的升级流程，帮助**减少事件处置的等待时间**。
 *   **增强决策信心**：通过将攻击行为映射到**MITRE ATT&CK框架**，确定根本原因分析并自信地推动后续步骤。
 
-![](img/ef1540205cb4181e6c117f26b8a598ec_3.png)
 
 ## 工作流程解析
 
-![](img/ef1540205cb4181e6c117f26b8a598ec_3.png)
 
 了解了优势后，我们深入看看它是如何工作的。以下是QRadar Advisor with Watson处理安全事件的基本流程：
 
@@ -31,7 +27,6 @@ QRadar Advisor with Watson 旨在赋能安全分析师，推动调查流程的�
 2.  **外部情报咨询**：接着，它就其对事件所做的观察，咨询Watson for Cybersecurity，以执行外部知识发现和威胁情报检索。
 3.  **结果交付**：最终，它通过由Watson for Cybersecurity驱动的IBM Security App Exchange，提供一个**快速部署、易于使用**的解决方案，从而变革安全运营。
 
-![](img/ef1540205cb4181e6c117f26b8a598ec_5.png)
 
 ## 数据处理与洞察生成
 
@@ -42,7 +37,6 @@ QRadar Advisor with Watson解锁了海量的安全知识，能够实现快速而
 *   **数据源**：分析**结构化数据**（如日志）、**关键安全数据**以及互联网上的**非结构化安全相关数据**。
 *   **数据处理**：去除不必要的信息，并对收集到的数据进行提取和标注。
 
-![](img/ef1540205cb4181e6c117f26b8a598ec_7.png)
 
 ![](img/ef1540205cb4181e6c117f26b8a598ec_7.png)
 
@@ -66,6 +60,5 @@ QRadar Advisor with Watson解锁了海量的安全知识，能够实现快速而
 
 本节课中，我们一起学习了IBM QRadar Advisor with Watson这一行业案例。我们了解了它如何通过**自动化常规任务**、**整合内外部情报**、**映射MITRE ATT&CK框架**以及**关联调查**来提升安全运营中心（SOC）的效率和效果。您接下来将有机会在虚拟实验室中应用所学到的关于人工智能与SIEM的知识。
 
-![](img/ef1540205cb4181e6c117f26b8a598ec_9.png)
 
 ![](img/ef1540205cb4181e6c117f26b8a598ec_9.png)

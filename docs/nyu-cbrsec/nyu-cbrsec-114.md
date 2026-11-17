@@ -1,6 +1,5 @@
 # 114：实时安全与防御架构 🛡️
 
-![](img/321c15619758c1cbf49620b9d91f4b25_0.png)
 
 ![](img/321c15619758c1cbf49620b9d91f4b25_1.png)
 
@@ -16,7 +15,6 @@
     *   **《An Evening with Berferd》**：作者比尔·切斯维克。这篇论文记录了一次追踪并“诱捕”一名自称“Berferd”的黑客的经典案例，被认为是网络安全领域的必读文献。
     *   **《An Intrusion-Detection Model》**：作者多萝西·丹宁。这篇论文为入侵检测系统奠定了理论基础，是理解IDS工作原理的重要文献。
 
-![](img/321c15619758c1cbf49620b9d91f4b25_3.png)
 
 *   **可选书籍**：
     *   **《From CIA to APT: An Introduction to Cybersecurity》**：作者Ed与Matt Amoroso。这是一本可选电子书，与本模块相关的内容主要集中在第21和22章。
@@ -24,7 +22,6 @@
 *   **推荐视频**：
     *   **《Defcon 2015: Building a Security Operations Center》**：该视频提供了关于建设安全运营中心的实用建议，值得观看。
 
-![](img/321c15619758c1cbf49620b9d91f4b25_5.png)
 
 ![](img/321c15619758c1cbf49620b9d91f4b25_6.png)
 

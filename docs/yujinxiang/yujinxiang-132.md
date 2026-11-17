@@ -1,6 +1,5 @@
 #  132：编写游戏登录器 🎮
 
-![](img/6eb71abeca4c8954a8ff131c2351d623_1.png)
 
 ![](img/6eb71abeca4c8954a8ff131c2351d623_3.png)
 

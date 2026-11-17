@@ -22,25 +22,18 @@
 
 在我们发现了网站使用Shiro框架之后，就需要对其进行漏洞检测。由于Shiro反序列化漏洞通常没有直接的回显（即执行结果不会显示在返回页面上），我们需要借助外部平台来验证漏洞是否存在。
 
-![](img/fe0ac5c5277dcebe8c3300eeb597dd69_1.png)
 
-![](img/fe0ac5c5277dcebe8c3300eeb597dd69_3.png)
 
-![](img/fe0ac5c5277dcebe8c3300eeb597dd69_5.png)
 
 检测的核心思路是，利用漏洞让目标服务器向一个我们可控的域名发起DNS请求，通过观察是否有请求记录来判断漏洞是否可利用。
 
-![](img/fe0ac5c5277dcebe8c3300eeb597dd69_7.png)
 
-![](img/fe0ac5c5277dcebe8c3300eeb597dd69_9.png)
 
 以下是进行漏洞检测的步骤和工具：
 
 ![](img/fe0ac5c5277dcebe8c3300eeb597dd69_11.png)
 
-![](img/fe0ac5c5277dcebe8c3300eeb597dd69_12.png)
 
-![](img/fe0ac5c5277dcebe8c3300eeb597dd69_14.png)
 
 *   **使用图形化工具检测**：推荐使用GitHub上的图形化检测工具（如ShiroScan）。打开工具后，在URL处输入目标地址，并在DNSlog URL处填入从DNSlog平台获取的子域名。点击检测，如果工具提示成功且DNSlog平台收到请求记录，则说明目标很可能存在漏洞。工具检测可能存在误报，需要结合其他方法验证。
     ```bash
@@ -48,7 +41,6 @@
     # 你的子域名.dnslog.cn
     ```
 
-![](img/fe0ac5c5277dcebe8c3300eeb597dd69_16.png)
 
 ![](img/fe0ac5c5277dcebe8c3300eeb597dd69_18.png)
 
@@ -59,19 +51,14 @@
     ```
     执行后，观察DNSlog平台是否有来自目标服务器的解析请求，以此判断漏洞。
 
-![](img/fe0ac5c5277dcebe8c3300eeb597dd69_19.png)
 
-![](img/fe0ac5c5277dcebe8c3300eeb597dd69_21.png)
 
-![](img/fe0ac5c5277dcebe8c3300eeb597dd69_23.png)
 
 *   **可用的DNSlog平台**：网上有许多提供DNSlog服务的平台，例如`dnslog.cn`或`ceye.io`。在这些平台上注册后，可以获取一个专属的子域名，用于接收目标服务器的请求，从而验证漏洞。
 
 ## 课程总结
 
-![](img/fe0ac5c5277dcebe8c3300eeb597dd69_25.png)
 
-![](img/fe0ac5c5277dcebe8c3300eeb597dd69_26.png)
 
 ![](img/fe0ac5c5277dcebe8c3300eeb597dd69_28.png)
 

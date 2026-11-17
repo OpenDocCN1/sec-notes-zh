@@ -6,11 +6,9 @@
 ## FTP与ICMP流量的基本概念
 上一节我们介绍了HTTP等基于TCP的应用层协议分析。本节中我们来看看FTP和ICMP这两种协议。
 
-![](img/5faba6435cb8c3cc1ba1b6ab2b475166_1.png)
 
 FTP或ICMP流量分析需要注意的问题是，它们与之前讨论的HTTP协议处于不同的网络层面。例如，HTTP是在TCP协议之上运行的，而FTP虽然也使用TCP，但它传输的是纯数据。ICMP协议则与TCP/IP协议族中的TCP和UDP处于同一层级，它并不承载上层应用数据，但其中的“数据”字段可以被利用来隐藏信息。
 
-![](img/5faba6435cb8c3cc1ba1b6ab2b475166_3.png)
 
 ICMP协议不只包含常见的ping包，ping包只是运行在ICMP协议上的一种报文类型。
 
@@ -24,13 +22,10 @@ ICMP协议不只包含常见的ping包，ping包只是运行在ICMP协议上的�
 tshark -r file.pcap -Y "icmp"
 ```
 
-![](img/5faba6435cb8c3cc1ba1b6ab2b475166_7.png)
 
 如果题目提示flag隐藏在ICMP中，我们就可以使用上述过滤条件。ICMP报文是封装在IP数据包中的，它与TCP是同一层级的协议。
 
-![](img/5faba6435cb8c3cc1ba1b6ab2b475166_9.png)
 
-![](img/5faba6435cb8c3cc1ba1b6ab2b475166_10.png)
 
 ### 案例一：从ICMP响应包中提取Base64数据
 对于ICMP包，我们需要找到flag隐藏的位置。例如，有些ICMP响应包（Reply）的“数据”字段可能为空（全是0），而有些则包含了Base64编码的数据。
@@ -57,7 +52,6 @@ tshark -r file.pcap -Y "icmp"
 ### 案例二：从ICMP数据字段的特定位置提取信息
 有些题目会将flag的每个字符隐藏在ICMP报文数据字段的固定位置。
 
-![](img/5faba6435cb8c3cc1ba1b6ab2b475166_13.png)
 
 以下是解决此类问题的思路：
 1.  过滤出ICMP请求或响应包。

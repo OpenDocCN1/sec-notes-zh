@@ -10,7 +10,6 @@
 
 ![](img/adf960b94d65ac7e1e4c7c2940554db5_8.png)
 
-![](img/adf960b94d65ac7e1e4c7c2940554db5_10.png)
 
 ![](img/adf960b94d65ac7e1e4c7c2940554db5_12.png)
 
@@ -30,7 +29,6 @@
 
 ![](img/adf960b94d65ac7e1e4c7c2940554db5_24.png)
 
-![](img/adf960b94d65ac7e1e4c7c2940554db5_26.png)
 
 ![](img/adf960b94d65ac7e1e4c7c2940554db5_28.png)
 
@@ -82,9 +80,7 @@
 </html>
 ```
 
-![](img/adf960b94d65ac7e1e4c7c2940554db5_49.png)
 
-![](img/adf960b94d65ac7e1e4c7c2940554db5_51.png)
 
 ![](img/adf960b94d65ac7e1e4c7c2940554db5_53.png)
 
@@ -132,9 +128,7 @@
 
 ![](img/adf960b94d65ac7e1e4c7c2940554db5_85.png)
 
-![](img/adf960b94d65ac7e1e4c7c2940554db5_87.png)
 
-![](img/adf960b94d65ac7e1e4c7c2940554db5_89.png)
 
 ![](img/adf960b94d65ac7e1e4c7c2940554db5_91.png)
 
@@ -148,7 +142,6 @@
 *   **关系型数据库**：如 **MySQL**、**Oracle**。它们使用SQL语言进行增删改查操作。
 *   **非关系型数据库**：如 **Redis**（缓存）、**MongoDB**（文档存储）。
 
-![](img/adf960b94d65ac7e1e4c7c2940554db5_96.png)
 
 ![](img/adf960b94d65ac7e1e4c7c2940554db5_98.png)
 
@@ -156,11 +149,8 @@
 
 ![](img/adf960b94d65ac7e1e4c7c2940554db5_101.png)
 
-![](img/adf960b94d65ac7e1e4c7c2940554db5_103.png)
 
-![](img/adf960b94d65ac7e1e4c7c2940554db5_105.png)
 
-![](img/adf960b94d65ac7e1e4c7c2940554db5_107.png)
 
 ## HTTP请求方式
 
@@ -172,7 +162,6 @@
 
 ![](img/adf960b94d65ac7e1e4c7c2940554db5_114.png)
 
-![](img/adf960b94d65ac7e1e4c7c2940554db5_116.png)
 
 ![](img/adf960b94d65ac7e1e4c7c2940554db5_118.png)
 
@@ -243,7 +232,6 @@
 
 ![](img/adf960b94d65ac7e1e4c7c2940554db5_155.png)
 
-![](img/adf960b94d65ac7e1e4c7c2940554db5_157.png)
 
 这种设计使API接口清晰且规范。在CTF题目中，最常见的是GET和POST请求。
 
@@ -269,7 +257,6 @@
 
 ![](img/adf960b94d65ac7e1e4c7c2940554db5_173.png)
 
-![](img/adf960b94d65ac7e1e4c7c2940554db5_175.png)
 
 ![](img/adf960b94d65ac7e1e4c7c2940554db5_177.png)
 
@@ -281,7 +268,6 @@
 
 ![](img/adf960b94d65ac7e1e4c7c2940554db5_181.png)
 
-![](img/adf960b94d65ac7e1e4c7c2940554db5_183.png)
 
 ![](img/adf960b94d65ac7e1e4c7c2940554db5_185.png)
 
@@ -303,7 +289,6 @@
 
 ![](img/adf960b94d65ac7e1e4c7c2940554db5_193.png)
 
-![](img/adf960b94d65ac7e1e4c7c2940554db5_195.png)
 
 ![](img/adf960b94d65ac7e1e4c7c2940554db5_196.png)
 
@@ -313,7 +298,6 @@
 
 ![](img/adf960b94d65ac7e1e4c7c2940554db5_200.png)
 
-![](img/adf960b94d65ac7e1e4c7c2940554db5_202.png)
 
 ![](img/adf960b94d65ac7e1e4c7c2940554db5_204.png)
 
@@ -321,9 +305,7 @@
 *   **设备指纹**：通过收集浏览器版本、屏幕分辨率、字体等设备信息，生成一个唯一标识。可用于识别异常登录行为（例如同一账号从多个完全不同设备登录）。
 *   **防范钓鱼邮件**：注意检查发件人邮箱是否伪造、邮件内容格式是否正规、链接是否为可疑短链。对于短链，可以使用抓包工具（如Burp Suite）分析其真实跳转地址。
 
-![](img/adf960b94d65ac7e1e4c7c2940554db5_206.png)
 
-![](img/adf960b94d65ac7e1e4c7c2940554db5_207.png)
 
 ![](img/adf960b94d65ac7e1e4c7c2940554db5_209.png)
 

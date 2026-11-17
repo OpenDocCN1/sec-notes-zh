@@ -16,29 +16,23 @@
 
 以下是获取和使用脚本的步骤：
 
-![](img/1e7202a6f84d444d3b38d6ca4ee3e17a_3.png)
 
 1.  **下载脚本**：可以从GitHub等平台获取PowerSploit项目，其中包含Ninjacopy.ps1脚本。相关资源链接已整理在课程资料中。
 2.  **上传脚本**：将下载好的脚本文件上传到目标域控制器的文件系统中，例如桌面目录。
 3.  **打开命令行**：通过RDP或其他方式，在目标系统上打开命令提示符（CMD）。
 
-![](img/1e7202a6f84d444d3b38d6ca4ee3e17a_5.png)
 
-![](img/1e7202a6f84d444d3b38d6ca4ee3e17a_6.png)
 
 ## 使用Ninjacopy脚本复制文件
 
-![](img/1e7202a6f84d444d3b38d6ca4ee3e17a_7.png)
 
 接下来，我们进入PowerShell环境并加载脚本模块来执行复制操作。
 
-![](img/1e7202a6f84d444d3b38d6ca4ee3e17a_9.png)
 
 ### 复制SAM数据库文件
 
 SAM文件存储了本地用户的密码哈希值。以下是复制该文件的步骤：
 
-![](img/1e7202a6f84d444d3b38d6ca4ee3e17a_11.png)
 
 首先，切换到脚本所在目录并进入PowerShell环境。
 ```powershell
@@ -83,7 +77,6 @@ Invoke-NinjaCopy -Path "C:\Windows\NTDS\NTDS.dit" -LocalDestination "C:\Users\Ad
 
 ## 总结
 
-![](img/1e7202a6f84d444d3b38d6ca4ee3e17a_19.png)
 
 ![](img/1e7202a6f84d444d3b38d6ca4ee3e17a_20.png)
 

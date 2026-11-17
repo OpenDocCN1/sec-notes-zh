@@ -41,7 +41,6 @@ CALL [打开NPC对话的函数地址]
 
 ![](img/e53facd27f26b76d5f7f0c6d4aeb1cde_9.png)
 
-![](img/e53facd27f26b76d5f7f0c6d4aeb1cde_11.png)
 
 ![](img/e53facd27f26b76d5f7f0c6d4aeb1cde_12.png)
 

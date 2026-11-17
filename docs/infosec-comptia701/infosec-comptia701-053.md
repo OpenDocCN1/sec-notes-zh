@@ -1,6 +1,5 @@
 # 053：漏洞识别
 
-![](img/041872f9b7bbaaf2f62793ccc37e9b2d_0.png)
 
 ![](img/041872f9b7bbaaf2f62793ccc37e9b2d_0.png)
 

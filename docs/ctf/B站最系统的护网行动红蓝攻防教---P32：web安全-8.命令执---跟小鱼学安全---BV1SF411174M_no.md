@@ -39,11 +39,8 @@
 
 ![](img/736626bc981b23bce5e68fd7511c8d25_22.png)
 
-![](img/736626bc981b23bce5e68fd7511c8d25_24.png)
 
-![](img/736626bc981b23bce5e68fd7511c8d25_26.png)
 
-![](img/736626bc981b23bce5e68fd7511c8d25_27.png)
 
 由于业务需求，在PHP中有时需要调用执行命令的函数。如果程序使用了这些函数，且未对用户可控的参数进行检查过滤，就可能存在远程代码执行漏洞。
 
@@ -51,9 +48,7 @@
 
 ![](img/736626bc981b23bce5e68fd7511c8d25_29.png)
 
-![](img/736626bc981b23bce5e68fd7511c8d25_31.png)
 
-![](img/736626bc981b23bce5e68fd7511c8d25_33.png)
 
 ![](img/736626bc981b23bce5e68fd7511c8d25_35.png)
 
@@ -94,9 +89,7 @@ preg_replace("/test/e", $_GET['cmd'], "just test");
 ```
 **注意**：`/e` 修饰符在 PHP 5.5.0 后被弃用。
 
-![](img/736626bc981b23bce5e68fd7511c8d25_45.png)
 
-![](img/736626bc981b23bce5e68fd7511c8d25_47.png)
 
 ### 4. array_map 函数
 `array_map` 函数为数组的每个元素应用回调函数。其形式为：
@@ -123,7 +116,6 @@ $func();
 ```
 **注意**：参数通常用单引号包裹，以防止变量名被解析。
 
-![](img/736626bc981b23bce5e68fd7511c8d25_49.png)
 
 ### 6. call_user_func 函数
 `call_user_func` 函数用于调用回调函数。其形式为：
@@ -132,15 +124,10 @@ call_user_func($callback, $parameter);
 ```
 第一个参数 `$callback` 是调用的回调函数，其余参数是传入回调函数的参数。如果回调函数名和参数用户可控，就可能造成命令执行。
 
-![](img/736626bc981b23bce5e68fd7511c8d25_51.png)
 
-![](img/736626bc981b23bce5e68fd7511c8d25_53.png)
 
-![](img/736626bc981b23bce5e68fd7511c8d25_54.png)
 
-![](img/736626bc981b23bce5e68fd7511c8d25_56.png)
 
-![](img/736626bc981b23bce5e68fd7511c8d25_58.png)
 
 ![](img/736626bc981b23bce5e68fd7511c8d25_60.png)
 
@@ -150,9 +137,7 @@ call_user_func($callback, $parameter);
 
 ![](img/736626bc981b23bce5e68fd7511c8d25_66.png)
 
-![](img/736626bc981b23bce5e68fd7511c8d25_68.png)
 
-![](img/736626bc981b23bce5e68fd7511c8d25_70.png)
 
 ### 7. array_filter 函数
 `array_filter` 函数用回调函数过滤数组中的单元。其形式为：
@@ -161,24 +146,19 @@ array_filter($array, $callback);
 ```
 与 `array_map` 类似，如果回调函数名用户可控，就可能造成命令执行。
 
-![](img/736626bc981b23bce5e68fd7511c8d25_72.png)
 
 ![](img/736626bc981b23bce5e68fd7511c8d25_74.png)
 
 ### 关于双引号的特性
 在PHP中，如果双引号内包含变量，解释器会将其替换为变量解析后的值。如果变量值是一段PHP代码，就可能造成代码执行。而单引号内的变量不会被处理。
 
-![](img/736626bc981b23bce5e68fd7511c8d25_76.png)
 
-![](img/736626bc981b23bce5e68fd7511c8d25_78.png)
 
 ![](img/736626bc981b23bce5e68fd7511c8d25_80.png)
 
-![](img/736626bc981b23bce5e68fd7511c8d25_82.png)
 
 ![](img/736626bc981b23bce5e68fd7511c8d25_84.png)
 
-![](img/736626bc981b23bce5e68fd7511c8d25_86.png)
 
 ![](img/736626bc981b23bce5e68fd7511c8d25_88.png)
 
@@ -188,15 +168,12 @@ array_filter($array, $callback);
 
 以下是几个常见的系统命令执行函数：
 
-![](img/736626bc981b23bce5e68fd7511c8d25_90.png)
 
-![](img/736626bc981b23bce5e68fd7511c8d25_92.png)
 
 ![](img/736626bc981b23bce5e68fd7511c8d25_94.png)
 
 ![](img/736626bc981b23bce5e68fd7511c8d25_96.png)
 
-![](img/736626bc981b23bce5e68fd7511c8d25_97.png)
 
 ![](img/736626bc981b23bce5e68fd7511c8d25_98.png)
 
@@ -208,13 +185,9 @@ exec($command, $output);
 
 ![](img/736626bc981b23bce5e68fd7511c8d25_100.png)
 
-![](img/736626bc981b23bce5e68fd7511c8d25_102.png)
 
-![](img/736626bc981b23bce5e68fd7511c8d25_104.png)
 
-![](img/736626bc981b23bce5e68fd7511c8d25_106.png)
 
-![](img/736626bc981b23bce5e68fd7511c8d25_108.png)
 
 ### 2. system 函数
 `system` 函数也是用于执行外部命令。与 `exec` 的主要区别在于，`system` 会直接将结果输出到浏览器。
@@ -230,11 +203,9 @@ system($command);
 passthru($command);
 ```
 
-![](img/736626bc981b23bce5e68fd7511c8d25_112.png)
 
 ![](img/736626bc981b23bce5e68fd7511c8d25_114.png)
 
-![](img/736626bc981b23bce5e68fd7511c8d25_116.png)
 
 ![](img/736626bc981b23bce5e68fd7511c8d25_118.png)
 
@@ -256,13 +227,10 @@ shell_exec($command);
 
 ![](img/736626bc981b23bce5e68fd7511c8d25_128.png)
 
-![](img/736626bc981b23bce5e68fd7511c8d25_130.png)
 
 在利用命令执行漏洞时，常会使用一些特殊字符来连接或构造命令。
 
-![](img/736626bc981b23bce5e68fd7511c8d25_132.png)
 
-![](img/736626bc981b23bce5e68fd7511c8d25_133.png)
 
 ![](img/736626bc981b23bce5e68fd7511c8d25_134.png)
 

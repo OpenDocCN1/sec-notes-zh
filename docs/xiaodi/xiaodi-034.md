@@ -135,9 +135,7 @@ public class User {
 
 以下是获取Class对象的几种方法：
 
-![](img/10f4cda3cf20f6480f7f4ce58b505ff1_81.png)
 
-![](img/10f4cda3cf20f6480f7f4ce58b505ff1_83.png)
 
 ![](img/10f4cda3cf20f6480f7f4ce58b505ff1_85.png)
 
@@ -435,7 +433,6 @@ Runtime.getRuntime().exec("calc");
 
 ![](img/10f4cda3cf20f6480f7f4ce58b505ff1_211.png)
 
-![](img/10f4cda3cf20f6480f7f4ce58b505ff1_213.png)
 
 ## 📝 课程总结
 

@@ -37,7 +37,6 @@ apt install mariadb mariadb-server -y
 apt install php libapache2-mod-php php-mysql php-gd php-curl php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip -y
 ```
 
-![](img/84a685713de25dd648421bd595768518_5.png)
 
 **命令解析**：
 *   `apt`：Debian系Linux的包管理工具。
@@ -46,7 +45,6 @@ apt install php libapache2-mod-php php-mysql php-gd php-curl php-mbstring php-xm
 
 安装完成后，需要启动服务：
 
-![](img/84a685713de25dd648421bd595768518_7.png)
 
 ![](img/84a685713de25dd648421bd595768518_9.png)
 
@@ -66,9 +64,7 @@ systemctl start mariadb
 ### 卸载LAMP环境
 如果你需要卸载已安装的环境，可以使用以下命令：
 
-![](img/84a685713de25dd648421bd595768518_11.png)
 
-![](img/84a685713de25dd648421bd595768518_13.png)
 
 ```bash
 # 自动移除 MariaDB 相关包
@@ -107,7 +103,6 @@ DVWA (Damn Vulnerable Web Application) 是一个基于PHP/MySQL的Web应用程�
 
 ![](img/84a685713de25dd648421bd595768518_23.png)
 
-![](img/84a685713de25dd648421bd595768518_25.png)
 
 ![](img/84a685713de25dd648421bd595768518_26.png)
 
@@ -173,7 +168,6 @@ DVWA (Damn Vulnerable Web Application) 是一个基于PHP/MySQL的Web应用程�
 
 ## 在Windows上使用PHPStudy部署环境
 
-![](img/84a685713de25dd648421bd595768518_32.png)
 
 在Linux上部署环境需要对系统有一定了解。对于初学者，在Windows上使用集成环境会更加简单快捷。
 
@@ -184,11 +178,9 @@ PHPStudy是一个Windows下的PHP调试环境程序集成包。它集成了Apach
 
 ![](img/84a685713de25dd648421bd595768518_36.png)
 
-![](img/84a685713de25dd648421bd595768518_37.png)
 
 **注意**：请务必从官网下载最新版本，旧版本可能存在安全后门。
 
-![](img/84a685713de25dd648421bd595768518_39.png)
 
 ![](img/84a685713de25dd648421bd595768518_41.png)
 
@@ -243,9 +235,7 @@ PHPStudy是一个Windows下的PHP调试环境程序集成包。它集成了Apach
 
 ![](img/84a685713de25dd648421bd595768518_57.png)
 
-![](img/84a685713de25dd648421bd595768518_58.png)
 
-![](img/84a685713de25dd648421bd595768518_60.png)
 
 ### Java环境安装 (Linux - Kali)
 Kali Linux通常已安装Java。如需安装或确认，可使用包管理器：
@@ -284,7 +274,6 @@ Kali Linux默认已安装Python 2和Python 3。可直接使用 `python` 或 `pyt
 
 ---
 
-![](img/84a685713de25dd648421bd595768518_77.png)
 
 ![](img/84a685713de25dd648421bd595768518_79.png)
 
@@ -294,9 +283,7 @@ Kali Linux默认已安装Python 2和Python 3。可直接使用 `python` 或 `pyt
 
 ## 安全工具Burp Suite社区版激活
 
-![](img/84a685713de25dd648421bd595768518_85.png)
 
-![](img/84a685713de25dd648421bd595768518_87.png)
 
 ![](img/84a685713de25dd648421bd595768518_88.png)
 
@@ -317,7 +304,6 @@ Burp Suite是Web安全测试中不可或缺的抓包、改包、扫描工具。�
 
 ---
 
-![](img/84a685713de25dd648421bd595768518_94.png)
 
 ![](img/84a685713de25dd648421bd595768518_96.png)
 

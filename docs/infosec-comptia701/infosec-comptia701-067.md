@@ -1,6 +1,5 @@
 # 067：13_01_03_数据销毁
 
-![](img/eea69dd0a71e5c393b4d2775d60a500b_0.png)
 
 ![](img/eea69dd0a71e5c393b4d2775d60a500b_0.png)
 

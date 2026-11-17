@@ -122,11 +122,9 @@ systemctl disable firewalld   # 禁止防火墙开机自启
 
 ![](img/a6d5d64209583f25cea285ae4f7306cd_32.png)
 
-![](img/a6d5d64209583f25cea285ae4f7306cd_34.png)
 
 制作好的模板机可以导出为OVA格式文件分享给他人。
 
-![](img/a6d5d64209583f25cea285ae4f7306cd_36.png)
 
 ![](img/a6d5d64209583f25cea285ae4f7306cd_38.png)
 

@@ -1,6 +1,5 @@
 # 020：通过Bash Shell执行Linux命令
 
-![](img/6ff477b12fa9fed1a5ec51d9ba1f443b_0.png)
 
 ![](img/6ff477b12fa9fed1a5ec51d9ba1f443b_0.png)
 
@@ -46,7 +45,6 @@
 
 好的，既然我们已经介绍了通过Shell输入Linux命令和参数的基础知识，现在可以准备学习一些具体的命令了。这很令人兴奋，让我们进入下一个视频。
 
-![](img/6ff477b12fa9fed1a5ec51d9ba1f443b_10.png)
 
 ---
 

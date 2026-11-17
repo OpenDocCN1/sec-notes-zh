@@ -18,7 +18,6 @@
 
 传统的 Unix/Linux 安全模型以用户为安全边界，而非进程。文件的所有者、组和其他用户通过九个标志位（如读、写、执行）来确定权限。通常，一个进程需要以相同用户身份运行才能附加到另一个进程。**根用户**（root）是一个例外，它拥有系统的完全控制权。
 
-![](img/35e64788b82224d5b25845810aa16e2e_10.png)
 
 然而，自 2015 年 El Capitan 系统引入**系统完整性保护**（System Integrity Protection, SIP）后，情况发生了变化。SIP 也被称为“无根”（rootless），其核心思想是在根用户和内核之间引入一个安全层，并保护系统文件不被修改，即使是根用户也不行。这意味着仅获得 root 权限已不足以完全控制系统。
 
@@ -174,7 +173,6 @@ macOS 沙箱应用无法直接列出磁盘文件。当它们使用“打开”�
     id obj = [unarchiver decodeObjectOfClass: [AllowedClass class] forKey: @"key"];
     ```
 
-![](img/35e64788b82224d5b25845810aa16e2e_53.png)
 
 ![](img/35e64788b82224d5b25845810aa16e2e_55.png)
 

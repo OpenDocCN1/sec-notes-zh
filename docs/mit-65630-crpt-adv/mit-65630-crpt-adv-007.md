@@ -1,8 +1,6 @@
 # 007：通过GKR和交互式论证的PCP，第二部分
 
-![](img/93303ef5c3a48e376fdd7225dfa1c853_0.png)
 
-![](img/93303ef5c3a48e376fdd7225dfa1c853_1.png)
 
 ![](img/93303ef5c3a48e376fdd7225dfa1c853_2.png)
 

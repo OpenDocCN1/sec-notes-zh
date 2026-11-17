@@ -1,6 +1,5 @@
 # 049：资产安全的核心要素
 
-![](img/a10ba01ead2e2b33aed09b6d27f4d941_0.png)
 
 ![](img/a10ba01ead2e2b33aed09b6d27f4d941_0.png)
 

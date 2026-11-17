@@ -2,7 +2,6 @@
 
 你好，我是路易斯·福阿，我将为你讲解数据安全与保护。
 
-![](img/a0aeb54bb4b7e8b291f692469d5da81e_1.png)
 
 在本模块中，我们将讨论什么是数据安全与保护，我们保护数据免受什么威胁，以及我们为什么要保护数据。
 
@@ -70,7 +69,6 @@
 
 
 
-![](img/a0aeb54bb4b7e8b291f692469d5da81e_3.png)
 
 ![](img/a0aeb54bb4b7e8b291f692469d5da81e_3.png)
 
@@ -115,10 +113,7 @@
 
 
 
-![](img/a0aeb54bb4b7e8b291f692469d5da81e_5.png)
 
-![](img/a0aeb54bb4b7e8b291f692469d5da81e_5.png)
 
-![](img/a0aeb54bb4b7e8b291f692469d5da81e_6.png)
 
 ![](img/a0aeb54bb4b7e8b291f692469d5da81e_6.png)

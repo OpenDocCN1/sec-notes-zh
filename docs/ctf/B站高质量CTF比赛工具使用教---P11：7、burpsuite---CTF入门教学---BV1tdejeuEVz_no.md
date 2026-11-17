@@ -8,9 +8,7 @@
 
 以下是安装JDK 1.8版本的步骤：
 
-![](img/48c7724eb553ff63b55d1efb719bd81c_1.png)
 
-![](img/48c7724eb553ff63b55d1efb719bd81c_2.png)
 
 1.  下载JDK 1.8安装程序并双击打开。
 2.  在安装向导中，点击“下一步”。
@@ -38,19 +36,16 @@
 
 以下是验证安装的步骤：
 
-![](img/48c7724eb553ff63b55d1efb719bd81c_4.png)
 
 1.  打开命令提示符（CMD）。
 2.  输入命令 `java -version` 并按回车。
 3.  如果命令行显示Java的版本信息，则表示JDK安装和配置成功。
 
-![](img/48c7724eb553ff63b55d1efb719bd81c_5.png)
 
 ## 安装与激活Burp Suite
 
 环境准备就绪后，我们现在可以开始安装Burp Suite了。
 
-![](img/48c7724eb553ff63b55d1efb719bd81c_7.png)
 
 以下是安装与激活Burp Suite的步骤：
 
@@ -66,7 +61,6 @@
 
 软件安装成功后，首次启动时会让我们选择项目类型。对于初学者，选择默认的“Temporary project”（临时项目）即可，然后点击“Next”和“Start Burp”开始使用。
 
-![](img/48c7724eb553ff63b55d1efb719bd81c_9.png)
 
 启动后，我们需要配置代理，使Burp Suite能够拦截浏览器的网络流量进行分析。
 
@@ -78,7 +72,6 @@
 
 接下来，我们需要在浏览器中设置代理，将流量导向Burp Suite。
 
-![](img/48c7724eb553ff63b55d1efb719bd81c_11.png)
 
 以下是配置浏览器代理的步骤（以Firefox为例）：
 
@@ -91,11 +84,9 @@
 
 > **重要提示**：手动设置代理后，如果未开启Burp Suite，浏览器可能无法访问任何网站。因此，建议仅在需要使用Burp Suite进行抓包分析时开启此代理设置，使用完毕后恢复为“使用系统代理设置”或“无代理”。
 
-![](img/48c7724eb553ff63b55d1efb719bd81c_13.png)
 
 配置完成后，在Burp Suite的“Proxy” -> “Intercept”标签下，确保“Intercept is on”按钮是开启状态。此时，在浏览器中访问任何HTTP网站，请求都会被Burp Suite拦截并显示出来。
 
-![](img/48c7724eb553ff63b55d1efb719bd81c_14.png)
 
 ## 总结
 

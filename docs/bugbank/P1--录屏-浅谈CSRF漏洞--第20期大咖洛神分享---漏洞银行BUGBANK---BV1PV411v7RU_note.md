@@ -24,11 +24,9 @@ http://bank.com/transfer?from=Bob&to=BobO&amount=1000000
 
 此时，黑客美劳瑞采用CSRF攻击方式。他创建一个网站，在其中嵌入恶意代码（即上述转账请求），并通过广告诱使鲍勃访问该网站。当鲍勃访问时，恶意请求会从鲍勃的浏览器发往银行，并附带鲍勃的cookie信息，从而使该请求得到银行的响应并执行。
 
-![](img/2a5bed7f12752bdb2a73866e9febe5cf_6.png)
 
 ![](img/2a5bed7f12752bdb2a73866e9febe5cf_8.png)
 
-![](img/2a5bed7f12752bdb2a73866e9febe5cf_10.png)
 
 ## 第二部分：CSRF漏洞的挖掘与利用 🛠️
 

@@ -4,7 +4,6 @@ CTF入门教学：P28：10、文件上传第十九关 🚩
 
 ![](img/d75b0f3b3812c067ecd051fecd0b95c7_1.png)
 
-![](img/d75b0f3b3812c067ecd051fecd0b95c7_2.png)
 
 ---
 
@@ -18,7 +17,6 @@ CTF入门教学：P28：10、文件上传第十九关 🚩
 
 关闭拦截工具后，访问第十九关。页面提示将文件上传到服务器，但无论上传什么文件，服务器保存的名称都是固定的，例如 `upload-19.jpg`。
 
-![](img/d75b0f3b3812c067ecd051fecd0b95c7_6.png)
 
 通过分析页面代码可知，本关使用了黑名单机制，禁止上传如 `.php`、`.asp` 等特定后缀的文件。然而，关键点在于上传后文件的保存名称是可以通过POST请求控制的。
 
@@ -38,7 +36,6 @@ $save_name = $_POST['filename'];
 
 ![](img/d75b0f3b3812c067ecd051fecd0b95c7_12.png)
 
-![](img/d75b0f3b3812c067ecd051fecd0b95c7_13.png)
 
 ### 方法一：空字节截断绕过
 
@@ -46,7 +43,6 @@ $save_name = $_POST['filename'];
 
 以下是操作步骤：
 
-![](img/d75b0f3b3812c067ecd051fecd0b95c7_15.png)
 
 1.  选择上传一个内容为PHP代码但后缀为 `.jpg` 的文件（例如 `shell.jpg`）。
 2.  开启抓包工具（如Burp Suite），拦截上传请求。
@@ -55,15 +51,12 @@ $save_name = $_POST['filename'];
 5.  由于是POST请求，需要对整个参数值进行URL编码。在Burp Suite中可右键选择 **`Convert Selection` -> `URL` -> `URL-encode`**。
 6.  发送修改后的请求。服务器在保存时，遇到 `%00` 会认为文件名在 `.php` 处结束，从而将文件保存为 `upload-19.php`。
 
-![](img/d75b0f3b3812c067ecd051fecd0b95c7_16.png)
 
-![](img/d75b0f3b3812c067ecd051fecd0b95c7_17.png)
 
 **核心公式**：`最终文件名 = 指定文件名(如：upload-19.php) + 空字节(%00) + 被忽略的后缀(如：.jpg)`
 
 操作成功后，访问保存的文件路径即可执行其中的PHP代码。
 
-![](img/d75b0f3b3812c067ecd051fecd0b95c7_19.png)
 
 ---
 
@@ -81,7 +74,6 @@ $save_name = $_POST['filename'];
 
 以下是操作步骤：
 
-![](img/d75b0f3b3812c067ecd051fecd0b95c7_28.png)
 
 1.  同样，准备一个内容为PHP代码的 `.jpg` 文件并拦截上传请求。
 2.  在文件名参数中，不直接指定 `upload-19.php`，而是指定 `upload-19.php/.`（注意是英文符号）。
@@ -92,11 +84,9 @@ $save_name = $_POST['filename'];
 
 ![](img/d75b0f3b3812c067ecd051fecd0b95c7_30.png)
 
-![](img/d75b0f3b3812c067ecd051fecd0b95c7_31.png)
 
 发送修改后的请求，上传成功后，访问文件路径，同样可以执行PHP代码。
 
-![](img/d75b0f3b3812c067ecd051fecd0b95c7_33.png)
 
 ---
 

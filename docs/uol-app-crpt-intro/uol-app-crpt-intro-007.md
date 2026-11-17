@@ -1,6 +1,5 @@
 应用密码学入门：P7：密码学应用导论
 
-![](img/dfa81541b43c03aed51a30b031d1ad1e_0.png)
 
 ![](img/dfa81541b43c03aed51a30b031d1ad1e_0.png)
 

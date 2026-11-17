@@ -6,7 +6,6 @@
 
 欢迎观看由IBM为您带来的事件响应演示。
 
-![](img/d7d5ec96b39a9cfb7cff4533f4d60b71_1.png)
 
 在这个由三部分组成的视频中，我们将跟随Tommy Patton，他将带我们简要回顾事件响应。
 
@@ -16,7 +15,6 @@
 
 接下来，交给Tommy。
 
-![](img/d7d5ec96b39a9cfb7cff4533f4d60b71_1.png)
 
 我是Tommy Pennton。我从事网络安全领域大约五年。
 
@@ -96,13 +94,10 @@ McAfee HBSS包含多个子产品，包括McAfee Endpoint Security、McAfee Host 
 
 现在我们已经识别了安全威胁、攻击向量和事件响应流程，并讨论了一些用于检测、监控和预防的安全工具，我们可以开始查看QRadar中的一些事件了。
 
-![](img/d7d5ec96b39a9cfb7cff4533f4d60b71_3.png)
 
-![](img/d7d5ec96b39a9cfb7cff4533f4d60b71_4.png)
 
 ---
 
-![](img/d7d5ec96b39a9cfb7cff4533f4d60b71_3.png)
 
 ![](img/d7d5ec96b39a9cfb7cff4533f4d60b71_4.png)
 

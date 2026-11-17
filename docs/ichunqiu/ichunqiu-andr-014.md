@@ -20,7 +20,6 @@ export PATH=$JAVA_HOME/bin:$PATH
 
 ## 利用编译环境生成IDE项目 🔧
 
-![](img/a0f198c8add63803b8a78da5a13ddfce_1.png)
 
 如果已经成功编译过Android源码，我们可以利用其自带的脚本为IDE（如IntelliJ IDEA）生成项目文件，以便更好地阅读代码。
 
@@ -28,7 +27,6 @@ export PATH=$JAVA_HOME/bin:$PATH
 
 以下是生成IDE项目文件的步骤：
 
-![](img/a0f198c8add63803b8a78da5a13ddfce_3.png)
 
 1.  **进入脚本目录**：首先，需要进入源码目录下的 `development/tools/idegen`。
 2.  **配置编译环境**：在运行编译命令前，必须导入Android的编译环境变量。可以运行`source build/envsetup.sh`来配置。
@@ -45,9 +43,7 @@ export PATH=$JAVA_HOME/bin:$PATH
 *   **Source Insight**：这是一款在Windows平台上非常强大的源代码阅读和分析工具。它支持多种语言，在代码导航、交叉引用、上下文查看方面功能出色。**注意**：导入Android源码时，建议不要一次性导入全部文件（否则会非常慢），可以按模块（例如`frameworks`）分批导入进行分析。
 *   **Vim / Ctags / Cscope**：对于习惯在Linux命令行下工作的开发者，可以使用Vim编辑器配合Ctags（生成标签索引）和Cscope（代码搜索工具）来阅读源码。这种方式效率高，但学习曲线稍陡。
 
-![](img/a0f198c8add63803b8a78da5a13ddfce_5.png)
 
-![](img/a0f198c8add63803b8a78da5a13ddfce_7.png)
 
 ## Android源码目录结构概览 🗂️
 

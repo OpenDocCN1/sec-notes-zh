@@ -14,7 +14,6 @@
 
 ## 详细步骤
 
-![](img/9dcc31d8b4250aa0ad422a6865c4d2c0_1.png)
 
 ### 1. 启动DVWA容器
 我们使用Docker来运行DVWA。如果你没有现成的DVWA镜像，Docker会自动从仓库拉取。
@@ -40,15 +39,12 @@ docker ps
 ### 3. 访问并初始化DVWA
 现在，打开你的浏览器，访问 `http://localhost:2333` 或 `http://你的服务器IP:2333`。
 
-![](img/9dcc31d8b4250aa0ad422a6865c4d2c0_3.png)
 
 页面加载后，你会看到DVWA的欢迎界面。由于是首次启动，数据库尚未配置。
 
 你需要点击页面上的 **`Create / Reset Database`** 按钮来初始化数据库。系统会提示数据库创建成功，并自动跳转到登录页面。
 
-![](img/9dcc31d8b4250aa0ad422a6865c4d2c0_5.png)
 
-![](img/9dcc31d8b4250aa0ad422a6865c4d2c0_6.png)
 
 ### 4. 登录系统
 DVWA有默认的登录凭证：

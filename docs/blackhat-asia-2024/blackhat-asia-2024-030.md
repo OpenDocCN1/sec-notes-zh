@@ -24,7 +24,6 @@
 
 ## Roling加载器分析
 
-![](img/6a1fd7b4df50c53fe095891b54a5823b_1.png)
 
 上一节我们介绍了初始的Shellcode，本节中我们来看看更复杂的“Roling”加载器。
 

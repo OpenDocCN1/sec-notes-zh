@@ -100,7 +100,6 @@ run
 2.  **配置参数**：通过`show options`查看并`set`关键参数，主要是目标`RHOST`和攻击载荷`PAYLOAD`（含`LHOST`, `LPORT`）。
 3.  **执行攻击**：使用`run`命令发动攻击，成功后会建立`meterpreter`会话。
 
-![](img/ab03e2940cd79ea14d6580d757f9451e_8.png)
 
 ![](img/ab03e2940cd79ea14d6580d757f9451e_10.png)
 

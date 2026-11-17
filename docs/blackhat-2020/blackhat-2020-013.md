@@ -40,7 +40,6 @@
 
 ## 代码示例
 
-![](img/f42b957aa9ce6a769eacc1581c12a612_3.png)
 
 ![](img/f42b957aa9ce6a769eacc1581c12a612_5.png)
 

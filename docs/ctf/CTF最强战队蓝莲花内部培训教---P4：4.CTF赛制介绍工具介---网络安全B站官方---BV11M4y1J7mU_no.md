@@ -1,28 +1,21 @@
 # CTF最强战队蓝莲花内部培训教程：P4：CTF赛制介绍与工具介绍
 
-![](img/cf1cb2a19be89ca5066c85367b4cf002_1.png)
 
-![](img/cf1cb2a19be89ca5066c85367b4cf002_3.png)
 
-![](img/cf1cb2a19be89ca5066c85367b4cf002_5.png)
 
-![](img/cf1cb2a19be89ca5066c85367b4cf002_7.png)
 
 在本节课中，我们将学习CTF竞赛中必备的基础工具和环境配置。主要内容包括虚拟机软件VMware Workstation的安装与使用、Python和Java等编程环境的搭建、以及一些常用辅助工具的安装。掌握这些工具是后续深入学习CTF各项技能的基础。
 
-![](img/cf1cb2a19be89ca5066c85367b4cf002_9.png)
 
 ## VMware Workstation 虚拟机软件 🖥️
 
 首先，我们需要安装并熟悉VMware Workstation这款虚拟机软件。虚拟机可以让我们在安全的隔离环境中运行各种操作系统和软件，这对于网络安全学习和CTF练习至关重要。
 
-![](img/cf1cb2a19be89ca5066c85367b4cf002_11.png)
 
 ### 软件安装与激活
 
 以下是VMware Workstation的安装步骤：
 
-![](img/cf1cb2a19be89ca5066c85367b4cf002_13.png)
 
 ![](img/cf1cb2a19be89ca5066c85367b4cf002_15.png)
 
@@ -32,7 +25,6 @@
 
 ![](img/cf1cb2a19be89ca5066c85367b4cf002_17.png)
 
-![](img/cf1cb2a19be89ca5066c85367b4cf002_19.png)
 
 ### 基本功能与使用
 
@@ -65,7 +57,6 @@
 
 掌握了虚拟机的基本操作后，我们需要在系统（建议在虚拟机内的Windows 7中）搭建必要的编程和运行环境。
 
-![](img/cf1cb2a19be89ca5066c85367b4cf002_28.png)
 
 ### Python环境安装
 
@@ -112,17 +103,13 @@ Python是CTF中编写和运行脚本的常用语言。以下是安装步骤：
 2.  **解决依赖问题**：如果安装后弹出提示框，显示系统缺少某些运行库（如VC9等），请安装PHPStudy文件夹内提供的“32位VC9和1114的运行库”组件。
 3.  **注意事项**：安装路径请避免使用中文，尽量使用默认的英文路径，以防止出现兼容性问题。
 
-![](img/cf1cb2a19be89ca5066c85367b4cf002_49.png)
 
 ## 必备辅助工具 🛠️
 
 最后，我们安装几个在CTF中常用的辅助工具。
 
-![](img/cf1cb2a19be89ca5066c85367b4cf002_51.png)
 
-![](img/cf1cb2a19be89ca5066c85367b4cf002_52.png)
 
-![](img/cf1cb2a19be89ca5066c85367b4cf002_53.png)
 
 ### 火狐浏览器与HackBar插件
 

@@ -1,48 +1,31 @@
 #  037：IDA脱壳脚本编写 🛠️
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_1.png)
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_3.png)
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_4.png)
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_6.png)
 
 在本节课中，我们将学习如何编写一个IDA脚本，用于从内存中自动提取和修复被加壳保护的DEX文件。我们将基于Android系统加载DEX文件的原理，通过定位关键数据结构来实现通用脱壳。
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_8.png)
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_10.png)
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_12.png)
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_14.png)
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_16.png)
 
 ## 概述
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_18.png)
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_19.png)
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_21.png)
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_22.png)
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_24.png)
 
 上一节我们介绍了在Android Dalvik模式下，系统如何加载一个DEX文件，并重点分析了`gDvm.userDexFiles`这个关键数据结构。本节中，我们将看看如何利用这个结构，编写IDA脚本来自动化提取内存中已加载的DEX文件。
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_26.png)
 
 ## 核心原理与目标
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_28.png)
 
 无论是什么壳，只要它需要成功加载一个DEX文件，就必须操作`gDvm.userDexFiles`这个哈希表结构体。因此，我们可以通过遍历这个结构体来获取内存中所有被加载过的DEX文件数据。
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_30.png)
 
 我们的脚本编写目标分为两步：
 1.  定位`gDvm.userDexFiles`哈希表的位置。
@@ -85,15 +68,11 @@
 4.  对于DEX文件，`pDvmDex`指向一个`DvmDex`结构体，该结构体的`pDexFile`成员指向原始的`DexFile`结构，其中就包含了DEX文件头和数据。
 5.  有些壳会抹去或加密原始的DEX文件头。此时，可以检查`DvmDex`结构体中的`memMap`字段，它可能指向一块映射内存，其中保存着未修改的原始DEX数据。
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_34.png)
 
 ## 编写IDA脱壳脚本
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_36.png)
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_37.png)
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_38.png)
 
 ![](img/4a477490ce41e63f66bd84d354bb5aed_39.png)
 
@@ -101,7 +80,6 @@
 
 ![](img/4a477490ce41e63f66bd84d354bb5aed_41.png)
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_43.png)
 
 1.  通过`gDvm`基地址和偏移量找到`userDexFiles`哈希表。
 2.  遍历哈希表中的所有有效条目（`HashEntry`）。
@@ -109,26 +87,19 @@
 4.  对于DEX文件，定位到`DvmDex`结构，尝试从`pDexFile`或`memMap`中提取DEX数据。
 5.  将提取出的DEX数据修复（例如，重建被抹去的文件头）并保存到本地文件。
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_45.png)
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_46.png)
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_47.png)
 
 脚本的核心逻辑伪代码如下：
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_49.png)
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_50.png)
 
 ![](img/4a477490ce41e63f66bd84d354bb5aed_52.png)
 
 ![](img/4a477490ce41e63f66bd84d354bb5aed_54.png)
 
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_56.png)
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_57.png)
 
 ```python
 # 1. 定位 gDvm 和 userDexFiles
@@ -152,17 +123,12 @@ for i in range(table_size):
             save_to_file(dex_data, “dex_%d.dex” % i)
 ```
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_59.png)
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_61.png)
 
 ## 脚本使用与脱壳实战
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_63.png)
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_65.png)
 
-![](img/4a477490ce41e63f66bd84d354bb5aed_67.png)
 
 运行编写好的脚本，它会列出内存中所有加载的DEX/JAR模块。选择目标DEX模块后，脚本会自动提取并修复数据，保存为`.dex`文件。
 

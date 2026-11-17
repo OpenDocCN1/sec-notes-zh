@@ -6,7 +6,6 @@
 
 ### 什么是序列化？📦
 
-![](img/566a1c42b8fbd95a4ac18e23219efd7a_1.png)
 
 上一节我们介绍了课程主题，本节中我们来看看序列化的具体含义。
 
@@ -16,19 +15,16 @@
 
 ### 什么是反序列化？🔄
 
-![](img/566a1c42b8fbd95a4ac18e23219efd7a_3.png)
 
 理解了序列化之后，反序列化就很好理解了。
 
 反序列化是序列化的逆过程，它将序列化后生成的字符串再转化回原来的变量。
 
-![](img/566a1c42b8fbd95a4ac18e23219efd7a_4.png)
 
 这个过程的核心目的是将存储或传输来的数据，重新构建为程序可以理解和操作的内存中的对象。
 
 ---
 
-![](img/566a1c42b8fbd95a4ac18e23219efd7a_6.png)
 
 ### 如何进行序列化与反序列化？💻
 
@@ -36,10 +32,8 @@
 
 以下是使用Python语言进行序列化（使用`pickle`模块）和反序列化的一个简单示例：
 
-![](img/566a1c42b8fbd95a4ac18e23219efd7a_8.png)
 
 
-![](img/566a1c42b8fbd95a4ac18e23219efd7a_10.png)
 
 ```python
 import pickle
@@ -63,7 +57,6 @@ print(“反序列化恢复的对象:“, deserialized_data)
 1.  **序列化 (`pickle.dumps()`)**：将 `data_to_save` 这个字典对象转换为一串特殊的字节码（`serialized_data`）。
 2.  **反序列化 (`pickle.loads()`)**：将这串字节码（`serialized_data`）重新转换回一个字典对象（`deserialized_data`）。
 
-![](img/566a1c42b8fbd95a4ac18e23219efd7a_12.png)
 
 通过这个例子，可以清晰地看到数据从可读的结构化对象，变为便于传输/存储的格式，再恢复原状的过程。
 

@@ -1,6 +1,5 @@
 #  124：D3D9_HOOK黑屏优化分析及地址定位 🎮
 
-![](img/62ea247fc50714e636c3cab6ffea9806_0.png)
 
 ![](img/62ea247fc50714e636c3cab6ffea9806_2.png)
 
@@ -96,7 +95,6 @@
 
 ## 总结 📚
 
-![](img/62ea247fc50714e636c3cab6ffea9806_22.png)
 
 ![](img/62ea247fc50714e636c3cab6ffea9806_23.png)
 

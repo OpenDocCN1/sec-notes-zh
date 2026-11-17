@@ -1,16 +1,12 @@
 #  084：第57天 - 域内权限维持技术详解 🔐
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_1.png)
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_3.png)
 
 在本节课中，我们将学习域环境下的四种核心权限维持技术：黄金票据伪造、SSP、Skeleton Key和SID History。这些技术能帮助我们在获取域控权限后，实现持久化控制，确保即使凭证更改也能维持访问权限。
 
 ---
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_5.png)
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_7.png)
 
 ## 概述 📋
 
@@ -22,13 +18,9 @@
 
 上一节我们回顾了域环境的特点，本节首先来看第一种权限维持技术：Pass The Ticket中的黄金票据伪造。
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_9.png)
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_11.png)
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_13.png)
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_15.png)
 
 票据是域内网络对象互相访问的凭证。黄金票据伪造的核心是伪造票据授予票据。控制了生成票据的机制，就能生成访问任何服务的票据。
 
@@ -46,7 +38,6 @@
 
 ![](img/99fc3bc9f5f859b61bc98f5ff159f632_21.png)
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_23.png)
 
 以下是伪造黄金票据所需的四个条件：
 1.  域名称
@@ -62,13 +53,11 @@
 
 ### 操作步骤
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_31.png)
 
 ![](img/99fc3bc9f5f859b61bc98f5ff159f632_33.png)
 
 以下是利用Mimikatz进行黄金票据伪造的具体步骤：
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_35.png)
 
 ![](img/99fc3bc9f5f859b61bc98f5ff159f632_37.png)
 
@@ -91,7 +80,6 @@
 
 票据注入后，即可利用该权限访问域控资源。例如，使用`dir \\dc.de1ay.com\c$`命令列出域控的C盘目录。也可以通过横向移动技术，在域控上执行Payload，最终获得域控的Shell。
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_41.png)
 
 ![](img/99fc3bc9f5f859b61bc98f5ff159f632_43.png)
 
@@ -145,7 +133,6 @@ kerberos::ptt golden.kirbi
 
 ![](img/99fc3bc9f5f859b61bc98f5ff159f632_79.png)
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_81.png)
 
 ![](img/99fc3bc9f5f859b61bc98f5ff159f632_82.png)
 
@@ -159,19 +146,14 @@ kerberos::ptt golden.kirbi
 
 ![](img/99fc3bc9f5f859b61bc98f5ff159f632_87.png)
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_88.png)
 
 SSP用于身份验证，是一个DLL文件。系统启动时，`lsass.exe`进程会加载SSP。我们可以安装一个恶意的SSP DLL，使其记录所有登录到当前系统的明文账号密码。
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_89.png)
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_91.png)
 
 ![](img/99fc3bc9f5f859b61bc98f5ff159f632_93.png)
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_95.png)
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_97.png)
 
 ![](img/99fc3bc9f5f859b61bc98f5ff159f632_98.png)
 
@@ -185,7 +167,6 @@ SSP用于身份验证，是一个DLL文件。系统启动时，`lsass.exe`进程
 
 ![](img/99fc3bc9f5f859b61bc98f5ff159f632_106.png)
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_108.png)
 
 ![](img/99fc3bc9f5f859b61bc98f5ff159f632_109.png)
 
@@ -208,11 +189,8 @@ SSP用于身份验证，是一个DLL文件。系统启动时，`lsass.exe`进程
     *   键值：`Security Packages`，在原有数据后追加 `, mimilib`
 3.  系统重启后，`lsass.exe`会加载该DLL。此后用户登录，明文密码会被记录在 `C:\Windows\System32\kiwissp.log` 中。
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_120.png)
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_122.png)
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_124.png)
 
 **方法二：内存加载（无需重启）**
 在已获得权限的会话中，直接使用Mimikatz将SSP加载到内存：
@@ -221,9 +199,7 @@ misc::memssp
 ```
 执行后，用户登录凭证会被记录在 `C:\Windows\System32\mimilsa.log` 中。
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_126.png)
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_128.png)
 
 ![](img/99fc3bc9f5f859b61bc98f5ff159f632_130.png)
 
@@ -235,15 +211,11 @@ misc::memssp
 
 Skeleton Key被安装在64位的域控服务器上，它允许所有域用户使用一个通用的“万能密码”进行身份验证，同时原有密码依然有效。但使用万能密码登录的用户权限受限，且重启后失效。
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_132.png)
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_134.png)
 
 ### 操作步骤
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_136.png)
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_137.png)
 
 在已获得域控权限的会话中，使用Mimikatz进行安装：
 1.  进入Debug权限模式：`privilege::debug`
@@ -256,7 +228,6 @@ Skeleton Key被安装在64位的域控服务器上，它允许所有域用户使
 
 ![](img/99fc3bc9f5f859b61bc98f5ff159f632_143.png)
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_145.png)
 
 安装成功后，在域内任何主机上，都可以使用`域名\用户名`和万能密码`mimikatz`进行网络身份验证（如IPC连接），从而访问域控资源。
 
@@ -268,7 +239,6 @@ Skeleton Key被安装在64位的域控服务器上，它允许所有域用户使
 
 ---
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_153.png)
 
 ## 四、SID History权限维持 🪪
 
@@ -276,7 +246,6 @@ Skeleton Key被安装在64位的域控服务器上，它允许所有域用户使
 
 ![](img/99fc3bc9f5f859b61bc98f5ff159f632_157.png)
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_159.png)
 
 最后，我们学习利用SID History属性进行权限维持。
 
@@ -284,7 +253,6 @@ Skeleton Key被安装在64位的域控服务器上，它允许所有域用户使
 
 ### 操作步骤
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_161.png)
 
 ![](img/99fc3bc9f5f859b61bc98f5ff159f632_163.png)
 
@@ -300,19 +268,13 @@ Skeleton Key被安装在64位的域控服务器上，它允许所有域用户使
     *   `/sam`：指定目标用户名。
     *   `/new`：指定要添加其SID的源用户名。
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_165.png)
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_167.png)
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_169.png)
 
 ### 验证效果
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_171.png)
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_173.png)
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_175.png)
 
 操作成功后，可以使用PowerShell命令验证：
 ```powershell
@@ -321,23 +283,18 @@ Get-ADUser mig -Properties sidhistory
 ```
 可以看到`mig`用户的`sidhistory`属性中包含了域管理员的SID。此后，使用`mig`账户即可访问域管理员有权访问的资源。
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_177.png)
 
 ![](img/99fc3bc9f5f859b61bc98f5ff159f632_179.png)
 
 ![](img/99fc3bc9f5f859b61bc98f5ff159f632_181.png)
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_183.png)
 
 ---
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_185.png)
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_187.png)
 
 ## 总结 🎯
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_189.png)
 
 本节课我们一起学习了域环境下的四种权限维持技术：
 1.  **黄金票据伪造**：通过获取`krbtgt`哈希伪造TGT，生成任意服务的访问票据。
@@ -345,13 +302,9 @@ Get-ADUser mig -Properties sidhistory
 3.  **Skeleton Key**：在域控安装万能密码，使所有域用户可用通用密码登录。
 4.  **SID History**：将高权限用户的SID添加到普通用户属性，实现权限提升。
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_191.png)
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_193.png)
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_195.png)
 
-![](img/99fc3bc9f5f859b61bc98f5ff159f632_197.png)
 
 ![](img/99fc3bc9f5f859b61bc98f5ff159f632_199.png)
 

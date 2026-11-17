@@ -20,17 +20,13 @@
 
 ![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_15.png)
 
-![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_17.png)
 
-![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_19.png)
 
 文件包含是程序开发中为了代码复用而引入的一种机制。开发者可以将公共代码（如函数、配置）写入独立文件，在需要时通过包含函数引入，从而避免重复编写。在PHP中，常见的包含函数有 `include`、`require`、`include_once`、`require_once`。
 
 ![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_21.png)
 
-![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_23.png)
 
-![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_25.png)
 
 文件包含漏洞的产生，源于开发者将包含的文件路径设置为用户可控的变量。攻击者通过控制这个变量，可以包含并执行任意文件，从而导致安全风险。
 
@@ -65,7 +61,6 @@
 
 ![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_42.png)
 
-![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_44.png)
 
 ![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_46.png)
 
@@ -100,11 +95,9 @@
 
 ![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_65.png)
 
-![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_67.png)
 
 ![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_69.png)
 
-![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_71.png)
 
 ![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_73.png)
 
@@ -159,19 +152,15 @@
 
 ![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_107.png)
 
-![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_109.png)
 
-![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_111.png)
 
 ![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_112.png)
 
 ![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_114.png)
 
-![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_116.png)
 
 当无法上传文件时，则需要借助服务器上已有的文件或PHP内置特性来实现攻击。主要有以下三种方式：
 
-![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_118.png)
 
 ![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_120.png)
 
@@ -189,7 +178,6 @@
 
 ## 🔧 PHP伪协议详解与利用
 
-![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_130.png)
 
 ![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_132.png)
 
@@ -211,9 +199,7 @@
 
 ### 1. 利用伪协议读取文件
 
-![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_145.png)
 
-![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_147.png)
 
 *   **`file://` 协议**：用于访问本地文件系统。需要知道文件的绝对路径。
     ```
@@ -225,9 +211,7 @@
     ```
     上述Payload会以Base64编码的形式读取 `index.php` 的源代码，解码后即可获得明文。
 
-![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_149.png)
 
-![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_151.png)
 
 ![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_153.png)
 
@@ -265,9 +249,7 @@
 
 ![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_171.png)
 
-![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_173.png)
 
-![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_175.png)
 
 通过 `php://filter` 与 `php://input` 协议结合写入操作，可以向服务器写入文件。这通常需要代码中有相应的文件写入逻辑配合，在CTF中较为常见。
 例如，利用 `php://input` 接收POST数据并写入文件：
@@ -339,7 +321,6 @@
 
 ### 黑盒实战案例
 
-![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_226.png)
 
 在一个真实的WPS演示站点中，发现URL参数存在文件包含漏洞：
 ```
@@ -347,17 +328,13 @@
 ```
 通过将 `file` 参数修改为 `../../../../etc/passwd` 或 `database.config.php`，成功读取了服务器上的敏感文件内容。在实际攻击中，后续会尝试使用伪协议进行代码执行，但该演示站点已对此做了防护。
 
-![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_228.png)
 
 ![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_230.png)
 
 ### CTF题型通关思路（以CTFshow平台为例）
 
-![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_232.png)
 
-![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_234.png)
 
-![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_236.png)
 
 ![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_238.png)
 
@@ -365,7 +342,6 @@
 
 以下是文件包含相关题型的常见解题思路：
 
-![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_242.png)
 
 ![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_244.png)
 
@@ -426,7 +402,6 @@
 *   **考点**：过滤了 `php://`，但可以使用 `php://filter` 的变种或编码绕过。
 *   **解法**：对 `php://` 进行二次URL编码，或使用 `PHP://filter`（大小写绕过）。
 
-![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_264.png)
 
 ![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_266.png)
 
@@ -452,15 +427,12 @@
 
 ![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_274.png)
 
-![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_276.png)
 
 ![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_278.png)
 
 ![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_280.png)
 
-![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_282.png)
 
-![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_284.png)
 
 ![](img/5c6bfa81bd63a1b89c54dcadfb1a836a_286.png)
 

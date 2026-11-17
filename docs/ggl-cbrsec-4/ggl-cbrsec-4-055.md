@@ -1,6 +1,5 @@
 # 055：Linux架构解析
 
-![](img/ca75bfcd8b66f730694f8b041e5f126d_0.png)
 
 ![](img/ca75bfcd8b66f730694f8b041e5f126d_0.png)
 
@@ -46,7 +45,6 @@ Linux操作系统架构的另一个元素是**文件系统层次标准**。FHS�
 
 这引出了我们的下一个组件：内核。内核是Linux操作系统的一个组件，负责管理**进程**和**内存**。
 
-![](img/ca75bfcd8b66f730694f8b041e5f126d_2.png)
 
 ![](img/ca75bfcd8b66f730694f8b041e5f126d_2.png)
 
@@ -64,6 +62,5 @@ Linux操作系统架构的另一个元素是**文件系统层次标准**。FHS�
 
 😊
 
-![](img/ca75bfcd8b66f730694f8b041e5f126d_4.png)
 
 ![](img/ca75bfcd8b66f730694f8b041e5f126d_4.png)

@@ -2,7 +2,6 @@
 
 ![](img/b6f27f2fddda555cf33048d1d561b2a5_1.png)
 
-![](img/b6f27f2fddda555cf33048d1d561b2a5_3.png)
 
 ![](img/b6f27f2fddda555cf33048d1d561b2a5_5.png)
 
@@ -20,7 +19,6 @@
 
 防火墙通常不会严格限制DNS流量，这为隐蔽通信提供了机会。本节课将介绍如何将Metasploit会话的流量封装在DNS协议中，实现突破网络防护、控制目标主机的目的。我们将使用DNSCat2工具，并讲解通过DNS TXT记录传递Payload的方法。
 
-![](img/b6f27f2fddda555cf33048d1d561b2a5_12.png)
 
 ---
 
@@ -30,7 +28,6 @@
 
 ![](img/b6f27f2fddda555cf33048d1d561b2a5_15.png)
 
-![](img/b6f27f2fddda555cf33048d1d561b2a5_17.png)
 
 ![](img/b6f27f2fddda555cf33048d1d561b2a5_19.png)
 
@@ -82,7 +79,6 @@ DNSCat2是一款使用Ruby语言编写的工具，它能够将正常的TCP流量
     *   在会话内，可以执行命令、上传/下载文件、进行端口转发等操作。
     *   使用`Ctrl+Z`将会话置于后台，而不是`Ctrl+C`直接终止。
 
-![](img/b6f27f2fddda555cf33048d1d561b2a5_33.png)
 
 **核心概念**：DNSCat2通过DNS协议封装数据。其优点是隐蔽性强，缺点是每次传输的数据包较小，不适合传输大文件。
 
@@ -100,7 +96,6 @@ DNSCat2是一款使用Ruby语言编写的工具，它能够将正常的TCP流量
 
 ![](img/b6f27f2fddda555cf33048d1d561b2a5_43.png)
 
-![](img/b6f27f2fddda555cf33048d1d561b2a5_45.png)
 
 上一节我们介绍了使用专用工具建立DNS隧道。本节中，我们来看看另一种更轻量级的方法——直接通过DNS系统的TXT记录来传递Payload。
 
@@ -151,13 +146,11 @@ DNSCat2是一款使用Ruby语言编写的工具，它能够将正常的TCP流量
 
 ![](img/b6f27f2fddda555cf33048d1d561b2a5_61.png)
 
-![](img/b6f27f2fddda555cf33048d1d561b2a5_63.png)
 
 **核心概念**：此方法实现了“无文件”攻击，Payload仅存在于内存和DNS查询响应中，极大降低了被传统杀毒软件发现的概率。同时，通过更新DNS记录即可快速切换控制端IP，便于持久化控制。
 
 ![](img/b6f27f2fddda555cf33048d1d561b2a5_65.png)
 
-![](img/b6f27f2fddda555cf33048d1d561b2a5_67.png)
 
 ![](img/b6f27f2fddda555cf33048d1d561b2a5_69.png)
 

@@ -1,58 +1,39 @@
 #  071：Cobalt Strike提权模块 🚀
 
-![](img/e2b6ad23cf71015f63c465600c231882_1.png)
 
 在本节课中，我们将学习如何利用Cobalt Strike框架中的提权模块，将已获得的普通用户权限提升至更高权限（如SYSTEM）。课程将涵盖漏洞原理、模块配置、脚本加载以及多种提权方法的具体操作。
 
-![](img/e2b6ad23cf71015f63c465600c231882_2.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_3.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_5.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_7.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_9.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_11.png)
 
 ---
 
-![](img/e2b6ad23cf71015f63c465600c231882_13.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_15.png)
 
 ## 概述
 
-![](img/e2b6ad23cf71015f63c465600c231882_17.png)
 
 上一节我们介绍了Windows服务路径漏洞的原理。本节中，我们来看看如何在Cobalt Strike中利用相关模块和脚本实现权限提升。我们将重点学习内置提权模块、外部EXP利用以及PowerShell脚本的集成使用。
 
 ---
 
-![](img/e2b6ad23cf71015f63c465600c231882_19.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_21.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_23.png)
 
 ## 服务路径漏洞利用回顾与Cobalt Strike集成
 
 如果目标服务的可执行程序路径没有被引号包裹，系统在启动服务时，会按空格分割路径字符串，并依次查找前面部分对应的可执行程序。它会一层层目录查找，直到找到最终的服务程序。
 
-![](img/e2b6ad23cf71015f63c465600c231882_25.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_26.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_28.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_29.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_30.png)
 
 利用此漏洞进行提权的方法是：找到该路径中某个我们有写入权限的目录。如果有写入权限，就可以尝试写入一个恶意程序。
 
-![](img/e2b6ad23cf71015f63c465600c231882_32.png)
 
 ![](img/e2b6ad23cf71015f63c465600c231882_34.png)
 
@@ -60,7 +41,6 @@
 
 例如，尝试写入一个15872字节的程序到 `C:\Windows\Product` 目录下，生成程序名为 `common.exe`。生成此程序后，需要等待服务重新启动。因为漏洞触发需要服务重启并加载可执行程序路径时，才会查找到我们写入的木马程序并加载执行。
 
-![](img/e2b6ad23cf71015f63c465600c231882_37.png)
 
 由于我们是普通用户，没有权限启动该服务，所以利用模块会处于等待状态。我们可以通过模拟服务启动来触发。以下是利用过程的关键步骤：
 
@@ -76,9 +56,7 @@
 
 ![](img/e2b6ad23cf71015f63c465600c231882_45.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_47.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_48.png)
 
 **注意**：成功利用后，我们得到的会话（Session）是基于 `common.exe` 这个程序的。由于它并非真正的服务程序，无法与服务控制器正常通信，进程很快会被终止。因此，我们需要在会话建立后立即进行进程迁移（Migrate），将会话迁移到一个稳定的系统进程（如 `explorer.exe`）中，以维持持久访问。
 
@@ -88,9 +66,7 @@
 
 ---
 
-![](img/e2b6ad23cf71015f63c465600c231882_54.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_56.png)
 
 ## Cobalt Strike 高级会话配置
 
@@ -119,13 +95,10 @@
 
 ## 使用外部提权EXP（以CVE-2019-0803为例）
 
-![](img/e2b6ad23cf71015f63c465600c231882_72.png)
 
 ![](img/e2b6ad23cf71015f63c465600c231882_74.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_76.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_78.png)
 
 除了内置模块，我们还可以上传并使用独立的提权EXP程序。例如，利用CVE-2019-0803（Win32k漏洞）的EXP程序。
 
@@ -135,7 +108,6 @@
 
 该EXP影响范围很广，包括Windows 7到Windows 10以及多个Server版本。使用方法通常是在命令行后接 `cmd` 选项和要执行的命令。
 
-![](img/e2b6ad23cf71015f63c465600c231882_84.png)
 
 ![](img/e2b6ad23cf71015f63c465600c231882_86.png)
 
@@ -146,7 +118,6 @@
 
 ![](img/e2b6ad23cf71015f63c465600c231882_88.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_90.png)
 
 ---
 
@@ -164,7 +135,6 @@
 
 ![](img/e2b6ad23cf71015f63c465600c231882_101.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_103.png)
 
 Cobalt Strike可以通过 `powershell-import` 加载PowerShell脚本。PowerUp是一个著名的提权辅助脚本，能全面检测系统潜在的提权漏洞。
 
@@ -176,9 +146,7 @@ Cobalt Strike可以通过 `powershell-import` 加载PowerShell脚本。PowerUp�
 
 ![](img/e2b6ad23cf71015f63c465600c231882_111.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_113.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_115.png)
 
 **操作步骤**：
 1.  使用 `powershell-import` 命令加载本地的PowerUp脚本。
@@ -201,7 +169,6 @@ Cobalt Strike可以通过 `powershell-import` 加载PowerShell脚本。PowerUp�
 
 ![](img/e2b6ad23cf71015f63c465600c231882_124.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_126.png)
 
 ![](img/e2b6ad23cf71015f63c465600c231882_128.png)
 
@@ -213,9 +180,7 @@ Cobalt Strike可以通过 `powershell-import` 加载PowerShell脚本。PowerUp�
 
 ![](img/e2b6ad23cf71015f63c465600c231882_133.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_135.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_137.png)
 
 ![](img/e2b6ad23cf71015f63c465600c231882_139.png)
 
@@ -223,7 +188,6 @@ Aggressor脚本可以极大扩展Cobalt Strike的功能。例如，`SweetPotato`
 
 ![](img/e2b6ad23cf71015f63c465600c231882_141.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_143.png)
 
 **操作步骤**：
 1.  在Cobalt Strike的脚本管理器（`Script Manager`）中，点击 `Load`，选择后缀为 `.cna` 的脚本文件进行加载。
@@ -240,7 +204,6 @@ Aggressor脚本可以极大扩展Cobalt Strike的功能。例如，`SweetPotato`
 
 ![](img/e2b6ad23cf71015f63c465600c231882_151.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_152.png)
 
 ---
 
@@ -252,7 +215,6 @@ Aggressor脚本可以极大扩展Cobalt Strike的功能。例如，`SweetPotato`
 
 ![](img/e2b6ad23cf71015f63c465600c231882_160.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_162.png)
 
 ## Cobalt Strike通信机制简要说明
 
@@ -265,15 +227,12 @@ Aggressor脚本可以极大扩展Cobalt Strike的功能。例如，`SweetPotato`
 
 ![](img/e2b6ad23cf71015f63c465600c231882_166.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_168.png)
 
 ![](img/e2b6ad23cf71015f63c465600c231882_170.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_171.png)
 
 ![](img/e2b6ad23cf71015f63c465600c231882_173.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_175.png)
 
 ![](img/e2b6ad23cf71015f63c465600c231882_177.png)
 
@@ -285,11 +244,9 @@ Aggressor脚本可以极大扩展Cobalt Strike的功能。例如，`SweetPotato`
 
 ![](img/e2b6ad23cf71015f63c465600c231882_182.png)
 
-![](img/e2b6ad23cf71015f63c465600c231882_184.png)
 
 ## 总结
 
-![](img/e2b6ad23cf71015f63c465600c231882_186.png)
 
 本节课我们一起学习了在Cobalt Strike框架中进行权限提升的多种方法：
 1.  利用内置的 `elevate` 模块进行提权。

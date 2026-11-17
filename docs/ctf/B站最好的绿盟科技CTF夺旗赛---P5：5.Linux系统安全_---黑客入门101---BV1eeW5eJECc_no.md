@@ -20,14 +20,12 @@
 
 ### iptables防火墙规则
 
-![](img/8b0d178fde8c420c1a423f72b5d6be86_3.png)
 
 iptables是Linux内核集成的IP信息包过滤系统。如果系统连接到互联网或局域网，则可以利用iptables更好地控制IP信息包过滤，实现防火墙功能。
 
 下面讲一下Linux的iptables命令选项的输入顺序。基本语法结构如下：
 `iptables -t <表名> <命令> <链名> <规则号> <匹配条件> -j <动作>`
 
-![](img/8b0d178fde8c420c1a423f72b5d6be86_5.png)
 
 以下是常见的参数选项：
 *   `-A`：向规则链末尾**添加**一条规则。
@@ -40,7 +38,6 @@ iptables是Linux内核集成的IP信息包过滤系统。如果系统连接到�
 *   `-i`：指定数据包**进入**本机的网络接口。
 *   `-o`：指定数据包**离开**本机所使用的网络接口。
 
-![](img/8b0d178fde8c420c1a423f72b5d6be86_7.png)
 
 规则链（Chain）主要包括：
 *   **INPUT链**：处理**输入**的数据包，即系统接收的数据包。
@@ -69,7 +66,6 @@ iptables -A OUTPUT -o eth0 -p udp -j DROP
 ```
 这条规则是向OUTPUT链添加条目，限制本机通过eth0网卡**向外发起**的所有UDP连接，即所有外发的UDP数据包都会被丢弃。
 
-![](img/8b0d178fde8c420c1a423f72b5d6be86_11.png)
 
 添加完自定义规则后，我们可以通过`iptables -L`命令来查看当前的所有规则链。规则链通常分为三块：INPUT（进入）、FORWARD（转发）和OUTPUT（输出）。
 
@@ -88,17 +84,13 @@ iptables -A OUTPUT -o eth0 -p udp -j DROP
 *   **`lastlog`**：这是一个比较重要的日志。该文件记录了所有用户最近一次成功登录的事件。因为该文件是一个二进制文件，所以我们需要使用`lastlog`命令来查看。
 *   **`wtmp`**：该日志永久记录每个用户的登录、注销及系统启动、停机等事件。我们可以使用`last`命令来访问这个文件的信息。
 
-![](img/8b0d178fde8c420c1a423f72b5d6be86_13.png)
 
-![](img/8b0d178fde8c420c1a423f72b5d6be86_15.png)
 
 除了这些系统日志外，第三方服务（如Apache、Nginx、SSH）的日志也会保存在该目录或其子目录中。
 
-![](img/8b0d178fde8c420c1a423f72b5d6be86_17.png)
 
 ### 日志分析实战
 
-![](img/8b0d178fde8c420c1a423f72b5d6be86_19.png)
 
 开启对应的日志审计功能后，我们就可以通过日志分析来发现恶意的攻击行为或者非法的登录行为。
 
@@ -109,7 +101,6 @@ cat /var/log/secure | grep sshd
 ```
 通过观察日志，如果发现短时间内有大量来自相同或不同IP的登录失败记录（状态为`Failed password`），且频率异常密集，就可以初步断定这是一个SSH口令暴力破解行为。
 
-![](img/8b0d178fde8c420c1a423f72b5d6be86_21.png)
 
 **2. 使用`last`和`lastlog`命令**
 *   `last`命令：查看最近用户的登录情况，包括登录账号、登录位置（终端或IP地址）、登录时间等。
@@ -136,7 +127,6 @@ cat /var/log/secure | grep sshd
 假设我们知道一句话木马（Webshell）中包含`eval(`和`POST`这两个关键字。
 我们可以使用`grep`命令对Web应用目录进行检查：
 
-![](img/8b0d178fde8c420c1a423f72b5d6be86_23.png)
 
 ```bash
 # 方法一：直接使用grep递归搜索
@@ -146,7 +136,6 @@ find /var/www/html/ -type f -name “*.php” | xargs grep -l “eval(.*POST”
 ```
 `-r`参数表示递归搜索子目录，`-i`参数表示不区分大小写。通过这种方式，可以手工筛查目录下所有文件是否包含恶意代码特征。
 
-![](img/8b0d178fde8c420c1a423f72b5d6be86_25.png)
 
 ### 专用安全工具
 
@@ -179,7 +168,6 @@ chkrootkit 是一个用于本地检查rootkit（系统后门）的工具。它�
 sudo chkrootkit
 ```
 
-![](img/8b0d178fde8c420c1a423f72b5d6be86_27.png)
 
 **4. 后门检测工具：rkhunter**
 rkhunter（Rootkit Hunter）是另一个常用的rootkit检测工具。它会检查系统二进制文件、隐藏文件、异常进程等。
@@ -188,7 +176,6 @@ rkhunter（Rootkit Hunter）是另一个常用的rootkit检测工具。它会检
 sudo rkhunter --check
 ```
 
-![](img/8b0d178fde8c420c1a423f72b5d6be86_29.png)
 
 ## 总结 📚
 

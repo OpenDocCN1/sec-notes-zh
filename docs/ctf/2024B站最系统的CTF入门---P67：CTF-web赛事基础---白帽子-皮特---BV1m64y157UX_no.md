@@ -1,8 +1,6 @@
 # CTF入门教程：P67：CTF web赛事基础 - 远程代码执行与命令执行 🚀
 
-![](img/832b85c017532a9bc9f861ff3a6bad0c_1.png)
 
-![](img/832b85c017532a9bc9f861ff3a6bad0c_3.png)
 
 ## 概述
 在本节课中，我们将学习CTF Web方向中两个重要的漏洞类型：**命令执行**与**远程代码执行**。我们将了解它们的基本概念、产生原因、利用方式以及相关的权限问题，并通过简单的例子帮助初学者理解。
@@ -46,7 +44,6 @@ system("cp $file /var/www/html/");
 ```
 如果用户输入`test.txt; ls -la`，最终执行的命令将是`cp test.txt; ls -la /var/www/html/`，从而执行了额外的`ls`命令。
 
-![](img/832b85c017532a9bc9f861ff3a6bad0c_5.png)
 
 ### 命令注入发生的条件
 从以上例子可以看出，命令注入漏洞的发生需要两个条件：
@@ -55,27 +52,20 @@ system("cp $file /var/www/html/");
 
 因此，**向程序传入不安全参数的地方**是命令注入攻击的常见发生点。
 
-![](img/832b85c017532a9bc9f861ff3a6bad0c_7.png)
 
 ---
 
-![](img/832b85c017532a9bc9f861ff3a6bad0c_9.png)
 
-![](img/832b85c017532a9bc9f861ff3a6bad0c_11.png)
 
 ## 命令执行的权限问题
 
-![](img/832b85c017532a9bc9f861ff3a6bad0c_13.png)
 
-![](img/832b85c017532a9bc9f861ff3a6bad0c_14.png)
 
-![](img/832b85c017532a9bc9f861ff3a6bad0c_16.png)
 
 上一节我们了解了命令注入如何发生，本节中我们来看看执行命令时的**权限问题**。
 
 命令是由谁执行的呢？它是由PHP调用`system`等函数去执行的。而PHP是由Web服务器（如Apache、Nginx）运行的。因此，**最终执行命令的实体是Web服务器进程**，它拥有自己的系统用户身份和权限。
 
-![](img/832b85c017532a9bc9f861ff3a6bad0c_18.png)
 
 在Linux系统中，不同的用户拥有不同的权限。最高权限用户是`root`。但Web服务器通常不以`root`身份运行，而是以一个权限较低的用户运行，例如`www-data`。
 
@@ -115,7 +105,6 @@ drwxr-xr-x 2 www-data www-data 4096 Jan 1 10:00 webdir/
 *   `call_user_func()` / `call_user_func_array()`：回调函数。
 *   `array_map()`等：配合回调函数。
 
-![](img/832b85c017532a9bc9f861ff3a6bad0c_20.png)
 
 **命令执行函数**：这些函数可以执行系统命令。
 *   `system()`：执行外部程序并显示输出。
@@ -129,7 +118,6 @@ drwxr-xr-x 2 www-data www-data 4096 Jan 1 10:00 webdir/
 
 ## 漏洞利用实例
 
-![](img/832b85c017532a9bc9f861ff3a6bad0c_22.png)
 
 现在，我们通过一个简单的实例来看如何利用命令注入漏洞。
 
@@ -146,7 +134,6 @@ if (isset($_GET['ip'])) {
 ```
 这段代码接收一个`ip`参数，并拼接成`ping -c 4 [用户输入的IP]`命令来执行。
 
-![](img/832b85c017532a9bc9f861ff3a6bad0c_24.png)
 
 **正常请求**：
 ```
@@ -162,7 +149,6 @@ http://target.com/cmd.php?ip=127.0.0.1; ls -la
 最终执行的命令变为：`ping -c 4 127.0.0.1; ls -la`
 *   `ping`命令执行后，会继续执行`ls -la`命令，列出当前目录下的文件。
 
-![](img/832b85c017532a9bc9f861ff3a6bad0c_26.png)
 
 通过这种方式，攻击者可以执行任意系统命令，例如读取文件、探测内网、反弹Shell等。
 

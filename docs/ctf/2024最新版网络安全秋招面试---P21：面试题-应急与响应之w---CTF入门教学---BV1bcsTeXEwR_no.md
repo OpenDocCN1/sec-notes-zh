@@ -53,7 +53,6 @@ C:\Windows\System32\winevt\Logs\
 
 ### 步骤一：使用事件ID过滤日志
 
-![](img/ca9eb949e9959e6885bea9a5c7136659_17.png)
 
 在Windows中，每个系统事件都有一个唯一的ID。通过ID可以快速过滤出特定类型的事件，这是应急响应中的关键技巧。
 

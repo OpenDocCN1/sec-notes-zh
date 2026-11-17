@@ -2,7 +2,6 @@
 
 ![](img/5963966ee8f27f7b42f7a04c6a962381_1.png)
 
-![](img/5963966ee8f27f7b42f7a04c6a962381_3.png)
 
 在本课程中，我们将学习在渗透测试后渗透阶段，如何通过各种技术手段在目标系统上实现权限维持。权限维持的目的是确保攻击者能够长期、隐蔽地控制目标系统，即使管理员修复了初始漏洞或重启了系统。我们将重点介绍在Windows系统上常用的几种权限维持方法，并补充一些相关的知识点。
 
@@ -100,11 +99,8 @@ copy C:\Windows\System32\cmd.exe C:\Windows\System32\sethc.exe /Y
 
 ## CLR劫持与NC后门 🐚
 
-![](img/5963966ee8f27f7b42f7a04c6a962381_5.png)
 
-![](img/5963966ee8f27f7b42f7a04c6a962381_7.png)
 
-![](img/5963966ee8f27f7b42f7a04c6a962381_9.png)
 
 ![](img/5963966ee8f27f7b42f7a04c6a962381_11.png)
 
@@ -114,7 +110,6 @@ copy C:\Windows\System32\cmd.exe C:\Windows\System32\sethc.exe /Y
 *   注册表路径：`HKEY_CURRENT_USER\SOFTWARE\Microsoft\.NETFramework` 或 `HKEY_LOCAL_MACHINE`...
 *   设置键值：`v4.0.30319`（版本号）下的 `SchUseStrongCrypto` 和 `SystemDefaultTlsVersions` 可能被利用，更常见的是通过环境变量或配置文件。一种方法是设置环境变量 `COR_ENABLE_PROFILING=1` 和 `COR_PROFILER={恶意DLL的CLSID}`，使所有.NET进程加载该DLL。
 
-![](img/5963966ee8f27f7b42f7a04c6a962381_13.png)
 
 **NC（Netcat）后门**：将Netcat工具上传至目标系统，并设置为监听模式，绑定到某个端口，等待攻击者连接。
 ```cmd

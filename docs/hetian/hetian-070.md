@@ -4,9 +4,7 @@
 
 ---
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_1.png)
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_3.png)
 
 ![](img/1c282b348d9e2063f3ceead4e0d8de6d_5.png)
 
@@ -26,7 +24,6 @@
 
 ## Meterpreter自动提权命令
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_9.png)
 
 ![](img/1c282b348d9e2063f3ceead4e0d8de6d_11.png)
 
@@ -34,13 +31,10 @@
 
 这个命令用于尝试将当前会话权限提升至SYSTEM级别。其使用前提是当前用户属于管理员组，但即使满足此条件，提权也不一定总能成功。
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_13.png)
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_15.png)
 
 以下是两种典型情况：
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_17.png)
 
 ![](img/1c282b348d9e2063f3ceead4e0d8de6d_19.png)
 
@@ -49,7 +43,6 @@
 **情况一：直接提权成功**
 当执行 `getsystem` 命令后，若返回新的会话（例如session 2），并且通过 `getuid` 命令查看显示为 `NT AUTHORITY\SYSTEM`，则表明提权成功。
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_23.png)
 
 ![](img/1c282b348d9e2063f3ceead4e0d8de6d_24.png)
 
@@ -64,21 +57,15 @@
 
 ## 绕过用户账户控制（UAC）
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_28.png)
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_30.png)
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_32.png)
 
 用户账户控制（UAC）是微软的一种安全机制，旨在缓解恶意软件的影响。当普通用户尝试执行需要管理员权限的操作（如运行`regedit`或以管理员身份运行`cmd`）时，系统会弹出确认窗口。
 
 ![](img/1c282b348d9e2063f3ceead4e0d8de6d_33.png)
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_35.png)
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_36.png)
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_37.png)
 
 ![](img/1c282b348d9e2063f3ceead4e0d8de6d_38.png)
 
@@ -88,11 +75,9 @@
 
 在MSF中，集成了多个用于绕过UAC的模块。我们可以通过 `search bypassuac` 命令进行搜索和查看。
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_42.png)
 
 ### BypassUAC模块使用
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_44.png)
 
 ![](img/1c282b348d9e2063f3ceead4e0d8de6d_45.png)
 
@@ -100,9 +85,7 @@
 
 ![](img/1c282b348d9e2063f3ceead4e0d8de6d_47.png)
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_49.png)
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_50.png)
 
 ![](img/1c282b348d9e2063f3ceead4e0d8de6d_51.png)
 
@@ -117,21 +100,15 @@
     *   `set LPORT <监听端口>`：设置回连端口。
 4.  执行 `exploit` 命令。
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_53.png)
 
 ![](img/1c282b348d9e2063f3ceead4e0d8de6d_54.png)
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_55.png)
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_56.png)
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_57.png)
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_59.png)
 
 模块运行成功后，会建立一个新的Meterpreter会话（例如session 2）。进入这个新会话后，再执行 `getsystem` 命令，通常就能成功获得SYSTEM权限。
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_60.png)
 
 ![](img/1c282b348d9e2063f3ceead4e0d8de6d_61.png)
 
@@ -141,15 +118,11 @@
 
 ![](img/1c282b348d9e2063f3ceead4e0d8de6d_66.png)
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_67.png)
 
 **核心原理**：BypassUAC模块利用漏洞，使当前会话获得了“绕过UAC验证”后的管理员上下文环境，在此基础上再执行 `getsystem`，成功率大大提升。
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_69.png)
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_70.png)
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_72.png)
 
 ![](img/1c282b348d9e2063f3ceead4e0d8de6d_73.png)
 
@@ -167,39 +140,28 @@
 3.  `set LHOST <监听IP>`
 4.  `exploit`
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_81.png)
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_83.png)
 
 该模块运行后，可能会直接返回一个具有SYSTEM权限的新会话。
 
 **注意**：在使用这些模块时，务必注意`TARGET`参数的设置。如果目标系统是64位（x64），而模块默认或设置的`TARGET`是32位（x86），则会导致失败。错误信息通常为：`[-] Exploit aborted due to failure: bad-config: x86 target selected for x64 system`。此时，需要使用 `show targets` 查看可用目标，并用 `set TARGET <目标ID>` 命令进行正确设置。
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_85.png)
 
 ---
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_87.png)
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_88.png)
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_90.png)
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_92.png)
 
 ## 本地提权漏洞利用建议器
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_94.png)
 
 上一节课我们介绍了Windows平台的各种提权漏洞。在MSF中，有一个非常实用的模块 `post/multi/recon/local_exploit_suggester`，可以自动检测目标系统可能存在的本地提权漏洞。
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_96.png)
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_98.png)
 
 该模块基于已有的会话，在目标机器上运行检测脚本，并列出MSF中可供尝试利用的对应漏洞模块。
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_100.png)
 
 使用步骤如下：
 1.  在获得一个会话后，背景化该会话。
@@ -224,23 +186,16 @@
 
 如果利用成功，将会获得一个新的、权限更高的会话（可能是管理员或SYSTEM权限）。之后可以在此新会话中尝试执行 `getsystem` 以确认或进一步提升权限。
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_106.png)
 
 **重要提示**：此模块给出的建议仅作为参考，并非所有列出的模块都能保证提权成功。渗透测试需要不断尝试。
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_108.png)
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_110.png)
 
 ---
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_111.png)
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_113.png)
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_115.png)
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_117.png)
 
 ## 不安全的服务路径漏洞利用
 
@@ -256,25 +211,19 @@
 
 模块运行后，会尝试查找并利用符合条件的服务。如果找到并利用成功，即可获得一个SYSTEM权限的会话。
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_119.png)
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_121.png)
 
 ---
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_123.png)
 
 ## 总结 🎯
 
 ![](img/1c282b348d9e2063f3ceead4e0d8de6d_125.png)
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_127.png)
 
 本节课我们一起学习了MSF框架中Meterpreter的多种权限提升方法：
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_129.png)
 
-![](img/1c282b348d9e2063f3ceead4e0d8de6d_130.png)
 
 1.  **基础命令**：首先尝试使用 `getsystem` 命令进行自动提权。
 2.  **绕过UAC**：当 `getsystem` 失败时，使用 `bypassuac` 或 `bypassuac_injection` 模块绕过用户账户控制，为后续提权创造条件。

@@ -95,7 +95,6 @@ substring(database(),1,1)='a'
 *   正确方法：`ASCII(RIGHT(‘ABCDEF’, 3))`。`RIGHT(‘ABCDEF’, 3)` 的结果是 `‘DEF’`，其首字符是 ‘D’。因此，整个表达式返回 ‘D’ 的ASCII码——68。
 *   这样，我们通过控制 `RIGHT(str, N)` 中的 `N`，就能精确地获取倒数第 `N` 位的ASCII码值。
 
-![](img/4b19032097b75cf8f28a442d0ea44806_11.png)
 
 **实战Payload示例：**
 要爆破数据库名倒数第2位的字符，可以使用：

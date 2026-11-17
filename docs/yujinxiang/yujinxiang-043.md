@@ -1,10 +1,8 @@
 #  043：054-一键更新基址 🛠️
 
-![](img/d1fddee165ed5b93714becf0cdc16a38_1.png)
 
 在本节课中，我们将学习如何编写一个“一键更新基址”的函数。我们将基于之前课程中已完成的特征码定位和偏移提取功能，整合并优化代码，实现自动化读取多个游戏基址。
 
-![](img/d1fddee165ed5b93714becf0cdc16a38_3.png)
 
 ---
 
@@ -49,13 +47,11 @@ void UpdateAllBases(HANDLE hProcess) {
 
 首先，在函数头部定义一个缓冲区来存放特征码字符串。
 
-![](img/d1fddee165ed5b93714becf0cdc16a38_5.png)
 
 ```c
 char szPattern[256] = {0};
 ```
 
-![](img/d1fddee165ed5b93714becf0cdc16a38_7.png)
 
 我们使用第一个基址（例如“人物属性”基址）的特征码来初始化这个缓冲区。注意，复制特征码字符串时需要删除其中的空格。
 
@@ -66,13 +62,10 @@ strcpy(szPattern, "8B 0D ?? ?? ?? ?? 85 C9 74 0F");
 
 ### 2. 定位特征码地址
 
-![](img/d1fddee165ed5b93714becf0cdc16a38_9.png)
 
-![](img/d1fddee165ed5b93714becf0cdc16a38_11.png)
 
 调用之前封装好的特征码定位函数 `FindPattern` 来获取特征码所在的内存地址。
 
-![](img/d1fddee165ed5b93714becf0cdc16a38_13.png)
 
 ```c
 DWORD dwPatternAddr = FindPattern(hProcess, szPattern);
@@ -96,15 +89,12 @@ DWORD ReadBaseAddress(HANDLE hProcess, DWORD dwAddress) {
 }
 ```
 
-![](img/d1fddee165ed5b93714becf0cdc16a38_15.png)
 
 ### 4. 计算并读取最终基址
 
-![](img/d1fddee165ed5b93714becf0cdc16a38_17.png)
 
 定位到特征码地址后，需要加上特定的偏移量，然后读取该地址存储的值，这才是真正的基址。
 
-![](img/d1fddee165ed5b93714becf0cdc16a38_19.png)
 
 ```c
 // 假设“人物属性”基址的偏移是 0x19
@@ -136,13 +126,11 @@ int main() {
 
 ## 扩展更新其他基址
 
-![](img/d1fddee165ed5b93714becf0cdc16a38_21.png)
 
 按照相同的模式，我们可以扩展函数，一次性更新多个基址，例如背包基址、怪物列表基址等。
 
 以下是更新“背包基址”的示例步骤：
 
-![](img/d1fddee165ed5b93714becf0cdc16a38_23.png)
 
 1.  **替换特征码**：将 `szPattern` 缓冲区的内容替换为背包的特征码。
 2.  **更新偏移量**：计算并使用背包基址对应的偏移量（例如 `0x11`）。
@@ -166,15 +154,12 @@ if (dwPatternAddr) {
 
 这需要仔细分析内存结构并调整代码逻辑。
 
-![](img/d1fddee165ed5b93714becf0cdc16a38_25.png)
 
 ---
 
-![](img/d1fddee165ed5b93714becf0cdc16a38_27.png)
 
 ## 总结
 
-![](img/d1fddee165ed5b93714becf0cdc16a38_29.png)
 
 本节课中我们一起学习了如何将特征码定位与偏移读取功能整合，编写出一个“一键更新基址”的函数。我们优化了读取逻辑，封装了通用函数，并实现了对多个游戏基址的自动化读取。
 

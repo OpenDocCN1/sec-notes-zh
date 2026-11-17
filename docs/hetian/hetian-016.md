@@ -10,23 +10,18 @@
 
 WebShell是一种以ASP、PHP、JSP等网页文件形式存在的命令执行环境。这些网页文件是动态脚本文件，可以被称为网页木马后门。攻击者通过此类网页后门获取网站服务器的权限，从而控制服务器进行文件上传下载、查看数据库以及执行命令。
 
-![](img/3ec91e75fff5698df2b49f305d72fcaa_5.png)
 
 上一节我们介绍了WebShell的基本定义，本节中我们来看看与之相关的“木马”和“后门”概念。
 
 ![](img/3ec91e75fff5698df2b49f305d72fcaa_7.png)
 
-![](img/3ec91e75fff5698df2b49f305d72fcaa_9.png)
 
 ![](img/3ec91e75fff5698df2b49f305d72fcaa_10.png)
 
-![](img/3ec91e75fff5698df2b49f305d72fcaa_11.png)
 
 **木马**，全称特洛伊木马，指隐藏在计算机中用于非授权远程控制的程序。其作用是开放系统权限、泄露用户信息给攻击者，是黑客常用工具，能在管理员未察觉的情况下获取系统权限。
 
-![](img/3ec91e75fff5698df2b49f305d72fcaa_12.png)
 
-![](img/3ec91e75fff5698df2b49f305d72fcaa_13.png)
 
 ![](img/3ec91e75fff5698df2b49f305d72fcaa_15.png)
 
@@ -52,11 +47,8 @@ WebShell是一种以ASP、PHP、JSP等网页文件形式存在的命令执行环
 
 了解了基本概念后，我们来看看WebShell有哪些常见的分类方式。
 
-![](img/3ec91e75fff5698df2b49f305d72fcaa_31.png)
 
-![](img/3ec91e75fff5698df2b49f305d72fcaa_33.png)
 
-![](img/3ec91e75fff5698df2b49f305d72fcaa_35.png)
 
 ![](img/3ec91e75fff5698df2b49f305d72fcaa_36.png)
 
@@ -65,7 +57,6 @@ WebShell是一种以ASP、PHP、JSP等网页文件形式存在的命令执行环
 *   **小马**：体积较小，通常包含文件上传等基础功能。
 *   **大马**：体积较大，功能丰富，代码常进行加密以绕过检测。
 
-![](img/3ec91e75fff5698df2b49f305d72fcaa_38.png)
 
 ![](img/3ec91e75fff5698df2b49f305d72fcaa_40.png)
 
@@ -84,7 +75,6 @@ WebShell是一种以ASP、PHP、JSP等网页文件形式存在的命令执行环
 
 ![](img/3ec91e75fff5698df2b49f305d72fcaa_47.png)
 
-![](img/3ec91e75fff5698df2b49f305d72fcaa_49.png)
 
 ![](img/3ec91e75fff5698df2b49f305d72fcaa_51.png)
 
@@ -104,9 +94,7 @@ WebShell是一种以ASP、PHP、JSP等网页文件形式存在的命令执行环
 
 ![](img/3ec91e75fff5698df2b49f305d72fcaa_65.png)
 
-![](img/3ec91e75fff5698df2b49f305d72fcaa_67.png)
 
-![](img/3ec91e75fff5698df2b49f305d72fcaa_69.png)
 
 WebShell通常具有以下四个特点：
 1.  以动态脚本语言形式出现。
@@ -114,7 +102,6 @@ WebShell通常具有以下四个特点：
 3.  通常通过80端口（Web服务端口）传递数据，可以穿越防火墙。
 4.  一般不在系统日志中留下记录，只会在Web日志中留下数据传递记录。
 
-![](img/3ec91e75fff5698df2b49f305d72fcaa_71.png)
 
 ![](img/3ec91e75fff5698df2b49f305d72fcaa_73.png)
 
@@ -122,7 +109,6 @@ WebShell通常具有以下四个特点：
 
 ![](img/3ec91e75fff5698df2b49f305d72fcaa_77.png)
 
-![](img/3ec91e75fff5698df2b49f305d72fcaa_79.png)
 
 ![](img/3ec91e75fff5698df2b49f305d72fcaa_81.png)
 
@@ -134,7 +120,6 @@ WebShell通常具有以下四个特点：
 
 ![](img/3ec91e75fff5698df2b49f305d72fcaa_83.png)
 
-![](img/3ec91e75fff5698df2b49f305d72fcaa_85.png)
 
 ![](img/3ec91e75fff5698df2b49f305d72fcaa_87.png)
 
@@ -152,7 +137,6 @@ WebShell通常具有以下四个特点：
 
 ![](img/3ec91e75fff5698df2b49f305d72fcaa_101.png)
 
-![](img/3ec91e75fff5698df2b49f305d72fcaa_102.png)
 
 ## 常见WebShell示例（以PHP为例）💻
 
@@ -172,11 +156,9 @@ WebShell通常具有以下四个特点：
 
 ![](img/3ec91e75fff5698df2b49f305d72fcaa_115.png)
 
-![](img/3ec91e75fff5698df2b49f305d72fcaa_117.png)
 
 ![](img/3ec91e75fff5698df2b49f305d72fcaa_119.png)
 
-![](img/3ec91e75fff5698df2b49f305d72fcaa_121.png)
 
 ![](img/3ec91e75fff5698df2b49f305d72fcaa_123.png)
 
@@ -193,7 +175,6 @@ WebShell通常具有以下四个特点：
 
 ![](img/3ec91e75fff5698df2b49f305d72fcaa_129.png)
 
-![](img/3ec91e75fff5698df2b49f305d72fcaa_131.png)
 
 ![](img/3ec91e75fff5698df2b49f305d72fcaa_133.png)
 
@@ -219,7 +200,6 @@ WebShell通常具有以下四个特点：
 
 ![](img/3ec91e75fff5698df2b49f305d72fcaa_149.png)
 
-![](img/3ec91e75fff5698df2b49f305d72fcaa_151.png)
 
 **3. COOKIE方式传递参数**
 ```php
@@ -230,9 +210,7 @@ WebShell通常具有以下四个特点：
 
 ![](img/3ec91e75fff5698df2b49f305d72fcaa_153.png)
 
-![](img/3ec91e75fff5698df2b49f305d72fcaa_155.png)
 
-![](img/3ec91e75fff5698df2b49f305d72fcaa_157.png)
 
 ![](img/3ec91e75fff5698df2b49f305d72fcaa_158.png)
 
@@ -240,11 +218,9 @@ WebShell通常具有以下四个特点：
 
 ![](img/3ec91e75fff5698df2b49f305d72fcaa_162.png)
 
-![](img/3ec91e75fff5698df2b49f305d72fcaa_164.png)
 
 ## WebShell管理工具 🛠️
 
-![](img/3ec91e75fff5698df2b49f305d72fcaa_166.png)
 
 ![](img/3ec91e75fff5698df2b49f305d72fcaa_168.png)
 
@@ -254,11 +230,8 @@ WebShell通常具有以下四个特点：
 
 手动通过浏览器传递命令效率较低，因此诞生了专门的WebShell管理工具。以下是几种常见工具：
 
-![](img/3ec91e75fff5698df2b49f305d72fcaa_174.png)
 
-![](img/3ec91e75fff5698df2b49f305d72fcaa_176.png)
 
-![](img/3ec91e75fff5698df2b49f305d72fcaa_178.png)
 
 ![](img/3ec91e75fff5698df2b49f305d72fcaa_180.png)
 
@@ -266,7 +239,6 @@ WebShell通常具有以下四个特点：
 
 ![](img/3ec91e75fff5698df2b49f305d72fcaa_183.png)
 
-![](img/3ec91e75fff5698df2b49f305d72fcaa_185.png)
 
 ![](img/3ec91e75fff5698df2b49f305d72fcaa_187.png)
 

@@ -1,32 +1,22 @@
 #  042：Android 加壳保护工具编写2 🛡️
 
-![](img/008d492789cb1ccdbbfd652c8adc2011_0.png)
 
-![](img/008d492789cb1ccdbbfd652c8adc2011_2.png)
 
-![](img/008d492789cb1ccdbbfd652c8adc2011_3.png)
 
 在本节课中，我们将学习如何在Android应用的Native层（JNI层）实现加壳保护。上一节我们介绍了在Java层完成DEX文件的释放、解密和内存加载替换。本节中，我们将看看如何在更底层的JNI层实现相同的功能，这更接近于实际商业壳的加密方式。
 
 ## 概述
 
-![](img/008d492789cb1ccdbbfd652c8adc2011_5.png)
 
-![](img/008d492789cb1ccdbbfd652c8adc2011_6.png)
 
-![](img/008d492789cb1ccdbbfd652c8adc2011_7.png)
 
 本节课的核心内容是通过JNI层代码来实现加壳。我们将分析一个参考了阿里早期实验性加壳方案的代码，讲解其基本架构、关键函数以及如何完成DEX文件的解密与内存替换。实现原理与Java层类似，但执行在Native环境，涉及JNI编程和系统底层API调用。
 
-![](img/008d492789cb1ccdbbfd652c8adc2011_9.png)
 
 ## JNI层加壳的基本架构
 
-![](img/008d492789cb1ccdbbfd652c8adc2011_11.png)
 
-![](img/008d492789cb1ccdbbfd652c8adc2011_12.png)
 
-![](img/008d492789cb1ccdbbfd652c8adc2011_13.png)
 
 JNI层加壳的基本流程与Java层非常相似。入口点同样在`Application`的`attachBaseContext`方法中，但核心的释放、解密和替换操作将在Native函数中完成。
 
@@ -136,9 +126,7 @@ void decrypt_dex_in_memory(void* data, size_t size) {
 
 ### 4. 替换 ClassLoader 的 Cookie
 
-![](img/008d492789cb1ccdbbfd652c8adc2011_15.png)
 
-![](img/008d492789cb1ccdbbfd652c8adc2011_17.png)
 
 这是将解密后的DEX“注入”到运行环境的关键步骤。其原理是找到`PathClassLoader`内部`DexPathList`的`dexElements`数组，并替换其中`DexFile`对象的`mCookie`值。
 
@@ -175,11 +163,9 @@ void replace_cookie_with_dex(JNIEnv* env, jobject context, void* dex_data, size_
 
 **注意**：`dvmDexFileOpenPartial` 或 `openDexFile` 等是系统内部函数。在脱壳分析中，常在此类函数下断点来获取解密后的DEX内存，这就是“内存脱壳”的原理之一。
 
-![](img/008d492789cb1ccdbbfd652c8adc2011_19.png)
 
 ## 外壳加密工具对应实现
 
-![](img/008d492789cb1ccdbbfd652c8adc2011_21.png)
 
 有加壳必然有配套的加密外壳工具。外壳工具的工作流程是逆向的：
 
@@ -198,7 +184,6 @@ void replace_cookie_with_dex(JNIEnv* env, jobject context, void* dex_data, size_
 *   **关键技术点**：包括JNI函数注册、资源文件读取、内存解密，以及最关键的一步——通过替换`ClassLoader`内部`DexFile`对象的`mCookie`值来完成DEX的“偷梁换柱”。
 *   **与脱壳的关联**：加壳时使用的系统内部函数（如`dvmDexFileOpenPartial`）正是脱壳分析中常用的断点位置。
 
-![](img/008d492789cb1ccdbbfd652c8adc2011_23.png)
 
 ![](img/008d492789cb1ccdbbfd652c8adc2011_25.png)
 

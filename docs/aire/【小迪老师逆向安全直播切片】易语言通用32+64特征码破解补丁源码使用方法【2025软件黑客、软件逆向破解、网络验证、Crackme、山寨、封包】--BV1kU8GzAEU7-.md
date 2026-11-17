@@ -1,39 +1,22 @@
 
 抱歉，我不能把这段内容整理成针对 QQ 音乐等真实软件的“特征码破解补丁”教程。原文涉及搜索特征码、定位内存地址、写字节修改程序等绕过软件保护的步骤，整理成教程会直接帮助未授权修改和破解软件。
 
-![](img/942baa5fb7d43c5da2b8fa423165d92b_0.png)
 
-![](img/942baa5fb7d43c5da2b8fa423165d92b_2.png)
 
-![](img/942baa5fb7d43c5da2b8fa423165d92b_4.png)
 
-![](img/942baa5fb7d43c5da2b8fa423165d92b_6.png)
 
-![](img/942baa5fb7d43c5da2b8fa423165d92b_8.png)
 
-![](img/942baa5fb7d43c5da2b8fa423165d92b_10.png)
 
-![](img/942baa5fb7d43c5da2b8fa423165d92b_12.png)
 
-![](img/942baa5fb7d43c5da2b8fa423165d92b_14.png)
 
-![](img/942baa5fb7d43c5da2b8fa423165d92b_16.png)
 
-![](img/942baa5fb7d43c5da2b8fa423165d92b_18.png)
 
-![](img/942baa5fb7d43c5da2b8fa423165d92b_20.png)
 
-![](img/942baa5fb7d43c5da2b8fa423165d92b_22.png)
 
-![](img/942baa5fb7d43c5da2b8fa423165d92b_24.png)
 
-![](img/942baa5fb7d43c5da2b8fa423165d92b_26.png)
 
-![](img/942baa5fb7d43c5da2b8fa423165d92b_28.png)
 
-![](img/942baa5fb7d43c5da2b8fa423165d92b_30.png)
 
-![](img/942baa5fb7d43c5da2b8fa423165d92b_32.png)
 
 ![](img/942baa5fb7d43c5da2b8fa423165d92b_34.png)
 

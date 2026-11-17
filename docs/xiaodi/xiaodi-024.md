@@ -24,7 +24,6 @@
 
 ---
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_21.png)
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_23.png)
 
@@ -44,7 +43,6 @@
 
 上一节我们介绍了使用Token机制防止暴力破解等安全问题的原理。本节中，我们将深入PHP的文件操作，学习如何构建一个基础的文件管理器，并实现安全的上传过滤。
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_37.png)
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_38.png)
 
@@ -62,7 +60,6 @@
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_48.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_50.png)
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_52.png)
 
@@ -108,7 +105,6 @@
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_82.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_84.png)
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_86.png)
 
@@ -123,7 +119,6 @@ $error = $_FILES['file']['error'];   // 错误代码
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_88.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_90.png)
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_91.png)
 
@@ -136,11 +131,8 @@ $error = $_FILES['file']['error'];   // 错误代码
 *   `tmp_name` 是文件上传到服务器后的临时存储路径，脚本执行完毕后会被清除。
 *   `error` 为0表示上传成功，其他值代表不同类型的错误。
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_97.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_99.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_100.png)
 
 ### 核心代码：移动临时文件
 
@@ -159,13 +151,9 @@ $error = $_FILES['file']['error'];   // 错误代码
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_112.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_114.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_116.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_118.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_120.png)
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_121.png)
 
@@ -181,29 +169,19 @@ if (move_uploaded_file($tmp_name, $target_file)) {
 }
 ```
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_123.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_125.png)
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_126.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_128.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_130.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_132.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_134.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_136.png)
 
 ---
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_138.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_140.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_142.png)
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_144.png)
 
@@ -215,9 +193,7 @@ if (move_uploaded_file($tmp_name, $target_file)) {
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_150.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_152.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_154.png)
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_156.png)
 
@@ -249,22 +225,18 @@ if (move_uploaded_file($tmp_name, $target_file)) {
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_179.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_181.png)
 
 黑名单机制是**禁止上传特定危险后缀**的文件（如 `.php`, `.asp`, `.jsp`）。
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_183.png)
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_185.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_187.png)
 
 **核心逻辑**：
 1.  定义不允许的后缀列表。
 2.  获取用户上传文件的后缀名。
 3.  判断该后缀是否在黑名单中。
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_189.png)
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_191.png)
 
@@ -274,9 +246,7 @@ if (move_uploaded_file($tmp_name, $target_file)) {
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_196.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_198.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_200.png)
 
 以下是实现代码：
 
@@ -291,12 +261,9 @@ if (move_uploaded_file($tmp_name, $target_file)) {
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_210.png)
 
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_212.png)
 
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_214.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_216.png)
 
 ```php
 // 定义黑名单后缀
@@ -314,33 +281,22 @@ if (in_array($ext, $black_ext)) {
 }
 ```
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_218.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_220.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_222.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_224.png)
 
 **安全隐患**：攻击者可能使用不在名单内的脚本后缀（如 `.php5`, `.phtml`）进行绕过，如果服务器环境支持解析这些后缀，则漏洞依然存在。
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_226.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_228.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_230.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_232.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_234.png)
 
 ### 2. 白名单过滤
 
 白名单机制是**只允许上传特定安全后缀**的文件（如图片格式 `.jpg`, `.png`, `.gif`）。这是比黑名单更安全的策略。
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_236.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_238.png)
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_240.png)
 
@@ -358,9 +314,7 @@ if (in_array($ext, $black_ext)) {
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_246.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_248.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_250.png)
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_251.png)
 
@@ -393,23 +347,17 @@ if (!in_array($ext, $white_ext)) {
 
 ### 3. MIME类型过滤
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_263.png)
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_265.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_267.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_269.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_271.png)
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_273.png)
 
 MIME类型是浏览器在HTTP头中声明的文件类型。我们可以通过检查 `$_FILES[‘file‘][‘type‘]` 的值来进行过滤。
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_275.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_277.png)
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_279.png)
 
@@ -438,9 +386,7 @@ MIME类型是浏览器在HTTP头中声明的文件类型。我们可以通过检
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_295.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_297.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_299.png)
 
 ```php
 // 定义允许的MIME类型
@@ -457,7 +403,6 @@ if (!in_array($file_mime, $allowed_mime)) {
 }
 ```
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_301.png)
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_303.png)
 
@@ -479,23 +424,16 @@ if (!in_array($file_mime, $allowed_mime)) {
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_317.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_319.png)
 
 ---
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_321.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_322.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_323.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_325.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_326.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_328.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_330.png)
 
 ## 📁 文件列表显示与目录遍历
 
@@ -509,11 +447,8 @@ if (!in_array($file_mime, $allowed_mime)) {
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_336.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_338.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_340.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_342.png)
 
 ### 核心函数
 *   `is_dir($path)`：判断路径是否为目录。
@@ -521,39 +456,24 @@ if (!in_array($file_mime, $allowed_mime)) {
 *   `readdir($handle)`：从目录句柄中读取条目。
 *   `closedir($handle)`：关闭目录句柄。
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_343.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_345.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_347.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_348.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_350.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_351.png)
 
 ### 基础实现代码
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_353.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_355.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_357.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_359.png)
 
 以下代码实现了读取并显示当前目录下的所有文件和文件夹：
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_361.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_363.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_365.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_367.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_369.png)
 
 ```php
 function listFiles($dir = '.') {
@@ -577,29 +497,20 @@ function listFiles($dir = '.') {
 listFiles();
 ```
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_371.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_373.png)
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_375.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_377.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_379.png)
 
 ### 安全风险：目录遍历漏洞
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_381.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_383.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_385.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_387.png)
 
 如果文件列表功能接收用户输入的路径参数（如 `?path=./uploads`），并且没有进行严格过滤，攻击者可能通过输入 `../../../` 这样的路径序列来访问服务器上的任意目录，造成**目录遍历漏洞**（或路径穿越漏洞）。
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_389.png)
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_391.png)
 
@@ -643,7 +554,6 @@ listFiles($user_path); // 攻击者可传入 ../../../etc/passwd
 
 ---
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_401.png)
 
 ## 📝 本节课总结
 
@@ -651,22 +561,16 @@ listFiles($user_path); // 攻击者可传入 ../../../etc/passwd
 
 在本节课中，我们一起学习了PHP文件管理模块的两个核心功能：
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_405.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_407.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_409.png)
 
 1.  **文件上传**：我们掌握了使用 `$_FILES` 全局变量和 `move_uploaded_file()` 函数实现上传的基本方法，并深入探讨了三种安全过滤机制：
     *   **黑名单过滤**：禁止特定危险后缀，但存在被未知危险后缀绕过的风险。
     *   **白名单过滤**：只允许特定安全后缀，是更可靠的策略。
     *   **MIME类型过滤**：检查客户端声明的文件类型，但极易被绕过，需与其他方法结合使用。
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_411.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_413.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_415.png)
 
 2.  **文件列表显示**：我们学习了使用目录操作函数读取和显示文件列表，并分析了由此可能引发的**目录遍历漏洞**。我们介绍了两种主要的防御思路：通过PHP配置 (`open_basedir`) 进行访问控制，以及在代码层面对用户输入进行严格的路径校验和过滤。
 
@@ -678,7 +582,6 @@ listFiles($user_path); // 攻击者可传入 ../../../etc/passwd
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_423.png)
 
-![](img/d46d35f9da3b449d82f2d2e69503e40e_425.png)
 
 ![](img/d46d35f9da3b449d82f2d2e69503e40e_427.png)
 

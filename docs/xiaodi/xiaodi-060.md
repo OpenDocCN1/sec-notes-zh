@@ -34,15 +34,11 @@
 
 上一节我们介绍了反序列化的基础概念，本节中我们来看看PHP对象属性类型在序列化数据中的特征。
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_29.png)
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_31.png)
 
 在PHP面向对象编程中，类的属性有三种可见性类型：`public`（公有）、`protected`（受保护）和`private`（私有）。这些类型在序列化字符串中有不同的表示方式，了解这一点有助于我们分析流量特征和构造payload。
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_33.png)
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_35.png)
 
 ![](img/4877fe6b504dcf6abe3752ac36d22108_37.png)
 
@@ -61,19 +57,14 @@
 *   `protected`属性：显示为 `\x00*\x00属性名`，如 `s:6:"\x00*\x00six";s:4:"mail";`
 *   `private`属性：显示为 `\x00类名\x00属性名`，如 `s:9:"\x00test\x00age";i:20;`
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_49.png)
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_51.png)
 
 ![](img/4877fe6b504dcf6abe3752ac36d22108_53.png)
 
 ![](img/4877fe6b504dcf6abe3752ac36d22108_55.png)
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_57.png)
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_59.png)
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_61.png)
 
 ![](img/4877fe6b504dcf6abe3752ac36d22108_63.png)
 
@@ -94,16 +85,13 @@ echo serialize($s);
 // 输出类似：O:4:"test":3:{s:4:"name";s:6:"xiaodi";s:9:"\x00test\x00age";i:20;s:6:"\x00*\x00six";s:4:"mail";}
 ```
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_69.png)
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_71.png)
 
 **关键点：**
 序列化时，PHP通过添加 `\x00`（空字符）和类名或 `*` 来区分属性的可见性，以确保反序列化时能正确还原属性类型。这不是错误，而是其内部机制。
 
 ## 二、CVE-2016-7124：__wakeup绕过漏洞 🚫
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_73.png)
 
 ![](img/4877fe6b504dcf6abe3752ac36d22108_75.png)
 
@@ -119,7 +107,6 @@ echo serialize($s);
 
 本节我们将探讨一个历史悠久的PHP反序列化漏洞CVE-2016-7124，它允许攻击者在特定条件下绕过 `__wakeup` 魔术方法的执行。
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_87.png)
 
 ![](img/4877fe6b504dcf6abe3752ac36d22108_89.png)
 
@@ -180,17 +167,13 @@ unserialize($data); // 输出 "__wakeup被调用！"
 
 ![](img/4877fe6b504dcf6abe3752ac36d22108_112.png)
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_114.png)
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_116.png)
 
 ![](img/4877fe6b504dcf6abe3752ac36d22108_118.png)
 
 字符串逃逸是反序列化中一个精巧的利用技巧，其本质是**利用过滤函数对序列化字符串中特定字符的“增加”或“减少”操作，改变原字符串的结构，从而“逃逸”出新的、被解析的对象属性**。这通常出现在先序列化，后过滤，再反序列化的场景中。
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_120.png)
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_122.png)
 
 ![](img/4877fe6b504dcf6abe3752ac36d22108_124.png)
 
@@ -206,7 +189,6 @@ unserialize($data); // 输出 "__wakeup被调用！"
 
 ![](img/4877fe6b504dcf6abe3752ac36d22108_130.png)
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_132.png)
 
 ![](img/4877fe6b504dcf6abe3752ac36d22108_134.png)
 
@@ -222,11 +204,9 @@ unserialize($data); // 输出 "__wakeup被调用！"
 
 ![](img/4877fe6b504dcf6abe3752ac36d22108_140.png)
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_142.png)
 
 过滤后，增加的 `L` 个字符将 `隐藏payload` 之前的字符串部分整体后推，使其恰好成为完整的键值对，而 `隐藏payload` 则被成功解析为新属性。
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_144.png)
 
 ![](img/4877fe6b504dcf6abe3752ac36d22108_146.png)
 
@@ -234,7 +214,6 @@ unserialize($data); // 输出 "__wakeup被调用！"
 
 ### 2. 字符“减少”场景
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_150.png)
 
 ![](img/4877fe6b504dcf6abe3752ac36d22108_152.png)
 
@@ -242,7 +221,6 @@ unserialize($data); // 输出 "__wakeup被调用！"
 
 ![](img/4877fe6b504dcf6abe3752ac36d22108_156.png)
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_158.png)
 
 ![](img/4877fe6b504dcf6abe3752ac36d22108_160.png)
 
@@ -250,13 +228,10 @@ unserialize($data); // 输出 "__wakeup被调用！"
 
 ![](img/4877fe6b504dcf6abe3752ac36d22108_162.png)
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_164.png)
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_166.png)
 
 ![](img/4877fe6b504dcf6abe3752ac36d22108_168.png)
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_170.png)
 
 **攻击思路：** 与增加相反，我们需要让过滤后减少的字符，使得后续字符串的一部分“前移”，成为前一个键值对的值的一部分，从而让我们精心构造的后半部分被独立解析。
 
@@ -286,7 +261,6 @@ unserialize($data); // 输出 "__wakeup被调用！"
 
 ![](img/4877fe6b504dcf6abe3752ac36d22108_186.png)
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_188.png)
 
 ![](img/4877fe6b504dcf6abe3752ac36d22108_190.png)
 
@@ -330,7 +304,6 @@ unserialize($data); // 输出 "__wakeup被调用！"
     *   `SplFileObject`：可用于读取文件。
 4.  **构造利用链：** 实例化选定的原生类，并设置其属性，使其在触发时执行我们期望的操作（如读取文件、发起网络请求）。
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_210.png)
 
 ![](img/4877fe6b504dcf6abe3752ac36d22108_212.png)
 
@@ -340,7 +313,6 @@ unserialize($data); // 输出 "__wakeup被调用！"
 
 ### 实战案例：CTFShow Web259
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_218.png)
 
 ![](img/4877fe6b504dcf6abe3752ac36d22108_220.png)
 
@@ -364,9 +336,7 @@ unserialize($data); // 输出 "__wakeup被调用！"
 
 ![](img/4877fe6b504dcf6abe3752ac36d22108_232.png)
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_234.png)
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_236.png)
 
 ![](img/4877fe6b504dcf6abe3752ac36d22108_238.png)
 
@@ -412,7 +382,6 @@ unserialize($data); // 输出 "__wakeup被调用！"
 
 ![](img/4877fe6b504dcf6abe3752ac36d22108_270.png)
 
-![](img/4877fe6b504dcf6abe3752ac36d22108_272.png)
 
 ![](img/4877fe6b504dcf6abe3752ac36d22108_274.png)
 

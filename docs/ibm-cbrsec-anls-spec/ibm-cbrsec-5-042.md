@@ -12,7 +12,6 @@ Kali Linux 是一个集成了数百种信息安全测试工具的一体化 Debia
 
 它是我在准备认证考试时的可靠伙伴。Kali Linux 也是一个执行沙箱测试的绝佳工具，可以在安全环境中进行病毒研究。它拥有一个可自定义的内核，你可以将其修补到任何级别，以便尝试代码注入、进行 Rootkit 分析、发起攻击或进行练习。
 
-![](img/fb0aaea672fc0d6fa27f6ff66fd3ad7b_1.png)
 
 建议至少在你的最新发行版上安装几个 Kali Linux 虚拟机，以便进行实践。
 
@@ -30,7 +29,6 @@ Nmap 是一个开源的网络扫描器，用于发现计算机网络上的主机
 
 ---
 
-![](img/fb0aaea672fc0d6fa27f6ff66fd3ad7b_3.png)
 
 ## John the Ripper：密码破解者 🔑
 
@@ -45,7 +43,6 @@ John the Ripper 是一个密码破解工具，它要求你拥有一个密码文�
 
 ---
 
-![](img/fb0aaea672fc0d6fa27f6ff66fd3ad7b_5.png)
 
 ## Metasploit：攻击框架 ⚔️
 
@@ -55,7 +52,6 @@ Metasploit 项目是一个攻击代码库。使用 Metasploit 应用程序，你
 
 如果你已经掌握了目标操作系统或应用程序的版本信息，例如发现一个旧的 FTP 服务，那么有 90% 的把握可以在 Metasploit 中找到对应的攻击模块，并将其应用到目标服务器上。顺便一提，它也已经集成在 Kali Linux 的软件库中。
 
-![](img/fb0aaea672fc0d6fa27f6ff66fd3ad7b_7.png)
 
 ---
 
@@ -75,7 +71,6 @@ Wireshark 是跨平台的，这意味着你可以在 Linux、Windows 和 Mac 上
 
 Hack The Box 不是一个工具，而是一个非营利组织。它创建了大量供你进行合法黑客攻击练习的 Linux 和 Windows 虚拟机环境。
 
-![](img/fb0aaea672fc0d6fa27f6ff66fd3ad7b_9.png)
 
 尝试攻击这些“盒子”是完全合法的，并且免费。不过，他们也出售一些课程和指导服务。如果你购买了订阅，他们甚至会提供部分“盒子”的解决方案。
 

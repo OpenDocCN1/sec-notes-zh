@@ -1,8 +1,6 @@
 # 015：基于LWE的批量NP简洁非交互式论证（BARGs）
 
-![](img/36f32a2af44c4707224b64303b8cf88c_0.png)
 
-![](img/36f32a2af44c4707224b64303b8cf88c_1.png)
 
 ![](img/36f32a2af44c4707224b64303b8cf88c_2.png)
 

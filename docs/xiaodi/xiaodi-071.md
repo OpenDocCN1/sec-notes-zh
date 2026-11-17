@@ -1,6 +1,5 @@
 #  071：业务逻辑漏洞之越权与未授权访问 🎯
 
-![](img/e60fee5891d0cbf1bc1f4da5d31cf94f_0.png)
 
 ![](img/e60fee5891d0cbf1bc1f4da5d31cf94f_2.png)
 

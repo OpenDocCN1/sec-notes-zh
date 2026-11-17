@@ -6,7 +6,6 @@
 
 ## 概述
 
-![](img/d5b78ea0bf56cfbc6d6db91b22a1ec7a_1.png)
 
 上一节我们测试了回城补给函数 `GoToCityForSupply`，发现它无法到达目的地。本节中，我们来看看问题出在哪里，并着手修复寻路功能。
 
@@ -24,7 +23,6 @@
 ![](img/d5b78ea0bf56cfbc6d6db91b22a1ec7a_5.png)
 
 
-![](img/d5b78ea0bf56cfbc6d6db91b22a1ec7a_7.png)
 
 ```cpp
 // 假设变量定义
@@ -87,9 +85,7 @@ mov byte ptr [esi+0x228], 0x01
 偏移: +0x298
 ```
 
-![](img/d5b78ea0bf56cfbc6d6db91b22a1ec7a_17.png)
 
-![](img/d5b78ea0bf56cfbc6d6db91b22a1ec7a_18.png)
 
 通过访问 `[基址 + 0x298]` 可以获得控制路径显示的关键指针。我们在寻路函数调用前，手动向该地址写入1，以启用路径显示。
 

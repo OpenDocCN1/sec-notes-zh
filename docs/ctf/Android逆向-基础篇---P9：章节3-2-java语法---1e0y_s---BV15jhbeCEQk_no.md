@@ -6,7 +6,6 @@
 
 ## 概述
 
-![](img/919b9b8cdb0bc611aaccaffb32436049_1.png)
 
 本节将通过一个具体的例子，演示如何编写并运行一个最简单的Java程序。我们将学习`package`、`class`、`main`方法等核心概念，并理解它们之间的关系。
 
@@ -88,11 +87,9 @@ System.out.println("Hello");
 *   **`println`** 是 `out` 对象的一个方法，用于输出一行文本，并在末尾自动换行。
 *   **`"Hello"`** 是传递给 `println` 方法的字符串参数，即要打印的内容。
 
-![](img/919b9b8cdb0bc611aaccaffb32436049_3.png)
 
 ---
 
-![](img/919b9b8cdb0bc611aaccaffb32436049_4.png)
 
 ## 编译与运行程序
 
@@ -110,17 +107,14 @@ System.out.println("Hello");
 
 ### 修改与验证
 
-![](img/919b9b8cdb0bc611aaccaffb32436049_6.png)
 
 我们可以轻松修改输出内容来验证程序。例如，将代码中的 `"Hello"` 改为 `"Hello World!!"`：
 
-![](img/919b9b8cdb0bc611aaccaffb32436049_7.png)
 
 ```java
 System.out.println("Hello World!!");
 ```
 
-![](img/919b9b8cdb0bc611aaccaffb32436049_8.png)
 
 保存文件后，再次执行 `java com/test/Hello.java` 命令，输出将变为：
 ```
@@ -129,11 +123,9 @@ Hello World!!
 
 这个过程展示了Java程序从编写、修改到运行的完整流程。
 
-![](img/919b9b8cdb0bc611aaccaffb32436049_10.png)
 
 ---
 
-![](img/919b9b8cdb0bc611aaccaffb32436049_12.png)
 
 ## 总结
 

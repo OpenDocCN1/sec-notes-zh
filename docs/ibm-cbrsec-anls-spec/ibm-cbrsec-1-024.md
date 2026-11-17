@@ -1,10 +1,7 @@
 # 课程1：《网络安全工具与网络攻击简介》：24：网络安全模型 🔐
 
-![](img/6bddffaabda4bfc1a72aaee44aec539d_0.png)
 
-![](img/6bddffaabda4bfc1a72aaee44aec539d_2.png)
 
-![](img/6bddffaabda4bfc1a72aaee44aec539d_4.png)
 
 在本节课程中，我们将学习描述各种网络安全模型。我们将从一个通用的通信安全模型开始，逐步深入到安全架构、威胁与漏洞等核心概念，并探讨在开放系统中实施安全保护的必要性。
 

@@ -2,7 +2,6 @@
 
 ![](img/f7c635a50ff13b55f60ef0705a7a0bab_1.png)
 
-![](img/f7c635a50ff13b55f60ef0705a7a0bab_3.png)
 
 在本课程中，我们将学习如何通过“换向思维”来绕过WAF（Web应用防火墙）的查杀规则，实现WebShell的免杀。我们将从基础准备开始，逐步分析PHP关键函数、WebShell工作原理，并最终构建一个能够绕过主流WAF检测的WebShell。
 
@@ -171,7 +170,6 @@ if (file_exists($temp_file)) {
 3.  **实践构建**：逐步构建了一个利用 `tempnam`、`fwrite` 和 `include` 的免杀WebShell，将动态代码的执行转移到临时文件中完成。
 4.  **客户端适配**：探讨了通过修改中国菜刀的payload生成逻辑，实现客户端流量免杀的方法。
 
-![](img/f7c635a50ff13b55f60ef0705a7a0bab_9.png)
 
 ![](img/f7c635a50ff13b55f60ef0705a7a0bab_11.png)
 

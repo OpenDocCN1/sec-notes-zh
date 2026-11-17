@@ -45,9 +45,7 @@ similarity=999  # 将此处修改为大数值
 5.  开始攻击。Intruder会使用设定的数字依次替换变量并发送请求。
 6.  观察响应结果。通常，正确答案的响应长度（Length）或内容会与其他请求不同。找到这个特殊的响应，其中的内容就是该题的答案。
 
-![](img/9b46b416e09bdcd92c969bd5a9ac6ea7_1.png)
 
-![](img/9b46b416e09bdcd92c969bd5a9ac6ea7_3.png)
 
 **核心概念**：使用Burp Suite Intruder模块对数字型参数进行爆破。
 ```http
@@ -58,7 +56,6 @@ Q1=§1§  # § § 之间的内容被标记为变量，将被Payload替换
 
 ![](img/9b46b416e09bdcd92c969bd5a9ac6ea7_5.png)
 
-![](img/9b46b416e09bdcd92c969bd5a9ac6ea7_7.png)
 
 对于其他技术性问题，可以直接使用搜索引擎或询问AI（如ChatGPT）来获取答案。
 
@@ -145,13 +142,10 @@ final_flag = “flag{” + flag_part + “}”
 
 本节课中我们一起学习了如何根据题目描述中的技术线索，定位到具体的软件漏洞（CVE），并利用公开的漏洞利用工具来恢复隐藏信息。
 
-![](img/9b46b416e09bdcd92c969bd5a9ac6ea7_13.png)
 
 ---
 
-![](img/9b46b416e09bdcd92c969bd5a9ac6ea7_15.png)
 
-![](img/9b46b416e09bdcd92c969bd5a9ac6ea7_16.png)
 
 ![](img/9b46b416e09bdcd92c969bd5a9ac6ea7_18.png)
 
@@ -159,9 +153,7 @@ final_flag = “flag{” + flag_part + “}”
 
 ![](img/9b46b416e09bdcd92c969bd5a9ac6ea7_20.png)
 
-![](img/9b46b416e09bdcd92c969bd5a9ac6ea7_21.png)
 
-![](img/9b46b416e09bdcd92c969bd5a9ac6ea7_22.png)
 
 题目附件是一个WAV音频文件，描述中提到“通过无线电信号传输图片”。播放该音频只有嘈杂的噪音。
 
@@ -169,7 +161,6 @@ final_flag = “flag{” + flag_part + “}”
 
 这是一种称为**SSTV（慢扫描电视）**的技术，常用于业余无线电爱好者传输图像。它将图像信息编码到声音的频率变化中。
 
-![](img/9b46b416e09bdcd92c969bd5a9ac6ea7_24.png)
 
 以下是解码步骤：
 1.  搜索并下载SSTV解码软件，例如 `QSSTV`、`Robot36` 或在线解码工具。
@@ -181,13 +172,10 @@ final_flag = “flag{” + flag_part + “}”
 
 **核心概念**：使用SSTV解码软件，将编码在音频频率中的图像信息还原出来。
 
-![](img/9b46b416e09bdcd92c969bd5a9ac6ea7_28.png)
 
-![](img/9b46b416e09bdcd92c969bd5a9ac6ea7_30.png)
 
 本节课中我们一起学习了SSTV的基本概念，并掌握了使用专用软件从特定格式的音频中解码出图像信息的方法。
 
-![](img/9b46b416e09bdcd92c969bd5a9ac6ea7_31.png)
 
 ![](img/9b46b416e09bdcd92c969bd5a9ac6ea7_33.png)
 
@@ -195,7 +183,6 @@ final_flag = “flag{” + flag_part + “}”
 
 ## 第七题：HTTP集邮与状态码收集 🌐
 
-![](img/9b46b416e09bdcd92c969bd5a9ac6ea7_35.png)
 
 题目要求我们向一个特定的HTTP服务器发送请求，并收集返回的不同状态码，收集一定数量后即可获得`flag`。
 

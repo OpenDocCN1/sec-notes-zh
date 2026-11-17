@@ -102,7 +102,6 @@ zip://[压缩包文件绝对路径]#[压缩包内文件名]
 ### 构造攻击载荷
 我们需要创建一个包含恶意代码的`shell.inc`文件，将其压缩为ZIP包，然后重命名为`shell.png`以上传。
 
-![](img/8646ad48f1baa2dd114f26c9b08e2221_23.png)
 
 **1. 创建恶意文件 `shell.inc`：**
 ```php
@@ -139,7 +138,6 @@ index.php?page=zip://绝对路径/upload/u_1588888888_shell.png%23shell
 
 ![](img/8646ad48f1baa2dd114f26c9b08e2221_29.png)
 
-![](img/8646ad48f1baa2dd114f26c9b08e2221_31.png)
 
 **验证漏洞：**
 访问以下URL，如果成功输出PHP配置信息，则证明漏洞利用成功。
@@ -147,7 +145,6 @@ index.php?page=zip://绝对路径/upload/u_1588888888_shell.png%23shell
 index.php?page=zip://...&cmd=phpinfo();
 ```
 
-![](img/8646ad48f1baa2dd114f26c9b08e2221_33.png)
 
 ---
 

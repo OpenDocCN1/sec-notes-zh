@@ -4,7 +4,6 @@
 
 在本节课中，我们将学习如何通过调用扫描器API和操作其数据库，来优化自动化漏洞挖掘流程，并编写脚本以提高效率。课程内容主要分为两部分：一是通过API批量管理扫描任务，二是连接扫描器数据库以提取和验证漏洞信息。
 
-![](img/c9caf156e3d92e984692837ed60f2d4c_2.png)
 
 ---
 
@@ -205,7 +204,6 @@ def set_scan_speed(api_url, token, target_id, speed):
 
 ![](img/c9caf156e3d92e984692837ed60f2d4c_85.png)
 
-![](img/c9caf156e3d92e984692837ed60f2d4c_86.png)
 
 ![](img/c9caf156e3d92e984692837ed60f2d4c_88.png)
 
@@ -365,7 +363,6 @@ conn.close()
 python xsstrike.py -u “http://target.com/page?msg=<script>alert(1)</script>“
 ```
 
-![](img/c9caf156e3d92e984692837ed60f2d4c_144.png)
 
 **示例：验证SQL注入漏洞**
 将数据库中的 `request` 字段保存为文件，然后使用SQLMap进行测试。
@@ -425,7 +422,6 @@ sqlmap -r req.txt --batch
 
 本节课我们一起学习了自动化漏洞挖掘中扫描器的高级用法。
 
-![](img/c9caf156e3d92e984692837ed60f2d4c_165.png)
 
 ![](img/c9caf156e3d92e984692837ed60f2d4c_166.png)
 

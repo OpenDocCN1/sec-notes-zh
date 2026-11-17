@@ -14,7 +14,6 @@
 
 在本节课中，我们将学习文件上传漏洞的实战挖掘思路。课程将围绕上周布置的考核题目展开，通过分析几个具体的CMS（内容管理系统）案例，讲解如何发现并利用文件上传漏洞获取服务器权限。我们将从信息收集、漏洞探测、绕过技巧到最终利用，完整地走一遍实战流程。
 
-![](img/947e57d7f948904cbccfa779eab77467_13.png)
 
 ![](img/947e57d7f948904cbccfa779eab77467_15.png)
 
@@ -42,7 +41,6 @@
 
 ![](img/947e57d7f948904cbccfa779eab77467_33.png)
 
-![](img/947e57d7f948904cbccfa779eab77467_35.png)
 
 ![](img/947e57d7f948904cbccfa779eab77467_37.png)
 
@@ -92,7 +90,6 @@
 
 ![](img/947e57d7f948904cbccfa779eab77467_67.png)
 
-![](img/947e57d7f948904cbccfa779eab77467_69.png)
 
 ![](img/947e57d7f948904cbccfa779eab77467_71.png)
 
@@ -102,7 +99,6 @@
 
 ![](img/947e57d7f948904cbccfa779eab77467_75.png)
 
-![](img/947e57d7f948904cbccfa779eab77467_77.png)
 
 面对一个未知系统，首先需要寻找其后台管理入口。
 
@@ -150,9 +146,7 @@
 
 ![](img/947e57d7f948904cbccfa779eab77467_96.png)
 
-![](img/947e57d7f948904cbccfa779eab77467_98.png)
 
-![](img/947e57d7f948904cbccfa779eab77467_100.png)
 
 ```
 POST /upload.php HTTP/1.1
@@ -219,13 +213,11 @@ Content-Type: image/png  // 将此处的 application/x-php 修改为 image/png
 
 通过爆破进入后台后，发现界面复杂，没有明显的上传点。此时可以查看系统信息（如版本号）。通过百度搜索“FCMS 2.6 漏洞”，可以发现该版本存在任意文件写入漏洞。
 
-![](img/947e57d7f948904cbccfa779eab77467_136.png)
 
 ![](img/947e57d7f948904cbccfa779eab77467_138.png)
 
 ![](img/947e57d7f948904cbccfa779eab77467_140.png)
 
-![](img/947e57d7f948904cbccfa779eab77467_142.png)
 
 漏洞位于主题编辑功能中：
 1.  访问路径如 `/themes/default/fs.php`。
@@ -241,15 +233,11 @@ Content-Type: image/png  // 将此处的 application/x-php 修改为 image/png
 
 第三个目标是PHPK系统。这个系统后台有验证码和登录限制，但老师提供了账号密码。我们的重点是在后台寻找文件上传的突破口。
 
-![](img/947e57d7f948904cbccfa779eab77467_144.png)
 
-![](img/947e57d7f948904cbccfa779eab77467_146.png)
 
 ### 第一步：登录后台并寻找上传点
 
-![](img/947e57d7f948904cbccfa779eab77467_148.png)
 
-![](img/947e57d7f948904cbccfa779eab77467_150.png)
 
 使用给定账号密码登录后，在“内容管理”等模块寻找文件上传功能。发现上传附件时，系统有严格的格式限制。
 
@@ -280,9 +268,7 @@ Content-Type: image/png  // 将此处的 application/x-php 修改为 image/png
 
 ![](img/947e57d7f948904cbccfa779eab77467_157.png)
 
-![](img/947e57d7f948904cbccfa779eab77467_159.png)
 
-![](img/947e57d7f948904cbccfa779eab77467_161.png)
 
 ### 第一步：突破登录的三种方法
 

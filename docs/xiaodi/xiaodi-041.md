@@ -18,11 +18,9 @@
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_11.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_13.png)
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_15.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_17.png)
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_18.png)
 
@@ -48,13 +46,11 @@
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_36.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_38.png)
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_40.png)
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_42.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_43.png)
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_45.png)
 
@@ -91,13 +87,9 @@ conn.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & Server.MapPath(db_pa
 
 这种“开箱即用”的便利性也带来了安全隐患。如果开发者在部署时没有修改默认的数据库路径和文件名，攻击者便可能直接通过构造URL来下载数据库文件。
 
-![](img/417bd6c721484af32634ece3a6cedfe1_65.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_67.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_69.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_70.png)
 
 **风险成因：**
 1.  数据库文件（.mdb）通常存放在网站目录下。
@@ -108,7 +100,6 @@ conn.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & Server.MapPath(db_pa
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_74.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_76.png)
 
 以下是利用此风险的基本步骤：
 1.  通过信息收集或猜测，确定目标网站使用某款已知的ASP开源程序。
@@ -134,9 +125,7 @@ conn.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & Server.MapPath(db_pa
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_88.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_90.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_92.png)
 
 了解了ASP应用的自身特点后，我们来看看承载它的IIS服务器本身存在的一些历史漏洞。这些漏洞虽然年份较久，但在未及时更新的老旧系统上依然可能存在。
 
@@ -174,7 +163,6 @@ conn.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & Server.MapPath(db_pa
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_121.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_123.png)
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_125.png)
 
@@ -208,9 +196,7 @@ conn.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & Server.MapPath(db_pa
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_143.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_145.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_147.png)
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_149.png)
 
@@ -222,9 +208,7 @@ conn.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & Server.MapPath(db_pa
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_155.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_157.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_159.png)
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_161.png)
 
@@ -232,7 +216,6 @@ conn.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & Server.MapPath(db_pa
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_165.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_167.png)
 
 此漏洞允许攻击者猜解服务器上存在的文件和目录名（仅前6位字符），可用于探测后台管理路径、配置文件或数据库文件等敏感信息。
 
@@ -240,7 +223,6 @@ conn.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & Server.MapPath(db_pa
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_171.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_173.png)
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_175.png)
 
@@ -254,7 +236,6 @@ conn.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & Server.MapPath(db_pa
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_183.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_185.png)
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_187.png)
 
@@ -270,11 +251,9 @@ conn.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & Server.MapPath(db_pa
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_195.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_197.png)
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_199.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_201.png)
 
 以下是使用此类工具的基本流程：
 1.  运行扫描工具，指定目标URL。
@@ -309,7 +288,6 @@ conn.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & Server.MapPath(db_pa
 在IIS 6.0中，如果目录名包含 `.asp`、`.asa`、`.cer` 等字符串，则该目录下的**所有文件**都会被当作ASP脚本解析。
 *   **示例**：创建目录 `test.asp`，其中放入文件 `shell.jpg`。访问 `/test.asp/shell.jpg` 时，`shell.jpg` 会被当作ASP代码执行。
 
-![](img/417bd6c721484af32634ece3a6cedfe1_218.png)
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_220.png)
 
@@ -329,7 +307,6 @@ conn.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & Server.MapPath(db_pa
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_234.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_236.png)
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_238.png)
 
@@ -343,22 +320,18 @@ conn.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & Server.MapPath(db_pa
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_244.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_246.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_248.png)
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_250.png)
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_252.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_254.png)
 
 **漏洞利用步骤**：
 1.  使用工具（如Postman）发送HTTP PUT请求，在目标目录上传一个文本文件。
 2.  利用MOVE方法，结合IIS解析漏洞，将文件重命名为可执行脚本（如 `.asp`）。
 3.  访问该脚本文件，获取WebShell。
 
-![](img/417bd6c721484af32634ece3a6cedfe1_256.png)
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_258.png)
 
@@ -398,7 +371,6 @@ conn.Open "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" & Server.MapPath(db_pa
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_285.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_287.png)
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_289.png)
 
@@ -456,7 +428,6 @@ SQL注入的产生是因为应用程序将用户输入的数据，未经充分�
 
 对于Access数据库的注入，我们通常使用自动化工具 `Sqlmap`，因为它依赖于“猜解”表名和列名，手工注入效率较低。
 
-![](img/417bd6c721484af32634ece3a6cedfe1_328.png)
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_330.png)
 
@@ -511,13 +482,11 @@ SQL注入的产生是因为应用程序将用户输入的数据，未经充分�
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_356.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_358.png)
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_360.png)
 
 在通过注入获取管理员账号密码后，下一步是找到后台登录地址并登录。
 
-![](img/417bd6c721484af32634ece3a6cedfe1_362.png)
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_364.png)
 
@@ -530,7 +499,6 @@ SQL注入的产生是因为应用程序将用户输入的数据，未经充分�
 *   **短文件名探测**：利用前面提到的IIS短文件名漏洞，探测可能存在后台目录。
 *   **网页爬虫**：使用爬虫工具分析网站所有链接，从页面源码或链接中可能发现后台地址。
 
-![](img/417bd6c721484af32634ece3a6cedfe1_370.png)
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_372.png)
 
@@ -538,7 +506,6 @@ SQL注入的产生是因为应用程序将用户输入的数据，未经充分�
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_376.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_378.png)
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_380.png)
 
@@ -552,13 +519,11 @@ SQL注入的产生是因为应用程序将用户输入的数据，未经充分�
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_387.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_389.png)
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_391.png)
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_393.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_395.png)
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_397.png)
 
@@ -580,17 +545,11 @@ SQL注入的产生是因为应用程序将用户输入的数据，未经充分�
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_411.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_413.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_415.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_417.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_419.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_421.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_423.png)
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_425.png)
 
@@ -604,9 +563,7 @@ SQL注入的产生是因为应用程序将用户输入的数据，未经充分�
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_432.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_434.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_436.png)
 
 本节课中我们一起学习了ASP应用安全攻防的基础知识。
 
@@ -638,7 +595,6 @@ SQL注入的产生是因为应用程序将用户输入的数据，未经充分�
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_458.png)
 
-![](img/417bd6c721484af32634ece3a6cedfe1_460.png)
 
 ![](img/417bd6c721484af32634ece3a6cedfe1_462.png)
 

@@ -14,63 +14,38 @@
 
 跨站脚本攻击是攻击者通过网站注入点注入客户端可执行解析的Payload。Payload的意思是脚本代码。
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_8.png)
 
 当用户（受害者）访问注入了有害代码的网页时，恶意的Payload就会自动加载并执行，以达到攻击者的目的。攻击者写在代码里的逻辑可能是为了窃取Cookie、进行恶意传播、钓鱼欺骗等。
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_10.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_12.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_14.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_16.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_17.png)
 
 为了避免与HTML语言中的CSS相混淆，我们通常称它为XSS。网站注入点需要攻击者自己寻找，并非每个地方都可以注入。注入到客户端可执行解析的脚本代码，在XSS中通常指JavaScript代码。
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_19.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_20.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_22.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_24.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_26.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_28.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_30.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_32.png)
 
 ## XSS的危害有哪些？
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_34.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_36.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_38.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_40.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_42.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_43.png)
 
 以下是XSS攻击可能带来的主要危害：
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_45.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_47.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_49.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_51.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_53.png)
 
 1.  **获取用户信息**：例如获取浏览器信息、用户的真实IP地址或Cookie信息。如果得到Cookie，就可以实现无密码登录，进入用户账号并窃取个人信息。
 2.  **钓鱼攻击**：利用XSS漏洞构造虚假登录框，骗取用户的账户和密码。攻击者可以用JS代码模拟网站登录框，将用户名和密码发送到攻击者服务器。
@@ -78,25 +53,16 @@
 4.  **后台增删改数据**：可能需要配合CSRF漏洞，骗取用户点击，然后利用JS模拟浏览器发包。
 5.  **XSS蠕虫**：例如微博蠕虫（自动关注某人）或贴吧蠕虫（自动回复帖子）。
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_55.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_56.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_58.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_60.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_62.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_63.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_65.png)
 
 ## XSS漏洞的类型及利用场景
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_67.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_69.png)
 
 ![](img/a5d5f7a5324736ec4594dbde1c7b082f_70.png)
 
@@ -108,19 +74,13 @@ XSS主要分为三种类型：反射型XSS、存储型XSS和DOM型XSS。
 
 ### 反射型XSS
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_74.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_76.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_78.png)
 
 反射型XSS的特点是只会执行一次，属于非持久型攻击。它也可以称为参数型XSS。
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_80.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_82.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_84.png)
 
 ![](img/a5d5f7a5324736ec4594dbde1c7b082f_86.png)
 
@@ -130,9 +90,7 @@ XSS主要分为三种类型：反射型XSS、存储型XSS和DOM型XSS。
 
 ![](img/a5d5f7a5324736ec4594dbde1c7b082f_89.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_91.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_93.png)
 
 ![](img/a5d5f7a5324736ec4594dbde1c7b082f_95.png)
 
@@ -172,11 +130,9 @@ XSS主要分为三种类型：反射型XSS、存储型XSS和DOM型XSS。
 
 ![](img/a5d5f7a5324736ec4594dbde1c7b082f_121.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_122.png)
 
 例如，在一个回显用户输入的页面，如果输入 `<h1>hello`，页面可能会将“hello”显示为一级标题，证明网站过滤不严格。进一步尝试输入 `<script>alert(1)</script>`，如果成功弹窗，则证明存在反射型XSS漏洞。
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_124.png)
 
 ![](img/a5d5f7a5324736ec4594dbde1c7b082f_126.png)
 
@@ -218,9 +174,7 @@ echo "Welcome, " . $name;
 **攻击流程与示例：**
 常见于评论、留言、个人信息等需要存入数据库的功能点。攻击者提交包含恶意脚本的留言，该脚本被存入数据库。当任何用户（包括管理员）查看留言板时，恶意脚本从数据库中被取出并输出到页面，从而执行。
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_142.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_144.png)
 
 **后端代码示例与防护：**
 存在漏洞的代码可能在存储和读取时都未过滤：
@@ -284,7 +238,6 @@ DOM型XSS与反射型、存储型的最大区别在于，它的漏洞触发完�
 1.  **XSSer**：功能强大的XSS平台，需要自行搭建在PHP环境中。
 2.  **蓝莲花 (BlueLotus)**：另一个开源的XSS平台，安装相对简单。
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_159.png)
 
 ![](img/a5d5f7a5324736ec4594dbde1c7b082f_161.png)
 
@@ -300,14 +253,12 @@ DOM型XSS与反射型、存储型的最大区别在于，它的漏洞触发完�
 
 ![](img/a5d5f7a5324736ec4594dbde1c7b082f_166.png)
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_167.png)
 
 **平台使用：**
 将平台生成的Payload（一段JS代码的URL）插入到存在XSS漏洞的地方。当受害者触发该漏洞时，其Cookie、IP、页面来源等信息就会被发送到接收平台并展示。
 
 ### XSS的绕过技巧
 
-![](img/a5d5f7a5324736ec4594dbde1c7b082f_169.png)
 
 当网站存在一些基础的过滤时，我们可以尝试以下绕过方法：
 

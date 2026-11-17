@@ -10,7 +10,6 @@
 
 在项目创建向导中，选择“Phone and Tablet”作为目标设备。然后，选择“Empty Activity”模板，这为我们提供了一个干净的起点。
 
-![](img/64b4598ce97b3f17d342a44e0cad4fa3_1.png)
 
 点击“Next”。为项目命名，例如“Banana”。设置包名，例如“com.banana”。选择项目的保存路径。在语言选项中，选择“Java”。将“Minimum SDK”设置为API 28（Android 9），这可以支持大约70%的设备。
 
@@ -44,9 +43,7 @@
 
 Gradle构建工具将开始编译、打包应用。构建完成后，应用会自动安装到你的手机上。在手机上确认安装后，即可打开应用。
 
-![](img/64b4598ce97b3f17d342a44e0cad4fa3_6.png)
 
-![](img/64b4598ce97b3f17d342a44e0cad4fa3_7.png)
 
 应用打开后，屏幕上将显示“Hello World!”。这表明我们成功创建并运行了一个最基本的安卓应用。
 

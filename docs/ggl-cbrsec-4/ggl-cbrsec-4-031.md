@@ -1,6 +1,5 @@
 **谷歌网络安全专业证书第四课：《工具之道：Linux与SQL》：4：欢迎来到第四周**
 
-![](img/f4e9c991eeb8f842fec71d32bcd43753_0.png)
 
 ![](img/f4e9c991eeb8f842fec71d32bcd43753_0.png)
 
@@ -22,7 +21,6 @@
 
 最后，我们将探索SQL连接操作，它允许你将多个表组合在一起。
 
-![](img/f4e9c991eeb8f842fec71d32bcd43753_2.png)
 
 ![](img/f4e9c991eeb8f842fec71d32bcd43753_2.png)
 

@@ -1,8 +1,6 @@
 #  194：游戏与控制台双向通信接口设计 🎮🔄💻
 
-![](img/01908eada3ebfe22b12ea122d67a2963_0.png)
 
-![](img/01908eada3ebfe22b12ea122d67a2963_2.png)
 
 在本节课中，我们将学习如何设计一个接口，实现游戏进程与控制台程序之间的双向通信。我们将通过发送消息的方式，从控制台向游戏进程发送指令，并获取游戏内的人物属性数据返回给控制台显示。
 
@@ -130,9 +128,7 @@ LRESULT CALLBACK GameWndProc(int nCode, WPARAM wParam, LPARAM lParam) {
 
 ![](img/01908eada3ebfe22b12ea122d67a2963_13.png)
 
-![](img/01908eada3ebfe22b12ea122d67a2963_14.png)
 
-![](img/01908eada3ebfe22b12ea122d67a2963_15.png)
 
 ```cpp
 // 一个封装了跨进程写入和权限处理的函数
@@ -162,15 +158,11 @@ BOOL WriteProcessMemoryEx(HWND hTargetWnd, LPVOID lpBaseAddress, LPCVOID lpBuffe
 }
 ```
 
-![](img/01908eada3ebfe22b12ea122d67a2963_17.png)
 
 **注意**：在 Visual Studio 2010 及以后版本，如果遇到权限问题，可能需要修改项目属性，关闭 UAC 虚拟化，或在清单文件中请求管理员权限。
 
-![](img/01908eada3ebfe22b12ea122d67a2963_19.png)
 
-![](img/01908eada3ebfe22b12ea122d67a2963_21.png)
 
-![](img/01908eada3ebfe22b12ea122d67a2963_23.png)
 
 ### 5. 控制台接收与显示
 
@@ -190,11 +182,9 @@ BOOL WriteProcessMemoryEx(HWND hTargetWnd, LPVOID lpBaseAddress, LPCVOID lpBuffe
 
 ![](img/01908eada3ebfe22b12ea122d67a2963_32.png)
 
-![](img/01908eada3ebfe22b12ea122d67a2963_34.png)
 
 以下是几个关键注意事项：
 
-![](img/01908eada3ebfe22b12ea122d67a2963_36.png)
 
 *   **同步性**：`SendMessage` 是同步调用，控制台会等待游戏进程处理完毕。这确保了数据在打印前已被正确写入。
 *   **地址传递**：控制台传递的是自身进程内变量的地址。游戏进程需要解析这个地址，并将其作为 `WriteProcessMemory` 的目标地址。

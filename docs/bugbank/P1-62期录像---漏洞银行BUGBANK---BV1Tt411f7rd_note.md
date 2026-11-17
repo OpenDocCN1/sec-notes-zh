@@ -14,11 +14,9 @@
 
 ![](img/7137fc91cc91db1244bc898ca9d827f9_5.png)
 
-![](img/7137fc91cc91db1244bc898ca9d827f9_7.png)
 
 **CSRF**，全称为跨站请求伪造。其核心特点是：攻击者诱导受害者的浏览器，向目标网站发送一个伪造的HTTP请求。这个请求会携带受害者在该目标网站的身份凭证（如Cookie或Session），从而以受害者的身份执行非预期的操作。
 
-![](img/7137fc91cc91db1244bc898ca9d827f9_9.png)
 
 ![](img/7137fc91cc91db1244bc898ca9d827f9_11.png)
 
@@ -32,11 +30,9 @@
 
 ---
 
-![](img/7137fc91cc91db1244bc898ca9d827f9_15.png)
 
 ## POC编写：手工与自动化 🛠️
 
-![](img/7137fc91cc91db1244bc898ca9d827f9_17.png)
 
 ![](img/7137fc91cc91db1244bc898ca9d827f9_19.png)
 
@@ -44,13 +40,9 @@
 
 理解了CSRF的原理后，本节我们来看看如何构造攻击证明（POC）。
 
-![](img/7137fc91cc91db1244bc898ca9d827f9_23.png)
 
-![](img/7137fc91cc91db1244bc898ca9d827f9_25.png)
 
-![](img/7137fc91cc91db1244bc898ca9d827f9_27.png)
 
-![](img/7137fc91cc91db1244bc898ca9d827f9_29.png)
 
 POC的编写分为手工和自动化两种方式。
 
@@ -98,7 +90,6 @@ CSRF的攻击方法取决于目标请求的类型（GET或POST）。
 
 ![](img/7137fc91cc91db1244bc898ca9d827f9_40.png)
 
-![](img/7137fc91cc91db1244bc898ca9d827f9_42.png)
 
 ![](img/7137fc91cc91db1244bc898ca9d827f9_44.png)
 
@@ -108,7 +99,6 @@ CSRF的攻击方法取决于目标请求的类型（GET或POST）。
 
 ![](img/7137fc91cc91db1244bc898ca9d827f9_48.png)
 
-![](img/7137fc91cc91db1244bc898ca9d827f9_50.png)
 
 例如，在表单后添加如下JS代码：
 ```javascript
@@ -116,7 +106,6 @@ document.forms[0].submit();
 ```
 这段代码能自动提交页面中的第一个表单，实现“静默”攻击。
 
-![](img/7137fc91cc91db1244bc898ca9d827f9_52.png)
 
 ![](img/7137fc91cc91db1244bc898ca9d827f9_54.png)
 
@@ -160,11 +149,9 @@ CSRF蠕虫是指一种能够自我传播的CSRF攻击。当一名受害者触发
 
 ![](img/7137fc91cc91db1244bc898ca9d827f9_76.png)
 
-![](img/7137fc91cc91db1244bc898ca9d827f9_78.png)
 
 单一的漏洞可能危害有限，但组合利用往往能产生巨大威力。本节我们探讨CSRF与存储型XSS的组合利用。
 
-![](img/7137fc91cc91db1244bc898ca9d827f9_80.png)
 
 **场景**：一个网站同时存在一个“鸡肋”的存储型XSS（例如，仅在用户个人简介处，且输出在`<script>`标签内）和一个“鸡肋”的CSRF漏洞（例如，修改个人信息处无Token验证）。
 
@@ -212,9 +199,7 @@ CSRF蠕虫是指一种能够自我传播的CSRF攻击。当一名受害者触发
 
 ![](img/7137fc91cc91db1244bc898ca9d827f9_104.png)
 
-![](img/7137fc91cc91db1244bc898ca9d827f9_106.png)
 
-![](img/7137fc91cc91db1244bc898ca9d827f9_108.png)
 
 ```javascript
 // 1. 在恶意页面中创建一个文件对象（内容可为恶意脚本）
@@ -236,7 +221,6 @@ fetch("https://target.com/upload", {
 ```
 当受害者访问该恶意页面时，JS会自动执行，尝试以其身份上传一个恶意文件。
 
-![](img/7137fc91cc91db1244bc898ca9d827f9_110.png)
 
 ---
 

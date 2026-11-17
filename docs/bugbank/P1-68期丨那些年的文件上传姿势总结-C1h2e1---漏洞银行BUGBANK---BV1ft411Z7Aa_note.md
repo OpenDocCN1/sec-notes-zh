@@ -2,7 +2,6 @@
 
 ![](img/61baebda3882e8fdb0f7564ef4c36891_0.png)
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_2.png)
 
 在本节课中，我们将系统性地学习Web安全中一个经典且直接的攻击面——文件上传漏洞。我们将从基础概念讲起，分析防护机制（WAF）的工作原理，并总结多种实用的绕过姿势，最后通过经典案例加深理解。
 
@@ -35,38 +34,29 @@
 
 ![](img/61baebda3882e8fdb0f7564ef4c36891_12.png)
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_14.png)
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_16.png)
 
 ## 二、 上传前的准备工作与WAF原理 🛠️
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_18.png)
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_20.png)
 
 ![](img/61baebda3882e8fdb0f7564ef4c36891_22.png)
 
 在开始尝试上传前，需要进行充分的准备工作。同时，理解是谁在阻止我们上传（通常是WAF）至关重要。
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_24.png)
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_26.png)
 
 以下是上传前需要明确的几个关键点：
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_28.png)
 
 ![](img/61baebda3882e8fdb0f7564ef4c36891_30.png)
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_32.png)
 
 1.  **目标环境**：明确服务器语言（PHP/JSP/ASP）、Web容器（Apache/Nginx/IIS）和操作系统（Windows/Linux）。不同环境有不同的绕过特性（如Windows的 `::$DATA` 流、Linux的大小写敏感）。
 2.  **寻找上传点**：上传点不仅限于头像修改处，还包括文章插图、附件上传、富文本编辑器等。通常，边缘业务的上传点防护可能更薄弱。
 3.  **探测允许的格式**：使用工具或手动测试，探测服务器允许上传的文件后缀白名单或黑名单。这有助于寻找黑名单遗漏项或白名单的绕过思路。
 4.  **确认处理逻辑**：上传后文件是否会被重命名（如基于时间戳或用户ID）？这决定了是否需要使用截断等技巧。
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_34.png)
 
 理解了自身需要准备什么之后，我们来看看防御方——Web应用防火墙（WAF）是如何工作的。WAF的运行规则通常遵循以下流程：
 
@@ -78,43 +68,31 @@
 
 需要注意的是，大部分WAF主要解析文件名，只有小部分会深度解析文件内容，因为后者更消耗资源。URL路径限制在实际绕过中较少遇到。
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_36.png)
 
 **WAF识别工具**：可以使用 `WAFW00F` 这类工具进行识别。命令格式为 `wafw00f http://target.com`。手工识别可以通过触发WAF的误报页面，从返回信息或IP查询来确定WAF厂商。
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_38.png)
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_40.png)
 
 ![](img/61baebda3882e8fdb0f7564ef4c36891_42.png)
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_44.png)
 
 ## 三、 WAF绕过姿势总结 🎯
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_46.png)
 
 了解了WAF的检查位置后，我们就可以有针对性地构造Payload进行绕过。绕过思路千变万化，以下是13种常见且核心的绕过姿势。
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_48.png)
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_50.png)
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_52.png)
 
 在HTTP上传请求包中，主要关注 `Content-Disposition` 和 `Content-Type` 这两个部分，特别是 `filename` 参数。
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_54.png)
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_56.png)
 
 以下是一些有效的绕过技巧：
 
 ![](img/61baebda3882e8fdb0f7564ef4c36891_58.png)
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_60.png)
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_62.png)
 
 1.  **后缀名Fuzz**：使用Fuzz字典（如 `fuzzdb` 项目中的 `Upload-Filename` 列表）对 `filename` 后缀进行爆破，寻找黑名单遗漏的后缀（如 `php5`, `phtml`, `phps`）。
 2.  **Windows特性：点号与空格**：利用Windows系统自动去除文件名末尾点和空格的特性。例如 `shell.php.` 或 `shell.php ` 在保存后都会变成 `shell.php`。
@@ -133,7 +111,6 @@
 12. **删除form-data**：将 `Content-Disposition` 中的 `form-data` 删除或修改。
 13. **双后缀名/超长文件名**：使用 `shell.pphphp`（利用WAF可能删除 `php` 字符串的规则）或构造超长的文件名使WAF检测失效。
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_64.png)
 
 **推荐练习靶场**：`Upload-Labs` 和 `DVWA` 是极佳的文件上传漏洞练习环境，它们涵盖了从客户端校验到服务端各种防护的绕过场景。
 
@@ -143,13 +120,10 @@
 
 ![](img/61baebda3882e8fdb0f7564ef4c36891_68.png)
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_70.png)
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_72.png)
 
 理论学习之后，我们通过分析几个历史上的经典案例来巩固知识。
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_74.png)
 
 ![](img/61baebda3882e8fdb0f7564ef4c36891_76.png)
 
@@ -161,9 +135,7 @@
 
 ![](img/61baebda3882e8fdb0f7564ef4c36891_81.png)
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_83.png)
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_85.png)
 
 ![](img/61baebda3882e8fdb0f7564ef4c36891_86.png)
 
@@ -174,17 +146,13 @@
 
 ![](img/61baebda3882e8fdb0f7564ef4c36891_88.png)
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_90.png)
 
 ![](img/61baebda3882e8fdb0f7564ef4c36891_92.png)
 
 ## 总结 📝
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_94.png)
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_96.png)
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_97.png)
 
 ![](img/61baebda3882e8fdb0f7564ef4c36891_99.png)
 
@@ -192,7 +160,6 @@
 
 本节课我们一起系统性地学习了文件上传漏洞。我们从**基础概念**入手，理解了漏洞成因在于服务器对上传文件的不安全处理。接着，我们探讨了因**Web容器特性**（如Apache、IIS、Nginx）产生的几种经典解析漏洞。
 
-![](img/61baebda3882e8fdb0f7564ef4c36891_103.png)
 
 ![](img/61baebda3882e8fdb0f7564ef4c36891_105.png)
 

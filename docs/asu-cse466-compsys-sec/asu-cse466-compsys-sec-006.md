@@ -10,7 +10,6 @@
 
 ![](img/d7ef4d77691c3c7c58fc87d6dca91a78_1.png)
 
-![](img/d7ef4d77691c3c7c58fc87d6dca91a78_3.png)
 
 ![](img/d7ef4d77691c3c7c58fc87d6dca91a78_5.png)
 
@@ -43,9 +42,7 @@
 
 ![](img/d7ef4d77691c3c7c58fc87d6dca91a78_7.png)
 
-![](img/d7ef4d77691c3c7c58fc87d6dca91a78_9.png)
 
-![](img/d7ef4d77691c3c7c58fc87d6dca91a78_11.png)
 
 ![](img/d7ef4d77691c3c7c58fc87d6dca91a78_13.png)
 
@@ -53,7 +50,6 @@
 
 ![](img/d7ef4d77691c3c7c58fc87d6dca91a78_15.png)
 
-![](img/d7ef4d77691c3c7c58fc87d6dca91a78_16.png)
 
 ![](img/d7ef4d77691c3c7c58fc87d6dca91a78_18.png)
 
@@ -112,7 +108,6 @@
 
 ![](img/d7ef4d77691c3c7c58fc87d6dca91a78_26.png)
 
-![](img/d7ef4d77691c3c7c58fc87d6dca91a78_28.png)
 
 ![](img/d7ef4d77691c3c7c58fc87d6dca91a78_30.png)
 
@@ -122,7 +117,6 @@
 
 ![](img/d7ef4d77691c3c7c58fc87d6dca91a78_34.png)
 
-![](img/d7ef4d77691c3c7c58fc87d6dca91a78_36.png)
 
 ## 结合静态与动态分析：使用GDB调试
 
@@ -138,9 +132,7 @@
 
 ![](img/d7ef4d77691c3c7c58fc87d6dca91a78_44.png)
 
-![](img/d7ef4d77691c3c7c58fc87d6dca91a78_46.png)
 
-![](img/d7ef4d77691c3c7c58fc87d6dca91a78_48.png)
 
 ![](img/d7ef4d77691c3c7c58fc87d6dca91a78_50.png)
 

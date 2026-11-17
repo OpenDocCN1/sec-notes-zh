@@ -109,7 +109,6 @@ run
 
 ## 总结
 
-![](img/adb3eed05ab3ebac0383fcb358b0108e_1.png)
 
 本节课中我们一起学习了进入Metasploit Framework控制台的基本步骤，并实践了两种在MSF中进行信息收集的方法：
 1.  使用 **`db_nmap`** 命令，它继承了Nmap的所有功能并将结果存入数据库。

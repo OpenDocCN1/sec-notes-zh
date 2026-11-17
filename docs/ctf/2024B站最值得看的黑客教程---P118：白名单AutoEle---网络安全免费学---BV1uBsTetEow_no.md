@@ -4,7 +4,6 @@
 
 在本节课中，我们将要学习如何利用Windows系统中的“白名单”程序及其`AutoElevate`属性来绕过用户账户控制（UAC）。这是一种合法的、不会触发安全软件警报的权限提升方法，适用于Windows 10和Windows 11系统。
 
-![](img/44b278fac026d3f397d08b5f93e99db3_3.png)
 
 ## 概述：什么是UAC？
 
@@ -36,7 +35,6 @@
 
 Windows系统将一部分其认为是安全、可信的程序（通常是微软自己签名的系统程序）加入了白名单。这些程序在运行时，系统会**自动提升其权限**，而无需经过UAC弹框询问用户。这样做是为了保证系统自身的流畅运行，避免频繁的弹框干扰。
 
-![](img/44b278fac026d3f397d08b5f93e99db3_14.png)
 
 以下是几个常见的白名单程序示例，你可以在自己的电脑上尝试运行，它们都不会触发UAC弹框：
 *   `msconfig.exe` - 系统配置实用程序
@@ -44,7 +42,6 @@ Windows系统将一部分其认为是安全、可信的程序（通常是微软�
 *   `taskmgr.exe` - 任务管理器
 *   系统设置（通过`Win + I`打开）
 
-![](img/44b278fac026d3f397d08b5f93e99db3_15.png)
 
 ## 核心：AutoElevate属性
 
@@ -80,7 +77,6 @@ sigcheck.exe -m C:\Windows\System32\msconfig.exe
 
 ## 实践：批量发现白名单程序
 
-![](img/44b278fac026d3f397d08b5f93e99db3_24.png)
 
 ![](img/44b278fac026d3f397d08b5f93e99db3_25.png)
 
@@ -88,13 +84,10 @@ sigcheck.exe -m C:\Windows\System32\msconfig.exe
 
 思路是：遍历系统目录（如 `C:\Windows\System32\`）下的所有可执行文件（`.exe`），并使用 `sigcheck.exe` 工具检查每个文件的清单。然后，过滤出其中 `AutoElevate` 属性为 `true` 的程序。
 
-![](img/44b278fac026d3f397d08b5f93e99db3_27.png)
 
-![](img/44b278fac026d3f397d08b5f93e99db3_28.png)
 
 以下是实现此思路的一个简化版PowerShell脚本示例：
 
-![](img/44b278fac026d3f397d08b5f93e99db3_30.png)
 
 
 ![](img/44b278fac026d3f397d08b5f93e99db3_32.png)
@@ -128,7 +121,6 @@ foreach ($file in $exeFiles) {
 
 ## 总结
 
-![](img/44b278fac026d3f397d08b5f93e99db3_38.png)
 
 本节课中我们一起学习了UAC白名单绕过技术的核心原理。我们首先回顾了UAC的作用，然后解释了为何系统自带程序可以无声无息地以高权限运行，这得益于“白名单”机制。最关键的是，我们揭示了系统通过程序清单中的 **`AutoElevate`** 属性值（`true`/`false`）来判定白名单身份。最后，我们探讨了如何利用 `sigcheck.exe` 工具及脚本批量扫描，自动化地发现系统中所有潜在的可利用白名单程序。
 

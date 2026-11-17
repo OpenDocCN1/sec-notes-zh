@@ -1,14 +1,9 @@
 #  053：Cobalt Strike联动Metasploit 🚀
 
-![](img/644f322a8c39994db2a96129c8f9bb44_1.png)
 
-![](img/644f322a8c39994db2a96129c8f9bb44_3.png)
 
-![](img/644f322a8c39994db2a96129c8f9bb44_5.png)
 
-![](img/644f322a8c39994db2a96129c8f9bb44_7.png)
 
-![](img/644f322a8c39994db2a96129c8f9bb44_9.png)
 
 在本节课中，我们将学习如何将Cobalt Strike与Metasploit这两个强大的渗透测试工具进行联动，以实现更高效的内网渗透和信息收集。课程将涵盖从靶机上线、权限提升到通过代理和端口转发实现工具间协作的完整流程。
 
@@ -26,7 +21,6 @@ Cobalt Strike更适合作为团队协作和内网管控平台，而Metasploit则
 
 ![](img/644f322a8c39994db2a96129c8f9bb44_17.png)
 
-![](img/644f322a8c39994db2a96129c8f9bb44_19.png)
 
 ---
 
@@ -40,15 +34,11 @@ Cobalt Strike更适合作为团队协作和内网管控平台，而Metasploit则
 
 ![](img/644f322a8c39994db2a96129c8f9bb44_27.png)
 
-![](img/644f322a8c39994db2a96129c8f9bb44_29.png)
 
 上一节我们介绍了课程的整体目标，本节中我们来看看如何让靶机上线到Cobalt Strike并提升权限。
 
-![](img/644f322a8c39994db2a96129c8f9bb44_31.png)
 
-![](img/644f322a8c39994db2a96129c8f9bb44_33.png)
 
-![](img/644f322a8c39994db2a96129c8f9bb44_35.png)
 
 ![](img/644f322a8c39994db2a96129c8f9bb44_37.png)
 
@@ -56,7 +46,6 @@ Cobalt Strike更适合作为团队协作和内网管控平台，而Metasploit则
 
 ![](img/644f322a8c39994db2a96129c8f9bb44_39.png)
 
-![](img/644f322a8c39994db2a96129c8f9bb44_41.png)
 
 ![](img/644f322a8c39994db2a96129c8f9bb44_43.png)
 
@@ -74,7 +63,6 @@ shell whoami
 
 ![](img/644f322a8c39994db2a96129c8f9bb44_49.png)
 
-![](img/644f322a8c39994db2a96129c8f9bb44_51.png)
 
 ![](img/644f322a8c39994db2a96129c8f9bb44_53.png)
 
@@ -88,7 +76,6 @@ shell whoami
 
 ![](img/644f322a8c39994db2a96129c8f9bb44_60.png)
 
-![](img/644f322a8c39994db2a96129c8f9bb44_62.png)
 
 ![](img/644f322a8c39994db2a96129c8f9bb44_64.png)
 
@@ -104,11 +91,9 @@ shell whoami
 
 ![](img/644f322a8c39994db2a96129c8f9bb44_73.png)
 
-![](img/644f322a8c39994db2a96129c8f9bb44_75.png)
 
 获得最高权限后，可以执行更多操作，例如转储哈希或从内存中读取明文密码。
 
-![](img/644f322a8c39994db2a96129c8f9bb44_77.png)
 
 ![](img/644f322a8c39994db2a96129c8f9bb44_79.png)
 
@@ -138,7 +123,6 @@ shell whoami
 
 ![](img/644f322a8c39994db2a96129c8f9bb44_97.png)
 
-![](img/644f322a8c39994db2a96129c8f9bb44_99.png)
 
 ## 第二部分：开启SOCKS代理进行内网探测
 
@@ -152,7 +136,6 @@ shell whoami
 
 在获得内网主机控制权后，我们常常需要探测其所在内网的其他资产。由于攻击机可能无法直接访问目标内网，因此需要建立代理。
 
-![](img/644f322a8c39994db2a96129c8f9bb44_109.png)
 
 ![](img/644f322a8c39994db2a96129c8f9bb44_111.png)
 
@@ -170,13 +153,10 @@ socks 1234
 
 接下来，我们需要在攻击机（如Kali）上配置代理以使用这个通道。可以使用`proxychains`工具。
 
-![](img/644f322a8c39994db2a96129c8f9bb44_118.png)
 
 ![](img/644f322a8c39994db2a96129c8f9bb44_119.png)
 
-![](img/644f322a8c39994db2a96129c8f9bb44_121.png)
 
-![](img/644f322a8c39994db2a96129c8f9bb44_123.png)
 
 以下是配置和使用`proxychains`的步骤：
 1.  编辑配置文件：`vi /etc/proxychains.conf`
@@ -186,9 +166,7 @@ socks 1234
     proxychains nmap -sT -Pn 192.168.2.135
     ```
 
-![](img/644f322a8c39994db2a96129c8f9bb44_125.png)
 
-![](img/644f322a8c39994db2a96129c8f9bb44_127.png)
 
 需要注意的是，SOCKS代理工作在TCP/IP协议的应用层，因此无法代理ICMP协议（如ping命令）。使用`nmap`扫描时应使用`-sT`（TCP连接扫描）并禁用ping扫描（-Pn）。
 
@@ -196,7 +174,6 @@ socks 1234
 
 ![](img/644f322a8c39994db2a96129c8f9bb44_131.png)
 
-![](img/644f322a8c39994db2a96129c8f9bb44_133.png)
 
 通过代理进行扫描和连接速度会较慢，因为流量需要经过多层转发。
 
@@ -214,7 +191,6 @@ socks 1234
 
 上一节我们介绍了通过代理访问内网的方法，本节中我们来看看如何将Cobalt Strike上线的会话直接交给功能更丰富的Metasploit来处理。
 
-![](img/644f322a8c39994db2a96129c8f9bb44_143.png)
 
 首先，在Cobalt Strike中创建一个新的监听器（Listener）。
 1.  点击 `Listeners` -> `Add`。
@@ -227,7 +203,6 @@ socks 1234
 
 ![](img/644f322a8c39994db2a96129c8f9bb44_147.png)
 
-![](img/644f322a8c39994db2a96129c8f9bb44_149.png)
 
 接着，在**内网**的Metasploit中配置接收端。
 1.  启动msfconsole。
@@ -243,11 +218,9 @@ socks 1234
     ```
 5.  运行监听：`run`
 
-![](img/644f322a8c39994db2a96129c8f9bb44_151.png)
 
 现在，Cobalt Strike服务器（公网）上的7777端口与内网Metasploit的7777端口尚未连通。由于公网无法直接访问内网，我们需要使用SSH隧道进行端口转发。
 
-![](img/644f322a8c39994db2a96129c8f9bb44_153.png)
 
 ![](img/644f322a8c39994db2a96129c8f9bb44_155.png)
 

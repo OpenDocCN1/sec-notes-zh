@@ -30,7 +30,6 @@ IDA Pro是一款交互式反汇编器（Interactive Disassembler），是目前�
 
 除了默认窗口，用户可以根据需要打开或关闭其他窗口。例如，在`View` -> `Open subviews`菜单中可以打开`Strings`窗口，该窗口会提取并列出程序中出现的所有字符串常量，这在逆向分析中非常有用。
 
-![](img/ddfc92776b7029edcb4c51c2c7a07481_7.png)
 
 ## 常用快捷键
 
@@ -45,9 +44,7 @@ IDA Pro是一款交互式反汇编器（Interactive Disassembler），是目前�
 *   **F9**：运行程序。如果遇到断点则会暂停，否则运行到程序结束。
 *   **ESC**：返回到上一个查看的位置。
 
-![](img/ddfc92776b7029edcb4c51c2c7a07481_9.png)
 
-![](img/ddfc92776b7029edcb4c51c2c7a07481_11.png)
 
 掌握工具的最佳方式是在实践中反复使用，无需死记硬背。
 
@@ -73,9 +70,7 @@ IDA Pro是一款交互式反汇编器（Interactive Disassembler），是目前�
 
 ### 第二步：静态分析定位关键字符串
 
-![](img/ddfc92776b7029edcb4c51c2c7a07481_17.png)
 
-![](img/ddfc92776b7029edcb4c51c2c7a07481_19.png)
 
 我们使用32位IDA打开程序。面对一个陌生程序，一个高效的切入点是查找程序中的字符串。
 

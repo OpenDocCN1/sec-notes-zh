@@ -2,7 +2,6 @@
 
 ![](img/d00e32ad6c8d2d38acc3174a2b8e0e58_0.png)
 
-![](img/d00e32ad6c8d2d38acc3174a2b8e0e58_2.png)
 
 在本教程中，我们将学习恶意代码分析中的两项核心技术：**对抗反汇编**与**对抗反调试**。我们将从基本概念入手，通过理论讲解和实际案例分析，帮助你理解恶意代码如何干扰分析工具，并掌握相应的应对策略。
 
@@ -79,11 +78,9 @@
 
 ### 利用Windows API检测
 
-![](img/d00e32ad6c8d2d38acc3174a2b8e0e58_4.png)
 
 以下是几个常用的检测API：
 
-![](img/d00e32ad6c8d2d38acc3174a2b8e0e58_6.png)
 
 *   **`IsDebuggerPresent()`**：检查当前进程的**进程环境块（PEB）** 中的 `BeingDebugged` 标志。
 *   **`CheckRemoteDebuggerPresent()`**：功能更强，可检测指定进程是否被调试。
@@ -92,7 +89,6 @@
 
 ### 直接检测PEB结构
 
-![](img/d00e32ad6c8d2d38acc3174a2b8e0e58_8.png)
 
 ![](img/d00e32ad6c8d2d38acc3174a2b8e0e58_10.png)
 
@@ -118,23 +114,16 @@
 
 **对抗方法**：在调试器（如OD）的设置中，将**系统断点**作为初始暂停位置，这样可以在TLS回调函数执行时中断并进行调试分析。
 
-![](img/d00e32ad6c8d2d38acc3174a2b8e0e58_12.png)
 
 ## 对抗反调试实践 🛠️
 
-![](img/d00e32ad6c8d2d38acc3174a2b8e0e58_14.png)
 
-![](img/d00e32ad6c8d2d38acc3174a2b8e0e58_16.png)
 
-![](img/d00e32ad6c8d2d38acc3174a2b8e0e58_18.png)
 
 上一节我们介绍了多种反调试技术，本节中我们通过一个案例来实践如何绕过它们。
 
-![](img/d00e32ad6c8d2d38acc3174a2b8e0e58_20.png)
 
-![](img/d00e32ad6c8d2d38acc3174a2b8e0e58_22.png)
 
-![](img/d00e32ad6c8d2d38acc3174a2b8e0e58_24.png)
 
 我们分析一个简单的“CrackMe”程序，它要求输入4字节密码。直接调试会发现程序异常终止。
 

@@ -18,7 +18,6 @@
 
 ---
 
-![](img/39112b6ea1875d5db4d702a6e77f8649_1.png)
 
 ## 如何攻击SQL注入漏洞？
 
@@ -48,7 +47,6 @@ SELECT * FROM users WHERE username = ‘admin’ --’ AND password = ‘...’
 
 上一节我们介绍了攻击方法，本节中我们来讲解开发过程中如何修复这些漏洞，并避免其产生。
 
-![](img/39112b6ea1875d5db4d702a6e77f8649_3.png)
 
 以下是防御SQL注入的核心方法：
 

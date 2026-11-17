@@ -44,11 +44,8 @@ Eve和Mallory是虚构人物，用于模拟现实世界中的攻击者。因为�
 
 在选择明文攻击模型中，Eve能够诱骗Alice使用其密钥加密Eve选择的任何消息。Eve本身并不知道密钥，但她能利用Alice的加密操作来协助自己。然而，Eve**不能**诱骗Bob解密消息。
 
-![](img/ca7344b8ccc52b0622d1ee85d9cc823f_1.png)
 
-![](img/ca7344b8ccc52b0622d1ee85d9cc823f_2.png)
 
-![](img/ca7344b8ccc52b0622d1ee85d9cc823f_3.png)
 
 **核心概念**可以用以下方式描述：
 *   **攻击者能力**：Eve → Alice: `Encrypt(Key_Alice, Plaintext_Eve)`
@@ -58,27 +55,20 @@ Eve和Mallory是虚构人物，用于模拟现实世界中的攻击者。因为�
 
 ---
 
-![](img/ca7344b8ccc52b0622d1ee85d9cc823f_5.png)
 
 ## 一个重要的补充说明
 
-![](img/ca7344b8ccc52b0622d1ee85d9cc823f_6.png)
 
-![](img/ca7344b8ccc52b0622d1ee85d9cc823f_7.png)
 
-![](img/ca7344b8ccc52b0622d1ee85d9cc823f_8.png)
 
 关于诱骗Bob解密的能力，有一个细微但重要的限制：Eve不能诱骗Bob去解密**她自己刚刚诱骗Alice加密得到的那个密文**。如果允许这样做，那么整个加密的目的就被完全破坏了，因为Eve可以直接通过Bob得到她选择的明文。
 
-![](img/ca7344b8ccc52b0622d1ee85d9cc823f_10.png)
 
-![](img/ca7344b8ccc52b0622d1ee85d9cc823f_11.png)
 
 ---
 
 ## 总结
 
-![](img/ca7344b8ccc52b0622d1ee85d9cc823f_13.png)
 
 ![](img/ca7344b8ccc52b0622d1ee85d9cc823f_15.png)
 

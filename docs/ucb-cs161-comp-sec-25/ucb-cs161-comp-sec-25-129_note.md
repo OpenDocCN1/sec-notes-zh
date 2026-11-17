@@ -24,7 +24,6 @@ is_valid = AEAD_Decrypt(key, nonce, ciphertext, tag, associated_data)
 
 ### 关于哈希函数
 
-![](img/03efdacbdf38574b1bdf5b0524bc0b5b_1.png)
 
 我们首先介绍了哈希函数，它能将任意长度的输入映射为固定长度的输出（可以理解为消息的“指纹”）。
 

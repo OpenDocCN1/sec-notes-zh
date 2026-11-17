@@ -1,10 +1,8 @@
 # 护网行动红蓝攻防教程：P48：Web安全-24.课程考核讲解 🎯
 
-![](img/bb2868721acf3cb84984bb0920c759ed_1.png)
 
 ![](img/bb2868721acf3cb84984bb0920c759ed_3.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_5.png)
 
 ![](img/bb2868721acf3cb84984bb0920c759ed_6.png)
 
@@ -30,49 +28,35 @@
 
 ![](img/bb2868721acf3cb84984bb0920c759ed_25.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_27.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_29.png)
 
 ![](img/bb2868721acf3cb84984bb0920c759ed_31.png)
 
 ![](img/bb2868721acf3cb84984bb0920c759ed_32.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_34.png)
 
 ---
 
 ## 概述
 
-![](img/bb2868721acf3cb84984bb0920c759ed_36.png)
 
 ![](img/bb2868721acf3cb84984bb0920c759ed_38.png)
 
 SSRF（服务器端请求伪造）漏洞允许攻击者诱使服务器向内部或外部的任意地址发起请求。本节课我们将通过两个实战题目，系统性地学习如何利用SSRF漏洞进行内网探测、服务识别和漏洞利用，最终获取目标系统的控制权。
 
-![](img/bb2868721acf3cb84984bb0920c759ed_40.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_42.png)
 
 上一节我们介绍了SSRF漏洞的基本原理和常见利用协议，本节中我们来看看如何将这些知识应用于复杂的实战场景。
 
-![](img/bb2868721acf3cb84984bb0920c759ed_43.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_45.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_47.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_48.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_49.png)
 
 ---
 
-![](img/bb2868721acf3cb84984bb0920c759ed_51.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_52.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_53.png)
 
 ## 题目一：有回显的SSRF利用
 
@@ -84,13 +68,9 @@ SSRF（服务器端请求伪造）漏洞允许攻击者诱使服务器向内部�
 
 以下是探测服务器支持协议和收集内网信息的步骤：
 
-![](img/bb2868721acf3cb84984bb0920c759ed_55.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_57.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_59.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_61.png)
 
 1.  **测试Dict协议**：使用`dict://`协议探测服务器的端口和服务信息。例如，`dict://<公网IP>:22`可以测试SSH服务。
 2.  **探测内网端口**：确认支持`dict`协议后，可以构造请求探测内网存活端口。例如：`dict://127.0.0.1:22`。
@@ -102,17 +82,13 @@ SSRF（服务器端请求伪造）漏洞允许攻击者诱使服务器向内部�
 *   **5002端口**：未知Web服务
 *   **8080端口**：Tomcat服务 (运行Struts2框架)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_63.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_65.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_67.png)
 
 ![](img/bb2868721acf3cb84984bb0920c759ed_69.png)
 
 ![](img/bb2868721acf3cb84984bb0920c759ed_71.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_73.png)
 
 ![](img/bb2868721acf3cb84984bb0920c759ed_74.png)
 
@@ -120,7 +96,6 @@ SSRF（服务器端请求伪造）漏洞允许攻击者诱使服务器向内部�
 
 ![](img/bb2868721acf3cb84984bb0920c759ed_76.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_78.png)
 
 ![](img/bb2868721acf3cb84984bb0920c759ed_80.png)
 
@@ -152,11 +127,9 @@ SSRF（服务器端请求伪造）漏洞允许攻击者诱使服务器向内部�
 
 第二个题目同样存在SSRF，但无直接回显。目标是利用该漏洞攻击内网的Redis服务。
 
-![](img/bb2868721acf3cb84984bb0920c759ed_90.png)
 
 ### 信息收集与协议确认
 
-![](img/bb2868721acf3cb84984bb0920c759ed_92.png)
 
 首先重复信息收集步骤，通过爆破发现内网开放了80、3306和**6379（Redis）**端口。
 
@@ -171,7 +144,6 @@ SSRF（服务器端请求伪造）漏洞允许攻击者诱使服务器向内部�
 
 ![](img/bb2868721acf3cb84984bb0920c759ed_100.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_101.png)
 
 ![](img/bb2868721acf3cb84984bb0920c759ed_103.png)
 
@@ -181,13 +153,9 @@ SSRF（服务器端请求伪造）漏洞允许攻击者诱使服务器向内部�
 
 ![](img/bb2868721acf3cb84984bb0920c759ed_105.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_107.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_109.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_110.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_112.png)
 
 **1. 写入SSH公钥**
    前提：目标Redis服务运行在root用户下，且`~/.ssh/`目录存在。
@@ -199,9 +167,7 @@ SSRF（服务器端请求伪造）漏洞允许攻击者诱使服务器向内部�
 
 ![](img/bb2868721acf3cb84984bb0920c759ed_116.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_118.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_120.png)
 
 **2. 写入WebShell**
    前提：知道目标Web服务器的绝对路径。
@@ -223,17 +189,12 @@ SSRF（服务器端请求伪造）漏洞允许攻击者诱使服务器向内部�
 
 ![](img/bb2868721acf3cb84984bb0920c759ed_128.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_130.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_132.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_134.png)
 
 Gopher协议可以发送封装好的TCP数据包。攻击Redis的关键在于将Redis命令转换为Gopher可发送的格式。
 
-![](img/bb2868721acf3cb84984bb0920c759ed_136.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_138.png)
 
 ![](img/bb2868721acf3cb84984bb0920c759ed_139.png)
 
@@ -257,16 +218,12 @@ Gopher协议可以发送封装好的TCP数据包。攻击Redis的关键在于将
 
 ![](img/bb2868721acf3cb84984bb0920c759ed_150.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_152.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_154.png)
 
 **工具辅助**：可以使用现成的脚本（如`Gopherus`）自动生成攻击Redis的Gopher Payload，支持写入SSH密钥、WebShell、定时任务等多种方式。
 *   **命令示例**：`python gopherus.py --exploit redis`
 
-![](img/bb2868721acf3cb84984bb0920c759ed_155.png)
 
-![](img/bb2868721acf3cb84984bb0920c759ed_157.png)
 
 ![](img/bb2868721acf3cb84984bb0920c759ed_159.png)
 

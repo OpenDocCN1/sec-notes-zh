@@ -8,9 +8,7 @@
 
 SVKP 1.43 是一个在抽取 Stolen Code（字节代码）方面非常激进的壳。本次课程将演示一种不直接处理 Stolen Code 的脱壳方法，即“添加区段法”。我们将使用 OllyDbg（OD）和一个专用脱壳插件来完成此过程。
 
-![](img/04dfbca26e62c8ba299bd137bc4ee0cb_1.png)
 
-![](img/04dfbca26e62c8ba299bd137bc4ee0cb_2.png)
 
 ---
 
@@ -18,9 +16,7 @@ SVKP 1.43 是一个在抽取 Stolen Code（字节代码）方面非常激进的�
 
 在开始脱壳之前，需要完成以下准备工作。
 
-![](img/04dfbca26e62c8ba299bd137bc4ee0cb_4.png)
 
-![](img/04dfbca26e62c8ba299bd137bc4ee0cb_6.png)
 
 以下是必要的准备工作列表：
 *   将专用的脱壳插件放置到 OllyDbg 的插件目录（`plugins`）下。
@@ -74,11 +70,9 @@ SVKP 1.43 是一个在抽取 Stolen Code（字节代码）方面非常激进的�
 
 ---
 
-![](img/04dfbca26e62c8ba299bd137bc4ee0cb_8.png)
 
 ## 课程总结 🎯
 
-![](img/04dfbca26e62c8ba299bd137bc4ee0cb_10.png)
 
 本节课中我们一起学习了针对 SVKP 1.43 壳的“另类脱壳法”。
 

@@ -26,9 +26,7 @@ Hyper-V DirectX 组件的数据流也从应用程序开始。应用程序将数�
 
 ## 2. 在 Hyper-V 虚拟机中启用 DirectX 组件 ⚙️
 
-![](img/d528e734e61146c39e947869517bc3c0_4.png)
 
-![](img/d528e734e61146c39e947869517bc3c0_6.png)
 
 上一节我们了解了架构，本节中我们来看看如何在 Hyper-V 虚拟机中启用此组件。
 
@@ -38,13 +36,11 @@ Hyper-V DirectX 组件的数据流也从应用程序开始。应用程序将数�
 
 如果虚拟机是 Linux，只有 WSL2 Linux 内核源代码树能原生支持 DirectX 设备作为虚拟设备。但好消息是，用于 Linux 的 `dxgkrnl` 驱动易于编译和定制。该驱动设备文件暴露了一组 `ioctl`，紧密模仿了 Windows 上的原生 WDDM 用户模式层。
 
-![](img/d528e734e61146c39e947869517bc3c0_8.png)
 
 ---
 
 ## 3. Hyper-V DirectX 组件的攻击面 🎯
 
-![](img/d528e734e61146c39e947869517bc3c0_10.png)
 
 上一节我们介绍了如何启用组件，本节中我们来看看其攻击面。
 
@@ -52,11 +48,9 @@ Hyper-V DirectX 组件的数据流也从应用程序开始。应用程序将数�
 
 Linux 内核模块 `dxgkrnl` 使用 `dxgvmb_send_sync_msg` 和 `dxgvmb_send_async_msg` 来向宿主机发送 Dxgk 内核命令。`dxgvmb_channel_receive` 函数用于接收来自宿主机的消息和命令。
 
-![](img/d528e734e61146c39e947869517bc3c0_12.png)
 
 通过阅读 WSL2 Linux 内核源代码，可以看到这里有许多可用的命令。一个命令消息的大小是 0x18，消息缓冲区头由四个成员组成。通道类型决定它是虚拟 GPU 通道还是全局通道，命令类型决定发送哪个命令。
 
-![](img/d528e734e61146c39e947869517bc3c0_14.png)
 
 例如，`dxgvmb_send_log_to_host` 函数向宿主机发送 `DXGK_VMB_COMMAND_LOG_TO_HOST` 命令。在 `vmbus_to_host_need_to` 函数中，可以看到 `DXGK_VMB_COMMAND_LOG_TO_HOST` 命令是一个虚拟 GPU 通道命令。`DXGK_VMB_COMMAND_LOG_TO_HOST` 结构定义了该命令消息的格式。
 
@@ -80,11 +74,9 @@ Linux 内核模块 `dxgkrnl` 使用 `dxgvmb_send_sync_msg` 和 `dxgvmb_send_asyn
 
 以下是四个具体的漏洞案例：
 
-![](img/d528e734e61146c39e947869517bc3c0_18.png)
 
 ### 案例一：CVE-2022-21918（空指针解引用）
 
-![](img/d528e734e61146c39e947869517bc3c0_20.png)
 
 此漏洞问题出现在 `DXGK_VMB_COMMAND` 命令中。漏洞的根本原因是 `vidsch` 函数的第五个参数引用了一个空指针。
 
@@ -92,7 +84,6 @@ Linux 内核模块 `dxgkrnl` 使用 `dxgvmb_send_sync_msg` 和 `dxgvmb_send_asyn
 
 在 `signal_synchronization_object_from_cpu` 函数中，`v5` 由 `a1` 赋值。该结构的内存布局如图所示。
 
-![](img/d528e734e61146c39e947869517bc3c0_22.png)
 
 在 `dxghost_virtual_gpu_vmbus_channel` 函数中，第一个参数的 `fence_values` 成员被赋值为 `v24`。可以看到 `v24` 是 `v22` 的 `+0x50` 偏移。我们设置 `v22` 为 `this`。
 
@@ -100,13 +91,11 @@ Linux 内核模块 `dxgkrnl` 使用 `dxgvmb_send_sync_msg` 和 `dxgvmb_send_asyn
 
 因此，如果 `return_object_count` 是 1，`context_count` 是 0，并且 `buffer_size` 是 0x3C，那么 `monitor_fence_value` 数组的第 17 个 `word` 偏移将是 8，`monitor_fence_value` 数组的第 18 个 `word` 偏移将是 0xC。然后，在图中 `v22` 等于 `buffer_size` 减去 `v18`，`v22` 等于 0，`v17` 等于 8。这意味着条件 `v22 < v17` 成立，`v24` 将被赋值为 0，这将在后续流程中导致空指针解引用。
 
-![](img/d528e734e61146c39e947869517bc3c0_24.png)
 
 PoC 代码分为两部分。第一部分用于创建一个同步句柄，第二部分使用它发送 `DXGK_VMB_COMMAND` 命令消息。
 
 ### 案例二：CVE-2021-24019（空指针解引用）
 
-![](img/d528e734e61146c39e947869517bc3c0_26.png)
 
 此漏洞问题出现在 `DXGK_VMB_COMMAND_SUBMIT_COMMAND` 命令中。下图是堆栈回溯。
 
@@ -116,7 +105,6 @@ PoC 代码分为两部分。第一部分用于创建一个同步句柄，第二�
 
 图中展示了 PoC 代码。第一部分是创建上下文句柄，第二部分发送提交命令消息。如图所示设置 `submit_cmd` 结构中的成员将触发此漏洞。在 PoC 代码中，`present_history_token` 被设置为 `this`。
 
-![](img/d528e734e61146c39e947869517bc3c0_28.png)
 
 以下是调试过程。首先在 `dxgk_submit_command_internal` 的 0xAA69 处设置断点。调试器命中断点后，检查第二个参数 `present_history_token`，它小于 0x1。单步跟踪，直到调用 `SeLockSubjectContext`，并显示第一个参数指向的内存。可以看到 `SE_SUBJECT_CONTEXT` 结构中的许多成员未初始化。因此，在 `SeLockSubjectContext` 函数中引用了这些未初始化的值并导致崩溃。
 
@@ -144,13 +132,11 @@ PoC 代码分为三部分。第一部分是创建上下文句柄，第二部分�
 
 `DXGK_VMB_COMMAND_SUBMIT_WITH_PRESENT_HISTORY_TOKEN` 命令消息的内存布局如图所示。
 
-![](img/d528e734e61146c39e947869517bc3c0_34.png)
 
 在 `dxghost_virtual_gpu_vmbus_channel_submit_with_present_history_token` 函数中，`present_unknown4` 被用作 `dxgadapter_submit_with_present_history_token_from_vmb` 函数的第七个参数。
 
 在 `dxgadapter_submit_with_present_history_token_from_vmb` 函数中，`a7` 和 `unknown4` 被写入 `v29` 偏移 `0x300` 的地址。然后 `vidshi_submit_command_context` 函数将被调用。`v29` 是该函数的第一个参数，如图所示。
 
-![](img/d528e734e61146c39e947869517bc3c0_36.png)
 
 `vidshi_redirected_flip_with_unsync_object_command_context` 函数的第二个参数如图所示。在 `vidshi_acquire_private_data_reference` 函数中，当 `v2` 为 0 时，`a2` 偏移 `0xC8` 地址处的关键字值将被写入 `v6`。
 
@@ -164,7 +150,6 @@ PoC 代码的第一部分是创建同步句柄，第二部分发送 `DXGK_VMB_CO
 
 ---
 
-![](img/d528e734e61146c39e947869517bc3c0_38.png)
 
 ## 5. 模糊测试（Fuzzing）的必要性 🤖
 

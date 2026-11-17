@@ -4,17 +4,13 @@
 
 ![](img/df7bb55be4af113c6adf702b51d95bec_3.png)
 
-![](img/df7bb55be4af113c6adf702b51d95bec_4.png)
 
 在本节课中，我们将学习CTF比赛的基本赛制，并详细介绍在后续学习和比赛中需要用到的核心工具及其安装配置方法。掌握这些工具是进行CTF实战的基础。
 
-![](img/df7bb55be4af113c6adf702b51d95bec_6.png)
 
-![](img/df7bb55be4af113c6adf702b51d95bec_8.png)
 
 ## 虚拟机软件：VMware Workstation 🖥️
 
-![](img/df7bb55be4af113c6adf702b51d95bec_10.png)
 
 上一节我们介绍了CTF的基本概念，本节中我们来看看如何搭建一个安全、隔离的练习环境。首先需要安装虚拟机软件VMware Workstation。
 
@@ -22,7 +18,6 @@
 
 ### 软件安装与版本
 
-![](img/df7bb55be4af113c6adf702b51d95bec_12.png)
 
 请确保安装的是VMware Workstation 14版本。如果您已安装其他版本，建议卸载后重新安装14版本。
 *   您可以在软件“帮助”菜单的“关于”选项中查看当前版本。
@@ -51,7 +46,6 @@
 
 ### 基本功能使用
 
-![](img/df7bb55be4af113c6adf702b51d95bec_20.png)
 
 ![](img/df7bb55be4af113c6adf702b51d95bec_22.png)
 
@@ -96,7 +90,6 @@
 
 Python在CTF中广泛应用于编写和运行加解密、漏洞利用等脚本。
 
-![](img/df7bb55be4af113c6adf702b51d95bec_29.png)
 
 以下是安装步骤：
 1.  运行提供的Python安装包（根据系统选择32位或64位），全程使用默认选项进行安装。
@@ -130,7 +123,6 @@ Python在CTF中广泛应用于编写和运行加解密、漏洞利用等脚本�
 
 ### PHP集成环境：PHPStudy安装
 
-![](img/df7bb55be4af113c6adf702b51d95bec_40.png)
 
 ![](img/df7bb55be4af113c6adf702b51d95bec_42.png)
 
@@ -147,9 +139,7 @@ Python在CTF中广泛应用于编写和运行加解密、漏洞利用等脚本�
 
 ![](img/df7bb55be4af113c6adf702b51d95bec_46.png)
 
-![](img/df7bb55be4af113c6adf702b51d95bec_47.png)
 
-![](img/df7bb55be4af113c6adf702b51d95bec_49.png)
 
 ## 浏览器与插件配置 🌐
 
@@ -168,15 +158,12 @@ Python在CTF中广泛应用于编写和运行加解密、漏洞利用等脚本�
 *   请卸载当前可能已安装的新版火狐浏览器。
 *   安装我们提供的旧版火狐浏览器安装包。
 
-![](img/df7bb55be4af113c6adf702b51d95bec_56.png)
 
 ### HackBar插件安装
 
 HackBar是用于测试Web安全的经典插件，可以方便地构造和发送HTTP请求。
 
-![](img/df7bb55be4af113c6adf702b51d95bec_58.png)
 
-![](img/df7bb55be4af113c6adf702b51d95bec_59.png)
 
 安装步骤如下：
 1.  打开已安装的旧版火狐浏览器。
@@ -184,9 +171,7 @@ HackBar是用于测试Web安全的经典插件，可以方便地构造和发送H
 3.  在扩展页面，搜索“HackBar”。
 4.  在搜索结果中，**请选择安装发布于2014年的那个版本**（这是最好用的版本）。请仔细核对，不要安装2018年等更新版本的HackBar。
 
-![](img/df7bb55be4af113c6adf702b51d95bec_60.png)
 
-![](img/df7bb55be4af113c6adf702b51d95bec_61.png)
 
 ---
 

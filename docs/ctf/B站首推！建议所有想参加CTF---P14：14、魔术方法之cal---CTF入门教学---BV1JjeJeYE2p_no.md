@@ -5,7 +5,6 @@
 ## 概述
 上一节我们介绍了其他魔术方法，本节中我们来看看`__call`和`__callStatic`。这两个方法的核心作用是“兜底”，当程序试图调用一个不存在或不可访问的方法时，它们会被自动触发，从而避免程序因致命错误而终止执行。
 
-![](img/21c8f50e77ec0634989cb4fbdf2ea6be_1.png)
 
 ## __call 魔术方法
 `__call`方法在对象中调用一个不可访问的（非公开的）方法时被自动调用。
@@ -24,7 +23,6 @@ public function __call($method_name, $arguments) {
 我们通过一个具体例子来理解。假设有一个`Person`类：
 
 
-![](img/21c8f50e77ec0634989cb4fbdf2ea6be_3.png)
 
 ```php
 class Person {
@@ -44,15 +42,11 @@ $teacher->eat("apple", "banana"); // 触发 __call
 ```
 运行上述代码，`say()`方法正常执行。而`run()`和`eat()`方法在类中并不存在，因此会触发`__call`方法，输出相应的提示信息，而程序不会报错。
 
-![](img/21c8f50e77ec0634989cb4fbdf2ea6be_4.png)
 
-![](img/21c8f50e77ec0634989cb4fbdf2ea6be_5.png)
 
-![](img/21c8f50e77ec0634989cb4fbdf2ea6be_6.png)
 
 为了对比，如果我们移除`__call`方法，再次尝试调用不存在的`run()`方法：
 
-![](img/21c8f50e77ec0634989cb4fbdf2ea6be_8.png)
 
 ```php
 class Person {
@@ -66,12 +60,10 @@ $teacher->run();
 ```
 程序将会报错：`Fatal error: Uncaught Error: Call to undefined method Person::run()...`，导致脚本终止。
 
-![](img/21c8f50e77ec0634989cb4fbdf2ea6be_10.png)
 
 ## __callStatic 魔术方法
 上一节我们介绍了对象实例调用时的`__call`，本节中我们来看看静态调用的情况。`__callStatic`方法与`__call`功能类似，但它在**静态上下文**中调用一个不可访问的方法时被触发。
 
-![](img/21c8f50e77ec0634989cb4fbdf2ea6be_12.png)
 
 它的标准格式如下：
 ```php
@@ -84,7 +76,6 @@ public static function __callStatic($method_name, $arguments) {
 *   **触发方式**：必须使用`::`范围解析操作符（双冒号）进行静态调用时才会触发。
 *   **目的**：同样是处理不存在的静态方法调用，防止程序报错。
 
-![](img/21c8f50e77ec0634989cb4fbdf2ea6be_14.png)
 
 ### 代码示例与解析
 我们修改上面的例子，使其支持静态调用：
@@ -111,7 +102,6 @@ Person::eat("fruit"); // 触发 __callStatic
 *   `__call` 针对对象实例调用（使用 `->` 操作符）。
 *   `__callStatic` 针对静态调用（使用 `::` 操作符）。
 
-![](img/21c8f50e77ec0634989cb4fbdf2ea6be_16.png)
 
 ![](img/21c8f50e77ec0634989cb4fbdf2ea6be_18.png)
 

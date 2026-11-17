@@ -54,7 +54,6 @@ find . -maxdepth 1 -mtime +7
 
 如果不加 `-maxdepth 1`，`find` 会列出当前目录及所有子目录中符合条件的结果，这可能不是我们想要的效果。
 
-![](img/72b6e21b7ef304a4ef228f2f77b20cef_15.png)
 
 ### 第四步：组合查找与删除操作
 

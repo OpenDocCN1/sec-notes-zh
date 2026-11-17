@@ -2,15 +2,12 @@
 
 在本节课中，我们将学习HTTP协议中请求头（Request Headers）的关键组成部分。理解这些请求头不仅是网络通信的基础，更是发现和利用Web安全漏洞的起点。我们将逐一解析几个核心请求头，并探讨它们可能引发的安全风险。
 
-![](img/754ae10d47437d4a1fa08cb7949344ff_1.png)
 
 ## Host头：站点的“门牌号”
 
 上一节我们介绍了HTTP请求的基本结构，本节中我们来看看第一个关键请求头：`Host`。
 
-![](img/754ae10d47437d4a1fa08cb7949344ff_3.png)
 
-![](img/754ae10d47437d4a1fa08cb7949344ff_4.png)
 
 `Host`头的作用是描述请求主机的域名或IP地址。例如，当我们访问 `www.example.com` 时，`Host` 头的值就是 `www.example.com`。它告诉服务器我们想访问哪个网站。
 
@@ -26,7 +23,6 @@
 
 接下来，我们看看 `User-Agent`（简称UA）头。
 
-![](img/754ae10d47437d4a1fa08cb7949344ff_6.png)
 
 `User-Agent`头的作用是告诉服务器客户端的浏览器版本和操作系统信息，以便服务器返回兼容的页面内容。例如，`Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36` 表示来自Windows 10的Chrome内核浏览器。
 
@@ -42,15 +38,11 @@
 
 `Referer`头的作用是告诉服务器当前请求是从哪个页面链接过来的。例如，从百度搜索结果点击进入某个网站，请求头中就会包含 `Referer: https://www.baidu.com/`。
 
-![](img/754ae10d47437d4a1fa08cb7949344ff_8.png)
 
-![](img/754ae10d47437d4a1fa08cb7949344ff_9.png)
 
 `Referer`头与身份验证机制（如Cookie）结合不当，可能引发严重漏洞。Cookie是服务器发给浏览器的一小段数据，用于标识用户身份（就像门禁卡）。用户登录后，后续请求会携带Cookie，服务器据此识别用户。
 
-![](img/754ae10d47437d4a1fa08cb7949344ff_10.png)
 
-![](img/754ae10d47437d4a1fa08cb7949344ff_12.png)
 
 以下是 `Referer` 头可能涉及的一个经典漏洞：
 *   **漏洞名称**：**跨站请求伪造（CSRF）**
@@ -76,11 +68,9 @@
 
 大部分旨在接管用户账号的攻击，最终都会围绕 `Cookie` 做文章。
 
-![](img/754ae10d47437d4a1fa08cb7949344ff_14.png)
 
 > **核心概念**：`Cookie` 是会话管理的核心。安全的Cookie应设置 `HttpOnly`（防止JS读取）、`Secure`（仅HTTPS传输）、`SameSite`（限制跨站发送）等属性。
 
-![](img/754ae10d47437d4a1fa08cb7949344ff_16.png)
 
 ## 总结
 

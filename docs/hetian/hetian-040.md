@@ -34,7 +34,6 @@ Kali Linux的安装步骤如下：
 
 ## Kali Linux基础配置与使用 🐧
 
-![](img/d5a7a77937f7bfc716887a568a4d5ce0_1.png)
 
 上一节我们完成了虚拟环境的搭建，本节中我们来看看Kali Linux系统的基础知识。
 
@@ -109,7 +108,6 @@ chown username:groupname test.txt
 *   **绝对路径**：从根目录 `/` 开始的完整路径，如 `/usr/local/bin`。
 *   **相对路径**：相对于当前目录的路径，`.` 代表当前目录，`..` 代表上级目录。
 
-![](img/d5a7a77937f7bfc716887a568a4d5ce0_19.png)
 
 以下是基本的文件和目录管理命令：
 ```bash
@@ -134,13 +132,10 @@ rm file1.txt
 
 ### 网络配置
 
-![](img/d5a7a77937f7bfc716887a568a4d5ce0_21.png)
 
 Kali的网络配置通常位于 `/etc/network/interfaces` 文件。可以使用 `vi` 或 `nano` 编辑器进行修改，配置IP地址、子网掩码、网关等信息。配置后需重启网络服务。
 
-![](img/d5a7a77937f7bfc716887a568a4d5ce0_23.png)
 
-![](img/d5a7a77937f7bfc716887a568a4d5ce0_25.png)
 
 ![](img/d5a7a77937f7bfc716887a568a4d5ce0_27.png)
 

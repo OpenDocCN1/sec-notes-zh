@@ -1,6 +1,5 @@
 # 058：Linux与SQL
 
-![](img/863ad09c5d6dc0ba969733fcce01b4d7_0.png)
 
 ## 概述
 

@@ -94,12 +94,10 @@ AES是一种分组密码，它将固定长度的明文块（128位，即16字节
 
 在Python中，我们可以使用 `pycryptodome` 库进行AES加密：
 
-![](img/a8f6d5af7855743b798a20d09f8e2ea7_27.png)
 
 
 ![](img/a8f6d5af7855743b798a20d09f8e2ea7_29.png)
 
-![](img/a8f6d5af7855743b798a20d09f8e2ea7_30.png)
 
 ![](img/a8f6d5af7855743b798a20d09f8e2ea7_31.png)
 

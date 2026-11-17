@@ -1,6 +1,5 @@
 # 003：欢迎来到第一周
 
-![](img/14cd48b06ab305815cc5ad7ace5e03e6_0.png)
 
 ![](img/14cd48b06ab305815cc5ad7ace5e03e6_0.png)
 
@@ -47,7 +46,6 @@ for ip in suspicious_ips:
 
 你准备好开始用Python编程了吗？让我们开始吧。
 
-![](img/14cd48b06ab305815cc5ad7ace5e03e6_4.png)
 
 ## 总结
 

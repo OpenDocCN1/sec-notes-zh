@@ -126,15 +126,12 @@ O:7:"Example":1:{s:4:"data";a:2:{s:4:"func";s:13:"highlight_file";s:1:"p";s:8:"f
 
 ![](img/6499c0787657daf064f94b0ceae62a3b_41.png)
 
-![](img/6499c0787657daf064f94b0ceae62a3b_43.png)
 
 ![](img/6499c0787657daf064f94b0ceae62a3b_45.png)
 
 我们可以将这个Payload通过 `func` 或 `p` 参数传递（具体取决于代码如何解析），触发反序列化，从而执行我们设定的函数。
 
-![](img/6499c0787657daf064f94b0ceae62a3b_47.png)
 
-![](img/6499c0787657daf064f94b0ceae62a3b_48.png)
 
 ![](img/6499c0787657daf064f94b0ceae62a3b_50.png)
 

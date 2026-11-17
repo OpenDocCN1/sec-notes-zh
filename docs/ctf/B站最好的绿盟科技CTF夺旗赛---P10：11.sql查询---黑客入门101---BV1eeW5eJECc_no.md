@@ -2,13 +2,11 @@
 
 ![](img/98bcb36b273676b762cd94c1b38e8f09_1.png)
 
-![](img/98bcb36b273676b762cd94c1b38e8f09_3.png)
 
 ![](img/98bcb36b273676b762cd94c1b38e8f09_5.png)
 
 在本节课中，我们将学习MySQL数据库的结构，并掌握如何利用SQL查询进行手工注入攻击。我们将从数据库的基本结构开始，逐步深入到联合查询、报错注入和时间盲注等核心技巧，并通过一个实战案例来巩固所学知识。
 
-![](img/98bcb36b273676b762cd94c1b38e8f09_7.png)
 
 ![](img/98bcb36b273676b762cd94c1b38e8f09_9.png)
 
@@ -34,7 +32,6 @@ MySQL提供了一个名为 `information_schema` 的系统数据库，它存储�
 *   **`TABLES` 表**：此表记录了所有数据库中的所有表名。关键的列是 `TABLE_SCHEMA`（数据库名）和 `TABLE_NAME`（表名）。
 *   **`COLUMNS` 表**：此表记录了所有表中的所有列（字段）信息。关键的列是 `TABLE_SCHEMA`（数据库名）、`TABLE_NAME`（表名）和 `COLUMN_NAME`（列名）。
 
-![](img/98bcb36b273676b762cd94c1b38e8f09_21.png)
 
 我们可以通过SQL命令来查询这些信息。例如，查看所有数据库名：
 ```sql
@@ -49,11 +46,9 @@ SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_SCHEMA = ‘mysql�
 SELECT COLUMN_NAME FROM information_schema.COLUMNS WHERE TABLE_NAME = ‘user’;
 ```
 
-![](img/98bcb36b273676b762cd94c1b38e8f09_23.png)
 
 ## 基础SQL语句与注入点探测 🧪
 
-![](img/98bcb36b273676b762cd94c1b38e8f09_25.png)
 
 了解了数据库结构后，我们使用基础的SQL语句来探测和验证注入点。
 
@@ -71,7 +66,6 @@ SELECT * FROM students WHERE name = ‘韩寒’;
 *   `AND 1=1`：这是一个永真条件，如果页面正常返回，说明该参数可能被代入SQL查询。
 *   `AND 1=2`：这是一个永假条件，如果页面返回异常（如无内容），进一步确认了注入点的存在。
 
-![](img/98bcb36b273676b762cd94c1b38e8f09_29.png)
 
 接下来，我们使用 `ORDER BY` 子句来猜测查询结果返回的列数。`ORDER BY` 后面可以跟列名或列序号。
 ```sql
@@ -79,15 +73,12 @@ SELECT name, age FROM students ORDER BY 3; -- 尝试按第3列排序
 ```
 如果 `ORDER BY 3` 导致数据库报错，而 `ORDER BY 2` 正常，则说明当前查询结果只有2列。这帮助我们了解后端查询语句的构成。
 
-![](img/98bcb36b273676b762cd94c1b38e8f09_31.png)
 
-![](img/98bcb36b273676b762cd94c1b38e8f09_33.png)
 
 ## 联合查询注入（Union-Based Injection）🔗
 
 联合查询注入是一种高效的回显型注入技术。它利用 `UNION` 或 `UNION ALL` 操作符将恶意查询的结果附加到原始查询结果之后。
 
-![](img/98bcb36b273676b762cd94c1b38e8f09_35.png)
 
 使用联合查询有两个基本要求：
 1.  前后两个 `SELECT` 语句的列数必须相同。
@@ -108,7 +99,6 @@ SELECT name, age FROM students WHERE name=‘韩寒‘ UNION SELECT database(), 
 ```
 这条语句会在结果中返回当前数据库名和数据库版本。
 
-![](img/98bcb36b273676b762cd94c1b38e8f09_37.png)
 
 ![](img/98bcb36b273676b762cd94c1b38e8f09_39.png)
 
@@ -118,7 +108,6 @@ SELECT name, age FROM students WHERE name=‘韩寒‘ UNION SELECT database(), 
 
 当页面不会直接显示查询结果，但会返回数据库错误信息时，我们可以利用报错注入。`ORDER BY` 子句常被用于构造这类注入。
 
-![](img/98bcb36b273676b762cd94c1b38e8f09_43.png)
 
 我们可以通过 `IF()` 函数和 `ORDER BY` 结合，构造基于逻辑判断的报错。
 ```sql
@@ -158,7 +147,6 @@ SELECT * FROM articles WHERE id=1 AND IF(SUBSTRING(database(),1,1)=‘a‘, SLEE
 *   测试：`id=44 AND 1=2` → 页面无内容或异常。
 初步判断 `id` 参数存在注入。
 
-![](img/98bcb36b273676b762cd94c1b38e8f09_51.png)
 
 **2. 判断列数**
 *   测试：`id=44 ORDER BY 5` → 报错。
@@ -166,12 +154,10 @@ SELECT * FROM articles WHERE id=1 AND IF(SUBSTRING(database(),1,1)=‘a‘, SLEE
 *   测试：`id=44 ORDER BY 3` → 正常。
 确定当前查询返回 **3列**。
 
-![](img/98bcb36b273676b762cd94c1b38e8f09_53.png)
 
 **3. 联合查询获取回显点**
 *   测试：`id=44 UNION SELECT 1,2,3` → 观察页面，发现数字 `2` 和 `3` 被显示在网页上。这意味着第2和第3列是回显点。
 
-![](img/98bcb36b273676b762cd94c1b38e8f09_55.png)
 
 **4. 利用回显点获取信息**
 *   获取数据库名和用户：`id=44 UNION SELECT 1, database(), user()`
@@ -191,7 +177,6 @@ SELECT * FROM articles WHERE id=1 AND IF(SUBSTRING(database(),1,1)=‘a‘, SLEE
 
 ## 总结 📝
 
-![](img/98bcb36b273676b762cd94c1b38e8f09_57.png)
 
 ![](img/98bcb36b273676b762cd94c1b38e8f09_58.png)
 

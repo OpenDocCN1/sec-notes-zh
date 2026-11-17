@@ -4,7 +4,6 @@
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_3.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_5.png)
 
 在本节课中，我们将学习信息收集的进阶技巧。这些方法主要针对网络空间中的非直接攻击面，例如供应链、社会工程学与漏洞的联动利用。课程将围绕四个真实案例展开，并详细讲解其中涉及的核心知识点。
 
@@ -36,19 +35,15 @@
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_21.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_22.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_24.png)
 
 以下是四个案例的简要说明：
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_26.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_28.png)
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_30.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_32.png)
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_34.png)
 
@@ -62,7 +57,6 @@
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_38.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_40.png)
 
 2.  **案例二：OA系统人员信息利用**
     *   目标是一个OA系统，常规漏洞利用失败。
@@ -102,7 +96,6 @@
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_62.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_64.png)
 
 这些案例的共同点是：**当正面攻击失效时，转而从人员、供应链、历史泄露信息等侧面寻找切入点**。接下来，我们将分解这些案例中用到的关键技术。
 
@@ -124,11 +117,9 @@
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_76.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_78.png)
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_80.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_82.png)
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_84.png)
 
@@ -136,7 +127,6 @@
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_86.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_88.png)
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_90.png)
 
@@ -162,9 +152,7 @@
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_102.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_104.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_106.png)
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_108.png)
 
@@ -173,9 +161,7 @@
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_110.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_112.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_114.png)
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_116.png)
 
@@ -195,11 +181,8 @@ Github是全球最大的开源代码托管平台。开发或运维人员可能�
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_126.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_128.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_130.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_132.png)
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_134.png)
 
@@ -215,13 +198,10 @@ Github是全球最大的开源代码托管平台。开发或运维人员可能�
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_144.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_146.png)
 
 ### 1. 主动搜索（基于筛选）
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_148.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_150.png)
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_152.png)
 
@@ -265,9 +245,7 @@ Github是全球最大的开源代码托管平台。开发或运维人员可能�
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_178.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_180.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_182.png)
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_184.png)
 
@@ -311,13 +289,11 @@ Github是全球最大的开源代码托管平台。开发或运维人员可能�
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_204.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_206.png)
 
 **核心概念：**
 *   监控逻辑：`持续执行(Github搜索API(关键词))` -> `发现新结果` -> `触发告警`
 *   意义：**将一次性的信息收集，转变为持续性的威胁感知。**
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_208.png)
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_210.png)
 
@@ -333,7 +309,6 @@ Github是全球最大的开源代码托管平台。开发或运维人员可能�
 
 一些员工可能将工作文件（如招标书、项目计划、通讯录、系统手册）上传到公共网盘并设置了分享。通过网盘搜索工具，有可能发现这些泄露信息。
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_218.png)
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_220.png)
 
@@ -346,7 +321,6 @@ Github是全球最大的开源代码托管平台。开发或运维人员可能�
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_224.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_226.png)
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_228.png)
 
@@ -364,19 +338,15 @@ Github是全球最大的开源代码托管平台。开发或运维人员可能�
 
 ---
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_240.png)
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_242.png)
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_244.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_246.png)
 
 ## 五、 网络空间搜索引擎进阶用法 🛰️
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_248.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_250.png)
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_252.png)
 
@@ -404,7 +374,6 @@ Github是全球最大的开源代码托管平台。开发或运维人员可能�
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_270.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_272.png)
 
 ### 2. 图标（Favicon）资产关联
 网站图标（favicon.ico）的哈希值是唯一的。通过上传目标网站的图标，可以搜索到使用了同一图标的所有资产。
@@ -428,7 +397,6 @@ Github是全球最大的开源代码托管平台。开发或运维人员可能�
 
 ---
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_286.png)
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_287.png)
 
@@ -444,13 +412,10 @@ Github是全球最大的开源代码托管平台。开发或运维人员可能�
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_297.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_299.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_301.png)
 
 这是一种传统但依然有效的信息收集手段，旨在发现网站暴露的备份文件、配置文件、管理后台、测试页面等。
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_303.png)
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_305.png)
 
@@ -465,7 +430,6 @@ Github是全球最大的开源代码托管平台。开发或运维人员可能�
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_309.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_311.png)
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_313.png)
 
@@ -481,9 +445,7 @@ Github是全球最大的开源代码托管平台。开发或运维人员可能�
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_323.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_325.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_327.png)
 
 **代码示例（Dirsearch 基本用法）：**
 ```bash
@@ -492,7 +454,6 @@ python3 dirsearch.py -u http://target.com -e php,html,js,bak,zip
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_328.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_329.png)
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_330.png)
 
@@ -532,9 +493,7 @@ python3 dirsearch.py -u http://target.com -e php,html,js,bak,zip
 4.  **网络空间引擎进阶**：利用证书、图标、邮箱进行资产关联，扩大攻击面。
 5.  **敏感目录扫描**：使用自动化工具探测隐藏的路径和文件。
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_356.png)
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_358.png)
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_360.png)
 
@@ -542,7 +501,6 @@ python3 dirsearch.py -u http://target.com -e php,html,js,bak,zip
 
 这些方法的核心思想是 **“正面不行，走侧面”** 。当直接的技术漏洞难以发现时，从人员、供应链、运维习惯、历史数据等角度切入，往往能打开新的突破口。掌握这些技巧，能让你的信息收集工作更加立体和全面。
 
-![](img/df3a7073d30f8efbe49c06e84a5e1f2b_364.png)
 
 ![](img/df3a7073d30f8efbe49c06e84a5e1f2b_366.png)
 

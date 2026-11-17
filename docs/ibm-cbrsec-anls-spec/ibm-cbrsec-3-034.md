@@ -4,7 +4,6 @@
 
 ![](img/5d3cdd91e19e6c657f37ede6ffbde280_1.png)
 
-![](img/5d3cdd91e19e6c657f37ede6ffbde280_3.png)
 
 在本节课中，我们将要学习Linux操作系统中的文件系统和目录结构。理解Linux如何组织文件和目录，是进行系统管理和安全配置的基础。我们将从基本概念开始，逐步深入到核心目录的用途。
 
@@ -23,7 +22,6 @@ drwxr-xr-x  2 user user  4096 Jan 1 12:34 Documents
 ```
 在上面的列表中，`Documents` 行首的 `d` 表明它是一个目录，而 `report.txt` 行首的 `-` 表明它是一个普通文件。
 
-![](img/5d3cdd91e19e6c657f37ede6ffbde280_5.png)
 
 ## Linux目录结构
 

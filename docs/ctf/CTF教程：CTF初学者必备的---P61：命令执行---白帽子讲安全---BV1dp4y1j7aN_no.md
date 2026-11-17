@@ -6,19 +6,14 @@
 
 在本节课中，我们将学习命令执行漏洞的实战应用，通过复现几个经典的漏洞案例来加深理解。我们将涵盖Struts2、ImageMagick以及ThinkPHP等框架或组件的远程命令执行漏洞，并学习如何利用这些漏洞获取系统权限。
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_5.png)
 
 ![](img/387fcb49d1b6b142c1b008b876d7aae2_7.png)
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_9.png)
 
 ---
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_11.png)
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_13.png)
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_15.png)
 
 ## 概述与实验回顾
 
@@ -26,24 +21,18 @@
 
 ![](img/387fcb49d1b6b142c1b008b876d7aae2_19.png)
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_20.png)
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_22.png)
 
 上一节我们介绍了命令执行的基本原理和绕过技巧。本节中，我们将通过几个具体的实验来实战演练。这些实验都配有详细的指导书，大家对照操作应该没有问题。核心原理与我们之前讲解的代码类似。
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_24.png)
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_26.png)
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_27.png)
 
 以下是本节课将要涉及的几个实验：
 1.  Struts2 远程命令执行漏洞复现
 2.  ImageMagick 命令执行漏洞
 3.  ThinkPHP 5.x 远程命令执行漏洞
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_29.png)
 
 ---
 
@@ -59,7 +48,6 @@
 
 ## Struts2 远程命令执行漏洞复现 🐱💻
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_41.png)
 
 ![](img/387fcb49d1b6b142c1b008b876d7aae2_43.png)
 
@@ -77,13 +65,10 @@
 
 **注意**：访问时需注意URL路径。若按指导书直接访问带 `/../` 的路径，在点击页面功能时可能会因路径错误而报错。正确的访问路径不应包含多余的目录跳转符号。
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_47.png)
 
 ### 漏洞利用与POC分析
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_49.png)
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_51.png)
 
 ![](img/387fcb49d1b6b142c1b008b876d7aae2_53.png)
 
@@ -91,9 +76,7 @@
 
 部署成功后，我们可以利用公开的POC（Proof of Concept）进行漏洞利用。POC通常是一段Java代码，用于执行系统命令。
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_56.png)
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_58.png)
 
 核心的利用代码片段如下（以执行 `calc` 命令弹出计算器为例）：
 ```java
@@ -101,9 +84,7 @@ Runtime.getRuntime().exec("calc.exe");
 ```
 在实际攻击中，我们可以将 `calc.exe` 替换为任意系统命令，例如 `ipconfig` 或写入Webshell的命令。
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_60.png)
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_62.png)
 
 ![](img/387fcb49d1b6b142c1b008b876d7aae2_64.png)
 
@@ -116,7 +97,6 @@ Runtime.getRuntime().exec("calc.exe");
 
 ![](img/387fcb49d1b6b142c1b008b876d7aae2_68.png)
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_70.png)
 
 ![](img/387fcb49d1b6b142c1b008b876d7aae2_72.png)
 
@@ -126,7 +106,6 @@ Runtime.getRuntime().exec("calc.exe");
 
 接下来，我们分析ThinkPHP 5.x版本的远程命令执行漏洞。这个漏洞影响范围广，利用方式简单。
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_74.png)
 
 ### 漏洞验证与命令执行
 
@@ -143,9 +122,7 @@ http://靶机URL/?s=index/\\think\\app/invokefunction&function=call_user_func_ar
 
 ### 写入Webshell
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_76.png)
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_78.png)
 
 获取命令执行权限后，下一步通常是写入Webshell以维持访问。我们可以利用 `file_put_contents` 函数。
 
@@ -161,9 +138,7 @@ http://靶机URL/?s=index/\\think\\app/invokefunction&function=call_user_func_ar
 
 ![](img/387fcb49d1b6b142c1b008b876d7aae2_83.png)
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_84.png)
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_85.png)
 
 ![](img/387fcb49d1b6b142c1b008b876d7aae2_87.png)
 
@@ -175,21 +150,16 @@ http://靶机URL/?s=index/\\think\\app/invokefunction&function=call_user_func_ar
 
 ![](img/387fcb49d1b6b142c1b008b876d7aae2_93.png)
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_95.png)
 
 ---
 
 ## 命令执行函数与绕过技巧的补充 🛡️
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_97.png)
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_99.png)
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_101.png)
 
 ![](img/387fcb49d1b6b142c1b008b876d7aae2_103.png)
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_104.png)
 
 ![](img/387fcb49d1b6b142c1b008b876d7aae2_106.png)
 
@@ -239,7 +209,6 @@ PHP中，双引号 `“”` 包裹的字符串会解析其中的变量，而单�
 
 ![](img/387fcb49d1b6b142c1b008b876d7aae2_128.png)
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_130.png)
 
 ![](img/387fcb49d1b6b142c1b008b876d7aae2_131.png)
 
@@ -252,17 +221,11 @@ PHP中，双引号 `“”` 包裹的字符串会解析其中的变量，而单�
 
 ![](img/387fcb49d1b6b142c1b008b876d7aae2_135.png)
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_137.png)
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_139.png)
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_141.png)
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_143.png)
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_144.png)
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_145.png)
 
 **课后任务**：
 *   请务必亲手完成实验指导书上的操作，并记录详细步骤和遇到的问题。
@@ -270,9 +233,7 @@ PHP中，双引号 `“”` 包裹的字符串会解析其中的变量，而单�
 *   思考在实战中，如何探测目标网站是否存在这些漏洞（例如使用指纹识别工具识别ThinkPHP框架）。
 *   熟练掌握NC（Netcat）工具的正反向连接，这对于获取反向Shell至关重要。
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_147.png)
 
-![](img/387fcb49d1b6b142c1b008b876d7aae2_148.png)
 
 ![](img/387fcb49d1b6b142c1b008b876d7aae2_150.png)
 

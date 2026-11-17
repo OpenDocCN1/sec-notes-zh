@@ -42,7 +42,6 @@ DNMAP 包含两个可执行文件：
 
 ![](img/7bc409efb9a995f42d9b552da2f0f398_11.png)
 
-![](img/7bc409efb9a995f42d9b552da2f0f398_13.png)
 
 执行以下命令生成新证书：
 ```bash
@@ -50,9 +49,7 @@ openssl req -new -newkey rsa:4096 -days 365 -nodes -x509 -subj “/C=CN/ST=Beiji
 ```
 执行过程中，需要输入一些信息（如国家、城市、组织等），可按示例填写或随意填写。
 
-![](img/7bc409efb9a995f42d9b552da2f0f398_15.png)
 
-![](img/7bc409efb9a995f42d9b552da2f0f398_17.png)
 
 生成证书后，需要将私钥文件的内容追加到证书文件后面：
 ```bash

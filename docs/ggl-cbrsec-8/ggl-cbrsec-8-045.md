@@ -1,6 +1,5 @@
 # 045：欢迎来到第一周
 
-![](img/a4bdf7ddb0dae44ee6b7b8131278ddb0_0.png)
 
 ![](img/a4bdf7ddb0dae44ee6b7b8131278ddb0_0.png)
 
@@ -8,7 +7,6 @@
 
 😊
 
-![](img/a4bdf7ddb0dae44ee6b7b8131278ddb0_2.png)
 
 ![](img/a4bdf7ddb0dae44ee6b7b8131278ddb0_2.png)
 

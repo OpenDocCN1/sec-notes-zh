@@ -1,14 +1,11 @@
 # 课程3：《网络安全合规框架与系统管理》：74：Windows系统补丁管理 🛡️
 
-![](img/b4ad32fcf875baeda3fd31b240c6cff9_0.png)
 
-![](img/b4ad32fcf875baeda3fd31b240c6cff9_2.png)
 
 在本节课程中，我们将学习Windows系统补丁管理的基础知识。我们将了解补丁的工作原理，并探讨补丁管理的最佳实践。
 
 ## 补丁概述与重要性
 
-![](img/b4ad32fcf875baeda3fd31b240c6cff9_4.png)
 
 补丁是修复软件中已知缺陷的程序。在Windows环境中，我们熟悉的“Windows更新”功能，就是用来修复Microsoft产品及操作系统中的已知漏洞。这些更新不仅针对软件，有时也涉及硬件驱动程序，以提升系统的性能、可靠性，最重要的是安全性。
 
@@ -44,7 +41,6 @@ Microsoft通常按月发布补丁，业界常称之为“补丁星期二”，�
 
 ## 总结
 
-![](img/b4ad32fcf875baeda3fd31b240c6cff9_6.png)
 
 ![](img/b4ad32fcf875baeda3fd31b240c6cff9_7.png)
 

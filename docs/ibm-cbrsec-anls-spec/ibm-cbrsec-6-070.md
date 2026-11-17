@@ -3,14 +3,12 @@
 ## 🎯 概述
 在本节课中，我们将以IBM的QRadar为例，了解一个行业级SIEM（安全信息与事件管理）平台的核心功能。我们将从安全分析师的角度，探讨QRadar如何帮助企业应对现代安全挑战。
 
-![](img/c3dfd942e605a72928a324d08fd5acf7_1.png)
 
 ---
 
 ## 🔍 QRadar：一个行业级SIEM平台
 我是Jude Lancaster。今天，我将通过几张图表介绍QRadar。作为一个行业案例，我们将了解QRadar SIEM平台提供的功能。本节唯一的学习目标是从安全分析师的角度更好地理解QRadar。
 
-![](img/c3dfd942e605a72928a324d08fd5acf7_1.png)
 
 IBM安全智能平台QRadar旨在解决以下安全挑战：
 *   检测高级威胁。
@@ -59,7 +57,6 @@ Watson会访问像X-Force Exchange这样的平台，这是互联网上仅次于G
 *   也可以在公有云上运行，例如AWS、IBM Cloud或Google Cloud。
 *   或者采用混合模式消费，部分解决方案在本地，部分为SaaS或基础设施即服务。
 
-![](img/c3dfd942e605a72928a324d08fd5acf7_3.png)
 
 ---
 

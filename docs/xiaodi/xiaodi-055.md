@@ -22,27 +22,19 @@
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_17.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_19.png)
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_21.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_23.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_25.png)
 
 ## 📋 概述：三种XSS防御手段
 
-![](img/5e8e648caf87156c4c655b58f5248e45_27.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_29.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_31.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_33.png)
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_35.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_37.png)
 
 XSS的防御主要有三块内容。本课程主要讲解最后一块，即代码层面的过滤与绕过。前两块（CSP和HttpOnly）虽然也有绕过手法，但在实战中很难实现，因为条件苛刻，即使绕过也不一定能带来实质性的危害。因此，在实战中遇到这类防护，通常选择放弃或简单尝试突破。而代码层面的过滤和过滤性代码，则是可以尝试突破的重点。
 
@@ -50,7 +42,6 @@ XSS的防御主要有三块内容。本课程主要讲解最后一块，即代�
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_41.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_43.png)
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_45.png)
 
@@ -88,7 +79,6 @@ XSS的防御主要有三块内容。本课程主要讲解最后一块，即代�
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_74.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_76.png)
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_78.png)
 
@@ -108,13 +98,10 @@ CSP全称为Content Security Policy，即内容安全策略。它并非专为防
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_91.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_93.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_95.png)
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_97.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_99.png)
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_101.png)
 
@@ -128,11 +115,9 @@ CSP全称为Content Security Policy，即内容安全策略。它并非专为防
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_109.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_111.png)
 
 在PHP中，可以通过设置响应头来开启CSP。以下代码演示了如何设置只允许加载本地图片：
 
-![](img/5e8e648caf87156c4c655b58f5248e45_113.png)
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_115.png)
 
@@ -181,13 +166,11 @@ header("Content-Security-Policy: img-src 'self'");
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_145.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_147.png)
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_149.png)
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_151.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_153.png)
 
 ## 🍪 第二部分：HttpOnly属性
 
@@ -195,21 +178,16 @@ header("Content-Security-Policy: img-src 'self'");
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_157.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_159.png)
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_161.png)
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_163.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_165.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_167.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_169.png)
 
 上一节我们介绍了CSP，本节中我们来看看专门用于保护Cookie的HttpOnly属性。
 
-![](img/5e8e648caf87156c4c655b58f5248e45_171.png)
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_173.png)
 
@@ -247,7 +225,6 @@ HttpOnly是设置在Cookie上的一个标志，用于禁止JavaScript通过`docu
 
 在PHP中，可以通过`setcookie`函数设置HttpOnly属性：
 
-![](img/5e8e648caf87156c4c655b58f5248e45_203.png)
 
 ```php
 setcookie("name", "xiaodi", time()+3600, "/", "", false, true); // 最后一个参数true表示启用HttpOnly
@@ -264,11 +241,9 @@ setcookie("pass", "123456", time()+3600, "/", "", false, false); // false表示�
 
 ### HttpOnly的绕过与应对思路
 
-![](img/5e8e648caf87156c4c655b58f5248e45_207.png)
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_209.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_211.png)
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_213.png)
 
@@ -293,7 +268,6 @@ HttpOnly的绕过手段非常有限且条件苛刻（例如利用某些旧的PHP
 
 HttpOnly只防护了Cookie窃取这一条路径，并未完全封死XSS的利用。
 
-![](img/5e8e648caf87156c4c655b58f5248e45_229.png)
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_231.png)
 
@@ -301,7 +275,6 @@ HttpOnly只防护了Cookie窃取这一条路径，并未完全封死XSS的利用
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_235.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_237.png)
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_239.png)
 
@@ -317,25 +290,18 @@ HttpOnly只防护了Cookie窃取这一条路径，并未完全封死XSS的利用
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_249.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_251.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_253.png)
 
 上一节我们介绍了服务端设置的防护，本节中我们来看看应用代码层面最常见的防御：输入过滤与净化，并通过靶场学习绕过技巧。
 
-![](img/5e8e648caf87156c4c655b58f5248e45_255.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_257.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_259.png)
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_261.png)
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_263.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_265.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_267.png)
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_269.png)
 
@@ -343,9 +309,7 @@ XSS过滤器指在服务器端代码中对用户输入进行检查、过滤或�
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_271.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_273.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_275.png)
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_277.png)
 
@@ -353,9 +317,7 @@ XSS过滤器指在服务器端代码中对用户输入进行检查、过滤或�
 
 ### 手工测试与绕过思路
 
-![](img/5e8e648caf87156c4c655b58f5248e45_281.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_283.png)
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_285.png)
 
@@ -367,19 +329,14 @@ XSS过滤器指在服务器端代码中对用户输入进行检查、过滤或�
 
 手工测试XSS的核心是：**找到页面中所有用户可控的输入点，观察其输出位置，并尝试构造Payload使其中的JS代码得以执行。**
 
-![](img/5e8e648caf87156c4c655b58f5248e45_293.png)
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_295.png)
 
 以下是关键的测试与绕过步骤：
 
-![](img/5e8e648caf87156c4c655b58f5248e45_297.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_299.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_301.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_303.png)
 
 1.  **寻找可控输入与输出点**：不仅包括URL参数、表单字段，还包括HTTP请求头（如User-Agent、Referer），以及页面中隐藏的表单字段。
 2.  **尝试基础Payload**：输入如`<script>alert(1)</script>`，测试是否被直接执行。
@@ -401,7 +358,6 @@ XSS过滤器指在服务器端代码中对用户输入进行检查、过滤或�
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_309.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_311.png)
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_313.png)
 
@@ -443,7 +399,6 @@ XSS过滤器指在服务器端代码中对用户输入进行检查、过滤或�
 
 ![](img/5e8e648caf87156c4c655b58f5248e45_339.png)
 
-![](img/5e8e648caf87156c4c655b58f5248e45_341.png)
 
 除了手工测试，可以使用自动化工具如XSStrike。它能自动爬取页面参数，使用大量预定义的Payload进行模糊测试，并尝试识别WAF（Web应用防火墙）和常见的过滤规则，然后生成相应的绕过Payload。
 

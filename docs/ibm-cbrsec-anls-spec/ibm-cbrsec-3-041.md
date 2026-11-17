@@ -1,16 +1,12 @@
 # 课程3：《网络安全合规框架与系统管理》：41：Samba安装和配置演示 🖥️➡️📁
 
-![](img/4a2a634204ef6ffacee99efba19c20e7_0.png)
 
-![](img/4a2a634204ef6ffacee99efba19c20e7_2.png)
 
 在本节课程中，我们将学习如何在Linux系统上安装和配置Samba服务，以实现与Windows主机之间的文件共享。
 
 ## 什么是Samba？
 
-![](img/4a2a634204ef6ffacee99efba19c20e7_4.png)
 
-![](img/4a2a634204ef6ffacee99efba19c20e7_6.png)
 
 Samba是一个开源的免费软件套件，它提供无缝的文件和打印服务。它使用安装在主机服务器上的SMB/CIFS协议。正确配置此软件后，它允许您与Microsoft Windows客户端或服务器进行交互，就像它是一个Windows文件或打印服务器一样。因此，它能够在Linux服务器和Windows主机之间建立通信。例如，如果您有一个Linux发行版，并希望在Windows主机和Linux服务器之间共享文件或信息，Samba就能实现这一目标。
 
@@ -20,7 +16,6 @@ Samba是一个开源的免费软件套件，它提供无缝的文件和打印服
 
 以下是安装和配置Samba的基本步骤：
 
-![](img/4a2a634204ef6ffacee99efba19c20e7_8.png)
 
 1.  **安装Samba软件包**
     首先，我们需要在Linux发行版上运行以下命令来安装Samba：
@@ -29,9 +24,7 @@ Samba是一个开源的免费软件套件，它提供无缝的文件和打印服
     sudo apt-get install samba
     ```
 
-![](img/4a2a634204ef6ffacee99efba19c20e7_10.png)
 
-![](img/4a2a634204ef6ffacee99efba19c20e7_11.png)
 
 2.  **备份配置文件**
     安装完成后，系统会在`/etc/samba/`目录下生成一个名为`smb.conf`的配置文件。在修改之前，我们需要先备份此文件。可以使用`cp`命令进行备份：
@@ -59,7 +52,6 @@ Samba是一个开源的免费软件套件，它提供无缝的文件和打印服
     sudo chown -R nobody:nogroup /samba/anonymous
     ```
 
-![](img/4a2a634204ef6ffacee99efba19c20e7_13.png)
 
 5.  **重启Samba服务**
     配置完成后，需要重启Samba服务以使更改生效。服务名称为`smbd`：
@@ -111,7 +103,6 @@ Samba是一个开源的免费软件套件，它提供无缝的文件和打印服
     sudo chown -R sambauser:smbgroup /samba/secured
     ```
 
-![](img/4a2a634204ef6ffacee99efba19c20e7_15.png)
 
 5.  **重启服务**
     再次重启Samba服务：
@@ -123,7 +114,6 @@ Samba是一个开源的免费软件套件，它提供无缝的文件和打印服
 
 ## 课程总结
 
-![](img/4a2a634204ef6ffacee99efba19c20e7_17.png)
 
 ![](img/4a2a634204ef6ffacee99efba19c20e7_18.png)
 

@@ -12,7 +12,6 @@
 
 ![](img/ec583ecafaea86f54c189669ec5b025a_8.png)
 
-![](img/ec583ecafaea86f54c189669ec5b025a_10.png)
 
 ![](img/ec583ecafaea86f54c189669ec5b025a_12.png)
 
@@ -22,9 +21,7 @@
 
 ![](img/ec583ecafaea86f54c189669ec5b025a_16.png)
 
-![](img/ec583ecafaea86f54c189669ec5b025a_18.png)
 
-![](img/ec583ecafaea86f54c189669ec5b025a_20.png)
 
 ![](img/ec583ecafaea86f54c189669ec5b025a_22.png)
 
@@ -34,7 +31,6 @@
 
 ![](img/ec583ecafaea86f54c189669ec5b025a_26.png)
 
-![](img/ec583ecafaea86f54c189669ec5b025a_28.png)
 
 ![](img/ec583ecafaea86f54c189669ec5b025a_30.png)
 
@@ -46,34 +42,26 @@
 
 ![](img/ec583ecafaea86f54c189669ec5b025a_36.png)
 
-![](img/ec583ecafaea86f54c189669ec5b025a_38.png)
 
 寻找目标小程序的方法非常简单，主要依靠搜索。
 
-![](img/ec583ecafaea86f54c189669ec5b025a_40.png)
 
 以下是具体操作步骤：
 1.  打开微信，点击“发现”页面的“小程序”。
 2.  在搜索框中输入目标的关键字，如公司名、网站标题、备案信息等。
 3.  搜索结果会展示相关的小程序，点击即可进入。
 
-![](img/ec583ecafaea86f54c189669ec5b025a_42.png)
 
 支付宝、抖音等平台的操作方法类似，均通过平台内搜索功能完成。
 
-![](img/ec583ecafaea86f54c189669ec5b025a_43.png)
 
-![](img/ec583ecafaea86f54c189669ec5b025a_45.png)
 
-![](img/ec583ecafaea86f54c189669ec5b025a_47.png)
 
 ![](img/ec583ecafaea86f54c189669ec5b025a_49.png)
 
 ![](img/ec583ecafaea86f54c189669ec5b025a_51.png)
 
-![](img/ec583ecafaea86f54c189669ec5b025a_53.png)
 
-![](img/ec583ecafaea86f54c189669ec5b025a_55.png)
 
 ![](img/ec583ecafaea86f54c189669ec5b025a_57.png)
 
@@ -83,11 +71,9 @@
 
 ![](img/ec583ecafaea86f54c189669ec5b025a_61.png)
 
-![](img/ec583ecafaea86f54c189669ec5b025a_63.png)
 
 在了解了如何找到小程序后，本节我们来看看如何通过抓包技术从外在表现收集信息。这与之前Web和APP的抓包思路一致。
 
-![](img/ec583ecafaea86f54c189669ec5b025a_65.png)
 
 ![](img/ec583ecafaea86f54c189669ec5b025a_67.png)
 
@@ -115,7 +101,6 @@
 
 ![](img/ec583ecafaea86f54c189669ec5b025a_86.png)
 
-![](img/ec583ecafaea86f54c189669ec5b025a_88.png)
 
 ![](img/ec583ecafaea86f54c189669ec5b025a_90.png)
 
@@ -136,7 +121,6 @@
 
 配置完成后，在微信中操作目标小程序，所有网络请求将在Burp Suite中捕获。通过分析这些请求，可以提取出相关的域名和IP地址资产。
 
-![](img/ec583ecafaea86f54c189669ec5b025a_102.png)
 
 ![](img/ec583ecafaea86f54c189669ec5b025a_104.png)
 
@@ -146,11 +130,9 @@
 
 ![](img/ec583ecafaea86f54c189669ec5b025a_108.png)
 
-![](img/ec583ecafaea86f54c189669ec5b025a_110.png)
 
 通过抓包我们获得了外在的通信信息，本节我们将深入小程序内部，通过逆向工程获取其源代码，这能帮助我们发现更多隐藏资产和配置信息。
 
-![](img/ec583ecafaea86f54c189669ec5b025a_112.png)
 
 ![](img/ec583ecafaea86f54c189669ec5b025a_114.png)
 
@@ -195,7 +177,6 @@
 4.  **修复源码（可选）**：部分源码反编译后可能需要使用工具的“修复源码”功能进行修复。
 5.  **导入开发者工具**：使用微信官方“微信开发者工具”，导入反编译得到的源码目录，即可进行预览和动态调试。
 
-![](img/ec583ecafaea86f54c189669ec5b025a_142.png)
 
 ![](img/ec583ecafaea86f54c189669ec5b025a_144.png)
 
@@ -215,7 +196,6 @@
 
 ![](img/ec583ecafaea86f54c189669ec5b025a_156.png)
 
-![](img/ec583ecafaea86f54c189669ec5b025a_158.png)
 
 小程序源码有固定的目录结构，主要文件类型如下：
 *   `.js` 文件：页面逻辑处理文件，是核心代码所在。
@@ -223,7 +203,6 @@
 *   `.wxml` 文件：页面结构文件，类似HTML。
 *   `.wxss` 文件：页面样式文件，类似CSS。
 
-![](img/ec583ecafaea86f54c189669ec5b025a_160.png)
 
 ![](img/ec583ecafaea86f54c189669ec5b025a_162.png)
 
@@ -240,7 +219,6 @@
 
 ![](img/ec583ecafaea86f54c189669ec5b025a_170.png)
 
-![](img/ec583ecafaea86f54c189669ec5b025a_172.png)
 
 通过源码分析，可以：
 *   **发现隐藏接口/资产**：在JS或JSON配置文件中搜索 `http://`、`https://`、域名等关键字。
@@ -259,7 +237,6 @@
 
 ![](img/ec583ecafaea86f54c189669ec5b025a_182.png)
 
-![](img/ec583ecafaea86f54c189669ec5b025a_184.png)
 
 ![](img/ec583ecafaea86f54c189669ec5b025a_186.png)
 
@@ -281,7 +258,6 @@
 
 ![](img/ec583ecafaea86f54c189669ec5b025a_201.png)
 
-![](img/ec583ecafaea86f54c189669ec5b025a_203.png)
 
 本节课我们一起学习了针对小程序进行信息收集的全套方法。
 
@@ -291,7 +267,6 @@
 
 ![](img/ec583ecafaea86f54c189669ec5b025a_209.png)
 
-![](img/ec583ecafaea86f54c189669ec5b025a_211.png)
 
 ![](img/ec583ecafaea86f54c189669ec5b025a_213.png)
 
@@ -303,21 +278,15 @@
 
 ![](img/ec583ecafaea86f54c189669ec5b025a_219.png)
 
-![](img/ec583ecafaea86f54c189669ec5b025a_221.png)
 
-![](img/ec583ecafaea86f54c189669ec5b025a_223.png)
 
-![](img/ec583ecafaea86f54c189669ec5b025a_225.png)
 
-![](img/ec583ecafaea86f54c189669ec5b025a_227.png)
 
 课程的重点在于小程序的逆向分析。我们详细讲解了如何使用专用工具对小程序包进行解包和反编译，从而获得其源代码。获取源码后，我们介绍了如何利用微信开发者工具进行导入和调试，并深入分析了小程序源码的目录结构（`.js`, `.json`, `.wxml`, `.wxss`）。最后，我们探讨了如何从源码中挖掘更多资产、发现敏感配置信息（如API密钥）以及测试未授权访问等安全问题。
 
 ![](img/ec583ecafaea86f54c189669ec5b025a_229.png)
 
-![](img/ec583ecafaea86f54c189669ec5b025a_231.png)
 
-![](img/ec583ecafaea86f54c189669ec5b025a_233.png)
 
 ![](img/ec583ecafaea86f54c189669ec5b025a_235.png)
 

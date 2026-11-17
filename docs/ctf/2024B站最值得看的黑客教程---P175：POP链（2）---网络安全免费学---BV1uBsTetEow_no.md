@@ -10,17 +10,13 @@ POP是“面向属性编程”的英文缩写。POP链是指从现有的运行�
 
 ## POP链的含义与作用
 
-![](img/ef9a2465b13a447c535fcd56fcfe9c4d_1.png)
 
 反序列化漏洞利用的核心，就是要找到合适的POP链。我们可以回顾昨天的题目，它就是一个反序列化利用链。
 
 通过用GET方法传递序列化数据，然后触发反序列化。反序列化之后，程序会自动调用`__destruct`魔术方法。
 
-![](img/ef9a2465b13a447c535fcd56fcfe9c4d_3.png)
 
-![](img/ef9a2465b13a447c535fcd56fcfe9c4d_1.png)
 
-![](img/ef9a2465b13a447c535fcd56fcfe9c4d_4.png)
 
 ## 构造调用链的过程
 
@@ -31,27 +27,18 @@ POP是“面向属性编程”的英文缩写。POP链是指从现有的运行�
 3.  利用属性特性跳转：在`__destruct`方法中，通过访问对象的某个属性（例如 `$this->a`），可以触发该属性所属对象的`__get`魔术方法。
 4.  链式调用至目标方法：在`__get`方法中，可以进一步调用其他方法，最终指向目标函数（例如`getflag`方法）。
 
-![](img/ef9a2465b13a447c535fcd56fcfe9c4d_6.png)
 
-![](img/ef9a2465b13a447c535fcd56fcfe9c4d_3.png)
-![](img/ef9a2465b13a447c535fcd56fcfe9c4d_4.png)
 
-![](img/ef9a2465b13a447c535fcd56fcfe9c4d_7.png)
 
 一系列代码或指令调用，从`__destruct`开始，再通过这里的属性特性，调用到下面的`__get`方法，最终抵达`getflag`方法。
 
-![](img/ef9a2465b13a447c535fcd56fcfe9c4d_6.png)
-![](img/ef9a2465b13a447c535fcd56fcfe9c4d_7.png)
 
-![](img/ef9a2465b13a447c535fcd56fcfe9c4d_9.png)
 
 ## 核心总结
 
-![](img/ef9a2465b13a447c535fcd56fcfe9c4d_10.png)
 
 这就是通过寻找并串联一系列代码或指令调用点（即POP链），来实现反序列化漏洞利用的目的。
 
-![](img/ef9a2465b13a447c535fcd56fcfe9c4d_9.png)
 ![](img/ef9a2465b13a447c535fcd56fcfe9c4d_10.png)
 
 本节课中，我们一起学习了POP链的系统理论。反序列化利用的关键，就在于寻找这样一条能够从触发点连贯执行到目标函数的POP链。理解这个过程，对于分析和利用反序列化漏洞至关重要。

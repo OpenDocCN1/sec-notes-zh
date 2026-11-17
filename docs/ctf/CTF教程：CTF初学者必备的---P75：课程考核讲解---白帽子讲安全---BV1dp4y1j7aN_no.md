@@ -1,10 +1,8 @@
 # CTF教程：P75：课程考核讲解 🔍
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_1.png)
 
 ![](img/61225d1253f0f7a845b5b09bbe1d2ff1_3.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_5.png)
 
 ![](img/61225d1253f0f7a845b5b09bbe1d2ff1_6.png)
 
@@ -16,9 +14,7 @@
 
 ![](img/61225d1253f0f7a845b5b09bbe1d2ff1_13.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_15.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_17.png)
 
 ![](img/61225d1253f0f7a845b5b09bbe1d2ff1_19.png)
 
@@ -30,9 +26,7 @@
 
 在本节课中，我们将对上节课布置的两个CTF题目进行详细的思路讲解和考核分析。这两个题目都涉及服务器端请求伪造漏洞的利用，我们将学习如何探测内网服务、利用特定协议进行攻击，并最终获取目标权限。
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_27.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_29.png)
 
 ![](img/61225d1253f0f7a845b5b09bbe1d2ff1_31.png)
 
@@ -42,31 +36,22 @@
 
 ---
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_36.png)
 
 ![](img/61225d1253f0f7a845b5b09bbe1d2ff1_38.png)
 
 ## 题目一：有回显的SSRF
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_40.png)
 
 上一节我们介绍了SSRF漏洞的基本概念，本节中我们来看看如何利用它进行内网探测和攻击。
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_42.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_43.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_45.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_47.png)
 
 首先，题目是一个存在SSRF漏洞的Web应用。其功能是输入一个URL，后端会请求该URL并返回响应内容。我们的目标是利用此漏洞读取内网的`/flag`文件，但`file://`协议已被过滤。
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_49.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_50.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_51.png)
 
 ### 探测可用协议与内网信息
 
@@ -78,13 +63,9 @@
 2.  **测试Dict协议**：输入`dict://<公网IP>:22`。在自己的公网服务器上监听22端口，可以观察到来自题目服务器的连接请求，证明`dict`协议可用。
 3.  **探测内网开放端口**：利用可用的`dict`协议，我们可以探测目标服务器内网开放的端口。例如，输入`dict://127.0.0.1:22`，若返回SSH服务信息，则证明22端口开放。
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_53.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_55.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_57.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_59.png)
 
 由于手动探测端口效率低下，我们可以使用Burp Suite的Intruder模块进行自动化端口爆破。
 
@@ -94,17 +75,13 @@
 *   使用从1到65535的数字字典进行爆破。
 *   根据响应内容（如返回服务banner）或响应长度判断端口是否开放及运行的服务。
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_61.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_63.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_65.png)
 
 ![](img/61225d1253f0f7a845b5b09bbe1d2ff1_66.png)
 
 ![](img/61225d1253f0f7a845b5b09bbe1d2ff1_68.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_70.png)
 
 ![](img/61225d1253f0f7a845b5b09bbe1d2ff1_71.png)
 
@@ -112,13 +89,10 @@
 
 通过爆破，我们发现了以下开放端口：`22` (SSH), `3306` (MySQL), `5002`, `8080`, `23005`。
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_75.png)
 
 ![](img/61225d1253f0f7a845b5b09bbe1d2ff1_77.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_79.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_81.png)
 
 ### 攻击内网服务
 
@@ -150,7 +124,6 @@
 
 ## 题目二：网站源码获取系统
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_91.png)
 
 本节我们来看第二个题目，它同样是一个SSRF漏洞，但最终目标是利用内网的Redis未授权访问漏洞。
 
@@ -168,7 +141,6 @@
 
 ![](img/61225d1253f0f7a845b5b09bbe1d2ff1_101.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_102.png)
 
 ![](img/61225d1253f0f7a845b5b09bbe1d2ff1_104.png)
 
@@ -177,27 +149,20 @@
 
 ![](img/61225d1253f0f7a845b5b09bbe1d2ff1_106.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_107.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_109.png)
 
 ### 利用Gopher协议攻击Redis
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_111.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_112.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_114.png)
 
 ![](img/61225d1253f0f7a845b5b09bbe1d2ff1_116.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_118.png)
 
 ![](img/61225d1253f0f7a845b5b09bbe1d2ff1_120.png)
 
 由于`file://`协议被过滤，我们需要利用`gopher://`协议向Redis服务发送攻击Payload。Gopher协议可以发送任意格式的TCP数据。
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_122.png)
 
 **攻击Redis的几种方式**：
 *   写入SSH公钥，实现免密登录。
@@ -210,15 +175,12 @@
 
 ![](img/61225d1253f0f7a845b5b09bbe1d2ff1_128.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_130.png)
 
 以下以**写入SSH公钥**为例，讲解利用SSRF攻击内网Redis的流程：
 
 ![](img/61225d1253f0f7a845b5b09bbe1d2ff1_132.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_134.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_136.png)
 
 1.  **生成SSH密钥对**：
     ```bash
@@ -244,15 +206,11 @@
     ```
 5.  **连接SSH**：如果写入成功，即可使用对应的私钥直接SSH登录内网服务器。
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_138.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_140.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_142.png)
 
 ![](img/61225d1253f0f7a845b5b09bbe1d2ff1_143.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_145.png)
 
 ![](img/61225d1253f0f7a845b5b09bbe1d2ff1_147.png)
 
@@ -266,15 +224,11 @@
 
 ![](img/61225d1253f0f7a845b5b09bbe1d2ff1_154.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_156.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_158.png)
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_159.png)
 
 ---
 
-![](img/61225d1253f0f7a845b5b09bbe1d2ff1_161.png)
 
 ![](img/61225d1253f0f7a845b5b09bbe1d2ff1_163.png)
 

@@ -1,6 +1,5 @@
 # 027：关于网络安全领域的误解
 
-![](img/9c747df6da936ac8bf079aab8767c484_0.png)
 
 ![](img/9c747df6da936ac8bf079aab8767c484_0.png)
 

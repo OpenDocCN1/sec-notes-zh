@@ -1,10 +1,8 @@
 #  158：Lua 与 C/C++ 接口基础教程 🧩
 
-![](img/b572280267aa72eaaa2e6e5df6e4096f_1.png)
 
 在本节课中，我们将学习如何在 Lua 脚本中调用 C/C++ 编写的函数。我们将从创建项目开始，逐步讲解如何配置环境、注册函数，并通过 Lua 脚本执行这些函数。
 
-![](img/b572280267aa72eaaa2e6e5df6e4096f_3.png)
 
 ---
 
@@ -48,11 +46,9 @@ lua_close(L); // 关闭 Lua 状态机
 
 ## 注册 C/C++ 函数供 Lua 调用
 
-![](img/b572280267aa72eaaa2e6e5df6e4096f_5.png)
 
 环境创建好后，我们需要让 Lua 脚本能够调用我们编写的 C/C++ 函数。这需要通过“注册”来实现。
 
-![](img/b572280267aa72eaaa2e6e5df6e4096f_7.png)
 
 假设我们有一个 C++ 函数 `FindWay`，它模拟游戏中的寻路指令。
 
@@ -79,32 +75,26 @@ int lua_FindWay(lua_State* L) {
 lua_register(L, "FindWay", lua_FindWay);
 ```
 
-![](img/b572280267aa72eaaa2e6e5df6e4096f_9.png)
 
 ---
 
-![](img/b572280267aa72eaaa2e6e5df6e4096f_11.png)
 
 ## 在 Lua 脚本中调用注册的函数
 
-![](img/b572280267aa72eaaa2e6e5df6e4096f_12.png)
 
 函数注册成功后，我们就可以在 Lua 脚本中调用它了。有两种主要的方式来执行包含调用的 Lua 代码。
 
 **第一种方式是使用 `luaL_dostring` 直接执行一段 Lua 代码字符串。**
 
-![](img/b572280267aa72eaaa2e6e5df6e4096f_14.png)
 
 ```c
 // 执行一段 Lua 代码字符串，调用注册的 FindWay 函数
 luaL_dostring(L, "FindWay()");
 ```
 
-![](img/b572280267aa72eaaa2e6e5df6e4096f_16.png)
 
 **第二种方式是使用 `luaL_dofile` 执行一个外部的 Lua 脚本文件。**
 
-![](img/b572280267aa72eaaa2e6e5df6e4096f_18.png)
 
 我们可以创建一个名为 `test.lua` 的脚本文件，内容如下：
 
@@ -114,26 +104,21 @@ FindWay()
 FindWay()
 ```
 
-![](img/b572280267aa72eaaa2e6e5df6e4096f_20.png)
 
 然后在 C++ 程序中加载并执行这个文件：
 
-![](img/b572280267aa72eaaa2e6e5df6e4096f_22.png)
 
 ```c
 // 执行外部的 Lua 脚本文件
 luaL_dofile(L, "test.lua");
 ```
 
-![](img/b572280267aa72eaaa2e6e5df6e4096f_24.png)
 
 此时，`FindWay()` 函数会被调用两次。
 
-![](img/b572280267aa72eaaa2e6e5df6e4096f_26.png)
 
 ---
 
-![](img/b572280267aa72eaaa2e6e5df6e4096f_28.png)
 
 ## 注意事项与路径问题
 
@@ -142,11 +127,9 @@ luaL_dofile(L, "test.lua");
 *   在调试模式下，工作目录通常是项目解决方案目录下的 `Debug` 文件夹。
 *   直接运行生成的 `.exe` 文件时，工作目录就是 `.exe` 文件所在的目录。
 
-![](img/b572280267aa72eaaa2e6e5df6e4096f_30.png)
 
 为了保证脚本文件能被正确找到，你可以：
 
-![](img/b572280267aa72eaaa2e6e5df6e4096f_32.png)
 
 1.  将 Lua 脚本文件复制到可执行文件（.exe）所在的目录。
 2.  或者在 IDE 的调试设置中，将“工作目录”修改为脚本文件所在的路径。

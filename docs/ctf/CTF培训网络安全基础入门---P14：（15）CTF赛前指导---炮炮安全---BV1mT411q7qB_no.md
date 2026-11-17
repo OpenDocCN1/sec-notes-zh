@@ -1,22 +1,13 @@
 # CTF培训网络安全基础入门：P14：杂项（上）教程
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_1.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_3.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_5.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_7.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_9.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_11.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_13.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_15.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_16.png)
 
 ## 概述
 在本节课中，我们将要学习CTF比赛中“杂项”（Misc）类题目的基础入门知识，特别是文件操作与信息隐藏（隐写术）的相关内容。我们将学习如何识别、分析和处理包含隐藏信息的文件，并掌握相关的工具和方法。
@@ -25,15 +16,12 @@
 
 ![](img/e653577dfee86da28bdf170ba8b40ec5_19.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_21.png)
 
 ---
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_23.png)
 
 ## 文件操作与隐写
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_25.png)
 
 ### 文件类型识别
 上一节我们介绍了杂项题目的特点，本节中我们来看看如何分析下载的文件。每个文件都有其特定的结构，可以通过文件头部（文件头）来识别其类型。
@@ -55,51 +43,37 @@
         ```
         可以看到起始字节 `89 50 4E 47` 对应 ASCII 字符 “.PNG”，表明这是一个PNG图片。
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_27.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_29.png)
 
 2.  **工具分析（使用 `file` 命令）**
     *   **环境**：Linux（如Kali）。
     *   **命令**：`file <文件名>`
     *   **示例**：`file example` 命令会输出该文件的类型信息。
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_31.png)
 
 **当文件无法打开时：**
 如果文件扩展名丢失或损坏，导致无法正常打开，通常需要检查并修复文件头。
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_33.png)
 
 **文件头修复示例（以ZIP文件为例）：**
 如果一个文件实际是ZIP压缩包，但文件头损坏，可以使用十六进制编辑器（如010 Editor）在文件起始处插入正确的ZIP文件头：`50 4B 03 04`。
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_35.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_37.png)
 
 ---
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_39.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_41.png)
 
 ### 文件分离
 有时，一个文件中可能隐藏（附加）了另一个文件。我们需要将其分离出来。
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_43.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_45.png)
 
 以下是几种分离方法：
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_47.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_49.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_51.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_53.png)
 
 **1. 自动化分离工具**
 这些工具可以自动识别并分离出文件中嵌入的其他文件。
@@ -126,13 +100,10 @@
 
 ![](img/e653577dfee86da28bdf170ba8b40ec5_55.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_57.png)
 
 ---
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_59.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_60.png)
 
 ### 文件合并与校验
 有时题目会将一个文件分割成多个部分，需要合并后才能得到完整信息。
@@ -142,28 +113,19 @@
 *   **命令**：`cat 文件1 文件2 文件3 ... > 合并后的文件`
 *   **示例**：`cat part1.gif part2.gif part3.gif > complete.gif`
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_62.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_64.png)
 
 **文件校验（MD5校验）**：
 下载或合并文件后，常需要验证其完整性，确保与出题方提供的文件一致。
 *   **命令**：`md5sum <文件名>`
 *   **操作**：计算本地文件的MD5哈希值，与题目给出的MD5值进行比对。如果一致，则文件完整无误。
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_66.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_68.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_69.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_71.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_73.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_74.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_76.png)
 
 ![](img/e653577dfee86da28bdf170ba8b40ec5_78.png)
 
@@ -171,11 +133,8 @@
 
 ![](img/e653577dfee86da28bdf170ba8b40ec5_80.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_82.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_84.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_86.png)
 
 ---
 
@@ -189,17 +148,11 @@
         *   Windows：右键图片 -> 属性 -> 详细信息。
         *   Linux命令：`exiftool <图片文件名>`
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_88.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_90.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_92.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_94.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_95.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_96.png)
 
 ### 2. 图片对比分析
 当两张图片看起来几乎完全相同时，可以考虑进行像素级对比分析，通过数学运算发现差异。
@@ -209,15 +162,12 @@
     2.  选择菜单 `Analyze` -> `Image Combiner`，并选择图片B进行对比。
     3.  尝试不同的运算模式（如 XOR, ADD, SUB等），观察生成的图像中是否出现隐藏的二维码或文字。
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_98.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_100.png)
 
 ![](img/e653577dfee86da28bdf170ba8b40ec5_102.png)
 
 ![](img/e653577dfee86da28bdf170ba8b40ec5_104.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_106.png)
 
 ![](img/e653577dfee86da28bdf170ba8b40ec5_108.png)
 
@@ -228,11 +178,8 @@
 
 **提取LSB隐藏信息的方法：**
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_112.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_114.png)
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_116.png)
 
 *   **使用 Stegsolve**：
     1.  打开图片，选择 `Analyze` -> `Data Extract`。
@@ -244,7 +191,6 @@
     *   **安装**：`gem install zsteg` （需先安装Ruby环境）
     *   **使用**：`zsteg <图片文件名>` 该命令会自动尝试多种LSB提取方式并显示结果。
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_118.png)
 
 *   **使用 `stegolsb` 工具**：
     *   这是一个命令行工具，可以用于LSB隐写的编码和解码。
@@ -277,7 +223,6 @@
 *   **修复工具**：简单的画图工具即可进行涂抹、裁剪、颜色反转等操作。
 *   **识别工具**：手机扫码软件、`zbarimg`命令行工具 (`zbarimg 二维码图片.png`)。
 
-![](img/e653577dfee86da28bdf170ba8b40ec5_120.png)
 
 ---
 

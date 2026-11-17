@@ -1,6 +1,5 @@
 # 012：绕过安全控制演示
 
-![](img/1a6ae83544c3ee33226bfb6bccc92cd7_0.png)
 
 ![](img/1a6ae83544c3ee33226bfb6bccc92cd7_0.png)
 

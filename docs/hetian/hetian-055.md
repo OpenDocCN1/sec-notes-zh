@@ -4,9 +4,7 @@
 
 ![](img/42c7c9f7d4c9df23e26387e6bf740647_3.png)
 
-![](img/42c7c9f7d4c9df23e26387e6bf740647_5.png)
 
-![](img/42c7c9f7d4c9df23e26387e6bf740647_7.png)
 
 在本节课中，我们将学习内网渗透测试中的核心环节：内网环境分析与工作组信息收集。我们将从横向与纵向渗透的概念入手，逐步讲解如何利用已获取权限的机器（跳板机）进行内网信息收集，并介绍一系列在Windows环境下常用的信息收集命令和技巧。
 
@@ -132,7 +130,6 @@
 
 ![](img/42c7c9f7d4c9df23e26387e6bf740647_95.png)
 
-![](img/42c7c9f7d4c9df23e26387e6bf740647_97.png)
 
 ![](img/42c7c9f7d4c9df23e26387e6bf740647_99.png)
 
@@ -200,11 +197,9 @@
 
 ![](img/42c7c9f7d4c9df23e26387e6bf740647_125.png)
 
-![](img/42c7c9f7d4c9df23e26387e6bf740647_126.png)
 
 ![](img/42c7c9f7d4c9df23e26387e6bf740647_128.png)
 
-![](img/42c7c9f7d4c9df23e26387e6bf740647_130.png)
 
 *   **`net share`**：查看本机共享列表。
 *   **`net use`**：查看当前的网络连接和映射的驱动器。
@@ -220,17 +215,12 @@
 *   **回收站内容获取**：通过脚本遍历用户SID，查找回收站目录（`$Recycle.Bin`），恢复被删除的文件信息。文件`$I*`存储原路径，`$R*`存储文件内容。
 *   **浏览器记录**：可尝试读取Chrome等浏览器的历史记录和Cookie文件（路径如`%LocalAppData%\Google\Chrome\User Data\Default\History`），但需注意加密和权限。可使用Mimikatz等工具的`dpapi`模块解密。
 
-![](img/42c7c9f7d4c9df23e26387e6bf740647_132.png)
 
-![](img/42c7c9f7d4c9df23e26387e6bf740647_134.png)
 
-![](img/42c7c9f7d4c9df23e26387e6bf740647_136.png)
 
 ---
 
-![](img/42c7c9f7d4c9df23e26387e6bf740647_138.png)
 
-![](img/42c7c9f7d4c9df23e26387e6bf740647_140.png)
 
 ![](img/42c7c9f7d4c9df23e26387e6bf740647_142.png)
 

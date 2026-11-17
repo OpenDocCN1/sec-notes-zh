@@ -28,11 +28,9 @@ PHP配置文件的语法与常见的INI文件格式相似。基本结构是指�
 
 指令名是大小写敏感的。值可以是字符串、数字、PHP常量、INI常量或表达式。
 
-![](img/b4ac35ac54e4f45ee8e934fdeae79711_7.png)
 
 上一节我们介绍了配置文件的基本概念和语法，本节中我们来看看一些常见且重要的具体配置项。
 
-![](img/b4ac35ac54e4f45ee8e934fdeae79711_9.png)
 
 ## 变量相关配置 🔧
 
@@ -143,9 +141,7 @@ error_reporting(E_ALL);
 ### 魔术引号 (`magic_quotes_gpc`)
 此特性会对 `$_GET`、`$_POST`、`$_COOKIE` 传入的数据自动进行转义（在特殊字符如单引号前加反斜杠 `\`），初衷是防止SQL注入。但由于其效率低下且转义策略僵化（并非所有数据都需要入库），**该特性已在PHP 5.4.0及以上版本中被移除**。现代应用应使用参数化查询（PDO预处理）等方法来防止注入。
 
-![](img/b4ac35ac54e4f45ee8e934fdeae79711_39.png)
 
-![](img/b4ac35ac54e4f45ee8e934fdeae79711_41.png)
 
 ### 远程文件包含 (`allow_url_include`)
 此配置控制 `include`、`require` 等函数是否允许包含远程（HTTP/FTP）文件。
@@ -157,17 +153,13 @@ error_reporting(E_ALL);
 *   **`allow_url_include = Off`**（默认）：禁止包含远程文件，这是安全设置。
 *   **`allow_url_fopen = On`**（默认）：允许使用 `fopen()` 等函数打开远程文件。
 
-![](img/b4ac35ac54e4f45ee8e934fdeae79711_46.png)
 
 **安全风险：** 如果 `allow_url_include` 被开启，且程序存在文件包含漏洞，攻击者就可能直接包含远程服务器上的恶意代码并执行，造成严重的远程代码执行（RCE）漏洞。**务必确保此配置为 `Off`**。
 
-![](img/b4ac35ac54e4f45ee8e934fdeae79711_48.png)
 
 ## 课程总结 📚
 
-![](img/b4ac35ac54e4f45ee8e934fdeae79711_50.png)
 
-![](img/b4ac35ac54e4f45ee8e934fdeae79711_52.png)
 
 本节课我们一起学习了PHP中常见的INI配置：
 1.  认识了 `php.ini`、`.user.ini` 等配置文件及其作用。
@@ -175,7 +167,6 @@ error_reporting(E_ALL);
 3.  掌握了 `short_open_tag`、`disable_functions`、`open_basedir`、`allow_url_include` 等关键安全配置的含义和影响。
 4.  学会了如何通过 `display_errors` 和 `error_reporting` 来辅助代码调试与审计。
 
-![](img/b4ac35ac54e4f45ee8e934fdeae79711_54.png)
 
 ![](img/b4ac35ac54e4f45ee8e934fdeae79711_56.png)
 

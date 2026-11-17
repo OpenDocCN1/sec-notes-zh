@@ -4,9 +4,7 @@
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_3.png)
 
-![](img/a53f930152f1beb30c75097d9275ab2a_5.png)
 
-![](img/a53f930152f1beb30c75097d9275ab2a_7.png)
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_9.png)
 
@@ -48,7 +46,6 @@
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_43.png)
 
-![](img/a53f930152f1beb30c75097d9275ab2a_45.png)
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_47.png)
 
@@ -154,9 +151,7 @@
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_127.png)
 
-![](img/a53f930152f1beb30c75097d9275ab2a_129.png)
 
-![](img/a53f930152f1beb30c75097d9275ab2a_131.png)
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_133.png)
 
@@ -188,7 +183,6 @@
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_153.png)
 
-![](img/a53f930152f1beb30c75097d9275ab2a_155.png)
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_157.png)
 
@@ -213,9 +207,7 @@
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_173.png)
 
-![](img/a53f930152f1beb30c75097d9275ab2a_175.png)
 
-![](img/a53f930152f1beb30c75097d9275ab2a_177.png)
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_179.png)
 
@@ -294,7 +286,6 @@
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_226.png)
 
-![](img/a53f930152f1beb30c75097d9275ab2a_228.png)
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_230.png)
 
@@ -306,21 +297,16 @@
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_235.png)
 
-![](img/a53f930152f1beb30c75097d9275ab2a_237.png)
 
-![](img/a53f930152f1beb30c75097d9275ab2a_239.png)
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_241.png)
 
-![](img/a53f930152f1beb30c75097d9275ab2a_243.png)
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_244.png)
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_245.png)
 
-![](img/a53f930152f1beb30c75097d9275ab2a_247.png)
 
-![](img/a53f930152f1beb30c75097d9275ab2a_249.png)
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_250.png)
 
@@ -360,11 +346,8 @@
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_278.png)
 
-![](img/a53f930152f1beb30c75097d9275ab2a_280.png)
 
-![](img/a53f930152f1beb30c75097d9275ab2a_282.png)
 
-![](img/a53f930152f1beb30c75097d9275ab2a_284.png)
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_286.png)
 
@@ -403,23 +386,19 @@
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_312.png)
 
-![](img/a53f930152f1beb30c75097d9275ab2a_314.png)
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_316.png)
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_318.png)
 
-![](img/a53f930152f1beb30c75097d9275ab2a_320.png)
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_322.png)
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_324.png)
 
-![](img/a53f930152f1beb30c75097d9275ab2a_326.png)
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_328.png)
 
-![](img/a53f930152f1beb30c75097d9275ab2a_330.png)
 
 ```python
 # 假设模板字符串来自用户输入
@@ -433,15 +412,12 @@ eval(f"f'{{{code}}}'") # 这将执行命令
 ```
 更实际的漏洞场景可能出现在服务端使用`eval()`或`exec()`动态执行包含用户可控内容的f-string模板时。
 
-![](img/a53f930152f1beb30c75097d9275ab2a_332.png)
 
-![](img/a53f930152f1beb30c75097d9275ab2a_334.png)
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_336.png)
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_338.png)
 
-![](img/a53f930152f1beb30c75097d9275ab2a_340.png)
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_342.png)
 
@@ -449,14 +425,11 @@ eval(f"f'{{{code}}}'") # 这将执行命令
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_346.png)
 
-![](img/a53f930152f1beb30c75097d9275ab2a_348.png)
 
-![](img/a53f930152f1beb30c75097d9275ab2a_350.png)
 
 **`format()`方法的安全问题：**
 `str.format()`方法允许通过位置或关键字访问属性。如果格式化模板可控，攻击者可能访问到不应暴露的对象属性。
 
-![](img/a53f930152f1beb30c75097d9275ab2a_352.png)
 
 ![](img/a53f930152f1beb30c75097d9275ab2a_354.png)
 

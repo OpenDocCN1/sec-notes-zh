@@ -32,9 +32,7 @@ CORS通过在HTTP头中添加特定字段来声明允许跨域访问的源。关
 
 漏洞的成因在于服务器配置了CORS，但 `Access-Control-Allow-Origin` 的值设置过于宽松（例如设置为通配符 `*`），或者错误地反射了请求中的 `Origin` 值，导致任何网站都可以跨域读取该接口的数据。
 
-![](img/0e5327b5f1e61bf7c3f26e4dc6a909a4_5.png)
 
-![](img/0e5327b5f1e61bf7c3f26e4dc6a909a4_7.png)
 
 ### 如何寻找CORS漏洞
 寻找CORS漏洞的方法很简单：在Burp Suite等工具中拦截请求，修改或添加 `Origin` 请求头（例如改为 `http://evil.com`），然后观察响应头中 `Access-Control-Allow-Origin` 的值。
@@ -44,11 +42,8 @@ CORS通过在HTTP头中添加特定字段来声明允许跨域访问的源。关
 ### 漏洞利用
 存在CORS漏洞的接口可以被攻击者构造的恶意页面跨域读取。攻击者可以将恶意页面链接发送给受害者，当受害者（已登录目标网站）访问该链接时，攻击者页面上的JavaScript就能窃取到目标接口返回的敏感数据（如个人信息、收货地址等）。
 
-![](img/0e5327b5f1e61bf7c3f26e4dc6a909a4_9.png)
 
-![](img/0e5327b5f1e61bf7c3f26e4dc6a909a4_11.png)
 
-![](img/0e5327b5f1e61bf7c3f26e4dc6a909a4_13.png)
 
 以下是利用CORS漏洞读取数据的核心代码模板：
 ```html
@@ -71,7 +66,6 @@ cors();
 ```
 **注意**：你需要将 `https://vulnerable-site.com/api/sensitive_data` 替换为实际的目标接口，并将 `http://your-dnslog-address/` 替换为你控制的接收数据的地址（如DNSLog平台）。
 
-![](img/0e5327b5f1e61bf7c3f26e4dc6a909a4_14.png)
 
 ## JSONP跨域漏洞
 ### 漏洞原理

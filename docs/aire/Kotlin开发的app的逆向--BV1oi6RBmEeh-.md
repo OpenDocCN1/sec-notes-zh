@@ -13,7 +13,6 @@ Kotlin源码 -> 原文说法中的Java代码 -> 编译产物 -> 反编译后看�
 
 > 原文观点：Kotlin开发的App在反编译、逆向查看时，最终看到的仍然是Java代码形态。
 
-![](img/642c1742b07834ac3674f6f62bfda36f_1.png)
 
 # 🧪 Kotlin App逆向：02：创建一个Kotlin项目
 
@@ -55,7 +54,6 @@ binding.simpleText.setText(stringRes)
 
 具体到主界面代码，原文指出这里实际上是获取了binding，然后通过`setContentView`把布局文件和当前界面的Activity绑定起来。接着从binding里面去获取`simpleText`，也就是界面上的标签控件，再调用它的`setText`方法，往里面设置一个值，这个值就是字符串资源返回的一个字符串。
 
-![](img/642c1742b07834ac3674f6f62bfda36f_3.png)
 
 对于初学者来说，可以把binding理解成“界面控件的绑定对象”，把`setContentView`理解成“把布局挂到当前Activity上”，把`setText`理解成“给标签设置显示文字”。这样再看反编译代码时，就不会被Kotlin项目这个名字吓到。
 
@@ -65,7 +63,6 @@ binding.simpleText.setText(stringRes)
 
 下面根据原文提到的例子做一个归纳，帮助初学者理解“Kotlin开发”在逆向中的表现。
 
-![](img/642c1742b07834ac3674f6f62bfda36f_5.png)
 
 1. 某个App中能看到Kotlin相关标识，主界面里面有`MyActivity.kt`，它是从KT文件过来的，KT后缀肯定就是Kotlin。
 
@@ -83,7 +80,6 @@ binding.simpleText.setText(stringRes)
 
 对初学者来说，这里最需要记住的不是复杂理论，而是一个简单判断：不要因为项目是Kotlin写的，就认为逆向方法要完全换一套。原文说逆向分析方法一样，意思就是仍然按照Java App的思路去看加载so、绑定布局、获取控件、设置文本这些常见动作。
 
-![](img/642c1742b07834ac3674f6f62bfda36f_7.png)
 
 下面用公式形式概括本节课的核心结论。
 

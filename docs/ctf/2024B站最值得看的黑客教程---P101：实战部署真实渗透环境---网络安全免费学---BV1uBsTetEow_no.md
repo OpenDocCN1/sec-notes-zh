@@ -1,8 +1,6 @@
 # 网络安全实战教程：P101：实战部署真实渗透环境
 
-![](img/afdb9fdf4a21be94b8b57c4adba5bc85_1.png)
 
-![](img/afdb9fdf4a21be94b8b57c4adba5bc85_2.png)
 
 ![](img/afdb9fdf4a21be94b8b57c4adba5bc85_4.png)
 
@@ -16,11 +14,9 @@
 
 ## 环境搭建概述与准备工作
 
-![](img/afdb9fdf4a21be94b8b57c4adba5bc85_12.png)
 
 上一节我们介绍了实战环境的重要性，本节中我们来看看具体的搭建步骤。首先，我们需要理解本次实战环境的网络拓扑结构。
 
-![](img/afdb9fdf4a21be94b8b57c4adba5bc85_14.png)
 
 ![](img/afdb9fdf4a21be94b8b57c4adba5bc85_15.png)
 
@@ -56,7 +52,6 @@
 
 ## 第二步：配置虚拟网络
 
-![](img/afdb9fdf4a21be94b8b57c4adba5bc85_22.png)
 
 ![](img/afdb9fdf4a21be94b8b57c4adba5bc85_24.png)
 
@@ -83,9 +78,7 @@
 
 至此，虚拟网络配置完成。`VMnet3` 将用于模拟互联网段，`VMnet4` 将用于模拟公司内网段。
 
-![](img/afdb9fdf4a21be94b8b57c4adba5bc85_26.png)
 
-![](img/afdb9fdf4a21be94b8b57c4adba5bc85_27.png)
 
 ![](img/afdb9fdf4a21be94b8b57c4adba5bc85_28.png)
 
@@ -95,7 +88,6 @@
 
 ![](img/afdb9fdf4a21be94b8b57c4adba5bc85_31.png)
 
-![](img/afdb9fdf4a21be94b8b57c4adba5bc85_33.png)
 
 网络配置好后，我们开始部署第一台虚拟机——Web服务器。这台机器是攻击的入口点。
 
@@ -161,7 +153,6 @@ Web服务器配置完成后，我们来部署内网的两台机器：域控制�
 
 ![](img/afdb9fdf4a21be94b8b57c4adba5bc85_43.png)
 
-![](img/afdb9fdf4a21be94b8b57c4adba5bc85_44.png)
 
 ![](img/afdb9fdf4a21be94b8b57c4adba5bc85_45.png)
 

@@ -6,7 +6,6 @@
 
 数据库是存储和管理数据的核心软件。SQL是一种用于与数据库通信的标准语言。本节课我们将学习如何安装MySQL环境，使用SQL语言进行基本的数据库操作，包括创建数据库、表，以及数据的增删改查。
 
-![](img/ab55a0d71365767de4d1df06f9d2672e_1.png)
 
 ---
 
@@ -152,7 +151,6 @@ mysql -u root -p
 
 以下是其他有用的SQL子句和操作：
 
-![](img/ab55a0d71365767de4d1df06f9d2672e_9.png)
 
 *   **LIKE 与通配符**： 用于模糊查询。
     ```sql
@@ -165,7 +163,6 @@ mysql -u root -p
     SELECT 列 FROM 表1 UNION SELECT 列 FROM 表2;
     ```
 
-![](img/ab55a0d71365767de4d1df06f9d2672e_11.png)
 
 *   **AND / OR**： 在WHERE子句中组合多个条件。
     ```sql
@@ -181,15 +178,12 @@ mysql -u root -p
 
 ---
 
-![](img/ab55a0d71365767de4d1df06f9d2672e_13.png)
 
 ## 实战演示：从零操作数据库
 
 现在，让我们在命令行中完整演练一遍数据库操作流程。
 
-![](img/ab55a0d71365767de4d1df06f9d2672e_15.png)
 
-![](img/ab55a0d71365767de4d1df06f9d2672e_17.png)
 
 1.  **登录MySQL**：
     ```bash
@@ -197,7 +191,6 @@ mysql -u root -p
     ```
     输入密码后进入MySQL命令行。
 
-![](img/ab55a0d71365767de4d1df06f9d2672e_19.png)
 
 2.  **创建数据库**：
     ```sql
@@ -241,7 +234,6 @@ mysql -u root -p
 
 ![](img/ab55a0d71365767de4d1df06f9d2672e_25.png)
 
-![](img/ab55a0d71365767de4d1df06f9d2672e_27.png)
 
 7.  **更新与删除**（可选练习）：
     ```sql

@@ -1,6 +1,5 @@
 # 051：13_01_欢迎来到第二周
 
-![](img/fde8a044aebfe9782e9de5ad738dd5d0_0.png)
 
 ![](img/fde8a044aebfe9782e9de5ad738dd5d0_0.png)
 
@@ -18,12 +17,10 @@
 
 首先，我们将讨论一些常见的网络协议。接着，我们将探讨虚拟专用网络（VPN）。最后，我们将学习防火墙、安全区域和代理服务器。
 
-![](img/fde8a044aebfe9782e9de5ad738dd5d0_2.png)
 
 ![](img/fde8a044aebfe9782e9de5ad738dd5d0_2.png)
 
 现在您已经了解了本节的学习方向，让我们正式开始。
 
-![](img/fde8a044aebfe9782e9de5ad738dd5d0_4.png)
 
 ![](img/fde8a044aebfe9782e9de5ad738dd5d0_4.png)

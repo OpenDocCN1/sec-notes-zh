@@ -1,6 +1,5 @@
 # CTF赛前指导：15：Web基础与SQL注入入门 🚩
 
-![](img/45cdca6c9df6ea7f02b8641da6bf8529_0.png)
 
 在本节课中，我们将要学习Web应用的基本架构、HTTP协议的基础知识，以及SQL注入攻击的基本原理。通过理解这些核心概念，你将能够应对CTF比赛中常见的Web类题目。
 
@@ -19,15 +18,11 @@
 
 ![](img/45cdca6c9df6ea7f02b8641da6bf8529_4.png)
 
-![](img/45cdca6c9df6ea7f02b8641da6bf8529_5.png)
 
-![](img/45cdca6c9df6ea7f02b8641da6bf8529_7.png)
 
-![](img/45cdca6c9df6ea7f02b8641da6bf8529_9.png)
 
 ![](img/45cdca6c9df6ea7f02b8641da6bf8529_11.png)
 
-![](img/45cdca6c9df6ea7f02b8641da6bf8529_13.png)
 
 ![](img/45cdca6c9df6ea7f02b8641da6bf8529_15.png)
 
@@ -35,15 +30,12 @@
 
 ![](img/45cdca6c9df6ea7f02b8641da6bf8529_17.png)
 
-![](img/45cdca6c9df6ea7f02b8641da6bf8529_19.png)
 
 ![](img/45cdca6c9df6ea7f02b8641da6bf8529_20.png)
 
-![](img/45cdca6c9df6ea7f02b8641da6bf8529_22.png)
 
 一个HTTP请求报文包含三个部分。
 
-![](img/45cdca6c9df6ea7f02b8641da6bf8529_24.png)
 
 *   **请求行**：包含请求方法（如GET或POST）和HTTP协议版本。例如：`GET /index.html HTTP/1.1`。
 *   **消息头**：包含一系列键值对，描述了客户端的信息和请求的细节。这些信息可以被工具（如Burp Suite代理）拦截并修改。常见的消息头字段包括：
@@ -56,7 +48,6 @@
 
 ### HTTP响应
 
-![](img/45cdca6c9df6ea7f02b8641da6bf8529_26.png)
 
 ![](img/45cdca6c9df6ea7f02b8641da6bf8529_27.png)
 
@@ -71,9 +62,7 @@
 
 ## 信息收集与前端分析
 
-![](img/45cdca6c9df6ea7f02b8641da6bf8529_29.png)
 
-![](img/45cdca6c9df6ea7f02b8641da6bf8529_30.png)
 
 在CTF的Web题目中，信息收集是第一步。以下是常见的解题思路。
 
@@ -83,7 +72,6 @@
 
 ![](img/45cdca6c9df6ea7f02b8641da6bf8529_34.png)
 
-![](img/45cdca6c9df6ea7f02b8641da6bf8529_36.png)
 
 许多题目的线索隐藏在HTML、CSS或JavaScript代码中。通过浏览器右键“查看页面源代码”或按F12打开开发者工具，可以找到注释、隐藏的表单、JavaScript验证逻辑等。
 
@@ -110,9 +98,7 @@ if (x == ‘flag{this_is_password}’) {
 *   **要求从特定国家访问**：修改 `Accept-Language` 头。
 *   **要求从特定页面跳转**：修改 `Referer` 头。
 
-![](img/45cdca6c9df6ea7f02b8641da6bf8529_38.png)
 
-![](img/45cdca6c9df6ea7f02b8641da6bf8529_40.png)
 
 ![](img/45cdca6c9df6ea7f02b8641da6bf8529_42.png)
 
@@ -124,7 +110,6 @@ if (x == ‘flag{this_is_password}’) {
 
 当Web应用需要与数据库交互时（如用户登录查询），就可能存在SQL注入漏洞。攻击者通过构造特殊的输入，欺骗服务器执行非预期的SQL命令。
 
-![](img/45cdca6c9df6ea7f02b8641da6bf8529_48.png)
 
 ![](img/45cdca6c9df6ea7f02b8641da6bf8529_50.png)
 
@@ -161,15 +146,11 @@ SELECT * FROM users WHERE username=‘admin‘#’ AND password=‘...’
 ```
 `#` 之后的内容被注释，查询变为只检查用户名是否为“admin”，同样可能绕过验证。
 
-![](img/45cdca6c9df6ea7f02b8641da6bf8529_52.png)
 
-![](img/45cdca6c9df6ea7f02b8641da6bf8529_54.png)
 
-![](img/45cdca6c9df6ea7f02b8641da6bf8529_56.png)
 
 ### 使用自动化工具进行SQL注入
 
-![](img/45cdca6c9df6ea7f02b8641da6bf8529_58.png)
 
 手动注入效率较低，可以使用自动化工具如 **sqlmap**。
 1.  发现注入点后，使用 `sqlmap -u “目标URL”` 进行扫描。

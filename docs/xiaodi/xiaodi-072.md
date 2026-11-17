@@ -48,7 +48,6 @@
 
 ![](img/ba2d0cd505beb11db6ca8a4b411699de_38.png)
 
-![](img/ba2d0cd505beb11db6ca8a4b411699de_40.png)
 
 ## 🔍 支付逻辑常见测试点
 
@@ -84,9 +83,7 @@
 
 ![](img/ba2d0cd505beb11db6ca8a4b411699de_69.png)
 
-![](img/ba2d0cd505beb11db6ca8a4b411699de_71.png)
 
-![](img/ba2d0cd505beb11db6ca8a4b411699de_73.png)
 
 ### 1. 参数篡改
 这包括对商品价格、数量、订单属性等参数的直接修改。
@@ -97,16 +94,12 @@
 
 ![](img/ba2d0cd505beb11db6ca8a4b411699de_79.png)
 
-![](img/ba2d0cd505beb11db6ca8a4b411699de_81.png)
 
 ### 2. 越权操作
 例如，使用他人账户的标识（如`openid`）进行支付或兑换操作。
 
-![](img/ba2d0cd505beb11db6ca8a4b411699de_83.png)
 
-![](img/ba2d0cd505beb11db6ca8a4b411699de_85.png)
 
-![](img/ba2d0cd505beb11db6ca8a4b411699de_87.png)
 
 ![](img/ba2d0cd505beb11db6ca8a4b411699de_89.png)
 
@@ -134,9 +127,7 @@
 
 ![](img/ba2d0cd505beb11db6ca8a4b411699de_107.png)
 
-![](img/ba2d0cd505beb11db6ca8a4b411699de_109.png)
 
-![](img/ba2d0cd505beb11db6ca8a4b411699de_111.png)
 
 以下是针对每个测试点的详细说明：
 
@@ -184,26 +175,21 @@ id=product_a&qty=-1&price=1  # 篡改后请求
 
 ![](img/ba2d0cd505beb11db6ca8a4b411699de_134.png)
 
-![](img/ba2d0cd505beb11db6ca8a4b411699de_136.png)
 
-![](img/ba2d0cd505beb11db6ca8a4b411699de_138.png)
 
 #### 1.3 优惠券逻辑漏洞
 *   **盗用**：猜测或遍历优惠券ID/兑换码，使用本不属于自己的优惠券。
 *   **复用**：对已使用过的优惠券，重复提交使用请求，看是否能再次抵扣金额。
 *   **参数分析**：对比使用与不使用优惠券的数据包差异，找到标识优惠券的参数（如`user_coupon_id`），尝试修改或重复使用。
 
-![](img/ba2d0cd505beb11db6ca8a4b411699de_140.png)
 
 ![](img/ba2d0cd505beb11db6ca8a4b411699de_142.png)
 
 ![](img/ba2d0cd505beb11db6ca8a4b411699de_143.png)
 
-![](img/ba2d0cd505beb11db6ca8a4b411699de_145.png)
 
 ![](img/ba2d0cd505beb11db6ca8a4b411699de_147.png)
 
-![](img/ba2d0cd505beb11db6ca8a4b411699de_149.png)
 
 #### 1.4 积分兑换逻辑漏洞
 积分兑换涉及账户余额与积分的数值运算。可能存在以下问题：
@@ -222,20 +208,15 @@ id=product_a&qty=-1&price=1  # 篡改后请求
 
 ![](img/ba2d0cd505beb11db6ca8a4b411699de_153.png)
 
-![](img/ba2d0cd505beb11db6ca8a4b411699de_154.png)
 
 #### 1.6 并发与状态问题
 *   **并发签约**：在开通自动续费（签约）服务时，利用多设备或并发请求，绕过“仅限新用户/首月优惠”的限制，以优惠价格连续签约多月。
 *   **无限试用**：分析试用服务的截止判断逻辑（如本地时间、服务器时间、试用次数），通过修改设备时间、重放请求等方式绕过限制。
 *   **提前/重复签到**：修改签到请求中的日期参数，或并发提交签到请求，获取不应获得的签到奖励。
 
-![](img/ba2d0cd505beb11db6ca8a4b411699de_156.png)
 
-![](img/ba2d0cd505beb11db6ca8a4b411699de_158.png)
 
-![](img/ba2d0cd505beb11db6ca8a4b411699de_160.png)
 
-![](img/ba2d0cd505beb11db6ca8a4b411699de_162.png)
 
 ![](img/ba2d0cd505beb11db6ca8a4b411699de_164.png)
 
@@ -286,7 +267,6 @@ id=product_a&qty=-1&price=1  # 篡改后请求
 
 ![](img/ba2d0cd505beb11db6ca8a4b411699de_198.png)
 
-![](img/ba2d0cd505beb11db6ca8a4b411699de_200.png)
 
 ## 💡 修复建议
 
@@ -308,7 +288,6 @@ id=product_a&qty=-1&price=1  # 篡改后请求
 *   **业务闭环校验**：支付成功后，回调验证应检查支付金额、订单号、商品信息是否完全匹配，而不仅仅是支付成功状态。
 *   **数值运算安全**：对涉及余额、积分的运算，进行严格的符号、范围、溢出检查。
 
-![](img/ba2d0cd505beb11db6ca8a4b411699de_212.png)
 
 ## 📝 本节课总结
 

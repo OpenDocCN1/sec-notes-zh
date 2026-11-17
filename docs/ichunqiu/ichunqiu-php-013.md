@@ -53,7 +53,6 @@ $content = file_get_contents($user_controlled_path);
 
 仔细查看上传功能的代码，发现用于更新数据库的 `$file` 变量是直接拼接进SQL语句的，没有经过过滤或转义。
 
-![](img/9fde8948d6d73e505dd295b43e5cefa6_6.png)
 
 ```sql
 UPDATE users SET avatar='$file' WHERE id='$id'

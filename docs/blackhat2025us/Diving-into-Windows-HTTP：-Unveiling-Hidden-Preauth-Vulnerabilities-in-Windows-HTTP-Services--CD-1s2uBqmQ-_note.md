@@ -4,11 +4,9 @@
 
 ## 背景介绍 🎯
 
-![](img/bb255093dd3f06fbce8a814d5f4dbef5_1.png)
 
 我们专注于研究Windows HTTP服务，主要原因是几乎所有这类服务都可以在无需认证的情况下被访问。它们不需要用户交互和额外配置。最重要的是，许多默认服务都构建在HTTP API之上。这意味着如果存在任何漏洞，都可能导致严重问题。
 
-![](img/bb255093dd3f06fbce8a814d5f4dbef5_3.png)
 
 让我简要介绍一下HTTP服务。基于HTTP API的服务使用诸如`HttpCreateServerSession`函数和`HttpAddUrl`函数来注册各种HTTP服务信息。在这些HTTP服务注册后，我们可以使用`HttpQueryServiceConfiguration`函数来获取关于它们的各种信息。
 
@@ -69,11 +67,9 @@ HTTP服务涉及两个重要的HTTP API函数。第一个是`HttpReceiveHttpRequ
 
 当我的分析进行到这一点时，我想知道如果服务器不主动关闭连接会发生什么。换句话说，如果它从不调用`HttpSendHttpResponse`函数或`HttpCancelHttpRequest`函数来关闭连接会怎样。
 
-![](img/bb255093dd3f06fbce8a814d5f4dbef5_9.png)
 
 我在一些服务中发现了这种情况。在接收和处理数据后，它们不调用`HttpSendHttpResponse`函数或`HttpCancelHttpRequest`函数，而是立即开始接收新数据。当我调试内核时，我看到`http.sys`没有关闭连接或减少连接的引用计数。这可能导致内核中的非分页池耗尽。
 
-![](img/bb255093dd3f06fbce8a814d5f4dbef5_11.png)
 
 我以`BranchCache`服务为例。相关函数在MSDN上有文档，其中定义了不同类型POST数据的结构。
 

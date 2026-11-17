@@ -1,6 +1,5 @@
 # 017：返回语句
 
-![](img/1ac0a3ba8656e01a7017c9466f113ffd_0.png)
 
 ![](img/1ac0a3ba8656e01a7017c9466f113ffd_0.png)
 
@@ -60,7 +59,6 @@ if percentage >= 0.5:
 
 ---
 
-![](img/1ac0a3ba8656e01a7017c9466f113ffd_2.png)
 
 ![](img/1ac0a3ba8656e01a7017c9466f113ffd_2.png)
 

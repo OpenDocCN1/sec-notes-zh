@@ -2,17 +2,13 @@
 
 在本节课中，我们将学习如何修改一个Android应用的页面，并实现两个页面之间的相互跳转。我们将从修改现有页面的文字和添加按钮开始，然后创建第二个页面，最后通过编写代码实现点击按钮在两个页面间切换的功能。
 
-![](img/3ef8fe9e31ba23c9ecae8d069c4a4453_1.png)
 
 ---
 
-![](img/3ef8fe9e31ba23c9ecae8d069c4a4453_3.png)
 
 ## 修改第一个页面
 
-![](img/3ef8fe9e31ba23c9ecae8d069c4a4453_5.png)
 
-![](img/3ef8fe9e31ba23c9ecae8d069c4a4453_7.png)
 
 首先，我们对默认的“Hello World”页面进行修改。当前页面只显示“Hello World”，我们将修改其文字并添加一个按钮。
 
@@ -46,11 +42,9 @@
 *   **布局文件**：每个Activity对应一个XML布局文件，用于定义页面的视觉元素。`MainActivity` 对应的布局文件是 `activity_main.xml`。
 *   **应用清单**：`AndroidManifest.xml` 文件定义了应用的入口Activity。其中包含 `<intent-filter>` 且 `action` 为 `android.intent.action.MAIN`、`category` 为 `android.intent.category.LAUNCHER` 的Activity就是应用启动时显示的页面。
 
-![](img/3ef8fe9e31ba23c9ecae8d069c4a4453_9.png)
 
 打开 `AndroidManifest.xml`，可以看到 `MainActivity` 被设置为启动入口。
 
-![](img/3ef8fe9e31ba23c9ecae8d069c4a4453_11.png)
 
 ---
 
@@ -126,9 +120,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 }
 ```
 
-![](img/3ef8fe9e31ba23c9ecae8d069c4a4453_13.png)
 
-![](img/3ef8fe9e31ba23c9ecae8d069c4a4453_15.png)
 
 ### 在 SecondActivity 中实现返回
 
@@ -138,9 +130,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 2.  找到“返回”按钮并设置监听器。
 3.  在 `onClick` 方法中，创建指向 `MainActivity` 的Intent并启动。
 
-![](img/3ef8fe9e31ba23c9ecae8d069c4a4453_17.png)
 
-![](img/3ef8fe9e31ba23c9ecae8d069c4a4453_18.png)
 
 核心代码片段：
 ```java
@@ -165,11 +155,9 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 
 ---
 
-![](img/3ef8fe9e31ba23c9ecae8d069c4a4453_20.png)
 
 ## 测试与总结
 
-![](img/3ef8fe9e31ba23c9ecae8d069c4a4453_22.png)
 
 完成所有代码后，再次运行应用。
 
@@ -179,9 +167,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
 
 至此，我们成功实现了Android应用中两个页面之间的相互跳转。
 
-![](img/3ef8fe9e31ba23c9ecae8d069c4a4453_24.png)
 
-![](img/3ef8fe9e31ba23c9ecae8d069c4a4453_25.png)
 
 **本节课中我们一起学习了：**
 1.  如何修改现有Activity的界面元素（文字、按钮）。

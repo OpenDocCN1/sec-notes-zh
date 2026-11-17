@@ -6,7 +6,6 @@
 
 二次注入属于SQL注入的一种。它之所以存在，是因为在一般的字符型注入中，通常需要闭合单引号才能构造有效载荷。如果无法闭合单引号，注入就无法进行。因此，出现了一种新的思路：在存在双条件查询的情况下，可以考虑利用前一个条件去“注释”或“转义”掉一个单引号，从而为后一个条件（即我们的注入载荷）创造机会。第一次查询是前提，第二次注入则基于第一次的前提进行。
 
-![](img/31feb2f3f9262dcd319ca1eac63f3f6e_3.png)
 
 那么，如何“转移”一个单引号呢？这就要考虑到截断、字符集转换或反斜杠转义等技术。这些都可能成为利用的条件。
 
@@ -28,11 +27,9 @@ $sql = "INSERT INTO message (username, content, time) VALUES ('".$_SESSION['user
 
 理解了漏洞点后，我们来看看如何构造利用载荷。
 
-![](img/31feb2f3f9262dcd319ca1eac63f3f6e_5.png)
 
 我们的目标是：让`username`字段的值以一个反斜杠`\`结尾。这样，在SQL语句中，这个反斜杠会转义掉包裹`username`值的那个单引号，导致单引号的闭合位置发生变化。
 
-![](img/31feb2f3f9262dcd319ca1eac63f3f6e_7.png)
 
 假设我们注册的用户名为 `admin\`，那么构造的SQL语句会变成：
 ```sql
@@ -40,9 +37,7 @@ INSERT INTO message (username, content, time) VALUES ('admin\', 'PAYLOAD', now()
 ```
 在这里，`admin\` 中的反斜杠转义了后面的单引号，使得 `'admin\'` 被数据库视为一个完整的字符串（尽管可能报错或产生非预期行为）。原本用于闭合`username`值的单引号，现在变成了`PAYLOAD`字符串的开头引号。
 
-![](img/31feb2f3f9262dcd319ca1eac63f3f6e_9.png)
 
-![](img/31feb2f3f9262dcd319ca1eac63f3f6e_10.png)
 
 ![](img/31feb2f3f9262dcd319ca1eac63f3f6e_12.png)
 
@@ -56,9 +51,7 @@ INSERT INTO message (username, content, time) VALUES ('admin\', '', (SELECT pass
 ```
 这样，`(SELECT password FROM admin LIMIT 1)` 的结果就会被插入到`content`字段中。
 
-![](img/31feb2f3f9262dcd319ca1eac63f3f6e_14.png)
 
-![](img/31feb2f3f9262dcd319ca1eac63f3f6e_16.png)
 
 ## 实现前提：控制用户名 🎯
 
@@ -66,26 +59,21 @@ INSERT INTO message (username, content, time) VALUES ('admin\', '', (SELECT pass
 
 要实现上述攻击，前提是能控制`username`的值为以反斜杠结尾。这通常发生在用户注册或修改用户名的功能处。
 
-![](img/31feb2f3f9262dcd319ca1eac63f3f6e_20.png)
 
-![](img/31feb2f3f9262dcd319ca1eac63f3f6e_22.png)
 
 我们检查注册功能的代码。发现它对输入进行了处理：
 1.  使用`addslashes`添加反斜杠（输入`\`变成`\\`）。
 2.  存入数据库时，如果使用`mysql_real_escape_string`等函数，`\\`进入数据库后可能被存储为单个`\`。
 3.  当从数据库取出这个用户名并放入`$_SESSION[‘username’]`时，取出的就是单个反斜杠`\`。
 
-![](img/31feb2f3f9262dcd319ca1eac63f3f6e_24.png)
 
 通过这个过程，我们成功地将一个有效的、以反斜杠结尾的用户名设置到了会话中，为二次注入创造了条件。
 
 ## 漏洞复现与验证 🧪
 
-![](img/31feb2f3f9262dcd319ca1eac63f3f6e_26.png)
 
 现在，让我们串联起整个攻击流程进行验证。
 
-![](img/31feb2f3f9262dcd319ca1eac63f3f6e_28.png)
 
 以下是完整的攻击步骤：
 1.  **注册特殊用户**：注册一个用户名为 `test\`，密码任意的账号。
@@ -93,17 +81,13 @@ INSERT INTO message (username, content, time) VALUES ('admin\', '', (SELECT pass
 3.  **发起二次注入**：在留言提交页面，`content`字段填入我们的注入载荷，例如：`‘, (SELECT password FROM admin LIMIT 1), ‘1’) --`。
 4.  **查看结果**：提交后，攻击载荷被执行。我们可以通过查看留言列表或数据库，发现`content`字段中出现了管理员的密码哈希值。
 
-![](img/31feb2f3f9262dcd319ca1eac63f3f6e_30.png)
 
 通过这个流程，我们成功利用二次注入漏洞获取了敏感信息。
 
-![](img/31feb2f3f9262dcd319ca1eac63f3f6e_32.png)
 
 ## 漏洞修复方案 🛡️
 
-![](img/31feb2f3f9262dcd319ca1eac63f3f6e_34.png)
 
-![](img/31feb2f3f9262dcd319ca1eac63f3f6e_36.png)
 
 学习攻击是为了更好的防御。最后，我们来看看如何修复这个漏洞。
 
@@ -127,11 +111,9 @@ INSERT INTO message (username, content, time) VALUES ('admin\', '', (SELECT pass
 
 ![](img/31feb2f3f9262dcd319ca1eac63f3f6e_42.png)
 
-![](img/31feb2f3f9262dcd319ca1eac63f3f6e_44.png)
 
 通过实施这些措施，可以有效地杜绝此类二次注入漏洞。
 
-![](img/31feb2f3f9262dcd319ca1eac63f3f6e_46.png)
 
 ## 总结 📝
 

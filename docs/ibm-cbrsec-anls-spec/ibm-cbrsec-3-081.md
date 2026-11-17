@@ -1,10 +1,7 @@
 # 课程3：《网络安全合规框架与系统管理》：81：Windows 10安全应用
 
-![](img/17cee7edeabdadb928d1a38ff51bf14e_0.png)
 
-![](img/17cee7edeabdadb928d1a38ff51bf14e_2.png)
 
-![](img/17cee7edeabdadb928d1a38ff51bf14e_3.png)
 
 ![](img/17cee7edeabdadb928d1a38ff51bf14e_0.png)
 
@@ -23,7 +20,6 @@ Windows 10是目前大多数组织中使用的主流操作系统。虽然Windows
 *   **设备性能和运行状况**：此部分提供有关驱动程序、存储空间、Windows更新等系统信息，旨在提升系统可用性并提供有用的运行状况洞察。
 *   **家庭选项**：针对家庭用户，此功能提供家长控制，允许父母管理孩子在使用家庭电脑时的访问内容和活动，以获得更好的监督和控制权。
 
-![](img/17cee7edeabdadb928d1a38ff51bf14e_5.png)
 
 ![](img/17cee7edeabdadb928d1a38ff51bf14e_5.png)
 

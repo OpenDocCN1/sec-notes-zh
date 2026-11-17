@@ -1,6 +1,5 @@
 # 028：数据覆写攻击
 
-![](img/d7e9dfe5cedb2cbcd9f85ac3543bced2_0.png)
 
 ## 概述
 
@@ -10,7 +9,6 @@
 
 上一节我们介绍了C语言中数组边界检查的缺失。本节中我们来看看一个最经典的例子：`gets`函数。
 
-![](img/d7e9dfe5cedb2cbcd9f85ac3543bced2_2.png)
 
 `gets`函数的作用是从用户处获取输入。它不限制用户输入的字符数量，会一直读取字符，直到用户按下回车键（输入换行符）。然后，它会将所有读取到的字符写入到指定的字符数组中。
 
@@ -23,7 +21,6 @@ gets(name); // 危险！不检查输入长度
 
 ## 覆写相邻变量
 
-![](img/d7e9dfe5cedb2cbcd9f85ac3543bced2_4.png)
 
 理解了基础原理后，我们来看一个更具体的攻击场景。假设我们有两个相邻的字符数组。
 
@@ -42,9 +39,7 @@ gets(name); // 攻击向量
 
 当调用`gets(name)`时，用户输入的数据从`name`数组的起始地址开始写入。如果用户输入超过20个字符（例如“Alice SmithHHHHH please serve me champagne”），多出的字符就会越过`name`数组的边界，继续向下写入内存，从而覆盖掉`instructions`数组的内容。
 
-![](img/d7e9dfe5cedb2cbcd9f85ac3543bced2_6.png)
 
-![](img/d7e9dfe5cedb2cbcd9f85ac3543bced2_7.png)
 
 这样，攻击者就成功地篡改了`instructions`变量，而程序本身只允许向`name`写入数据。
 
@@ -52,9 +47,7 @@ gets(name); // 攻击向量
 
 让我们将问题升级。考虑一个控制用户权限的变量。
 
-![](img/d7e9dfe5cedb2cbcd9f85ac3543bced2_9.png)
 
-![](img/d7e9dfe5cedb2cbcd9f85ac3543bced2_10.png)
 
 ```c
 char name[20];
@@ -62,7 +55,6 @@ int authenticated = 0; // 0表示未认证，1表示已认证
 gets(name); // 攻击向量
 ```
 
-![](img/d7e9dfe5cedb2cbcd9f85ac3543bced2_12.png)
 
 在这个例子中，`authenticated`是一个整数变量，用于决定用户是否有权执行敏感操作（如查看密码）。其初始值为0（无权限）。
 

@@ -16,7 +16,6 @@
 
 ![](img/d63de5b7e8735f2e8ee2af8af338d37f_5.png)
 
-![](img/d63de5b7e8735f2e8ee2af8af338d37f_7.png)
 
 ![](img/d63de5b7e8735f2e8ee2af8af338d37f_9.png)
 
@@ -29,19 +28,15 @@
 
 ![](img/d63de5b7e8735f2e8ee2af8af338d37f_11.png)
 
-![](img/d63de5b7e8735f2e8ee2af8af338d37f_13.png)
 
 ### 2. 利用不可见字符
 
-![](img/d63de5b7e8735f2e8ee2af8af338d37f_15.png)
 
 ![](img/d63de5b7e8735f2e8ee2af8af338d37f_17.png)
 
 这种方式利用在常规阅读中不可见的字符来隐藏信息，对分析工具的要求更高。
 
-![](img/d63de5b7e8735f2e8ee2af8af338d37f_19.png)
 
-![](img/d63de5b7e8735f2e8ee2af8af338d37f_21.png)
 
 以下是几种利用不可见字符的方法：
 *   **零宽字符隐写**：利用Unicode中的零宽度字符（如U+200B, U+200C）来编码二进制信息。
@@ -52,14 +47,12 @@
 
 ![](img/d63de5b7e8735f2e8ee2af8af338d37f_23.png)
 
-![](img/d63de5b7e8735f2e8ee2af8af338d37f_25.png)
 
 **核心工具与命令示例**：
 *   检查文件隐藏字符：`cat -A 文件名`
 *   Snow隐写解密：`snow -C -p 密码 输入文件`
 *   零宽字符在线解密工具：`https://330k.github.io/misc_tools/unicode_steganography.html`
 
-![](img/d63de5b7e8735f2e8ee2af8af338d37f_27.png)
 
 ![](img/d63de5b7e8735f2e8ee2af8af338d37f_29.png)
 
@@ -75,11 +68,9 @@
 
 ![](img/d63de5b7e8735f2e8ee2af8af338d37f_37.png)
 
-![](img/d63de5b7e8735f2e8ee2af8af338d37f_39.png)
 
 除了直接在文本内容上做文章，出题人还会利用文件系统的目录结构来隐藏信息。这类题目通常需要一定的编程能力来解析结构。
 
-![](img/d63de5b7e8735f2e8ee2af8af338d37f_41.png)
 
 我们以SCTF的一道真题为例进行讲解。题目提供了一个压缩包，解压后得到一系列名为`left`和`right`的文件夹，每个文件夹内有一个`data`文件。
 
@@ -92,9 +83,7 @@
 2.  每个节点的`data`文件内容（经Base64解码后）是该节点的值。
 3.  题目要求我们以正确的顺序（如前序、中序、后序遍历）拼接所有节点的值，才能得到下一步的线索。
 
-![](img/d63de5b7e8735f2e8ee2af8af338d37f_47.png)
 
-![](img/d63de5b7e8735f2e8ee2af8af338d37f_49.png)
 
 **关键Python代码（DFS前序遍历）**：
 
@@ -102,10 +91,8 @@
 
 ![](img/d63de5b7e8735f2e8ee2af8af338d37f_52.png)
 
-![](img/d63de5b7e8735f2e8ee2af8af338d37f_54.png)
 
 
-![](img/d63de5b7e8735f2e8ee2af8af338d37f_56.png)
 
 ```python
 import os
@@ -164,9 +151,7 @@ dfs(‘./unzip_folder’)
 
 ---
 
-![](img/d63de5b7e8735f2e8ee2af8af338d37f_66.png)
 
-![](img/d63de5b7e8735f2e8ee2af8af338d37f_68.png)
 
 ## 总结与作业
 
@@ -182,14 +167,12 @@ dfs(‘./unzip_folder’)
 
 ![](img/d63de5b7e8735f2e8ee2af8af338d37f_71.png)
 
-![](img/d63de5b7e8735f2e8ee2af8af338d37f_73.png)
 
 **课后作业**：
 1.  尝试解密一道零宽字符隐写题目。
 2.  复现并理解SCTF中利用文件树隐写的题目。
 3.  搜索并尝试运行一段简单的Brainfuck或Ook!代码。
 
-![](img/d63de5b7e8735f2e8ee2af8af338d37f_75.png)
 
 ![](img/d63de5b7e8735f2e8ee2af8af338d37f_76.png)
 

@@ -18,7 +18,6 @@
 
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_12.png)
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_14.png)
 
 Java安全漏洞在原理上与PHP等语言相似，但具体实现和利用方式存在差异。本节课的重点是理解这些漏洞在Java代码中的表现形式，特别是JDBC、MyBatis框架下的SQL注入，以及Java特有的SPEL表达式注入。
 
@@ -30,17 +29,13 @@ Java安全漏洞在原理上与PHP等语言相似，但具体实现和利用方�
 
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_22.png)
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_24.png)
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_26.png)
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_28.png)
 
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_30.png)
 
 ## 环境搭建与准备 🛠️
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_32.png)
 
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_34.png)
 
@@ -60,13 +55,10 @@ Java安全漏洞在原理上与PHP等语言相似，但具体实现和利用方�
 
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_48.png)
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_49.png)
 
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_51.png)
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_53.png)
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_55.png)
 
 以下是环境搭建的关键步骤：
 
@@ -74,7 +66,6 @@ Java安全漏洞在原理上与PHP等语言相似，但具体实现和利用方�
 
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_59.png)
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_61.png)
 
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_63.png)
 
@@ -176,9 +167,7 @@ ResultSet rs = pstmt.executeQuery();
 
 MyBatis是一个优秀的持久层框架，它使用XML或注解来配置和映射SQL。在MyBatis中，需要关注两种参数符号：`#{}`和`${}`。
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_121.png)
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_123.png)
 
 *   `#{}`：相当于JDBC中的`?`，会进行预编译，是**安全**的。
 *   `${}`：直接进行字符串替换，相当于拼接，是**危险**的。
@@ -197,7 +186,6 @@ MyBatis是一个优秀的持久层框架，它使用XML或注解来配置和映�
 
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_135.png)
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_137.png)
 
 **漏洞代码示例（MyBatis XML映射文件）：**
 ```xml
@@ -207,11 +195,9 @@ MyBatis是一个优秀的持久层框架，它使用XML或注解来配置和映�
 ```
 如果`orderBy`参数用户可控，传入`id; DROP TABLE users--`就会导致注入。
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_139.png)
 
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_141.png)
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_142.png)
 
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_144.png)
 
@@ -229,7 +215,6 @@ MyBatis是一个优秀的持久层框架，它使用XML或注解来配置和映�
 
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_154.png)
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_156.png)
 
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_158.png)
 
@@ -282,23 +267,18 @@ MyBatis是一个优秀的持久层框架，它使用XML或注解来配置和映�
 
 ## XXE（XML外部实体注入）🗂️
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_195.png)
 
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_197.png)
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_199.png)
 
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_201.png)
 
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_203.png)
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_205.png)
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_207.png)
 
 SQL注入主要发生在数据库交互层，而XXE则发生在XML解析环节。Java中提供了多种XML解析器，如果配置不当，在解析用户可控的XML数据时，就会导致XXE漏洞。
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_209.png)
 
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_211.png)
 
@@ -329,9 +309,7 @@ Java中常见的危险解析类/方法包括：
 
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_231.png)
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_233.png)
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_234.png)
 
 **漏洞代码示例：**
 ```java
@@ -390,7 +368,6 @@ reader.setFeature("http://xml.org/sax/features/external-parameter-entities", fal
 
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_262.png)
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_264.png)
 
 XXE处理的是结构化数据，而SSTI涉及的是视图渲染。SSTI发生在使用模板引擎渲染用户输入时。当用户输入被直接拼接进模板字符串，并且该模板被解析执行时，就会导致代码执行。
 
@@ -433,15 +410,12 @@ public String greet(@RequestParam String lang, Model model) {
 
 **漏洞成因**：视图名称（`return`的字符串）或模板内容本身直接包含了未经验证的用户输入。
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_290.png)
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_292.png)
 
 **安全写法**：
 1.  对动态的模板名称或内容片段进行严格的白名单控制。
 2.  避免直接将用户输入传递给模板引擎的解析函数。
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_294.png)
 
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_296.png)
 
@@ -453,9 +427,7 @@ public String greet(@RequestParam String lang, Model model) {
 *   **黑盒**：在所有可能影响页面渲染的参数中（如`lang`、`template`、`name`等），尝试插入模板引擎的表达式语句，如`{{7*7}}`、`${7*7}`、`#{7*7}`等，观察响应中是否被运算成`49`。
 *   **白盒**：审计代码，查找`return`语句中字符串拼接、或者`model.addAttribute`将用户输入设置为模板变量等模式。
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_302.png)
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_304.png)
 
 ## SPEL（Spring表达式语言）注入⚡
 
@@ -473,7 +445,6 @@ SSTI是模板引擎的问题，而SPEL注入是Spring框架特有的表达式注
 
 **漏洞代码示例：**
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_316.png)
 
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_318.png)
 
@@ -513,9 +484,7 @@ T(String).getClass().forName("java.l"+"ang.Ru"+"ntime").getMethod("ex"+"ec", T(S
 ```
 这利用了反射动态获取类和方法，将敏感关键字拆散，从而绕过简单的字符串匹配过滤。
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_330.png)
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_332.png)
 
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_334.png)
 
@@ -531,34 +500,27 @@ T(String).getClass().forName("java.l"+"ang.Ru"+"ntime").getMethod("ex"+"ec", T(S
 
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_344.png)
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_346.png)
 
 本节课我们一起学习了Java安全中四个重要的漏洞类型：
 
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_348.png)
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_350.png)
 
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_352.png)
 
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_354.png)
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_356.png)
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_358.png)
 
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_360.png)
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_362.png)
 
 1.  **SQL注入**：重点关注JDBC中**字符串拼接**与**预编译占位符`?`**的区别，以及MyBatis中**`${}`**与**`#{}`**的区别。审计时搜索`${`、`ORDER BY`等关键字。
 2.  **XXE**：由不安全的XML解析器配置引起。审计时搜索`XMLReader`、`DocumentBuilder`等解析类，并检查是否禁用了外部实体（`setFeature`）。
 3.  **SSTI**：发生在模板引擎渲染用户可控的模板名称或内容时。测试时尝试插入模板表达式`{{}}`、`${}`等。
 4.  **SPEL注入**：Spring特有的表达式注入。避免直接解析用户输入为SPEL表达式，警惕`SpelExpressionParser`的使用。
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_364.png)
 
-![](img/e5942ddd3dada5b6ba875c20377dfc49_366.png)
 
 ![](img/e5942ddd3dada5b6ba875c20377dfc49_368.png)
 

@@ -1,16 +1,11 @@
 #  009：课时1 Android 结构基础讲解 🏗️
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_1.png)
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_3.png)
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_5.png)
 
 ![](img/be42712f3ef1fd95cdc972b1083329d7_7.png)
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_8.png)
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_9.png)
 
 ![](img/be42712f3ef1fd95cdc972b1083329d7_11.png)
 
@@ -18,31 +13,22 @@
 
 在本节课中，我们将学习Android应用程序的基础结构。我们将通过分析一个简单的“Hello World”程序，了解其核心目录、资源文件的作用以及代码与资源之间的关联方式。最后，我们将通过一个实践案例，学习如何修改和插入资源文件。
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_14.png)
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_15.png)
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_17.png)
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_18.png)
 
 ## 概述
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_20.png)
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_21.png)
 
 ![](img/be42712f3ef1fd95cdc972b1083329d7_22.png)
 
 Android应用程序由代码、资源和配置文件三大部分组成。理解这三者的关系和组织方式，是进行Android逆向分析的基础。本节将详细解析一个标准Android项目的目录结构。
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_24.png)
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_25.png)
 
 ![](img/be42712f3ef1fd95cdc972b1083329d7_27.png)
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_29.png)
 
 ## Android程序基础结构
 
@@ -52,9 +38,7 @@ Android应用程序由代码、资源和配置文件三大部分组成。理解�
 
 ![](img/be42712f3ef1fd95cdc972b1083329d7_33.png)
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_35.png)
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_36.png)
 
 上一节我们介绍了课程目标，本节中我们来看看一个标准Android项目的具体构成。
 
@@ -66,9 +50,7 @@ Android应用程序由代码、资源和配置文件三大部分组成。理解�
 
 ![](img/be42712f3ef1fd95cdc972b1083329d7_41.png)
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_43.png)
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_45.png)
 
 ![](img/be42712f3ef1fd95cdc972b1083329d7_47.png)
 
@@ -76,9 +58,7 @@ Android应用程序由代码、资源和配置文件三大部分组成。理解�
 
 当项目首次构建时，IDE会从网络下载必要的依赖库，这个过程可能较慢。建议保持网络通畅，确保所有依赖下载完成，以避免后续编译问题。
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_50.png)
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_51.png)
 
 ![](img/be42712f3ef1fd95cdc972b1083329d7_53.png)
 
@@ -86,9 +66,7 @@ Android应用程序由代码、资源和配置文件三大部分组成。理解�
 
 ![](img/be42712f3ef1fd95cdc972b1083329d7_55.png)
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_57.png)
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_58.png)
 
 ![](img/be42712f3ef1fd95cdc972b1083329d7_60.png)
 
@@ -96,7 +74,6 @@ Android应用程序由代码、资源和配置文件三大部分组成。理解�
 2.  **`res`目录**：存放程序的所有资源文件，如图片、布局、字符串等。
 3.  **`manifests`目录**：存放`AndroidManifest.xml`文件，用于向系统声明应用程序的组件、权限等元信息。
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_62.png)
 
 ![](img/be42712f3ef1fd95cdc972b1083329d7_64.png)
 
@@ -106,7 +83,6 @@ Android应用程序由代码、资源和配置文件三大部分组成。理解�
 
 ![](img/be42712f3ef1fd95cdc972b1083329d7_69.png)
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_71.png)
 
 `AndroidManifest.xml`文件至关重要，它注册了代码和资源，告知Android系统应用程序的入口和所需组件。
 
@@ -126,13 +102,9 @@ Android应用程序由代码、资源和配置文件三大部分组成。理解�
 
 ![](img/be42712f3ef1fd95cdc972b1083329d7_81.png)
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_82.png)
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_83.png)
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_84.png)
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_85.png)
 
 *   **`drawable`**：用于存放图片资源（如PNG、JPEG文件）和XML定义的图形。
 *   **`layout`**：存放定义用户界面布局的XML文件。
@@ -141,13 +113,10 @@ Android应用程序由代码、资源和配置文件三大部分组成。理解�
 *   **`values`**：存放定义简单值的XML文件，如字符串、颜色、尺寸和样式。
 *   **`values-<qualifier>`**：这是`values`目录的变体，用于为不同配置（如API版本`v21`、屏幕最小宽度`w820dp`）提供特定的资源值。系统会优先匹配最符合当前设备条件的资源。
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_87.png)
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_89.png)
 
 这种通过文件夹后缀（限定符）进行资源匹配的机制，使得Android应用能够很好地适配各种不同分辨率、系统版本的设备。
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_91.png)
 
 ![](img/be42712f3ef1fd95cdc972b1083329d7_93.png)
 
@@ -169,19 +138,14 @@ Android应用程序由代码、资源和配置文件三大部分组成。理解�
 
 ![](img/be42712f3ef1fd95cdc972b1083329d7_106.png)
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_107.png)
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_109.png)
 
 在Android中，源代码和资源文件是分离的。系统通过一个由编译过程自动生成的`R`类来建立两者之间的桥梁。`R`类为每个资源分配一个唯一的`int`型ID（索引）。
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_111.png)
 
 ![](img/be42712f3ef1fd95cdc972b1083329d7_112.png)
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_114.png)
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_115.png)
 
 ![](img/be42712f3ef1fd95cdc972b1083329d7_117.png)
 
@@ -189,7 +153,6 @@ Android应用程序由代码、资源和配置文件三大部分组成。理解�
 
 ![](img/be42712f3ef1fd95cdc972b1083329d7_119.png)
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_121.png)
 
 ![](img/be42712f3ef1fd95cdc972b1083329d7_123.png)
 
@@ -221,7 +184,6 @@ public final class R {
 
 ![](img/be42712f3ef1fd95cdc972b1083329d7_133.png)
 
-![](img/be42712f3ef1fd95cdc972b1083329d7_135.png)
 
 ![](img/be42712f3ef1fd95cdc972b1083329d7_137.png)
 

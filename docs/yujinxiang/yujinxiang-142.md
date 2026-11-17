@@ -1,8 +1,6 @@
 #  142：游戏自动登录设计 - 选区与选角色 🎮
 
-![](img/c7ebe80beaddbd2ff2f27363484c33e8_1.png)
 
-![](img/c7ebe80beaddbd2ff2f27363484c33e8_2.png)
 
 在本节课中，我们将学习如何为游戏自动登录功能编写代码，核心目标是实现自动选择服务器分区、线路以及游戏角色，并最终进入游戏。我们将通过模拟鼠标点击来完成这些操作。
 
@@ -22,9 +20,7 @@
 以下是服务器线路选择的坐标计算：
 *   线路选择与分区选择类似，其X坐标不同，但Y坐标的间隔同样为21像素。
 
-![](img/c7ebe80beaddbd2ff2f27363484c33e8_4.png)
 
-![](img/c7ebe80beaddbd2ff2f27363484c33e8_6.png)
 
 以下是游戏角色选择的坐标计算：
 *   角色选择区域的起始坐标约为(136, 168)。
@@ -74,15 +70,11 @@ struct LoginConfig {
 
 ## 第四步：集成到自动登录流程
 
-![](img/c7ebe80beaddbd2ff2f27363484c33e8_8.png)
 
-![](img/c7ebe80beaddbd2ff2f27363484c33e8_9.png)
 
 将上述函数和配置集成到主登录逻辑中。流程如下：
 
-![](img/c7ebe80beaddbd2ff2f27363484c33e8_11.png)
 
-![](img/c7ebe80beaddbd2ff2f27363484c33e8_12.png)
 
 1.  **等待登录完成**：登录账号密码后，等待界面加载（例如3秒）。
 2.  **选择游戏分区**：使用`DoubleClickAtPoint`函数，结合公式 `Y = 316 + serverRegion * 21` 进行点击。
@@ -91,13 +83,10 @@ struct LoginConfig {
 5.  **选择游戏角色**：使用`ClickAtPoint`函数，结合公式 `X = 136 + roleIndex * 40` 进行点击。
 6.  **进入游戏**：短暂延迟后，使用`ClickAtPoint`函数点击“进入游戏”的固定坐标。
 
-![](img/c7ebe80beaddbd2ff2f27363484c33e8_14.png)
 
-![](img/c7ebe80beaddbd2ff2f27363484c33e8_15.png)
 
 在每一步操作之间，需要根据游戏客户端的响应速度添加适当的等待时间。
 
-![](img/c7ebe80beaddbd2ff2f27363484c33e8_17.png)
 
 ## 第五步：测试与调试
 
@@ -107,9 +96,7 @@ struct LoginConfig {
 *   **调整等待时间**：将固定等待时间适当加长，确保界面元素加载完成。
 *   **验证参数传递**：确保从配置结构体到点击函数的参数传递正确，特别是索引的减1操作。
 
-![](img/c7ebe80beaddbd2ff2f27363484c33e8_19.png)
 
-![](img/c7ebe80beaddbd2ff2f27363484c33e8_21.png)
 
 ## 第六步：优化与完善（下节课预告）
 
@@ -120,7 +107,6 @@ struct LoginConfig {
 
 ## 总结
 
-![](img/c7ebe80beaddbd2ff2f27363484c33e8_23.png)
 
 ![](img/c7ebe80beaddbd2ff2f27363484c33e8_25.png)
 

@@ -1,6 +1,5 @@
 # 074：解析Python中的文本文件
 
-![](img/17fe55fbd2699e795fdeceac2e44679e_0.png)
 
 ![](img/17fe55fbd2699e795fdeceac2e44679e_0.png)
 
@@ -63,7 +62,6 @@ print(usernames)
 ```
 现在，`usernames` 这个列表就可以在其他代码中重复使用了。
 
-![](img/17fe55fbd2699e795fdeceac2e44679e_2.png)
 
 ![](img/17fe55fbd2699e795fdeceac2e44679e_2.png)
 
@@ -73,6 +71,5 @@ print(usernames)
 
 在接下来的视频中，我们将探索更多技术，帮助我们在Python中更深入地进行数据处理。
 
-![](img/17fe55fbd2699e795fdeceac2e44679e_4.png)
 
 ![](img/17fe55fbd2699e795fdeceac2e44679e_4.png)

@@ -12,7 +12,6 @@
 
 上一节我们介绍了研究背景，本节中我们来看看 API 连接是什么。
 
-![](img/99dbf6bdc9f1e12309597a6ef6e186db_1.png)
 
 通常，在逻辑应用中寻找漏洞时，我们会尝试寻找未掩码的密钥。逻辑应用本质上是一个响应特定输入（如 HTTP 请求）的 Web 应用。开发者有时会忘记掩码密钥，导致低权限用户可以读取并提升权限。
 
@@ -22,13 +21,11 @@ API 连接是 Azure 中一个可能不为人知的组件。每当创建一个需
 
 点击一个 API 连接（例如一个 Slack 连接器），界面本身信息有限。但有趣的是，通过 HTTP 请求查看其响应时，我们得到了包含关键信息的数据。
 
-![](img/99dbf6bdc9f1e12309597a6ef6e186db_1.png)
 
 其中，第一个红色方框内的“测试链接”引起了我们的注意。这是一个指向 Azure 资源管理器的 URI。
 
 ## 深入分析“测试链接”
 
-![](img/99dbf6bdc9f1e12309597a6ef6e186db_3.png)
 
 上一节我们发现了可疑的测试链接，本节我们来分析它的结构和含义。
 
@@ -50,7 +47,6 @@ https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{res
 
 我们尝试通过 `conversations.join` 加入频道来查看谁加入了，但收到了“访问被拒绝”的响应。
 
-![](img/99dbf6bdc9f1e12309597a6ef6e186db_3.png)
 
 至此，我们可以得出一个初步结论：**任何对 API 连接的 GET 请求操作，都可以被拥有“读者”角色的用户调用**。接下来的核心问题是：我们可以执行哪些操作？以及，真正在执行操作的主体是谁？
 
@@ -58,9 +54,7 @@ https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{res
 
 为了回答上述问题，我们需要理解 API 连接的工作原理。微软提供了一张非常清晰的架构图。
 
-![](img/99dbf6bdc9f1e12309597a6ef6e186db_5.png)
 
-![](img/99dbf6bdc9f1e12309597a6ef6e186db_5.png)
 
 架构流程如下：
 1.  逻辑应用收到输入，并携带用户令牌、连接器 ID、操作 ID 和连接 ID，与 Azure API 管理服务通信。
@@ -68,33 +62,27 @@ https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{res
 3.  API 管理服务使用输入的*用户令牌*和*连接 ID*，查询一个“凭据和元数据存储”，以检索**连接令牌**。
 4.  这个**连接令牌**就是最终调用后端服务（如 Slack）时使用的凭据。它是在最初设置 API 连接时配置的，可以是 OAuth 参数、API 密钥等任何形式的秘密。
 
-![](img/99dbf6bdc9f1e12309597a6ef6e186db_7.png)
 
 然而，如果我们直接尝试调用这个全局的 API 管理主机端点，会被拒绝，因为我们的读者用户不在该连接的访问控制列表中。
 
 但矛盾点在于：我们之前明明通过 Azure 资源管理器成功调用了 Slack 并得到了响应。这是如何发生的？
 
-![](img/99dbf6bdc9f1e12309597a6ef6e186db_9.png)
 
 ## 漏洞的关键：ARM 的访问权限
 
 答案在于连接 ACL 有另一个入口：**Azure 资源管理器本身拥有访问权限**。
 
-![](img/99dbf6bdc9f1e12309597a6ef6e186db_7.png)
 
 这解释了为何通过 Azure 资源管理器发起请求时，我们能够调用 Slack。要理解微软为何这样设计，需要了解 Azure 的一些安全模型特性（这些可能不是官方声明，但实践中确实如此）：
 
-![](img/99dbf6bdc9f1e12309597a6ef6e186db_11.png)
 
 1.  **简单的安全模型**：在与 Azure 资源管理器 API 交互时，有一个基本规则——**拥有“读者”角色的身份可以执行所有 GET 请求**。如果尝试执行 POST 请求，则会立即因权限不足而被拒绝。
     *   代码示例：一个不存在的资源 GET 请求返回“未找到”，而 POST 请求则直接返回“授权失败”。
-    ![](img/99dbf6bdc9f1e12309597a6ef6e186db_9.png)
 2.  **ARM 统一处理认证授权**：ARM 在所有端点上进行身份验证和授权检查。通过检查后，ARM 会使用一个拥有该资源完全控制权的系统令牌去查询后端服务。
     *   公式表示：`用户请求 -> ARM（角色检查）-> 后端服务（使用高权限系统令牌）`
 
 这种模型有时会出错，例如过去存在的漏洞：`GET /functions/admin/token` 端点。本应需要管理员权限，但由于 ARM 开发者直接复制了后端 API 而忘了添加权限检查，导致读者角色也能调用并获取到 Web 应用的管理员令牌，从而获得远程代码执行权限。
 
-![](img/99dbf6bdc9f1e12309597a6ef6e186db_11.png)
 
 ## 漏洞利用：敏感的 GET 请求
 
@@ -117,13 +105,10 @@ https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{res
 
 通用漏洞被修复后，我们思考能否发现更严重的问题。回顾架构图，我们发现另一个有趣的未文档化端点：**`dynamicInvoke`**。
 
-![](img/99dbf6bdc9f1e12309597a6ef6e186db_13.png)
 
-![](img/99dbf6bdc9f1e12309597a6ef6e186db_13.png)
 
 这是一个 POST 请求。根据 Azure 安全模型，执行 POST 请求需要“所有者”或“贡献者”权限。这意味着它不能用于租户内的本地权限提升（因为如果你已经是所有者，权限本来就很高）。其请求体如下：
 
-![](img/99dbf6bdc9f1e12309597a6ef6e186db_15.png)
 
 ```json
 {
@@ -132,7 +117,6 @@ https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{res
 }
 ```
 
-![](img/99dbf6bdc9f1e12309597a6ef6e186db_15.png)
 
 以所有者身份调用，会返回与测试链接相同的结果。但核心问题是：**我们是否仍被限制在“测试连接”的范围内？** 幸运的是，答案是否定的。我们可以调用 Swagger 中定义的*任何*端点。
 
@@ -146,11 +130,9 @@ https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{res
 
 攻击者可以创建一个自定义连接器，并定义一个包含路径参数的端点，例如 `/extensions/path/{parameter}`。
 
-![](img/99dbf6bdc9f1e12309597a6ef6e186db_19.png)
 
 攻击思路是进行路径遍历：在 `{parameter}` 中注入类似 `../../../{victim-connection-id}/secrets` 的路径。攻击流程如下：
 
-![](img/99dbf6bdc9f1e12309597a6ef6e186db_20.png)
 
 1.  攻击者在自己的租户中创建自定义连接器。
 2.  攻击者构造请求，通过 `dynamicInvoke` 调用自己的连接器，并在路径参数中注入指向受害者租户中某个 API 连接（如 Key Vault 连接器）的路径。
@@ -159,9 +141,7 @@ https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{res
 5.  ARM 将拼接后的路径（包含攻击者的连接 ID 和遍历后的受害者路径）发送给 Azure API 管理服务。
 6.  API 管理服务解析路径，错误地将其路由到受害者的连接，并使用受害者连接的令牌执行操作（如列出 Key Vault 秘密）。
 
-![](img/99dbf6bdc9f1e12309597a6ef6e186db_17.png)
 
-![](img/99dbf6bdc9f1e12309597a6ef6e186db_22.png)
 
 ![](img/99dbf6bdc9f1e12309597a6ef6e186db_24.png)
 
@@ -174,10 +154,8 @@ https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{res
 4.  成功列出受害者 Key Vault 中的所有秘密名称。
 5.  进一步，可以获取特定秘密的值。
 
-![](img/99dbf6bdc9f1e12309597a6ef6e186db_19.png)
 ![](img/99dbf6bdc9f1e12309597a6ef6e186db_20.png)
 
-![](img/99dbf6bdc9f1e12309597a6ef6e186db_27.png)
 
 **这实现了一种完全未经认证的跨租户密钥/秘密泄露。**
 
@@ -187,9 +165,7 @@ https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{res
 
 ![](img/99dbf6bdc9f1e12309597a6ef6e12309597a6ef6e186db_22.png)
 
-![](img/99dbf6bdc9f1e12309597a6ef6e186db_31.png)
 
-![](img/99dbf6bdc9f1e12309597a6ef6e186db_32.png)
 
 ## 总结与启示
 

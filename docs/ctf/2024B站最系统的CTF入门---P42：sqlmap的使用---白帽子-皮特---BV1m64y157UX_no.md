@@ -1,8 +1,6 @@
 # CTF入门教程：P42：sqlmap的使用 🛠️
 
-![](img/89ec5a788eaeaf6d2934b2c9ee004015_1.png)
 
-![](img/89ec5a788eaeaf6d2934b2c9ee004015_3.png)
 
 在本节课中，我们将学习自动化SQL注入工具sqlmap的核心使用方法。我们将从基础命令开始，逐步深入到如何获取数据库信息、进行数据脱库以及处理需要登录或POST请求等复杂场景。
 
@@ -47,7 +45,6 @@ sqlmap运行后，结果会缓存并输出到本地文件，默认路径通常�
 
 ## 处理需要认证的页面与POST注入
 
-![](img/89ec5a788eaeaf6d2934b2c9ee004015_7.png)
 
 上一节我们学习了基础的信息获取，但在实战中，很多页面需要登录后才能访问。本节中我们来看看如何处理这类情况。
 
@@ -64,7 +61,6 @@ python sqlmap.py -u "URL" --random-agent
 
 当注入点存在于POST请求的数据体中时，需要先抓取请求包。可以使用BurpSuite等工具抓包，将完整的HTTP请求保存为文本文件（如 `post.txt`）。
 
-![](img/89ec5a788eaeaf6d2934b2c9ee004015_9.png)
 
 以下是进行POST注入的步骤：
 1.  使用抓包工具获取POST请求。
@@ -78,9 +74,7 @@ python sqlmap.py -r post.txt -p username --dbs
 
 sqlmap的检测级别（`--level`）和风险等级（`--risk`）可以调整其检测的深度和广度。级别越高，检测的HTTP参数越多（如Cookie、User-Agent、Referer等）。
 
-![](img/89ec5a788eaeaf6d2934b2c9ee004015_11.png)
 
-![](img/89ec5a788eaeaf6d2934b2c9ee004015_12.png)
 
 为了提高扫描速度，可以修改sqlmap的线程设置。配置文件位于 `sqlmap/lib/core/settings.py`，找到 `MAX_NUMBER_OF_THREADS` 变量，其默认值为1，可以根据需要增大。
 

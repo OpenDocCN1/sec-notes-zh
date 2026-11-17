@@ -41,7 +41,6 @@
 ```
 当服务器解析该文件时，会访问`http://攻击者IP:端口/evil.dtd`，从而证明漏洞存在。
 
-![](img/f554bb8e2203c4ebda47eb3ed5e96df6_14.png)
 
 ![](img/f554bb8e2203c4ebda47eb3ed5e96df6_16.png)
 
@@ -51,7 +50,6 @@
 
 以下是不同语言中的修复方法：
 
-![](img/f554bb8e2203c4ebda47eb3ed5e96df6_18.png)
 
 ### Java 中的修复
 
@@ -94,21 +92,14 @@ libxml_disable_entity_loader(true);
 
 ![](img/f554bb8e2203c4ebda47eb3ed5e96df6_38.png)
 
-![](img/f554bb8e2203c4ebda47eb3ed5e96df6_40.png)
 
-![](img/f554bb8e2203c4ebda47eb3ed5e96df6_41.png)
 
-![](img/f554bb8e2203c4ebda47eb3ed5e96df6_43.png)
 
-![](img/f554bb8e2203c4ebda47eb3ed5e96df6_44.png)
 
 在Python的`lxml`库中，通过设置`resolve_entities`参数为`False`来修复。
 
-![](img/f554bb8e2203c4ebda47eb3ed5e96df6_46.png)
 
-![](img/f554bb8e2203c4ebda47eb3ed5e96df6_48.png)
 
-![](img/f554bb8e2203c4ebda47eb3ed5e96df6_50.png)
 
 ```python
 from lxml import etree
@@ -140,7 +131,6 @@ tree = etree.parse(xml_source, parser)
 
 ![](img/f554bb8e2203c4ebda47eb3ed5e96df6_67.png)
 
-![](img/f554bb8e2203c4ebda47eb3ed5e96df6_69.png)
 
 如果你没有自己的服务器，可以使用一些内网穿透工具（如ngrok、natapp等）来获得一个临时的公网域名，并将请求转发到本地开启的服务（如Tomcat）上，从而查看外带出来的日志信息。
 
@@ -148,9 +138,7 @@ tree = etree.parse(xml_source, parser)
 
 ![](img/f554bb8e2203c4ebda47eb3ed5e96df6_73.png)
 
-![](img/f554bb8e2203c4ebda47eb3ed5e96df6_75.png)
 
-![](img/f554bb8e2203c4ebda47eb3ed5e96df6_76.png)
 
 ![](img/f554bb8e2203c4ebda47eb3ed5e96df6_77.png)
 

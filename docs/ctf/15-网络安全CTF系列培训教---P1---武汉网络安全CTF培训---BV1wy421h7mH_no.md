@@ -28,9 +28,7 @@ CTF比赛中的图片隐写一般有多种形式，包括附加式图片隐写�
 
 例如，对于JPG图片，其文件结构特性为：图像开始标记为 `0xFFD8`，文件结尾的结束标记为 `0xFFD9`。
 
-![](img/0ab2cd92045307b5cc2e6ac230599f5b_1.png)
 
-![](img/0ab2cd92045307b5cc2e6ac230599f5b_1.png)
 
 我们可以利用DOS命令，将要隐藏的文件添加到图片的数据后面。以下是操作步骤：
 
@@ -45,15 +43,11 @@ copy /B 1.jpg + 附加式图片.txt 2.jpg
 ```
 3.  执行命令后，会生成一个新的图片文件 `2.jpg`。从肉眼上看，`2.jpg` 和 `1.jpg` 没有区别。
 
-![](img/0ab2cd92045307b5cc2e6ac230599f5b_5.png)
 
-![](img/0ab2cd92045307b5cc2e6ac230599f5b_7.png)
 
 但是，数据已经被添加到了 `2.jpg` 中。我们可以用WinHex等工具查看其十六进制内容。
 
-![](img/0ab2cd92045307b5cc2e6ac230599f5b_7.png)
 
-![](img/0ab2cd92045307b5cc2e6ac230599f5b_9.png)
 
 ![](img/0ab2cd92045307b5cc2e6ac230599f5b_9.png)
 
@@ -65,13 +59,11 @@ copy /B 1.jpg + 附加式图片.txt 2.jpg
 
 最后，我们通过一个实操题目来巩固所学知识。假设我们拿到一张图片，打开后显示“there is no flag here”，看不到flag。
 
-![](img/0ab2cd92045307b5cc2e6ac230599f5b_11.png)
 
 ![](img/0ab2cd92045307b5cc2e6ac230599f5b_11.png)
 
 我们首先用WinHex查看其十六进制结构。
 
-![](img/0ab2cd92045307b5cc2e6ac230599f5b_12.png)
 
 ![](img/0ab2cd92045307b5cc2e6ac230599f5b_12.png)
 
@@ -85,7 +77,6 @@ strings 图片文件名 | tail
 ```
 我们使用 `strings` 命令查看该文件，就能在输出结果的尾部发现flag。这就是第二种解法。
 
-![](img/0ab2cd92045307b5cc2e6ac230599f5b_14.png)
 
 ![](img/0ab2cd92045307b5cc2e6ac230599f5b_14.png)
 

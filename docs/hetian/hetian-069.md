@@ -18,7 +18,6 @@
 
 ![](img/e0da8077c6e0ded2abc7673f5270aad5_7.png)
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_9.png)
 
 ![](img/e0da8077c6e0ded2abc7673f5270aad5_11.png)
 
@@ -28,7 +27,6 @@
 
 ![](img/e0da8077c6e0ded2abc7673f5270aad5_15.png)
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_17.png)
 
 上一节我们介绍了权限提升的基本概念，本节中我们来看看最直接的提权方式之一：利用Windows内核漏洞。
 
@@ -40,9 +38,7 @@
 
 内核漏洞提权的核心思路是：**检查目标系统版本和已安装补丁，寻找未修复的已知漏洞**。
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_25.png)
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_26.png)
 
 ![](img/e0da8077c6e0ded2abc7673f5270aad5_28.png)
 
@@ -92,21 +88,16 @@
 
 例如，在GitHub上存在专门收集Windows内核提权漏洞的仓库，里面包含了针对不同CVE的编译好的可执行文件（.exe）或源代码。获取到利用程序后，上传至目标机器并执行，通常即可获得`SYSTEM`权限的Shell。
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_36.png)
 
 **过渡**：内核漏洞提权威力巨大，但高度依赖于未打补丁的特定漏洞。接下来，我们将探讨另一种更依赖系统配置和服务特性的提权方法——服务漏洞提权。
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_38.png)
 
 ---
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_40.png)
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_42.png)
 
 ## ⚙️ 第二部分：Windows服务漏洞提权
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_44.png)
 
 ![](img/e0da8077c6e0ded2abc7673f5270aad5_45.png)
 
@@ -124,29 +115,22 @@
 
 ![](img/e0da8077c6e0ded2abc7673f5270aad5_54.png)
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_56.png)
 
 **漏洞原理**：
 Windows服务通常以`SYSTEM`权限运行。当服务启动时，系统会根据服务配置的二进制文件路径来执行程序。如果该路径包含空格（例如 `C:\Program Files\Common Files\service.exe`），且路径中某个空格前的目录对当前用户有写权限，那么漏洞就可能存在。
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_58.png)
 
 系统在解析带空格的路径时，会依次尝试寻找并执行空格前的名称所对应的程序。例如，对于路径 `C:\Program Files\Common Files\service.exe`，系统会依次尝试执行：
 1.  `C:\Program.exe`
 2.  `C:\Program Files\Common.exe`
 3.  `C:\Program Files\Common Files\service.exe` (最终正确的程序)
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_60.png)
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_61.png)
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_63.png)
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_65.png)
 
 ![](img/e0da8077c6e0ded2abc7673f5270aad5_67.png)
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_69.png)
 
 ![](img/e0da8077c6e0ded2abc7673f5270aad5_70.png)
 
@@ -156,9 +140,7 @@ Windows服务通常以`SYSTEM`权限运行。当服务启动时，系统会根�
 1.  找到配置路径中包含空格的服务。
 2.  该路径中，某个空格前的目录，当前用户具有**写入权限**。
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_72.png)
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_73.png)
 
 ![](img/e0da8077c6e0ded2abc7673f5270aad5_75.png)
 
@@ -176,9 +158,7 @@ Windows服务通常以`SYSTEM`权限运行。当服务启动时，系统会根�
 
 ![](img/e0da8077c6e0ded2abc7673f5270aad5_85.png)
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_87.png)
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_89.png)
 
 ![](img/e0da8077c6e0ded2abc7673f5270aad5_91.png)
 
@@ -215,14 +195,11 @@ Windows服务通常以`SYSTEM`权限运行。当服务启动时，系统会根�
 
 ![](img/e0da8077c6e0ded2abc7673f5270aad5_105.png)
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_107.png)
 
 4.  **等待或触发服务重启**：
     服务重启时，系统会以`SYSTEM`权限执行我们上传的`Common.exe`。由于普通用户通常无法控制服务重启，可能需要等待系统重启或寻找其他方法。
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_109.png)
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_110.png)
 
 5.  **接收Shell并迁移进程**：
     成功获得Meterpreter会话后，该会话可能会因为服务进程异常而立即断开。因此，需要在接收到会话的瞬间**自动迁移进程**到一个稳定进程（如`explorer.exe`）。
@@ -232,9 +209,7 @@ Windows服务通常以`SYSTEM`权限运行。当服务启动时，系统会根�
     ```
     这样能确保获得一个稳定的`SYSTEM`权限会话。
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_112.png)
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_114.png)
 
 ### 2. 不安全的服务权限
 
@@ -251,15 +226,11 @@ Windows服务通常以`SYSTEM`权限运行。当服务启动时，系统会根�
 
 ![](img/e0da8077c6e0ded2abc7673f5270aad5_121.png)
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_123.png)
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_125.png)
 
 以下是检查和利用此漏洞的方法：
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_127.png)
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_129.png)
 
 1.  **使用AccessChk检查服务权限**：
     `AccessChk`是SysInternals工具包中的一款工具。上传并运行以下命令，检查当前用户对哪些服务有`SERVICE_ALL_ACCESS`权限。
@@ -271,7 +242,6 @@ Windows服务通常以`SYSTEM`权限运行。当服务启动时，系统会根�
     accesschk.exe -uwcqv "Everyone" *
     ```
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_131.png)
 
 2.  **修改服务配置**：
     找到目标服务（例如服务名为`VulnService`）后，使用`sc`命令修改其`binPath`（二进制路径）。
@@ -280,7 +250,6 @@ Windows服务通常以`SYSTEM`权限运行。当服务启动时，系统会根�
     ```
     **注意**：等号`=`后面必须有一个空格。
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_133.png)
 
 3.  **启动服务执行Payload**：
     修改后，启动该服务。由于服务以`SYSTEM`运行，它将执行我们的Payload。
@@ -298,7 +267,6 @@ Windows服务的配置信息最终存储在注册表中（路径：`HKLM\SYSTEM\
 
 ![](img/e0da8077c6e0ded2abc7673f5270aad5_137.png)
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_139.png)
 
 ![](img/e0da8077c6e0ded2abc7673f5270aad5_141.png)
 
@@ -377,7 +345,6 @@ reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer /v AlwaysInstallEle
 
 ![](img/e0da8077c6e0ded2abc7673f5270aad5_147.png)
 
-![](img/e0da8077c6e0ded2abc7673f5270aad5_149.png)
 
 ![](img/e0da8077c6e0ded2abc7673f5270aad5_151.png)
 

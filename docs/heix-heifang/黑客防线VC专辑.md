@@ -13851,7 +13851,6 @@ SQL Injector 1.0 针对的目标是采用 ASP + SQL Server 编写的站点，而
 
 对于 ASP + SQL Server 编写的站点，SQL Injector 1.0 的功能分为两部分：基本功能部分和特殊功能部分。其中，基本功能部分是根据用户提交的 URL，对站点中潜在的注入点进行扫描，对可能是注入点的 URL 进一步分析，获取站点后台相应数据库的各表、字段和记录等信息；特殊功能部分是通过扩展存储过程 xp_cmdshell，提供添加系统用户、上传文件、获取 Web 路径等功能接口。下面是实现的思路以及部分代码，以及测试方法及测试站点源码。以下所有代码都是在 Windows 2000 + SP4 环境下编译通过。
 
-![](img/9f85d9f02787eac2fb03cbcad007da94_197_1.png)
 
 ![](img/9f85d9f02787eac2fb03cbcad007da94_197_2.png)
 
@@ -24150,7 +24149,6 @@ int makedata(int num,char *data,int datasize,char *buffer,int bufsize)
 
 实验如图 5、图 6 所示。
 
-![](img/9f85d9f02787eac2fb03cbcad007da94_333_0.png)
 
 图5
 

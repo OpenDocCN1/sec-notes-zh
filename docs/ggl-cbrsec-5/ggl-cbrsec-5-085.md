@@ -1,6 +1,5 @@
 # 085：数据库中的可利用漏洞
 
-![](img/d98d70df7029205beeaaa48937e8db97_0.png)
 
 ![](img/d98d70df7029205beeaaa48937e8db97_0.png)
 
@@ -50,7 +49,6 @@ SELECT * FROM users WHERE username = ‘[user_input]’ AND password = ‘[user_
 
 ## 使用预编译语句
 
-![](img/d98d70df7029205beeaaa48937e8db97_2.png)
 
 😊 预编译语句是一种在将SQL语句传递到数据库之前先执行它们的编码技术。
 

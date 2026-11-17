@@ -12,34 +12,25 @@
 
 ## 访问与界面 🔍
 
-![](img/4aaebf3bd3cca3ac8029530403b8b5b5_1.png)
 
 它的网址是 `https://www.shodan.io/`，我们可以直接访问。它的界面如下图所示，主要是英文的。在搜索框中输入关键词即可开始搜索。
 
-![](img/4aaebf3bd3cca3ac8029530403b8b5b5_1.png)
 
 ## 注册Shodan账户 📝
 
 在使用Shodan时，最好先注册一下。因为如果不注册，搜索可能会受到限制，例如搜索次数受限，或者只能看到搜索结果的第一页。注册过程很简单，可以直接在官网注册账号。
 
-![](img/4aaebf3bd3cca3ac8029530403b8b5b5_3.png)
 
 以下是注册步骤：
 1.  打开注册地址 `https://account.shodan.io/register`。
 2.  在注册页面填写用户名、密码和邮箱。
 3.  勾选同意条款，点击“创建”按钮即可完成注册。
 
-![](img/4aaebf3bd3cca3ac8029530403b8b5b5_5.png)
 
-![](img/4aaebf3bd3cca3ac8029530403b8b5b5_3.png)
-![](img/4aaebf3bd3cca3ac8029530403b8b5b5_5.png)
 
 也可以在登录时使用谷歌账号、GitHub账号或微软账号进行快捷登录。例如，点击“使用谷歌登录”按钮，选择你的谷歌账号即可快速登录成功。
 
-![](img/4aaebf3bd3cca3ac8029530403b8b5b5_7.png)
-![](img/4aaebf3bd3cca3ac8029530403b8b5b5_9.png)
 
-![](img/4aaebf3bd3cca3ac8029530403b8b5b5_7.png)
 
 注册并登录后，我们就可以开始使用Shodan搜索引擎进行搜索了。
 

@@ -1,12 +1,9 @@
 #  006：06 - 现代Windows Rootkit揭秘 - 坤坤武特 - BV1g5411K7fe
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_1.png)
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_3.png)
 
 感谢大家来参加我的演讲。
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_1.png)
 
 ![](img/bdba59d6094c80ebd9d4e04bf7ae4360_5.png)
 
@@ -16,43 +13,32 @@
 
 我主要自学，同时有一群强大的导师团队在帮助我。
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_9.png)
 
 我还有丰富的游戏破解背景，这也是我涉足Windows内部结构的原因。
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_11.png)
 
 那么，这次演讲的主题是什么呢？简单来说。
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_13.png)
 
 在本演讲中，我们将探讨加载Rootkit、与Rootkit通信、滥用合法网络通信、我编写的一个名为Spectre的Rootkit示例，以及其背后的设计选择。使用内核命令和技巧来掩盖Rootkit的文件系统跟踪。
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_15.png)
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_3.png)
 
 ![](img/bdba59d6094c80ebd9d4e04bf7ae4360_17.png)
 
 首先，我们来了解一下Windows Rootkit概述。在本演讲中，当我说Rootkit时，我将指的是Windows上的内核级Rootkit。
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_19.png)
 
 ![](img/bdba59d6094c80ebd9d4e04bf7ae4360_21.png)
 
 那么，为什么你想使用Rootkit呢？因为内核驱动程序对机器有显著的访问权限。
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_23.png)
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_25.png)
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_27.png)
 
 与用户模式不同，你几乎可以访问任何东西。
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_29.png)
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_31.png)
 
 内核驱动程序在与其他内核防病毒软件相同的权限级别上运行。
 
@@ -62,11 +48,9 @@
 
 这意味着，一般来说，你拥有相同的访问权限和资源。
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_37.png)
 
 针对内核恶意软件的缓解措施和安全解决方案较少。
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_39.png)
 
 ![](img/bdba59d6094c80ebd9d4e04bf7ae4360_41.png)
 
@@ -80,7 +64,6 @@
 
 这是因为防病毒软件通常依赖于使用用户模式钩子来获取对某些可疑操作的可见性。
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_47.png)
 
 但在内核中，由于补丁保护，你不能直接钩子任务内核。
 
@@ -92,9 +75,7 @@
 
 让我们看看一个例子。
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_53.png)
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_55.png)
 
 ![](img/bdba59d6094c80ebd9d4e04bf7ae4360_5.png)
 
@@ -102,7 +83,6 @@
 
 所以，无论是运行消费者防病毒软件还是企业级EDR，你使用的应用程序都可能对内核驱动程序抱有相当大的信任。
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_59.png)
 
 ![](img/bdba59d6094c80ebd9d4e04bf7ae4360_61.png)
 
@@ -124,23 +104,18 @@
 
 如果内核句柄是内核句柄，那么它将直接返回0，并停止处理。
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_73.png)
 
 对于Carbon Black，如果句柄是内核句柄或前一个模式不是用户模式，那么它将不会处理该句柄创建。
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_75.png)
 
 ![](img/bdba59d6094c80ebd9d4e04bf7ae4360_77.png)
 
 ![](img/bdba59d6094c80ebd9d4e04bf7ae4360_7.png)
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_79.png)
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_81.png)
 
 现在，我们来谈谈加载Rootkit。
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_83.png)
 
 ![](img/bdba59d6094c80ebd9d4e04bf7ae4360_9.png)
 
@@ -148,7 +123,6 @@
 
 ![](img/bdba59d6094c80ebd9d4e04bf7ae4360_85.png)
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_87.png)
 
 一些逆向工程知识可以帮助你找到驱动程序中的零日漏洞，这也可以很容易地做到。
 
@@ -160,7 +134,6 @@
 
 现在，我把易受攻击和零日放在引号中，是因为很多时候驱动程序需要管理员权限才能与其通信。
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_93.png)
 
 ![](img/bdba59d6094c80ebd9d4e04bf7ae4360_95.png)
 
@@ -170,31 +143,22 @@
 
 所以，从技术上讲，这甚至不是一个漏洞。
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_99.png)
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_11.png)
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_101.png)
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_103.png)
 
 但这并不意味着我们不能滥用它。
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_105.png)
 
 所以，使用合法的驱动程序也有很多好处，因为你只需要几个原语来提升权限，并且找到易受攻击的驱动程序相对简单。
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_107.png)
 
 一个很好的起点是OEM驱动程序。
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_109.png)
 
 由于兼容性原因，很难检测到一些操作，这也很困难。
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_111.png)
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_113.png)
 
 ![](img/bdba59d6094c80ebd9d4e04bf7ae4360_115.png)
 
@@ -204,13 +168,9 @@
 
 特别是如果合法应用程序使用了这些可疑功能，那么防病毒软件很难判断操作是否来自合法应用程序，或者这是预期用途，或者恶意应用程序正在滥用该驱动程序功能。
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_119.png)
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_121.png)
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_13.png)
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_123.png)
 
 但是，滥用合法驱动程序也有一些严重的缺点。
 
@@ -220,9 +180,7 @@
 
 我之所以不太喜欢这种方法，是因为假设你使用一个合法的驱动程序来加载你的驱动程序。
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_129.png)
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_131.png)
 
 问题是，你经常会遇到兼容性问题，特别是跨操作系统版本。
 
@@ -234,11 +192,9 @@
 
 最后，我不想让受害者蓝屏。
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_137.png)
 
 对于一些Rad Teamer来说，一个选项是为自己公司购买自己的证书。
 
-![](img/bdba59d6094c80ebd9d4e04bf7ae4360_139.png)
 
 这对于定向攻击来说很棒。
 

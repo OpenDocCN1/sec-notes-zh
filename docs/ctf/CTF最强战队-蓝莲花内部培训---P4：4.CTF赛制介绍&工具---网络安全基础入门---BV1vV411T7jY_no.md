@@ -1,34 +1,25 @@
 # CTF入门课程：4：CTF赛制介绍&工具介绍
 
-![](img/613ec4bf6422edab75b0cc68eb7a9030_1.png)
 
-![](img/613ec4bf6422edab75b0cc68eb7a9030_3.png)
 
-![](img/613ec4bf6422edab75b0cc68eb7a9030_5.png)
 
-![](img/613ec4bf6422edab75b0cc68eb7a9030_7.png)
 
 在本节课中，我们将学习CTF比赛的基本赛制，并详细介绍在后续学习和解题过程中需要用到的一系列核心工具。掌握这些工具是进行网络安全实践的基础。
 
-![](img/613ec4bf6422edab75b0cc68eb7a9030_9.png)
 
 上一节我们介绍了CTF的基本概念，本节中我们来看看实战中需要准备哪些“武器”。
 
-![](img/613ec4bf6422edab75b0cc68eb7a9030_11.png)
 
 ## 🛠️ VMware Workstation 虚拟机软件
 
 首先，我们要介绍的第一个工具是 **VMware Workstation**。这是一个虚拟机软件，用于在您的真实电脑（称为“真机”）上模拟运行另一个或多个独立的操作系统（称为“虚拟机”）。
 
-![](img/613ec4bf6422edab75b0cc68eb7a9030_13.png)
 
-![](img/613ec4bf6422edab75b0cc68eb7a9030_15.png)
 
 以下是VMware Workstation的主要功能和使用方法：
 
 ![](img/613ec4bf6422edab75b0cc68eb7a9030_17.png)
 
-![](img/613ec4bf6422edab75b0cc68eb7a9030_18.png)
 
 ![](img/613ec4bf6422edab75b0cc68eb7a9030_20.png)
 
@@ -86,17 +77,13 @@
 
 以下是安装步骤和注意事项：
 
-![](img/613ec4bf6422edab75b0cc68eb7a9030_34.png)
 
 *   **安装程序**：解压并运行PHPStudy安装包，选择中文，按提示完成安装。
 *   **解决常见问题**：如果安装后打开PHPStudy时，系统提示缺少 `VC9`、`VC14` 等运行库，请安装我们提供的“32位VC9和VC14运行库”组件。
 *   **重要提示**：安装路径**不要包含中文**，尽量使用默认的英文路径，以避免出现兼容性问题。
 
-![](img/613ec4bf6422edab75b0cc68eb7a9030_36.png)
 
-![](img/613ec4bf6422edab75b0cc68eb7a9030_37.png)
 
-![](img/613ec4bf6422edab75b0cc68eb7a9030_38.png)
 
 ## 🦊 浏览器与插件安装
 

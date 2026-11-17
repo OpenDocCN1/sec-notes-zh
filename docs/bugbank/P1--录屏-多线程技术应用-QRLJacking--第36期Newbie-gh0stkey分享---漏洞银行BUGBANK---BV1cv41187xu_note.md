@@ -68,13 +68,11 @@ https://login.wx.qq.com/cgi-bin/mmwebwx-bin/login?loginicon=true&uuid={UUID}&tip
 *   `window.code=408;`：等待扫描。
 *   `window.code=400;`：二维码已过期。
 
-![](img/4a1af3ed8c50ad8f2627a44299486efb_11.png)
 
 ![](img/4a1af3ed8c50ad8f2627a44299486efb_13.png)
 
 攻击的关键在于：当返回`code=200`时，响应中会包含一个形如`window.redirect_uri=”https://wx.qq.com/cgi-bin/mmwebwx-bin/webwxnewloginpage?ticket=...&uuid=...&lang=...&scan=...”`的链接。任何人访问此链接，即可直接登录受害者的微信网页版。
 
-![](img/4a1af3ed8c50ad8f2627a44299486efb_15.png)
 
 ### 攻击Demo实现简述
 
@@ -98,7 +96,6 @@ https://login.wx.qq.com/cgi-bin/mmwebwx-bin/login?loginicon=true&uuid={UUID}&tip
 
 ### 多线程并发漏洞
 
-![](img/4a1af3ed8c50ad8f2627a44299486efb_17.png)
 
 **并发**是指多个操作同时发生。在Web业务中，例如用户提款，正常流程是：发起请求 -> 后台校验并扣款 -> 完成。但如果用户利用工具**同时发起多个提款请求**（并发请求），而服务器端逻辑没有做好并发控制（如锁机制），就可能出现只校验一次余额却扣款多次的情况，导致资产损失，这就是**并发漏洞**。
 
@@ -110,7 +107,6 @@ https://login.wx.qq.com/cgi-bin/mmwebwx-bin/login?loginicon=true&uuid={UUID}&tip
 
 **测试工具**：常用工具有Apache JMeter（用于模拟高并发请求）和Burp Suite的Intruder模块。
 
-![](img/4a1af3ed8c50ad8f2627a44299486efb_19.png)
 
 **测试流程案例**：
 1.  在网站找到“申请提现”功能。
@@ -173,17 +169,13 @@ http://vulnerable-site.com/loadImage?url=http://attacker-controlled.com/image.jp
     ```
     通过对比，多线程脚本能在数秒内完成单线程需要数分钟才能完成的内网C段扫描。
 
-![](img/4a1af3ed8c50ad8f2627a44299486efb_23.png)
 
 ---
 
-![](img/4a1af3ed8c50ad8f2627a44299486efb_25.png)
 
 ## 课程总结 📝
 
-![](img/4a1af3ed8c50ad8f2627a44299486efb_27.png)
 
-![](img/4a1af3ed8c50ad8f2627a44299486efb_29.png)
 
 本节课中我们一起学习了两个重要的网络安全议题。
 

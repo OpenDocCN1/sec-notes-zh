@@ -2,11 +2,8 @@
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_1.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_3.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_5.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_6.png)
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_8.png)
 
@@ -30,7 +27,6 @@
 
 主机架构分析主要围绕三个技术点展开：端口识别、蜜罐识别和WAF识别。上节课我们介绍了Web服务器、应用服务器、数据库类型、操作系统以及各种服务（如FTP、S7等）的识别。本节课我们将重点学习如何识别WAF信息、蜜罐信息，并通过端口扫描来发现主机上运行的各种服务。
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_24.png)
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_26.png)
 
@@ -60,21 +56,14 @@
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_48.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_50.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_52.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_54.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_56.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_58.png)
 
 ## Web服务器与应用服务器识别 🖥️
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_60.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_62.png)
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_64.png)
 
@@ -88,7 +77,6 @@
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_72.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_74.png)
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_76.png)
 
@@ -96,9 +84,7 @@
 
 ### Web服务器识别
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_80.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_82.png)
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_84.png)
 
@@ -145,7 +131,6 @@ Server: Apache/2.4.41 (Ubuntu)
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_110.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_112.png)
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_114.png)
 
@@ -242,7 +227,6 @@ Server: Apache/2.4.41 (Ubuntu)
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_170.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_172.png)
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_174.png)
 
@@ -263,11 +247,8 @@ Server: Apache/2.4.41 (Ubuntu)
 
 ### 扫描中的特殊情况
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_185.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_187.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_189.png)
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_191.png)
 
@@ -277,15 +258,11 @@ Server: Apache/2.4.41 (Ubuntu)
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_197.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_199.png)
 
 进行端口扫描时，可能会遇到两种特殊情况：
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_201.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_203.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_205.png)
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_207.png)
 
@@ -353,7 +330,6 @@ WAF（Web Application Firewall）用于保护Web应用，防御常见的Web攻�
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_252.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_254.png)
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_256.png)
 
@@ -367,7 +343,6 @@ WAF（Web Application Firewall）用于保护Web应用，防御常见的Web攻�
 
 ### 如何识别WAF
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_266.png)
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_268.png)
 
@@ -387,7 +362,6 @@ WAF（Web Application Firewall）用于保护Web应用，防御常见的Web攻�
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_278.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_280.png)
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_282.png)
 
@@ -395,13 +369,11 @@ WAF（Web Application Firewall）用于保护Web应用，防御常见的Web攻�
 
 **核心建议**：识别出WAF（尤其是云WAF或知名硬件WAF）后，需要理性评估绕过难度。对于大多数强WAF，常规Web攻击手段成功率极低，应及时调整测试重点，转向其他服务或入口点。
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_286.png)
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_288.png)
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_290.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_292.png)
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_294.png)
 
@@ -435,17 +407,13 @@ WAF（Web Application Firewall）用于保护Web应用，防御常见的Web攻�
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_318.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_320.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_322.png)
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_324.png)
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_326.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_327.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_329.png)
 
 蜜罐（Honeypot）是一种安全威胁检测技术，其本质是部署一个充满“漏洞”和“敏感信息”的虚假系统，用于诱骗、记录攻击者的行为，并消耗其时间。作为攻击方（红队），识别蜜罐至关重要，以避免在虚假目标上浪费精力并暴露自身手法。
 
@@ -461,9 +429,7 @@ WAF（Web Application Firewall）用于保护Web应用，防御常见的Web攻�
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_341.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_343.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_345.png)
 
 ### 蜜罐的类型
 
@@ -475,7 +441,6 @@ WAF（Web Application Firewall）用于保护Web应用，防御常见的Web攻�
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_353.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_355.png)
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_357.png)
 
@@ -484,7 +449,6 @@ WAF（Web Application Firewall）用于保护Web应用，防御常见的Web攻�
 *   **中交互蜜罐**：模拟部分服务逻辑，交互性更强。
 *   **高交互蜜罐**：模拟一个接近真实的完整系统，交互程度最深。
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_359.png)
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_361.png)
 
@@ -492,7 +456,6 @@ WAF（Web Application Firewall）用于保护Web应用，防御常见的Web攻�
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_365.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_367.png)
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_369.png)
 
@@ -545,17 +508,14 @@ WAF（Web Application Firewall）用于保护Web应用，防御常见的Web攻�
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_404.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_406.png)
 
 ---
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_408.png)
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_410.png)
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_412.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_414.png)
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_416.png)
 
@@ -563,9 +523,7 @@ WAF（Web Application Firewall）用于保护Web应用，防御常见的Web攻�
 
 ## 总结 📝
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_420.png)
 
-![](img/ee062da7355ca7b7bea8e059b19ff28e_422.png)
 
 ![](img/ee062da7355ca7b7bea8e059b19ff28e_424.png)
 

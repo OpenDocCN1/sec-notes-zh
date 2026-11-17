@@ -14,15 +14,12 @@
 
 ---
 
-![](img/6702ed68adeb083916cc52b3e5c72cd7_5.png)
 
 ## MSF 框架简介 🛠️
 
-![](img/6702ed68adeb083916cc52b3e5c72cd7_7.png)
 
 上一节我们概述了本次课程的目标，本节中我们来详细了解一下核心工具 MSF。
 
-![](img/6702ed68adeb083916cc52b3e5c72cd7_9.png)
 
 MSF 的全称是 **Metasploit Framework**。它是一个开源的渗透测试框架，提供了大量漏洞利用模块、payload 生成器和辅助工具。其强大之处在于能够自动化许多渗透测试步骤。
 
@@ -47,7 +44,6 @@ Unicorn 是一个简单的 Python 工具，用于生成基于 PowerShell 的 pay
 
 以下是获取和运行 Unicorn 的基本步骤：
 
-![](img/6702ed68adeb083916cc52b3e5c72cd7_17.png)
 
 1.  从 GitHub 克隆项目仓库。
 2.  进入项目目录，主要文件是一个 Python 脚本。
@@ -62,7 +58,6 @@ cd unicorn
 python unicorn.py
 ```
 
-![](img/6702ed68adeb083916cc52b3e5c72cd7_21.png)
 
 ---
 
@@ -74,7 +69,6 @@ python unicorn.py
 
 以下是生成一个指向攻击者机器的 PowerShell payload 的步骤：
 
-![](img/6702ed68adeb083916cc52b3e5c72cd7_25.png)
 
 1.  使用 Unicorn 指定本机 IP 和监听端口生成 payload。
     ```bash
@@ -88,7 +82,6 @@ python unicorn.py
 4.  将生成的 PowerShell 脚本在目标 Windows 机器上执行。
 5.  执行成功后，攻击者的 MSF 控制台会收到一个反弹回来的 Shell 会话，从而获得目标系统的控制权。
 
-![](img/6702ed68adeb083916cc52b3e5c72cd7_27.png)
 
 这种方法利用了系统自带的 PowerShell，因此具有良好的免杀效果。
 
@@ -102,11 +95,9 @@ python unicorn.py
 
 Unicorn 可以生成嵌入 VBA 宏的代码。攻击者可以将此代码放入 Word 或 Excel 文档中。
 
-![](img/6702ed68adeb083916cc52b3e5c72cd7_29.png)
 
 以下是利用 Office 宏进行攻击的步骤：
 
-![](img/6702ed68adeb083916cc52b3e5c72cd7_31.png)
 
 1.  使用 Unicorn 生成宏代码。
     ```bash
@@ -116,7 +107,6 @@ Unicorn 可以生成嵌入 VBA 宏的代码。攻击者可以将此代码放入 
 3.  将包含宏的文档发送给目标。当目标启用宏并打开文档时，payload 便会执行，攻击者获得 Shell。
 4.  此方法对 WPS Office 无效，因为它无法调用 PowerShell。
 
-![](img/6702ed68adeb083916cc52b3e5c72cd7_33.png)
 
 ### 利用 HTA 应用程序
 
@@ -143,7 +133,6 @@ HTA 是 HTML 应用程序，可以在 Windows 上直接运行，具有较大的�
 
 ---
 
-![](img/6702ed68adeb083916cc52b3e5c72cd7_41.png)
 
 ## 总结 📝
 

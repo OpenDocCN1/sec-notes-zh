@@ -1,10 +1,8 @@
 #  030：ARM汇编代码讲解5 - 使用Cydia Substrate进行Native Hook 🪝
 
-![](img/9fcfabd8503de28fb6f8e12565251e0b_1.png)
 
 在本节课中，我们将学习如何使用Cydia Substrate框架对Android原生（Native）层的函数进行Hook。我们将了解其基本概念、实现步骤和工作原理。
 
-![](img/9fcfabd8503de28fb6f8e12565251e0b_3.png)
 
 ![](img/9fcfabd8503de28fb6f8e12565251e0b_5.png)
 
@@ -30,7 +28,6 @@ Hook，即函数钩子，其核心思想是拦截并替换目标函数的执行�
 
 Cydia Substrate SDK不仅提供了Java层的API，也提供了Native层的库文件（.so文件）。这意味着我们既可以在Java层挂钩，也可以在Native层对本地函数进行挂钩。需要注意的是，对Java层下钩目前只支持Dalvik虚拟机模式。
 
-![](img/9fcfabd8503de28fb6f8e12565251e0b_17.png)
 
 以下是配置步骤：
 
@@ -58,9 +55,7 @@ android {
 }
 ```
 
-![](img/9fcfabd8503de28fb6f8e12565251e0b_26.png)
 
-![](img/9fcfabd8503de28fb6f8e12565251e0b_27.png)
 
 ```gradile
 // 在模块的build.gradle中
@@ -72,19 +67,13 @@ android {
 }
 ```
 
-![](img/9fcfabd8503de28fb6f8e12565251e0b_29.png)
 
-![](img/9fcfabd8503de28fb6f8e12565251e0b_31.png)
 
-![](img/9fcfabd8503de28fb6f8e12565251e0b_33.png)
 
 ## Hook的实现流程
 
-![](img/9fcfabd8503de28fb6f8e12565251e0b_35.png)
 
-![](img/9fcfabd8503de28fb6f8e12565251e0b_37.png)
 
-![](img/9fcfabd8503de28fb6f8e12565251e0b_39.png)
 
 配置好环境后，我们开始编写Hook代码。核心操作在Native层完成。
 
@@ -98,21 +87,15 @@ Cydia Substrate for Android 提供了几个关键函数：
 
 我们通常在SO库加载时（即在初始化函数中）执行Hook操作。可以使用 `__attribute__((constructor))` 或Cydia Substrate提供的 `MSInitialize` 宏来定义初始化函数。
 
-![](img/9fcfabd8503de28fb6f8e12565251e0b_44.png)
 
-![](img/9fcfabd8503de28fb6f8e12565251e0b_46.png)
 
 ![](img/9fcfabd8503de28fb6f8e12565251e0b_48.png)
 
 以下是一个简单的Hook示例，它挂钩一个名为`hello3`的函数，并将其替换为`hello_hook`函数：
 
-![](img/9fcfabd8503de28fb6f8e12565251e0b_50.png)
 
-![](img/9fcfabd8503de28fb6f8e12565251e0b_51.png)
 
-![](img/9fcfabd8503de28fb6f8e12565251e0b_52.png)
 
-![](img/9fcfabd8503de28fb6f8e12565251e0b_53.png)
 
 ![](img/9fcfabd8503de28fb6f8e12565251e0b_54.png)
 
@@ -125,18 +108,12 @@ Cydia Substrate for Android 提供了几个关键函数：
 
 ![](img/9fcfabd8503de28fb6f8e12565251e0b_62.png)
 
-![](img/9fcfabd8503de28fb6f8e12565251e0b_64.png)
-
-![](img/9fcfabd8503de28fb6f8e12565251e0b_66.png)
-
-![](img/9fcfabd8503de28fb6f8e12565251e0b_67.png)
 
 
-![](img/9fcfabd8503de28fb6f8e12565251e0b_69.png)
 
-![](img/9fcfabd8503de28fb6f8e12565251e0b_71.png)
 
-![](img/9fcfabd8503de28fb6f8e12565251e0b_73.png)
+
+
 
 
 ![](img/9fcfabd8503de28fb6f8e12565251e0b_75.png)
@@ -178,15 +155,11 @@ MSInitialize {
 
 仅仅实现功能还不够，理解其底层原理至关重要。下面我们通过调试来分析`MSHookFunction`是如何工作的。
 
-![](img/9fcfabd8503de28fb6f8e12565251e0b_79.png)
 
-![](img/9fcfabd8503de28fb6f8e12565251e0b_81.png)
 
-![](img/9fcfabd8503de28fb6f8e12565251e0b_83.png)
 
 当我们对一个函数（例如`hello3`）下钩后，其函数头部的指令会被修改。通常，它会替换为一段跳转代码（trampoline），将执行流导向我们的钩子函数（`hello_hook`）。
 
-![](img/9fcfabd8503de28fb6f8e12565251e0b_85.png)
 
 在ARM架构下，由于存在Thumb和ARM两种指令集，跳转时需要特别注意指令集切换。`MSHookFunction`生成的跳转代码会处理这些细节。例如，它可能先将PC寄存器指向一段保存的原始指令并切换指令集，然后再跳转到钩子函数。
 

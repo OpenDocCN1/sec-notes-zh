@@ -2,7 +2,6 @@
 
 ![](img/96bdca56a3c74ffc99c5ce5f7128d400_0.png)
 
-![](img/96bdca56a3c74ffc99c5ce5f7128d400_2.png)
 
 在本节课中，我们将学习家用路由器漏洞挖掘的基础知识。课程内容涵盖路由器漏洞挖掘的意义、所需知识、硬件组成、固件获取、仿真环境搭建，并通过一个实战案例演示命令执行漏洞的利用过程。
 
@@ -39,13 +38,11 @@
 
 ### 汇编与系统知识
 
-![](img/96bdca56a3c74ffc99c5ce5f7128d400_4.png)
 
 ![](img/96bdca56a3c74ffc99c5ce5f7128d400_5.png)
 
 ![](img/96bdca56a3c74ffc99c5ce5f7128d400_6.png)
 
-![](img/96bdca56a3c74ffc99c5ce5f7128d400_8.png)
 
 *   **MIPS/ARM汇编**：这两种指令集同属于RISC架构，广泛应用于嵌入式设备。需要了解其基本语法和寄存器用法，例如：
     *   `addiu $a0, $a0, 1`  # 将寄存器$a0的值加1后存回$a0
@@ -53,13 +50,11 @@
     *   `jalr $t9`           # 跳转到$t9寄存器指向的地址，并将返回地址存入$ra寄存器
 *   **系统类型**：路由器操作系统多为Linux，也有VxWorks。Linux系统更常见且易于分析。
 
-![](img/96bdca56a3c74ffc99c5ce5f7128d400_10.png)
 
 ![](img/96bdca56a3c74ffc99c5ce5f7128d400_12.png)
 
 ## 仿真环境搭建 💻
 
-![](img/96bdca56a3c74ffc99c5ce5f7128d400_14.png)
 
 ![](img/96bdca56a3c74ffc99c5ce5f7128d400_16.png)
 
@@ -69,9 +64,7 @@
 
 上一节我们介绍了所需的基础知识，本节中我们来看看如何搭建一个可运行路由器固件的仿真环境。
 
-![](img/96bdca56a3c74ffc99c5ce5f7128d400_20.png)
 
-![](img/96bdca56a3c74ffc99c5ce5f7128d400_21.png)
 
 ![](img/96bdca56a3c74ffc99c5ce5f7128d400_23.png)
 
@@ -99,7 +92,6 @@
 
 ### 常见漏洞点举例
 
-![](img/96bdca56a3c74ffc99c5ce5f7128d400_26.png)
 
 *   **Web层面**：
     *   **XSS**：由于对用户输入过滤不严导致。例如PHP代码：`echo $_GET[‘test’];`
@@ -111,7 +103,6 @@
 
 ### 挖掘思路
 
-![](img/96bdca56a3c74ffc99c5ce5f7128d400_28.png)
 
 ![](img/96bdca56a3c74ffc99c5ce5f7128d400_30.png)
 
@@ -158,7 +149,6 @@
 
 ![](img/96bdca56a3c74ffc99c5ce5f7128d400_54.png)
 
-![](img/96bdca56a3c74ffc99c5ce5f7128d400_56.png)
 
 漏洞位于处理TDDP协议（UDP 1040端口）的二进制程序中。关键函数片段如下：
 
@@ -177,9 +167,7 @@ void vulnerable_function(char *input) {
 }
 ```
 
-![](img/96bdca56a3c74ffc99c5ce5f7128d400_58.png)
 
-![](img/96bdca56a3c74ffc99c5ce5f7128d400_60.png)
 
 攻击者可以构造特殊的UDP数据包，使`file_name`参数包含命令分隔符`;`或反引号，从而注入任意命令。例如，构造`file_name`为`file;reboot;/`，最终执行的命令将变为`tftp -g -r file;reboot; -l /tmp/file 192.168.1.100`，导致路由器重启。
 
@@ -197,9 +185,7 @@ void vulnerable_function(char *input) {
     ```
 4.  **执行利用**：在攻击机上监听相应端口，运行脚本后，将获得一个反弹shell，成功在路由器上执行任意命令。
 
-![](img/96bdca56a3c74ffc99c5ce5f7128d400_62.png)
 
-![](img/96bdca56a3c74ffc99c5ce5f7128d400_64.png)
 
 该漏洞在后续版本中通过移除有问题的功能分支（switch case）进行了修复。
 

@@ -19,7 +19,6 @@ include($file);
 ```
 在这段代码中，`file` 参数通过GET请求直接传入 `include` 函数，且未经过滤。攻击者可以通过构造URL（例如 `?file=evil.php`）来控制包含的文件。
 
-![](img/da2015614f56500bdb4a1bc20a49bfca_3.png)
 
 ![](img/da2015614f56500bdb4a1bc20a49bfca_5.png)
 
@@ -37,9 +36,7 @@ include($file);
 ?file=../../../../etc/passwd
 ```
 
-![](img/da2015614f56500bdb4a1bc20a49bfca_7.png)
 
-![](img/da2015614f56500bdb4a1bc20a49bfca_8.png)
 
 **包含上传的文件**
 如果网站存在文件上传功能且上传路径已知，攻击者可以上传一个包含恶意代码的文件（即使后缀名被限制，如 `.jpg`），然后通过LFI漏洞包含该文件。只要文件内容符合PHP语法，就会被解析执行。
@@ -85,9 +82,7 @@ URL: ?file=php://input
 POST Data: <?php system('whoami'); ?>
 ```
 
-![](img/da2015614f56500bdb4a1bc20a49bfca_10.png)
 
-![](img/da2015614f56500bdb4a1bc20a49bfca_12.png)
 
 **利用 `data://` 协议**
 此协议允许直接包含经过编码的数据流。

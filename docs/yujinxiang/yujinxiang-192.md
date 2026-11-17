@@ -96,11 +96,9 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
 
 **注意**：修改注册表有风险，请先备份。修改后可能需要重启计算机生效。
 
-![](img/cef9e04165e7ee7547c25874d1f322c2_5.png)
 
 ## 测试与部署
 
-![](img/cef9e04165e7ee7547c25874d1f322c2_7.png)
 
 所有代码和配置完成后，就可以进行测试了。
 
@@ -111,11 +109,9 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
 3.  如果目标系统是Win7/8/10，请确保已按上一节所述修改注册表。
 4.  启动目标程序。使用进程查看工具（如Process Explorer）检查我们的DLL是否成功注入到目标进程中。
 
-![](img/cef9e04165e7ee7547c25874d1f322c2_9.png)
 
 ## 总结
 
-![](img/cef9e04165e7ee7547c25874d1f322c2_11.png)
 
 本节课中我们一起学习了DLL劫持注入技术的完整流程。我们从原理入手，理解了系统加载DLL的顺序是此技术可行的关键。然后，我们逐步实现了劫持DLL的创建、跳板函数的编写以及自定义代码的注入。最后，我们还探讨了在Windows 7系统上需要处理的额外注册表配置。
 

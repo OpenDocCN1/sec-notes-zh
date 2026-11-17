@@ -96,9 +96,7 @@ Signal 支持多设备链接。为了同步状态（如已发送消息、已读�
 
 ![](img/986ffde8b3c4f2a26ea08f2de2f5f0b1_1.png)
 
-![](img/986ffde8b3c4f2a26ea08f2de2f5f0b1_3.png)
 
-![](img/986ffde8b3c4f2a26ea08f2de2f5f0b1_4.png)
 
 ## 总结 📝
 

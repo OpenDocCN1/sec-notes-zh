@@ -22,7 +22,6 @@ Metasploitable 2 是一个特别制作的 Ubuntu 操作系统，其核心基于 
 
 以下是详细的搭建流程：
 
-![](img/6d53d080ac3837f1c285153d19eb906c_5.png)
 
 ![](img/6d53d080ac3837f1c285153d19eb906c_7.png)
 

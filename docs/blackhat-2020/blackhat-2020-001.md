@@ -2,7 +2,6 @@
 
 ![](img/6b377eb66e993b562d3568e8987cb0cb_1.png)
 
-![](img/6b377eb66e993b562d3568e8987cb0cb_2.png)
 
 ![](img/6b377eb66e993b562d3568e8987cb0cb_4.png)
 
@@ -18,7 +17,6 @@
 
 ![](img/6b377eb66e993b562d3568e8987cb0cb_10.png)
 
-![](img/6b377eb66e993b562d3568e8987cb0cb_12.png)
 
 ### 横向移动
 
@@ -35,18 +33,13 @@
 
 ![](img/6b377eb66e993b562d3568e8987cb0cb_16.png)
 
-![](img/6b377eb66e993b562d3568e8987cb0cb_18.png)
 
 * **默认服务账户**：GCP中的默认服务账户具有项目编辑权限，攻击者可以利用这一点进行权限提升。
 * **跨项目角色绑定**：攻击者可以通过跨项目角色绑定来获取对其他项目的访问权限。
 
-![](img/6b377eb66e993b562d3568e8987cb0cb_20.png)
 
-![](img/6b377eb66e993b562d3568e8987cb0cb_22.png)
 
-![](img/6b377eb66e993b562d3568e8987cb0cb_24.png)
 
-![](img/6b377eb66e993b562d3568e8987cb0cb_26.png)
 
 ![](img/6b377eb66e993b562d3568e8987cb0cb_28.png)
 
@@ -56,7 +49,6 @@
 
 ![](img/6b377eb66e993b562d3568e8987cb0cb_32.png)
 
-![](img/6b377eb66e993b562d3568e8987cb0cb_34.png)
 
 ![](img/6b377eb66e993b562d3568e8987cb0cb_36.png)
 
@@ -99,7 +91,6 @@ GCP IAM (Identity and Access Management) 架构允许您控制对GCP资源的访
 
 ## 权限提升示例
 
-![](img/6b377eb66e993b562d3568e8987cb0cb_60.png)
 
 ![](img/6b377eb66e993b562d3568e8987cb0cb_62.png)
 
@@ -111,13 +102,10 @@ GCP IAM (Identity and Access Management) 架构允许您控制对GCP资源的访
 2. 攻击者使用G-SPLUT工具获取了该项目的所有服务账户的访问权限。
 3. 攻击者发现其中一个服务账户具有项目编辑权限，并利用该权限获取了对整个项目的访问权限。
 
-![](img/6b377eb66e993b562d3568e8987cb0cb_66.png)
 
 ## 总结
 
-![](img/6b377eb66e993b562d3568e8987cb0cb_68.png)
 
-![](img/6b377eb66e993b562d3568e8987cb0cb_70.png)
 
 ![](img/6b377eb66e993b562d3568e8987cb0cb_72.png)
 

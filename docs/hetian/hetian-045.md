@@ -34,15 +34,11 @@
 
 ![](img/32df6c3a121be42ac8057efe47760a25_26.png)
 
-![](img/32df6c3a121be42ac8057efe47760a25_28.png)
 
 当我们成功枚举出数据库中的表名（例如 `user`）后，下一步是枚举该表的列名。
 
-![](img/32df6c3a121be42ac8057efe47760a25_30.png)
 
-![](img/32df6c3a121be42ac8057efe47760a25_32.png)
 
-![](img/32df6c3a121be42ac8057efe47760a25_34.png)
 
 以下是枚举指定表（例如 `user`）列名的命令：
 ```bash
@@ -137,9 +133,7 @@ Weblogic是美国Oracle公司出品的一款基于JavaEE的应用服务器（中
 
 ### Weblogic漏洞利用
 
-![](img/32df6c3a121be42ac8057efe47760a25_83.png)
 
-![](img/32df6c3a121be42ac8057efe47760a25_85.png)
 
 Weblogic历史上存在大量高危漏洞，例如 `CVE-2019-2729`、`CVE-2020-2551` 等。
 
@@ -191,7 +185,6 @@ ThinkPHP是一个快速、兼容而且简单的轻量级国产PHP开发框架。
 *   其默认的报错页面会明确显示“ThinkPHP”框架信息。
 *   某些版本在开启调试模式时，访问特定路径会暴露框架信息。
 
-![](img/32df6c3a121be42ac8057efe47760a25_108.png)
 
 ![](img/32df6c3a121be42ac8057efe47760a25_110.png)
 

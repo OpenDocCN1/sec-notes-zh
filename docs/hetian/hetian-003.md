@@ -28,7 +28,6 @@ Web安全学习需要一个独立、安全且功能强大的实验环境。使�
 
 VMware Workstation是一款功能强大的桌面虚拟化软件，允许用户在一台机器上同时运行多个不同的操作系统。
 
-![](img/fca2bb1e6a3ad5383db7e21a1bc9490a_13.png)
 
 ### 1. 软件下载
 
@@ -66,7 +65,6 @@ VMware Workstation是一款功能强大的桌面虚拟化软件，允许用户�
 
 ![](img/fca2bb1e6a3ad5383db7e21a1bc9490a_27.png)
 
-![](img/fca2bb1e6a3ad5383db7e21a1bc9490a_29.png)
 
 ![](img/fca2bb1e6a3ad5383db7e21a1bc9490a_31.png)
 
@@ -80,7 +78,6 @@ VMware Workstation是收费软件，试用版功能有限。我们需要使用�
 
 激活成功后，即可看到VMware的主界面。
 
-![](img/fca2bb1e6a3ad5383db7e21a1bc9490a_33.png)
 
 ---
 
@@ -102,7 +99,6 @@ Kali Linux是一个基于Debian的Linux发行版，专为渗透测试和安全�
 
 ### 方式一：使用预构建的VMware虚拟机文件（推荐新手）
 
-![](img/fca2bb1e6a3ad5383db7e21a1bc9490a_37.png)
 
 ![](img/fca2bb1e6a3ad5383db7e21a1bc9490a_39.png)
 
@@ -140,9 +136,7 @@ Kali Linux是一个基于Debian的Linux发行版，专为渗透测试和安全�
 
 #### 1. 创建新虚拟机
 
-![](img/fca2bb1e6a3ad5383db7e21a1bc9490a_55.png)
 
-![](img/fca2bb1e6a3ad5383db7e21a1bc9490a_57.png)
 
 在VMware中创建新的虚拟机：
 1.  选择“创建新的虚拟机”。
@@ -158,7 +152,6 @@ Kali Linux是一个基于Debian的Linux发行版，专为渗透测试和安全�
     *   **NAT模式**：虚拟机通过主机的IP地址访问外网，共享主机IP，更节省局域网IP资源。
 10. 磁盘容量建议分配40GB以上，选择“将虚拟磁盘存储为单个文件”。
 
-![](img/fca2bb1e6a3ad5383db7e21a1bc9490a_59.png)
 
 #### 2. 加载镜像并安装
 
@@ -190,11 +183,9 @@ Kali Linux是一个基于Debian的Linux发行版，专为渗透测试和安全�
     ```
 2.  如果能通，说明网络连接正常。如果无法ping通，请检查以下设置。
 
-![](img/fca2bb1e6a3ad5383db7e21a1bc9490a_61.png)
 
 ### 常见网络问题解决
 
-![](img/fca2bb1e6a3ad5383db7e21a1bc9490a_63.png)
 
 1.  **检查VMware网络设置**：确保虚拟机的网络适配器已连接，并且模式（桥接/NAT）符合你的网络环境需求。
 2.  **更改DNS服务器**：如果可以ping通IP（如`8.8.8.8`）但无法解析域名（如`www.baidu.com`），可能是DNS问题。可以编辑DNS配置文件：

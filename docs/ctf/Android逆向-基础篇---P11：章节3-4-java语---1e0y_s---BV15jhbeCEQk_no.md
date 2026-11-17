@@ -8,11 +8,9 @@
 
 ## 循环结构
 
-![](img/0cbd8dc914a5dce4b808cb0eaf271119_1.png)
 
 上一节我们介绍了变量和数据类型，本节中我们来看看如何使用循环来高效地处理重复性任务。
 
-![](img/0cbd8dc914a5dce4b808cb0eaf271119_3.png)
 
 ### For循环
 
@@ -29,11 +27,9 @@ for (int i = 0; i < 5; i++) {
 
 运行上述代码，控制台会依次打印数字0到4。
 
-![](img/0cbd8dc914a5dce4b808cb0eaf271119_5.png)
 
 ---
 
-![](img/0cbd8dc914a5dce4b808cb0eaf271119_7.png)
 
 ### 使用For循环遍历数组
 
@@ -49,11 +45,9 @@ for (int i = 0; i < numbers.length; i++) {
 
 ---
 
-![](img/0cbd8dc914a5dce4b808cb0eaf271119_9.png)
 
 ### While循环
 
-![](img/0cbd8dc914a5dce4b808cb0eaf271119_11.png)
 
 `while`循环是另一种循环结构，其功能与`for`循环等价。
 
@@ -78,7 +72,6 @@ while (j < 5) {
 
 `if-else`语句是最基本的条件判断结构。
 
-![](img/0cbd8dc914a5dce4b808cb0eaf271119_13.png)
 
 ```java
 if (true) {
@@ -91,7 +84,6 @@ if (true) {
 *   如果条件为`true`，则执行紧随其后的代码块。
 *   如果条件为`false`，则执行`else`后面的代码块。
 
-![](img/0cbd8dc914a5dce4b808cb0eaf271119_15.png)
 
 还可以使用`else if`来添加更多的分支条件。运行上面的例子，因为条件为`true`，所以会输出“in true branch”。
 
@@ -99,7 +91,6 @@ if (true) {
 
 ### 三元表达式
 
-![](img/0cbd8dc914a5dce4b808cb0eaf271119_17.png)
 
 三元表达式是一种简洁的条件赋值方式。
 
@@ -111,7 +102,6 @@ System.out.println(result);
 *   如果`条件`为`true`，则整个表达式的结果为`表达式1`。
 *   如果`条件`为`false`，则结果为`表达式2`。
 
-![](img/0cbd8dc914a5dce4b808cb0eaf271119_19.png)
 
 上面的代码会输出“ternary expression is true”。
 
@@ -119,7 +109,6 @@ System.out.println(result);
 
 在实际编程中，循环和条件判断经常结合使用。以下是一个示例，在循环中判断数字的奇偶性：
 
-![](img/0cbd8dc914a5dce4b808cb0eaf271119_21.png)
 
 ```java
 for (int i = 0; i < 5; i++) {
@@ -130,7 +119,6 @@ for (int i = 0; i < 5; i++) {
 ```
 这段代码会遍历0到4的数字，并使用`if`语句判断`i % 2 == 0`（即`i`除以2的余数是否为0）。如果条件成立，说明是偶数，则将其打印出来。运行后会输出：0, 2, 4。
 
-![](img/0cbd8dc914a5dce4b808cb0eaf271119_22.png)
 
 ## 总结 🎯
 

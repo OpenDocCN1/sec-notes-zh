@@ -1,10 +1,7 @@
 # 课程1：《网络安全工具与网络攻击简介》：82：8_02_9-11事件对网络安全的影响
 
-![](img/ec75ab557ed2fbdea9fe5d17cf185c66_0.png)
 
-![](img/ec75ab557ed2fbdea9fe5d17cf185c66_2.png)
 
-![](img/ec75ab557ed2fbdea9fe5d17cf185c66_3.png)
 
 ![](img/ec75ab557ed2fbdea9fe5d17cf185c66_0.png)
 
@@ -12,15 +9,12 @@
 
 
 
-![](img/ec75ab557ed2fbdea9fe5d17cf185c66_5.png)
 
 9/11事件显然是影响深远的事件，涉及飞机撞击纽约双子塔的悲剧。
 
 
 
-![](img/ec75ab557ed2fbdea9fe5d17cf185c66_2.png)
 
-![](img/ec75ab557ed2fbdea9fe5d17cf185c66_3.png)
 
 美国政府试图理解几个关键问题：事件是如何发生的、不同部分之间如何协调，以及如果类似的灾难性事件发生在技术领域而非物理世界会怎样。例如，针对发电厂、电网或任何重要城市电力网络的破坏。
 
@@ -30,7 +24,6 @@
 
 
 
-![](img/ec75ab557ed2fbdea9fe5d17cf185c66_5.png)
 
 接下来，我们回顾一些早期涉及国家层面的网络安全行动或网络战。
 
@@ -44,7 +37,6 @@
 
 
 
-![](img/ec75ab557ed2fbdea9fe5d17cf185c66_7.png)
 
 
 

@@ -1,6 +1,5 @@
 # 016：威胁向量
 
-![](img/dd5117235eb2fb70f07f0b857e716cf3_0.png)
 
 ![](img/dd5117235eb2fb70f07f0b857e716cf3_0.png)
 

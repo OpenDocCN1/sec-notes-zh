@@ -10,7 +10,6 @@
 ## 启动Metasploit框架
 上一节我们介绍了密码破解的基本概念，本节中我们来看看如何实际操作。首先，我们需要启动Metasploit框架。
 
-![](img/e407bed49f93494a2d26424977d9cd38_3.png)
 
 使用以下命令启动Metasploit：
 ```bash

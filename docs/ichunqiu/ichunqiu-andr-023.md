@@ -1,6 +1,5 @@
 #  023：Android动态代码自修改原理 🛠️
 
-![](img/96bfb949167abba5c86554bae0ce31e2_1.png)
 
 在本节课中，我们将要学习Android中动态代码自修改的基本原理。这是理解许多APP加固技术（如360加固、梆梆加固等）的基础。我们将通过分析DEX文件结构，并动手修改一个简单APP的字节码，来直观地理解程序如何在运行时改变自身的执行逻辑。
 
@@ -18,7 +17,6 @@ DEX文件的入口是`DexHeader`。其内部包含一个`ClassDef`结构体数�
 
 `DexClassData`结构体的第一个参数是`DexHeader`，它使用ULEB128编码存储了字段和方法的数量。根据这些数量，会初始化后续结构体的长度。
 
-![](img/96bfb949167abba5c86554bae0ce31e2_3.png)
 
 以下是`DexClassData`中方法相关的核心结构：
 *   `DexMethod`结构体描述了方法的属性，如访问标志（public等）。
@@ -26,7 +24,6 @@ DEX文件的入口是`DexHeader`。其内部包含一个`ClassDef`结构体数�
 
 ![](img/96bfb949167abba5c86554bae0ce31e2_5.png)
 
-![](img/96bfb949167abba5c86554bae0ce31e2_7.png)
 
 `DexCode`结构体存放了方法的具体实现内容，例如：
 *   使用的寄存器数量
@@ -34,11 +31,8 @@ DEX文件的入口是`DexHeader`。其内部包含一个`ClassDef`结构体数�
 *   指令集的长度 (`insns_size`)
 *   指令集的真实内容 (`insns`)
 
-![](img/96bfb949167abba5c86554bae0ce31e2_9.png)
 
-![](img/96bfb949167abba5c86554bae0ce31e2_11.png)
 
-![](img/96bfb949167abba5c86554bae0ce31e2_13.png)
 
 **核心概念**：程序运行时，Android系统会动态解析`DexCode`结构体中的`insns`数据来执行指令。所谓的动态修改，就是在程序加载后，找到这个结构体，并修改`insns`中的指令内容。许多加固软件（如阿里加固、梆梆加固）的保护原理正是如此：将原始指令抽取出来，在运行时动态释放并填充回`insns`中。
 
@@ -48,19 +42,15 @@ DEX文件的入口是`DexHeader`。其内部包含一个`ClassDef`结构体数�
 
 ## 实践：修改一个简单APP的字节码
 
-![](img/96bfb949167abba5c86554bae0ce31e2_18.png)
 
 为了验证原理，我们通过一个简单的实验来修改APP的字节码。
 
 ### 目标程序分析
 
-![](img/96bfb949167abba5c86554bae0ce31e2_20.png)
 
-![](img/96bfb949167abba5c86554bae0ce31e2_22.png)
 
 我们编写一个简单的Android程序，其中包含一个返回整数1的方法`returnOne()`。
 
-![](img/96bfb949167abba5c86554bae0ce31e2_24.png)
 
 其对应的Dalvik字节码关键指令如下：
 ```

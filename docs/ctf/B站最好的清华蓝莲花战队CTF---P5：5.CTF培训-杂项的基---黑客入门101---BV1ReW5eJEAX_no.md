@@ -1,14 +1,10 @@
 # CTF培训：5：杂项的基本解题思路上半部分 🚩
 
-![](img/63bbcc97db7f2721a3b166dc5217eb4b_0.png)
 
-![](img/63bbcc97db7f2721a3b166dc5217eb4b_2.png)
 
-![](img/63bbcc97db7f2721a3b166dc5217eb4b_4.png)
 
 在本节课中，我们将要学习CTF比赛中“杂项”题型的基本解题思路。杂项题目内容庞杂，但掌握核心工具和方法后，是拿分的关键。本节课将重点介绍文件操作与隐写的基础知识。
 
-![](img/63bbcc97db7f2721a3b166dc5217eb4b_6.png)
 
 ## 文件操作与隐写 📁
 
@@ -20,9 +16,7 @@
 
 ![](img/63bbcc97db7f2721a3b166dc5217eb4b_14.png)
 
-![](img/63bbcc97db7f2721a3b166dc5217eb4b_16.png)
 
-![](img/63bbcc97db7f2721a3b166dc5217eb4b_18.png)
 
 ![](img/63bbcc97db7f2721a3b166dc5217eb4b_20.png)
 
@@ -54,13 +48,11 @@
     *   `WinHex` / `010 Editor`: 专业的十六进制编辑器。
     *   `Notepad++` (配合 `Hex-Editor` 插件): 轻量级的查看和编辑工具。
 
-![](img/63bbcc97db7f2721a3b166dc5217eb4b_30.png)
 
 ![](img/63bbcc97db7f2721a3b166dc5217eb4b_32.png)
 
 ![](img/63bbcc97db7f2721a3b166dc5217eb4b_34.png)
 
-![](img/63bbcc97db7f2721a3b166dc5217eb4b_36.png)
 
 ![](img/63bbcc97db7f2721a3b166dc5217eb4b_38.png)
 
@@ -106,15 +98,12 @@
 
 与分离相反，有时题目会将一个文件分割成多个碎片，需要你将其合并。
 
-![](img/63bbcc97db7f2721a3b166dc5217eb4b_53.png)
 
 ![](img/63bbcc97db7f2721a3b166dc5217eb4b_55.png)
 
 以下是文件合并的方法：
 
-![](img/63bbcc97db7f2721a3b166dc5217eb4b_57.png)
 
-![](img/63bbcc97db7f2721a3b166dc5217eb4b_59.png)
 
 *   **Linux (`cat`命令)**:
     ```bash
@@ -128,9 +117,7 @@
 
 ### 十六进制操作
 
-![](img/63bbcc97db7f2721a3b166dc5217eb4b_61.png)
 
-![](img/63bbcc97db7f2721a3b166dc5217eb4b_63.png)
 
 有时题目给的不是标准文件，而是一串十六进制文本。你需要将其导入十六进制编辑器（如`010 Editor`的 `Import` 功能），然后另存为正确的文件格式。
 
@@ -177,18 +164,13 @@
 exiftool 图片名
 ```
 
-![](img/63bbcc97db7f2721a3b166dc5217eb4b_80.png)
 
-![](img/63bbcc97db7f2721a3b166dc5217eb4b_82.png)
 
-![](img/63bbcc97db7f2721a3b166dc5217eb4b_84.png)
 
 **2. 图片差异比较 (Stegsolve)**
 当给出两张相似图片时，可能需要对它们进行异或、加减等操作来找出隐藏信息。`Stegsolve` 是一款常用的Java工具，可以方便地进行这些操作。
 
-![](img/63bbcc97db7f2721a3b166dc5217eb4b_86.png)
 
-![](img/63bbcc97db7f2721a3b166dc5217eb4b_88.png)
 
 ![](img/63bbcc97db7f2721a3b166dc5217eb4b_90.png)
 
@@ -196,7 +178,6 @@ exiftool 图片名
 
 ![](img/63bbcc97db7f2721a3b166dc5217eb4b_94.png)
 
-![](img/63bbcc97db7f2721a3b166dc5217eb4b_96.png)
 
 **3. LSB隐写破解**
 LSB隐写是高频考点。
@@ -208,11 +189,9 @@ LSB隐写是高频考点。
 *   **wbStego**: 支持BMP等格式的LSB隐写解密。
 *   **Python脚本**：当现成工具无效时，可能需要根据题目特制脚本提取数据。
 
-![](img/63bbcc97db7f2721a3b166dc5217eb4b_98.png)
 
 ![](img/63bbcc97db7f2721a3b166dc5217eb4b_100.png)
 
-![](img/63bbcc97db7f2721a3b166dc5217eb4b_101.png)
 
 ![](img/63bbcc97db7f2721a3b166dc5217eb4b_103.png)
 
@@ -233,7 +212,6 @@ PNG图片无法打开，常因CRC校验错误或图片高度/宽度被篡改。
     ```
 *   **解密工具**: 根据检测结果使用对应工具（如 `jphide` 的 `jpeg-x`， `outguess` 需自行编译，`F5` 需Java环境）。
 
-![](img/63bbcc97db7f2721a3b166dc5217eb4b_107.png)
 
 **6. 二维码处理**
 最终得到的二维码可能被反色、残缺或夹杂图案。
@@ -253,7 +231,6 @@ PNG图片无法打开，常因CRC校验错误或图片高度/宽度被篡改。
 
 ![](img/63bbcc97db7f2721a3b166dc5217eb4b_119.png)
 
-![](img/63bbcc97db7f2721a3b166dc5217eb4b_121.png)
 
 ![](img/63bbcc97db7f2721a3b166dc5217eb4b_122.png)
 

@@ -38,13 +38,10 @@
 
 ---
 
-![](img/7cdacd86ecf67221c0131a9ab300fc61_1.png)
 
-![](img/7cdacd86ecf67221c0131a9ab300fc61_2.png)
 
 ## 演示：Vision 与 AV Foundation
 
-![](img/7cdacd86ecf67221c0131a9ab300fc61_4.png)
 
 ![](img/7cdacd86ecf67221c0131a9ab300fc61_5.png)
 
@@ -53,13 +50,10 @@
 以下是利用 Vision 和 AV Foundation 框架隐藏数据的简单演示：
 
 1.  **Vision 演示**：一个 Python 脚本生成包含加密密钥的图片。另一个脚本使用 Vision 库读取该图片，并从像素中提取出密钥。
-    ![](img/7cdacd86ecf67221c0131a9ab300fc61_1.png)
     ![](img/7cdacd86ecf67221c0131a9ab300fc61_2.png)
 2.  **AV Foundation 演示**：一段 Swift 代码将字符串 “hello world” 转换为二进制，并根据比特位（0 或 1）设置音频振幅，生成一个音频文件。另一段代码使用 AV Foundation 读取该音频文件，提取振幅数据，解码后还原出 “hello world”。
     ![](img/7cdacd86ecf67221c0131a9ab300fc61_7.png)
-    ![](img/7cdacd86ecf67221c0131a9ab300fc61_9.png)
 
-![](img/7cdacd86ecf67221c0131a9ab300fc61_9.png)
 
 ---
 
@@ -81,16 +75,11 @@
 
 如果你不想使用新的 MLR C2，也可以将此技术应用于现有载荷，例如著名的 Mythic C2 的 Apple 载荷。
 
-![](img/7cdacd86ecf67221c0131a9ab300fc61_11.png)
 
-![](img/7cdacd86ecf67221c0131a9ab300fc61_12.png)
 
 以下是集成步骤：
 1.  **生成密钥并隐藏**：使用 Vision 技术，生成一个加密密钥并将其隐藏在图片（如应用图标）的像素中。
-    ![](img/7cdacd86ecf67221c0131a9ab300fc61_11.png)
-    ![](img/7cdacd86ecf67221c0131a9ab300fc61_12.png)
 2.  **加密载荷**：使用该密钥对 Mythic Apple 的 JavaScript 载荷进行加密，得到一个加密的文本文件。
-    ![](img/7cdacd86ecf67221c0131a9ab300fc61_14.png)
     ![](img/7cdacd86ecf67221c0131a9ab300fc61_15.png)
 3.  **嵌入模型**：使用 Python 脚本和 Core ML 库，将加密后的载荷嵌入到一个 Core ML 模型文件的权重中，生成 `.mlmodel` 文件。
 4.  **加载执行**：Loader 程序运行时，会执行以下操作：
@@ -101,9 +90,7 @@
     执行后，Mythic C2 将收到上线通知。
     ![](img/7cdacd86ecf67221c0131a9ab300fc61_19.png)
 
-![](img/7cdacd86ecf67221c0131a9ab300fc61_14.png)
 
-![](img/7cdacd86ecf67221c0131a9ab300fc61_15.png)
 
 ---
 

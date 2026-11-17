@@ -1,6 +1,5 @@
 # 024：在网络安全社区中建立网络
 
-![](img/6dffb68dd241b02b0b4fa5f1fb1d54e7_0.png)
 
 ![](img/6dffb68dd241b02b0b4fa5f1fb1d54e7_0.png)
 

@@ -18,7 +18,6 @@ HTTP，全称超文本传输协议，是一种用于分布式、协作式和超�
 
 HTTP基于TCP/IP协议传输数据。其设计初衷是为了提供一种发布和接收HTML页面的方法。
 
-![](img/60f89eafbe77f7a0533ea8c6438a5c6a_9.png)
 
 ![](img/60f89eafbe77f7a0533ea8c6438a5c6a_11.png)
 
@@ -36,9 +35,7 @@ HTTP基于TCP/IP协议传输数据。其设计初衷是为了提供一种发布�
 
 HTTP的发展经历了多个版本。目前最常见的是HTTP/1.1版本，而HTTP/2.0版本也逐渐普及。了解其历史有助于理解协议的演进。
 
-![](img/60f89eafbe77f7a0533ea8c6438a5c6a_23.png)
 
-![](img/60f89eafbe77f7a0533ea8c6438a5c6a_25.png)
 
 ### HTTP工作流程
 
@@ -64,7 +61,6 @@ HTTP的工作流程可以概括为以下几个步骤：
 
 ![](img/60f89eafbe77f7a0533ea8c6438a5c6a_39.png)
 
-![](img/60f89eafbe77f7a0533ea8c6438a5c6a_41.png)
 
 ![](img/60f89eafbe77f7a0533ea8c6438a5c6a_43.png)
 
@@ -116,9 +112,7 @@ URI是统一资源标识符，是一个更广泛的概念。URL是URI的一个�
 
 ![](img/60f89eafbe77f7a0533ea8c6438a5c6a_51.png)
 
-![](img/60f89eafbe77f7a0533ea8c6438a5c6a_53.png)
 
-![](img/60f89eafbe77f7a0533ea8c6438a5c6a_54.png)
 
 ### 请求方法（Method）
 
@@ -131,7 +125,6 @@ URI是统一资源标识符，是一个更广泛的概念。URL是URI的一个�
 *   **OPTIONS**：查询服务器支持的请求方法。
 *   **TRACE**：回显服务器收到的请求，主要用于测试或诊断。
 
-![](img/60f89eafbe77f7a0533ea8c6438a5c6a_56.png)
 
 ![](img/60f89eafbe77f7a0533ea8c6438a5c6a_58.png)
 
@@ -165,9 +158,7 @@ URI是统一资源标识符，是一个更广泛的概念。URL是URI的一个�
 3.  **空行**：表示响应头部结束。
 4.  **响应数据（正文）**：服务器返回的实际内容，如HTML页面、图片等。
 
-![](img/60f89eafbe77f7a0533ea8c6438a5c6a_68.png)
 
-![](img/60f89eafbe77f7a0533ea8c6438a5c6a_70.png)
 
 ### 状态码（Status Code）
 
@@ -194,7 +185,6 @@ URI是统一资源标识符，是一个更广泛的概念。URL是URI的一个�
 
 ---
 
-![](img/60f89eafbe77f7a0533ea8c6438a5c6a_78.png)
 
 ![](img/60f89eafbe77f7a0533ea8c6438a5c6a_80.png)
 
@@ -224,7 +214,6 @@ HTTPS是HTTP的安全版，全称为HTTP over SSL/TLS。它在HTTP之下加入�
 
 HTTP是无状态协议，这意味着服务器不会记住之前的请求。为了支持需要状态的功能（如用户登录、购物车），引入了Cookie和Session。
 
-![](img/60f89eafbe77f7a0533ea8c6438a5c6a_93.png)
 
 ![](img/60f89eafbe77f7a0533ea8c6438a5c6a_95.png)
 
@@ -257,7 +246,6 @@ Cookie可分为：
 
 Session是另一种记录客户状态的机制，数据保存在服务器端。客户端访问时，服务器会为该客户端创建一个唯一的Session ID，并通过Cookie（或URL重写）将这个ID传递给客户端。客户端后续请求时带上这个ID，服务器就能找到对应的Session数据。
 
-![](img/60f89eafbe77f7a0533ea8c6438a5c6a_107.png)
 
 ![](img/60f89eafbe77f7a0533ea8c6438a5c6a_109.png)
 

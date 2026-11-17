@@ -119,9 +119,7 @@ while($row = mysqli_fetch_assoc($result)) {
 
 **关于`LIMIT`的补充**：如果网站只回显查询结果的第一行，我们可以使用 `LIMIT` 子句来逐行查看数据。例如 `LIMIT 0,1` 查看第1行，`LIMIT 1,1` 查看第2行。
 
-![](img/228d782c4efe33806d89251b30653896_21.png)
 
-![](img/228d782c4efe33806d89251b30653896_23.png)
 
 ## 总结
 

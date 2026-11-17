@@ -1,6 +1,5 @@
 # 018：DNS 重绑定攻击 🔄
 
-![](img/1bb76722691ddd2e6b1a537a70a84c3a_1.png)
 
 在本节课中，我们将深入学习一种名为 **DNS 重绑定** 的攻击技术。这是一种非常微妙且强大的攻击方式，它允许攻击者绕过浏览器的同源策略，直接与受害者本地网络中的设备或服务进行通信。我们将从回顾之前课程中提到的本地服务器安全问题开始，逐步揭示这种攻击的原理，并最终学习如何防御它。
 
@@ -28,7 +27,6 @@ DNS重绑定攻击的核心思想是**欺骗浏览器，让它认为一个跨域
 
 ![](img/1bb76722691ddd2e6b1a537a70a84c3a_3.png)
 
-![](img/1bb76722691ddd2e6b1a537a70a84c3a_5.png)
 
 ![](img/1bb76722691ddd2e6b1a537a70a84c3a_7.png)
 
@@ -36,9 +34,7 @@ DNS重绑定攻击的核心思想是**欺骗浏览器，让它认为一个跨域
 
 ![](img/1bb76722691ddd2e6b1a537a70a84c3a_9.png)
 
-![](img/1bb76722691ddd2e6b1a537a70a84c3a_11.png)
 
-![](img/1bb76722691ddd2e6b1a537a70a84c3a_12.png)
 
 ![](img/1bb76722691ddd2e6b1a537a70a84c3a_14.png)
 
@@ -131,7 +127,6 @@ document.querySelector('#attackBtn').addEventListener('click', () => {
 
 理解了攻击原理后，防御方法就变得清晰直接。关键在于：**本地服务器不能仅依赖浏览器的同源策略来验证请求来源**。
 
-![](img/1bb76722691ddd2e6b1a537a70a84c3a_67.png)
 
 最有效的防御措施是：**在服务器端校验 `Host` 头部**。
 
@@ -158,16 +153,12 @@ document.querySelector('#attackBtn').addEventListener('click', () => {
 
 ### 防御代码示例
 
-![](img/1bb76722691ddd2e6b1a537a70a84c3a_81.png)
 
-![](img/1bb76722691ddd2e6b1a537a70a84c3a_83.png)
 
 以下是一个Node.js Express服务器的中间件示例，用于防御DNS重绑定攻击：
 
 
-![](img/1bb76722691ddd2e6b1a537a70a84c3a_85.png)
 
-![](img/1bb76722691ddd2e6b1a537a70a84c3a_87.png)
 
 
 ![](img/1bb76722691ddd2e6b1a537a70a84c3a_89.png)

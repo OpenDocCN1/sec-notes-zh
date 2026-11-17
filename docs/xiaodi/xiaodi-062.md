@@ -16,9 +16,7 @@
 
 ![](img/e22f7489b3e59a47de9ad9aed20d4336_7.png)
 
-![](img/e22f7489b3e59a47de9ad9aed20d4336_9.png)
 
-![](img/e22f7489b3e59a47de9ad9aed20d4336_11.png)
 
 学习JS逆向技术对于安全测试者至关重要，主要体现在以下四个方面：
 1.  针对前端网站的渗透测试，能提供更多思路。
@@ -26,7 +24,6 @@
 3.  当测试参数被加密时，通过分析提取加密方式，组合Payload进行漏洞测试。
 4.  有助于发现JS文件中泄露的API地址和请求路径，从而测试未授权访问等漏洞。
 
-![](img/e22f7489b3e59a47de9ad9aed20d4336_13.png)
 
 ---
 
@@ -44,7 +41,6 @@
 
 上一节我们介绍了学习JS逆向的意义，本节中我们来看看调试时必备的工具面板。
 
-![](img/e22f7489b3e59a47de9ad9aed20d4336_23.png)
 
 ![](img/e22f7489b3e59a47de9ad9aed20d4336_25.png)
 
@@ -66,9 +62,7 @@
 
 ## 🛠️ 三重断点调试法
 
-![](img/e22f7489b3e59a47de9ad9aed20d4336_35.png)
 
-![](img/e22f7489b3e59a47de9ad9aed20d4336_37.png)
 
 我们将介绍三种核心的调试方法，也称为“三重端点”法。每种方法适用于不同的场景。
 
@@ -76,9 +70,7 @@
 
 ![](img/e22f7489b3e59a47de9ad9aed20d4336_41.png)
 
-![](img/e22f7489b3e59a47de9ad9aed20d4336_43.png)
 
-![](img/e22f7489b3e59a47de9ad9aed20d4336_45.png)
 
 以下是三种主要的调试分析方法：
 
@@ -100,7 +92,6 @@
 
 此外，还有一种基础的**全局搜索**方法，即通过搜索关键字（如URL、参数名）来定位相关代码，适合入门，但更专业的分析依赖于断点。
 
-![](img/e22f7489b3e59a47de9ad9aed20d4336_59.png)
 
 ---
 
@@ -145,9 +136,7 @@
 
 ![](img/e22f7489b3e59a47de9ad9aed20d4336_83.png)
 
-![](img/e22f7489b3e59a47de9ad9aed20d4336_85.png)
 
-![](img/e22f7489b3e59a47de9ad9aed20d4336_87.png)
 
 ![](img/e22f7489b3e59a47de9ad9aed20d4336_89.png)
 
@@ -164,7 +153,6 @@
 
 **核心逻辑**：无论用哪种方法，目标都是定位到 `明文 -> 加密函数 -> 密文` 这个转换过程发生的代码位置。
 
-![](img/e22f7489b3e59a47de9ad9aed20d4336_97.png)
 
 ![](img/e22f7489b3e59a47de9ad9aed20d4336_99.png)
 
@@ -251,21 +239,15 @@ console.log(customEncrypt("123456"));
 
 ![](img/e22f7489b3e59a47de9ad9aed20d4336_149.png)
 
-![](img/e22f7489b3e59a47de9ad9aed20d4336_151.png)
 
-![](img/e22f7489b3e59a47de9ad9aed20d4336_153.png)
 
-![](img/e22f7489b3e59a47de9ad9aed20d4336_155.png)
 
-![](img/e22f7489b3e59a47de9ad9aed20d4336_157.png)
 
-![](img/e22f7489b3e59a47de9ad9aed20d4336_159.png)
 
 逆向出算法的最终目的是为了自动化安全测试。我们将加密算法集成到BurpSuite中，实现自动化加密发包。
 
 ![](img/e22f7489b3e59a47de9ad9aed20d4336_161.png)
 
-![](img/e22f7489b3e59a47de9ad9aed20d4336_163.png)
 
 ![](img/e22f7489b3e59a47de9ad9aed20d4336_165.png)
 
@@ -291,13 +273,11 @@ console.log(customEncrypt("123456"));
 
 ![](img/e22f7489b3e59a47de9ad9aed20d4336_180.png)
 
-![](img/e22f7489b3e59a47de9ad9aed20d4336_182.png)
 
 ![](img/e22f7489b3e59a47de9ad9aed20d4336_184.png)
 
 ![](img/e22f7489b3e59a47de9ad9aed20d4336_186.png)
 
-![](img/e22f7489b3e59a47de9ad9aed20d4336_188.png)
 
 ![](img/e22f7489b3e59a47de9ad9aed20d4336_190.png)
 
@@ -326,32 +306,24 @@ console.log(customEncrypt("123456"));
 
 ![](img/e22f7489b3e59a47de9ad9aed20d4336_200.png)
 
-![](img/e22f7489b3e59a47de9ad9aed20d4336_202.png)
 
-![](img/e22f7489b3e59a47de9ad9aed20d4336_204.png)
 
-![](img/e22f7489b3e59a47de9ad9aed20d4336_206.png)
 
 4.  **实战测试**：
     *   在Burp的 `Intruder` 模块，将需要爆破的密码参数值设为 `§明文§`。
     *   在 `Payload Processing` 规则中，添加 `Invoke Burp extension` 处理项，选择配置好的 `JSRunner`。
     *   这样，Intruder在发包时，会自动将每个Payload明文通过我们的JS脚本加密，再发送出去，从而绕过前端加密，实现有效的爆破或漏洞测试。
 
-![](img/e22f7489b3e59a47de9ad9aed20d4336_208.png)
 
-![](img/e22f7489b3e59a47de9ad9aed20d4336_210.png)
 
-![](img/e22f7489b3e59a47de9ad9aed20d4336_212.png)
 
 ![](img/e22f7489b3e59a47de9ad9aed20d4336_214.png)
 
 ---
 
-![](img/e22f7489b3e59a47de9ad9aed20d4336_216.png)
 
 ![](img/e22f7489b3e59a47de9ad9aed20d4336_218.png)
 
-![](img/e22f7489b3e59a47de9ad9aed20d4336_220.png)
 
 ![](img/e22f7489b3e59a47de9ad9aed20d4336_222.png)
 
@@ -386,7 +358,6 @@ console.log(customEncrypt("123456"));
 
 ![](img/e22f7489b3e59a47de9ad9aed20d4336_239.png)
 
-![](img/e22f7489b3e59a47de9ad9aed20d4336_241.png)
 
 ![](img/e22f7489b3e59a47de9ad9aed20d4336_243.png)
 

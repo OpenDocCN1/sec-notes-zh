@@ -1,7 +1,6 @@
 **谷歌网络安全专业证书第四课：《工具之道：Linux与SQL》**
 **P70：27_02_the-linux-community.en_subtitled**
 
-![](img/7b28bbbd4b828331539d7389c56d37b6_0.png)
 
 ![](img/7b28bbbd4b828331539d7389c56d37b6_0.png)
 
@@ -41,6 +40,5 @@
 
 在接下来的内容中，我们将学习如何从命令行内部获取支持。请继续学习。
 
-![](img/7b28bbbd4b828331539d7389c56d37b6_4.png)
 
 ![](img/7b28bbbd4b828331539d7389c56d37b6_4.png)

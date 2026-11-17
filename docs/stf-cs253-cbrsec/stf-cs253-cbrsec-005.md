@@ -2,19 +2,15 @@
 
 在本节课中，我们将继续探讨同源策略的例外情况，特别是跨域通信的安全问题。我们将学习如何使用 `postMessage` API 进行安全的跨域通信，并了解如何通过验证消息来源和目标来防止安全漏洞。此外，我们还将讨论如何通过配置HTTP响应头来增强或放宽同源策略的限制，以应对不同的安全需求。
 
-![](img/1c26dadd3d6dbf8d5a0e99cd1440cace_1.png)
 
-![](img/1c26dadd3d6dbf8d5a0e99cd1440cace_3.png)
 
 ---
 
-![](img/1c26dadd3d6dbf8d5a0e99cd1440cace_5.png)
 
 ## 跨域通信与 `postMessage` API
 
 ![](img/1c26dadd3d6dbf8d5a0e99cd1440cace_7.png)
 
-![](img/1c26dadd3d6dbf8d5a0e99cd1440cace_8.png)
 
 上一节我们介绍了跨域通信的基本概念。本节中，我们来看看如何使用 `postMessage` API 实现两个愿意合作的站点之间的安全通信。
 
@@ -61,7 +57,6 @@ window.addEventListener('message', function(event) {
 
 忽略这些验证步骤可能导致信息泄露或跨站脚本攻击（XSS）。
 
-![](img/1c26dadd3d6dbf8d5a0e99cd1440cace_12.png)
 
 ---
 
@@ -69,9 +64,7 @@ window.addEventListener('message', function(event) {
 
 除了显式的跨域通信API，浏览器默认允许一些跨域操作，这些是出于历史原因和功能需要而存在的“自动例外”。了解这些对于安全至关重要。
 
-![](img/1c26dadd3d6dbf8d5a0e99cd1440cace_14.png)
 
-![](img/1c26dadd3d6dbf8d5a0e99cd1440cace_16.png)
 
 以下是浏览器默认允许的跨域请求类型：
 
@@ -108,9 +101,7 @@ window.addEventListener('message', function(event) {
 
 点击劫持是一种攻击手段，攻击者将目标网站嵌入一个透明iframe中，诱使用户在不知情的情况下点击目标网站上的按钮。
 
-![](img/1c26dadd3d6dbf8d5a0e99cd1440cace_22.png)
 
-![](img/1c26dadd3d6dbf8d5a0e99cd1440cace_24.png)
 
 **防御措施：使用 `X-Frame-Options` 或 `Content-Security-Policy` 响应头**
 
@@ -141,11 +132,8 @@ window.addEventListener('message', function(event) {
 
 **解决方案：CORS机制**
 
-![](img/1c26dadd3d6dbf8d5a0e99cd1440cace_32.png)
 
-![](img/1c26dadd3d6dbf8d5a0e99cd1440cace_34.png)
 
-![](img/1c26dadd3d6dbf8d5a0e99cd1440cace_36.png)
 
 服务器可以通过设置 `Access-Control-Allow-Origin` 响应头，来显式允许特定源或所有源读取其资源。
 

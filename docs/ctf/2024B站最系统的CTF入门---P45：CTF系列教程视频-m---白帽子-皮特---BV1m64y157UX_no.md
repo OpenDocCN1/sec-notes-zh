@@ -17,11 +17,9 @@ Wireshark的介绍是：“The world‘s foremost and widely used network protoc
 
 ## Wireshark的安装与应用 💻
 
-![](img/e4dcfbe9f844b992ca91df1c9eda3256_1.png)
 
 Wireshark可以用来动态抓包。工具的下载和安装过程很简单。
 
-![](img/e4dcfbe9f844b992ca91df1c9eda3256_3.png)
 
 以下是获取与安装Wireshark的步骤：
 1.  **下载**：通过百度或谷歌搜索“Wireshark”进入官网。
@@ -81,15 +79,12 @@ tshark -r example.pcap -q -z "follow,http,ascii,0"
 
 ## Python集成：Pyshark 🐍
 
-![](img/e4dcfbe9f844b992ca91df1c9eda3256_7.png)
 
-![](img/e4dcfbe9f844b992ca91df1c9eda3256_9.png)
 
 对于Misc选手，通常需要一定的Python基础来进行更灵活的分析。Pyshark是一个Python封装库，允许在Python脚本中处理数据包。
 
 Pyshark的API设计可能不如前两者直观，有时仍需配合Tshark。以下是一个使用Pyshark的示例脚本，用于完成上述例题：
 
-![](img/e4dcfbe9f844b992ca91df1c9eda3256_11.png)
 
 ```python
 import pyshark
@@ -109,7 +104,6 @@ for pkt in cap:
 
 在后续更复杂的题目中，可能需要在此基础上进行数据解码、模式匹配等进一步处理。Python在Misc领域应用广泛，包括图片分析、编码转换等，建议加强Python编程能力。
 
-![](img/e4dcfbe9f844b992ca91df1c9eda3256_13.png)
 
 ## 其他辅助工具 🔧
 

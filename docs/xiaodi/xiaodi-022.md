@@ -1,6 +1,5 @@
 #  022：【安全开发】- PHP应用&留言板功能&超全局变量&数据库操作&第三方插件引用 📝
 
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_1.png)
 
 ![](img/5c22f2a66639ef69bfe4f8581ae405cf_3.png)
 
@@ -10,7 +9,6 @@
 
 ---
 
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_7.png)
 
 ## 概述
 
@@ -28,7 +26,6 @@
 
 ![](img/5c22f2a66639ef69bfe4f8581ae405cf_11.png)
 
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_13.png)
 
 *   **PHPStorm**： 用于编写PHP代码。
 *   **DW (Dreamweaver)**： 用于辅助编写HTML/CSS前端代码（非必需，可用任何文本编辑器替代）。
@@ -37,7 +34,6 @@
 
 我们基于 **PHP 7.0** 版本进行开发。请确保你的PHPStudy已启动MySQL服务。
 
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_15.png)
 
 ---
 
@@ -60,7 +56,6 @@
 3.  在该数据库中新建一张表，命名为 `gb`。
 4.  为 `gb` 表添加以下字段（列）：
 
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_25.png)
 
 | 字段名 | 类型 | 长度 | 说明 | 是否为空 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -79,7 +74,6 @@
 
 ---
 
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_33.png)
 
 ## 第二步：创建前端表单页面 📄
 
@@ -91,7 +85,6 @@
 
 核心代码如下：
 
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_39.png)
 
 ```html
 <!-- gb.php -->
@@ -102,11 +95,8 @@
 </form>
 ```
 
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_41.png)
 
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_43.png)
 
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_45.png)
 
 **代码解释：**
 *   `<form action="" method="post">`： 表单标签。`action=""` 表示表单数据提交给当前页面自身（`gb.php`）处理。`method="post"` 表示使用POST方式提交数据，数据在请求体内，相对安全。
@@ -130,13 +120,10 @@
 
 ![](img/5c22f2a66639ef69bfe4f8581ae405cf_57.png)
 
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_59.png)
 
 PHP提供了几个**超全局变量**来获取不同来源的请求数据。最常用的是 `$_POST` 和 `$_GET`。
 
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_61.png)
 
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_63.png)
 
 ![](img/5c22f2a66639ef69bfe4f8581ae405cf_65.png)
 
@@ -204,10 +191,8 @@ if(isset($_POST['username'])){
 
 ![](img/5c22f2a66639ef69bfe4f8581ae405cf_96.png)
 
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_98.png)
 
 
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_100.png)
 
 ```php
 <?php
@@ -227,11 +212,9 @@ if (!$conn) {
 ?>
 ```
 
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_102.png)
 
 ### 2. 获取用户环境信息
 
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_104.png)
 
 ![](img/5c22f2a66639ef69bfe4f8581ae405cf_106.png)
 
@@ -258,7 +241,6 @@ $ua = $_SERVER[‘HTTP_USER_AGENT’];
 
 ![](img/5c22f2a66639ef69bfe4f8581ae405cf_118.png)
 
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_120.png)
 
 ![](img/5c22f2a66639ef69bfe4f8581ae405cf_122.png)
 
@@ -310,9 +292,7 @@ if ($result) {
 
 ![](img/5c22f2a66639ef69bfe4f8581ae405cf_145.png)
 
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_147.png)
 
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_148.png)
 
 ---
 
@@ -331,9 +311,7 @@ if ($result) {
 ![](img/5c22f2a66639ef69bfe4f8581ae405cf_156.png)
 
 
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_158.png)
 
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_160.png)
 
 
 ![](img/5c22f2a66639ef69bfe4f8581ae405cf_162.png)
@@ -432,9 +410,7 @@ while($row = mysqli_fetch_assoc($result)){
 
 ![](img/5c22f2a66639ef69bfe4f8581ae405cf_197.png)
 
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_199.png)
 
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_201.png)
 
 ### 2. 处理删除请求
 
@@ -486,7 +462,6 @@ if(isset($_GET[‘del_id’])){
 
 **注意：** 这个后台目前没有权限验证，任何人知道地址都可以访问和删除，这构成了一个**未授权访问漏洞**。在实际开发中，必须加入登录验证（如下节课将讲的Session或Cookie验证）。
 
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_223.png)
 
 ![](img/5c22f2a66639ef69bfe4f8581ae405cf_225.png)
 
@@ -504,9 +479,7 @@ if(isset($_GET[‘del_id’])){
 
 ## 第七步：引入第三方富文本编辑器 ✨
 
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_237.png)
 
-![](img/5c22f2a66639ef69bfe4f8581ae405cf_239.png)
 
 ![](img/5c22f2a66639ef69bfe4f8581ae405cf_241.png)
 

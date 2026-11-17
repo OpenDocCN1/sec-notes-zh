@@ -14,7 +14,6 @@
 
 首先，我们需要启动一台预配置好的Metasploitable 2 Linux靶机。在本例中，靶机的网络模式为桥接，IP地址为`192.168.1.180`。攻击机为Kali Linux，IP地址为`192.168.1.53`。
 
-![](img/10ed1e1bb1ca700000efe42dba9aa2b8_7.png)
 
 ![](img/10ed1e1bb1ca700000efe42dba9aa2b8_9.png)
 
@@ -49,7 +48,6 @@ search mysql_login
 
 ![](img/10ed1e1bb1ca700000efe42dba9aa2b8_17.png)
 
-![](img/10ed1e1bb1ca700000efe42dba9aa2b8_19.png)
 
 我们使用`use`命令加载该模块。
 ```bash
@@ -167,7 +165,6 @@ db_export -f xml /root/backup.xml
 
 ![](img/10ed1e1bb1ca700000efe42dba9aa2b8_43.png)
 
-![](img/10ed1e1bb1ca700000efe42dba9aa2b8_45.png)
 
 ## 管理扫描结果：hosts与services命令 🗃️
 
@@ -196,7 +193,6 @@ db_export -f xml /root/backup.xml
     hosts -d 192.168.1.180
     ```
 
-![](img/10ed1e1bb1ca700000efe42dba9aa2b8_51.png)
 
 ### services 命令
 

@@ -2,7 +2,6 @@
 
 ![](img/a6765af1c7b23d09c743cce2e8ab512c_0.png)
 
-![](img/a6765af1c7b23d09c743cce2e8ab512c_2.png)
 
 在本课程中，我们将学习如何编写Burp Suite插件，以提升信息搜集与漏洞扫描的效率。课程内容涵盖插件编写的意义、核心API、开发准备，并通过两个实战案例（信息搜集插件和LFI漏洞扫描增强插件）来具体讲解开发流程。
 
@@ -207,7 +206,6 @@ public class BurpExtender implements IBurpExtender, IHttpListener {
 5.  检查响应中是否包含漏洞特征关键字（如Linux下 `/etc/passwd` 文件中的 `root`，Windows下 `boot.ini` 文件中的 `[boot loader]`）。
 6.  如果匹配成功，则向Burp报告漏洞。
 
-![](img/a6765af1c7b23d09c743cce2e8ab512c_4.png)
 
 ![](img/a6765af1c7b23d09c743cce2e8ab512c_6.png)
 
@@ -215,13 +213,10 @@ public class BurpExtender implements IBurpExtender, IHttpListener {
 
 ### 核心代码实现
 
-![](img/a6765af1c7b23d09c743cce2e8ab512c_10.png)
 
 ![](img/a6765af1c7b23d09c743cce2e8ab512c_12.png)
 
-![](img/a6765af1c7b23d09c743cce2e8ab512c_14.png)
 
-![](img/a6765af1c7b23d09c743cce2e8ab512c_15.png)
 
 以下是精简后的核心逻辑代码，演示如何插入Payload并检查响应：
 

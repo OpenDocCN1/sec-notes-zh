@@ -4,7 +4,6 @@
 
 ## 概述
 
-![](img/42a6e0f5b5a27efcfd9ea62ceb6bab65_1.png)
 
 上一节我们讨论了缓冲区溢出的基本原理。本节中，我们将深入探讨一种更隐蔽的漏洞类型：有符号与无符号整数漏洞。这种漏洞源于程序员对同一数据（一串二进制位）在不同上下文中解释方式（有符号数或无符号数）的混淆。
 
@@ -28,7 +27,6 @@ void safe_copy(char* data, int length) {
 
 乍看之下，这段代码似乎没有问题。它有一个安全检查，防止复制超过缓冲区大小的数据。只要攻击者诚实地报告长度，就不会发生溢出。
 
-![](img/42a6e0f5b5a27efcfd9ea62ceb6bab65_3.png)
 
 然而，这里存在一个非常微妙的漏洞。
 
@@ -38,7 +36,6 @@ void safe_copy(char* data, int length) {
 
 考虑以下场景：攻击者传入一个非常大的数组，其长度用十六进制表示为 `0xFFFFFFFF`。如果将其解释为**无符号整数**，这是一个巨大的正数（4,294,967,295）。攻击者诚实地报告了这个长度。
 
-![](img/42a6e0f5b5a27efcfd9ea62ceb6bab65_5.png)
 
 但是，当这个值 `0xFFFFFFFF`（二进制全为1）进入函数 `safe_copy` 时，由于参数 `length` 是 `int` 类型，程序会将其解释为**有符号整数**。在二进制补码表示法中，`0xFFFFFFFF` 代表 **-1**。
 
@@ -59,7 +56,6 @@ void safe_copy(char* data, int length) {
 
 修复这个漏洞的关键在于保持数据类型解释的一致性。以下是修复后的代码：
 
-![](img/42a6e0f5b5a27efcfd9ea62ceb6bab65_7.png)
 
 ```c
 void safe_copy(char* data, size_t length) { // 将参数类型改为 size_t
@@ -73,7 +69,6 @@ void safe_copy(char* data, size_t length) { // 将参数类型改为 size_t
 
 **修复方法**：将函数参数 `length` 的类型从 `int` 改为 `size_t`（无符号整数类型）。这样，在整个函数内部以及传递给 `memcpy` 时，对 `length` 的解释都是无符号的。安全检查 `if (length > 64)` 将会正确地将巨大的长度值识别出来并阻止复制操作。
 
-![](img/42a6e0f5b5a27efcfd9ea62ceb6bab65_9.png)
 
 ## 总结
 

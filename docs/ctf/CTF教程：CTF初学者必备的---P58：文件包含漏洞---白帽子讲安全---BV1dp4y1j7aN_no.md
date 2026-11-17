@@ -2,19 +2,15 @@
 
 ![](img/ca763f38f64f5feaca4881e1fef37e27_0.png)
 
-![](img/ca763f38f64f5feaca4881e1fef37e27_2.png)
 
-![](img/ca763f38f64f5feaca4881e1fef37e27_4.png)
 
 在本节课中，我们将通过两道CTF实战题目，深入学习和理解文件包含漏洞的利用方法。课程将涵盖从信息收集、源码审计到绕过过滤、最终获取权限的完整流程。
 
-![](img/ca763f38f64f5feaca4881e1fef37e27_6.png)
 
 ---
 
 ## 第一题：基础文件包含与上传绕过
 
-![](img/ca763f38f64f5feaca4881e1fef37e27_8.png)
 
 上一节我们介绍了文件包含漏洞的基本概念，本节中我们来看看如何在实际题目中应用。
 
@@ -24,23 +20,17 @@
 <!-- 提示：试试 include.php -->
 ```
 
-![](img/ca763f38f64f5feaca4881e1fef37e27_10.png)
 
 访问`include.php`页面，页面显示内容与`index.php`相同，并提示参数为`file`。这暗示此处存在本地文件包含（LFI）漏洞。
 
-![](img/ca763f38f64f5feaca4881e1fef37e27_12.png)
 
 ### 利用文件包含读取源码
 
-![](img/ca763f38f64f5feaca4881e1fef37e27_14.png)
 
-![](img/ca763f38f64f5feaca4881e1fef37e27_16.png)
 
-![](img/ca763f38f64f5feaca4881e1fef37e27_18.png)
 
 通过传递`file`参数包含自身文件，可以确认漏洞存在。
 
-![](img/ca763f38f64f5feaca4881e1fef37e27_20.png)
 
 ```
 http://target.com/include.php?file=include.php
@@ -64,7 +54,6 @@ php://filter/convert.base64-encode/resource=upload.php
 
 将其作为`file`参数的值，发送请求：
 
-![](img/ca763f38f64f5feaca4881e1fef37e27_22.png)
 
 ![](img/ca763f38f64f5feaca4881e1fef37e27_23.png)
 
@@ -173,7 +162,6 @@ http://target.com/include?file=php://filter/convert.base64-encode/resource=uploa
 
 ### 获取权限
 
-![](img/ca763f38f64f5feaca4881e1fef37e27_35.png)
 
 如果`shell.php`中是一句话木马，那么通过包含PHAR文件执行该木马后，即可用连接工具连接网站目录，获得权限。
 
@@ -183,11 +171,9 @@ http://target.com/include?file=php://filter/convert.base64-encode/resource=uploa
 3.  当直接包含图片木马失效时，转向利用PHAR协议。
 4.  PHAR协议能执行压缩包内的PHP文件，从而绕过后缀名拼接导致的文件找不到问题。
 
-![](img/ca763f38f64f5feaca4881e1fef37e27_37.png)
 
 ---
 
-![](img/ca763f38f64f5feaca4881e1fef37e27_39.png)
 
 ## 课程总结 📝
 

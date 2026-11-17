@@ -1,18 +1,13 @@
 # Android逆向-基础篇：P16：章节3-9：发起HTTP请求 📡
 
-![](img/cac8bb883042c1caa42f0a59d8f2b4f6_0.png)
 
-![](img/cac8bb883042c1caa42f0a59d8f2b4f6_2.png)
 
-![](img/cac8bb883042c1caa42f0a59d8f2b4f6_4.png)
 
 在本节课中，我们将学习如何在Android应用中发起HTTP网络请求。这是与远程服务器进行数据交互的基础，也是后续进行网络协议分析的重要前提。
 
 上一节我们介绍了应用的基本界面交互，本节中我们来看看如何让应用连接网络并获取数据。
 
-![](img/cac8bb883042c1caa42f0a59d8f2b4f6_6.png)
 
-![](img/cac8bb883042c1caa42f0a59d8f2b4f6_8.png)
 
 ## 概述
 我们将使用一个名为OKHTTP的第三方库来发起HTTP请求。OKHTTP是目前Android生态中广泛使用且功能强大的网络请求组件。
@@ -63,7 +58,6 @@ override fun onClick(v: View?) {
 ## 发起HTTP GET请求
 现在，我们来实现核心的 `getBlog()` 方法，该方法使用OKHTTP库发起一个GET请求。
 
-![](img/cac8bb883042c1caa42f0a59d8f2b4f6_10.png)
 
 以下是方法的具体实现：
 ```kotlin
@@ -105,11 +99,8 @@ private fun getBlog() {
 
 运行应用并点击按钮后，你可以在Android Studio的Logcat窗口中看到打印出的网络响应日志。
 
-![](img/cac8bb883042c1caa42f0a59d8f2b4f6_12.png)
 
-![](img/cac8bb883042c1caa42f0a59d8f2b4f6_13.png)
 
-![](img/cac8bb883042c1caa42f0a59d8f2b4f6_14.png)
 
 ## 总结
 本节课中我们一起学习了在Android应用中发起HTTP请求的完整流程。

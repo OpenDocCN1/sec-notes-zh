@@ -2,7 +2,6 @@
 
 ![](img/d2847feec9131798ba537001b21bdf9a_0.png)
 
-![](img/d2847feec9131798ba537001b21bdf9a_2.png)
 
 ![](img/d2847feec9131798ba537001b21bdf9a_3.png)
 
@@ -81,7 +80,6 @@ CMS（内容管理系统）如 `WordPress`、`Discuz!`、`织梦(DedeCMS)`、`PH
 *   **使用在线识别工具**：输入URL，让工具自动分析。
 *   **搜索漏洞库**：在 `exploit-db`、`seebug` 等漏洞平台搜索已知CMS的漏洞和利用方法。
 
-![](img/d2847feec9131798ba537001b21bdf9a_28.png)
 
 ![](img/d2847feec9131798ba537001b21bdf9a_30.png)
 
@@ -91,7 +89,6 @@ CMS（内容管理系统）如 `WordPress`、`Discuz!`、`织梦(DedeCMS)`、`PH
 
 在了解了网站的基本构成后，我们需要探测网站是否存在敏感文件或目录泄露。这些泄露可能源于管理员配置疏忽，是获取关键信息（如源代码、配置文件、备份文件）的重要途径。
 
-![](img/d2847feec9131798ba537001b21bdf9a_34.png)
 
 ![](img/d2847feec9131798ba537001b21bdf9a_36.png)
 
@@ -110,9 +107,7 @@ CMS（内容管理系统）如 `WordPress`、`Discuz!`、`织梦(DedeCMS)`、`PH
 
 ![](img/d2847feec9131798ba537001b21bdf9a_44.png)
 
-![](img/d2847feec9131798ba537001b21bdf9a_46.png)
 
-![](img/d2847feec9131798ba537001b21bdf9a_48.png)
 
 ![](img/d2847feec9131798ba537001b21bdf9a_50.png)
 

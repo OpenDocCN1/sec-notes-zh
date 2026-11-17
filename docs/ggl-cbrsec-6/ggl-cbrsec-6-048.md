@@ -1,6 +1,5 @@
 # 048：1_04 导师助力你的网络安全职业发展
 
-![](img/f171ad62f3aee00e61aacd4ab0801776_0.png)
 
 ![](img/f171ad62f3aee00e61aacd4ab0801776_0.png)
 
@@ -52,7 +51,6 @@
 
 向他们寻求帮助。我想你会惊讶于人们是多么乐于助人。
 
-![](img/f171ad62f3aee00e61aacd4ab0801776_2.png)
 
 ![](img/f171ad62f3aee00e61aacd4ab0801776_2.png)
 

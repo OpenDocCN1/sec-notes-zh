@@ -12,7 +12,6 @@
 
 ***
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_6.png)
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_8.png)
 
@@ -20,29 +19,22 @@
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_12.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_14.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_16.png)
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_18.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_20.png)
 
 ## 📚 课程回顾与概述
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_22.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_24.png)
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_26.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_28.png)
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_30.png)
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_32.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_34.png)
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_36.png)
 
@@ -56,19 +48,15 @@
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_44.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_46.png)
 
 命令执行漏洞的产生，与SQL注入、XSS等漏洞类似，都是由于应用程序没有对用户的输入进行严格的检查与过滤，将用户输入直接当作代码或系统命令执行。
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_48.png)
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_50.png)
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_52.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_53.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_55.png)
 
 ***
 
@@ -82,29 +70,22 @@
 
 其危害性与我们之前讲解的WebShell类似。攻击者可以利用应用系统上的此类漏洞，执行服务器命令，从而获取服务器的Shell权限。
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_63.png)
 
 我们介绍了两种主要的执行类型：
 1.  **远程代码执行**：漏洞存在于代码逻辑中，执行的是PHP代码。若想执行系统命令，仍需调用执行系统命令的函数。
 2.  **远程命令执行**：应用系统本身存在调用系统命令的功能点（例如`ping`检测），在PHP中需要调用如`system()`、`exec()`等函数。如果未对用户输入进行过滤，则极易导致命令执行漏洞。
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_65.png)
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_67.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_69.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_71.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_73.png)
 
 在远程代码执行中，我们主要介绍了`eval()`、`assert()`等函数。这些函数在执行我们构造的一句话木马时也常被用到。
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_75.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_77.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_79.png)
 
 以下是PHP中常用于执行外部命令的函数：
 *   `exec()`
@@ -116,7 +97,6 @@
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_83.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_85.png)
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_87.png)
 
@@ -124,7 +104,6 @@
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_91.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_93.png)
 
 ***
 
@@ -132,7 +111,6 @@
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_97.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_99.png)
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_101.png)
 
@@ -140,13 +118,11 @@
 
 ## 🎯 漏洞利用：特殊字符的妙用
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_105.png)
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_107.png)
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_109.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_111.png)
 
 上一节我们提到了命令执行中常用的特殊字符，但未进行实例演示。本节我们将通过具体例子，演示如何利用这些特殊字符构造Payload来执行命令。
 
@@ -154,13 +130,10 @@
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_115.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_117.png)
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_119.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_121.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_123.png)
 
 我们以一个简单的“Ping测试”功能页面为例。该页面接收用户输入的IP地址，并调用系统`ping`命令进行检测。其核心问题在于，未对用户输入的`$ip`变量做任何过滤，直接拼接到了`shell_exec()`函数中。
 
@@ -181,11 +154,8 @@ $ip = $_POST['ip'];
 shell_exec("ping -c 3 " . $ip);
 ```
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_134.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_136.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_138.png)
 
 攻击者可以利用特殊字符，在原本的`ping`命令后拼接额外的命令。
 
@@ -199,11 +169,9 @@ shell_exec("ping -c 3 " . $ip);
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_147.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_149.png)
 
 以下是几种常见的命令连接符及其利用方式：
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_151.png)
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_153.png)
 
@@ -220,9 +188,7 @@ shell_exec("ping -c 3 " . $ip);
 *   **作用**：只有前一个命令执行成功（返回值为0），才会执行后一个命令。
 *   **Payload示例**：`127.0.0.1 && whoami`
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_155.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_157.png)
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_159.png)
 
@@ -234,9 +200,7 @@ shell_exec("ping -c 3 " . $ip);
 
 ***
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_163.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_165.png)
 
 ## 🛡️ 漏洞防御策略分析
 
@@ -244,11 +208,9 @@ shell_exec("ping -c 3 " . $ip);
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_169.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_171.png)
 
 我们通过四个逐步加强的代码例子，来分析不同的防御策略及其优劣。
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_173.png)
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_175.png)
 
@@ -262,9 +224,7 @@ shell_exec("ping -c 3 " . $ip);
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_181.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_183.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_185.png)
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_187.png)
 
@@ -279,7 +239,6 @@ shell_exec("ping -c 3 " . $ip);
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_193.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_195.png)
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_197.png)
 
@@ -311,35 +270,24 @@ shell_exec("ping -c 3 " . $ip);
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_208.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_210.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_212.png)
 
 ## ⚔️ 进阶利用：获取Shell与写入WebShell
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_214.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_216.png)
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_218.png)
 
 在确认存在命令执行漏洞后，攻击者通常会尝试获取一个交互式Shell或写入WebShell以维持访问。
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_220.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_221.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_222.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_223.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_225.png)
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_227.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_229.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_231.png)
 
 **1. 反弹Shell**
 *   **使用 `nc` (Netcat)**：
@@ -348,50 +296,35 @@ shell_exec("ping -c 3 " . $ip);
     *   这样，攻击机就能获得目标服务器的一个Shell。
 *   **使用 `bash` 或 `python` 等**：存在多种命令可以直接反弹Shell。
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_233.png)
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_235.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_236.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_238.png)
 
 **2. 写入WebShell**
 *   直接使用`echo`命令写入一句话木马。
     *   **Payload示例**：`; echo ‘<?php @eval($_POST[“cmd”]);?>’ > shell.php`
 *   如果存在字符过滤（如过滤分号`;`），可以构造无分号的一句话木马，或使用编码、拼接等方式绕过。
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_240.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_242.png)
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_244.png)
 
 ![](img/27ecec39c1c1422d0612814eb1b56ab4_246.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_248.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_250.png)
 
 ***
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_252.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_254.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_256.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_257.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_259.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_261.png)
 
 ## 🛡️ 综合防护建议
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_263.png)
 
-![](img/27ecec39c1c1422d0612814eb1b56ab4_265.png)
 
 1.  **禁用高危函数**：在PHP配置文件（`php.ini`）中，使用`disable_functions`指令禁用不必要的危险函数。
     ```ini

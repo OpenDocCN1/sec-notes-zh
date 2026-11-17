@@ -1,12 +1,9 @@
 #  073：第42天 - Linux权限提升实践指南 🔐
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_1.png)
 
 ![](img/c8bb69436c0ac629d23ef58dc95dceb4_3.png)
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_5.png)
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_7.png)
 
 在本节课中，我们将学习Linux环境下几种常见的权限提升方法。课程将涵盖利用公开漏洞、环境变量以及密码哈希等手段，通过实际案例演示如何从普通用户权限提升至root权限。
 
@@ -26,9 +23,7 @@
 
 ![](img/c8bb69436c0ac629d23ef58dc95dceb4_19.png)
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_21.png)
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_23.png)
 
 ## 第一部分：利用公开漏洞提权
 
@@ -36,7 +31,6 @@
 
 ### 1. 使用SearchSploit查找漏洞利用代码
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_25.png)
 
 SearchSploit是Exploit-DB的命令行搜索工具，内置了漏洞数据库，可以方便地查找公开的漏洞利用代码。
 
@@ -51,7 +45,6 @@ SearchSploit是Exploit-DB的命令行搜索工具，内置了漏洞数据库，�
 
 ![](img/c8bb69436c0ac629d23ef58dc95dceb4_27.png)
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_29.png)
 
 **核心命令示例：**
 ```bash
@@ -60,7 +53,6 @@ gcc 47163.c -o exp
 ./exp
 ```
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_31.png)
 
 ![](img/c8bb69436c0ac629d23ef58dc95dceb4_33.png)
 
@@ -68,11 +60,8 @@ gcc 47163.c -o exp
 
 > **注意**：提权成功率依赖于目标系统是否存在特定漏洞，具有一定偶然性。并非所有找到的EXP都能成功利用。
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_37.png)
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_39.png)
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_41.png)
 
 ![](img/c8bb69436c0ac629d23ef58dc95dceb4_43.png)
 
@@ -80,9 +69,7 @@ gcc 47163.c -o exp
 
 ### 2. 脏牛提权漏洞
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_47.png)
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_49.png)
 
 ![](img/c8bb69436c0ac629d23ef58dc95dceb4_51.png)
 
@@ -96,17 +83,13 @@ gcc 47163.c -o exp
 
 由于其影响深远，此处不再演示，但建议通过相关实验进行复现和分析，以深入理解其原理。
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_57.png)
 
 ![](img/c8bb69436c0ac629d23ef58dc95dceb4_59.png)
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_61.png)
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_62.png)
 
 ### 3. CVE-2019-13272 本地提权漏洞
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_63.png)
 
 ![](img/c8bb69436c0ac629d23ef58dc95dceb4_64.png)
 
@@ -116,13 +99,10 @@ gcc 47163.c -o exp
 
 ![](img/c8bb69436c0ac629d23ef58dc95dceb4_67.png)
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_68.png)
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_69.png)
 
 该漏洞影响内核版本4.10至5.1.17的Linux系统。
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_71.png)
 
 以下是利用此漏洞的步骤：
 
@@ -134,7 +114,6 @@ gcc 47163.c -o exp
 4.  直接运行编译后的程序：`./exp`。
 5.  若漏洞存在，执行后将获得一个具有root权限的shell。
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_75.png)
 
 ### 4. CVE-2019-7304 Snap包管理器提权漏洞
 
@@ -157,7 +136,6 @@ gcc 47163.c -o exp
 
 ### 1. 理解PATH环境变量与SUID权限
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_77.png)
 
 *   **PATH环境变量**：指定了系统查找可执行程序的目录列表。当用户在终端输入命令时，系统会按照PATH中的目录顺序搜索该命令。
     *   查看命令：`echo $PATH`
@@ -167,21 +145,15 @@ gcc 47163.c -o exp
 
 ### 2. 环境变量提权原理与步骤
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_79.png)
 
 提权思路是：找到一个具有SUID权限、且会调用系统命令（如`ps`）的程序。通过劫持PATH环境变量，使其优先执行我们伪造的命令，从而获得root shell。
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_81.png)
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_83.png)
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_85.png)
 
 以下是具体操作步骤：
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_87.png)
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_89.png)
 
 1.  **寻找目标**：找到一个属主为root且具有SUID权限的程序，例如一个自定义的`/home/kali/shell`程序，其功能是执行`ps`命令。
 2.  **创建恶意程序**：在`/tmp`目录下创建一个名为`ps`的文件，内容为反弹shell或直接启动bash。
@@ -205,46 +177,34 @@ gcc 47163.c -o exp
 
 ## 第三部分：利用密码哈希提权
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_93.png)
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_95.png)
 
 本节我们来看一种最直接的提权方式——获取并破解高权限用户的密码哈希。
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_97.png)
 
 ### 1. 关键系统文件
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_99.png)
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_101.png)
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_103.png)
 
 ![](img/c8bb69436c0ac629d23ef58dc95dceb4_105.png)
 
 Linux系统中用户密码信息主要存储在两个文件中：
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_107.png)
 
 *   `/etc/passwd`：所有用户可读，存储用户基本信息（用户名、UID、GID等）。密码字段通常用`x`表示，实际哈希值不在此处。
 *   `/etc/shadow`：仅root用户可读，存储加密后的用户密码哈希及其他安全信息。
 
 ### 2. 提权方法
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_109.png)
 
 在某些配置不当的系统上，`/etc/passwd`文件中可能直接存储了密码哈希（而非`x`）。
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_111.png)
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_112.png)
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_114.png)
 
 提权步骤如下：
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_116.png)
 
 1.  **查看`/etc/passwd`文件**：`cat /etc/passwd`
 2.  **寻找异常条目**：查找密码字段不是`x`，且UID为0（root）的用户行。
@@ -256,30 +216,23 @@ Linux系统中用户密码信息主要存储在两个文件中：
 
 ![](img/c8bb69436c0ac629d23ef58dc95dceb4_118.png)
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_120.png)
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_122.png)
 
 **创建后门账户**：也可以反向操作，在`/etc/passwd`中手动添加一个UID和GID为0的用户，并设置一个已知哈希的密码，从而创建一个具有root权限的后门账户。
 
 ![](img/c8bb69436c0ac629d23ef58dc95dceb4_124.png)
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_126.png)
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_127.png)
 
 ## 总结与课后作业 🎯
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_129.png)
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_131.png)
 
 本节课我们一起学习了Linux系统下多种权限提升技术：
 1.  利用SearchSploit查找并利用公开的系统内核或服务漏洞。
 2.  利用环境变量PATH和SUID权限的程序进行提权。
 3.  通过获取并破解`/etc/passwd`或`/etc/shadow`中的密码哈希来获得高权限账户。
 
-![](img/c8bb69436c0ac629d23ef58dc95dceb4_133.png)
 
 ![](img/c8bb69436c0ac629d23ef58dc95dceb4_135.png)
 

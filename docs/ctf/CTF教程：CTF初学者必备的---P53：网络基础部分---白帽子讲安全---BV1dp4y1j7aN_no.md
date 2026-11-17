@@ -7,9 +7,7 @@
 
 ## 什么是HTTP？ 🌐
 
-![](img/230c533489eacd9afc29bee45a0952ee_1.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_3.png)
 
 ![](img/230c533489eacd9afc29bee45a0952ee_5.png)
 
@@ -29,13 +27,10 @@ HTTP，全称为超文本传输协议。当我们浏览网站时，标准网址�
 
 HTTP是一种用于分布式、协作式和超媒体信息系统的应用层协议。它基于请求与响应模型，并且是无状态的。该协议基于TCP/IP协议来传输数据。
 
-![](img/230c533489eacd9afc29bee45a0952ee_17.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_19.png)
 
 设计HTTP的初衷是为了提供一种发布和接收HTML页面的方法。我们日常浏览网站，就是使用HTTP协议发送请求，并接收服务器返回的HTML页面，从而查看网页内容。
 
-![](img/230c533489eacd9afc29bee45a0952ee_21.png)
 
 ![](img/230c533489eacd9afc29bee45a0952ee_22.png)
 
@@ -68,13 +63,9 @@ HTTP的工作流程如下：
 
 关于TCP三次握手和四次挥手的细节属于网络基础知识，此处不展开叙述。
 
-![](img/230c533489eacd9afc29bee45a0952ee_30.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_32.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_34.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_36.png)
 
 （此处可配图：TCP三次握手与四次挥手示意图）
 
@@ -88,21 +79,14 @@ HTTP的工作流程如下：
 
 在HTTP/0.9和1.0版本中，每次请求和响应后，TCP连接就会关闭。这意味着每次请求都需要重新建立连接，存在等待时间。
 
-![](img/230c533489eacd9afc29bee45a0952ee_42.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_44.png)
 
 HTTP/1.1版本引入了持续连接（Keep-Alive）机制。该机制允许在同一个TCP连接上发送和接收多个HTTP请求/响应。
 
-![](img/230c533489eacd9afc29bee45a0952ee_46.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_48.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_50.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_52.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_54.png)
 
 ![](img/230c533489eacd9afc29bee45a0952ee_56.png)
 
@@ -112,7 +96,6 @@ HTTP/1.1版本引入了持续连接（Keep-Alive）机制。该机制允许在�
 
 ![](img/230c533489eacd9afc29bee45a0952ee_60.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_62.png)
 
 **机制描述**：发送第一个请求后，无需为后续请求重新进行TCP握手。如下图所示，可以在一个连接内连续请求多个资源（如 `index.html`, `script.js`, `style.css`），显著减少了总耗时。
 
@@ -135,13 +118,9 @@ URL，即统一资源定位符，也就是我们常说的“网址”。它用�
 *   **查询字符串（可选）**：以 `?` 开头，用于传递参数，格式为 `key1=value1&key2=value2`。
 *   **片段标识符（可选）**：以 `#` 开头，用于定位页面内的特定片段。
 
-![](img/230c533489eacd9afc29bee45a0952ee_64.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_66.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_68.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_70.png)
 
 **示例**：
 `https://www.baidu.com/s?wd=HTTP#8`
@@ -153,17 +132,12 @@ URL，即统一资源定位符，也就是我们常说的“网址”。它用�
 
 ---
 
-![](img/230c533489eacd9afc29bee45a0952ee_72.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_74.png)
 
 ## 统一资源标识符（URI） 🏷️
 
-![](img/230c533489eacd9afc29bee45a0952ee_76.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_78.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_80.png)
 
 ![](img/230c533489eacd9afc29bee45a0952ee_82.png)
 
@@ -187,7 +161,6 @@ URI，即统一资源标识符，是一个用于标识某一互联网资源名�
 
 ![](img/230c533489eacd9afc29bee45a0952ee_90.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_92.png)
 
 上一节我们介绍了资源定位的概念，本节中我们来看看客户端如何构造请求。
 
@@ -221,7 +194,6 @@ HTTP请求报文由四个部分组成：
 
 ![](img/230c533489eacd9afc29bee45a0952ee_98.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_100.png)
 
 ![](img/230c533489eacd9afc29bee45a0952ee_102.png)
 
@@ -238,16 +210,12 @@ HTTP请求报文由四个部分组成：
 ### 3. 空行
 空行（CRLF）标志着请求头部的结束和请求正文的开始。
 
-![](img/230c533489eacd9afc29bee45a0952ee_104.png)
 
 ### 4. 请求数据
 对于GET请求，数据通常作为查询字符串附加在URL后。对于POST请求，数据则放在请求正文中。
 
-![](img/230c533489eacd9afc29bee45a0952ee_106.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_108.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_110.png)
 
 **GET请求示例**：
 ```
@@ -255,7 +223,6 @@ GET /login.php?username=admin&password=123456 HTTP/1.1
 Host: www.example.com
 ```
 
-![](img/230c533489eacd9afc29bee45a0952ee_112.png)
 
 ![](img/230c533489eacd9afc29bee45a0952ee_114.png)
 
@@ -279,13 +246,10 @@ username=admin&password=123456
 
 ## HTTP响应报文（服务端） 📤
 
-![](img/230c533489eacd9afc29bee45a0952ee_121.png)
 
 了解完请求报文后，我们来看看服务器如何回应。
 
-![](img/230c533489eacd9afc29bee45a0952ee_123.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_125.png)
 
 HTTP响应报文同样由四个部分组成：
 1.  状态行
@@ -293,9 +257,7 @@ HTTP响应报文同样由四个部分组成：
 3.  空行
 4.  响应正文
 
-![](img/230c533489eacd9afc29bee45a0952ee_127.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_129.png)
 
 ### 1. 状态行
 状态行格式为：`协议版本 空格 状态码 空格 状态描述 回车换行符(CRLF)`
@@ -319,23 +281,16 @@ HTTP响应报文同样由四个部分组成：
 ### 3. 空行 & 4. 响应正文
 空行分隔头部和正文。响应正文是服务器返回的实际内容，如HTML、JSON数据等。
 
-![](img/230c533489eacd9afc29bee45a0952ee_131.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_133.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_135.png)
 
 **响应示例**：
 
 ![](img/230c533489eacd9afc29bee45a0952ee_137.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_139.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_141.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_143.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_145.png)
 
 ```
 HTTP/1.1 200 OK
@@ -345,23 +300,16 @@ Set-Cookie: sessionid=abc123; Path=/
 {"status": "success", "message": "Login successful"}
 ```
 
-![](img/230c533489eacd9afc29bee45a0952ee_147.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_149.png)
 
 ---
 
 ![](img/230c533489eacd9afc29bee45a0952ee_151.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_153.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_155.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_157.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_159.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_161.png)
 
 ## HTTP无状态与Cookie/Session 🍪
 
@@ -374,17 +322,11 @@ HTTP是一个无状态协议，这意味着服务器不会记住之前的请求�
 ### Cookie
 Cookie是服务器发送到用户浏览器并保存在本地的一小块数据。浏览器会在后续请求中携带该Cookie，以便服务器识别用户身份。
 
-![](img/230c533489eacd9afc29bee45a0952ee_167.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_168.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_170.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_172.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_174.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_176.png)
 
 **工作原理**：
 1.  客户端首次访问，服务器通过 `Set-Cookie` 响应头下发Cookie。
@@ -398,20 +340,14 @@ HTTP/1.1 200 OK
 Set-Cookie: user_id=12345; Max-Age=3600; Path=/
 ```
 
-![](img/230c533489eacd9afc29bee45a0952ee_178.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_180.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_182.png)
 
 ### Session
 Session是另一种在服务端保存用户状态的机制。服务器会为每个会话创建一个唯一的Session ID，通常通过Cookie传递给客户端。
 
-![](img/230c533489eacd9afc29bee45a0952ee_184.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_186.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_187.png)
 
 **Cookie与Session的区别**：
 | 特性 | Cookie | Session |
@@ -421,7 +357,6 @@ Session是另一种在服务端保存用户状态的机制。服务器会为每�
 | **存储容量** | 较小（约4KB） | 较大（取决于服务器配置） |
 | **性能影响** | 不占用服务器资源 | 占用服务器内存 |
 
-![](img/230c533489eacd9afc29bee45a0952ee_189.png)
 
 ---
 
@@ -433,9 +368,7 @@ HTTPS是HTTP的安全版本，在HTTP下加入了SSL/TLS层，对传输的数据
 
 ![](img/230c533489eacd9afc29bee45a0952ee_193.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_195.png)
 
-![](img/230c533489eacd9afc29bee45a0952ee_197.png)
 
 **核心目的**：保护数据的隐私性和完整性，防止窃听和篡改。
 

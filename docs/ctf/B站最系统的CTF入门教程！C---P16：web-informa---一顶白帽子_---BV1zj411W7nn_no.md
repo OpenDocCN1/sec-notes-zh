@@ -27,12 +27,10 @@
 *   `TABLE_SCHEMA`：表所属的数据库名。
 *   `TABLE_NAME`：表的名称。
 
-![](img/8c56b4600b5adf9bafb131d9c5e4c24e_1.png)
 
 ### 3. COLUMNS表
 `columns`表提供了表中所有列（即字段）的信息。字段可以理解为Excel表格中的列。
 
-![](img/8c56b4600b5adf9bafb131d9c5e4c24e_3.png)
 
 **核心字段**：
 *   `COLUMN_NAME`：字段的名称。
@@ -45,11 +43,9 @@
 
 在SQL注入中，我们常常无法直接使用像`SHOW DATABASES;`这样的命令。这时，`information_schema`数据库就成为了我们获取信息的关键。
 
-![](img/8c56b4600b5adf9bafb131d9c5e4c24e_5.png)
 
 以下是具体的查询方法：
 
-![](img/8c56b4600b5adf9bafb131d9c5e4c24e_7.png)
 
 ### 查询所有数据库
 当无法使用`SHOW DATABASES;`命令时，可以通过查询`schemata`表来获取数据库列表。
@@ -57,7 +53,6 @@
 SELECT SCHEMA_NAME FROM information_schema.SCHEMATA;
 ```
 
-![](img/8c56b4600b5adf9bafb131d9c5e4c24e_8.png)
 
 ### 查询指定数据库中的所有表
 假设我们想查询`DVWA`这个数据库中有哪些表。
@@ -66,7 +61,6 @@ SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_SCHEMA='dvwa';
 ```
 这条语句从`information_schema.tables`表中，筛选出`TABLE_SCHEMA`字段值为`'dvwa'`的记录，并只显示这些记录的表名(`TABLE_NAME`)。
 
-![](img/8c56b4600b5adf9bafb131d9c5e4c24e_10.png)
 
 ### 查询指定表中的所有字段
 现在，我们进一步查询`dvwa`数据库中`users`表包含哪些字段。

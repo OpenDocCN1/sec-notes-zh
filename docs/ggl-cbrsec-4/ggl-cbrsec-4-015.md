@@ -1,6 +1,5 @@
 # 015：Kali Linux™ 简介
 
-![](img/e976f12ad227dc2f6c1b31db8dcaff74_0.png)
 
 ![](img/e976f12ad227dc2f6c1b31db8dcaff74_0.png)
 
@@ -34,7 +33,6 @@ Kali Linux对于从事数字取证工作的安全专业人员来说也是一个�
 *   **Wireshark**：安全行业中常用的另一个工具，它拥有图形用户界面，可用于分析实时和已捕获的网络流量。
 *   **Autopsy**：一个用于分析硬盘驱动器和智能手机的取证工具。
 
-![](img/e976f12ad227dc2f6c1b31db8dcaff74_2.png)
 
 ![](img/e976f12ad227dc2f6c1b31db8dcaff74_2.png)
 

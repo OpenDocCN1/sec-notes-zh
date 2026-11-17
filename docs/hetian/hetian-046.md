@@ -210,7 +210,6 @@ Fastjson在解析JSON字符串时，支持通过`@type`属性指定要反序列�
 
 > **提示**：具体的漏洞利用（GetShell）方法涉及更复杂的链构造，将在后续课程中详细讲解。
 
-![](img/9ff9a5c64bf9db4f1e5b4ea16aa8acd1_82.png)
 
 ---
 
@@ -266,9 +265,7 @@ Apache Shiro是一个强大且易用的Java安全框架，提供认证、授权�
 
 ![](img/9ff9a5c64bf9db4f1e5b4ea16aa8acd1_100.png)
 
-![](img/9ff9a5c64bf9db4f1e5b4ea16aa8acd1_101.png)
 
-![](img/9ff9a5c64bf9db4f1e5b4ea16aa8acd1_103.png)
 
 在确认漏洞存在后，可以进行深度利用以获取目标服务器的Shell。
 

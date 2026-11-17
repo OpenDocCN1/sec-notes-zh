@@ -2,7 +2,6 @@
 
 在本节课中，我们将要学习如何使用Burp Suite对HTTPS协议的通信内容进行抓包。HTTPS抓包是移动应用和Web应用安全测试中的一项基础且关键的技能。
 
-![](img/1a7e07c6799b16d5388fa3aa08f54e37_1.png)
 
 ## 🔐 HTTPS抓包原理概述
 
@@ -16,11 +15,9 @@
 
 理解了原理后，我们开始配置Burp Suite的证书。证书通常包含两个文件：一个公钥证书（Certificate）和一个私钥（Private Key）。
 
-![](img/1a7e07c6799b16d5388fa3aa08f54e37_3.png)
 
 以下是配置步骤：
 
-![](img/1a7e07c6799b16d5388fa3aa08f54e37_5.png)
 
 1.  **导出证书**
     在Burp Suite中，点击 **Proxy** 标签页，然后进入 **Options** 子选项卡。在Proxy Listeners区域，找到你的监听器并点击 **Import / export CA certificate**。
@@ -35,17 +32,14 @@
     *   在 “**Private key**” 处选择你的私钥文件（`.der` 格式）。
     *   点击 **Next**，如果成功会提示 “**Successfully**”。
 
-![](img/1a7e07c6799b16d5388fa3aa08f54e37_7.png)
 
 ## 🌐 浏览器端证书安装
 
 Burp Suite端配置好后，我们需要在客户端（这里以Firefox浏览器为例）安装Burp Suite的CA证书，这样浏览器才会信任由Burp Suite签发的证书。
 
-![](img/1a7e07c6799b16d5388fa3aa08f54e37_9.png)
 
 以下是具体操作步骤：
 
-![](img/1a7e07c6799b16d5388fa3aa08f54e37_11.png)
 
 1.  **关闭代理插件**：确保浏览器中任何便捷切换代理的插件（如FoxyProxy、SwitchyOmega）已被禁用或关闭，以免干扰。
 2.  **下载证书**：在浏览器中访问 `http://burpsuite` 这个地址。页面右上角会出现一个 **CA Certificate** 按钮，点击它即可下载证书文件（通常为 `cacert.der`）。
@@ -57,17 +51,14 @@ Burp Suite端配置好后，我们需要在客户端（这里以Firefox浏览器
     *   点击 **导入（Import…）** 按钮，选择刚才下载的 `cacert.der` 文件。
     *   **关键步骤**：在导入时，务必勾选 **信任此CA以标识网站（Trust this CA to identify websites）** 这一选项，然后点击确定。
 
-![](img/1a7e07c6799b16d5388fa3aa08f54e37_13.png)
 
 ## ✅ 测试抓包
 
-![](img/1a7e07c6799b16d5388fa3aa08f54e37_15.png)
 
 完成以上所有配置后，就可以进行测试了。
 
 将浏览器的代理设置为Burp Suite（例如 `127.0.0.1:8080`），然后访问任何一个HTTPS网站，例如 `https://www.baidu.com`。此时，回到Burp Suite的 **Proxy -> Intercept** 或 **HTTP history** 标签页，你应该能看到抓取到的HTTPS请求和响应内容，并且内容已被成功解密。
 
-![](img/1a7e07c6799b16d5388fa3aa08f54e37_17.png)
 
 ![](img/1a7e07c6799b16d5388fa3aa08f54e37_19.png)
 

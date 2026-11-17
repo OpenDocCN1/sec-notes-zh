@@ -28,31 +28,24 @@
     *   `Hydra`：一款开源的暴力破解工具，支持SSH、FTP、MSSQL、MySQL、POP3等服务。
     *   `PHPMyAdmin`密码爆破工具：可以通过指定账号和密码对MySQL数据库进行登录尝试。
 
-![](img/0c92a0a75653e3323c182ca7edd2a255_3.png)
 
 除此之外还有很多其他工具，大家也可以自行搜索下载并尝试使用。
 
-![](img/0c92a0a75653e3323c182ca7edd2a255_5.png)
 
 ## 解题套路总结 🧩
 
-![](img/0c92a0a75653e3323c182ca7edd2a255_7.png)
 
-![](img/0c92a0a75653e3323c182ca7edd2a255_9.png)
 
 在CTF比赛中，Pwn、Misc、Reverse、Crypto都是稳扎稳打的题型，而Web题型则更需要一些技巧和套路。
 
 ### 套路一：信息查找
 
-![](img/0c92a0a75653e3323c182ca7edd2a255_11.png)
 
 最简单的一种套路是直接在浏览器右键查看页面源代码，有时就可以看到flag。
 
-![](img/0c92a0a75653e3323c182ca7edd2a255_13.png)
 
 除了在源代码中，有时flag会藏在HTTP请求或响应包的头部。可以通过代理工具（如之前提到的Burp Suite）抓包查看。例如，在HTTP响应包的`The-Key-Is`头部的值，可能就是我们要获取的flag。
 
-![](img/0c92a0a75653e3323c182ca7edd2a255_15.png)
 
 ### 套路二：请求头伪造
 

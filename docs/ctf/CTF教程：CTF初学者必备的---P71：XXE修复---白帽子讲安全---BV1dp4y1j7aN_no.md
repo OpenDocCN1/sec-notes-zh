@@ -8,9 +8,7 @@
 
 在本节课中，我们将学习XML外部实体注入漏洞的修复方法。上一节我们介绍了通过上传Excel文件触发XXE漏洞的利用方式，本节中我们来看看如何从开发和安全防护的角度修复此类漏洞，并完成相关练习。
 
-![](img/949a84e60517a3ab4f99d5a5885c3e6c_7.png)
 
-![](img/949a84e60517a3ab4f99d5a5885c3e6c_9.png)
 
 ![](img/949a84e60517a3ab4f99d5a5885c3e6c_11.png)
 
@@ -18,39 +16,28 @@
 
 ![](img/949a84e60517a3ab4f99d5a5885c3e6c_15.png)
 
-![](img/949a84e60517a3ab4f99d5a5885c3e6c_17.png)
 
 ## 概述
 本节课将介绍XXE漏洞的两种主要修复方案，并通过代码示例演示如何在Java、PHP和Python中实施修复。课程最后将布置相关的实战练习。
 
-![](img/949a84e60517a3ab4f99d5a5885c3e6c_19.png)
 
-![](img/949a84e60517a3ab4f99d5a5885c3e6c_20.png)
 
-![](img/949a84e60517a3ab4f99d5a5885c3e6c_22.png)
 
 ## XXE漏洞修复方案
 
-![](img/949a84e60517a3ab4f99d5a5885c3e6c_24.png)
 
-![](img/949a84e60517a3ab4f99d5a5885c3e6c_26.png)
 
 ### 方案一：过滤用户输入
 此方案的核心思想是对用户提交的XML数据进行严格的过滤和检查。以下是需要过滤的关键词和符号：
 
-![](img/949a84e60517a3ab4f99d5a5885c3e6c_28.png)
 
-![](img/949a84e60517a3ab4f99d5a5885c3e6c_30.png)
 
 *   **特殊符号**：例如尖括号 `<`、`>` 和连接符 `&`。
 *   **DTD声明关键词**：例如 `<!DOCTYPE`、`<!ENTITY`。
 *   **外部实体声明关键词**：例如 `SYSTEM`、`PUBLIC`。
 
-![](img/949a84e60517a3ab4f99d5a5885c3e6c_32.png)
 
-![](img/949a84e60517a3ab4f99d5a5885c3e6c_34.png)
 
-![](img/949a84e60517a3ab4f99d5a5885c3e6c_36.png)
 
 **注意**：基于黑名单的过滤方式可能存在被绕过风险，因此不是最推荐的修复方案。
 
@@ -70,11 +57,8 @@ documentBuilderFactory.setFeature("http://xml.org/sax/features/external-paramete
 
 ![](img/949a84e60517a3ab4f99d5a5885c3e6c_40.png)
 
-![](img/949a84e60517a3ab4f99d5a5885c3e6c_42.png)
 
-![](img/949a84e60517a3ab4f99d5a5885c3e6c_44.png)
 
-![](img/949a84e60517a3ab4f99d5a5885c3e6c_45.png)
 
 ![](img/949a84e60517a3ab4f99d5a5885c3e6c_47.png)
 
@@ -87,21 +71,15 @@ libxml_disable_entity_loader(true);
 ```
 将参数设置为 `true`，表示禁止加载外部实体。
 
-![](img/949a84e60517a3ab4f99d5a5885c3e6c_51.png)
 
 ![](img/949a84e60517a3ab4f99d5a5885c3e6c_53.png)
 
-![](img/949a84e60517a3ab4f99d5a5885c3e6c_55.png)
 
-![](img/949a84e60517a3ab4f99d5a5885c3e6c_56.png)
 
-![](img/949a84e60517a3ab4f99d5a5885c3e6c_58.png)
 
 ![](img/949a84e60517a3ab4f99d5a5885c3e6c_59.png)
 
-![](img/949a84e60517a3ab4f99d5a5885c3e6c_61.png)
 
-![](img/949a84e60517a3ab4f99d5a5885c3e6c_62.png)
 
 **Python修复代码示例**
 在Python的`lxml`库中，解析XML时设置相关参数。
@@ -122,7 +100,6 @@ tree = etree.parse(xml_source, parser)
 
 ![](img/949a84e60517a3ab4f99d5a5885c3e6c_70.png)
 
-![](img/949a84e60517a3ab4f99d5a5885c3e6c_72.png)
 
 ![](img/949a84e60517a3ab4f99d5a5885c3e6c_74.png)
 
@@ -131,9 +108,7 @@ tree = etree.parse(xml_source, parser)
 ## 课程练习 🎯
 以下是本节课需要完成的实战练习，用于巩固XXE漏洞的利用与修复知识：
 
-![](img/949a84e60517a3ab4f99d5a5885c3e6c_78.png)
 
-![](img/949a84e60517a3ab4f99d5a5885c3e6c_79.png)
 
 ![](img/949a84e60517a3ab4f99d5a5885c3e6c_80.png)
 

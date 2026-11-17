@@ -4,27 +4,20 @@
 
 ## 1. MySQL提权概述 🔍
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_1.png)
 
 MySQL提权是什么？简单来说，当你通过渗透测试拿下一个网站（Webshell），但获得的权限（如Apache或PHP运行账户）太低，无法执行系统级操作时，如果该网站使用了MySQL数据库，并且你能获取到数据库的最高权限（通常是root账户），那么你就可以利用数据库来执行系统命令，从而将权限提升至服务器管理员级别。
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_3.png)
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_5.png)
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_6.png)
 
 要实现MySQL提权，需要满足两个核心条件：
 1.  目标网站使用了MySQL数据库。
 2.  你能找到MySQL数据库最高权限账户（通常是root）的账号和密码。
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_8.png)
 
 如果不知道如何寻找数据库密码，请继续往下看。
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_10.png)
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_12.png)
 
 ## 2. UDF提权详解 ⚙️
 
@@ -34,7 +27,6 @@ MySQL提权是什么？简单来说，当你通过渗透测试拿下一个网站
 
 UDF提权的原理是：获取MySQL的最高运行权限（root账户），然后利用该权限创建自定义函数（存储过程），最终通过该函数执行操作系统命令。
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_14.png)
 
 ![](img/bfe451e12df5687b8ddfc1ad7324cb0a_16.png)
 
@@ -49,13 +41,10 @@ UDF提权的原理是：获取MySQL的最高运行权限（root账户），然�
 
 以下是一个查找数据库配置文件的实战演示。通过分析这些文件，我们可以找到数据库的连接信息，包括主机、用户名、密码和数据库名。
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_1.png)
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_18.png)
 
 在找到的配置文件中，我们发现了数据库连接信息，但这里的用户名可能不是`root`。这时，我们需要进行第二步操作。
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_20.png)
 
 ### 2.3 下载并解密user.MYD文件
 
@@ -65,52 +54,38 @@ UDF提权的原理是：获取MySQL的最高运行权限（root账户），然�
 
 如果配置文件中不是root账户，我们可以尝试从MySQL的数据目录中下载`user.MYD`文件进行破解。该文件通常位于MySQL安装目录下的`data/mysql/`文件夹中。
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_25.png)
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_27.png)
 
 以下是操作步骤：
 1.  使用工具（如菜刀）连接到服务器，进入MySQL的`data`目录。
 2.  找到`mysql`数据库文件夹，下载其中的`user.MYD`文件。
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_14.png)
 
 下载完成后，使用`WinHex`等十六进制编辑器打开`user.MYD`文件。文件中存储了MySQL的用户名和加密后的密码。
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_29.png)
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_31.png)
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_16.png)
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_33.png)
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_35.png)
 
 MySQL的密码密文通常为40位。如果看到的密文不足40位，可能是被截断了，需要将相邻的两段密文拼凑成40位。例如，一段23位的密文和一段17位的密文，将它们拼接起来。
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_37.png)
 
 拼接后的40位密文，可以使用在线或离线的MySQL密码破解工具进行解密。解密成功后，即可获得`root`账户的明文密码。
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_39.png)
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_41.png)
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_43.png)
 
 ### 2.4 执行UDF提权
 
 获得root账号密码后，就可以使用提权工具进行连接。许多Webshell管理工具都内置了UDF提权功能。
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_45.png)
 
 操作步骤如下：
 1.  在提权工具中填入目标服务器的IP地址、MySQL端口（默认3306）、用户名`root`以及解密得到的密码。
 2.  选择数据库为`mysql`（这是权限最高的系统数据库）。
 3.  点击连接。连接成功后，可以首先执行`select version();`命令来查看MySQL版本，确认连接有效。
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_18.png)
 
 4.  接着，可以尝试执行系统命令。例如，添加一个系统用户：
     ```bash
@@ -118,15 +93,10 @@ MySQL的密码密文通常为40位。如果看到的密文不足40位，可能�
     ```
     命令执行成功后，系统会添加一个名为`test123`的用户。
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_47.png)
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_22.png)
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_49.png)
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_50.png)
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_52.png)
 
 5.  然而，新添加的用户默认只有普通用户权限。我们需要将其提升到管理员组。执行以下命令：
     ```bash
@@ -134,27 +104,18 @@ MySQL的密码密文通常为40位。如果看到的密文不足40位，可能�
     ```
     **关键点**：命令中的`administrators`组名必须带有`s`，这是英文Windows系统的标准管理员组名称。缺少`s`会导致提权失败。
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_54.png)
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_29.png)
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_56.png)
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_57.png)
 
 6.  再次查看用户信息，确认`test123`用户已成功加入`administrators`组。
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_33.png)
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_59.png)
 
 7.  最后，使用远程桌面（RDP）等工具，用新创建的管理员账号和密码登录服务器，至此便获得了服务器的完全控制权。
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_61.png)
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_63.png)
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_37.png)
 
 ## 3. MOF提权详解 ⚙️
 
@@ -164,11 +125,9 @@ MySQL的密码密文通常为40位。如果看到的密文不足40位，可能�
 
 MOF提权的原理是利用了`C:/Windows/system32/wbem/mof/`目录下`nullevt.mof`文件的特性。该文件每分钟会被系统特定服务执行一次。通过MySQL的写文件权限，我们可以用包含恶意命令的MOF文件替换它，从而使系统自动执行我们的命令。
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_65.png)
 
 ### 3.2 MOF提权步骤
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_67.png)
 
 以下是MOF提权的具体步骤：
 
@@ -197,16 +156,12 @@ MOF提权的原理是利用了`C:/Windows/system32/wbem/mof/`目录下`nullevt.m
     ```
     **注意**：SQL语句中的括号和引号必须是英文符号，否则执行会失败。
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_70.png)
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_71.png)
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_56.png)
 
 5.  **等待执行**：由于MOF文件每分钟被系统执行一次，因此上传并替换后需要稍作等待。之后，可以查看是否成功添加了用户。
 6.  **提升用户权限**：如果需要，可以修改MOF文件中的命令，将已添加的用户提升至管理员组，然后重复上传和执行步骤。
 
-![](img/bfe451e12df5687b8ddfc1ad7324cb0a_61.png)
 
 7.  **登录验证**：最终，使用通过MOF提权创建的管理员账户登录服务器，验证提权成功。
 

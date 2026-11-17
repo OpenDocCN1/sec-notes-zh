@@ -1,18 +1,13 @@
 # 护网行动红蓝攻防教程：P29：Web安全-5.文件上传漏洞 🛡️
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_1.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_2.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_4.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_6.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_8.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_9.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_11.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_13.png)
 
@@ -33,13 +28,9 @@
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_27.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_29.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_31.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_33.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_34.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_36.png)
 
@@ -51,17 +42,13 @@
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_42.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_44.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_46.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_48.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_49.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_51.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_53.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_55.png)
 
@@ -96,7 +83,6 @@ WebShell是一种以ASP、PHP、JSP等网页文件形式存在的命令执行环
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_81.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_83.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_85.png)
 
@@ -114,7 +100,6 @@ WebShell是一种以ASP、PHP、JSP等网页文件形式存在的命令执行环
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_99.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_101.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_103.png)
 
@@ -133,13 +118,11 @@ WebShell是一种以ASP、PHP、JSP等网页文件形式存在的命令执行环
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_114.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_116.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_118.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_120.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_122.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_124.png)
 
@@ -159,44 +142,32 @@ WebShell是一种以ASP、PHP、JSP等网页文件形式存在的命令执行环
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_139.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_141.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_143.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_145.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_147.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_149.png)
 
 **后门**是指计算机与外界通信所开启的端口。计算机总共有65535个端口，每个端口提供不同的服务。攻击者通过利用这些服务获得服务器权限，并留下后门。常见的服务包括：
 *   **80端口**：提供Web服务。
 *   **3389端口**：提供远程桌面连接服务。
 *   **22端口**：提供SSH连接服务。
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_151.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_153.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_155.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_157.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_158.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_160.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_162.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_164.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_166.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_168.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_170.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_172.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_174.png)
 
@@ -204,17 +175,12 @@ WebShell是一种以ASP、PHP、JSP等网页文件形式存在的命令执行环
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_178.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_180.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_182.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_184.png)
 
 ---
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_186.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_188.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_190.png)
 
@@ -234,37 +200,27 @@ WebShell可以根据文件大小和脚本类型进行分类。
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_200.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_202.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_203.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_205.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_207.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_209.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_211.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_213.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_215.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_217.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_218.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_220.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_222.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_224.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_225.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_227.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_229.png)
 
 1.  **一句话木马**：代码简短，只有一行代码，使用方便。
     ```php
@@ -279,58 +235,38 @@ WebShell可以根据文件大小和脚本类型进行分类。
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_232.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_234.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_236.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_238.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_240.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_242.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_244.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_246.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_248.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_250.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_251.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_252.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_254.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_256.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_258.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_260.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_262.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_264.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_265.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_267.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_269.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_271.png)
 
 ### 根据脚本类型分类
 常见的脚本类型包括ASP、ASPX、JSP以及PHP。目前，许多网站和CMS都是基于PHP语言开发的。
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_273.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_275.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_277.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_279.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_281.png)
 
@@ -341,18 +277,14 @@ WebShell可以根据文件大小和脚本类型进行分类。
 ## WebShell的特点 ✨
 WebShell具有以下四个特点：
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_285.png)
 
 1.  **动态脚本形式**：WebShell通常由动态脚本语言编写。
 2.  **木马后门**：WebShell本身就是一种木马后门，通过它可以获取服务器权限并执行命令。
 3.  **穿越防火墙**：WebShell通常通过80端口进行数据传递，因此可以穿越服务器防火墙。
 4.  **日志记录**：WebShell一般不会在系统日志中留下记录，只会在Web日志中留下数据传递记录。
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_287.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_289.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_291.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_293.png)
 
@@ -364,13 +296,9 @@ WebShell具有以下四个特点：
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_298.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_300.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_302.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_304.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_306.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_308.png)
 
@@ -383,21 +311,15 @@ WebShell具有以下四个特点：
 ## WebShell的攻击流程 🔄
 利用WebShell进行攻击的基本流程如下：
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_316.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_318.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_320.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_322.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_324.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_326.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_328.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_330.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_332.png)
 
@@ -405,7 +327,6 @@ WebShell具有以下四个特点：
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_336.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_338.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_340.png)
 
@@ -424,9 +345,7 @@ WebShell具有以下四个特点：
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_350.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_352.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_354.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_356.png)
 
@@ -444,7 +363,6 @@ WebShell具有以下四个特点：
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_368.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_370.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_372.png)
 
@@ -464,44 +382,30 @@ WebShell具有以下四个特点：
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_384.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_386.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_388.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_390.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_392.png)
 
 ## 常见的WebShell示例 📝
 以下是几种常见的WebShell示例：
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_394.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_396.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_398.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_400.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_402.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_404.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_406.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_408.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_410.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_412.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_413.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_415.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_417.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_419.png)
 
 ### PHP一句话木马（GET方式）
 ```php
@@ -522,7 +426,6 @@ WebShell具有以下四个特点：
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_430.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_432.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_434.png)
 
@@ -538,19 +441,14 @@ WebShell具有以下四个特点：
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_446.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_448.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_450.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_451.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_453.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_455.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_456.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_458.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_460.png)
 
@@ -564,25 +462,18 @@ WebShell具有以下四个特点：
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_464.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_466.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_468.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_470.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_472.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_474.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_476.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_478.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_480.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_482.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_484.png)
 
 ### PHP一句话木马（Cookie方式）
 ```php
@@ -594,21 +485,14 @@ WebShell具有以下四个特点：
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_488.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_490.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_492.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_494.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_496.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_498.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_500.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_502.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_504.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_506.png)
 
@@ -625,7 +509,6 @@ WebShell具有以下四个特点：
 ## WebShell的基本原理 ⚙️
 WebShell的基本原理包括以下三点：
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_516.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_517.png)
 
@@ -641,17 +524,13 @@ WebShell的基本原理包括以下三点：
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_529.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_531.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_533.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_535.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_536.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_538.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_540.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_542.png)
 
@@ -663,7 +542,6 @@ WebShell的基本原理包括以下三点：
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_545.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_547.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_548.png)
 
@@ -679,15 +557,10 @@ WebShell的基本原理包括以下三点：
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_558.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_560.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_562.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_564.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_566.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_568.png)
 
 ### 执行传递数据的形式
 *   **直接执行PHP函数**：如`eval()`、`system()`。
@@ -705,15 +578,12 @@ WebShell的基本原理包括以下三点：
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_577.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_579.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_580.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_581.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_583.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_585.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_586.png)
 
@@ -733,7 +603,6 @@ WebShell的基本原理包括以下三点：
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_599.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_600.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_602.png)
 
@@ -741,9 +610,7 @@ WebShell的基本原理包括以下三点：
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_606.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_608.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_610.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_611.png)
 
@@ -761,9 +628,7 @@ WebShell的基本原理包括以下三点：
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_623.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_625.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_626.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_628.png)
 
@@ -784,19 +649,13 @@ fclose($file);
 *   `fwrite()`函数写入内容。
 *   `fclose()`函数关闭文件。
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_632.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_634.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_636.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_638.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_640.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_642.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_644.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_645.png)
 
@@ -804,7 +663,6 @@ fclose($file);
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_648.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_650.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_651.png)
 
@@ -812,21 +670,13 @@ fclose($file);
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_654.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_656.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_658.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_660.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_662.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_664.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_666.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_667.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_669.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_671.png)
 
@@ -841,23 +691,15 @@ fclose($file);
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_677.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_679.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_680.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_682.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_683.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_685.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_687.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_689.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_691.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_693.png)
 
 ---
 
@@ -869,19 +711,14 @@ fclose($file);
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_701.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_703.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_705.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_707.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_709.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_711.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_713.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_715.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_717.png)
 
@@ -891,16 +728,13 @@ fclose($file);
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_723.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_725.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_727.png)
 
 ## WebShell管理工具 🛠️
 常见的WebShell管理工具包括：
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_729.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_730.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_732.png)
 
@@ -914,13 +748,9 @@ fclose($file);
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_742.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_744.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_746.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_748.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_749.png)
 
 1.  **中国菜刀**：经典的WebShell管理工具，但已过时。
 2.  **C刀**：界面简洁，功能丰富，基于Java开发。
@@ -934,29 +764,20 @@ fclose($file);
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_754.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_756.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_758.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_760.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_762.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_763.png)
 
 ---
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_765.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_767.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_769.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_771.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_773.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_774.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_776.png)
 
@@ -969,27 +790,18 @@ fclose($file);
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_782.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_784.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_786.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_788.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_790.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_792.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_794.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_796.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_798.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_799.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_801.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_803.png)
 
 ---
 
@@ -1001,7 +813,6 @@ fclose($file);
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_810.png)
 
-![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_812.png)
 
 ![](img/4a71d6bd11fbd44fcb8d208aa4dd6d27_814.png)
 

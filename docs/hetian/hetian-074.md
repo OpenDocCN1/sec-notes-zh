@@ -8,11 +8,8 @@
 
 上一节我们介绍了课程概述，本节中我们来看看如何通过滥用配置不当的SUDO权限进行提权。
 
-![](img/9ace77d4de36a85d2790b661f100e5ee_1.png)
 
-![](img/9ace77d4de36a85d2790b661f100e5ee_3.png)
 
-![](img/9ace77d4de36a85d2790b661f100e5ee_5.png)
 
 SUDO是Linux系统的一个管理指令，它允许系统管理员让普通用户以root或其他用户的身份执行命令。其核心作用是实现权限的临时提升。
 
@@ -26,7 +23,6 @@ SUDO是Linux系统的一个管理指令，它允许系统管理员让普通用�
 *   SUDO的配置文件是`/etc/sudoers`，其文件权限为`0440`，只有root用户和root组有权读取。
 *   管理员在该文件中配置哪些用户或组能以何种方式使用`sudo`。
 
-![](img/9ace77d4de36a85d2790b661f100e5ee_7.png)
 
 ### 查看当前用户的SUDO权限
 
@@ -46,13 +42,10 @@ SUDO是Linux系统的一个管理指令，它允许系统管理员让普通用�
 2.  将列表中的命令与GTFOBins项目中的条目进行比对。
 3.  按照GTFOBins提供的利用方法执行命令，尝试获取root shell。
 
-![](img/9ace77d4de36a85d2790b661f100e5ee_9.png)
 
 以下是几个常见的命令利用示例：
 
-![](img/9ace77d4de36a85d2790b661f100e5ee_11.png)
 
-![](img/9ace77d4de36a85d2790b661f100e5ee_13.png)
 
 **1. 利用 `bash` 或 `sh` 提权**
 如果允许执行`sudo bash`或`sudo sh`，这是最直接的提权方式，会直接获得一个root shell。
@@ -62,7 +55,6 @@ sudo bash
 sudo sh
 ```
 
-![](img/9ace77d4de36a85d2790b661f100e5ee_15.png)
 
 **2. 利用 `awk` 提权**
 `awk`是一个强大的文本处理工具，也可以用来执行系统命令。
@@ -85,7 +77,6 @@ sudo curl file:///etc/shadow
 
 ![](img/9ace77d4de36a85d2790b661f100e5ee_19.png)
 
-![](img/9ace77d4de36a85d2790b661f100e5ee_21.png)
 
 **4. 利用 `find` 提权**
 `find`命令的`-exec`参数可以执行命令。
@@ -93,7 +84,6 @@ sudo curl file:///etc/shadow
 sudo find / -name test -exec /bin/bash \;
 ```
 
-![](img/9ace77d4de36a85d2790b661f100e5ee_23.png)
 
 ![](img/9ace77d4de36a85d2790b661f100e5ee_25.png)
 
@@ -158,27 +148,19 @@ find / -type f -perm -u=s 2>/dev/null
 
 ![](img/9ace77d4de36a85d2790b661f100e5ee_36.png)
 
-![](img/9ace77d4de36a85d2790b661f100e5ee_38.png)
 
 ---
 
-![](img/9ace77d4de36a85d2790b661f100e5ee_40.png)
 
-![](img/9ace77d4de36a85d2790b661f100e5ee_42.png)
 
 ## 第四部分：其他提权实例与思路 💡
 
-![](img/9ace77d4de36a85d2790b661f100e5ee_44.png)
 
-![](img/9ace77d4de36a85d2790b661f100e5ee_46.png)
 
 在实际渗透测试中，提权思路远不止以上几种。本节我们简要介绍其他一些常见的提权方向。
 
-![](img/9ace77d4de36a85d2790b661f100e5ee_48.png)
 
-![](img/9ace77d4de36a85d2790b661f100e5ee_50.png)
 
-![](img/9ace77d4de36a85d2790b661f100e5ee_52.png)
 
 *   **内核漏洞提权**：利用Linux内核本身的漏洞进行提权。需要查找系统版本对应的公开EXP。
 *   **敏感信息泄露**：在配置文件、历史命令、日志文件、数据库文件中寻找密码或密钥。
@@ -199,7 +181,6 @@ find / -type f -perm -u=s 2>/dev/null
 
 ## 总结 📝
 
-![](img/9ace77d4de36a85d2790b661f100e5ee_58.png)
 
 本节课中我们一起学习了Linux系统下几种关键的权限提升技术：
 1.  **SUDO权限滥用**：通过`sudo -l`查看可用命令，并利用GTFOBins等资源，将允许执行的命令转化为获取root shell的途径。
@@ -207,7 +188,6 @@ find / -type f -perm -u=s 2>/dev/null
 3.  **SUID权限提权**：查找具有SUID位的可执行文件，并利用其继承文件所有者权限的特性进行提权。
 4.  **其他提权思路**：包括利用内核漏洞、寻找敏感信息、攻击本地服务等多种方法。
 
-![](img/9ace77d4de36a85d2790b661f100e5ee_60.png)
 
 ![](img/9ace77d4de36a85d2790b661f100e5ee_61.png)
 

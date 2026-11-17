@@ -1,6 +1,5 @@
 #  069：080-遍历商店物品 🛒
 
-![](img/097bc689fb3ddafdb50b13e771a7cc7e_1.png)
 
 ![](img/097bc689fb3ddafdb50b13e771a7cc7e_3.png)
 

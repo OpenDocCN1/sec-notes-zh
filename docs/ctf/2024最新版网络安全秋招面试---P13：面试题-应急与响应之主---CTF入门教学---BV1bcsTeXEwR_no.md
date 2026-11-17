@@ -69,7 +69,6 @@
     *   **检查用户**：运行 `net user` 查看所有用户，并与注册表或本地用户管理工具中的列表对比。
     *   **删除用户**：确认后，运行 `net user test$ /delete` 将其删除。
 
-![](img/c07f9f11ef62eafcadc988ad0f3a62a9_8.png)
 
 ![](img/c07f9f11ef62eafcadc988ad0f3a62a9_10.png)
 

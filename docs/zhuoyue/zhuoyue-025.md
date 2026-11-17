@@ -1,22 +1,18 @@
 #  025：6.5 - 【Kali渗透系列】配置Kali的APT国内源 🛠️
 
-![](img/3e1acf1774eeb8768b115e79aced5e7e_0.png)
 
 在本节课中，我们将学习如何为Kali Linux配置APT软件包管理器的国内镜像源。配置国内源可以显著提升软件下载和更新的速度，是后续安装各类工具的基础。
 
 ## 概述
 
-![](img/3e1acf1774eeb8768b115e79aced5e7e_2.png)
 
 安装Kali Linux时，若未选择使用镜像源，系统将无法通过APT命令安装任何软件。因为APT安装软件的功能依赖于从“源”服务器下载软件包。为了后续安装和更新软件包的便利与速度，我们将手动配置一个稳定且快速的国内镜像源。
 
-![](img/3e1acf1774eeb8768b115e79aced5e7e_4.png)
 
 ---
 
 ## 配置APT国内源
 
-![](img/3e1acf1774eeb8768b115e79aced5e7e_6.png)
 
 上一节我们完成了VMware Tools的安装，本节中我们来看看如何配置APT的国内源。
 
@@ -24,7 +20,6 @@
 
 在终端中，我们将编辑APT的源列表文件。该文件位于 `/etc/apt/sources.list`。使用以下命令打开它：
 
-![](img/3e1acf1774eeb8768b115e79aced5e7e_8.png)
 
 ```bash
 sudo vim /etc/apt/sources.list
@@ -41,7 +36,6 @@ deb-src https://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib
 
 在Vim编辑器中，按下 `i` 键进入插入模式，然后将上述两行内容粘贴到文件末尾。在Kali终端中，可以使用鼠标滚轮键进行粘贴。完成后，按下 `ESC` 键退出插入模式，输入 `:wq` 保存并退出文件。
 
-![](img/3e1acf1774eeb8768b115e79aced5e7e_10.png)
 
 **扩展知识：**
 *   `deb` 代表软件包的位置。
@@ -51,7 +45,6 @@ deb-src https://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib
 
 ## 验证源配置
 
-![](img/3e1acf1774eeb8768b115e79aced5e7e_12.png)
 
 源配置完成后，我们需要验证它是否生效。
 
@@ -79,21 +72,17 @@ sudo apt update
 
 ---
 
-![](img/3e1acf1774eeb8768b115e79aced5e7e_14.png)
 
 ## APT更新命令详解
 
-![](img/3e1acf1774eeb8768b115e79aced5e7e_16.png)
 
 在执行 `apt update` 后，你可能会想知道如何进行真正的更新。以下是几个关键命令的区别：
 
-![](img/3e1acf1774eeb8768b115e79aced5e7e_18.png)
 
 *   **`apt update`**: 从 `/etc/apt/sources.list` 中定义的源服务器获取最新的软件包列表。它只“检查”更新，而不进行任何安装。
 *   **`apt upgrade`**: 根据 `apt update` 获取的列表，升级所有已安装的软件包到最新版本。**它不会安装新包或删除旧包。**
 *   **`apt dist-upgrade`**: 功能更强大的升级命令。除了执行 `upgrade` 的功能外，它还会智能地处理依赖关系的变化，**可能会安装新包或删除旧包**，以完成系统升级。
 
-![](img/3e1acf1774eeb8768b115e79aced5e7e_20.png)
 
 **关于 `InRelease` 文件**：在执行 `apt update` 时，你会看到它下载了一个 `InRelease` 文件。这个文件包含了软件源的元数据（如软件包列表的哈希值），用于验证下载内容的完整性和真实性。
 

@@ -25,7 +25,6 @@ docker run -it --name ctf_pwn -v /d/pwn/docker:/ctfwork -p 23946:23946 --privile
 
 在命令行中执行此命令后，Docker会自动下载（如果本地没有）并启动该镜像，创建一个可用的Pwn环境容器。
 
-![](img/728fe8a6ee8cfc8217363606cca71e6c_1.png)
 
 ## 进入容器与验证环境
 
@@ -41,15 +40,12 @@ docker exec -it 05 /bin/bash
 
 ## 开始调试程序
 
-![](img/728fe8a6ee8cfc8217363606cca71e6c_1.png)
 
 现在，我们可以在Windows主机的映射目录（`D:\pwn\docker`）中放置需要分析或攻击的二进制程序文件。
 
-![](img/728fe8a6ee8cfc8217363606cca71e6c_3.png)
 
 文件放入主机目录后，在Docker容器的`/ctfwork`目录下会立即看到相同的文件。这是因为两个目录通过`-v`参数实现了同步。
 
-![](img/728fe8a6ee8cfc8217363606cca71e6c_3.png)
 
 接下来，就可以使用容器内预装好的工具进行调试了。例如，使用`gdb`启动调试：
 
@@ -59,11 +55,8 @@ gdb ./your_pwn_challenge
 
 容器环境已经集成了`pwntools`、`gdb`及其增强插件（如`peda`），可以直接使用，无需额外安装。
 
-![](img/728fe8a6ee8cfc8217363606cca71e6c_5.png)
 
-![](img/728fe8a6ee8cfc8217363606cca71e6c_5.png)
 
-![](img/728fe8a6ee8cfc8217363606cca71e6c_7.png)
 
 ## 总结
 

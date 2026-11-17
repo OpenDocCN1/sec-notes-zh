@@ -6,11 +6,9 @@
 
 ## `__get`魔术方法
 
-![](img/3d7f2a82add13d3f4f644270116cf0be_1.png)
 
 `__get`方法在程序试图**获取**一个类的私有或受保护的成员属性时被自动调用。它的作用是提供一个接口，让我们能够在类外部安全地读取私有属性的值。
 
-![](img/3d7f2a82add13d3f4f644270116cf0be_2.png)
 
 以下是`__get`方法的核心概念：
 *   **触发条件**：在对象外部访问一个**不可访问的属性**（如`private`或`protected`属性）时。
@@ -39,14 +37,11 @@ echo $a->name; // 这里会报错：Cannot access private property Person::$name
 
 为了解决上述错误，我们可以在类中定义`__get`方法。
 
-![](img/3d7f2a82add13d3f4f644270116cf0be_4.png)
 
 以下是使用`__get`方法修正后的代码示例：
 
-![](img/3d7f2a82add13d3f4f644270116cf0be_6.png)
 
 
-![](img/3d7f2a82add13d3f4f644270116cf0be_7.png)
 
 ```php
 <?php
@@ -78,7 +73,6 @@ echo $a->age;  // 输出：60
 
 ## `__set`魔术方法
 
-![](img/3d7f2a82add13d3f4f644270116cf0be_9.png)
 
 接下来我们看看`__set`方法。它与`__get`相对应，在程序试图**设置**一个类的私有或受保护的成员属性时被自动调用。
 
@@ -89,9 +83,7 @@ echo $a->age;  // 输出：60
     *   `$property_name`：试图设置的属性名。
     *   `$value`：试图赋给该属性的值。
 
-![](img/3d7f2a82add13d3f4f644270116cf0be_11.png)
 
-![](img/3d7f2a82add13d3f4f644270116cf0be_12.png)
 
 同样，我们先看一个没有`__set`方法时会报错的例子：
 
@@ -114,13 +106,10 @@ echo $person->name;
 ?>
 ```
 
-![](img/3d7f2a82add13d3f4f644270116cf0be_14.png)
 
 为了避免上述错误，我们可以定义`__set`方法来处理对私有属性的赋值操作。
 
-![](img/3d7f2a82add13d3f4f644270116cf0be_16.png)
 
-![](img/3d7f2a82add13d3f4f644270116cf0be_17.png)
 
 以下是使用`__set`方法修正后的代码示例：
 
@@ -152,13 +141,10 @@ echo "我叫" . $person->name . "，今年" . $person->age . "岁了。";
 ```
 通过`__set`方法，我们可以拦截并自定义对私有属性的赋值行为。
 
-![](img/3d7f2a82add13d3f4f644270116cf0be_19.png)
 
-![](img/3d7f2a82add13d3f4f644270116cf0be_20.png)
 
 ---
 
-![](img/3d7f2a82add13d3f4f644270116cf0be_21.png)
 
 ![](img/3d7f2a82add13d3f4f644270116cf0be_22.png)
 

@@ -1,10 +1,8 @@
 #  161：在 C/C++ 中获取 Lua 函数返回值 📥
 
-![](img/4bccc80ed190dda61de46ed7f90f8716_0.png)
 
 在本节课中，我们将学习如何在 C/C++ 程序中调用 Lua 函数并获取其返回值。我们将重点理解 `lua_pcall` 函数的调用规范、参数与返回值的压栈顺序，并通过一个完整的代码示例来实践。
 
-![](img/4bccc80ed190dda61de46ed7f90f8716_2.png)
 
 ---
 
@@ -12,15 +10,12 @@
 
 上一节我们介绍了 Lua 虚拟栈的基本操作。本节中我们来看看如何通过 C 代码调用 Lua 函数。
 
-![](img/4bccc80ed190dda61de46ed7f90f8716_4.png)
 
 ![](img/4bccc80ed190dda61de46ed7f90f8716_6.png)
 
 要正确调用 Lua 函数并获取其返回值，必须遵循特定的栈操作协议。核心是通过 `lua_pcall` 函数进行调用。
 
-![](img/4bccc80ed190dda61de46ed7f90f8716_8.png)
 
-![](img/4bccc80ed190dda61de46ed7f90f8716_9.png)
 
 以下是调用前必须完成的栈准备工作：
 1.  将要调用的函数压入栈顶。
@@ -49,16 +44,12 @@
 
 ### 1. 定义并注册 C 函数
 
-![](img/4bccc80ed190dda61de46ed7f90f8716_11.png)
 
 我们定义一个名为 `add_number` 的 C 函数，它接收多个整数参数，计算它们的累加和，并将结果返回。
 
-![](img/4bccc80ed190dda61de46ed7f90f8716_13.png)
 
 
-![](img/4bccc80ed190dda61de46ed7f90f8716_15.png)
 
-![](img/4bccc80ed190dda61de46ed7f90f8716_17.png)
 
 ```c
 // 定义给Lua调用的C函数
@@ -81,19 +72,15 @@ int main() {
 }
 ```
 
-![](img/4bccc80ed190dda61de46ed7f90f8716_19.png)
 
 ### 2. 从 C 端调用 Lua 函数
 
-![](img/4bccc80ed190dda61de46ed7f90f8716_21.png)
 
 注册函数后，我们需要在 C 代码中主动调用它。这需要使用 `lua_pcall` 函数。
 
 以下是调用 `add_number` 并传入 8 个参数的完整步骤：
 
-![](img/4bccc80ed190dda61de46ed7f90f8716_23.png)
 
-![](img/4bccc80ed190dda61de46ed7f90f8716_25.png)
 
 ```c
 // 1. 将需要调用的函数（add_number）压入栈顶
@@ -126,17 +113,13 @@ lua_pop(L, 1);
 *   **参数个数必须与实际压栈的参数个数严格一致**，否则会导致调用错误或结果异常。
 *   **期望的返回值个数必须与C函数实际返回的个数一致**，否则无法正确获取到所有返回值。
 
-![](img/4bccc80ed190dda61de46ed7f90f8716_27.png)
 
-![](img/4bccc80ed190dda61de46ed7f90f8716_29.png)
 
 ### 3. 处理多个返回值
 
 Lua 函数可以返回多个值。如果我们的 C 函数返回多个值，并在 `lua_pcall` 中声明了相应的数量，就可以依次从栈中取出。
 
-![](img/4bccc80ed190dda61de46ed7f90f8716_31.png)
 
-![](img/4bccc80ed190dda61de46ed7f90f8716_33.png)
 
 假设 `add_number` 函数修改为返回三个值（和、平均值、参数个数）：
 ```c
@@ -154,15 +137,11 @@ static int add_number(lua_State *L) {
 ```
 调用时，我们需要相应地修改 `lua_pcall` 并获取所有返回值：
 
-![](img/4bccc80ed190dda61de46ed7f90f8716_35.png)
-
-![](img/4bccc80ed190dda61de46ed7f90f8716_37.png)
 
 
-![](img/4bccc80ed190dda61de46ed7f90f8716_39.png)
 
 
-![](img/4bccc80ed190dda61de46ed7f90f8716_41.png)
+
 
 ```c
 // 调用函数，期望3个返回值
@@ -177,19 +156,15 @@ printf("和:%d, 平均值:%.2f, 参数个数:%d\n", sum, avg, count);
 lua_pop(L, 3);
 ```
 
-![](img/4bccc80ed190dda61de46ed7f90f8716_43.png)
 
 ---
 
 ## 总结
 
-![](img/4bccc80ed190dda61de46ed7f90f8716_45.png)
 
 本节课中我们一起学习了在 C/C++ 中与 Lua 交互的核心操作——调用 Lua 函数并获取返回值。
 
-![](img/4bccc80ed190dda61de46ed7f90f8716_47.png)
 
-![](img/4bccc80ed190dda61de46ed7f90f8716_49.png)
 
 我们掌握了以下关键知识：
 1.  **调用规范**：使用 `lua_pcall` 前，必须先将函数和其参数按规则压入虚拟栈。

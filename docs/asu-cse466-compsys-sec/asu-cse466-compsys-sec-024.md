@@ -111,7 +111,6 @@ mov %gs:0x15d00, %r12
 
 ![](img/5d9b76248f2301bede9017dd45de7875_46.png)
 
-![](img/5d9b76248f2301bede9017dd45de7875_47.png)
 
 ![](img/5d9b76248f2301bede9017dd45de7875_49.png)
 
@@ -129,7 +128,6 @@ mov %gs:0x15d00, %r12
 
 ## 挑战升级：Level 12
 
-![](img/5d9b76248f2301bede9017dd45de7875_61.png)
 
 ![](img/5d9b76248f2301bede9017dd45de7875_63.png)
 

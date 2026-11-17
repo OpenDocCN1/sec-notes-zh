@@ -1,6 +1,5 @@
 # 011：欢迎来到第二周
 
-![](img/7abe434fde1fac11cf45a2460e863560_0.png)
 
 ![](img/7abe434fde1fac11cf45a2460e863560_0.png)
 
@@ -18,7 +17,6 @@
 
 
 
-![](img/7abe434fde1fac11cf45a2460e863560_2.png)
 
 ![](img/7abe434fde1fac11cf45a2460e863560_2.png)
 
@@ -26,6 +24,5 @@
 
 
 
-![](img/7abe434fde1fac11cf45a2460e863560_4.png)
 
 ![](img/7abe434fde1fac11cf45a2460e863560_4.png)

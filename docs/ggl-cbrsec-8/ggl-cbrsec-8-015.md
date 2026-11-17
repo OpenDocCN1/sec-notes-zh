@@ -1,6 +1,5 @@
 # 015：清晰简明的沟通
 
-![](img/3d3c6863c0ddbed18d56bf20ca1b450a_0.png)
 
 ![](img/3d3c6863c0ddbed18d56bf20ca1b450a_0.png)
 
@@ -24,7 +23,6 @@
 
 拥有安全思维模式还意味着理解对利益相关者而言最重要的事情，这样你才知道应该与他们分享哪些信息。
 
-![](img/3d3c6863c0ddbed18d56bf20ca1b450a_2.png)
 
 ![](img/3d3c6863c0ddbed18d56bf20ca1b450a_2.png)
 

@@ -1,20 +1,15 @@
 # 033：编写更长的Shellcode
 
-![](img/f602e9db58fcc5b0cdf2a98fcd64f1fb_0.png)
 
 在本节课中，我们将要学习当攻击者想要执行的Shellcode长度超过目标缓冲区容量时，如何调整攻击策略。我们将探讨如何利用`gets`函数的特性，将较长的Shellcode放置在栈上的不同位置，并成功劫持程序控制流。
 
 ## 问题引入：缓冲区空间不足
 
-![](img/f602e9db58fcc5b0cdf2a98fcd64f1fb_2.png)
 
-![](img/f602e9db58fcc5b0cdf2a98fcd64f1fb_3.png)
 
-![](img/f602e9db58fcc5b0cdf2a98fcd64f1fb_4.png)
 
 上一节我们介绍了如何利用短小的Shellcode覆盖返回地址。本节中我们来看看当Shellcode过长时会发生什么。
 
-![](img/f602e9db58fcc5b0cdf2a98fcd64f1fb_6.png)
 
 假设攻击者编写了一段Shellcode，编译成x86机器码后，其长度为28字节。然而，目标程序中的`name`字符数组仅能容纳20字节。
 
@@ -24,9 +19,7 @@ char name[20];
 
 紧接着`name`数组的是4字节的保存帧指针。这意味着，从`name`数组起始位置到返回地址之间，总共只有24字节的连续可覆盖空间。这不足以容纳28字节的Shellcode。
 
-![](img/f602e9db58fcc5b0cdf2a98fcd64f1fb_8.png)
 
-![](img/f602e9db58fcc5b0cdf2a98fcd64f1fb_9.png)
 
 ## 思考解决方案
 
@@ -38,18 +31,14 @@ char name[20];
 
 经过思考，我们可以得出解决方案：既然Shellcode无法放入返回地址之前的空间，我们可以将它放在返回地址之后。
 
-![](img/f602e9db58fcc5b0cdf2a98fcd64f1fb_11.png)
 
 具体的攻击载荷结构如下：
 1.  首先，用24字节的任意数据填充`name`数组和SFP。
 2.  接着，在返回地址的位置，写入一个特定的内存地址。
 3.  最后，在这个地址之后，写入我们28字节的Shellcode。
 
-![](img/f602e9db58fcc5b0cdf2a98fcd64f1fb_12.png)
 
-![](img/f602e9db58fcc5b0cdf2a98fcd64f1fb_13.png)
 
-![](img/f602e9db58fcc5b0cdf2a98fcd64f1fb_14.png)
 
 ![](img/f602e9db58fcc5b0cdf2a98fcd64f1fb_15.png)
 

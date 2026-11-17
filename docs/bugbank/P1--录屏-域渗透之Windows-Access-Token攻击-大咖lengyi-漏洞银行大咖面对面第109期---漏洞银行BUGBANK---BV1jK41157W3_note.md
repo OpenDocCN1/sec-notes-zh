@@ -28,9 +28,7 @@ Windows Access Token（访问令牌）是描述进程或线程安全上下文的
 
 ![](img/b0765939d3cad08f4a1f85f22c528b18_7.png)
 
-![](img/b0765939d3cad08f4a1f85f22c528b18_9.png)
 
-![](img/b0765939d3cad08f4a1f85f22c528b18_10.png)
 
 ![](img/b0765939d3cad08f4a1f85f22c528b18_11.png)
 
@@ -40,17 +38,14 @@ Windows Access Token（访问令牌）是描述进程或线程安全上下文的
 
 ![](img/b0765939d3cad08f4a1f85f22c528b18_14.png)
 
-![](img/b0765939d3cad08f4a1f85f22c528b18_16.png)
 
 ![](img/b0765939d3cad08f4a1f85f22c528b18_17.png)
 
 ![](img/b0765939d3cad08f4a1f85f22c528b18_18.png)
 
-![](img/b0765939d3cad08f4a1f85f22c528b18_20.png)
 
 上一节我们介绍了访问令牌的基础概念，本节中我们来看看如何在渗透测试中利用令牌模拟进行攻击。只要能够模拟高权限进程的令牌，就能获得对应的系统权限。
 
-![](img/b0765939d3cad08f4a1f85f22c528b18_22.png)
 
 ![](img/b0765939d3cad08f4a1f85f22c528b18_24.png)
 
@@ -100,7 +95,6 @@ Metasploit Framework（MSF）同样内置了令牌窃取模块。操作步骤如
 
 ![](img/b0765939d3cad08f4a1f85f22c528b18_45.png)
 
-![](img/b0765939d3cad08f4a1f85f22c528b18_46.png)
 
 ### 使用PowerShell脚本进行令牌窃取
 
@@ -115,7 +109,6 @@ PowerShell脚本也提供了令牌枚举和模拟的功能。以下是基本操�
 2.  使用脚本枚举系统所有令牌及其类型。
 3.  脚本通常提供两种模拟方式：一是使用用户令牌创建新进程，二是利用现有进程令牌启动新进程。
 
-![](img/b0765939d3cad08f4a1f85f22c528b18_54.png)
 
 ![](img/b0765939d3cad08f4a1f85f22c528b18_56.png)
 
@@ -131,7 +124,6 @@ PowerShell脚本也提供了令牌枚举和模拟的功能。以下是基本操�
 
 ![](img/b0765939d3cad08f4a1f85f22c528b18_64.png)
 
-![](img/b0765939d3cad08f4a1f85f22c528b18_66.png)
 
 ![](img/b0765939d3cad08f4a1f85f22c528b18_67.png)
 
@@ -143,7 +135,6 @@ PowerShell脚本也提供了令牌枚举和模拟的功能。以下是基本操�
 
 ![](img/b0765939d3cad08f4a1f85f22c528b18_69.png)
 
-![](img/b0765939d3cad08f4a1f85f22c528b18_71.png)
 
 关键API函数调用示例（C++）：
 ```cpp
@@ -163,11 +154,9 @@ CreateProcessWithTokenW(hDupToken, LOGON_WITH_PROFILE, L"C:\\Windows\\System32\\
 
 ## 利用Access Token绕过UAC ⚡
 
-![](img/b0765939d3cad08f4a1f85f22c528b18_75.png)
 
 最后，我们简要了解如何利用Access Token技术绕过用户账户控制（UAC）。其核心思想是滥用令牌，以较高完整性级别启动进程，而无需触发UAC提示。
 
-![](img/b0765939d3cad08f4a1f85f22c528b18_77.png)
 
 已有安全研究人员编写了现成的利用脚本（如`.ps1`或`.exe`文件），通过滥用令牌来静默提升权限，实现UAC绕过。对此技术细节感兴趣的学员可以查阅“Token滥用”相关的技术文章进行深入研究。
 

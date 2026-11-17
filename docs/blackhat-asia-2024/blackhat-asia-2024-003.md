@@ -2,41 +2,29 @@
 
 在本课程中，我们将学习Android生态系统中一个深藏的攻击面——Netlink内核模块。我们将从Netlink的基本概念入手，分析其攻击面，探讨真实世界中的漏洞场景，并了解验证和利用这些漏洞的方法，最后为厂商提供安全建议。
 
-![](img/393cae1ed1005bc88ae3ed06f2ad1609_1.png)
 
 ## 01：演讲者介绍
 
 我们来自百度AOT安全团队。
 
-![](img/393cae1ed1005bc88ae3ed06f2ad1609_3.png)
 
-![](img/393cae1ed1005bc88ae3ed06f2ad1609_4.png)
 
-![](img/393cae1ed1005bc88ae3ed06f2ad1609_5.png)
 
-![](img/393cae1ed1005bc88ae3ed06f2ad1609_6.png)
 
 *   **Cha**：专注于Android和Linux漏洞挖掘与利用，在过去八个月中发现了超过100个漏洞，涉及Linux内核、Co、Medium Tech等领域。
 *   **Han Yan**：对IT和平台安全更感兴趣，曾是BlackHat USA的演讲者。
 *   **Tim Sha**：我们的团队负责人，专注于系统和软件安全解决方案，曾是Pwn2Own和HITB的演讲者。
 
-![](img/393cae1ed1005bc88ae3ed06f2ad1609_8.png)
 
-![](img/393cae1ed1005bc88ae3ed06f2ad1609_9.png)
 
 ## 02：Netlink概念介绍
 
-![](img/393cae1ed1005bc88ae3ed06f2ad1609_11.png)
 
-![](img/393cae1ed1005bc88ae3ed06f2ad1609_12.png)
 
-![](img/393cae1ed1005bc88ae3ed06f2ad1609_13.png)
 
-![](img/393cae1ed1005bc88ae3ed06f2ad1609_14.png)
 
 上一节我们介绍了演讲者，本节中我们来看看什么是Netlink。
 
-![](img/393cae1ed1005bc88ae3ed06f2ad1609_16.png)
 
 Netlink常被描述为ioctl的替代品，主要用于内核与用户空间进程之间的双向通信。用户空间进程之间的通信也适用。
 
@@ -65,7 +53,6 @@ Netlink具有一些不同于ioctl的特性，例如全双工、异步和组播�
 *   `doit`函数用于解析从用户空间接收到的属性，它接收`sk_buff`和`genl_info`作为输入参数，`info`包含用户有效载荷或属性。
 *   内核通过`genlmsg_unicast`等函数向用户空间发送Netlink属性。
 
-![](img/393cae1ed1005bc88ae3ed06f2ad1609_18.png)
 
 ## 03：Netlink攻击面深度分析
 
@@ -77,7 +64,6 @@ Netlink具有一些不同于ioctl的特性，例如全双工、异步和组播�
 
 一个经典Netlink传输消息可能由多个Netlink消息组成。每个消息包含Netlink消息头、有效载荷及其填充。头部大小和有效载荷大小应为4字节对齐。`nlmsghdr`结构包含五个字段：消息长度、类型、标志、序列号和进程端口ID。消息长度是一个Netlink消息的总大小。端口ID通常设置为进程ID。
 
-![](img/393cae1ed1005bc88ae3ed06f2ad1609_20.png)
 
 经典Netlink传输消息通过`sendto`或`sendmsg`函数从用户空间发送到内核空间。`sk_buff`将包含传输消息，它是`input`函数的输入参数，该函数由`netlink_kernel_create`注册。我们可以从`skb->data`获取传输消息。
 
@@ -102,11 +88,9 @@ Netlink具有一些不同于ioctl的特性，例如全双工、异步和组播�
 
 通用传输消息同样通过`sendto`或`sendmsg`函数从用户空间发送到内核空间。`sk_buff`将包含传输消息，它是`doit`函数的输入参数，该函数由家族注册函数注册。我们可以从`info->attrs`字段获取传输消息。
 
-![](img/393cae1ed1005bc88ae3ed06f2ad1609_22.png)
 
 同样的问题是，Linux内核Netlink子系统对属性做了哪些检查？
 
-![](img/393cae1ed1005bc88ae3ed06f2ad1609_23.png)
 
 答案是：**通过NLA策略进行检查**。NLA策略，即Netlink属性策略，在`genl_family`结构或`genl_ops`结构中注册。`genl_ops`的策略优先于`genl_family`的策略。
 
@@ -127,9 +111,7 @@ Netlink具有一些不同于ioctl的特性，例如全双工、异步和组播�
 
 从前面的分析我们可以得出结论，经典和通用Netlink都存在一些可能的安全威胁。现在让我们看看现实世界中的一些典型Netlink漏洞场景。
 
-![](img/393cae1ed1005bc88ae3ed06f2ad1609_25.png)
 
-![](img/393cae1ed1005bc88ae3ed06f2ad1609_26.png)
 
 基于攻击面，我们调查了四家知名厂商的Netlink相关代码，发现了38个漏洞并获得了19个CVE。所有漏洞都已被厂商修复。
 
@@ -186,11 +168,8 @@ KSMD是一个Linux内核服务，用于实现共享文件的网络内部空间�
 
 首先是验证。当我们想要触发风险条件时，经常会遇到源端口占用问题。解决方案很简单：在多进程中使用进程ID作为端口，或者在多线程中尝试一个可用的端口进行绑定。
 
-![](img/393cae1ed1005bc88ae3ed06f2ad1609_28.png)
 
-![](img/393cae1ed1005bc88ae3ed06f2ad1609_29.png)
 
-![](img/393cae1ed1005bc88ae3ed06f2ad1609_30.png)
 
 经典Netlink的POC模板如下所示。我们需要自己填充消息头和有效载荷。
 
@@ -215,7 +194,6 @@ KSMD是一个Linux内核服务，用于实现共享文件的网络内部空间�
 1.  尽量使用通用Netlink进行自定义，而不是经典Netlink。
 2.  在使用Netlink机制之前，先理解它们。
 
-![](img/393cae1ed1005bc88ae3ed06f2ad1609_32.png)
 
 ![](img/393cae1ed1005bc88ae3ed06f2ad1609_33.png)
 

@@ -14,7 +14,6 @@
 
 在本节课中，我们将要学习Windows系统下的密码哈希基础知识，并掌握多种获取系统用户密码凭证的方法。课程内容分为三个主要部分：Windows哈希简介、系统用户密码凭证获取以及其他凭证获取技术。
 
-![](img/09e6f201f3da6752ebe72cf955866539_11.png)
 
 ![](img/09e6f201f3da6752ebe72cf955866539_13.png)
 
@@ -42,15 +41,12 @@ Windows系统主要使用两种哈希处理方法：
 
 ![](img/09e6f201f3da6752ebe72cf955866539_23.png)
 
-![](img/09e6f201f3da6752ebe72cf955866539_25.png)
 
-![](img/09e6f201f3da6752ebe72cf955866539_27.png)
 
 **核心公式/概念：**
 *   `LM_Hash = Encrypt_LM(明文密码)`
 *   `NTLM_Hash = Encrypt_NTLM(明文密码)`
 
-![](img/09e6f201f3da6752ebe72cf955866539_29.png)
 
 在存储时，Windows密码哈希通常由两部分组成，格式为：
 `用户名:RID:LM哈希:NTLM哈希:::`
@@ -75,11 +71,9 @@ Windows系统主要使用两种哈希处理方法：
 
 ![](img/09e6f201f3da6752ebe72cf955866539_43.png)
 
-![](img/09e6f201f3da6752ebe72cf955866539_45.png)
 
 ![](img/09e6f201f3da6752ebe72cf955866539_47.png)
 
-![](img/09e6f201f3da6752ebe72cf955866539_48.png)
 
 Windows系统主要有三种认证方式：
 1.  **本地认证**：用户直接登录到计算机本地账户。
@@ -110,11 +104,8 @@ Windows系统主要有三种认证方式：
 
 ![](img/09e6f201f3da6752ebe72cf955866539_60.png)
 
-![](img/09e6f201f3da6752ebe72cf955866539_62.png)
 
-![](img/09e6f201f3da6752ebe72cf955866539_64.png)
 
-![](img/09e6f201f3da6752ebe72cf955866539_66.png)
 
 SAM数据库文件路径：`C:\Windows\System32\config\SAM`
 负责处理密码的进程：`lsass.exe`
@@ -136,7 +127,6 @@ password = "admin123"
 print(ntlm_hash(password)) # 输出NTLM哈希值
 ```
 
-![](img/09e6f201f3da6752ebe72cf955866539_76.png)
 
 ---
 
@@ -160,7 +150,6 @@ print(ntlm_hash(password)) # 输出NTLM哈希值
 
 ![](img/09e6f201f3da6752ebe72cf955866539_91.png)
 
-![](img/09e6f201f3da6752ebe72cf955866539_92.png)
 
 ![](img/09e6f201f3da6752ebe72cf955866539_93.png)
 
@@ -168,26 +157,21 @@ print(ntlm_hash(password)) # 输出NTLM哈希值
 
 以下是获取系统用户密码凭证的十种方法：
 
-![](img/09e6f201f3da6752ebe72cf955866539_97.png)
 
 ![](img/09e6f201f3da6752ebe72cf955866539_99.png)
 
-![](img/09e6f201f3da6752ebe72cf955866539_101.png)
 
 1.  **Mimikatz工具**
     Mimikatz是一款功能强大的凭证提取工具。它可以直接从`lsass.exe`进程内存中提取明文密码和哈希值。
     *   **非交互式获取哈希**：`mimikatz.exe "privilege::debug" "token::elevate" "lsadump::sam" exit`
     *   **非交互式获取明文密码**：`mimikatz.exe "privilege::debug" "sekurlsa::logonpasswords" exit`
 
-![](img/09e6f201f3da6752ebe72cf955866539_103.png)
 
 ![](img/09e6f201f3da6752ebe72cf955866539_105.png)
 
 ![](img/09e6f201f3da6752ebe72cf955866539_107.png)
 
-![](img/09e6f201f3da6752ebe72cf955866539_109.png)
 
-![](img/09e6f201f3da6752ebe72cf955866539_110.png)
 
 2.  **PowerShell脚本加载Mimikatz**
     通过PowerShell远程或本地加载Mimikatz的PS1脚本执行。
@@ -215,7 +199,6 @@ print(ntlm_hash(password)) # 输出NTLM哈希值
 
 ![](img/09e6f201f3da6752ebe72cf955866539_117.png)
 
-![](img/09e6f201f3da6752ebe72cf955866539_119.png)
 
 5.  **Pwdump系列工具**
     例如Pwdump7，运行后自动导出哈希到文件。
@@ -287,7 +270,6 @@ print(ntlm_hash(password)) # 输出NTLM哈希值
 
 ![](img/09e6f201f3da6752ebe72cf955866539_153.png)
 
-![](img/09e6f201f3da6752ebe72cf955866539_155.png)
 
 10. **Cobalt Strike 内置命令**
     在Cobalt Strike的Beacon会话中，可以直接执行命令获取哈希或调用Mimikatz。
@@ -303,7 +285,6 @@ print(ntlm_hash(password)) # 输出NTLM哈希值
 
 ![](img/09e6f201f3da6752ebe72cf955866539_161.png)
 
-![](img/09e6f201f3da6752ebe72cf955866539_163.png)
 
 ![](img/09e6f201f3da6752ebe72cf955866539_165.png)
 
@@ -323,13 +304,11 @@ print(ntlm_hash(password)) # 输出NTLM哈希值
 
 ![](img/09e6f201f3da6752ebe72cf955866539_175.png)
 
-![](img/09e6f201f3da6752ebe72cf955866539_177.png)
 
 ![](img/09e6f201f3da6752ebe72cf955866539_178.png)
 
 ![](img/09e6f201f3da6752ebe72cf955866539_180.png)
 
-![](img/09e6f201f3da6752ebe72cf955866539_182.png)
 
 ![](img/09e6f201f3da6752ebe72cf955866539_184.png)
 
@@ -359,11 +338,8 @@ print(ntlm_hash(password)) # 输出NTLM哈希值
 
 ## 第三部分：其他凭证获取技术
 
-![](img/09e6f201f3da6752ebe72cf955866539_204.png)
 
-![](img/09e6f201f3da6752ebe72cf955866539_206.png)
 
-![](img/09e6f201f3da6752ebe72cf955866539_207.png)
 
 ![](img/09e6f201f3da6752ebe72cf955866539_209.png)
 
@@ -381,15 +357,11 @@ print(ntlm_hash(password)) # 输出NTLM哈希值
 
 ### 1. RDP连接记录与密码解密
 
-![](img/09e6f201f3da6752ebe72cf955866539_220.png)
 
 远程桌面（RDP）连接历史记录中可能保存着通往其他内网机器的凭据。
 
-![](img/09e6f201f3da6752ebe72cf955866539_222.png)
 
-![](img/09e6f201f3da6752ebe72cf955866539_224.png)
 
-![](img/09e6f201f3da6752ebe72cf955866539_226.png)
 
 **获取RDP连接记录：**
 可以使用PowerShell脚本获取。
@@ -403,7 +375,6 @@ reg query "HKEY_CURRENT_USER\Software\Microsoft\Terminal Server Client\Servers" 
 
 ![](img/09e6f201f3da6752ebe72cf955866539_228.png)
 
-![](img/09e6f201f3da6752ebe72cf955866539_230.png)
 
 ![](img/09e6f201f3da6752ebe72cf955866539_232.png)
 
@@ -413,17 +384,13 @@ reg query "HKEY_CURRENT_USER\Software\Microsoft\Terminal Server Client\Servers" 
 
 ![](img/09e6f201f3da6752ebe72cf955866539_238.png)
 
-![](img/09e6f201f3da6752ebe72cf955866539_240.png)
 
-![](img/09e6f201f3da6752ebe72cf955866539_242.png)
 
 **解密保存的RDP密码：**
 如果用户在连接时勾选了“保存凭据”，密码会加密存储在以下位置：
 `%USERPROFILE%\AppData\Local\Microsoft\Credentials\` 或 `%USERPROFILE%\AppData\Roaming\Microsoft\Credentials\`
 
-![](img/09e6f201f3da6752ebe72cf955866539_244.png)
 
-![](img/09e6f201f3da6752ebe72cf955866539_246.png)
 
 ![](img/09e6f201f3da6752ebe72cf955866539_248.png)
 
@@ -479,7 +446,6 @@ reg query "HKEY_CURRENT_USER\Software\Microsoft\Terminal Server Client\Servers" 
 
 在获取Web服务器权限后，可以尝试获取MySQL数据库密码。
 
-![](img/09e6f201f3da6752ebe72cf955866539_273.png)
 
 1.  **定位密码哈希**：MySQL用户密码哈希存储在数据库目录的`user.MYD`文件中（路径通常为`mysql\data\mysql\`）。
 2.  **提取哈希**：使用二进制编辑器（如WinHex）打开`user.MYD`文件，查找长字符串哈希值（形如`*81F5E21E35407D884A6CD4A731AEBFB6AF209E1B`）。
@@ -501,7 +467,6 @@ reg query "HKEY_CURRENT_USER\Software\Microsoft\Terminal Server Client\Servers" 
 
 ![](img/09e6f201f3da6752ebe72cf955866539_277.png)
 
-![](img/09e6f201f3da6752ebe72cf955866539_279.png)
 
 许多软件会将密码保存在本地或注册表中。可以使用`LaZagne`这类全能工具进行抓取。
 ```cmd
@@ -511,7 +476,6 @@ laZagne.exe all
 
 ![](img/09e6f201f3da6752ebe72cf955866539_281.png)
 
-![](img/09e6f201f3da6752ebe72cf955866539_283.png)
 
 ![](img/09e6f201f3da6752ebe72cf955866539_285.png)
 
@@ -527,7 +491,6 @@ laZagne.exe all
 
 ![](img/09e6f201f3da6752ebe72cf955866539_295.png)
 
-![](img/09e6f201f3da6752ebe72cf955866539_297.png)
 
 ![](img/09e6f201f3da6752ebe72cf955866539_299.png)
 

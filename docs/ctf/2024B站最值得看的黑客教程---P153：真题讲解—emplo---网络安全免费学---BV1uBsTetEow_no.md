@@ -1,51 +1,39 @@
 # 网络安全入门：P153：真题讲解—employeeswork
 
-![](img/2d9723ea023ff00e2fbf31431fe81fc2_0.png)
 
-![](img/2d9723ea023ff00e2fbf31431fe81fc2_2.png)
 
 ## 📖 概述
 在本节课中，我们将一起学习如何分析并解决一道典型的CTF（Capture The Flag）题目。我们将从信息搜集开始，逐步分析网页代码，理解其逻辑，并最终利用“双写绕过”技术获取flag。整个过程将帮助你建立解题的基本思路。
 
-![](img/2d9723ea023ff00e2fbf31431fe81fc2_4.png)
 
 ---
 
 ## 🔍 第一步：信息搜集
 我们拿到这个题目。首先进行信息搜集。
 
-![](img/2d9723ea023ff00e2fbf31431fe81fc2_6.png)
 
 我们寻找我们需要的信息，根据找到的信息判断下一步做什么。题目是“Employees work”。
 
-![](img/2d9723ea023ff00e2fbf31431fe81fc2_8.png)
 
-![](img/2d9723ea023ff00e2fbf31431fe81fc2_10.png)
 
 网页标题是“YENGcomp notice”。网页部分有一段英文。
 
-![](img/2d9723ea023ff00e2fbf31431fe81fc2_12.png)
 
 注意到这里面跟其他不一样，不一样的地方我们就要注意一下。
 
-![](img/2d9723ea023ff00e2fbf31431fe81fc2_14.png)
 
-![](img/2d9723ea023ff00e2fbf31431fe81fc2_16.png)
 
 这好像是一个函数，`workworthyy()` 一个括号，这像一个函数。然后，这里面有一个好像链接一样的东西，我们点一下。
 
 ---
 
-![](img/2d9723ea023ff00e2fbf31431fe81fc2_18.png)
 
 ## 💻 第二步：分析关键代码
 点这个链接，发现显示出来一段代码。
 
-![](img/2d9723ea023ff00e2fbf31431fe81fc2_20.png)
 
 这段代码可能对我们非常有用。
 
-![](img/2d9723ea023ff00e2fbf31431fe81fc2_22.png)
 
 但我们先不看这个代码，我们先看一下网页源代码。
 
@@ -64,9 +52,7 @@
 
 这里是一段PHP的代码。没学过PHP也没关系，我们一起来看一下。
 
-![](img/2d9723ea023ff00e2fbf31431fe81fc2_24.png)
 
-![](img/2d9723ea023ff00e2fbf31431fe81fc2_25.png)
 
 以下是代码分析：
 ```php
@@ -88,7 +74,6 @@ if (isset($_GET['work'])) {
 ?>
 ```
 
-![](img/2d9723ea023ff00e2fbf31431fe81fc2_27.png)
 
 **代码解析：**
 1.  `include "flag.php";`：包含了一个名为 `flag.php` 的文件，这通常意味着flag就在这个文件里。
@@ -99,13 +84,10 @@ if (isset($_GET['work'])) {
 
 所以，我们的目标就是构造一个 `work` 参数的值，使得经过上述替换操作后，结果恰好等于 `"YENGpretty handsome"`。
 
-![](img/2d9723ea023ff00e2fbf31431fe81fc2_29.png)
 
 ---
 
-![](img/2d9723ea023ff00e2fbf31431fe81fc2_31.png)
 
-![](img/2d9723ea023ff00e2fbf31431fe81fc2_33.png)
 
 ## 🛠️ 第四步：尝试与思考
 我们如何传递这个 `work` 参数呢？我们可以使用浏览器的开发者工具或Burp Suite等工具。
@@ -127,7 +109,6 @@ if (isset($_GET['work'])) {
 
 现在，代码会寻找中间的 `"YENGpretty handsome"` 并将其替换为空。替换后，字符串就变成了 `"YENGpretty handsome"`。
 
-![](img/2d9723ea023ff00e2fbf31431fe81fc2_35.png)
 
 看，替换后的结果正好等于目标字符串本身！这就满足了 `if ($sad === $your_income)` 的条件。
 

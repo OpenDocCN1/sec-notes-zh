@@ -48,7 +48,6 @@
 
 ![](img/c4ba44e408df6c460f91177db8a2db1e_30.png)
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_32.png)
 
 ![](img/c4ba44e408df6c460f91177db8a2db1e_34.png)
 
@@ -82,7 +81,6 @@
 
 ![](img/c4ba44e408df6c460f91177db8a2db1e_59.png)
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_61.png)
 
 **项目地址**：`https://github.com/...` （此处省略具体地址，课程中已展示）
 
@@ -190,7 +188,6 @@ phpggc ThinkPHP/RCE1 system "cat /flag" --base64
 
 ![](img/c4ba44e408df6c460f91177db8a2db1e_135.png)
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_137.png)
 
 ![](img/c4ba44e408df6c460f91177db8a2db1e_139.png)
 
@@ -233,7 +230,6 @@ phpggc ThinkPHP/RCE1 system "cat /flag" --base64
 
 ![](img/c4ba44e408df6c460f91177db8a2db1e_157.png)
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_159.png)
 
 ![](img/c4ba44e408df6c460f91177db8a2db1e_161.png)
 
@@ -251,7 +247,6 @@ phpggc ThinkPHP/RCE1 system "cat /flag" --base64
 
 ![](img/c4ba44e408df6c460f91177db8a2db1e_173.png)
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_174.png)
 
 ![](img/c4ba44e408df6c460f91177db8a2db1e_176.png)
 
@@ -269,7 +264,6 @@ phpggc ThinkPHP/RCE1 system "cat /flag" --base64
 
 ### 案例二：Yii 2.0 反序列化
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_188.png)
 
 ![](img/c4ba44e408df6c460f91177db8a2db1e_190.png)
 
@@ -277,7 +271,6 @@ phpggc ThinkPHP/RCE1 system "cat /flag" --base64
 
 ![](img/c4ba44e408df6c460f91177db8a2db1e_194.png)
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_196.png)
 
 ![](img/c4ba44e408df6c460f91177db8a2db1e_198.png)
 
@@ -287,11 +280,8 @@ phpggc ThinkPHP/RCE1 system "cat /flag" --base64
 
 **题目背景**：题目通过源码泄露提示存在Yii 2.0框架，并在`/backshell`路径下存在`unserialize(base64_decode($_GET[‘code’]))`的代码。
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_204.png)
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_206.png)
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_208.png)
 
 ![](img/c4ba44e408df6c460f91177db8a2db1e_210.png)
 
@@ -310,17 +300,12 @@ phpggc ThinkPHP/RCE1 system "cat /flag" --base64
     ```
 4.  **查看结果**：访问`/tmp/flag.txt`（或Web目录下的相应文件）获取命令执行结果。
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_214.png)
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_216.png)
 
 ---
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_218.png)
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_220.png)
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_222.png)
 
 ![](img/c4ba44e408df6c460f91177db8a2db1e_224.png)
 
@@ -338,9 +323,7 @@ phpggc ThinkPHP/RCE1 system "cat /flag" --base64
 
 ![](img/c4ba44e408df6c460f91177db8a2db1e_234.png)
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_236.png)
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_238.png)
 
 ![](img/c4ba44e408df6c460f91177db8a2db1e_240.png)
 
@@ -357,9 +340,7 @@ phpggc ThinkPHP/RCE1 system "cat /flag" --base64
 4.  **发送请求**：将Payload通过POST的`data`字段提交。
 5.  **获取回显**：成功执行`ls`命令，列出当前目录文件。
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_242.png)
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_243.png)
 
 ![](img/c4ba44e408df6c460f91177db8a2db1e_245.png)
 
@@ -403,13 +384,10 @@ phpggc ThinkPHP/RCE1 system "cat /flag" --base64
 
 ![](img/c4ba44e408df6c460f91177db8a2db1e_277.png)
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_279.png)
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_281.png)
 
 ### 层面一：在已知框架漏洞基础上挖掘CMS漏洞
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_283.png)
 
 ![](img/c4ba44e408df6c460f91177db8a2db1e_285.png)
 
@@ -423,15 +401,11 @@ phpggc ThinkPHP/RCE1 system "cat /flag" --base64
 3.  **最关键的一步**：在CMS的源码中全局搜索`unserialize`函数，寻找可控的触发点。
 4.  如果找到触发点，且框架版本存在漏洞，那么就可以使用PHPGGC生成Payload进行利用。
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_291.png)
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_293.png)
 
 ![](img/c4ba44e408df6c460f91177db8a2db1e_295.png)
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_297.png)
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_299.png)
 
 **这相当于站在“巨人”（框架漏洞发现者）的肩膀上，去挖掘具体应用系统的漏洞。**
 
@@ -516,7 +490,6 @@ phpggc ThinkPHP/RCE1 system "cat /flag" --base64
 
 ![](img/c4ba44e408df6c460f91177db8a2db1e_350.png)
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_352.png)
 
 ![](img/c4ba44e408df6c460f91177db8a2db1e_354.png)
 
@@ -536,7 +509,6 @@ phpggc ThinkPHP/RCE1 system "cat /flag" --base64
 
 ![](img/c4ba44e408df6c460f91177db8a2db1e_368.png)
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_369.png)
 
 ![](img/c4ba44e408df6c460f91177db8a2db1e_371.png)
 
@@ -548,7 +520,6 @@ phpggc ThinkPHP/RCE1 system "cat /flag" --base64
 
 ---
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_379.png)
 
 ## 📝 课程总结
 
@@ -556,7 +527,6 @@ phpggc ThinkPHP/RCE1 system "cat /flag" --base64
 
 ![](img/c4ba44e408df6c460f91177db8a2db1e_383.png)
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_385.png)
 
 本节课我们一起学习了PHP框架反序列化漏洞的利用与相关知识：
 
@@ -576,7 +546,6 @@ phpggc ThinkPHP/RCE1 system "cat /flag" --base64
 
 ![](img/c4ba44e408df6c460f91177db8a2db1e_392.png)
 
-![](img/c4ba44e408df6c460f91177db8a2db1e_394.png)
 
 ![](img/c4ba44e408df6c460f91177db8a2db1e_396.png)
 

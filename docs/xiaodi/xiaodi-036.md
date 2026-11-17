@@ -61,11 +61,9 @@ Log4j是Apache的一个开源项目，它是Java应用程序中广泛使用的�
 
 ![](img/8fb3472c5a8ac5ca875d00e3c9073d83_35.png)
 
-![](img/8fb3472c5a8ac5ca875d00e3c9073d83_37.png)
 
 将复制的依赖配置粘贴到项目的 `pom.xml` 文件中的 `<dependencies>` 标签内。保存文件后，IDE通常会提示加载Maven变更。点击刷新后，Maven会自动从配置的镜像仓库下载Log4j的JAR包到项目的“外部库”中。
 
-![](img/8fb3472c5a8ac5ca875d00e3c9073d83_39.png)
 
 ![](img/8fb3472c5a8ac5ca875d00e3c9073d83_41.png)
 
@@ -79,7 +77,6 @@ Log4j是Apache的一个开源项目，它是Java应用程序中广泛使用的�
 
 ![](img/8fb3472c5a8ac5ca875d00e3c9073d83_47.png)
 
-![](img/8fb3472c5a8ac5ca875d00e3c9073d83_49.png)
 
 ![](img/8fb3472c5a8ac5ca875d00e3c9073d83_51.png)
 
@@ -87,7 +84,6 @@ Log4j是Apache的一个开源项目，它是Java应用程序中广泛使用的�
 
 ![](img/8fb3472c5a8ac5ca875d00e3c9073d83_53.png)
 
-![](img/8fb3472c5a8ac5ca875d00e3c9073d83_55.png)
 
 ![](img/8fb3472c5a8ac5ca875d00e3c9073d83_57.png)
 
@@ -122,11 +118,8 @@ public class Log4jTest {
 
 Log4j漏洞的核心在于其日志输出功能支持一种叫做“查找”（Lookup）的机制，特别是 `${}` 语法。当日志内容包含 `${}` 时，Log4j会尝试解析其中的表达式。
 
-![](img/8fb3472c5a8ac5ca875d00e3c9073d83_75.png)
 
-![](img/8fb3472c5a8ac5ca875d00e3c9073d83_77.png)
 
-![](img/8fb3472c5a8ac5ca875d00e3c9073d83_79.png)
 
 例如，我们尝试输出一个包含系统属性的变量：
 ```java
@@ -139,7 +132,6 @@ logger.error(code);
 
 ![](img/8fb3472c5a8ac5ca875d00e3c9073d83_83.png)
 
-![](img/8fb3472c5a8ac5ca875d00e3c9073d83_85.png)
 
 **漏洞成因简单分析**：如果日志输出的内容（`code` 变量）是用户可控的，那么攻击者就可以传入精心构造的 `${}` 表达式。当这个表达式被Log4j解析并执行时，就可能造成远程代码执行。
 
@@ -180,9 +172,7 @@ logger.error(code);
 ![](img/8fb3472c5a8ac5ca875d00e3c9073d83_109.png)
 
 
-![](img/8fb3472c5a8ac5ca875d00e3c9073d83_111.png)
 
-![](img/8fb3472c5a8ac5ca875d00e3c9073d83_113.png)
 
 ![](img/8fb3472c5a8ac5ca875d00e3c9073d83_115.png)
 
@@ -259,7 +249,6 @@ FastJson是阿里巴巴开源的一个高性能JSON处理库，用于实现Java�
 
 首先，我们创建一个简单的Java Bean类 `User`：
 
-![](img/8fb3472c5a8ac5ca875d00e3c9073d83_137.png)
 
 ```java
 package com.xiaodi;
@@ -331,7 +320,6 @@ FastJson会根据 `@type` 的值去实例化 `com.xiaodi.User` 类，然后填�
 
 ![](img/8fb3472c5a8ac5ca875d00e3c9073d83_157.png)
 
-![](img/8fb3472c5a8ac5ca875d00e3c9073d83_159.png)
 
 **漏洞就产生在这里**：如果攻击者能够控制反序列化过程中的JSON字符串，并且FastJson版本存在漏洞，那么攻击者可以将 `@type` 指定为一些Java类库中存在的、具有危险行为的类。
 

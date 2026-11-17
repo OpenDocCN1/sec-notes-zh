@@ -37,21 +37,17 @@ Maltego 是一款专注于分析互联网公开数据之间真实世界关系的
 *   **第三方查询网站**：利用公开的在线服务进行查询。
 *   **证书透明度日志**：通过查询 SSL/TLS 证书的公开记录来发现子域名。
 
-![](img/6418c7b4b2bf6cfb3f7254d53b9ae660_1.png)
 
 ## 实战：使用 Maltego 收集子域名 🛠️
 
-![](img/6418c7b4b2bf6cfb3f7254d53b9ae660_3.png)
 
 了解了背景知识后，我们进入实战环节，看看如何具体操作 Maltego。
 
-![](img/6418c7b4b2bf6cfb3f7254d53b9ae660_5.png)
 
 ![](img/6418c7b4b2bf6cfb3f7254d53b9ae660_7.png)
 
 ### 步骤一：注册 Maltego 账号
 
-![](img/6418c7b4b2bf6cfb3f7254d53b9ae660_9.png)
 
 Maltego 社区版免费，但需要注册账号。由于注册过程涉及谷歌的人机验证，建议使用 Gmail 或 163 等邮箱注册。
 
@@ -59,13 +55,10 @@ Maltego 社区版免费，但需要注册账号。由于注册过程涉及谷歌
 2.  填写姓名、邮箱、密码等信息完成注册。
 3.  登录邮箱，点击激活邮件中的链接完成账号激活。
 
-![](img/6418c7b4b2bf6cfb3f7254d53b9ae660_11.png)
 
 ### 步骤二：在 Kali Linux 中启动 Maltego
 
-![](img/6418c7b4b2bf6cfb3f7254d53b9ae660_12.png)
 
-![](img/6418c7b4b2bf6cfb3f7254d53b9ae660_14.png)
 
 Maltego 已预装在 Kali Linux 中。请注意，新版本可能不允许在 `root` 用户下直接运行。
 
@@ -89,9 +82,7 @@ apt install maltego
 
 ### 步骤三：登录与初始化
 
-![](img/6418c7b4b2bf6cfb3f7254d53b9ae660_25.png)
 
-![](img/6418c7b4b2bf6cfb3f7254d53b9ae660_27.png)
 
 1.  启动后，选择运行 **“Maltego CE”（社区免费版）**。
 2.  接受许可协议，输入之前注册的邮箱和密码进行登录。

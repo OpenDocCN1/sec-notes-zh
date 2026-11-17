@@ -1,14 +1,11 @@
 # 课程3：《网络安全合规框架与系统管理》：29：Active Directory账户与安全注意事项 🔐
 
-![](img/063207ed4d2449d7ad29a48b4ad7feeb_0.png)
 
-![](img/063207ed4d2449d7ad29a48b4ad7feeb_2.png)
 
 在本节课程中，我们将学习Active Directory中的账户类型，并探讨保护这些账户，特别是高权限域账户的安全注意事项。理解这些概念对于构建安全的网络环境至关重要。
 
 ---
 
-![](img/063207ed4d2449d7ad29a48b4ad7feeb_4.png)
 
 ## Active Directory账户类型
 

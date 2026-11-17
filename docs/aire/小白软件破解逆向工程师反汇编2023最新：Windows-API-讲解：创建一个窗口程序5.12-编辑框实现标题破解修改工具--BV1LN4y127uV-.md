@@ -6,7 +6,6 @@
 
 ## 小白软件破解逆向工程师反汇编2023最新：5.12.1：认识编辑框与标签 🧩
 
-![](img/f47893f211fe8cddafed9302ae366cd6_1.png)
 
 首先要知道什么是编辑框。在 readASM 中双击找到对话框所在的位置，然后在这里可以看到一个 ABC 标识，提示文字为 `idit text`，这个位置对应的就是编辑框。要理解编辑框的外观和作用，可以点击这个位置进行预览，当前界面中的控件已经拖好了。编辑框就是可以编辑文字的地方，可以在里面输入文字，这个控件就像平时使用的社交软件输入框，输入消息后点击发送就可以把内容发出去。
 
@@ -31,12 +30,10 @@
 
 - 改完名字后，把控件 ID 和控件名字做宏的对应。
 
-![](img/f47893f211fe8cddafed9302ae366cd6_3.png)
 
 - 在 `include` 文件中完成 ID 与名字的宏对应，方便后续代码使用。
 
 
-![](img/f47893f211fe8cddafed9302ae366cd6_5.png)
 
 ## 小白软件破解逆向工程师反汇编2023最新：5.12.2：创建控件并完成宏对应 🛠️
 
@@ -49,7 +46,6 @@
 
 控件创建好并且 ID 完成对应后，下一步就是拦截编辑框消息。以下是拦截编辑框消息时的核心判断代码：
 
-![](img/f47893f211fe8cddafed9302ae366cd6_7.png)
 
 ```c
 if (AX == IDC_EDT_CAP) {
@@ -62,13 +58,10 @@ if (AX == IDC_EDT_CAP) {
 
 ## 小白软件破解逆向工程师反汇编2023最新：5.12.3：拦截编辑框消息并获取文本 🔍
 
-![](img/f47893f211fe8cddafed9302ae366cd6_9.png)
 
-![](img/f47893f211fe8cddafed9302ae366cd6_10.png)
 
 确认消息来自编辑框之后，就可以获取编辑框文本。获取编辑框文本要使用 `GetDlgItemText`，原文口述为 `get dial text`，实际 API 是 `GetDlgItemText`。要查看这个 API 的用法，可以直接搜索它的文档；看 A 版本或 W 版本都可以，参数基本一样，只是编码方式不同。以下是 `GetDlgItemText` 的参数结构和本次调用方式：
 
-![](img/f47893f211fe8cddafed9302ae366cd6_11.png)
 
 ```c
 int GetDlgItemText(
@@ -94,7 +87,6 @@ local szBuffer[128]:byte
 
 获取到编辑框文本后，下一步就是学习设置窗口标题。以下是设置窗口标题的核心 API 调用：
 
-![](img/f47893f211fe8cddafed9302ae366cd6_13.png)
 
 ```c
 BOOL SetWindowText(
@@ -106,28 +98,23 @@ SetWindowText(hWnd, szBuffer);
 ```
 
 
-![](img/f47893f211fe8cddafed9302ae366cd6_15.png)
 
 ## 小白软件破解逆向工程师反汇编2023最新：5.12.4：设置窗口标题并测试修改其他程序 ✏️
 
 设置窗口标题要使用 `SetWindowText`，原文口述为 `setment text`，实际 API 是 `SetWindowText`。这个函数也分 A 版本和 W 版本，本次默认使用 A 版本即可。第一个参数是要更改文本的窗口和控件句柄，先修改自己程序的标题时，自己程序的句柄就是 `hWnd`，原文口述为 H 问，指的就是窗口句柄。第二个参数是新的标题或控件文本，新的标题已经存放在局部变量中，直接把局部变量放进去即可。
 
-![](img/f47893f211fe8cddafed9302ae366cd6_17.png)
 
 需要注意，字符串参数要使用 `ADDR` 进行寻址；`LP` 表示 long pointer，也就是指针。以下是本次标题设置与字符串寻址的核心代码：
 
-![](img/f47893f211fe8cddafed9302ae366cd6_18.png)
 
 ```asm
 ; 字符串使用 ADDR 寻址
 SetWindowText(hWnd, ADDR szBuffer)
 ```
 
-![](img/f47893f211fe8cddafed9302ae366cd6_20.png)
 
 完成代码后构建并运行程序。在编辑框里输入内容时，程序标题会随之改变，说明编辑框文本已经成功传给标题设置函数。`SetWindowText` 还可以用于更改其他程序的标题文本，例如常用的 StarPE 工具。StarPE 当前标题是某个文本，再打开 SPY++，把放大镜拖到目标程序上，就可以探测到这个程序的窗口句柄。
 
-![](img/f47893f211fe8cddafed9302ae366cd6_22.png)
 
 探测到的句柄是 `30CDA`，这是十六进制表示。十六进制转换成十进制是 `199898`。以下是句柄转换关系：
 
@@ -150,7 +137,6 @@ SetWindowText(hWnd, ADDR szBuffer)
 
 - 用 `SetWindowText` 修改自己程序或其他程序的窗口标题。
 
-![](img/f47893f211fe8cddafed9302ae366cd6_24.png)
 
 - 使用 SPY++ 探测目标窗口句柄，并注意十六进制与十进制之间的转换。
 

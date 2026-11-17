@@ -2,15 +2,12 @@
 
 在本节课中，我们将要学习网络基础部分的核心内容，特别是HTTP协议、URL/URI、HTTP请求与响应报文，以及Cookie和Session等概念。这些知识是理解Web安全的基础。
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_1.png)
 
 ## 什么是HTTP？ 🌐
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_3.png)
 
 ![](img/0dacc5eae12477c9e7c51eaea381c0a6_5.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_7.png)
 
 ![](img/0dacc5eae12477c9e7c51eaea381c0a6_9.png)
 
@@ -28,7 +25,6 @@ HTTP的设计初衷是为了提供一种发布和接收HTML页面的方法。当
 
 ![](img/0dacc5eae12477c9e7c51eaea381c0a6_19.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_21.png)
 
 ![](img/0dacc5eae12477c9e7c51eaea381c0a6_23.png)
 
@@ -46,9 +42,7 @@ HTTP的工作流程如下：
 
 ![](img/0dacc5eae12477c9e7c51eaea381c0a6_29.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_31.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_32.png)
 
 1.  **建立连接**：客户端通过TCP的三次握手与服务器建立连接。
 2.  **发送请求**：客户端向服务器发送HTTP请求。
@@ -57,9 +51,7 @@ HTTP的工作流程如下：
 
 关于TCP的三次握手和四次挥手是网络基础协议，如需深入了解，可查阅相关资料。
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_34.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_36.png)
 
 ## HTTP的特性与持续连接机制 ⚙️
 
@@ -71,17 +63,12 @@ HTTP的工作流程如下：
 
 该机制允许在多个请求-响应之间重复使用同一个TCP连接，减少了因频繁建立和断开连接而产生的等待时间，从而提升了效率。
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_42.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_44.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_46.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_48.png)
 
 ## 统一资源定位符（URL） 🔗
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_50.png)
 
 ![](img/0dacc5eae12477c9e7c51eaea381c0a6_52.png)
 
@@ -89,7 +76,6 @@ HTTP的工作流程如下：
 
 ![](img/0dacc5eae12477c9e7c51eaea381c0a6_56.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_58.png)
 
 URL，即我们常说的网址，用于定位互联网上的资源。一个完整的URL包含以下几个部分：
 
@@ -107,21 +93,14 @@ URL，即我们常说的网址，用于定位互联网上的资源。一个完�
 
 ## 统一资源标识符（URI） 🏷️
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_60.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_62.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_64.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_66.png)
 
 URI是用来标识抽象或物理资源的紧凑字符串。URL是URI的一个子集。简单来说，URI是一个更广泛的概念，而URL是用于定位资源的一种特定类型的URI。
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_68.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_70.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_72.png)
 
 ![](img/0dacc5eae12477c9e7c51eaea381c0a6_74.png)
 
@@ -133,9 +112,7 @@ HTTP协议使用URI来传输数据和建立连接。
 
 ![](img/0dacc5eae12477c9e7c51eaea381c0a6_80.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_82.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_84.png)
 
 ## HTTP请求报文 📨
 
@@ -157,9 +134,7 @@ HTTP协议使用URI来传输数据和建立连接。
 
 ![](img/0dacc5eae12477c9e7c51eaea381c0a6_88.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_89.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_91.png)
 
 ![](img/0dacc5eae12477c9e7c51eaea381c0a6_93.png)
 
@@ -174,9 +149,7 @@ User-Agent: Mozilla/5.0
 
 **POST请求示例**：
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_97.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_99.png)
 
 ```
 POST /login HTTP/1.1
@@ -190,9 +163,7 @@ username=admin&password=123456
 
 ![](img/0dacc5eae12477c9e7c51eaea381c0a6_101.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_103.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_105.png)
 
 服务器返回给客户端的消息称为HTTP响应报文，同样由四个部分组成：
 
@@ -210,7 +181,6 @@ username=admin&password=123456
 
 ![](img/0dacc5eae12477c9e7c51eaea381c0a6_108.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_110.png)
 
 ![](img/0dacc5eae12477c9e7c51eaea381c0a6_112.png)
 
@@ -226,17 +196,12 @@ Set-Cookie: sessionId=abc123; Path=/
 
 ## HTTP状态码 📊
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_114.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_116.png)
 
 状态码由三位数字组成，第一位数字定义了响应的类别：
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_118.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_120.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_122.png)
 
 *   **1xx（信息）**：请求已被接收，继续处理。
 *   **2xx（成功）**：请求已成功被服务器接收、理解并处理。如 `200 OK`。
@@ -248,11 +213,8 @@ Set-Cookie: sessionId=abc123; Path=/
 
 除了常见的GET和POST，HTTP还有其他方法：
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_124.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_126.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_128.png)
 
 *   **HEAD**：与GET类似，但只返回响应头部，不返回正文。用于获取资源的元信息。
 *   **OPTIONS**：用于查询服务器支持的请求方法。
@@ -264,31 +226,19 @@ Set-Cookie: sessionId=abc123; Path=/
 
 ![](img/0dacc5eae12477c9e7c51eaea381c0a6_132.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_134.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_136.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_138.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_140.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_142.png)
 
 **PUT方法示例（上传文件）**：
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_144.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_146.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_148.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_150.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_152.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_154.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_156.png)
 
 ```
 PUT /uploads/info.php HTTP/1.1
@@ -303,21 +253,14 @@ Content-Length: 20
 
 ## Cookie与Session 🍪
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_162.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_163.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_165.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_167.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_169.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_171.png)
 
 HTTP是无状态协议，服务器不记得用户上一次的操作。Cookie和Session机制用于解决此问题，维持用户状态。
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_173.png)
 
 **Cookie**：
 *   由服务器生成，发送并存储在客户端（浏览器）。
@@ -325,22 +268,16 @@ HTTP是无状态协议，服务器不记得用户上一次的操作。Cookie和S
 *   每次请求会自动附加在请求头中发送给服务器。
 *   安全性较低，因为存储在客户端且可能被窃取。
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_175.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_177.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_179.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_181.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_182.png)
 
 **Session**：
 *   数据存储在服务器端。
 *   每个用户会话有一个唯一的Session ID，通常通过Cookie传递给服务器来关联。
 *   安全性相对较高，敏感信息不存储在客户端。
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_184.png)
 
 **工作原理**：
 1.  用户首次访问，服务器创建Session并生成唯一Session ID。
@@ -355,9 +292,7 @@ HTTP是无状态协议，服务器不记得用户上一次的操作。Cookie和S
 
 ## HTTPS 🔒
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_190.png)
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_191.png)
 
 ![](img/0dacc5eae12477c9e7c51eaea381c0a6_193.png)
 
@@ -369,11 +304,9 @@ HTTPS是HTTP的安全版，在HTTP下加入了SSL/TLS层，用于对通信进行
 *   **认证**：确认通信对方的身份。
 *   网址以 `https://` 开头，并且浏览器地址栏通常有锁形图标。
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_197.png)
 
 ## 总结 📝
 
-![](img/0dacc5eae12477c9e7c51eaea381c0a6_199.png)
 
 ![](img/0dacc5eae12477c9e7c51eaea381c0a6_201.png)
 

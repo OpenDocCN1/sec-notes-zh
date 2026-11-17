@@ -84,7 +84,6 @@ if (bSuccess) {
 2.  在代码中，使用 `WriteProcessMemory` 函数向该地址写入新数据。
 
 
-![](img/d93eb983c618728b667ede1148e95996_3.png)
 
 ```cpp
 // 假设检测标志的地址是 0x449714
@@ -113,7 +112,6 @@ if (bWriteOK && bytesWritten > 0) {
 }
 ```
 
-![](img/d93eb983c618728b667ede1148e95996_5.png)
 
 ---
 
@@ -133,9 +131,7 @@ if (bWriteOK && bytesWritten > 0) {
 ![](img/d93eb983c618728b667ede1148e95996_7.png)
 
 
-![](img/d93eb983c618728b667ede1148e95996_9.png)
 
-![](img/d93eb983c618728b667ede1148e95996_11.png)
 
 ```cpp
 // 假设路径字符串的起始写入地址是 0x449714 + 0x09
@@ -177,7 +173,6 @@ VirtualProtectEx(pi.hProcess, (LPVOID)dwPathAddr, pathLen, dwOldProtect, &dwOldP
 *   **默认选择**：在列表框中默认选中第一个可用的索引。
 *   **错误处理**：检查 `WriteProcessMemory` 等函数的返回值，并使用 `GetLastError` 获取详细错误信息以便调试。
 
-![](img/d93eb983c618728b667ede1148e95996_17.png)
 
 ```cpp
 // 示例：启动成功后递增索引

@@ -4,9 +4,7 @@
 
 ## 协议层次与区别
 
-![](img/66f6eefda0b55f3511ddfa259ba21f01_1.png)
 
-![](img/66f6eefda0b55f3511ddfa259ba21f01_3.png)
 
 上一节我们介绍了网络流量的基础概念，本节中我们来看看FTP和ICMP协议在协议栈中的位置。
 
@@ -22,9 +20,7 @@ FTP协议运行在TCP协议之上，用于文件传输。而ICMP协议与TCP协�
 
 题目提示流量包中包含ICMP协议数据。我们的第一步是使用Wireshark的显示过滤器，过滤出所有ICMP协议的数据包。
 
-![](img/66f6eefda0b55f3511ddfa259ba21f01_9.png)
 
-![](img/66f6eefda0b55f3511ddfa259ba21f01_10.png)
 
 ![](img/66f6eefda0b55f3511ddfa259ba21f01_11.png)
 

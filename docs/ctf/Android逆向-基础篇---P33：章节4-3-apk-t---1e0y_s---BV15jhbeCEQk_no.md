@@ -1,6 +1,5 @@
 # Android逆向-基础篇：P33：章节4-3-apk-to-smali路径
 
-![](img/3320fb7f68a66df580f115a0ca87bbc7_1.png)
 
 在本节课中，我们将要学习如何将一个未加固的APK文件反编译成smali代码。这是Android逆向工程中用于分析和重新打包应用的关键步骤。
 
@@ -22,7 +21,6 @@
 apktool d [APK文件路径]
 ```
 
-![](img/3320fb7f68a66df580f115a0ca87bbc7_5.png)
 
 其中，参数 `d` 代表 `decode`，即解码或反编译。
 

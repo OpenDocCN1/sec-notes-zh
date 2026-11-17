@@ -150,7 +150,6 @@ run
 
 在Metasploit中，Payload分为分段（Staged）和非分段（Stageless）两种，理解其区别对实战很重要。
 
-![](img/1f25a670e9912228a50ac50e657796bc_50.png)
 
 *   **非分段Payload** (如 `windows/meterpreter_reverse_tcp`)：
     *   是一个完整的二进制文件，包含了Meterpreter的所有必要部分。
@@ -158,9 +157,7 @@ run
     *   **缺点**：体积较大，容易被查杀。
     *   类似于WebShell中的“大马”。
 
-![](img/1f25a670e9912228a50ac50e657796bc_52.png)
 
-![](img/1f25a670e9912228a50ac50e657796bc_54.png)
 
 ![](img/1f25a670e9912228a50ac50e657796bc_56.png)
 
@@ -228,9 +225,7 @@ run
 
 ![](img/1f25a670e9912228a50ac50e657796bc_82.png)
 
-![](img/1f25a670e9912228a50ac50e657796bc_84.png)
 
-![](img/1f25a670e9912228a50ac50e657796bc_86.png)
 
 ![](img/1f25a670e9912228a50ac50e657796bc_88.png)
 

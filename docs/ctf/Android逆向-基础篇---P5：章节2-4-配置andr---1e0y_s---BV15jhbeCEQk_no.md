@@ -47,7 +47,6 @@
 
 例如，一个基本的SOCKS5代理配置可能如下所示：
 
-![](img/db2574ce993fb8a8bd3ced4a3c4ad4e7_3.png)
 
 ```properties
 systemProp.socksProxyHost=127.0.0.1

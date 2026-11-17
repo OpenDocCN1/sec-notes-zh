@@ -4,21 +4,15 @@
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_3.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_5.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_7.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_9.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_11.png)
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_12.png)
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_13.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_15.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_17.png)
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_19.png)
 
@@ -30,17 +24,14 @@
 
 在本节课中，我们将学习如何安装和配置Kali Linux系统，这是进行网络安全学习和CTF竞赛的重要工具平台。我们将从了解Kali是什么开始，逐步完成下载、安装以及基本环境配置。
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_27.png)
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_29.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_31.png)
 
 ## 什么是Kali Linux？ 🐧
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_33.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_35.png)
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_37.png)
 
@@ -62,7 +53,6 @@ https://tools.kali.org/tools-listing
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_47.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_49.png)
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_51.png)
 
@@ -70,23 +60,16 @@ https://tools.kali.org/tools-listing
 
 ## Kali Linux的安装 📥
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_55.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_57.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_59.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_61.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_63.png)
 
 上一节我们介绍了Kali Linux是什么，本节中我们来看看如何进行安装。
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_65.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_67.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_69.png)
 
 首先，我们需要下载Kali Linux系统。官方网址是：
 ```
@@ -98,13 +81,9 @@ https://www.kali.org/downloads/
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_72.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_73.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_75.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_77.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_79.png)
 
 以下是主要的下载选项：
 *   **Kali Linux 64位安装版**：用于常规安装的ISO镜像。
@@ -116,13 +95,9 @@ https://www.kali.org/downloads/
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_83.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_85.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_87.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_89.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_91.png)
 
 此外，官网还提供了预配置好的虚拟机版本，方便快速使用。
 
@@ -142,11 +117,9 @@ https://www.kali.org/downloads/
 
 如果你不想一步步安装系统，可以使用预配置好的虚拟机版本（例如VMware的`.ova`格式文件）。下载后，如果你安装了VMware，双击该文件即可导入并启动虚拟机。
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_102.png)
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_104.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_106.png)
 
 启动后，会进入登录界面。默认使用 `kali` 用户登录（密码 `kali`）。登录成功后，界面如下图所示。
 
@@ -154,9 +127,7 @@ https://www.kali.org/downloads/
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_110.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_112.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_31.png)
 
 为了方便进行需要高权限的操作（如安装软件），我们可以切换到 `root` 用户。在终端中执行以下命令修改root密码：
 ```bash
@@ -164,25 +135,18 @@ sudo passwd root
 ```
 系统会提示你输入当前用户 (`kali`) 的密码，然后设置新的root密码。之后可以使用 `su root` 命令切换到root用户。
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_114.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_116.png)
 
 ## 使用ISO镜像进行自定义安装 💿
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_118.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_120.png)
 
 现在，我们来学习如何使用ISO镜像文件进行自定义安装。这种方法可以让你更灵活地配置系统。
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_122.png)
 
 首先，你需要在官网下载Kali Linux的ISO镜像文件。然后，在虚拟机软件（如VMware）中新建一个虚拟机。
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_124.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_126.png)
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_128.png)
 
@@ -205,19 +169,14 @@ sudo passwd root
 
 对于大多数情况，选择“桥接模式”或“NAT模式”即可。之后，创建虚拟磁盘并完成虚拟机创建。
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_134.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_136.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_137.png)
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_139.png)
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_141.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_143.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_145.png)
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_147.png)
 
@@ -225,9 +184,7 @@ sudo passwd root
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_149.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_151.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_152.png)
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_154.png)
 
@@ -238,9 +195,7 @@ sudo passwd root
 *   创建普通用户账户和密码。
 *   进行磁盘分区。
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_156.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_158.png)
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_159.png)
 
@@ -256,7 +211,6 @@ sudo passwd root
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_164.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_166.png)
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_168.png)
 
@@ -268,7 +222,6 @@ sudo passwd root
 
 ## 系统配置与网络设置 🌐
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_174.png)
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_176.png)
 
@@ -276,19 +229,12 @@ sudo passwd root
 
 系统安装完成后，可能需要进行一些基本配置，特别是网络配置，以确保可以正常上网。
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_180.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_181.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_183.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_185.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_187.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_189.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_190.png)
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_192.png)
 
@@ -310,7 +256,6 @@ sudo passwd root
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_208.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_210.png)
 
 如果遇到域名无法解析的问题，可能需要修改DNS设置。可以编辑 `/etc/resolv.conf` 文件，添加公共DNS服务器，例如：
 ```
@@ -318,9 +263,7 @@ nameserver 8.8.8.8
 nameserver 114.114.114.114
 ```
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_212.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_214.png)
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_215.png)
 
@@ -332,7 +275,6 @@ nameserver 114.114.114.114
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_222.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_224.png)
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_226.png)
 
@@ -340,19 +282,14 @@ nameserver 114.114.114.114
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_230.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_232.png)
 
 此外，你还可以修改主机名。编辑 `/etc/hostname` 文件，将其中的内容改为你想要的主机名即可。
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_234.png)
 
 ## 总结 📝
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_236.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_238.png)
 
-![](img/5c1c12c9e775d27351a1f138ed0935ca_240.png)
 
 ![](img/5c1c12c9e775d27351a1f138ed0935ca_242.png)
 

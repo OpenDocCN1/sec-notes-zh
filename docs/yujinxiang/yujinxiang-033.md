@@ -1,12 +1,9 @@
 #  033：044-编写挂机选项卡 🎮
 
-![](img/7fc2b57e6800d0a1f33fb13cc982574a_0.png)
 
-![](img/7fc2b57e6800d0a1f33fb13cc982574a_2.png)
 
 在本节课中，我们将学习如何为之前分析的功能添加一个用户界面，核心是使用选项卡控件来组织不同的功能页面。我们将创建一个包含“挂机”选项卡的窗口，并学习如何将对话框页面与选项卡控件关联起来。
 
-![](img/7fc2b57e6800d0a1f33fb13cc982574a_4.png)
 
 ---
 
@@ -45,25 +42,20 @@ protected:
 
 创建类后，将对话框的ID修改为 `IDD_PAGE_HANGUP`，并在资源视图中将此类与对话框关联。
 
-![](img/7fc2b57e6800d0a1f33fb13cc982574a_6.png)
 
 ## 关联选项卡与页面 🔗
 
-![](img/7fc2b57e6800d0a1f33fb13cc982574a_8.png)
 
 现在，我们需要在主窗口的选项卡控件中显示刚创建的页面。首先，在主对话框类（例如 `CMainTabWindow`）中，为选项卡控件添加一个控件变量。
 
-![](img/7fc2b57e6800d0a1f33fb13cc982574a_10.png)
 
 ```cpp
 CTabCtrl m_TabCtrl;
 ```
 
-![](img/7fc2b57e6800d0a1f33fb13cc982574a_12.png)
 
 然后，重写主对话框的 `OnInitDialog` 函数。在此函数中，初始化选项卡控件，添加选项卡项。
 
-![](img/7fc2b57e6800d0a1f33fb13cc982574a_14.png)
 
 以下是初始化并添加选项卡的代码：
 
@@ -79,7 +71,6 @@ BOOL CMainTabWindow::OnInitDialog()
 }
 ```
 
-![](img/7fc2b57e6800d0a1f33fb13cc982574a_16.png)
 
 接下来，需要将“挂机”页面嵌入到第一个选项卡中。在 `CPageHangup` 类的初始化函数中，创建窗口并设置其父窗口为选项卡控件。
 
@@ -96,9 +87,7 @@ BOOL CPageHangup::OnInitDialog()
 
 ## 调整页面位置与显示 🧭
 
-![](img/7fc2b57e6800d0a1f33fb13cc982574a_18.png)
 
-![](img/7fc2b57e6800d0a1f33fb13cc982574a_20.png)
 
 初始创建的页面位置可能不正确。我们需要计算选项卡控件客户区的位置，并将页面窗口移动到这个区域内。
 
@@ -147,13 +136,11 @@ void CMainTabWindow::OnTcnSelchangeTabMain(NMHDR *pNMHDR, LRESULT *pResult)
 }
 ```
 
-![](img/7fc2b57e6800d0a1f33fb13cc982574a_22.png)
 
 ## 测试与预览 👁️
 
 编译并运行程序，点击“显示外挂”按钮。现在应该能看到一个包含“挂机”和“测试”两个选项卡的窗口。点击“挂机”选项卡，其关联的页面会正确显示在内容区域。
 
-![](img/7fc2b57e6800d0a1f33fb13cc982574a_24.png)
 
 如果页面位置或大小仍有问题，返回调整 `MoveWindow` 函数中的矩形参数即可。
 

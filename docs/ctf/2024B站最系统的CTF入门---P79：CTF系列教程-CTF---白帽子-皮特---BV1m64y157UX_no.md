@@ -23,7 +23,6 @@
 
 ![](img/f1d1a9fb596c90b3cdb39810ba25ff61_1.png)
 
-![](img/f1d1a9fb596c90b3cdb39810ba25ff61_3.png)
 
 `updatexml()`函数用于更新XML文档中符合XPath条件的节点值。它的语法是：
 ```sql
@@ -36,7 +35,6 @@ EXTRACTVALUE(XML_document, XPath_string)
 
 报错注入的原理是：**故意给这两个函数的第二个参数（本应是XPath路径）传入一个非法的XPath格式字符串**。当数据库尝试解析这个非法XPath时就会报错。如果我们在这个非法字符串中拼接了我们想要执行的SQL查询结果，那么这个结果就会出现在报错信息中。
 
-![](img/f1d1a9fb596c90b3cdb39810ba25ff61_5.png)
 
 以下是构造报错注入的典型Payload格式：
 ```sql
@@ -50,7 +48,6 @@ AND extractvalue(1, concat(0x7e, (SELECT database())))
 
 ## 实战演练：一道简单的CTF题目 🎯
 
-![](img/f1d1a9fb596c90b3cdb39810ba25ff61_7.png)
 
 接下来我们通过一道CTF题目来实践报错注入。题目是一个学生信息查询系统，输入学号即可查询学生信息。
 
@@ -90,7 +87,6 @@ AND extractvalue(1, concat(0x7e, (SELECT database())))
 
 当报错信息因数据过长被截断时，我们可以使用`substring()`或`substr()`函数进行分段截取。
 
-![](img/f1d1a9fb596c90b3cdb39810ba25ff61_9.png)
 
 例如，从第15个字符开始截取：
 ```
@@ -98,7 +94,6 @@ AND extractvalue(1, concat(0x7e, (SELECT database())))
 ```
 通过调整截取的起始位置，我们可以逐步获取到完整的flag数据。
 
-![](img/f1d1a9fb596c90b3cdb39810ba25ff61_11.png)
 
 ### 拓展：使用SQLmap自动化工具
 
@@ -109,19 +104,14 @@ AND extractvalue(1, concat(0x7e, (SELECT database())))
 *   列出指定表的所有列：`sqlmap -u “目标URL” -D 数据库名 -T 表名 --columns`
 *   导出指定表的所有数据：`sqlmap -u “目标URL” -D 数据库名 -T 表名 --dump`
 
-![](img/f1d1a9fb596c90b3cdb39810ba25ff61_13.png)
 
-![](img/f1d1a9fb596c90b3cdb39810ba25ff61_14.png)
 
 ## 总结 📝
 
-![](img/f1d1a9fb596c90b3cdb39810ba25ff61_16.png)
 
-![](img/f1d1a9fb596c90b3cdb39810ba25ff61_18.png)
 
 本节课中我们一起学习了SQL注入中的报错注入技术。
 
-![](img/f1d1a9fb596c90b3cdb39810ba25ff61_19.png)
 
 我们首先了解了报错注入的应用场景——作为联合查询的替代方案。然后，我们学习了其核心原理：利用`updatexml()`或`extractvalue()`等函数对非法XPath路径进行解析时产生的错误，并将我们想要查询的SQL语句结果拼接到报错信息中。最后，我们通过一道CTF题目进行了完整的实战演练，从识别注入点到使用报错注入获取数据，并学会了如何处理报错信息中的数据截断问题。
 

@@ -22,9 +22,7 @@
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_13.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_15.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_17.png)
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_19.png)
 
@@ -34,13 +32,9 @@
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_23.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_25.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_27.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_29.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_31.png)
 
 首先，我们需要理解一个核心概念：**JS开发的网站，你在浏览器中看到的代码与其服务器上存储的代码基本一致**。这与后端开发语言（如PHP、Java、.NET）有本质区别。
 
@@ -102,7 +96,6 @@
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_72.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_74.png)
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_76.png)
 
@@ -122,7 +115,6 @@
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_88.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_90.png)
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_92.png)
 
@@ -140,17 +132,14 @@
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_97.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_99.png)
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_101.png)
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_103.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_105.png)
 
 针对JS应用的信息收集，我们可以分为三种模式：手工分析、半自动工具辅助和全自动工具扫描。每种模式各有优劣。
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_107.png)
 
 ### 模式一：手工分析模式
 
@@ -164,25 +153,18 @@
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_115.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_117.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_119.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_121.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_123.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_125.png)
 
 以下是手工分析的核心步骤：
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_127.png)
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_128.png)
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_130.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_132.png)
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_134.png)
 
@@ -195,7 +177,6 @@
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_140.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_142.png)
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_144.png)
 
@@ -208,19 +189,14 @@
 **第二步：全局搜索关键字**
 在“Sources”面板中，使用`Ctrl+Shift+F`进行全局搜索。搜索的目标是发现隐藏的URL路径、接口地址和敏感信息。
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_152.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_154.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_156.png)
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_158.png)
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_160.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_162.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_164.png)
 
 以下是需要重点搜索的关键字列表：
 *   **URL/路径相关**：`src=`、`href=`、`path=`、`/api/`、`/admin/`、`url:`
@@ -230,19 +206,14 @@
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_166.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_168.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_170.png)
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_172.png)
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_174.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_176.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_178.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_180.png)
 
 搜索到相关代码后，需要跟踪代码逻辑，将可能经过拼接或变量替换的路径还原成完整的URL地址，然后尝试访问，测试是否存在未授权访问等漏洞。
 
@@ -250,19 +221,14 @@
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_183.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_185.png)
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_187.png)
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_189.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_191.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_193.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_195.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_197.png)
 
 ### 模式二：半自动工具辅助模式（以Burp Suite为例）
 
@@ -276,9 +242,7 @@
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_205.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_207.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_209.png)
 
 **Burp Suite 自带功能**：
 在`Target`标签页，右键点击目标站点，选择`Engagement tools` -> `Find scripts`。Burp会尝试列出所有发现的JS文件，但功能相对基础。
@@ -289,7 +253,6 @@
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_215.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_217.png)
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_219.png)
 
@@ -302,7 +265,6 @@
 **推荐使用的Burp插件**：
 以下是几个能极大提升JS分析效率的插件：
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_227.png)
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_229.png)
 
@@ -310,7 +272,6 @@
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_233.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_235.png)
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_237.png)
 
@@ -323,7 +284,6 @@
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_241.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_243.png)
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_245.png)
 
@@ -351,15 +311,12 @@
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_266.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_268.png)
 
 ### 模式三：全自动工具扫描模式
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_270.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_272.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_274.png)
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_276.png)
 
@@ -385,15 +342,11 @@
 
 以下是几款推荐的全自动工具：
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_294.png)
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_296.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_298.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_300.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_301.png)
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_302.png)
 
@@ -405,7 +358,6 @@
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_306.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_307.png)
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_309.png)
 
@@ -500,7 +452,6 @@
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_372.png)
 
-![](img/4f33ebdc4faf5af1d4597311e1389f68_374.png)
 
 ![](img/4f33ebdc4faf5af1d4597311e1389f68_375.png)
 

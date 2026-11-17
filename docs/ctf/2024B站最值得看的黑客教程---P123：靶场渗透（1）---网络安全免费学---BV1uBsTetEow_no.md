@@ -16,19 +16,15 @@
 
 ![](img/a499578bddee1da1dcc078249be48a36_12.png)
 
-![](img/a499578bddee1da1dcc078249be48a36_14.png)
 
-![](img/a499578bddee1da1dcc078249be48a36_15.png)
 
 ![](img/a499578bddee1da1dcc078249be48a36_17.png)
 
 ## 确定目标 🎯
 
-![](img/a499578bddee1da1dcc078249be48a36_19.png)
 
 首先，我们需要确定攻击目标。本次渗透测试的目标是一台IP地址为 `192.168.80.150` 的服务器。这台服务器位于内网环境中，因此外部无法直接访问。如果你想进行相同的练习，可以在课后获取相同的靶场环境。
 
-![](img/a499578bddee1da1dcc078249be48a36_21.png)
 
 ![](img/a499578bddee1da1dcc078249be48a36_23.png)
 
@@ -50,9 +46,7 @@
 
 上一节我们确定了目标，本节中我们来看看如何进行信息收集。对于单一的内网靶机，信息收集的核心是扫描其开放的端口、运行的服务以及操作系统版本。
 
-![](img/a499578bddee1da1dcc078249be48a36_37.png)
 
-![](img/a499578bddee1da1dcc078249be48a36_39.png)
 
 我们将使用Kali Linux自带的强大工具 **Nmap** 来完成这项任务。
 
@@ -87,19 +81,15 @@ nmap -sT -T4 192.168.80.150
 
 ![](img/a499578bddee1da1dcc078249be48a36_51.png)
 
-![](img/a499578bddee1da1dcc078249be48a36_53.png)
 
 我们将使用Kali自带的另一个工具 **Dirb** 来暴力破解网站的目录和文件。
 
-![](img/a499578bddee1da1dcc078249be48a36_55.png)
 
 ![](img/a499578bddee1da1dcc078249be48a36_57.png)
 
 ![](img/a499578bddee1da1dcc078249be48a36_59.png)
 
-![](img/a499578bddee1da1dcc078249be48a36_61.png)
 
-![](img/a499578bddee1da1dcc078249be48a36_63.png)
 
 以下是执行目录扫描的命令：
 ```bash
@@ -108,7 +98,6 @@ dirb http://192.168.80.150
 *   **`dirb`**: 网站目录暴力破解工具。
 *   **`http://192.168.80.150`**: 目标网站的地址。
 
-![](img/a499578bddee1da1dcc078249be48a36_65.png)
 
 ![](img/a499578bddee1da1dcc078249be48a36_67.png)
 
@@ -117,15 +106,11 @@ dirb http://192.168.80.150
 2.  数据库管理平台 (`/phpmyadmin`)
 3.  一个名为Joomla的博客系统后台 (`/administrator`)
 
-![](img/a499578bddee1da1dcc078249be48a36_69.png)
 
-![](img/a499578bddee1da1dcc078249be48a36_71.png)
 
 ## 利用信息泄露获取凭证 🔑
 
-![](img/a499578bddee1da1dcc078249be48a36_73.png)
 
-![](img/a499578bddee1da1dcc078249be48a36_75.png)
 
 在目录枚举结果中，我们发现了一个名为 `/.git` 的目录。这通常意味着网站开发者在部署时，不小心将代码版本控制仓库（Git）也上传到了服务器上，造成了 **Git信息泄露**。
 
@@ -155,11 +140,9 @@ python3 git-dump.py http://192.168.80.150/.git
 
 ## 获取初步访问权限 🚪
 
-![](img/a499578bddee1da1dcc078249be48a36_84.png)
 
 现在，我们手头有数据库密码，而之前信息收集时发现了 `/phpmyadmin`（数据库管理平台）。逻辑上，下一步就是尝试用这个密码登录数据库。
 
-![](img/a499578bddee1da1dcc078249be48a36_86.png)
 
 我们访问 `http://192.168.80.150/phpmyadmin`，使用用户名 `root` 和密码 `2166621666` 进行登录。登录成功！这意味着我们获得了目标MySQL数据库的最高管理权限。
 
@@ -175,11 +158,8 @@ python3 git-dump.py http://192.168.80.150/.git
 5.  **提取凭证**：在源代码的配置文件中找到了数据库的明文密码。
 6.  **获取权限**：使用找到的密码成功登录phpMyAdmin，获得了数据库控制权。
 
-![](img/a499578bddee1da1dcc078249be48a36_90.png)
 
-![](img/a499578bddee1da1dcc078249be48a36_92.png)
 
-![](img/a499578bddee1da1dcc078249be48a36_94.png)
 
 ![](img/a499578bddee1da1dcc078249be48a36_96.png)
 

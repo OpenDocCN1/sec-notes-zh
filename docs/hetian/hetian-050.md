@@ -8,7 +8,6 @@
 
 ## 概述 📖
 
-![](img/6bea3ceee54c62aef97063025f7c581f_2.png)
 
 ![](img/6bea3ceee54c62aef97063025f7c581f_3.png)
 
@@ -53,15 +52,12 @@ apt-get install metasploit-framework
 
 ![](img/6bea3ceee54c62aef97063025f7c581f_21.png)
 
-![](img/6bea3ceee54c62aef97063025f7c581f_23.png)
 
 了解Metasploit的目录结构有助于我们更好地使用它。核心目录如下：
 
-![](img/6bea3ceee54c62aef97063025f7c581f_25.png)
 
 以下是各主要目录及其功能的简要说明：
 
-![](img/6bea3ceee54c62aef97063025f7c581f_27.png)
 
 ![](img/6bea3ceee54c62aef97063025f7c581f_29.png)
 
@@ -132,7 +128,6 @@ set THREADS 20
 run
 ```
 
-![](img/6bea3ceee54c62aef97063025f7c581f_45.png)
 
 ---
 
@@ -157,9 +152,7 @@ run
 ```
 如果目标存在漏洞，模块会提示 `Host is likely VULNERABLE to MS17-010!`。
 
-![](img/6bea3ceee54c62aef97063025f7c581f_55.png)
 
-![](img/6bea3ceee54c62aef97063025f7c581f_57.png)
 
 **第二步：选择利用模块并设置参数**
 ```bash
@@ -177,15 +170,12 @@ exploit
 ```
 攻击成功后，会得到一个 **Meterpreter** 会话。Meterpreter是一个功能强大的后渗透工具。
 
-![](img/6bea3ceee54c62aef97063025f7c581f_59.png)
 
 ![](img/6bea3ceee54c62aef97063025f7c581f_61.png)
 
-![](img/6bea3ceee54c62aef97063025f7c581f_63.png)
 
 ---
 
-![](img/6bea3ceee54c62aef97063025f7c581f_65.png)
 
 ## Meterpreter后渗透基础 🕵️♂️
 
@@ -197,11 +187,9 @@ exploit
 
 ![](img/6bea3ceee54c62aef97063025f7c581f_69.png)
 
-![](img/6bea3ceee54c62aef97063025f7c581f_71.png)
 
 以下是部分核心功能的命令示例：
 
-![](img/6bea3ceee54c62aef97063025f7c581f_73.png)
 
 ![](img/6bea3ceee54c62aef97063025f7c581f_75.png)
 
@@ -231,11 +219,9 @@ C:\\exp.exe
 
 ![](img/6bea3ceee54c62aef97063025f7c581f_79.png)
 
-![](img/6bea3ceee54c62aef97063025f7c581f_81.png)
 
 本节课中我们一起学习了Metasploit渗透测试框架的基础知识。我们从框架的简介和目录结构开始，了解了其核心模块的组成。随后，我们学习了如何启动MSFconsole并进行基本的信息收集操作。最后，通过一个完整的MS17-010漏洞攻击实例，我们实践了从漏洞扫描、利用到获取Meterpreter会话，并进行简单后渗透操作的完整流程。
 
-![](img/6bea3ceee54c62aef97063025f7c581f_83.png)
 
 ![](img/6bea3ceee54c62aef97063025f7c581f_85.png)
 

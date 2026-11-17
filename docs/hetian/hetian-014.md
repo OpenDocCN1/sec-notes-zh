@@ -67,9 +67,7 @@ id=1 and left((select table_name from information_schema.tables where table_sche
 
 ![](img/8558aa103ded601fd688976d24550553_8.png)
 
-![](img/8558aa103ded601fd688976d24550553_10.png)
 
-![](img/8558aa103ded601fd688976d24550553_12.png)
 
 ![](img/8558aa103ded601fd688976d24550553_14.png)
 
@@ -113,9 +111,7 @@ SELECT * FROM users WHERE id=1; INSERT INTO logs (action) VALUES ('injected')
 ```
 这将先执行查询，再执行一条插入日志的语句。
 
-![](img/8558aa103ded601fd688976d24550553_28.png)
 
-![](img/8558aa103ded601fd688976d24550553_30.png)
 
 堆叠注入的**威力在于其权限极高**。因为它可以执行任意SQL语句（`INSERT`, `UPDATE`, `DELETE`, `DROP` 等），而不仅仅是数据查询。这使得它比普通的联合查询注入更具破坏性。
 

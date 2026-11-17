@@ -11,7 +11,6 @@
 
 ![](img/efee96cfbabe38f351af4e6dcd5b4008_3.png)
 
-![](img/efee96cfbabe38f351af4e6dcd5b4008_5.png)
 
 
 ![](img/efee96cfbabe38f351af4e6dcd5b4008_7.png)
@@ -40,7 +39,6 @@ if (isset($code)) {
 
 ![](img/efee96cfbabe38f351af4e6dcd5b4008_11.png)
 
-![](img/efee96cfbabe38f351af4e6dcd5b4008_13.png)
 
 代码解读：
 *   `error_reporting(0);` 用于屏蔽所有错误提示。
@@ -49,7 +47,6 @@ if (isset($code)) {
 *   构造函数会在类实例化时自动执行，其功能是创建并写入一个名为 `php.php` 的文件，内容为 `$this->var` 的值。
 *   代码通过 `$_GET[‘code’]` 获取用户输入，并对其进行反序列化操作 `unserialize($code)`。
 
-![](img/efee96cfbabe38f351af4e6dcd5b4008_15.png)
 
 **漏洞点**在于：我们可以通过控制传入的`code`参数（即序列化后的字符串），来操控`Demo`类实例化后的`$var`属性值。由于构造函数会将该值写入文件，如果我们能让`$var`包含PHP代码，就能实现写入Webshell的目的。
 
@@ -63,11 +60,9 @@ if (isset($code)) {
 
 我们的目标是创建一个`Demo`类的序列化字符串，并且将其`$var`属性的值设置为我们希望写入的PHP代码（例如 `<?php phpinfo();?>`）。
 
-![](img/efee96cfbabe38f351af4e6dcd5b4008_21.png)
 
 以下是构造攻击载荷的步骤：
 
-![](img/efee96cfbabe38f351af4e6dcd5b4008_23.png)
 
 ![](img/efee96cfbabe38f351af4e6dcd5b4008_25.png)
 
@@ -75,9 +70,7 @@ if (isset($code)) {
 2.  **进行序列化**：然后，使用`serialize()`函数将这个对象序列化成字符串。
 3.  **获取序列化字符串**：最后，输出这个字符串，作为我们攻击的`payload`。
 
-![](img/efee96cfbabe38f351af4e6dcd5b4008_27.png)
 
-![](img/efee96cfbabe38f351af4e6dcd5b4008_29.png)
 
 我们可以编写一个简单的PHP脚本来完成这个操作：
 
@@ -86,9 +79,7 @@ if (isset($code)) {
 
 ![](img/efee96cfbabe38f351af4e6dcd5b4008_33.png)
 
-![](img/efee96cfbabe38f351af4e6dcd5b4008_34.png)
 
-![](img/efee96cfbabe38f351af4e6dcd5b4008_36.png)
 
 ```php
 <?php
@@ -109,16 +100,12 @@ echo serialize($obj);
 ?>
 ```
 
-![](img/efee96cfbabe38f351af4e6dcd5b4008_38.png)
 
 运行上述脚本，我们将得到一个类似以下的序列化字符串：
 `O:4:“Demo”:1:{s:3:“var”;s:19:“<?php phpinfo();?>”;}`
 
-![](img/efee96cfbabe38f351af4e6dcd5b4008_39.png)
 
-![](img/efee96cfbabe38f351af4e6dcd5b4008_41.png)
 
-![](img/efee96cfbabe38f351af4e6dcd5b4008_42.png)
 
 这个字符串描述了`Demo`类（`O:4:“Demo”`）有一个属性（`1`），属性名是长度为3的字符串`“var”`，其值是长度为19的字符串`“<?php phpinfo();?>”`。
 
@@ -128,15 +115,11 @@ echo serialize($obj);
 
 ## 实施攻击与写入Webshell
 
-![](img/efee96cfbabe38f351af4e6dcd5b4008_48.png)
 
-![](img/efee96cfbabe38f351af4e6dcd5b4008_50.png)
 
 现在，我们已经拥有了恶意的序列化字符串。接下来，我们将其作为`code`参数的值，发送给存在漏洞的页面。
 
-![](img/efee96cfbabe38f351af4e6dcd5b4008_52.png)
 
-![](img/efee96cfbabe38f351af4e6dcd5b4008_54.png)
 
 攻击流程如下：
 1.  访问漏洞页面，并在URL后附加参数 `?code=[序列化字符串]`。
@@ -153,7 +136,6 @@ echo serialize($obj);
 
 访问后，如果权限允许，将在`vuln.php`的同级目录下生成一个`php.php`文件，其内容为`<?php phpinfo();?>`。之后，我们访问`http://target.com/php.php`即可看到`phpinfo()`函数的输出信息，证明Webshell写入成功。
 
-![](img/efee96cfbabe38f351af4e6dcd5b4008_58.png)
 
 ## 总结与防御建议
 
@@ -165,16 +147,13 @@ echo serialize($obj);
 
 ![](img/efee96cfbabe38f351af4e6dcd5b4008_64.png)
 
-![](img/efee96cfbabe38f351af4e6dcd5b4008_66.png)
 
 **关键点回顾**：
 *   **漏洞成因**：用户可控的输入被直接用于`unserialize()`函数，且反序列化的对象包含危险的魔术方法（如`__construct`, `__destruct`, `__wakeup`等）。
 *   **攻击链**：控制输入 -> 反序列化生成恶意对象 -> 触发魔术方法 -> 执行危险操作（如写文件）。
 *   **核心公式**：`unserialize(用户可控数据) + 存在危险方法的类 = 反序列化漏洞`
 
-![](img/efee96cfbabe38f351af4e6dcd5b4008_68.png)
 
-![](img/efee96cfbabe38f351af4e6dcd5b4008_70.png)
 
 **防御此类漏洞的建议**：
 1.  **避免反序列化不可信数据**：尽量不要对用户传入的数据进行反序列化操作。
@@ -182,7 +161,6 @@ echo serialize($obj);
 3.  **对序列化数据进行签名验证**：确保数据在传输过程中未被篡改。
 4.  **及时更新和修复**：关注PHP官方发布的安全更新，及时修复已知的序列化相关漏洞。
 
-![](img/efee96cfbabe38f351af4e6dcd5b4008_72.png)
 
 ![](img/efee96cfbabe38f351af4e6dcd5b4008_74.png)
 

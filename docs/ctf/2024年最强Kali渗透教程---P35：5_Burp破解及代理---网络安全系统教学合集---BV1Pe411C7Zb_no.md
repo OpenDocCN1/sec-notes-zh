@@ -13,13 +13,10 @@ Burp Suite是一款广泛用于Web应用程序安全测试的集成平台。本�
 
 下载的Burp Suite压缩包内通常包含两个关键文件：`burploader.jar`和`burpsuite_pro.jar`。
 
-![](img/dd91a98f2352f8cda2a7eb0035a693da_1.png)
 
 以下是详细的激活步骤：
 
-![](img/dd91a98f2352f8cda2a7eb0035a693da_3.png)
 
-![](img/dd91a98f2352f8cda2a7eb0035a693da_5.png)
 
 1.  **启动激活程序**：首先，双击运行`burploader.jar`文件。程序会弹出一个窗口。
 2.  **运行激活向导**：在弹出的窗口中，点击“Run”按钮。随后会进入Burp Suite的许可证激活界面。
@@ -29,30 +26,23 @@ Burp Suite是一款广泛用于Web应用程序安全测试的集成平台。本�
 6.  **生成响应码**：将上一步复制的`Activation Request`代码粘贴到激活程序的`Activation Request`输入框中。激活程序会自动生成对应的`Activation Response`代码。
 7.  **完成激活**：将激活程序生成的`Activation Response`代码复制回Burp Suite的`Activation Response`输入框，然后点击“Next”按钮。如果一切正确，将提示激活成功。
 
-![](img/dd91a98f2352f8cda2a7eb0035a693da_7.png)
 
 ---
 
-![](img/dd91a98f2352f8cda2a7eb0035a693da_9.png)
 
 ## 配置代理与抓包 🌐
 
-![](img/dd91a98f2352f8cda2a7eb0035a693da_10.png)
 
-![](img/dd91a98f2352f8cda2a7eb0035a693da_12.png)
 
 成功激活Burp Suite后，我们就可以使用其核心的代理抓包功能了。Burp Proxy作为中间人，能够拦截和修改客户端与服务器之间的HTTP/HTTPS流量。
 
-![](img/dd91a98f2352f8cda2a7eb0035a693da_14.png)
 
 ### 代理工作原理
 Burp Proxy默认在本地（`127.0.0.1`）的`8080`端口运行。要拦截浏览器的流量，必须将浏览器的网络代理设置为这个地址和端口。
 
-![](img/dd91a98f2352f8cda2a7eb0035a693da_16.png)
 
 以下是配置浏览器代理的通用方法：
 
-![](img/dd91a98f2352f8cda2a7eb0035a693da_18.png)
 
 1.  **打开浏览器设置**：进入您所用浏览器（如Chrome, Firefox, Edge）的网络或连接设置。
 2.  **配置手动代理**：找到代理服务器设置部分，选择“手动代理配置”。
@@ -62,18 +52,14 @@ Burp Proxy默认在本地（`127.0.0.1`）的`8080`端口运行。要拦截浏�
     *   （可选）勾选“为所有协议使用相同代理”。
 4.  **保存设置**：保存并应用更改。
 
-![](img/dd91a98f2352f8cda2a7eb0035a693da_20.png)
 
 配置完成后，在Burp Suite的 **Proxy -> Intercept** 标签页中，确保 **Intercept is on** 按钮是打开状态。此时，在浏览器中访问任何HTTP网站，请求数据包都会被Burp Suite拦截并显示在界面中，您可以查看或修改它们。
 
-![](img/dd91a98f2352f8cda2a7eb0035a693da_22.png)
 
-![](img/dd91a98f2352f8cda2a7eb0035a693da_23.png)
 
 ### 拦截HTTPS流量（安装CA证书）
 默认情况下，Burp Proxy无法解密HTTPS流量。要拦截HTTPS请求，需要在浏览器中安装Burp Suite生成的CA证书。
 
-![](img/dd91a98f2352f8cda2a7eb0035a693da_25.png)
 
 以下是安装证书的步骤：
 
@@ -91,9 +77,7 @@ Burp Proxy默认在本地（`127.0.0.1`）的`8080`端口运行。要拦截浏�
 
 以下是配置此类插件的简要步骤：
 
-![](img/dd91a98f2352f8cda2a7eb0035a693da_27.png)
 
-![](img/dd91a98f2352f8cda2a7eb0035a693da_29.png)
 
 1.  **安装插件**：在浏览器的扩展商店中搜索并安装代理管理插件（如 `SwitchyOmega`）。
 2.  **新建情景模式**：在插件设置中，创建一个新的代理情景模式。

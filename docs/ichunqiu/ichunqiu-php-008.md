@@ -71,7 +71,6 @@ $sql = "UPDATE users SET lastip='$filtered_ip' WHERE username='$username'";
 
 由于255个字符的长度限制，直接编写复杂的攻击代码可能不够。通常采用加载远程JavaScript文件的方式。
 
-![](img/03a39f710295ab5d2a223cb4a52f6108_12.png)
 
 ![](img/03a39f710295ab5d2a223cb4a52f6108_13.png)
 
@@ -93,7 +92,6 @@ xhr.send('username=xssadmin&password=123456');
 
 ![](img/03a39f710295ab5d2a223cb4a52f6108_18.png)
 
-![](img/03a39f710295ab5d2a223cb4a52f6108_20.png)
 
 然后，构造一个简短的XSS载荷，用于加载这个远程JS文件。这个载荷必须少于255个字符。
 
@@ -103,9 +101,7 @@ xhr.send('username=xssadmin&password=123456');
 
 ## 实施攻击与演示
 
-![](img/03a39f710295ab5d2a223cb4a52f6108_22.png)
 
-![](img/03a39f710295ab5d2a223cb4a52f6108_23.png)
 
 上一节我们分析了漏洞原理并构造了载荷，本节中我们来看看如何实施攻击。
 

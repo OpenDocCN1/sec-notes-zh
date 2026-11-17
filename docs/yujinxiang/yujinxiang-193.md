@@ -2,15 +2,11 @@
 
 在本节课中，我们将学习游戏辅助控制台的设计原理。控制台是一个可以管理多个游戏窗口的界面或进程，其核心在于实现进程间的通信。我们将探讨如何使用 `SendMessage` 和 `COPYDATASTRUCT` 结构来实现一个简单的单向通信控制台。
 
-![](img/9155e0c30793b7fa7a6d79cdb14d4fca_1.png)
 
-![](img/9155e0c30793b7fa7a6d79cdb14d4fca_3.png)
 
 ---
 
-![](img/9155e0c30793b7fa7a6d79cdb14d4fca_5.png)
 
-![](img/9155e0c30793b7fa7a6d79cdb14d4fca_7.png)
 
 ## 控制台基本原理 🔧
 
@@ -102,7 +98,6 @@ if(hGame) {
 
 ![](img/9155e0c30793b7fa7a6d79cdb14d4fca_17.png)
 
-![](img/9155e0c30793b7fa7a6d79cdb14d4fca_19.png)
 
 ---
 
@@ -168,15 +163,11 @@ void UninstallHook(HWND hGameWnd) {
 
 ![](img/9155e0c30793b7fa7a6d79cdb14d4fca_25.png)
 
-![](img/9155e0c30793b7fa7a6d79cdb14d4fca_26.png)
 
-![](img/9155e0c30793b7fa7a6d79cdb14d4fca_27.png)
 
 ## 总结与下节预告 📚
 
-![](img/9155e0c30793b7fa7a6d79cdb14d4fca_29.png)
 
-![](img/9155e0c30793b7fa7a6d79cdb14d4fca_31.png)
 
 本节课中我们一起学习了游戏辅助控制台单向通信的基本原理与实现。
 

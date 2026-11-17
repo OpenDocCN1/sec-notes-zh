@@ -6,11 +6,9 @@
 
 ![](img/ee8ee64e43e7278d56c92e06dd8dc0d8_3.png)
 
-![](img/ee8ee64e43e7278d56c92e06dd8dc0d8_5.png)
 
 在本节课中，我们将学习如何利用TiYunZong漏洞链远程获取现代Android设备的root权限。我们将深入了解该漏洞链的原理和实现方法。
 
-![](img/ee8ee64e43e7278d56c92e06dd8dc0d8_7.png)
 
 ## 1. Google Pixel手机的安全性
 
@@ -23,17 +21,14 @@
 
 ![](img/ee8ee64e43e7278d56c92e06dd8dc0d8_11.png)
 
-![](img/ee8ee64e43e7278d56c92e06dd8dc0d8_13.png)
 
 ## 2. 远程攻击分析
 
 ![](img/ee8ee64e43e7278d56c92e06dd8dc0d8_15.png)
 
-![](img/ee8ee64e43e7278d56c92e06dd8dc0d8_17.png)
 
 **以下是远程攻击智能手机的分析：**
 
-![](img/ee8ee64e43e7278d56c92e06dd8dc0d8_19.png)
 
 - **攻击类型**：远程攻击可以分为通过互联网和通过相邻网络两种类型。
 - **攻击向量**：通过互联网的攻击通常更容易实施，而通过相邻网络的攻击则更具破坏性。
@@ -53,16 +48,13 @@
 
 ### 4.1 RCE漏洞
 
-![](img/ee8ee64e43e7278d56c92e06dd8dc0d8_25.png)
 
 **RCE漏洞分析：**
 
-![](img/ee8ee64e43e7278d56c92e06dd8dc0d8_27.png)
 
 - **漏洞类型**：远程代码执行漏洞。
 - **漏洞原理**：通过利用Chrome V8引擎漏洞，可以在Chrome渲染进程中执行远程代码。
 
-![](img/ee8ee64e43e7278d56c92e06dd8dc0d8_29.png)
 
 ### 4.2 EOP漏洞
 
@@ -79,7 +71,6 @@
 
 ![](img/ee8ee64e43e7278d56c92e06dd8dc0d8_35.png)
 
-![](img/ee8ee64e43e7278d56c92e06dd8dc0d8_37.png)
 
 **Root漏洞分析：**
 
@@ -106,7 +97,6 @@
 
 ## 总结
 
-![](img/ee8ee64e43e7278d56c92e06dd8dc0d8_47.png)
 
 ![](img/ee8ee64e43e7278d56c92e06dd8dc0d8_49.png)
 

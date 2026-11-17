@@ -4,9 +4,7 @@
 
 ## 基础知识与准备
 
-![](img/5ef3bbe8b48a982cc8c6731538fb8ca8_1.png)
 
-![](img/5ef3bbe8b48a982cc8c6731538fb8ca8_2.png)
 
 上一节我们介绍了Misc的概况，本节中我们来看看进行流量分析前需要做的准备。
 
@@ -41,13 +39,11 @@ Wireshark是世界上最著名、使用最广泛的网络协议分析器。它�
 核心功能可以概括为以下公式：
 `Wireshark功能 = 协议分析（TCP/IP, HTTP, DNS...） + 实时抓包 + 数据包深度检查`
 
-![](img/5ef3bbe8b48a982cc8c6731538fb8ca8_4.png)
 
 它支持从标准的TCP/IP、HTTP到更专业的Modbus、蓝牙、802.11无线协议乃至USB协议（通过插件）。安装非常简单，直接从其官网下载对应系统版本即可。
 
 在应用上，Wireshark既可用于分析已有的流量包文件（`.pcap`），也可用于实时抓取网络接口上的流量。其图形化界面对于初学者非常友好。
 
-![](img/5ef3bbe8b48a982cc8c6731538fb8ca8_6.png)
 
 ## 命令行工具：Tshark
 
@@ -87,9 +83,7 @@ tshark -r capture.pcap -Y 'http.request.uri contains "login"' -T fields -e http.
 
 ## Python集成：pyshark
 
-![](img/5ef3bbe8b48a982cc8c6731538fb8ca8_10.png)
 
-![](img/5ef3bbe8b48a982cc8c6731538fb8ca8_12.png)
 
 对于Misc选手，Python是必备技能。我们可以使用pyshark库在Python脚本中处理数据包，便于进行更复杂的后续分析。
 
@@ -121,11 +115,9 @@ for pkt in cap:
 
 除了Wireshark系列，还有一些其他辅助工具。例如国产的科来网络分析系统，它更侧重于流量统计和宏观分析。
 
-![](img/5ef3bbe8b48a982cc8c6731538fb8ca8_14.png)
 
 科来系统可以一键生成会话统计、流量排行、协议分布等图表，对于需要分析“访问量最大的IP”或“异常流量模式”的题目可能有所帮助。但在CTF中，绝大多数题目仍以Wireshark为主要工具。
 
-![](img/5ef3bbe8b48a982cc8c6731538fb8ca8_16.png)
 
 ![](img/5ef3bbe8b48a982cc8c6731538fb8ca8_18.png)
 

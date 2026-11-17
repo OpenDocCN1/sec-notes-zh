@@ -1,36 +1,25 @@
 # 2：课程概述与作业入门指南 🚀
 
-![](img/132fcab53a79489d296fd07a5cf7c117_1.png)
 
-![](img/132fcab53a79489d296fd07a5cf7c117_3.png)
 
-![](img/132fcab53a79489d296fd07a5cf7c117_5.png)
 
-![](img/132fcab53a79489d296fd07a5cf7c117_7.png)
 
-![](img/132fcab53a79489d296fd07a5cf7c117_9.png)
 
 ![](img/132fcab53a79489d296fd07a5cf7c117_11.png)
 
 ![](img/132fcab53a79489d296fd07a5cf7c117_13.png)
 
-![](img/132fcab53a79489d296fd07a5cf7c117_15.png)
 
-![](img/132fcab53a79489d296fd07a5cf7c117_17.png)
 
 ![](img/132fcab53a79489d296fd07a5cf7c117_19.png)
 
 ![](img/132fcab53a79489d296fd07a5cf7c117_21.png)
 
-![](img/132fcab53a79489d296fd07a5cf7c117_23.png)
 
-![](img/132fcab53a79489d296fd07a5cf7c117_25.png)
 
-![](img/132fcab53a79489d296fd07a5cf7c117_27.png)
 
 在本节课中，我们将一起回顾课程的基本结构，并重点介绍前两个作业（Linux Luminarium 和 Talking Web）的入门知识。我们将学习如何使用课程平台（Pwn College Dojo）、理解命令行基础以及初步探索HTTP网络请求。
 
-![](img/132fcab53a79489d296fd07a5cf7c117_29.png)
 
 ![](img/132fcab53a79489d296fd07a5cf7c117_31.png)
 
@@ -52,7 +41,6 @@
 1.  作业具有一定挑战性，可能需要数小时完成。
 2.  临近截止日期时，服务器负载会很高，可能导致访问缓慢。
 
-![](img/132fcab53a79489d296fd07a5cf7c117_35.png)
 
 ![](img/132fcab53a79489d296fd07a5cf7c117_36.png)
 
@@ -60,7 +48,6 @@
 
 ![](img/132fcab53a79489d296fd07a5cf7c117_40.png)
 
-![](img/132fcab53a79489d296fd07a5cf7c117_42.png)
 
 根据当前数据，大部分同学已开始 Linux Luminarium，但仍有不少同学尚未开始 Talking Web。我们建议先完成 Linux Luminarium。
 
@@ -78,7 +65,6 @@
 
 现在我们已经了解了作业的截止日期和重要性，接下来看看如何高效地使用我们的学习平台。
 
-![](img/132fcab53a79489d296fd07a5cf7c117_51.png)
 
 Pwn College Dojo 是我们完成挑战的主要平台。每个挑战都可以在网页的图形化桌面环境中完成。
 
@@ -99,7 +85,6 @@ Pwn College Dojo 是我们完成挑战的主要平台。每个挑战都可以在
 
 连接成功后，你的SSH会话会自动绑定到当前活跃的挑战环境。当你完成一个挑战并开启下一个时，SSH连接会自动刷新到新挑战的shell中，实现快速切换。
 
-![](img/132fcab53a79489d296fd07a5cf7c117_53.png)
 
 ---
 

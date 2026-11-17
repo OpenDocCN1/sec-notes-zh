@@ -1,6 +1,5 @@
 # 035：向面试官提问
 
-![](img/328adf52c672392fd791ba696f56e4c7_0.png)
 
 ![](img/328adf52c672392fd791ba696f56e4c7_0.png)
 
@@ -18,7 +17,6 @@
 *   **团队贡献**：`In what ways can I contribute to the success of the team and the organization?`（我可以通过哪些方式为团队和组织的成功做出贡献？）
 *   **重要品质**：`What qualities or traits are most important for working well with the team and other stakeholders?`（要与团队和其他利益相关者良好合作，最重要的品质或特质是什么？）
 
-![](img/328adf52c672392fd791ba696f56e4c7_2.png)
 
 ![](img/328adf52c672392fd791ba696f56e4c7_2.png)
 

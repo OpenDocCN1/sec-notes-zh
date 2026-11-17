@@ -1,64 +1,42 @@
 #  018：课时2 ARM汇编代码讲解2 🧠
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_1.png)
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_2.png)
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_4.png)
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_5.png)
 
 在本节课中，我们将深入学习ARM汇编代码的分析，重点探讨SO文件的加载顺序、栈与内存数据段的区别、指针概念、进制转换以及函数调用规则。我们将通过一个具体的`hellonet`程序实例，结合静态分析与动态调试，详细拆解其汇编逻辑。
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_7.png)
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_9.png)
 
 ---
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_11.png)
 
 ## 概述
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_13.png)
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_14.png)
 
 本节课我们将分析一个名为`hellonet`的Android应用程序。该程序的Java层会调用一个名为`hello3`的Native函数，并传入一个整型参数`100`。我们的目标是深入分析对应的SO文件（`libhello.so`）中的`hello3`函数，理解其汇编实现、参数传递、局部变量存储以及函数调用栈的平衡原理。
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_16.png)
 
 ---
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_17.png)
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_19.png)
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_20.png)
 
 ## SO文件分析工具介绍
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_22.png)
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_23.png)
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_25.png)
 
 在深入分析汇编代码之前，首先介绍两款用于分析ELF格式SO文件的工具。
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_27.png)
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_29.png)
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_30.png)
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_32.png)
 
 ### 1. readelf工具
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_34.png)
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_35.png)
 
 `readelf`是Linux环境下强大的ELF文件格式查看工具，可以显示SO文件的头部信息、程序头、节头、动态链接信息等。
 
@@ -68,7 +46,6 @@ readelf -a libhello.so > log.txt
 ```
 此命令将分析结果输出到`log.txt`文件中，便于详细查看。
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_37.png)
 
 ### 2. SO Helper工具
 
@@ -86,7 +63,6 @@ SO文件在加载到内存时，系统会主动调用一些特定的函数来完
 
 ---
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_39.png)
 
 ## 栈与内存数据段
 
@@ -95,17 +71,12 @@ SO文件在加载到内存时，系统会主动调用一些特定的函数来完
 *   **栈**：用于存储函数内的**局部变量**、函数参数、返回地址等。栈空间由系统自动分配和释放，遵循“后进先出”原则。函数执行时栈顶下移（地址减小）分配空间，函数返回时栈顶上移（地址增大）释放空间。
 *   **内存数据段**：用于存储**全局变量**和**静态变量**。这些变量在程序整个生命周期内都存在，可以被所有函数访问。
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_41.png)
 
 例如，在C代码中：
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_43.png)
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_44.png)
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_45.png)
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_46.png)
 
 ```c
 int global_var = 10; // 存储在内存数据段
@@ -114,27 +85,18 @@ void func() {
 }
 ```
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_47.png)
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_49.png)
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_51.png)
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_52.png)
 
 ---
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_54.png)
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_56.png)
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_58.png)
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_60.png)
 
 ## 指针概念
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_62.png)
 
 指针是C/C++语言的核心概念，它存储的是内存地址。通过指针，程序可以直接访问和操作内存中的数据，这使得编程非常灵活但也容易出错。在汇编层面，指针通常体现为对某个寄存器所存地址的加载和存储操作。
 
@@ -144,9 +106,7 @@ void func() {
 
 计算机底层使用二进制存储数据。但在分析和调试时，我们更常使用十六进制表示，因为它与二进制转换直观（每4位二进制对应1位十六进制）。
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_64.png)
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_66.png)
 
 转换关系遵循“8421”编码规则：
 *   十六进制 `0xF` = 二进制 `1111` (8+4+2+1=15)
@@ -174,7 +134,6 @@ ARM架构遵循ATPCS规范进行函数参数传递：
 
 我们使用IDA Pro同时进行静态分析和动态调试。一份IDA实例用于静态查看代码结构，另一份用于附加到运行中的进程进行动态跟踪。
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_68.png)
 
 ### 函数入口与栈帧建立
 
@@ -258,9 +217,7 @@ exit_loop:
 
 ### 函数调用与返回
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_70.png)
 
-![](img/dfd3e2abf134b8f4fe4f9b057fe8803e_71.png)
 
 循环结束后，函数将累加结果`sum`作为参数，调用另一个函数进行处理：
 

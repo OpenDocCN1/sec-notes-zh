@@ -2,7 +2,6 @@
 
 ![](img/51820edbdb2717da85b965d4cd019ab9_1.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_3.png)
 
 ## 概述
 在本节课中，我们将深入学习SSRF（服务端请求伪造）漏洞的利用与绕过技术。我们将回顾SSRF漏洞的核心概念，探讨多种绕过常见限制的方法，并通过实际案例（如攻击内网Redis和Struts2服务）来巩固理解。课程最后会介绍一些基础的防御思路。
@@ -12,18 +11,13 @@
 
 SSRF漏洞的本质是**服务端能够对外发起网络请求**，并且**未对用户输入的请求目标（如URL）进行充分过滤和限制**。这使得攻击者可以诱导服务器向内部或其他受保护的系统发起请求。
 
-![](img/51820edbdb2717da85b965d4cd019ab9_5.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_7.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_9.png)
 
 ## SSRF漏洞的绕过方法
 当目标应用对SSRF漏洞存在一些防护措施时，我们可以尝试以下方法进行绕过。
 
-![](img/51820edbdb2717da85b965d4cd019ab9_11.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_13.png)
 
 ![](img/51820edbdb2717da85b965d4cd019ab9_15.png)
 
@@ -31,13 +25,9 @@ SSRF漏洞的本质是**服务端能够对外发起网络请求**，并且**未�
 
 以下是几种常见的绕过技术：
 
-![](img/51820edbdb2717da85b965d4cd019ab9_19.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_20.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_22.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_24.png)
 
 1.  **利用@符号**
     在URL中使用`@`符号可以绕过某些基于域名的过滤。例如，`http://example.com@192.168.1.1` 实际请求的是`192.168.1.1`，但某些过滤逻辑可能只检查`example.com`部分。
@@ -57,9 +47,7 @@ SSRF漏洞的本质是**服务端能够对外发起网络请求**，并且**未�
 
 ![](img/51820edbdb2717da85b965d4cd019ab9_36.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_38.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_40.png)
 
 2.  **IP地址进制转换**
     将点分十进制的IP地址转换为其他进制形式，可能绕过简单的正则匹配。
@@ -67,11 +55,8 @@ SSRF漏洞的本质是**服务端能够对外发起网络请求**，并且**未�
     *   **十六进制**: `0xC0A80001` (对应 `192.168.0.1`)
     *   **十进制**: `3232235521` (对应 `192.168.0.1`)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_41.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_43.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_45.png)
 
 ![](img/51820edbdb2717da85b965d4cd019ab9_47.png)
 
@@ -137,29 +122,22 @@ SSRF漏洞的本质是**服务端能够对外发起网络请求**，并且**未�
 
 ![](img/51820edbdb2717da85b965d4cd019ab9_83.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_85.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_87.png)
 
 ![](img/51820edbdb2717da85b965d4cd019ab9_89.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_91.png)
 
 以下是几种基础的防御策略：
 
-![](img/51820edbdb2717da85b965d4cd019ab9_93.png)
 
 ![](img/51820edbdb2717da85b965d4cd019ab9_95.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_97.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_99.png)
 
 ![](img/51820edbdb2717da85b965d4cd019ab9_101.png)
 
 ![](img/51820edbdb2717da85b965d4cd019ab9_103.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_105.png)
 
 ![](img/51820edbdb2717da85b965d4cd019ab9_107.png)
 
@@ -173,16 +151,12 @@ SSRF漏洞的本质是**服务端能够对外发起网络请求**，并且**未�
 
 ![](img/51820edbdb2717da85b965d4cd019ab9_111.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_113.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_115.png)
 
 ## 实战案例：攻击内网Redis服务
 接下来，我们通过一个具体案例来理解SSRF如何用于攻击内网服务。假设我们发现一个存在SSRF漏洞的Web应用，并且通过探测发现内网存在一个未授权访问的Redis服务（端口6379）。
 
-![](img/51820edbdb2717da85b965d4cd019ab9_117.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_119.png)
 
 ![](img/51820edbdb2717da85b965d4cd019ab9_121.png)
 
@@ -190,21 +164,16 @@ SSRF漏洞的本质是**服务端能够对外发起网络请求**，并且**未�
 
 ![](img/51820edbdb2717da85b965d4cd019ab9_124.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_126.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_128.png)
 
 攻击目标是在目标服务器上写入一个定时任务，从而反弹一个Shell回来。
 
-![](img/51820edbdb2717da85b965d4cd019ab9_130.png)
 
 ![](img/51820edbdb2717da85b965d4cd019ab9_132.png)
 
 **核心攻击步骤：**
 
-![](img/51820edbdb2717da85b965d4cd019ab9_134.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_135.png)
 
 ![](img/51820edbdb2717da85b965d4cd019ab9_137.png)
 
@@ -216,13 +185,10 @@ SSRF漏洞的本质是**服务端能够对外发起网络请求**，并且**未�
 2.  **构造攻击载荷**：我们需要向Redis服务器发送一系列命令，将反弹Shell的指令写入系统的定时任务目录。
 3.  **利用Gopher协议发送**：由于Redis是文本协议，我们可以使用`gopher://`协议直接向`192.168.1.100:6379`发送原始的Redis命令数据。
 
-![](img/51820edbdb2717da85b965d4cd019ab9_143.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_145.png)
 
 ![](img/51820edbdb2717da85b965d4cd019ab9_147.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_149.png)
 
 **关键Payload示例（概念性）：**
 一个用于写入定时任务的Redis命令序列大致如下：
@@ -244,9 +210,7 @@ gopher://192.168.1.100:6379/_*3%0d%0a$3%0d%0aSET%0d%0a$6%0d%0amytask%0d%0a$5%0d%
 ## 实战案例：攻击内网Struts2服务
 另一个常见场景是利用SSRF攻击内网存在漏洞的Struts2框架应用。Struts2历史上存在多个远程代码执行漏洞。
 
-![](img/51820edbdb2717da85b965d4cd019ab9_151.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_152.png)
 
 ![](img/51820edbdb2717da85b965d4cd019ab9_154.png)
 
@@ -254,13 +218,11 @@ gopher://192.168.1.100:6379/_*3%0d%0a$3%0d%0aSET%0d%0a$6%0d%0amytask%0d%0a$5%0d%
 
 ![](img/51820edbdb2717da85b965d4cd019ab9_156.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_158.png)
 
 ![](img/51820edbdb2717da85b965d4cd019ab9_160.png)
 
 ![](img/51820edbdb2717da85b965d4cd019ab9_162.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_164.png)
 
 ![](img/51820edbdb2717da85b965d4cd019ab9_166.png)
 
@@ -285,21 +247,17 @@ gopher://192.168.1.100:6379/_*3%0d%0a$3%0d%0aSET%0d%0a$6%0d%0amytask%0d%0a$5%0d%
 
 ![](img/51820edbdb2717da85b965d4cd019ab9_171.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_173.png)
 
 ![](img/51820edbdb2717da85b965d4cd019ab9_175.png)
 
 ![](img/51820edbdb2717da85b965d4cd019ab9_177.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_179.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_181.png)
 
 ![](img/51820edbdb2717da85b965d4cd019ab9_183.png)
 
 ![](img/51820edbdb2717da85b965d4cd019ab9_185.png)
 
-![](img/51820edbdb2717da85b965d4cd019ab9_186.png)
 
 ![](img/51820edbdb2717da85b965d4cd019ab9_188.png)
 

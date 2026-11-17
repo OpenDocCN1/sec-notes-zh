@@ -61,7 +61,6 @@
 
 ![](img/a01e19d7d9e77c5afe59ca346cb7549b_6.png)
 
-![](img/a01e19d7d9e77c5afe59ca346cb7549b_1.png)
 
 通过DIE分析，我们可以看到这是一个32位的程序，并且被检测出使用了 **UPX** 壳。
 
@@ -73,7 +72,6 @@
 
 如果我们不脱壳，直接使用IDA进行静态分析，会得到什么结果呢？
 
-![](img/a01e19d7d9e77c5afe59ca346cb7549b_5.png)
 
 ![](img/a01e19d7d9e77c5afe59ca346cb7549b_11.png)
 
@@ -81,7 +79,6 @@
 
 ![](img/a01e19d7d9e77c5afe59ca346cb7549b_13.png)
 
-![](img/a01e19d7d9e77c5afe59ca346cb7549b_6.png)
 
 此时，程序的文件大小是20KB。
 
@@ -97,7 +94,6 @@ upx -d 新年快乐.exe
 
 ![](img/a01e19d7d9e77c5afe59ca346cb7549b_8.png)
 
-![](img/a01e19d7d9e77c5afe59ca346cb7549b_19.png)
 
 脱壳完成后，工具会覆盖原文件。我们再次查看文件属性，发现它的大小变成了27KB。
 
@@ -107,19 +103,15 @@ upx -d 新年快乐.exe
 
 现在，我们再次用IDA32打开脱壳后的 `新年快乐.exe` 程序，并按F5键生成伪代码。
 
-![](img/a01e19d7d9e77c5afe59ca346cb7549b_21.png)
 
 ![](img/a01e19d7d9e77c5afe59ca346cb7549b_11.png)
 
-![](img/a01e19d7d9e77c5afe59ca346cb7549b_22.png)
 
 分析伪代码，逻辑变得非常清晰：程序提示“happy new year”，要求用户输入一个字符串。程序会将用户输入的字符串 `str1` 与内置的字符串 `str` 进行比较，如果相等则成功。
 
-![](img/a01e19d7d9e77c5afe59ca346cb7549b_24.png)
 
 ![](img/a01e19d7d9e77c5afe59ca346cb7549b_13.png)
 
-![](img/a01e19d7d9e77c5afe59ca346cb7549b_26.png)
 
 从代码中可以直接看到，正确的 `str` 是 `"flag{Welcome_to_UPX_World}"`。我们运行程序进行验证：
 *   输入 `abc`，程序报错。
@@ -127,13 +119,11 @@ upx -d 新年快乐.exe
 
 ![](img/a01e19d7d9e77c5afe59ca346cb7549b_28.png)
 
-![](img/a01e19d7d9e77c5afe59ca346cb7549b_15.png)
 
 ![](img/a01e19d7d9e77c5afe59ca346cb7549b_30.png)
 
 至此，我们成功完成了UPX壳的脱壳与分析。
 
-![](img/a01e19d7d9e77c5afe59ca346cb7549b_32.png)
 
 ---
 

@@ -51,13 +51,11 @@ int __cdecl main(int argc, const char **argv, const char **envp)
 
 此外，程序开头存在反调试检测函数。如果检测到程序正在被调试，则会强制退出，阻碍我们的动态分析。
 
-![](img/9bd841e5b525d7278ea53af4698cb49a_5.png)
 
 ### 第三步：绕过反调试并附加进程
 
 为了成功进行动态调试，我们需要绕过反调试检测。IDA Pro 提供了一个功能：**附加到运行中的进程**。
 
-![](img/9bd841e5b525d7278ea53af4698cb49a_7.png)
 
 操作步骤如下：
 1.  首先，直接运行目标程序。
@@ -66,11 +64,9 @@ int __cdecl main(int argc, const char **argv, const char **envp)
 
 ### 第四步：设置断点与动态跟踪
 
-![](img/9bd841e5b525d7278ea53af4698cb49a_9.png)
 
 附加成功后，我们需要在关键代码处设置断点。在本例中，我们在字符串比较函数 `strcmp` 的调用处设置断点。
 
-![](img/9bd841e5b525d7278ea53af4698cb49a_11.png)
 
 以下是关键步骤：
 1.  在IDA的汇编视图或伪代码视图中，在 `strcmp` 调用行设置断点（按 **F2**）。
@@ -84,11 +80,9 @@ int __cdecl main(int argc, const char **argv, const char **envp)
 -   一个寄存器（如 `EAX`）指向我们输入的字符串。
 -   另一个寄存器（如 `EDX`）则指向正确的flag值。
 
-![](img/9bd841e5b525d7278ea53af4698cb49a_13.png)
 
 我们可以在IDA的寄存器窗口或内存窗口中，查看 `EDX` 寄存器所指向的内存地址的内容，该内容即为程序的flag。
 
-![](img/9bd841e5b525d7278ea53af4698cb49a_14.png)
 
 ### 第六步：验证Flag
 

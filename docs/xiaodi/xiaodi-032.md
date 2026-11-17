@@ -18,7 +18,6 @@ JavaEE（Java Platform, Enterprise Edition）是用于企业级Web开发的Java�
 
 ![](img/d270ca8a0ad4fb982f330c718b2f9ad4_9.png)
 
-![](img/d270ca8a0ad4fb982f330c718b2f9ad4_11.png)
 
 ---
 
@@ -59,7 +58,6 @@ JavaEE（Java Platform, Enterprise Edition）是用于企业级Web开发的Java�
 
 ![](img/d270ca8a0ad4fb982f330c718b2f9ad4_35.png)
 
-![](img/d270ca8a0ad4fb982f330c718b2f9ad4_37.png)
 
 ```java
 import javax.servlet.http.HttpServlet;
@@ -151,21 +149,16 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IO
 
 ![](img/d270ca8a0ad4fb982f330c718b2f9ad4_79.png)
 
-![](img/d270ca8a0ad4fb982f330c718b2f9ad4_81.png)
 
 ## 🔄 Servlet 生命周期
 
 ![](img/d270ca8a0ad4fb982f330c718b2f9ad4_83.png)
 
-![](img/d270ca8a0ad4fb982f330c718b2f9ad4_85.png)
 
 上一节我们介绍了Servlet的创建和配置，本节中我们来看看Servlet的生命周期。
 
-![](img/d270ca8a0ad4fb982f330c718b2f9ad4_87.png)
 
-![](img/d270ca8a0ad4fb982f330c718b2f9ad4_89.png)
 
-![](img/d270ca8a0ad4fb982f330c718b2f9ad4_91.png)
 
 ![](img/d270ca8a0ad4fb982f330c718b2f9ad4_93.png)
 
@@ -220,9 +213,7 @@ public class LifecycleServlet extends HttpServlet {
 
 ![](img/d270ca8a0ad4fb982f330c718b2f9ad4_115.png)
 
-![](img/d270ca8a0ad4fb982f330c718b2f9ad4_117.png)
 
-![](img/d270ca8a0ad4fb982f330c718b2f9ad4_119.png)
 
 ## 🗃️ JDBC 数据库操作
 
@@ -268,7 +259,6 @@ JDBC（Java Database Connectivity）是Java语言中用于连接和操作数据�
 
 ![](img/d270ca8a0ad4fb982f330c718b2f9ad4_151.png)
 
-![](img/d270ca8a0ad4fb982f330c718b2f9ad4_153.png)
 
 1. **注册数据库驱动**：加载数据库驱动类。
 2. **建立数据库连接**：通过URL、用户名和密码连接数据库。
@@ -277,13 +267,10 @@ JDBC（Java Database Connectivity）是Java语言中用于连接和操作数据�
 5. **处理结果集**：遍历结果集并处理数据。
 6. **关闭连接**：释放数据库连接资源。
 
-![](img/d270ca8a0ad4fb982f330c718b2f9ad4_155.png)
 
 ![](img/d270ca8a0ad4fb982f330c718b2f9ad4_157.png)
 
-![](img/d270ca8a0ad4fb982f330c718b2f9ad4_159.png)
 
-![](img/d270ca8a0ad4fb982f330c718b2f9ad4_161.png)
 
 以下是JDBC操作数据库的示例代码：
 
@@ -342,9 +329,7 @@ public class JdbcExample {
 
 ### 预编译与SQL注入防护
 
-![](img/d270ca8a0ad4fb982f330c718b2f9ad4_175.png)
 
-![](img/d270ca8a0ad4fb982f330c718b2f9ad4_177.png)
 
 ![](img/d270ca8a0ad4fb982f330c718b2f9ad4_179.png)
 
@@ -356,9 +341,7 @@ JDBC支持预编译（PreparedStatement），可以有效防止SQL注入攻击�
 
 以下是使用预编译的示例：
 
-![](img/d270ca8a0ad4fb982f330c718b2f9ad4_185.png)
 
-![](img/d270ca8a0ad4fb982f330c718b2f9ad4_187.png)
 
 ![](img/d270ca8a0ad4fb982f330c718b2f9ad4_189.png)
 
@@ -377,7 +360,6 @@ ResultSet rs = pstmt.executeQuery();
 
 ---
 
-![](img/d270ca8a0ad4fb982f330c718b2f9ad4_197.png)
 
 ![](img/d270ca8a0ad4fb982f330c718b2f9ad4_199.png)
 
@@ -403,7 +385,6 @@ ResultSet rs = pstmt.executeQuery();
 
 ![](img/d270ca8a0ad4fb982f330c718b2f9ad4_217.png)
 
-![](img/d270ca8a0ad4fb982f330c718b2f9ad4_219.png)
 
 ### MyBatis 概述
 
@@ -437,20 +418,16 @@ MyBatis是一个优秀的持久层框架，它简化了数据库操作，通过X
 
 ![](img/d270ca8a0ad4fb982f330c718b2f9ad4_237.png)
 
-![](img/d270ca8a0ad4fb982f330c718b2f9ad4_239.png)
 
-![](img/d270ca8a0ad4fb982f330c718b2f9ad4_241.png)
 
 以下是MyBatis的基本使用步骤：
 
-![](img/d270ca8a0ad4fb982f330c718b2f9ad4_243.png)
 
 1. **添加依赖**：在项目中引入MyBatis的依赖。
 2. **配置数据源**：在配置文件中设置数据库连接信息。
 3. **编写Mapper接口**：定义数据库操作方法。
 4. **编写SQL映射文件**：配置SQL语句和结果映射。
 
-![](img/d270ca8a0ad4fb982f330c718b2f9ad4_245.png)
 
 ---
 

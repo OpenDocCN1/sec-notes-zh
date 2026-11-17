@@ -13,25 +13,15 @@
 
 以下是栈帧的构成示意图：
 
-![](img/4570d78d4bc9997c2c66cae96d167b71_1.png)
 
-![](img/4570d78d4bc9997c2c66cae96d167b71_2.png)
 
-![](img/4570d78d4bc9997c2c66cae96d167b71_1.png)
 
-![](img/4570d78d4bc9997c2c66cae96d167b71_2.png)
 
-![](img/4570d78d4bc9997c2c66cae96d167b71_3.png)
 
-![](img/4570d78d4bc9997c2c66cae96d167b71_3.png)
 
-![](img/4570d78d4bc9997c2c66cae96d167b71_4.png)
 
-![](img/4570d78d4bc9997c2c66cae96d167b71_5.png)
 
-![](img/4570d78d4bc9997c2c66cae96d167b71_4.png)
 
-![](img/4570d78d4bc9997c2c66cae96d167b71_5.png)
 
 ## 函数调用顺序 🔄
 
@@ -41,27 +31,19 @@
 
 以下是 `printf` 被调用时的栈状态示意图：
 
-![](img/4570d78d4bc9997c2c66cae96d167b71_7.png)
 
-![](img/4570d78d4bc9997c2c66cae96d167b71_8.png)
 
-![](img/4570d78d4bc9997c2c66cae96d167b71_7.png)
 
 ## printf的参数匹配机制 🎯
 
-![](img/4570d78d4bc9997c2c66cae96d167b71_8.png)
 
 现在，程序执行到 `printf` 内部。`printf` 会解析 `buff` 中的内容。如果 `buff` 中包含任何格式化占位符（如 `%s`, `%x`），`printf` 就需要为它们匹配对应的参数。
 
 `printf` 会从栈上寻找这些参数。具体来说，它会按照以下顺序进行匹配，为了方便理解，我们为栈上的位置进行了编号：
 
-![](img/4570d78d4bc9997c2c66cae96d167b71_10.png)
 
-![](img/4570d78d4bc9997c2c66cae96d167b71_11.png)
 
-![](img/4570d78d4bc9997c2c66cae96d167b71_12.png)
 
-![](img/4570d78d4bc9997c2c66cae96d167b71_13.png)
 
 匹配规则如下：
 *   第0个参数（即包含所有占位符的格式字符串）位于 `buff` 所指的位置。
@@ -74,21 +56,14 @@
 
 下图清晰地标出了 `printf` 寻找参数的各个位置：
 
-![](img/4570d78d4bc9997c2c66cae96d167b71_10.png)
 
-![](img/4570d78d4bc9997c2c66cae96d167b71_15.png)
 
-![](img/4570d78d4bc9997c2c66cae96d167b71_11.png)
 
-![](img/4570d78d4bc9997c2c66cae96d167b71_12.png)
 
-![](img/4570d78d4bc9997c2c66cae96d167b71_13.png)
 
-![](img/4570d78d4bc9997c2c66cae96d167b71_16.png)
 
 ## 总结 📝
 
-![](img/4570d78d4bc9997c2c66cae96d167b71_15.png)
 
 ![](img/4570d78d4bc9997c2c66cae96d167b71_16.png)
 

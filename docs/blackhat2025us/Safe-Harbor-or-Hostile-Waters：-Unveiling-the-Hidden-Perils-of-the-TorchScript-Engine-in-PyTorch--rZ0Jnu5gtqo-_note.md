@@ -105,7 +105,6 @@ IR 图最初包含许多不必要的节点，通过优化使其更加简洁。
 
 让我们看看 `.pt` 文件的细节。`.pt` 文件是使用 zip 压缩的压缩文件。解压缩后的文件树如上所示。我们可以使用 `pickletools` 反汇编它，上面是 `data.pkl` 的反汇编输出。这段 pickle 代码的含义是创建一个名为 `torch.jit._pickle.Pickleable` 的对象，并将其 `training` 属性设置为 `True`。而 `torch.jit._pickle.Pickleable` 对象就是脚本模型。因此，在解释 `data.pkl` 时，模型对象被创建。`constant.pkl` 包含可以创建带有张量的 IR 对象的 pickle 代码。`torch.py` 文件包含 Python 代码字符串，它与脚本模型中 `code` 属性的内容相同，因为它们是以相同的方式获取的。
 
-![](img/e832b22dff82c89e43512f2a11d340bc_1.png)
 
 好的，现在我们理解了序列化文件中保存的三个最重要部分：`data.pkl`、`constant.pkl` 和 `code` 目录中的源代码。让我们看看这些部分如何恢复为脚本模型。
 
@@ -115,7 +114,6 @@ IR 图最初包含许多不必要的节点，通过优化使其更加简洁。
 
 总结加载过程：首先，通过 `deserialize` 运行主要逻辑；其次，调用 `read_zip` 读取 `constant.pkl`，通过 `unpickle` 将常量转换为 IR 值，并将它们保存到常量表中；第三，调用 `read_zip` 读取 `data.pkl`，在反序列化 `data.pkl` 期间，源导入器读取 `code` 文件和常量表，通过 `parse_type`、`find_name_type` 和 `import_name_type` 恢复 IR 图。现在，反序列化完成。
 
-![](img/e832b22dff82c89e43512f2a11d340bc_3.png)
 
 让我们看看 TorchScript 是如何运行的。IR 图由许多节点组成，每个节点包含输入、输出和操作码三部分。操作码是执行的关键。执行 TorchScript 的过程是遍历 IR 并将其转换为指令，然后解释这些指令。每个指令都有一个操作码，这里有一个查找表，通过操作码找到对应的处理逻辑，然后执行它。
 

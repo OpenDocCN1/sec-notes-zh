@@ -10,7 +10,6 @@
 
 ![](img/848dd24bab4e2e5e24ff1785db0c3382_2.png)
 
-![](img/848dd24bab4e2e5e24ff1785db0c3382_3.png)
 
 John the Ripper是一个流行的密码安全测试和破解工具。与Hashcat相比，John在某些场景下使用起来更为方便和灵活。本次教程将基于2023年n00bz CTF的一个取证挑战，演示如何破解一个ZIP文件的密码，进而解锁其中的PDF文件，并最终破解该PDF文件的密码。
 
@@ -105,7 +104,6 @@ unzip -P n00bz /tmp/ctf/flag.zip
 
 ## 破解PDF文件密码 📄
 
-![](img/848dd24bab4e2e5e24ff1785db0c3382_20.png)
 
 成功破解ZIP后，我们得到了一个受密码保护的PDF文件。接下来，我们将使用类似的方法破解PDF密码。
 

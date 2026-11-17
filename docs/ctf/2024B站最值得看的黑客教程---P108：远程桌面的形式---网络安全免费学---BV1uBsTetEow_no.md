@@ -8,23 +8,17 @@
 
 ---
 
-![](img/6b8cc31d6e59f719f9891467a1adf2a5_1.png)
 
-![](img/6b8cc31d6e59f719f9891467a1adf2a5_3.png)
 
 ## 第一步：检查与开启远程桌面端口 🔍
 
-![](img/6b8cc31d6e59f719f9891467a1adf2a5_5.png)
 
-![](img/6b8cc31d6e59f719f9891467a1adf2a5_7.png)
 
 上一节我们概述了远程桌面的基本条件，本节中我们来看看如何检查和开启目标计算机的3389端口。
 
-![](img/6b8cc31d6e59f719f9891467a1adf2a5_9.png)
 
 首先，我们需要检查目标计算机当前是否开放了3389端口。可以使用 `netstat` 命令来查看本机的端口开放情况。
 
-![](img/6b8cc31d6e59f719f9891467a1adf2a5_11.png)
 
 **命令如下：**
 ```cmd
@@ -32,7 +26,6 @@ netstat -ano
 ```
 执行此命令后，在输出列表中查找是否有 `3389` 端口。如果未找到，则说明远程桌面服务未开启。
 
-![](img/6b8cc31d6e59f719f9891467a1adf2a5_13.png)
 
 接下来，我们需要开启远程桌面服务。这可以通过修改注册表的一条命令来实现。
 
@@ -42,7 +35,6 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnec
 ```
 执行此命令后，远程桌面服务即被启用。再次使用 `netstat -ano` 命令检查，确认 `3389` 端口已出现在监听列表中。
 
-![](img/6b8cc31d6e59f719f9891467a1adf2a5_15.png)
 
 ---
 
@@ -50,7 +42,6 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnec
 
 成功开启3389端口后，我们尝试连接可能会失败，这通常是因为目标计算机的防火墙阻止了连接。因此，我们需要处理防火墙设置。
 
-![](img/6b8cc31d6e59f719f9891467a1adf2a5_17.png)
 
 首先，我们查看防火墙的当前状态。
 
@@ -80,7 +71,6 @@ netsh firewall set opmode disable
 
 ---
 
-![](img/6b8cc31d6e59f719f9891467a1adf2a5_29.png)
 
 ![](img/6b8cc31d6e59f719f9891467a1adf2a5_31.png)
 
@@ -100,19 +90,16 @@ mimikatz.exe "privilege::debug" "sekurlsa::logonpasswords" exit
 
 ![](img/6b8cc31d6e59f719f9891467a1adf2a5_33.png)
 
-![](img/6b8cc31d6e59f719f9891467a1adf2a5_34.png)
 
 ---
 
 ## 第四步：建立远程桌面连接与后续思路 💻
 
-![](img/6b8cc31d6e59f719f9891467a1adf2a5_36.png)
 
 现在，我们已经集齐了所有必要条件，可以尝试建立远程桌面连接了。
 
 在本地计算机上，打开“远程桌面连接”工具，输入目标计算机的IP地址（例如 `192.168.111.128`），点击连接。
 
-![](img/6b8cc31d6e59f719f9891467a1adf2a5_38.png)
 
 在弹出的登录窗口中，输入之前获取到的用户名和密码。成功验证后，即可进入目标计算机的桌面，实现完全控制。
 

@@ -2,11 +2,9 @@ Android逆向-基础篇：3-11：AndroidManifest详解 📄
 
 在本节课中，我们将要学习Android应用的核心配置文件——`AndroidManifest.xml`。这个文件定义了应用的基本信息、权限、组件（如Activity）及其入口点，是理解应用结构和进行逆向分析的基础。
 
-![](img/d96cc313e1453d6698c0fd57a386ee5b_1.png)
 
 下面我们来看一个典型的`AndroidManifest.xml`文件是什么样子。
 
-![](img/d96cc313e1453d6698c0fd57a386ee5b_1.png)
 
 这个文件的清爽版就是长这样。我们可以看到，文件顶部先是一些声明，这些声明通常没有太大的实际意义。其中唯一有意义的是`package`的名字。
 
@@ -23,17 +21,13 @@ Android逆向-基础篇：3-11：AndroidManifest详解 📄
 
 上一节我们介绍了`AndroidManifest.xml`的基本结构，本节中我们来看看Activity与前端页面的关系。
 
-![](img/d96cc313e1453d6698c0fd57a386ee5b_3.png)
 
-![](img/d96cc313e1453d6698c0fd57a386ee5b_3.png)
 
 原则上，每一个Activity都会对应一个XML布局文件。因为Activity的主要目的是为了展示用户界面，其内部编写的是控制页面逻辑的代码，而页面的视觉布局则通过XML文件进行描述，实现了逻辑与表现的分离。
 
-![](img/d96cc313e1453d6698c0fd57a386ee5b_5.png)
 
 不同的Activity之间如何进行跳转呢？这是通过`Intent`（意图）对象实现的。
 
-![](img/d96cc313e1453d6698c0fd57a386ee5b_5.png)
 
 以下是Activity跳转的基本方法：
 
@@ -43,11 +37,8 @@ Android逆向-基础篇：3-11：AndroidManifest详解 📄
 
 关于`Intent`和`Bundle`使用的更多细节，大家可以查阅官方开发文档以获取更深入的信息。
 
-![](img/d96cc313e1453d6698c0fd57a386ee5b_7.png)
 
-![](img/d96cc313e1453d6698c0fd57a386ee5b_7.png)
 
-![](img/d96cc313e1453d6698c0fd57a386ee5b_9.png)
 
 ![](img/d96cc313e1453d6698c0fd57a386ee5b_9.png)
 

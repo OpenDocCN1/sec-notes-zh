@@ -4,7 +4,6 @@
 
 ## IIS是什么？🚦
 
-![](img/a3e06f7c47c8d0cb393bf44d69df69bb_1.png)
 
 ![](img/a3e06f7c47c8d0cb393bf44d69df69bb_2.png)
 

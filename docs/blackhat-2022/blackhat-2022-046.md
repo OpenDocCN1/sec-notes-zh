@@ -144,7 +144,6 @@ if (delta > MAX_ALLOWED_OFFSET) {
 
 ![](img/467eb5744df722551a0690b738792a9c_47.png)
 
-![](img/467eb5744df722551a0690b738792a9c_49.png)
 
 ### 虚基类继承（Virtual Base Inheritance）
 
@@ -158,7 +157,6 @@ if (delta > MAX_ALLOWED_OFFSET) {
 
 ![](img/467eb5744df722551a0690b738792a9c_57.png)
 
-![](img/467eb5744df722551a0690b738792a9c_59.png)
 
 ## 实践中的挑战与优化
 

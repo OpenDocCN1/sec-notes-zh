@@ -1,6 +1,5 @@
 # QUACK：通过静态鸭子类型防御反序列化攻击 🦆
 
-![](img/516b4b049f3a6db78d47468f3e19034b_1.png)
 
 ## 概述
 
@@ -10,7 +9,6 @@
 
 ## 反序列化攻击原理 🔓
 
-![](img/516b4b049f3a6db78d47468f3e19034b_3.png)
 
 上一节我们介绍了课程目标，本节中我们来看看反序列化攻击是如何工作的。
 
@@ -23,7 +21,6 @@ $data = unserialize($user_input);
 $data->run();
 ```
 
-![](img/516b4b049f3a6db78d47468f3e19034b_5.png)
 
 攻击者可以构造一个字符串，使得`unserialize()`返回一个完全不同的类（例如`CommandExecutor`）的实例。如果这个类恰好有与预期对象同名的方法（如`run()`），或者包含特殊的“魔术方法”（如`__wakeup`, `__destruct`），攻击者就可能执行恶意代码。
 
@@ -58,9 +55,7 @@ $data->run();
 2.  **使用加密签名确保数据完整性**：这要求应用程序自身生成序列化数据，并非总是可行。
 3.  **使用`unserialize()`的`allowed_classes`参数**：这是PHP内置的最有效防御。开发者可以提供一个允许反序列化的类名列表。如果遇到列表之外的类，PHP会将其替换为一个无方法无属性的“虚对象”，从而阻断攻击。
 
-![](img/516b4b049f3a6db78d47468f3e19034b_15.png)
 
-![](img/516b4b049f3a6db78d47468f3e19034b_17.png)
 
 ![](img/516b4b049f3a6db78d47468f3e19034b_19.png)
 
@@ -70,7 +65,6 @@ $data->run();
 $data = unserialize($user_input, ['allowed_classes' => ['App']]);
 ```
 
-![](img/516b4b049f3a6db78d47468f3e19034b_21.png)
 
 然而，`allowed_classes`参数使用率极低（约0.1%），主要原因有两个：
 *   开发者不了解反序列化的风险。
@@ -88,7 +82,6 @@ $data = unserialize($user_input, ['allowed_classes' => ['App']]);
 
 QUACK的设计目标是：**自动推断在特定`unserialize()`调用点，开发者预期允许反序列化的类集合**，并利用`allowed_classes`参数实施限制。
 
-![](img/516b4b049f3a6db78d47468f3e19034b_25.png)
 
 QUACK的工作流程分为三步：
 1.  **确定可用类集合**：分析程序，找出在特定`unserialize()`调用点可能被加载的所有类。
@@ -120,7 +113,6 @@ QUACK将这一概念应用于静态分析。它遍历代码，收集关于反序
 **规则4：类型检查操作符**
 如果对象用于`instanceof`操作符（如`$obj instanceof Duck`），QUACK会采用操作符指定的类型。
 
-![](img/516b4b049f3a6db78d47468f3e19034b_27.png)
 
 ![](img/516b4b049f3a6db78d47468f3e19034b_29.png)
 

@@ -178,7 +178,6 @@ libc.ioctl(fd, cmd, buf)
 
 ![](img/87dea40422a018f89bf7fa1ccff3f3fb_63.png)
 
-![](img/87dea40422a018f89bf7fa1ccff3f3fb_65.png)
 
 ![](img/87dea40422a018f89bf7fa1ccff3f3fb_67.png)
 

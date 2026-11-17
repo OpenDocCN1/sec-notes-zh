@@ -1,6 +1,5 @@
 # 094：IP欺骗
 
-![](img/cc051f5beb669c9f97c3fb25cc03b518_0.png)
 
 ![](img/cc051f5beb669c9f97c3fb25cc03b518_0.png)
 

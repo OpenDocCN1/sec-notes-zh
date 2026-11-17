@@ -97,11 +97,9 @@ bool IsProcessRunning(HWND hWnd) {
 
 ---
 
-![](img/573177a867ae13abf54522b77cdcc6b9_4.png)
 
 ## 功能测试与整合
 
-![](img/573177a867ae13abf54522b77cdcc6b9_6.png)
 
 将上述代码整合到离线登录函数后，我们进行测试。
 

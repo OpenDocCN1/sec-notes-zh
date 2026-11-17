@@ -4,19 +4,16 @@
 
 在本节课中，我们将学习一起真实的 GitHub Actions 供应链攻击事件。我们将了解攻击是如何被发现的、攻击者的具体手法、事件的影响范围，并从中总结出关键的防御经验。
 
-![](img/2f0b6339e07e0ae0b48e7ea44b10ff6e_3.png)
 
 ---
 
 ![](img/2f0b6339e07e0ae0b48e7ea44b10ff6e_5.png)
 
-![](img/2f0b6339e07e0ae0b48e7ea44b10ff6e_7.png)
 
 ## GitHub Actions 与 TJ Actions 简介 🚀
 
 上一节我们概述了本次课程的主题，本节中我们来看看事件的核心组件：GitHub Actions 以及被攻击的 TJ Actions “change-files” Action。
 
-![](img/2f0b6339e07e0ae0b48e7ea44b10ff6e_9.png)
 
 GitHub Actions 是 GitHub 于 2019 年 11 月推出的 CI/CD 平台。它迅速成为托管大量开源和企业 CI/CD 管道的默认选择。
 
@@ -44,7 +41,6 @@ GitHub Actions 工作流可以消费机密信息，例如云凭证、发布密�
 
 ---
 
-![](img/2f0b6339e07e0ae0b48e7ea44b10ff6e_13.png)
 
 ## 被攻击的 Action：TJ Actions Changed Files 🔍
 
@@ -56,7 +52,6 @@ GitHub Actions 工作流可以消费机密信息，例如云凭证、发布密�
 
 该 Action 的功能是：找出在给定提交或拉取请求中被修改的文件列表。在我们的示例工作流中，如果 PR 修改了 `infrastructure` 或 `terraform` 目录中的文件，它就会执行 Terraform 部署步骤，否则跳过这些步骤。这本质上节省了计算时间和资源，因此该 Action 被广泛用于从内部工具到生产管道的各种场景。
 
-![](img/2f0b6339e07e0ae0b48e7ea44b10ff6e_19.png)
 
 ---
 
@@ -72,7 +67,6 @@ GitHub Actions 工作流可以消费机密信息，例如云凭证、发布密�
 
 如果你反复运行那个工作流，并从 CI/CD Runner 监控其出站网络调用，你会看到类似下图的基线。这张截图来自我们的产品 Step Security Harden Runner，但重点在于方法论而非工具本身。
 
-![](img/2f0b6339e07e0ae0b48e7ea44b10ff6e_17.png)
 
 在正常情况下，工作流会调用 `github.com`（由 `actions/checkout` 发起）以及 `aws.amazon.com` 或 `hashicorp.com`（部署步骤）。然而，在 3 月 14 日，同一个任务发起了一个对 `jsdkgithubusercontent.com` 的新调用。由于该任务从未向此目的地发起过出站调用，这触发了检测。
 
@@ -82,9 +76,7 @@ GitHub Actions 工作流可以消费机密信息，例如云凭证、发布密�
 
 ---
 
-![](img/2f0b6339e07e0ae0b48e7ea44b10ff6e_29.png)
 
-![](img/2f0b6339e07e0ae0b48e7ea44b10ff6e_31.png)
 
 ## 攻击手法：冒名顶替提交与标签劫持 ⚔️
 
@@ -94,7 +86,6 @@ GitHub Actions 工作流可以消费机密信息，例如云凭证、发布密�
 
 答案就是“冒名顶替提交”。这种提交不存在于原始仓库中，而是存在于仓库的一个 Fork 里。但由于 GitHub API 的工作方式，这些提交可以从原始仓库访问。在这个案例中，恶意提交存在于 TJ Actions Changed Files 仓库的一个 Fork 中，但仓库的发布标签可以指向它。
 
-![](img/2f0b6339e07e0ae0b48e7ea44b10ff6e_33.png)
 
 以下是攻击者创建冒名顶替提交并更新现有发布标签的步骤：
 
@@ -106,21 +97,17 @@ GitHub Actions 工作流可以消费机密信息，例如云凭证、发布密�
 
 一旦完成，所有使用该标签的 GitHub Actions 工作流将自动开始执行恶意代码。
 
-![](img/2f0b6339e07e0ae0b48e7ea44b10ff6e_37.png)
 
 ---
 
-![](img/2f0b6339e07e0ae0b48e7ea44b10ff6e_39.png)
 
 ## 恶意载荷分析：窃取 CI/CD 凭证 🧨
 
 现在让我们看看 TJ Actions 攻击中使用的冒名顶替提交具体做了什么。
 
-![](img/2f0b6339e07e0ae0b48e7ea44b10ff6e_41.png)
 
 提交中包含一个 Base64 编码的字符串，它被解码并作为 Shell 脚本执行。解码后，我们发现这是一个仅在 Linux Runner 上有效的攻击脚本。
 
-![](img/2f0b6339e07e0ae0b48e7ea44b10ff6e_43.png)
 
 该脚本从知名的公共 GitHub Gist 下载 `mem_dump.py` 文件并执行它。`mem_dump.py` 会遍历主机上的运行进程列表，寻找名为 `runner.worker` 的进程。找到后，它会打开该进程并转储其全部内存。
 
@@ -148,19 +135,16 @@ GitHub Actions 工作流可以消费机密信息，例如云凭证、发布密�
 
 TJ Actions Changed Files 仓库本身有一个工作流，使用了 `tj-actions/eslint-changed-files` Action。这是一个复合 Action，由多个 Action 组成，其中之一是 `reviewdog/action-setup` Action。正是这个 `reviewdog/action-setup` Action 首先被攻破，进而导致了 TJ Actions Changed Files 的沦陷。
 
-![](img/2f0b6339e07e0ae0b48e7ea44b10ff6e_49.png)
 
 `reviewdog/action-setup` 被攻破的方式与 TJ Actions 类似：攻击者创建了一个冒名顶替提交，并将其 `v1` 标签指向它。当 TJ Actions 的运行工作流使用 `reviewdog` 时，一个持久的个人访问令牌被泄露在构建日志中。攻击者随后利用这个令牌，更改了 TJ Actions Changed Files 的标签。
 
 ![](img/2f0b6339e07e0ae0b48e7ea44b10ff6e_51.png)
 
-![](img/2f0b6339e07e0ae0b48e7ea44b10ff6e_53.png)
 
 那么 `reviewdog` Action 又是如何被发现的呢？这源于独立安全研究员 `@nthncanhan` 在 X 上的帖子。他通过检查构建日志发现，在某个时间段内，`reviewdog/action-setup` 的 `v1` 标签指向了一个不在其仓库中的提交（即冒名顶替提交），从而确定了其被攻破的事实。
 
 `reviewdog` 组织存在一个设计缺陷：如果任何人在其组织下的仓库创建拉取请求并被合并，该人会自动获得对 `reviewdog` GitHub 组织的写入权限。`reviewdog/action-setup` 正是通过窃取其中一位维护者的个人访问令牌而被攻破的，而该令牌又是从 `spotbugs/spotbugs` 仓库泄露的，这本身又是一次由拉取请求漏洞引发的连锁供应链攻击。
 
-![](img/2f0b6339e07e0ae0b48e7ea44b10ff6e_55.png)
 
 ---
 
@@ -178,11 +162,9 @@ TJ Actions Changed Files 仓库本身有一个工作流，使用了 `tj-actions/
 2.  **使用冒名顶替提交**：使得仓库活动看起来正常，在分支和提交历史中找不到恶意代码。
 3.  **冒充合法用户**：例如在 TJ Actions 的冒名顶替提交中，攻击者试图冒充 `renovate-bot`。
 
-![](img/2f0b6339e07e0ae0b48e7ea44b10ff6e_57.png)
 
 ---
 
-![](img/2f0b6339e07e0ae0b48e7ea44b10ff6e_59.png)
 
 ## 经验教训与防护建议 🛡️
 

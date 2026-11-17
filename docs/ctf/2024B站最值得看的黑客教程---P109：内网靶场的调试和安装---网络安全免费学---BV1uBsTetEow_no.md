@@ -1,14 +1,11 @@
 # 网络安全实战：P109：内网靶场的调试与安装 🛠️
 
-![](img/b76d6f5e83db8f98dd034556cef64a3f_1.png)
 
-![](img/b76d6f5e83db8f98dd034556cef64a3f_2.png)
 
 在本节课中，我们将学习如何调试和安装一个内网渗透测试靶场。我们将通过配置网络和域环境，确保靶场内的所有机器能够正常通信，为后续的渗透测试打下基础。
 
 ## 概述
 
-![](img/b76d6f5e83db8f98dd034556cef64a3f_4.png)
 
 ![](img/b76d6f5e83db8f98dd034556cef64a3f_6.png)
 
@@ -59,7 +56,6 @@
 
 ![](img/b76d6f5e83db8f98dd034556cef64a3f_27.png)
 
-![](img/b76d6f5e83db8f98dd034556cef64a3f_29.png)
 
 ![](img/b76d6f5e83db8f98dd034556cef64a3f_30.png)
 
@@ -82,7 +78,6 @@
 
 ### 3. 检查域内主机配置
 
-![](img/b76d6f5e83db8f98dd034556cef64a3f_36.png)
 
 ![](img/b76d6f5e83db8f98dd034556cef64a3f_38.png)
 
@@ -92,19 +87,15 @@
 
 ## 重启机器并验证域状态
 
-![](img/b76d6f5e83db8f98dd034556cef64a3f_42.png)
 
 ![](img/b76d6f5e83db8f98dd034556cef64a3f_43.png)
 
-![](img/b76d6f5e83db8f98dd034556cef64a3f_44.png)
 
-![](img/b76d6f5e83db8f98dd034556cef64a3f_46.png)
 
 完成IP和DNS配置后，**必须重启所有三台虚拟机**。重启是为了让新的网络配置生效，并重新建立与域控的信任关系。
 
 重启后，按顺序登录各台机器进行验证。
 
-![](img/b76d6f5e83db8f98dd034556cef64a3f_48.png)
 
 ### 验证域成员关系
 
@@ -145,7 +136,6 @@ net user /domain
 2.  **重启所有虚拟机**：使新的网络配置生效。
 3.  **验证域环境**：使用 `net user /domain` 命令在成员机上查询域用户，确认域已成功搭建。
 
-![](img/b76d6f5e83db8f98dd034556cef64a3f_66.png)
 
 ![](img/b76d6f5e83db8f98dd034556cef64a3f_68.png)
 

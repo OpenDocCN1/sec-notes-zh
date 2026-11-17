@@ -12,9 +12,7 @@
 
 在利用命令执行漏洞前，需要了解一些基础的Windows命令。以下是几个最常用的命令：
 
-![](img/fc508f25bc06fbc5459d5c8ddfb6d5d3_1.png)
 
-![](img/fc508f25bc06fbc5459d5c8ddfb6d5d3_3.png)
 
 *   **`whoami`**：查看当前登录系统的用户名。
 *   **`ipconfig`**：查看网络配置信息，包括IP地址、网关和子网掩码。
@@ -24,9 +22,7 @@
 
 ---
 
-![](img/fc508f25bc06fbc5459d5c8ddfb6d5d3_5.png)
 
-![](img/fc508f25bc06fbc5459d5c8ddfb6d5d3_6.png)
 
 ## 在DVWA中利用命令执行漏洞
 
@@ -83,7 +79,6 @@ ping 127.0.0.1 && whoami
 
 了解了漏洞成因后，我们来看看开发人员如何进行初步防御。在DVWA中将安全级别调整为“Medium”，然后再次查看“Command Injection”页面的源代码。
 
-![](img/fc508f25bc06fbc5459d5c8ddfb6d5d3_8.png)
 
 中级防御的核心代码如下：
 ```php
@@ -96,7 +91,6 @@ $target = str_replace( array_keys( $substitutions ), $substitutions, $target );
 ?>
 ```
 
-![](img/fc508f25bc06fbc5459d5c8ddfb6d5d3_10.png)
 
 这段代码使用了 `str_replace` 函数，它的作用是字符串替换。以下是它的防御逻辑：
 
@@ -178,9 +172,7 @@ if( ( is_numeric( $octet[0] ) ) && ( is_numeric( $octet[1] ) ) && ( is_numeric( 
 
 ---
 
-![](img/fc508f25bc06fbc5459d5c8ddfb6d5d3_12.png)
 
-![](img/fc508f25bc06fbc5459d5c8ddfb6d5d3_13.png)
 
 ## 总结
 

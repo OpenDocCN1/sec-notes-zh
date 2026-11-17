@@ -8,13 +8,11 @@
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_5.png)
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_7.png)
 
 ---
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_9.png)
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_11.png)
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_13.png)
 
@@ -76,15 +74,12 @@ node -v
 npm -v
 ```
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_47.png)
 
 ### 使用Express框架创建Web应用
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_49.png)
 
 Express是Node.js中一个简洁的Web应用开发框架。以下是创建一个简单服务器的步骤：
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_51.png)
 
 1.  **初始化项目并安装Express**：
     ```bash
@@ -120,17 +115,12 @@ Express是Node.js中一个简洁的Web应用开发框架。以下是创建一个
 
 ---
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_57.png)
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_59.png)
 
 ## 🔐 实现登录功能与数据接收
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_61.png)
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_63.png)
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_65.png)
 
 现在，我们来构建一个具有登录功能的页面，并学习如何接收前端提交的数据。
 
@@ -138,17 +128,13 @@ Express是Node.js中一个简洁的Web应用开发框架。以下是创建一个
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_69.png)
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_71.png)
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_73.png)
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_75.png)
 
 ### 创建登录页面
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_77.png)
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_79.png)
 
 首先，创建一个简单的HTML登录表单 (`login.html`)：
 ```html
@@ -161,21 +147,16 @@ Express是Node.js中一个简洁的Web应用开发框架。以下是创建一个
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_81.png)
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_83.png)
 
 ### 处理GET与POST请求
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_85.png)
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_87.png)
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_89.png)
 
 在Node.js中，处理不同HTTP方法的请求数据方式不同。
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_91.png)
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_93.png)
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_95.png)
 
@@ -244,7 +225,6 @@ app.listen(3000);
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_123.png)
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_125.png)
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_127.png)
 
@@ -258,9 +238,7 @@ app.listen(3000);
 
 ---
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_133.png)
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_135.png)
 
 ## 🗄️ 连接数据库与SQL注入风险
 
@@ -270,9 +248,7 @@ app.listen(3000);
 
 在实际应用中，用户数据通常存储在数据库中。Node.js可以方便地连接MySQL等数据库。
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_141.png)
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_143.png)
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_145.png)
 
@@ -280,9 +256,7 @@ app.listen(3000);
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_147.png)
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_149.png)
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_151.png)
 
 1.  安装MySQL驱动库：
     ```bash
@@ -313,7 +287,6 @@ app.listen(3000);
     connection.end();
     ```
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_153.png)
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_155.png)
 
@@ -331,7 +304,6 @@ app.listen(3000);
 
 如果直接将用户输入拼接到SQL语句中，就会产生严重的SQL注入漏洞。
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_167.png)
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_168.png)
 
@@ -440,13 +412,10 @@ Node.js中可以执行系统命令或动态执行JavaScript代码，如果使用
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_212.png)
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_214.png)
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_216.png)
 
 ### 命令执行（Command Execution）
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_218.png)
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_220.png)
 
@@ -488,13 +457,11 @@ const result = eval(userInput);
 
 **防护核心**：**永远不要**将用户可控的输入直接传递给 `exec`、`eval`、`Function` 等函数。必须使用时，应进行严格的命令/代码白名单过滤。
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_233.png)
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_235.png)
 
 ---
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_237.png)
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_239.png)
 
@@ -508,11 +475,9 @@ const result = eval(userInput);
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_247.png)
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_249.png)
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_251.png)
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_252.png)
 
 原型链污染是JavaScript/Node.js中一种特有的漏洞，常出现在CTF比赛中，实战中条件较为苛刻。
 
@@ -524,11 +489,9 @@ const result = eval(userInput);
 
 JavaScript中每个对象都有一个内部属性 `__proto__`（原型），指向其构造函数的原型对象。当访问一个对象的属性时，如果对象本身没有，JavaScript会沿着原型链向上查找。
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_258.png)
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_260.png)
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_262.png)
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_264.png)
 
@@ -571,14 +534,11 @@ JavaScript中每个对象都有一个内部属性 `__proto__`（原型），指�
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_296.png)
 
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_298.png)
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_300.png)
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_302.png)
 
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_304.png)
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_306.png)
 
@@ -625,7 +585,6 @@ console.log(obj2.foo); // 输出: polluted value
 
 ![](img/a55db4f1f30eb046ad44ad00bbe619f7_327.png)
 
-![](img/a55db4f1f30eb046ad44ad00bbe619f7_329.png)
 
 本节课我们一起学习了Node.js的核心概念和基础开发。
 

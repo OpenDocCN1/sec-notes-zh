@@ -108,19 +108,15 @@ NEGOEX 默认在所有 Azure AD 加入的 Windows 10（较新版本）和 Window
 
 ![](img/938bc6dc35534ce02e98b8812af278ba_21.png)
 
-![](img/938bc6dc35534ce02e98b8812af278ba_23.png)
 
 上一节我们探讨了协议层面的中继攻击，本节中我们来看看另一种基于凭证窃取的攻击路径。
 
 ![](img/938bc6dc35534ce02e98b8812af278ba_25.png)
 
-![](img/938bc6dc35534ce02e98b8812af278ba_27.png)
 
 这种攻击的前提是获取了用户的 PRT。以下是攻击步骤：
 
-![](img/938bc6dc35534ce02e98b8812af278ba_29.png)
 
-![](img/938bc6dc35534ce02e98b8812af278ba_31.png)
 
 1.  **生成证书签名请求**：为 PRT 绑定的用户生成一个 CSR。
 2.  **构造并签名 JWT**：将 CSR 和 PRT 附加到一个 JWT 中，并使用绑定到该 PRT 的会话密钥对其进行签名。

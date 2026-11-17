@@ -6,7 +6,6 @@
 
 上一节我们介绍了其他魔术方法，本节中我们来看看 `__isset()` 和 `__unset()`。这两个魔术方法在尝试访问或操作对象的**不可访问属性**（如私有属性）时会被自动调用，为我们提供了拦截和处理这类操作的机会。
 
-![](img/bb5c878c08142bc20ee199eef5cac48e_1.png)
 
 ## __isset() 魔术方法
 
@@ -21,14 +20,11 @@ public function __isset($name) {
 }
 ```
 
-![](img/bb5c878c08142bc20ee199eef5cac48e_3.png)
 
 为了理解其工作方式，我们来看一个具体的代码示例。
 
-![](img/bb5c878c08142bc20ee199eef5cac48e_5.png)
 
 
-![](img/bb5c878c08142bc20ee199eef5cac48e_7.png)
 
 ```php
 <?php
@@ -58,9 +54,7 @@ echo isset($person->age); // 私有属性，触发__isset()
 ?>
 ```
 
-![](img/bb5c878c08142bc20ee199eef5cac48e_8.png)
 
-![](img/bb5c878c08142bc20ee199eef5cac48e_10.png)
 
 代码分析如下：
 1.  类 `Person` 有一个公有属性 `$sex` 和两个私有属性 `$name`、`$age`。
@@ -70,13 +64,11 @@ echo isset($person->age); // 私有属性，触发__isset()
 
 简单来说，`__isset()` 为检测私有属性提供了一个“安全通道”。
 
-![](img/bb5c878c08142bc20ee199eef5cac48e_12.png)
 
 ## __unset() 魔术方法
 
 接下来我们学习 `__unset()` 魔术方法。当在类的外部使用 `unset()` 函数尝试销毁一个对象的**不可访问属性**时，`__unset()` 方法会被自动调用。
 
-![](img/bb5c878c08142bc20ee199eef5cac48e_14.png)
 
 普通 `unset()` 函数用于销毁给定的变量。而魔术方法 `__unset()` 则是在尝试销毁不可访问属性时的拦截器。
 
@@ -89,14 +81,10 @@ public function __unset($name) {
 
 让我们通过代码来观察它的行为。
 
-![](img/bb5c878c08142bc20ee199eef5cac48e_16.png)
-
-![](img/bb5c878c08142bc20ee199eef5cac48e_17.png)
-
-![](img/bb5c878c08142bc20ee199eef5cac48e_18.png)
 
 
-![](img/bb5c878c08142bc20ee199eef5cac48e_20.png)
+
+
 
 ```php
 <?php
@@ -131,15 +119,12 @@ unset($person->name); // 私有属性，触发__unset()
 3.  在 `__unset()` 方法内，我们定义了自定义的行为（这里打印了一句话）。
 4.  如果类中没有定义 `__unset()` 方法，那么尝试 `unset()` 一个私有属性将会导致一个致命错误。
 
-![](img/bb5c878c08142bc20ee199eef5cac48e_22.png)
 
 因此，`__unset()` 方法让我们能够以可控的方式响应外部销毁私有属性的企图。
 
-![](img/bb5c878c08142bc20ee199eef5cac48e_24.png)
 
 ## 核心区别总结
 
-![](img/bb5c878c08142bc20ee199eef5cac48e_25.png)
 
 以下是 `__isset()`/`__unset()` 与 `isset()`/`unset()` 的核心区别，方便你记忆：
 
@@ -150,13 +135,10 @@ unset($person->name); // 私有属性，触发__unset()
 | **本质** | 类中定义的方法，是一种回调机制 | PHP内置的语言结构/函数 |
 | **作用** | 提供拦截和处理非法访问的入口 | 直接执行检测变量或销毁变量的操作 |
 
-![](img/bb5c878c08142bc20ee199eef5cac48e_27.png)
 
-![](img/bb5c878c08142bc20ee199eef5cac48e_28.png)
 
 简单记忆：**当普通函数搞不定（无权访问）私有属性时，对应的双下划线魔术方法就会登场帮忙处理。**
 
-![](img/bb5c878c08142bc20ee199eef5cac48e_30.png)
 
 ## 本节课总结
 

@@ -76,7 +76,6 @@ SQL注入漏洞的危害极大，主要包括：
 
 ![](img/da4abc61082d663b2d6be333b63a7131_25.png)
 
-![](img/da4abc61082d663b2d6be333b63a7131_27.png)
 
 ![](img/da4abc61082d663b2d6be333b63a7131_29.png)
 
@@ -136,9 +135,7 @@ SQL注入漏洞的危害极大，主要包括：
 *   提交 `id=1‘ ORDER BY 4 -- `，页面报错。
 *   **结论**：原始查询返回 **3** 列。
 
-![](img/da4abc61082d663b2d6be333b63a7131_51.png)
 
-![](img/da4abc61082d663b2d6be333b63a7131_53.png)
 
 ![](img/da4abc61082d663b2d6be333b63a7131_55.png)
 
@@ -152,7 +149,6 @@ SQL注入漏洞的危害极大，主要包括：
 
 ![](img/da4abc61082d663b2d6be333b63a7131_59.png)
 
-![](img/da4abc61082d663b2d6be333b63a7131_61.png)
 
 ![](img/da4abc61082d663b2d6be333b63a7131_63.png)
 
@@ -190,7 +186,6 @@ SQL注入漏洞的危害极大，主要包括：
 
 ![](img/da4abc61082d663b2d6be333b63a7131_77.png)
 
-![](img/da4abc61082d663b2d6be333b63a7131_79.png)
 
 **步骤6：获取列名**
 确定目标表（例如 `users`）后，需要知道它有哪些列（字段），比如 `username`、`password`。

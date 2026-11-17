@@ -6,7 +6,6 @@
 
 上一节我们介绍了网络安全的基本概念，本节中我们来看看一个核心工具。Metasploit Framework（MSF）是一款开源的漏洞利用和测试工具，它集成了各种平台上常见的溢出漏洞和流行的攻击载荷（Payload）。许多商业或开源的C2（命令与控制）平台都是基于MSF进行修改的，因为它开源且免费。
 
-![](img/ff90c5dc490caaea7f6a6c8e997dae73_1.png)
 
 ## 核心概念与准备工作
 
@@ -125,13 +124,10 @@ python3 -m http.server 8080
 
 成功获取Meterpreter会话后，我们可以执行许多操作。输入`?`或`help`可以查看所有可用命令。
 
-![](img/ff90c5dc490caaea7f6a6c8e997dae73_21.png)
 
-![](img/ff90c5dc490caaea7f6a6c8e997dae73_23.png)
 
 以下是几个常用命令示例：
 
-![](img/ff90c5dc490caaea7f6a6c8e997dae73_24.png)
 
 *   **截取屏幕**：`screenshot`
 *   **获取摄像头快照**：`webcam_snap`
@@ -149,7 +145,6 @@ python3 -m http.server 8080
 1.  **免杀（Antivirus Evasion）**：生成的默认木马很容易被现代杀毒软件（如Windows Defender、火绒、360等）检测并清除。这就需要学习免杀技术，例如对木马进行加壳、编码、混淆或利用白名单程序。
 2.  **钓鱼（Phishing）**：如何让目标心甘情愿地运行我们的程序？直接让用户下载一个无名无图标的`exe`文件成功率极低。这就需要结合社会工程学，将木马伪装成正常的文档、软件安装包或图片等。
 
-![](img/ff90c5dc490caaea7f6a6c8e997dae73_28.png)
 
 ![](img/ff90c5dc490caaea7f6a6c8e997dae73_30.png)
 

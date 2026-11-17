@@ -1,14 +1,11 @@
 #  022：6.2 - 【Kali渗透系列】使用VMware创建Kali虚拟机 🖥️➡️🐧
 
-![](img/ff9bffd2fadd8a10dbb1e58d69ab906e_1.png)
 
 在本节课中，我们将学习如何使用 VMware 虚拟机软件来安装 Kali Linux 操作系统。整个过程包括下载镜像、配置虚拟机硬件以及解决安装过程中可能遇到的常见问题。
 
-![](img/ff9bffd2fadd8a10dbb1e58d69ab906e_3.png)
 
 ---
 
-![](img/ff9bffd2fadd8a10dbb1e58d69ab906e_5.png)
 
 ## 下载 Kali Linux 镜像
 
@@ -16,15 +13,12 @@
 
 Kali Linux 的官方网站地址是 `www.kali.org`。
 
-![](img/ff9bffd2fadd8a10dbb1e58d69ab906e_1.png)
 
 打开官方网站后，点击页面上的 “Download” 按钮。
 
-![](img/ff9bffd2fadd8a10dbb1e58d69ab906e_3.png)
 
 在下载页面中，点击 “Download Kali Linux”。
 
-![](img/ff9bffd2fadd8a10dbb1e58d69ab906e_5.png)
 
 页面会列出所有可用的安装包下载地址。最新版本（例如 2020.4）的 ISO 文件较大（约 4.1GB），下载可能较慢。也可以选择下载种子文件，使用迅雷等工具加速下载。
 
@@ -72,55 +66,41 @@ Kali Linux 的官方网站地址是 `www.kali.org`。
 **处理器**：建议处理器核心数与物理机 CPU 核心数相同。例如，物理机是 4 核 CPU，这里就配置为 4 核。
 **代码示例（在VMware硬件设置中调整）**： 处理器数量 = 1， 每个处理器的核心数量 = 4
 
-![](img/ff9bffd2fadd8a10dbb1e58d69ab906e_7.png)
 
 **网络适配器**：选择 “桥接模式” 或 “NAT 模式” 都可以让虚拟机联网。如果是在校园网等需要认证的环境下，建议选择 “NAT 模式”。
 
-![](img/ff9bffd2fadd8a10dbb1e58d69ab906e_9.png)
 
 **其他设备**：USB 控制器、声卡、打印机等设备如果暂时用不到，可以选中后点击“移除”以简化配置。
 
-![](img/ff9bffd2fadd8a10dbb1e58d69ab906e_11.png)
 
 配置完成后，点击“关闭”，然后回到上一界面点击“完成”。
 
-![](img/ff9bffd2fadd8a10dbb1e58d69ab906e_13.png)
 
 ---
 
-![](img/ff9bffd2fadd8a10dbb1e58d69ab906e_15.png)
 
 ## 网络配置（桥接模式注意事项）
 
 如果你在上一节选择了桥接模式，为了确保网络连接正常，需要进行额外配置。
 
-![](img/ff9bffd2fadd8a10dbb1e58d69ab906e_17.png)
 
 在 VMware 主界面，点击菜单栏的 “编辑”，选择 “虚拟网络编辑器”。
 
-![](img/ff9bffd2fadd8a10dbb1e58d69ab906e_19.png)
 
-![](img/ff9bffd2fadd8a10dbb1e58d69ab906e_9.png)
 
 在弹出的窗口中，点击右下角的 “更改设置” 以获取管理员权限。
 
-![](img/ff9bffd2fadd8a10dbb1e58d69ab906e_21.png)
 
-![](img/ff9bffd2fadd8a10dbb1e58d69ab906e_11.png)
 
-![](img/ff9bffd2fadd8a10dbb1e58d69ab906e_23.png)
 
 在列表中选择 “VMnet0”（桥接模式），然后在 “桥接到” 的下拉菜单中，选择你物理机正在使用的真实网卡。
 
-![](img/ff9bffd2fadd8a10dbb1e58d69ab906e_25.png)
 
-![](img/ff9bffd2fadd8a10dbb1e58d69ab906e_13.png)
 
 正确选择后，点击“确定”保存设置。这一步能有效避免安装时网络配置失败或无法联网的问题。
 
 ---
 
-![](img/ff9bffd2fadd8a10dbb1e58d69ab906e_27.png)
 
 ## 解决常见安装错误：VT-x 禁用
 
@@ -128,7 +108,6 @@ Kali Linux 的官方网站地址是 `www.kali.org`。
 
 这意味着你电脑的 CPU 支持虚拟化技术，但在 BIOS/UEFI 中被禁用了。解决方法是在物理机的 BIOS/UEFI 设置中开启虚拟化支持。
 
-![](img/ff9bffd2fadd8a10dbb1e58d69ab906e_29.png)
 
 不同类型的主板进入 BIOS/UEFI 的按键不同，通常是 `F2`、`F12`、`Delete` 或 `Esc` 键，请在开机时尝试。
 
@@ -142,7 +121,6 @@ Kali Linux 的官方网站地址是 `www.kali.org`。
 **以传统AMI BIOS为例：**
 1.  进入 BIOS 后，使用方向键切换到 “Advanced” 选项卡。
 2.  找到 “Intel Virtualization Technology” 选项。
-![](img/ff9bffd2fadd8a10dbb1e58d69ab906e_31.png)
 3.  按 `Enter` 键，将其值从 “Disabled” 改为 “Enabled”。
 4.  按 `F10` 保存并退出。
 

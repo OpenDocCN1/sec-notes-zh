@@ -61,7 +61,6 @@ SELECT first_name, last_name FROM users WHERE user_id = '$id'
 *   输入：`1' UNION SELECT table_name, NULL FROM information_schema.tables WHERE table_schema='dvwa'#`
 *   执行后，页面会显示 `dvwa` 数据库中的所有表名，例如 `guestbook` 和 `users`。
 
-![](img/3529e972231d8877c308ee8d1104d72f_1.png)
 
 ### 获取表中的数据
 通常，`users` 表是最吸引攻击者的目标，因为它可能包含用户名和密码。
@@ -71,29 +70,21 @@ SELECT first_name, last_name FROM users WHERE user_id = '$id'
 2.  **直接查询数据**：当我们知道列名后（例如 `user` 和 `password`），可以直接查询数据。输入：`1' UNION SELECT user, password FROM users#`。
 3.  执行后，页面会显示所有用户的用户名和密码哈希值（通常是MD5加密）。这些哈希值可以尝试在在线MD5解密网站进行破解。
 
-![](img/3529e972231d8877c308ee8d1104d72f_3.png)
 
-![](img/3529e972231d8877c308ee8d1104d72f_5.png)
 
-![](img/3529e972231d8877c308ee8d1104d72f_7.png)
 
-![](img/3529e972231d8877c308ee8d1104d72f_9.png)
 
 ---
 
 ## 使用SQLmap进行自动化注入
 手工注入虽然有助于理解原理，但过程繁琐。在实际测试中，我们更常使用自动化工具，如SQLmap。
 
-![](img/3529e972231d8877c308ee8d1104d72f_11.png)
 
-![](img/3529e972231d8877c308ee8d1104d72f_12.png)
 
 ### 启动SQLmap
 SQLmap是一个用Python编写的开源渗透测试工具。你可以从其官网下载，或者在Kali Linux系统中直接使用（已预装）。
 
-![](img/3529e972231d8877c308ee8d1104d72f_14.png)
 
-![](img/3529e972231d8877c308ee8d1104d72f_16.png)
 
 在命令行中，使用以下命令启动SQLmap：
 ```bash
@@ -108,18 +99,14 @@ python sqlmap.py -u "http://your-dvwa-address/vulnerabilities/sqli/?id=1&Submit=
 *   `-u` 参数指定目标URL。
 *   `--cookie` 参数用于提交已登录的会话Cookie（因为DVWA需要登录后才能访问漏洞页面）。Cookie值可以通过浏览器开发者工具（F12 -> 网络 -> 点击请求 -> 查看请求头中的Cookie）获取。
 
-![](img/3529e972231d8877c308ee8d1104d72f_18.png)
 
-![](img/3529e972231d8877c308ee8d1104d72f_20.png)
 
 执行后，SQLmap会自动检测并确认是否存在漏洞及数据库类型。
 
 ### 获取数据库信息
 确认漏洞后，可以逐步获取信息。
 
-![](img/3529e972231d8877c308ee8d1104d72f_22.png)
 
-![](img/3529e972231d8877c308ee8d1104d72f_24.png)
 
 以下是常用命令：
 1.  **列出所有数据库**：`python sqlmap.py -u "目标URL" --cookie="Cookie" --dbs`
@@ -127,21 +114,15 @@ python sqlmap.py -u "http://your-dvwa-address/vulnerabilities/sqli/?id=1&Submit=
 3.  **列出指定表的所有列**：`python sqlmap.py -u "目标URL" --cookie="Cookie" -D dvwa -T users --columns`
 4.  **导出指定表的所有数据**：`python sqlmap.py -u "目标URL" --cookie="Cookie" -D dvwa -T users --dump`
 
-![](img/3529e972231d8877c308ee8d1104d72f_26.png)
 
 执行 `--dump` 命令时，SQLmap会尝试读取并展示数据，如果密码是哈希值，还会询问是否尝试破解。
 
-![](img/3529e972231d8877c308ee8d1104d72f_28.png)
 
-![](img/3529e972231d8877c308ee8d1104d72f_30.png)
 
 ---
 
-![](img/3529e972231d8877c308ee8d1104d72f_32.png)
 
-![](img/3529e972231d8877c308ee8d1104d72f_34.png)
 
-![](img/3529e972231d8877c308ee8d1104d72f_35.png)
 
 ## SQL注入的防御
 了解了攻击方法，防御思路就相对清晰了。核心原则是：**不要信任任何用户输入**。

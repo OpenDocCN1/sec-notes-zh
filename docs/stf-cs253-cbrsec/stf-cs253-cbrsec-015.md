@@ -136,7 +136,6 @@ Node.js项目的安全政策详细描述了这一流程，并承诺在24小时�
 
 ![](img/e18b5f8849d4ba0cd2293f33adf18f40_50.png)
 
-![](img/e18b5f8849d4ba0cd2293f33adf18f40_52.png)
 
 ![](img/e18b5f8849d4ba0cd2293f33adf18f40_54.png)
 

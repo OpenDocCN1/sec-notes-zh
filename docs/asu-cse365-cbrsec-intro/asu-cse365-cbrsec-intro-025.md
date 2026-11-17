@@ -12,7 +12,6 @@
 
 二进制漏洞利用是网络安全中的一个关键领域，它涉及发现并利用程序中的内存错误，从而控制程序的执行。本节我们将重点学习缓冲区溢出漏洞的原理和利用方法。
 
-![](img/1f3eaf8ba4c17ad9f557d0dec3f093e4_5.png)
 
 ![](img/1f3eaf8ba4c17ad9f557d0dec3f093e4_7.png)
 
@@ -24,7 +23,6 @@
 
 ![](img/1f3eaf8ba4c17ad9f557d0dec3f093e4_9.png)
 
-![](img/1f3eaf8ba4c17ad9f557d0dec3f093e4_11.png)
 
 **代码示例：一个存在漏洞的函数**
 ```c
@@ -39,9 +37,7 @@ void vulnerable_function() {
 ```
 在上述代码中，`read`函数试图将4096字节的数据读入一个仅有59字节的`buffer`。这会导致超出`buffer`范围的数据被写入相邻的内存位置，可能覆盖`win`变量或其他关键数据。
 
-![](img/1f3eaf8ba4c17ad9f557d0dec3f093e4_13.png)
 
-![](img/1f3eaf8ba4c17ad9f557d0dec3f093e4_15.png)
 
 ![](img/1f3eaf8ba4c17ad9f557d0dec3f093e4_17.png)
 

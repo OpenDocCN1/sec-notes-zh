@@ -4,7 +4,6 @@
 
 在本节课中，我们将学习如何高效地调试和分析网络安全挑战，特别是针对SQL注入和路径遍历漏洞。我们将通过实际例子，讲解如何将复杂的Web应用简化为可交互的脚本，以及如何系统地定位漏洞并学习必要的技术知识。
 
-![](img/35cd294966e9a73817e9a1d993e65cf4_3.png)
 
 ## 调试SQL注入挑战
 
@@ -12,7 +11,6 @@
 
 ![](img/35cd294966e9a73817e9a1d993e65cf4_5.png)
 
-![](img/35cd294966e9a73817e9a1d993e65cf4_6.png)
 
 以下是创建一个简化调试环境的步骤：
 
@@ -23,9 +21,7 @@
 
 ![](img/35cd294966e9a73817e9a1d993e65cf4_8.png)
 
-![](img/35cd294966e9a73817e9a1d993e65cf4_10.png)
 
-![](img/35cd294966e9a73817e9a1d993e65cf4_12.png)
 
 例如，原始Web应用中的查询代码可能如下：
 ```python
@@ -45,7 +41,6 @@ cursor = conn.execute(query)
 print(“Result:“, cursor.fetchall())
 ```
 
-![](img/35cd294966e9a73817e9a1d993e65cf4_14.png)
 
 ![](img/35cd294966e9a73817e9a1d993e65cf4_16.png)
 
@@ -79,7 +74,6 @@ print(“Result:“, cursor.fetchall())
 
 ![](img/35cd294966e9a73817e9a1d993e65cf4_39.png)
 
-![](img/35cd294966e9a73817e9a1d993e65cf4_41.png)
 
 ![](img/35cd294966e9a73817e9a1d993e65cf4_42.png)
 
@@ -96,7 +90,6 @@ print(“Result:“, cursor.fetchall())
 3.  **定位可疑代码**：根据挑战主题（如SQL注入、路径遍历），在代码中搜索可能存在问题的地方（如动态拼接的SQL语句、用户控制的文件路径参数）。
 4.  **聚焦测试**：集中精力测试最可疑的代码片段。如果毫无进展，再考虑其他可能性。
 
-![](img/35cd294966e9a73817e9a1d993e65cf4_50.png)
 
 ![](img/35cd294966e9a73817e9a1d993e65cf4_52.png)
 
@@ -104,7 +97,6 @@ print(“Result:“, cursor.fetchall())
 
 ![](img/35cd294966e9a73817e9a1d993e65cf4_56.png)
 
-![](img/35cd294966e9a73817e9a1d993e65cf4_58.png)
 
 ![](img/35cd294966e9a73817e9a1d993e65cf4_60.png)
 
@@ -134,7 +126,6 @@ print(“Result:“, cursor.fetchall())
 
 在分析过程中，你肯定会遇到不熟悉的技术或框架（如Flask、SQLite）。网络安全要求具备快速学习的能力。
 
-![](img/35cd294966e9a73817e9a1d993e65cf4_77.png)
 
 ![](img/35cd294966e9a73817e9a1d993e65cf4_79.png)
 
@@ -144,21 +135,17 @@ print(“Result:“, cursor.fetchall())
 
 ![](img/35cd294966e9a73817e9a1d993e65cf4_83.png)
 
-![](img/35cd294966e9a73817e9a1d993e65cf4_85.png)
 
 ![](img/35cd294966e9a73817e9a1d993e65cf4_87.png)
 
-![](img/35cd294966e9a73817e9a1d993e65cf4_89.png)
 
 ![](img/35cd294966e9a73817e9a1d993e65cf4_90.png)
 
-![](img/35cd294966e9a73817e9a1d993e65cf4_92.png)
 
 1.  **善用官方文档**：遇到未知函数（如Flask的`abort()`或Python的`strip()`），第一时间查阅官方文档。
 2.  **把握抽象层次**：无需立即深入每个细节。先理解其基本功能和在该上下文中的安全影响。只有当其他路径都走不通时，才深入挖掘。
 3.  **针对性搜索**：使用准确的关键词进行搜索（例如“python sqlite3 cursor execute”而非泛泛的“db execute”）。
 
-![](img/35cd294966e9a73817e9a1d993e65cf4_94.png)
 
 ![](img/35cd294966e9a73817e9a1d993e65cf4_96.png)
 

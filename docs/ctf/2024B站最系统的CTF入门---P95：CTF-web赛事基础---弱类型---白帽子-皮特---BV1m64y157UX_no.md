@@ -1,6 +1,5 @@
 # CTF Web赛事基础：P95：弱类型
 
-![](img/83b37b7f3776fb0e2a23df90b1d01c37_1.png)
 
 在本节课中，我们将要学习PHP语言中的弱类型问题。这是CTF Web方向中一个常见且重要的考点，理解它有助于我们解决许多相关的赛题。
 
@@ -64,7 +63,6 @@ if ($data->key == $key) {
 ```
 题目要求我们提交一个JSON格式的`message`参数，使其解码后对象的`key`属性值与一个未知的`$key`相等（使用`==`比较），才能获得flag。
 
-![](img/83b37b7f3776fb0e2a23df90b1d01c37_3.png)
 
 **解题思路如下：**
 1.  由于是比较是弱类型`==`，且`$key`是字符串，我们可以构造一个数字与它比较。
@@ -102,7 +100,6 @@ for i in range(1000):  # 假设数字在0-999之间
 ```
 通过脚本，我们可以快速尝试`key`从0开始递增的数字，直到匹配成功，获取flag。
 
-![](img/83b37b7f3776fb0e2a23df90b1d01c37_5.png)
 
 ## 弱类型比较对照表
 
@@ -118,13 +115,10 @@ for i in range(1000):  # 假设数字在0-999之间
 | **`"0"`** | false | true | false | true | false | **true** | false |
 | **`"php"`** | false | true | false | true | false | false | **true** |
 
-![](img/83b37b7f3776fb0e2a23df90b1d01c37_7.png)
 
-![](img/83b37b7f3776fb0e2a23df90b1d01c37_9.png)
 
 > **注意**：此表仅为部分常见情况的简化示例。实际利用时，需要结合具体的转换规则进行分析。
 
-![](img/83b37b7f3776fb0e2a23df90b1d01c37_11.png)
 
 ![](img/83b37b7f3776fb0e2a23df90b1d01c37_12.png)
 

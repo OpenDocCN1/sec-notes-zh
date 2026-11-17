@@ -126,7 +126,6 @@ if ip in resp.text:
 
 ### 2. XXE漏洞利用脚本
 
-![](img/b36d92439ca92b98aa2dddc73be9349f_21.png)
 
 ![](img/b36d92439ca92b98aa2dddc73be9349f_23.png)
 

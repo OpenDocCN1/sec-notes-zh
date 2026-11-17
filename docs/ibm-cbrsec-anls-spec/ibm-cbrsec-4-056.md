@@ -1,12 +1,9 @@
 # 课程4：《网络安全与数据库漏洞》：56：SQL注入 第1部分
 
-![](img/ccdd6b32380d39cd6231e0e7944176a7_0.png)
 
-![](img/ccdd6b32380d39cd6231e0e7944176a7_2.png)
 
 在本节课程中，我们将学习SQL注入攻击的基本概念、常见类型及其工作原理。SQL注入是一种针对数据库的常见攻击手段，理解其原理对于防范此类威胁至关重要。
 
-![](img/ccdd6b32380d39cd6231e0e7944176a7_4.png)
 
 ## 什么是SQL注入？
 
@@ -81,7 +78,6 @@ IF (SUBSTRING(password, 1, 1) = 'a') THEN SLEEP(10) ELSE 0 END IF
 
 ## 总结
 
-![](img/ccdd6b32380d39cd6231e0e7944176a7_6.png)
 
 ![](img/ccdd6b32380d39cd6231e0e7944176a7_7.png)
 

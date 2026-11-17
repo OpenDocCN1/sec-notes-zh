@@ -45,9 +45,7 @@ Gadget 是程序中已有的、以 `ret` 指令结尾的一小段指令序列。
 [ 函数A地址 ] [ 参数A1 ] [ 参数A2 ] [ pop-pop-ret地址 ] [ 函数B地址 ] [ 参数B1 ] ...
 ```
 
-![](img/993c0209952b00a4bb4fed19d3a974fb_1.png)
 
-![](img/993c0209952b00a4bb4fed19d3a974fb_3.png)
 
 执行流程为：
 1.  返回到`函数A`，它使用`参数A1`和`参数A2`。
@@ -124,11 +122,9 @@ payload = buf + rop_chain
 print payload
 ```
 
-![](img/993c0209952b00a4bb4fed19d3a974fb_5.png)
 
 这个脚本会生成一串字节，当它被输入到存在缓冲区溢出漏洞的程序时，就会触发我们设计的ROP链。
 
-![](img/993c0209952b00a4bb4fed19d3a974fb_7.png)
 
 ## 总结
 

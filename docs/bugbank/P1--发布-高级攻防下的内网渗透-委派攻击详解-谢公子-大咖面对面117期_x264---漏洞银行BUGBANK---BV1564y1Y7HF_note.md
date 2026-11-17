@@ -18,7 +18,6 @@
 
 ![](img/3cfa3a3c7b33ab31aea58ac5540f160a_4.png)
 
-![](img/3cfa3a3c7b33ab31aea58ac5540f160a_6.png)
 
 1.  **第一部分**：客户端向域控制器（KDC）的 AS 认证服务请求 TGT 认购权证。
 2.  **第二部分**：客户端使用 TGT 向 KDC 的 TGS 服务请求访问特定服务的 ST 服务票据。
@@ -38,11 +37,8 @@
 *   于是，Web 服务器的服务账号模拟用户 `test`，以 Kerberos 协议去认证后台的文件服务器。
 *   文件服务器将文件返回给 Web 服务器，再由 Web 服务器返回给用户。
 
-![](img/3cfa3a3c7b33ab31aea58ac5540f160a_13.png)
 
-![](img/3cfa3a3c7b33ab31aea58ac5540f160a_15.png)
 
-![](img/3cfa3a3c7b33ab31aea58ac5540f160a_17.png)
 
 这样就完成了一次委派流程。这里用户 `test` 对 Web 服务器的认证也可以是 NTLM 或基于表单的认证。如果需要委派，则可能涉及“协议转换”，这是我们后面会讲到的内容。
 
@@ -68,18 +64,14 @@
 
 上一节我们了解了域委派的基本概念，本节中我们来看看委派的具体分类。
 
-![](img/3cfa3a3c7b33ab31aea58ac5540f160a_34.png)
 
-![](img/3cfa3a3c7b33ab31aea58ac5540f160a_36.png)
 
-![](img/3cfa3a3c7b33ab31aea58ac5540f160a_38.png)
 
 域委派主要有三种应用模式：
 1.  非约束性委派
 2.  约束性委派
 3.  基于资源的约束性委派
 
-![](img/3cfa3a3c7b33ab31aea58ac5540f160a_39.png)
 
 ![](img/3cfa3a3c7b33ab31aea58ac5540f160a_41.png)
 
@@ -172,7 +164,6 @@
 5.  KDC 返回访问服务 B 的 ST 票据。
 6.  服务 A 即可使用该票据以用户身份访问服务 B。
 
-![](img/3cfa3a3c7b33ab31aea58ac5540f160a_78.png)
 
 ![](img/3cfa3a3c7b33ab31aea58ac5540f160a_80.png)
 
@@ -220,7 +211,6 @@ RBCD 只能在运行 Windows Server 2012 R2 及以上版本的域控制器上配
 
 ![](img/3cfa3a3c7b33ab31aea58ac5540f160a_105.png)
 
-![](img/3cfa3a3c7b33ab31aea58ac5540f160a_107.png)
 
 ![](img/3cfa3a3c7b33ab31aea58ac5540f160a_109.png)
 
@@ -251,21 +241,16 @@ RBCD 只能在运行 Windows Server 2012 R2 及以上版本的域控制器上配
 
 ![](img/3cfa3a3c7b33ab31aea58ac5540f160a_121.png)
 
-![](img/3cfa3a3c7b33ab31aea58ac5540f160a_123.png)
 
 本节我们将探讨如何利用 RBCD 实现两个主要攻击目标：接管域控制器和本地权限提升。
 
-![](img/3cfa3a3c7b33ab31aea58ac5540f160a_125.png)
 
-![](img/3cfa3a3c7b33ab31aea58ac5540f160a_126.png)
 
-![](img/3cfa3a3c7b33ab31aea58ac5540f160a_127.png)
 
 ### 场景一：结合 NTLM Relay 接管域控制器
 
 ![](img/3cfa3a3c7b33ab31aea58ac5540f160a_129.png)
 
-![](img/3cfa3a3c7b33ab31aea58ac5540f160a_130.png)
 
 ![](img/3cfa3a3c7b33ab31aea58ac5540f160a_132.png)
 
@@ -287,13 +272,10 @@ RBCD 只能在运行 Windows Server 2012 R2 及以上版本的域控制器上配
 
 ![](img/3cfa3a3c7b33ab31aea58ac5540f160a_138.png)
 
-![](img/3cfa3a3c7b33ab31aea58ac5540f160a_139.png)
 
 ![](img/3cfa3a3c7b33ab31aea58ac5540f160a_140.png)
 
-![](img/3cfa3a3c7b33ab31aea58ac5540f160a_142.png)
 
-![](img/3cfa3a3c7b33ab31aea58ac5540f160a_144.png)
 
 ### 场景二：进行本地权限提升
 
@@ -332,7 +314,6 @@ RBCD 只能在运行 Windows Server 2012 R2 及以上版本的域控制器上配
 
 ## 6. 利用 RBCD 打造变种黄金票据 🎫
 
-![](img/3cfa3a3c7b33ab31aea58ac5540f160a_163.png)
 
 ![](img/3cfa3a3c7b33ab31aea58ac5540f160a_165.png)
 
@@ -374,16 +355,13 @@ RBCD 只能在运行 Windows Server 2012 R2 及以上版本的域控制器上配
 2.  **主机账号委派设置为“仅使用Kerberos”的约束性委派**：避免使用非约束性委派和允许协议转换的约束性委派。
 3.  **使用受保护的用户组**：Windows Server 2012 R2 引入了受保护的用户组，该组中的用户不允许被委派。
 
-![](img/3cfa3a3c7b33ab31aea58ac5540f160a_180.png)
 
 ![](img/3cfa3a3c7b33ab31aea58ac5540f160a_182.png)
 
 ### 绕过措施（CVE-2020-17049）
 上述防御措施可被 CVE-2020-17049（Kerberos 青铜比特攻击）绕过。
 
-![](img/3cfa3a3c7b33ab31aea58ac5540f160a_184.png)
 
-![](img/3cfa3a3c7b33ab31aea58ac5540f160a_186.png)
 
 **绕过原理**：
 1.  在 RBCD 的 `S4U2self` 阶段，KDC 会检查请求中的 ST 票据的 `forwardable` 标志位。
@@ -394,15 +372,12 @@ RBCD 只能在运行 Windows Server 2012 R2 及以上版本的域控制器上配
 
 **彻底修复**：需要安装微软补丁 KB4598347。该补丁为 `S4U2self` 请求返回的 ST 服务票据增加了第三个签名（票据签名），任何对票据内容的篡改都会导致签名验证失败。
 
-![](img/3cfa3a3c7b33ab31aea58ac5540f160a_188.png)
 
-![](img/3cfa3a3c7b33ab31aea58ac5540f160a_189.png)
 
 ---
 
 ## 总结 📝
 
-![](img/3cfa3a3c7b33ab31aea58ac5540f160a_191.png)
 
 本节课中我们一起学习了域委派攻击的完整知识体系：
 1.  **基础概念**：理解了域委派的定义、目的与 Kerberos 基础流程。

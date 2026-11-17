@@ -1,6 +1,5 @@
 # 054：printf 漏洞利用的深远影响 🎯
 
-![](img/e396eca8aea57ba6f75c458aa29dff5a_0.png)
 
 在本节课中，我们将快速回顾并总结刚刚看到的格式化字符串漏洞的深远影响。我们将了解，一旦代码存在此类漏洞，攻击者能够实现何种程度的控制，以及如何利用它来构建复杂的攻击。
 
@@ -16,17 +15,12 @@
 
 ## 漏洞的扩展利用
 
-![](img/e396eca8aea57ba6f75c458aa29dff5a_2.png)
 
-![](img/e396eca8aea57ba6f75c458aa29dff5a_3.png)
 
-![](img/e396eca8aea57ba6f75c458aa29dff5a_4.png)
 
 更进一步，如果代码多次调用 `printf`，或者你在提供的输入中包含了更多的格式化说明符（我们提供了4个，但也可以是8个、12个或更多），你实际上可以 **向多个地址写入多个值**。
 
-![](img/e396eca8aea57ba6f75c458aa29dff5a_5.png)
 
-![](img/e396eca8aea57ba6f75c458aa29dff5a_6.png)
 
 你可以利用这一点来构建我们之前见过的一些攻击利用链。例如：
 *   你可以利用这个 `printf` 格式化字符串漏洞将 shellcode 写入内存。
@@ -36,9 +30,7 @@
 
 ## 总结与评估
 
-![](img/e396eca8aea57ba6f75c458aa29dff5a_8.png)
 
-![](img/e396eca8aea57ba6f75c458aa29dff5a_9.png)
 
 ![](img/e396eca8aea57ba6f75c458aa29dff5a_10.png)
 

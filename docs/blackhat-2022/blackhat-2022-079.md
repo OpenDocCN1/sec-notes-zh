@@ -31,7 +31,6 @@
 
 从攻击者的角度来看，源代码管理系统之所以成为高价值目标，主要有两个原因：
 
-![](img/8145e716e26e3ea724b933ade4cf32ff_10.png)
 
 ![](img/8145e716e26e3ea724b933ade4cf32ff_12.png)
 
@@ -49,7 +48,6 @@ GitHub Enterprise 的结构包括企业、组织和仓库，并配有相应的�
 ### 侦察
 侦察活动主要关注仓库、文件和代码。可以通过 Web 界面、REST API 或专门的工具（如 SCM Kit）进行。此活动会记录在 HAProxy 日志中。
 
-![](img/8145e716e26e3ea724b933ade4cf32ff_14.png)
 
 ### 仓库接管
 拥有“站点管理员”角色的用户可以解锁任何仓库（包括私有仓库）进行修改。此操作会记录在审计日志中，搜索条件为 `action:repo.worker_immediate_unlock`。
@@ -107,7 +105,6 @@ GitHub Enterprise 的结构包括企业、组织和仓库，并配有相应的�
 
 ![](img/8145e716e26e3ea724b933ade4cf32ff_24.png)
 
-![](img/8145e716e26e3ea724b933ade4cf32ff_26.png)
 
 ### SSH 访问与数据库
 获得服务器 SSH 访问权限后，攻击者可以查看包含凭证的 `gitlab.rb` 配置文件、`secrets` 文件，甚至直接查询 PostgreSQL 数据库以获取用户哈希和备份代码。
@@ -181,9 +178,7 @@ SCM Kit 的功能模块包括：
 
 工具内置了检测规避提示，例如默认的静态用户代理字符串和命名的令牌/密钥，以帮助防御方建立检测规则。
 
-![](img/8145e716e26e3ea724b933ade4cf32ff_60.png)
 
-![](img/8145e716e26e3ea724b933ade4cf32ff_62.png)
 
 ---
 
@@ -217,7 +212,6 @@ SCM Kit 的功能模块包括：
     *   提交更改触发管道，从作业输出中获取凭证。
     *   使用窃取的凭证成功登录 Artifactory，实现横向移动。
 
-![](img/8145e716e26e3ea724b933ade4cf32ff_72.png)
 
 ![](img/8145e716e26e3ea724b933ade4cf32ff_74.png)
 
@@ -270,7 +264,6 @@ SCM Kit 的功能模块包括：
 
 ## 总结 📝
 
-![](img/8145e716e26e3ea724b933ade4cf32ff_84.png)
 
 ![](img/8145e716e26e3ea724b933ade4cf32ff_86.png)
 

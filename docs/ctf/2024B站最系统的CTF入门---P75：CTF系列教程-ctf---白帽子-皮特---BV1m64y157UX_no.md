@@ -1,6 +1,5 @@
 # CTF系列教程：P75：CTF-web 无字母数字RCE和create_function 🚩
 
-![](img/ef6f43a34fadfa34177e81f36eca3a6b_1.png)
 
 在本节课中，我们将要学习CTF-Web方向中两种特殊的代码执行（RCE）技巧：无字母数字RCE和`create_function`函数相关的漏洞利用。我们将从基础概念入手，通过实例讲解绕过限制的方法。
 
@@ -12,11 +11,9 @@
 
 在CTF题目中，代码执行漏洞的考点往往不是直接执行命令，而是设置了各种限制需要绕过。一种常见的限制是过滤所有字母和数字。
 
-![](img/ef6f43a34fadfa34177e81f36eca3a6b_3.png)
 
 例如，题目中存在一个用户可控的参数`code`，但对其添加了过滤：如果`code`参数中包含任何字母或数字，则不允许执行。这并非针对特定关键字，而是过滤了全部字母数字字符。
 
-![](img/ef6f43a34fadfa34177e81f36eca3a6b_5.png)
 
 面对这种“无字母数字”的PHP代码执行环境，核心思路是进行“变换”。我们需要通过某种运算，将非字母数字的字符组合，转换成能够构成有效PHP代码的字符串。
 
@@ -33,7 +30,6 @@ $func(); // 这行代码将执行 phpinfo() 函数
 
 ### 方法一：异或运算（XOR）
 
-![](img/ef6f43a34fadfa34177e81f36eca3a6b_7.png)
 
 异或运算可以帮助我们生成所需的字符串。以下是一个生成异或字符串的示例代码（`xor.php`）：
 
@@ -51,11 +47,9 @@ echo "PHP XOR String Generation";
 
 尽管执行时可能产生一些关于未定义常量的警告（Warning），但目标函数（如`system('ls')`）确实能够成功执行。
 
-![](img/ef6f43a34fadfa34177e81f36eca3a6b_9.png)
 
 ### 方法二：取反运算（~）
 
-![](img/ef6f43a34fadfa34177e81f36eca3a6b_11.png)
 
 除了异或，取反运算也是常用的手段。取反运算直接对字符串的二进制位进行翻转。
 
@@ -68,14 +62,12 @@ echo "PHP Bitwise NOT String Generation";
 **利用过程**：
 与方法一类似，通过取反运算构造出目标函数名和参数的字符串形式，然后利用动态调用执行。
 
-![](img/ef6f43a34fadfa34177e81f36eca3a6b_13.png)
 
 以下是两种方法的对比总结：
 *   **异或(XOR)**：通过两个或多个字符进行按位异或来生成目标字符。
 *   **取反(~)**：直接对字符的二进制表示取反，构造出的payload通常以`%FF`等形式出现。
 这两种方法是绕过无字母数字过滤的基础且有效的方式。
 
-![](img/ef6f43a34fadfa34177e81f36eca3a6b_15.png)
 
 ## 一道综合限制的CTF例题
 
@@ -96,7 +88,6 @@ echo "PHP Bitwise NOT String Generation";
 
 ### 解题原理分析
 
-![](img/ef6f43a34fadfa34177e81f36eca3a6b_17.png)
 
 这个payload巧妙地利用了多个PHP和Shell的特性：
 
@@ -125,11 +116,9 @@ echo "PHP Bitwise NOT String Generation";
 
 ## create_function() 代码注入
 
-![](img/ef6f43a34fadfa34177e81f36eca3a6b_23.png)
 
 最后，我们简要介绍一个历史上存在的漏洞点：`create_function()`函数。
 
-![](img/ef6f43a34fadfa34177e81f36eca3a6b_25.png)
 
 `create_function()`用于动态创建一个匿名函数。其语法如下：
 ```php
@@ -138,7 +127,6 @@ create_function('$a, $b', 'return $a + $b;');
 
 **漏洞原理**在于，该函数的第二个参数（函数体代码）是字符串，并在内部使用`eval()`执行。如果用户输入被拼接进这个字符串，且没有妥善处理，就可能造成代码注入。
 
-![](img/ef6f43a34fadfa34177e81f36eca3a6b_27.png)
 
 **典型的利用方式**类似于SQL注入：
 ```php
@@ -148,7 +136,6 @@ create_function('$a, $b', $code);
 ```
 攻击者可以输入如`} phpinfo(); //`，从而提前闭合函数体，注入恶意代码，并用注释符`//`注释掉后面的原始内容。
 
-![](img/ef6f43a34fadfa34177e81f36eca3a6b_28.png)
 
 需要注意的是，`create_function()`函数由于其安全性问题，在PHP 7.2.0版本中已被弃用，并在更新版本中移除，因此在现代Web应用中已较少出现，但在一些CTF老题或特定环境中仍可能遇到。
 

@@ -1,6 +1,5 @@
 #  013：课时1 安装部署Android源码编译环境 🛠️
 
-![](img/0f1a7816bd97de0f3b3cdf6365dcf0a7_1.png)
 
 在本节课中，我们将学习如何安装和部署一个用于Android源码编译、修改的环境。我们将基于谷歌官方的AOSP项目进行配置，确保初学者能够跟随步骤完成环境的搭建。
 
@@ -26,29 +25,20 @@
 *   Android 5.1.x 至 6.0.x： 需要 **OpenJDK 7**
 *   Android 6.0 以上： 需要 **OpenJDK 8**
 
-![](img/0f1a7816bd97de0f3b3cdf6365dcf0a7_3.png)
 
-![](img/0f1a7816bd97de0f3b3cdf6365dcf0a7_4.png)
 
-![](img/0f1a7816bd97de0f3b3cdf6365dcf0a7_5.png)
 
 由于我们编译的是Android 4.4.3，因此需要安装**甲骨文(Oracle)的JDK 6**。如果JDK版本不正确，编译过程会报错。安装方法可自行搜索。
 
-![](img/0f1a7816bd97de0f3b3cdf6365dcf0a7_6.png)
 
-![](img/0f1a7816bd97de0f3b3cdf6365dcf0a7_8.png)
 
 ### 3. 安装编译依赖库
 
-![](img/0f1a7816bd97de0f3b3cdf6365dcf0a7_10.png)
 
-![](img/0f1a7816bd97de0f3b3cdf6365dcf0a7_12.png)
 
-![](img/0f1a7816bd97de0f3b3cdf6365dcf0a7_14.png)
 
 以下是在Ubuntu 14.04系统上安装编译所需依赖库的命令。请根据你的Ubuntu版本选择对应的命令。
 
-![](img/0f1a7816bd97de0f3b3cdf6365dcf0a7_16.png)
 
 ```bash
 # 对于 Ubuntu 14.04
@@ -59,19 +49,14 @@ sudo apt-get install git-core gnupg flex bison gperf build-essential zip curl zl
 
 为了在后续刷机时能够连接手机，需要下载一个规则文件并放到指定目录。这一步是必须的，否则手机在Recovery模式下无法被系统识别。
 
-![](img/0f1a7816bd97de0f3b3cdf6365dcf0a7_18.png)
 
-![](img/0f1a7816bd97de0f3b3cdf6365dcf0a7_20.png)
 
 文件需要放置在 `/etc/udev/rules.d/` 目录下，并且需要将文件中的 `<username>` 替换为你自己的用户名。
 
-![](img/0f1a7816bd97de0f3b3cdf6365dcf0a7_22.png)
 
-![](img/0f1a7816bd97de0f3b3cdf6365dcf0a7_23.png)
 
 ## 虚拟机环境搭建演示
 
-![](img/0f1a7816bd97de0f3b3cdf6365dcf0a7_24.png)
 
 考虑到大家可能只有一台计算机，我们将使用VirtualBox虚拟机进行演示。你也可以使用VMware。
 
@@ -81,9 +66,7 @@ sudo apt-get install git-core gnupg flex bison gperf build-essential zip curl zl
 3.  创建虚拟硬盘，**建议分配200GB以上**的空间。
 4.  加载Ubuntu 14.04的ISO镜像文件并启动安装。
 
-![](img/0f1a7816bd97de0f3b3cdf6365dcf0a7_26.png)
 
-![](img/0f1a7816bd97de0f3b3cdf6365dcf0a7_28.png)
 
 安装过程基本是全自动的。安装完成后，需要为虚拟机安装“增强功能”，以获得更好的显示效果和剪贴板共享等功能。安装后重启系统。
 
@@ -97,9 +80,7 @@ sudo apt-get install git-core gnupg flex bison gperf build-essential zip curl zl
 
 ### 1. 安装JDK 6
 
-![](img/0f1a7816bd97de0f3b3cdf6365dcf0a7_34.png)
 
-![](img/0f1a7816bd97de0f3b3cdf6365dcf0a7_36.png)
 
 根据之前确定的版本，下载并安装Oracle JDK 6。
 
@@ -107,17 +88,13 @@ sudo apt-get install git-core gnupg flex bison gperf build-essential zip curl zl
 
 打开终端 (Ctrl+Alt+T)，粘贴并运行之前提到的安装编译依赖库的命令。系统会自动下载并安装所有必需的软件包。
 
-![](img/0f1a7816bd97de0f3b3cdf6365dcf0a7_38.png)
 
 ### 3. 配置USB规则
 
-![](img/0f1a7816bd97de0f3b3cdf6365dcf0a7_39.png)
 
-![](img/0f1a7816bd97de0f3b3cdf6365dcf0a7_40.png)
 
 将下载好的 `51-android.rules` 文件复制到 `/etc/udev/rules.d/` 目录，并确保其中的用户名已修改正确。
 
-![](img/0f1a7816bd97de0f3b3cdf6365dcf0a7_42.png)
 
 完成以上三步后，基础编译环境就配置好了。
 
@@ -161,11 +138,8 @@ sudo apt-get install git-core gnupg flex bison gperf build-essential zip curl zl
 
 以下是编译步骤：
 
-![](img/0f1a7816bd97de0f3b3cdf6365dcf0a7_44.png)
 
-![](img/0f1a7816bd97de0f3b3cdf6365dcf0a7_45.png)
 
-![](img/0f1a7816bd97de0f3b3cdf6365dcf0a7_47.png)
 
 1.  进入源码根目录，初始化编译环境。
     ```bash

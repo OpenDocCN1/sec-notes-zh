@@ -1,12 +1,9 @@
 # 18：程序利用
 
-![](img/73f4404c8a01d9e0dfaaf9360daebc3c_1.png)
 
 在本节课中，我们将学习程序利用模块的核心概念，这是一个综合性的模块，结合了逆向工程、内存破坏、Python脚本编写和Shellcode等多种技能。我们将通过分析一个Y86-85模拟器中的挑战，来探讨如何识别漏洞、构造利用链并最终控制程序执行流。
 
-![](img/73f4404c8a01d9e0dfaaf9360daebc3c_3.png)
 
-![](img/73f4404c8a01d9e0dfaaf9360daebc3c_5.png)
 
 ## 课程概述与背景
 
@@ -62,7 +59,6 @@ gdb.attach(p)
 
 ![](img/73f4404c8a01d9e0dfaaf9360daebc3c_17.png)
 
-![](img/73f4404c8a01d9e0dfaaf9360daebc3c_19.png)
 
 在Linux/C程序中，默认情况下，子进程会继承父进程的文件描述符。你可以通过系统调用（如 `open`）创建文件描述符，并通过 `dup2` 复制它们。
 

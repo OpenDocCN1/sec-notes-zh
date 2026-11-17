@@ -22,9 +22,7 @@ SAP Solution Manager是一个技术SAP系统，用于管理整个SAP系统环境
 
 ![](img/9bcb298919c79b20dade4365cb0fbb51_6.png)
 
-![](img/9bcb298919c79b20dade4365cb0fbb51_8.png)
 
-![](img/9bcb298919c79b20dade4365cb0fbb51_10.png)
 
 EM（End-User Experience Monitoring）应用程序允许SAP管理员创建脚本模拟用户操作。攻击者可以利用EM应用程序的未授权访问漏洞来执行远程代码执行。
 
@@ -45,7 +43,6 @@ EM（End-User Experience Monitoring）应用程序允许SAP管理员创建脚本
 
 ## 防护措施
 
-![](img/9bcb298919c79b20dade4365cb0fbb51_16.png)
 
 ![](img/9bcb298919c79b20dade4365cb0fbb51_18.png)
 

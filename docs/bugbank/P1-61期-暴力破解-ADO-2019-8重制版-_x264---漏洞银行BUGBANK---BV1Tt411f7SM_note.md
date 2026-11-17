@@ -14,7 +14,6 @@
 
 暴力破解，或称穷举法，是一种针对密码的破译方法。其核心思想是尝试所有可能的密码组合，直到找到正确的那个。在信息安全领域，流传着一句话：破解任何一个密码，都只是一个时间问题。这凸显了暴力破解对信息系统的巨大威胁。
 
-![](img/ade6b5c4ffbd9556ce40b03426f198ab_2.png)
 
 ![](img/ade6b5c4ffbd9556ce40b03426f198ab_4.png)
 
@@ -28,13 +27,10 @@
 
 ![](img/ade6b5c4ffbd9556ce40b03426f198ab_9.png)
 
-![](img/ade6b5c4ffbd9556ce40b03426f198ab_11.png)
 
-![](img/ade6b5c4ffbd9556ce40b03426f198ab_13.png)
 
 ### 暴力破解的根基：字典
 
-![](img/ade6b5c4ffbd9556ce40b03426f198ab_15.png)
 
 如果说暴力破解是攻击手段，那么字典就是其弹药库。没有一个强大、精准的字典，暴力破解的成功率将大打折扣。字典是按照特定组合方式生成的、包含大量密码条目的文件。
 
@@ -52,9 +48,7 @@
 
 ![](img/ade6b5c4ffbd9556ce40b03426f198ab_19.png)
 
-![](img/ade6b5c4ffbd9556ce40b03426f198ab_21.png)
 
-![](img/ade6b5c4ffbd9556ce40b03426f198ab_23.png)
 
 强大的字典来源于两方面：广泛搜集和针对性生成。
 
@@ -93,7 +87,6 @@ for password in exrex.generate(pattern):
 
 ![](img/ade6b5c4ffbd9556ce40b03426f198ab_35.png)
 
-![](img/ade6b5c4ffbd9556ce40b03426f198ab_37.png)
 
 上一节我们介绍了暴力破解的基础和字典的生成，本节中我们来看看如何将这些知识应用于实战。暴力破解主要分为两大类：协议破解和Web应用破解。
 
@@ -101,39 +94,31 @@ for password in exrex.generate(pattern):
 
 协议破解针对的是如SSH、RDP、FTP、MySQL等服务。最强大的工具之一是 **Hydra（九头蛇）**。
 
-![](img/ade6b5c4ffbd9556ce40b03426f198ab_39.png)
 
 **Hydra的优势：**
 *   **跨平台：** 支持Windows、Linux、macOS。
 *   **协议支持广：** 支持RDP、FTP、MySQL、SSH等数十种协议。
 *   **参数灵活：** 可以定制各种攻击场景。
 
-![](img/ade6b5c4ffbd9556ce40b03426f198ab_41.png)
 
 **Hydra核心使用场景与命令：**
 以下是Hydra的三种主要攻击模式：
 
-![](img/ade6b5c4ffbd9556ce40b03426f198ab_43.png)
 
 1.  **单用户单目标：** 已知目标IP、协议和疑似用户名。
     ```bash
     hydra -l admin -P pass.txt 192.168.1.1 ssh
     ```
 
-![](img/ade6b5c4ffbd9556ce40b03426f198ab_45.png)
 
-![](img/ade6b5c4ffbd9556ce40b03426f198ab_47.png)
 
-![](img/ade6b5c4ffbd9556ce40b03426f198ab_49.png)
 
 2.  **多用户单目标：** 已知目标IP和协议，需要尝试用户列表和密码列表。
     ```bash
     hydra -L user.txt -P pass.txt 192.168.1.1 ftp
     ```
 
-![](img/ade6b5c4ffbd9556ce40b03426f198ab_51.png)
 
-![](img/ade6b5c4ffbd9556ce40b03426f198ab_53.png)
 
 3.  **多用户多目标：** 对多个IP地址进行批量测试。
     ```bash
@@ -176,7 +161,6 @@ def brute_force_mysql(host, user, password):
 # 此处可结合多线程和字典列表进行循环尝试
 ```
 
-![](img/ade6b5c4ffbd9556ce40b03426f198ab_55.png)
 
 ![](img/ade6b5c4ffbd9556ce40b03426f198ab_57.png)
 
@@ -186,7 +170,6 @@ def brute_force_mysql(host, user, password):
 
 Web应用的暴力破解核心是反复提交请求（如表单），并根据服务器响应判断是否成功。最常用的工具是 **Burp Suite Intruder** 模块。
 
-![](img/ade6b5c4ffbd9556ce40b03426f198ab_61.png)
 
 **基本使用流程：**
 1.  浏览器和Burp Suite设置代理。
@@ -235,19 +218,14 @@ Intruder的Payload设置功能极其强大，远不止加载字典文件。
     requests.get(“http://example.com”, proxies=proxies)
     ```
 
-![](img/ade6b5c4ffbd9556ce40b03426f198ab_63.png)
 
-![](img/ade6b5c4ffbd9556ce40b03426f198ab_64.png)
 
-![](img/ade6b5c4ffbd9556ce40b03426f198ab_66.png)
 
 ### 信息搜集与用户枚举
 
-![](img/ade6b5c4ffbd9556ce40b03426f198ab_68.png)
 
 暴力破解不局限于密码，也可用于信息搜集。
 
-![](img/ade6b5c4ffbd9556ce40b03426f198ab_70.png)
 
 **以下是获取网站用户名的几种方法：**
 1.  **错误信息差异：** 在登录、注册、密码找回等功能处，输入不同用户名，观察“用户名不存在”和“密码错误”等提示差异。
@@ -256,22 +234,17 @@ Intruder的Payload设置功能极其强大，远不止加载字典文件。
 
 ### 漏洞组合利用案例
 
-![](img/ade6b5c4ffbd9556ce40b03426f198ab_72.png)
 
-![](img/ade6b5c4ffbd9556ce40b03426f198ab_74.png)
 
 一个低危漏洞通过与暴力破解结合，可能演变为高危漏洞。例如 **IIS短文件名泄露漏洞**。
 1.  利用工具扫描出疑似后台目录的短文件名，如 `admini~1`。
 2.  使用Burp Suite Intruder，对该短文件名缺失部分进行暴力破解，补全出真实后台路径，如 `admin_login.asp`。
 3.  成功访问后台后，可能发现新的攻击面（如文件上传、SQL注入点），最终获取系统权限。
 
-![](img/ade6b5c4ffbd9556ce40b03426f198ab_76.png)
 
 ![](img/ade6b5c4ffbd9556ce40b03426f198ab_78.png)
 
-![](img/ade6b5c4ffbd9556ce40b03426f198ab_80.png)
 
-![](img/ade6b5c4ffbd9556ce40b03426f198ab_81.png)
 
 ### 耐心与耐力
 

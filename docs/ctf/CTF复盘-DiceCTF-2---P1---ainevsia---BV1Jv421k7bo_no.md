@@ -71,13 +71,11 @@ override fun onBind(intent: Intent?): IBinder {
 
 这意味着，`IntentCheck.isSecure` 这个安全检查，**只在第一个客户端绑定服务时执行一次**。
 
-![](img/95c2395e674675cd6f7d193a2d5b6852_9.png)
 
 因此，攻击思路变得清晰：
 1.  **诱导合法应用先绑定**：让题目提供的、拥有合法身份的 `dictionary-app` 先去正常地绑定一次 `DictionaryService`。由于它的 `Intent` 完全合规，能顺利通过 `onBind` 中的安全检查，使得 `DictionaryService` 进入“已绑定”状态，并缓存了 `IBinder`。
 2.  **攻击者随后绑定**：在合法应用完成绑定后，攻击者自己的应用再去绑定同一个 `DictionaryService`。此时，由于 `onBind` 不会再次被调用，安全检查被完全绕过。攻击者可以直接拿到缓存的 `IBinder` 对象，并调用 `getData(“flag”)` 来获取 Flag。
 
-![](img/95c2395e674675cd6f7d193a2d5b6852_11.png)
 
 ## 攻击应用实现
 
@@ -113,9 +111,7 @@ override fun onBind(intent: Intent?): IBinder {
 
 ## 总结与漏洞修复
 
-![](img/95c2395e674675cd6f7d193a2d5b6852_15.png)
 
-![](img/95c2395e674675cd6f7d193a2d5b6852_17.png)
 
 本节课我们一起学习了 DiceCTF 2023 “spellbound” 题目的解法。我们分析了两个 APK 的交互逻辑，发现了 `DictionaryService` 中通过 `onBind` 进行意图（Intent）安全检查的机制。
 

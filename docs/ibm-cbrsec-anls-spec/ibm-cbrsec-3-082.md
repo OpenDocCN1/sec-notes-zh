@@ -1,8 +1,6 @@
 # 课程3：《网络安全合规框架与系统管理》：82：27_01_Active Directory特性
 
-![](img/fa432b9e247fad677d069a4659a6e41e_0.png)
 
-![](img/fa432b9e247fad677d069a4659a6e41e_2.png)
 
 在本节课中，我们将学习如何描述Active Directory，并了解其核心特性和功能。
 
@@ -12,7 +10,6 @@ Active Directory是大多数企业使用的核心目录服务系统，用于管�
 
 ## Active Directory简介
 
-![](img/fa432b9e247fad677d069a4659a6e41e_4.png)
 
 上一节我们介绍了目录服务的基本概念，本节中我们来看看Active Directory的具体实现。Active Directory是微软开发的一种目录服务，它是企业网络中最主要的目录系统。如果企业没有自建的目录系统，那么他们很可能正在使用Active Directory来控制用户、权限等事务。
 
@@ -35,7 +32,6 @@ Active Directory控制着网络中的多种资源，例如网络文件夹和网�
 
 Active Directory能够同时控制用户和计算机。这意味着，即使用户拥有有效的AD账户，如果其登录的计算机没有在AD中注册，用户也将无法登录。反之亦然，如果计算机在AD中注册，但用户账户不存在，同样无法登录。这种双重验证增强了安全性。
 
-![](img/fa432b9e247fad677d069a4659a6e41e_6.png)
 
 ## Active Directory的安全性
 
@@ -60,7 +56,6 @@ Active Directory的特性使其成为一个强大而灵活的管理工具。它�
 
 ## 总结
 
-![](img/fa432b9e247fad677d069a4659a6e41e_8.png)
 
 ![](img/fa432b9e247fad677d069a4659a6e41e_9.png)
 

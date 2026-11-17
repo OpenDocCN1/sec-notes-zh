@@ -8,17 +8,12 @@
 
 尽管我们习惯用“箭头”来直观表示分组密码的映射关系，但必须记住，其本质是一段代码。这段代码接收输入 `n` 和密钥 `K`，通过运算决定具体的映射关系。虽然“箭头”模型有助于我们理解安全游戏，但实际执行的是代码。
 
-![](img/6add8deb91ae4ebddb11c771d846a797_1.png)
 
 ## 高效的操作
 
-![](img/6add8deb91ae4ebddb11c771d846a797_2.png)
 
-![](img/6add8deb91ae4ebddb11c771d846a797_3.png)
 
-![](img/6add8deb91ae4ebddb11c771d846a797_4.png)
 
-![](img/6add8deb91ae4ebddb11c771d846a797_5.png)
 
 分组密码的代码执行现代计算机擅长的高速操作。
 
@@ -28,15 +23,11 @@
 *   **位移操作**：例如 `bits << 2`
 *   **查表操作**：例如 `value = lookup_table[index]`
 
-![](img/6add8deb91ae4ebddb11c771d846a797_7.png)
 
 这些操作不涉及复杂的数学运算，如求幂或除法。代码主要通过移动和组合比特位来生成之前提到的映射“箭头”。因此，分组密码的运行速度通常非常快。
 
-![](img/6add8deb91ae4ebddb11c771d846a797_8.png)
 
-![](img/6add8deb91ae4ebddb11c771d846a797_9.png)
 
-![](img/6add8deb91ae4ebddb11c771d846a797_10.png)
 
 ## 硬件优化
 
@@ -44,15 +35,11 @@
 
 因为分组密码被广泛使用，所以CPU制造商有意优化其架构以加速相关操作。这不仅意味着计算机天生擅长这些操作，更意味着我们正在专门为分组密码构建更高效的计算机。这是一个良性循环：分组密码因其高速而被鼓励使用，而用户在实际加密时几乎不会察觉到时间消耗。
 
-![](img/6add8deb91ae4ebddb11c771d846a797_12.png)
 
-![](img/6add8deb91ae4ebddb11c771d846a797_13.png)
 
 ## 算法背后的故事
 
-![](img/6add8deb91ae4ebddb11c771d846a797_14.png)
 
-![](img/6add8deb91ae4ebddb11c771d846a797_15.png)
 
 ![](img/6add8deb91ae4ebddb11c771d846a797_16.png)
 

@@ -7,7 +7,6 @@
 
 ---
 
-![](img/8bde4fbddfeb9a82d1712ad27325ea07_1.png)
 
 ## if语句
 `if` 语句用于仅在指定条件成立时执行代码。
@@ -19,11 +18,9 @@ if (condition) {
 }
 ```
 
-![](img/8bde4fbddfeb9a82d1712ad27325ea07_3.png)
 
 以下是 `if` 语句的一个简单示例。该示例判断当前时间是否小于20点（晚上8点），如果满足条件，则输出一条问候语。
 
-![](img/8bde4fbddfeb9a82d1712ad27325ea07_5.png)
 
 ```php
 <?php
@@ -37,11 +34,8 @@ if ($t < "20") {
 
 ---
 
-![](img/8bde4fbddfeb9a82d1712ad27325ea07_7.png)
 
-![](img/8bde4fbddfeb9a82d1712ad27325ea07_8.png)
 
-![](img/8bde4fbddfeb9a82d1712ad27325ea07_9.png)
 
 ## if...else 语句
 上一节我们介绍了基本的 `if` 语句，本节中我们来看看 `if...else` 语句。当需要在条件成立时执行一块代码，条件不成立时执行另一块代码时，就需要使用 `if...else` 语句。
@@ -57,7 +51,6 @@ if (condition) {
 
 以下是一个判断变量值并输出不同结果的示例：
 
-![](img/8bde4fbddfeb9a82d1712ad27325ea07_11.png)
 
 ```php
 <?php
@@ -73,14 +66,11 @@ if ($a > 10) {
 
 ---
 
-![](img/8bde4fbddfeb9a82d1712ad27325ea07_13.png)
 
 ## if...elseif...else 语句
 当存在多个条件需要逐一判断时，可以使用 `if...elseif...else` 语句。程序会按顺序检查每个条件，一旦某个条件成立，就执行对应的代码块，并跳过其余部分。
 
-![](img/8bde4fbddfeb9a82d1712ad27325ea07_14.png)
 
-![](img/8bde4fbddfeb9a82d1712ad27325ea07_16.png)
 
 其语法结构如下：
 ```php
@@ -109,20 +99,15 @@ if ($a > 10) {
 ```
 程序首先判断 `$a > 10`，不成立；接着判断 `$a > 2`，成立，因此输出“条件二：该数字大于二。”。`elseif` 可以有很多个，为复杂的多分支逻辑提供了解决方案。
 
-![](img/8bde4fbddfeb9a82d1712ad27325ea07_18.png)
 
-![](img/8bde4fbddfeb9a82d1712ad27325ea07_19.png)
 
 ---
 
 ## switch 语句
 最后，我们来学习 `switch` 语句。`switch` 语句专门用于基于同一个表达式的不同值来执行不同的代码块，它是处理多个确定选项时的优雅方式。
 
-![](img/8bde4fbddfeb9a82d1712ad27325ea07_21.png)
 
-![](img/8bde4fbddfeb9a82d1712ad27325ea07_22.png)
 
-![](img/8bde4fbddfeb9a82d1712ad27325ea07_23.png)
 
 其语法结构如下：
 ```php
@@ -139,9 +124,7 @@ switch (n) {
 }
 ```
 
-![](img/8bde4fbddfeb9a82d1712ad27325ea07_25.png)
 
-![](img/8bde4fbddfeb9a82d1712ad27325ea07_26.png)
 
 以下是一个根据颜色变量输出不同信息的示例：
 
@@ -165,15 +148,11 @@ switch ($favcolor) {
 ```
 在这个例子中，变量 `$favcolor` 的值为 “red”，因此程序会匹配 `case "red":` 并执行对应的 `echo` 语句。**`break` 关键字至关重要**，它用于阻止代码自动继续执行下一个 `case`。如果省略 `break`，程序会从匹配到的 `case` 开始，一直执行到 `switch` 块结束或遇到 `break` 为止。
 
-![](img/8bde4fbddfeb9a82d1712ad27325ea07_28.png)
 
 ---
 
-![](img/8bde4fbddfeb9a82d1712ad27325ea07_29.png)
 
-![](img/8bde4fbddfeb9a82d1712ad27325ea07_30.png)
 
-![](img/8bde4fbddfeb9a82d1712ad27325ea07_31.png)
 
 ## 总结
 本节课中我们一起学习了PHP的四种条件语句：
@@ -182,7 +161,6 @@ switch ($favcolor) {
 3.  **`if...elseif...else` 语句**：用于多个条件的顺序判断。
 4.  **`switch` 语句**：用于基于同一个表达式的多个不同值进行分支选择，记得每个 `case` 后要加 `break`。
 
-![](img/8bde4fbddfeb9a82d1712ad27325ea07_33.png)
 
 ![](img/8bde4fbddfeb9a82d1712ad27325ea07_35.png)
 

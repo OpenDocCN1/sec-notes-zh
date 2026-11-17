@@ -12,7 +12,6 @@ SQL注入攻击利用了Web应用程序对用户输入数据过滤不严的漏�
 
 ### 1. 攻击查询本身
 
-![](img/aa8fc5f295e12b3f8a14efb6f34a4c2f_1.png)
 
 这种策略的核心是向数据库提交特殊字符，观察数据库的响应。通常，攻击者会尝试使用SQL查询中常见的分隔符，如单引号（'）或双引号（"）。通过分析数据库的错误信息或异常行为，攻击者可以推断出数据库的某些信息，并利用SQL查询的语法来构造更复杂的恶意输入。
 
@@ -33,7 +32,6 @@ SQL注入攻击利用了Web应用程序对用户输入数据过滤不严的漏�
 *   **MS SQL**: 用户 `sa`， 密码为空， 端口 `1433`
 *   **Oracle**: 用户 `scott`， 密码 `tiger`， 端口 `1521`
 
-![](img/aa8fc5f295e12b3f8a14efb6f34a4c2f_3.png)
 
 相应的缓解措施包括：不使用默认密码、删除不必要的账户以及更改默认监听端口。不过，更改端口对经验丰富的攻击者效果有限，他们可以通过扫描所有端口来发现数据库服务。
 
@@ -48,7 +46,6 @@ SELECT * FROM users;
 DROP TABLE users;
 ```
 
-![](img/aa8fc5f295e12b3f8a14efb6f34a4c2f_5.png)
 
 请注意，这里的 `CREATE TABLE` 语句非常简单，甚至没有定义键约束。这只是一个示例，说明可能通过Web服务器暴露给用户的简单命令。理解这些基本的SQL语法概念，有助于我们理解SQL注入是如何利用这些语法的。
 
@@ -58,7 +55,6 @@ DROP TABLE users;
 
 考虑一个简单的数据库登录过程。Web表单提示用户输入用户名和密码，然后应用程序构造如下查询进行验证：
 
-![](img/aa8fc5f295e12b3f8a14efb6f34a4c2f_7.png)
 
 ```sql
 SELECT username FROM users WHERE username = ‘$user’ AND password = ‘$pass’;
@@ -72,7 +68,6 @@ SELECT username FROM users WHERE username = ‘admin’ AND password = ‘secret
 
 这是一个经典的SQL注入示例。攻击者可以在用户名或密码字段中输入特殊字符来改变查询逻辑。例如，在用户名字段输入：
 
-![](img/aa8fc5f295e12b3f8a14efb6f34a4c2f_9.png)
 
 ```
 ‘ OR ‘1’=’1
@@ -94,7 +89,6 @@ SELECT username FROM users WHERE username = ‘’ OR ‘1’=‘1’ AND passwo
 SELECT name， salary FROM employees WHERE city = ‘$city’;
 ```
 
-![](img/aa8fc5f295e12b3f8a14efb6f34a4c2f_11.png)
 
 攻击者可以输入：
 
@@ -104,7 +98,6 @@ SELECT name， salary FROM employees WHERE city = ‘$city’;
 
 那么查询将变为：
 
-![](img/aa8fc5f295e12b3f8a14efb6f34a4c2f_13.png)
 
 ```sql
 SELECT name， salary FROM employees WHERE city = ‘’ UNION SELECT username， password FROM users --’;
@@ -112,7 +105,6 @@ SELECT name， salary FROM employees WHERE city = ‘’ UNION SELECT username�
 
 `--` 是SQL中的注释符，会使后面的单引号被忽略。这样，查询将返回 `employees` 表中城市为空的记录（通常没有），并联合（UNION）返回 `users` 表中的所有用户名和密码。
 
-![](img/aa8fc5f295e12b3f8a14efb6f34a4c2f_15.png)
 
 ### 示例3：注入额外SQL语句
 
@@ -134,7 +126,6 @@ SELECT info FROM users WHERE id = $userid;
 SELECT info FROM users WHERE id = 1; DROP TABLE users;
 ```
 
-![](img/aa8fc5f295e12b3f8a14efb6f34a4c2f_17.png)
 
 这会在执行完查询后，立即执行一个删除 `users` 表的语句，导致数据库无法使用，直到被恢复。
 
@@ -153,11 +144,9 @@ SELECT info FROM users WHERE id = 1; DROP TABLE users;
 *   搜索：`inurl:login.php`
 *   搜索：`inurl:index.php?id=`
 
-![](img/aa8fc5f295e12b3f8a14efb6f34a4c2f_19.png)
 
 这些搜索可能会返回一些潜在的易受攻击的站点。攻击者可以尝试在这些站点的输入框中提交简单的注入字符串（如一个单引号 `‘`），观察是否有数据库错误信息返回，从而快速判断该站点是否存在SQL注入漏洞，并决定是否值得进一步深入探查。
 
-![](img/aa8fc5f295e12b3f8a14efb6f34a4c2f_21.png)
 
 ## 总结
 

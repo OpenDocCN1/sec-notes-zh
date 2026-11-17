@@ -10,7 +10,6 @@
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_9.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_11.png)
 
 在本节课中，我们将学习PHP中的模板技术应用、Smarty模板引擎的使用、MVC模型的基本概念，以及由此可能引发的安全漏洞（如RCE）。课程将从简单的新闻列表功能实现开始，逐步深入到模板技术的原理、应用和安全问题。
 
@@ -20,9 +19,7 @@
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_17.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_19.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_21.png)
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_23.png)
 
@@ -46,15 +43,12 @@
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_39.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_41.png)
 
 上一节我们介绍了课程的整体目标，本节中我们来看看如何实现一个基础的新闻列表功能。这个功能类似于之前留言板项目的数据查询与展示，核心步骤包括创建数据库表、连接数据库、查询数据并在页面显示。
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_43.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_45.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_47.png)
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_49.png)
 
@@ -76,11 +70,8 @@
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_53.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_55.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_57.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_59.png)
 
 2.  **插入测试数据**：向`news`表中插入一条示例数据。
     ```sql
@@ -149,9 +140,7 @@
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_99.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_101.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_103.png)
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_105.png)
 
@@ -207,7 +196,6 @@
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_135.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_137.png)
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_139.png)
 
@@ -235,7 +223,6 @@
 *   **View（视图）**：负责显示，即我们的`news.html`模板文件。
 *   **Controller（控制器）**：负责业务逻辑，即`news.php`中协调数据和视图的部分。
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_147.png)
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_149.png)
 
@@ -265,15 +252,11 @@
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_171.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_173.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_175.png)
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_177.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_179.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_181.png)
 
 ## ⚠️ 自定义模板的安全风险（RCE）
 
@@ -293,9 +276,7 @@
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_195.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_197.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_199.png)
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_201.png)
 
@@ -303,9 +284,7 @@
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_203.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_205.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_207.png)
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_209.png)
 
@@ -330,7 +309,6 @@
     // 当该字符串被输出时，<?php phpinfo();?> 会被服务器解析执行。
     ```
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_221.png)
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_223.png)
 
@@ -361,7 +339,6 @@
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_241.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_243.png)
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_245.png)
 
@@ -369,9 +346,7 @@
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_247.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_249.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_251.png)
 
 ---
 
@@ -379,15 +354,11 @@
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_255.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_257.png)
 
 ## 🛡️ 第三方模板引擎（Smarty）及其安全
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_259.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_261.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_263.png)
 
 上一节我们看到了自定义模板的风险，本节中我们来看看如何使用更安全、更强大的第三方模板引擎——**Smarty**。Smarty是一个流行的PHP模板引擎，它提供了丰富的功能，并且默认情况下会对输出进行转义，提升了安全性。
 
@@ -407,7 +378,6 @@
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_276.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_278.png)
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_280.png)
 
@@ -445,9 +415,7 @@
     </html>
     ```
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_286.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_288.png)
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_290.png)
 
@@ -459,21 +427,17 @@
 
 **Smarty的安全性提升**：在默认配置下，Smarty会将`{$variable}`中的HTML特殊字符进行转义，并且模板文件（`.tpl`）中的原生PHP代码**不会**被服务器执行。这有效防止了上一节提到的直接RCE漏洞。
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_298.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_300.png)
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_302.png)
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_304.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_306.png)
 
 ---
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_308.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_310.png)
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_312.png)
 
@@ -495,13 +459,9 @@
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_326.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_328.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_330.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_332.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_334.png)
 
 例如，Smarty 3.1.42之前版本中存在一个代码执行漏洞（CVE-2021-26119）。在特定配置下，攻击者可能通过构造特殊的模板内容或参数实现RCE。我们使用有漏洞的旧版本（如3.1.31）进行演示：
 
@@ -535,7 +495,6 @@ $smarty->display('exploit.tpl');
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_352.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_354.png)
 
 在PHP中，常见的风险点包括：
 *   **自身代码漏洞**：业务逻辑缺陷、SQL注入、XSS等。
@@ -547,7 +506,6 @@ $smarty->display('exploit.tpl');
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_358.png)
 
-![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_359.png)
 
 ![](img/e55b0bbc28b9a8e0f34f1e454ceab4d1_361.png)
 

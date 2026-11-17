@@ -1,6 +1,5 @@
 # 课程2：《网络安全角色、流程与操作系统安全》：70：macOS恢复模式教程 💻
 
-![](img/4d9cdeb44cac767c86cbcefd0b56e40d_1.png)
 
 在本节课程中，我们将学习macOS的恢复分区及其提供的各项服务。恢复分区是一个内置于Mac中的隐藏分区，它取代了传统随新电脑附带的安装光盘，提供了操作系统安装和一些额外的实用工具。
 
@@ -55,9 +54,7 @@
 
 ## 课程总结 📝
 
-![](img/4d9cdeb44cac767c86cbcefd0b56e40d_3.png)
 
-![](img/4d9cdeb44cac767c86cbcefd0b56e40d_4.png)
 
 ![](img/4d9cdeb44cac767c86cbcefd0b56e40d_5.png)
 

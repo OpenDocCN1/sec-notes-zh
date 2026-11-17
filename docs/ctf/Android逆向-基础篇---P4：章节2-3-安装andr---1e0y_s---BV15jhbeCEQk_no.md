@@ -4,7 +4,6 @@
 
 ## 启动Android Studio
 
-![](img/bea6f5af8fd287572e373b9f6bef3939_1.png)
 
 上一节我们介绍了Android Studio的下载，本节中我们来看看如何启动它。
 
@@ -12,7 +11,6 @@
 
 启动后，会看到初始界面。
 
-![](img/bea6f5af8fd287572e373b9f6bef3939_1.png)
 
 ## 初始界面选项
 
@@ -25,7 +23,6 @@
 
 通常我们选择创建一个新项目。在创建过程中，可以选择项目模板、名称等配置。为快速演示，此处使用默认配置。
 
-![](img/bea6f5af8fd287572e373b9f6bef3939_3.png)
 
 ![](img/bea6f5af8fd287572e373b9f6bef3939_3.png)
 
@@ -41,17 +38,14 @@
 
 界面中央是代码编辑区，用于编写和查看代码，例如打开`Gradle`构建脚本或Android配置文件。
 
-![](img/bea6f5af8fd287572e373b9f6bef3939_5.png)
 
 界面上方是菜单栏和工具栏，包含文件操作、编辑、运行等各项功能。
 
-![](img/bea6f5af8fd287572e373b9f6bef3939_5.png)
 
 ## 安装Android SDK
 
 在Android Studio中，有一个非常重要的步骤是通过它来安装和管理Android SDK（软件开发工具包）。
 
-![](img/bea6f5af8fd287572e373b9f6bef3939_7.png)
 
 ![](img/bea6f5af8fd287572e373b9f6bef3939_7.png)
 

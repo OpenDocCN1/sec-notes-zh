@@ -84,7 +84,6 @@ IMP4GT攻击的目标是欺骗网络，例如欺骗服务提供商或欺骗用�
 
 ![](img/25b09ab3194acc22750b01f10aa0ce0c_21.png)
 
-![](img/25b09ab3194acc22750b01f10aa0ce0c_22.png)
 
 ![](img/25b09ab3194acc22750b01f10aa0ce0c_24.png)
 

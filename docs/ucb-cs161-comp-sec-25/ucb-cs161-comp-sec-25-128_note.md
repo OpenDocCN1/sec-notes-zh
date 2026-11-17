@@ -34,19 +34,14 @@
 
 以下是一些具体的应用场景和最佳实践：
 
-![](img/338c1d994f4a8844e1231e9a0acecf6c_1.png)
 
-![](img/338c1d994f4a8844e1231e9a0acecf6c_2.png)
 
-![](img/338c1d994f4a8844e1231e9a0acecf6c_3.png)
 
 *   **加密与认证**：当你需要对消息同时进行加密和MAC计算时，请务必使用两个独立的密钥。例如，用 `K_enc` 加密，用 `K_mac` 计算MAC。
 *   **不同通信对象**：如果你需要为发送给Bob的消息和发送给Alice的消息分别计算MAC，考虑使用不同的MAC密钥。这可以防止针对一个对象的攻击影响到另一个对象。
 *   **相同算法的多次使用**：根据本课程的定义，使用同一密钥多次加密不同消息（例如，用同一个 `K_enc` 加密文件A和文件B）不被视为“密钥复用”，因为使用的是同一个算法。这在某些情况下可能是可接受的，但具体取决于你的威胁模型。在某些项目中，为不同的数据使用不同的加密密钥可能更安全。
 
-![](img/338c1d994f4a8844e1231e9a0acecf6c_4.png)
 
-![](img/338c1d994f4a8844e1231e9a0acecf6c_5.png)
 
 **核心原则代码描述：**
 ```python
@@ -63,29 +58,19 @@ ciphertext = encrypt(message, shared_key)  # 使用同一密钥
 tag = mac(ciphertext, shared_key)          # 使用同一密钥
 ```
 
-![](img/338c1d994f4a8844e1231e9a0acecf6c_7.png)
 
-![](img/338c1d994f4a8844e1231e9a0acecf6c_8.png)
 
-![](img/338c1d994f4a8844e1231e9a0acecf6c_9.png)
 
-![](img/338c1d994f4a8844e1231e9a0acecf6c_10.png)
 
 总而言之，一个绝对正确的做法是：**当涉及两个不同的算法时，始终使用两个独立的密钥**。这可以避免不必要的干扰，并简化安全保证。
 
-![](img/338c1d994f4a8844e1231e9a0acecf6c_11.png)
 
-![](img/338c1d994f4a8844e1231e9a0acecf6c_12.png)
 
-![](img/338c1d994f4a8844e1231e9a0acecf6c_13.png)
 
-![](img/338c1d994f4a8844e1231e9a0acecf6c_14.png)
 
-![](img/338c1d994f4a8844e1231e9a0acecf6c_15.png)
 
 ## 一个历史案例：先MAC后加密的攻击
 
-![](img/338c1d994f4a8844e1231e9a0acecf6c_16.png)
 
 ![](img/338c1d994f4a8844e1231e9a0acecf6c_17.png)
 

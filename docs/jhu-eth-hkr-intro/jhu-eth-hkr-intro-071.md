@@ -32,13 +32,9 @@ void vulnerableFunction(char* input) {
 
 
 
-![](img/0a86907c66dbe3c1fe265e2f6b4cf7d7_1.png)
 
-![](img/0a86907c66dbe3c1fe265e2f6b4cf7d7_1.png)
 
-![](img/0a86907c66dbe3c1fe265e2f6b4cf7d7_2.png)
 
-![](img/0a86907c66dbe3c1fe265e2f6b4cf7d7_2.png)
 
 ## 缓冲区溢出过程
 
@@ -50,13 +46,11 @@ void vulnerableFunction(char* input) {
 
 
 
-![](img/0a86907c66dbe3c1fe265e2f6b4cf7d7_4.png)
 
 它覆盖了栈上的大量数据，甚至超出栈的范围。但特别关键的是，它覆盖了 `main` 函数结束时将要使用的返回地址。
 
 这也就回答了前面提出的问题：如果 `strcpy` 没有看到空终止符，它会一直复制下去，这无疑会导致程序崩溃。但我们通常不希望目标程序崩溃，而是希望利用它。
 
-![](img/0a86907c66dbe3c1fe265e2f6b4cf7d7_4.png)
 
 ## 段错误的产生
 
@@ -70,13 +64,11 @@ void vulnerableFunction(char* input) {
 
 
 
-![](img/0a86907c66dbe3c1fe265e2f6b4cf7d7_6.png)
 
 ## 本节总结与下节预告
 
 在本节中，我们分析了一个简单的C程序，其缓冲区太小，无法容纳传递给它的字符串。结果，栈的一部分被覆盖，包括 `main` 函数结束时下一条要执行指令的返回地址。
 
-![](img/0a86907c66dbe3c1fe265e2f6b4cf7d7_6.png)
 
 当 `main` 函数结束，操作系统试图返回到那个地址时，发现它是一个非法地址，于是程序因段错误而中止。
 
@@ -86,7 +78,6 @@ void vulnerableFunction(char* input) {
 
 
 
-![](img/0a86907c66dbe3c1fe265e2f6b4cf7d7_8.png)
 
 ![](img/0a86907c66dbe3c1fe265e2f6b4cf7d7_8.png)
 

@@ -44,9 +44,7 @@ ssh-keygen -t rsa -b 4096
 ssh-copy-id username@remote_server_ip
 ```
 
-![](img/25629e0d560accbca53ba679b195cd2c_1.png)
 
-![](img/25629e0d560accbca53ba679b195cd2c_3.png)
 
 ---
 
@@ -56,9 +54,7 @@ ssh-copy-id username@remote_server_ip
 
 ## 实战操作类
 
-![](img/25629e0d560accbca53ba679b195cd2c_8.png)
 
-![](img/25629e0d560accbca53ba679b195cd2c_10.png)
 
 配置好SSH服务后，本节我们来学习如何进行实际的连接和高级操作。
 
@@ -68,7 +64,6 @@ ssh-copy-id username@remote_server_ip
 ssh username@hostname_or_ip
 ```
 
-![](img/25629e0d560accbca53ba679b195cd2c_12.png)
 
 **如果SSH连接缓慢，如何加速？**
 可以编辑SSH客户端的配置文件（`~/.ssh/config` 或 `/etc/ssh/ssh_config`），禁用DNS反向解析等选项来加速连接。
@@ -77,9 +72,7 @@ Host *
     GSSAPIAuthentication no
 ```
 
-![](img/25629e0d560accbca53ba679b195cd2c_14.png)
 
-![](img/25629e0d560accbca53ba679b195cd2c_16.png)
 
 **如何使用SSH进行端口转发？**
 SSH端口转发功能强大，常用于穿透防火墙或访问内网服务。
@@ -98,9 +91,7 @@ SSH端口转发功能强大，常用于穿透防火墙或访问内网服务。
 
 最后，我们来学习当SSH出现问题时，如何进行排查和修复。
 
-![](img/25629e0d560accbca53ba679b195cd2c_18.png)
 
-![](img/25629e0d560accbca53ba679b195cd2c_20.png)
 
 **连接时出现“Connection timed out”错误怎么办？**
 这个错误表示连接超时。可能的原因和排查步骤如下：

@@ -4,7 +4,6 @@
 
 ---
 
-![](img/a13c3663f63c12f5c250b9e0148eed8a_1.png)
 
 ![](img/a13c3663f63c12f5c250b9e0148eed8a_3.png)
 
@@ -29,13 +28,10 @@ reGeorg是reDuh的升级版，其核心功能是将内网服务的端口数据�
 
 ![](img/a13c3663f63c12f5c250b9e0148eed8a_11.png)
 
-![](img/a13c3663f63c12f5c250b9e0148eed8a_13.png)
 
-![](img/a13c3663f63c12f5c250b9e0148eed8a_15.png)
 
 ### 实战演示：利用WebLogic漏洞建立隧道
 
-![](img/a13c3663f63c12f5c250b9e0148eed8a_17.png)
 
 我们以一个存在漏洞的WebLogic服务器（IP: 192.168.78.105，端口:7001）为例。
 
@@ -55,21 +51,16 @@ reGeorg是reDuh的升级版，其核心功能是将内网服务的端口数据�
 
 ---
 
-![](img/a13c3663f63c12f5c250b9e0148eed8a_25.png)
 
-![](img/a13c3663f63c12f5c250b9e0148eed8a_27.png)
 
 ## 第二部分：增强版HTTP隧道 - Neo-reGeorg 🚀
 
-![](img/a13c3663f63c12f5c250b9e0148eed8a_29.png)
 
-![](img/a13c3663f63c12f5c250b9e0148eed8a_31.png)
 
 上一节我们介绍了基础的reGeorg，本节中我们来看看它的增强重构版——Neo-reGeorg。
 
 Neo-reGeorg在安全性、稳定性和可用性上做了大量改进。其根本原理未变，但增加了连接密码验证，使隧道更安全。
 
-![](img/a13c3663f63c12f5c250b9e0148eed8a_33.png)
 
 ![](img/a13c3663f63c12f5c250b9e0148eed8a_35.png)
 
@@ -115,25 +106,19 @@ Neo-reGeorg在安全性、稳定性和可用性上做了大量改进。其根本
 
 ![](img/a13c3663f63c12f5c250b9e0148eed8a_59.png)
 
-![](img/a13c3663f63c12f5c250b9e0148eed8a_61.png)
 
 ## 第三部分：DNS隧道与DNS Cat 2 📡
 
 上一节我们完成了HTTP隧道的搭建，本节中我们来看看另一种隐蔽的隧道技术——DNS隧道。
 
-![](img/a13c3663f63c12f5c250b9e0148eed8a_63.png)
 
 DNS Cat 2是一个DNS隧道工具，它通过DNS协议创建加密的命令与控制（C&C）通道。其特色是服务端提供了一个交互式控制台，可以直接对目标机器进行命令控制。
 
-![](img/a13c3663f63c12f5c250b9e0148eed8a_65.png)
 
-![](img/a13c3663f63c12f5c250b9e0148eed8a_67.png)
 
 ### DNS解析类型简述
 
-![](img/a13c3663f63c12f5c250b9e0148eed8a_69.png)
 
-![](img/a13c3663f63c12f5c250b9e0148eed8a_71.png)
 
 在深入之前，需要了解两个关键的DNS记录类型：
 *   **A记录**：将域名指向一个IPv4地址。
@@ -141,17 +126,13 @@ DNS Cat 2是一个DNS隧道工具，它通过DNS协议创建加密的命令与�
 
 ### DNS Cat 2的两种模式
 
-![](img/a13c3663f63c12f5c250b9e0148eed8a_73.png)
 
-![](img/a13c3663f63c12f5c250b9e0148eed8a_75.png)
 
 DNS Cat 2支持两种工作模式：
 1.  **直连模式**：客户端直接向指定的DNS服务器IP发起解析请求。速度快，但特征较明显。
 2.  **中继模式**：客户端像正常上网一样，通过递归查询的方式，最终将请求指向我们控制的DNS服务器。速度慢，但隐蔽性更好，因为流量混合在正常的DNS查询中。
 
-![](img/a13c3663f63c12f5c250b9e0148eed8a_77.png)
 
-![](img/a13c3663f63c12f5c250b9e0148eed8a_79.png)
 
 ![](img/a13c3663f63c12f5c250b9e0148eed8a_81.png)
 
@@ -197,7 +178,6 @@ PTunnel (Ping Tunnel) 虽然名称是Ping，但它可以利用ICMP、TCP、UDP�
 
 ---
 
-![](img/a13c3663f63c12f5c250b9e0148eed8a_91.png)
 
 ## 总结与回顾 🎯
 

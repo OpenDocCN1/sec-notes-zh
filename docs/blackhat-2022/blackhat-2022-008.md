@@ -4,7 +4,6 @@
 
 ![](img/9320c9b312efcbbec994793beaa80d3f_2.png)
 
-![](img/9320c9b312efcbbec994793beaa80d3f_4.png)
 
 ![](img/9320c9b312efcbbec994793beaa80d3f_6.png)
 

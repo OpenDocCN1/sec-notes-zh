@@ -1,6 +1,5 @@
 # 059：总结
 
-![](img/3e21ebb7fa197dc8e8f29b1bee3ba134_0.png)
 
 ![](img/3e21ebb7fa197dc8e8f29b1bee3ba134_0.png)
 

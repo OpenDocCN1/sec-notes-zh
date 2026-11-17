@@ -2,7 +2,6 @@
 
 ![](img/b21df2074086d2a56353c9ffa3f8c249_1.png)
 
-![](img/b21df2074086d2a56353c9ffa3f8c249_3.png)
 
 在本节课中，我们将要学习一个名为XXE（XML外部实体注入）的漏洞。这个漏洞虽然出现已久，但因其危害性高，成功跻身2017年OWASP Top 10榜单。我们将从基础概念讲起，逐步解析其成因、利用方式以及潜在危害，并通过简单的示例帮助初学者理解。
 
@@ -12,11 +11,9 @@ XXE，全称XML External Entity Injection，即XML外部实体注入。它主要
 
 上一节我们介绍了课程的整体目标，本节中我们来看看XXE漏洞的成因和所需的基础知识。
 
-![](img/b21df2074086d2a56353c9ffa3f8c249_5.png)
 
 ## 第一部分：漏洞成因与基础知识
 
-![](img/b21df2074086d2a56353c9ffa3f8c249_7.png)
 
 ![](img/b21df2074086d2a56353c9ffa3f8c249_8.png)
 
@@ -74,9 +71,7 @@ XXE，全称XML External Entity Injection，即XML外部实体注入。它主要
 
 ### 1. 任意文件读取
 
-![](img/b21df2074086d2a56353c9ffa3f8c249_15.png)
 
-![](img/b21df2074086d2a56353c9ffa3f8c249_17.png)
 
 这是XXE最直接的一种利用方式。通过`file://`协议，我们可以尝试读取服务器上的敏感文件。
 
@@ -94,7 +89,6 @@ echo $data;
 ```
 这段代码直接解析用户传入的XML数据并输出。
 
-![](img/b21df2074086d2a56353c9ffa3f8c249_23.png)
 
 ![](img/b21df2074086d2a56353c9ffa3f8c249_25.png)
 
@@ -127,7 +121,6 @@ echo $data;
 
 `php://filter/read=convert.base64-encode/resource=`协议可以将目标文件内容以Base64格式输出，从而绕过XML解析问题。
 
-![](img/b21df2074086d2a56353c9ffa3f8c249_31.png)
 
 ![](img/b21df2074086d2a56353c9ffa3f8c249_33.png)
 

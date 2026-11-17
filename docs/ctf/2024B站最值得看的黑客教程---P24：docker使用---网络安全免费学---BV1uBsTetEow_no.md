@@ -150,7 +150,6 @@ Docker的使用主要围绕三个核心操作：**拉取**、**运行**、**构�
 
 DVWA是一个用PHP编写的漏洞靶场。
 
-![](img/f5746be3109eb3019fbb2bc43b79dd40_26.png)
 
 **步骤：**
 1.  **拉取镜像**：从仓库下载DVWA镜像。
@@ -166,16 +165,13 @@ DVWA是一个用PHP编写的漏洞靶场。
     *   `-p 20000:80`：将容器内应用的80端口映射到宿主机的20000端口。
     *   `vulnerables/web-dvwa`：指定使用的镜像名称。
 
-![](img/f5746be3109eb3019fbb2bc43b79dd40_28.png)
 
-![](img/f5746be3109eb3019fbb2bc43b79dd40_30.png)
 
 **访问靶场：**
 等待几秒后，在Kali的浏览器中访问：`http://127.0.0.1:20000` 即可看到DVWA的登录界面。所有环境都已自动配置好。
 
 ### 搭建sqli-labs靶场
 
-![](img/f5746be3109eb3019fbb2bc43b79dd40_32.png)
 
 sqli-labs是一个专注于SQL注入练习的靶场。
 
@@ -189,14 +185,11 @@ sqli-labs是一个专注于SQL注入练习的靶场。
     docker run -d --name sqli -p 20001:80 acgpiano/sqli-labs
     ```
 
-![](img/f5746be3109eb3019fbb2bc43b79dd40_34.png)
 
 **访问靶场：**
 在浏览器中访问：`http://127.0.0.1:20001`。
 
-![](img/f5746be3109eb3019fbb2bc43b79dd40_36.png)
 
-![](img/f5746be3109eb3019fbb2bc43b79dd40_38.png)
 
 通过以上操作，你可以看到，无论靶场是用PHP、Java还是其他语言编写，Docker都能通过统一的 `pull` 和 `run` 命令快速部署，无需关心底层复杂的依赖和环境配置。
 
@@ -206,7 +199,6 @@ sqli-labs是一个专注于SQL注入练习的靶场。
 
 容器像虚拟机一样，可以进行启动、停止、重启、删除和进入等操作。以下是管理容器生命周期的常用命令。
 
-![](img/f5746be3109eb3019fbb2bc43b79dd40_40.png)
 
 ![](img/f5746be3109eb3019fbb2bc43b79dd40_41.png)
 
@@ -228,19 +220,14 @@ sqli-labs是一个专注于SQL注入练习的靶场。
 
 ![](img/f5746be3109eb3019fbb2bc43b79dd40_43.png)
 
-![](img/f5746be3109eb3019fbb2bc43b79dd40_45.png)
 
 ---
 
-![](img/f5746be3109eb3019fbb2bc43b79dd40_47.png)
 
-![](img/f5746be3109eb3019fbb2bc43b79dd40_48.png)
 
 ## 总结
 
-![](img/f5746be3109eb3019fbb2bc43b79dd40_50.png)
 
-![](img/f5746be3109eb3019fbb2bc43b79dd40_51.png)
 
 本节课中我们一起学习了Docker的基础知识和实战应用。
 

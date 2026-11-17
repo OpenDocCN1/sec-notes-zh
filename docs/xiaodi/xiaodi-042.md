@@ -22,7 +22,6 @@
 
 ![](img/405616e6279047f0a8b81af09c2a96bc_12.png)
 
-![](img/405616e6279047f0a8b81af09c2a96bc_14.png)
 
 ---
 
@@ -30,7 +29,6 @@
 
 在开始学习SQL注入之前，我们需要了解PHP应用与MySQL数据库的两种常见架构模式。这两种模式决定了数据库用户权限的分配方式，直接影响SQL注入攻击的潜在影响范围。
 
-![](img/405616e6279047f0a8b81af09c2a96bc_16.png)
 
 ![](img/405616e6279047f0a8b81af09c2a96bc_18.png)
 
@@ -42,11 +40,8 @@
 
 在这种模式下，所有网站共享同一个MySQL的`root`用户（或具有高权限的管理员用户）来管理各自的数据库。
 
-![](img/405616e6279047f0a8b81af09c2a96bc_24.png)
 
-![](img/405616e6279047f0a8b81af09c2a96bc_26.png)
 
-![](img/405616e6279047f0a8b81af09c2a96bc_28.png)
 
 ![](img/405616e6279047f0a8b81af09c2a96bc_30.png)
 
@@ -66,7 +61,6 @@ MySQL 数据库
 *   一个高权限用户管理所有数据库。
 *   如果一个网站存在SQL注入漏洞，攻击者可能利用该漏洞访问和操作同一MySQL实例下的其他网站数据库。
 
-![](img/405616e6279047f0a8b81af09c2a96bc_36.png)
 
 ![](img/405616e6279047f0a8b81af09c2a96bc_38.png)
 
@@ -84,9 +78,7 @@ MySQL 数据库
 
 ![](img/405616e6279047f0a8b81af09c2a96bc_48.png)
 
-![](img/405616e6279047f0a8b81af09c2a96bc_50.png)
 
-![](img/405616e6279047f0a8b81af09c2a96bc_52.png)
 
 **架构模型：**
 ```
@@ -97,9 +89,7 @@ MySQL 数据库
     └── 网站B数据库
 ```
 
-![](img/405616e6279047f0a8b81af09c2a96bc_54.png)
 
-![](img/405616e6279047f0a8b81af09c2a96bc_56.png)
 
 ![](img/405616e6279047f0a8b81af09c2a96bc_58.png)
 
@@ -118,7 +108,6 @@ MySQL 数据库
 
 ---
 
-![](img/405616e6279047f0a8b81af09c2a96bc_66.png)
 
 ![](img/405616e6279047f0a8b81af09c2a96bc_68.png)
 
@@ -126,13 +115,9 @@ MySQL 数据库
 
 ## SQL注入原理与基础利用 🎯
 
-![](img/405616e6279047f0a8b81af09c2a96bc_72.png)
 
-![](img/405616e6279047f0a8b81af09c2a96bc_74.png)
 
-![](img/405616e6279047f0a8b81af09c2a96bc_76.png)
 
-![](img/405616e6279047f0a8b81af09c2a96bc_78.png)
 
 上一节我们介绍了数据库的架构模式，本节中我们来看看SQL注入漏洞的核心原理。SQL注入的本质是：应用程序将用户输入的数据，未经充分过滤或转义，直接拼接到了SQL查询语句中并执行。
 
@@ -140,7 +125,6 @@ MySQL 数据库
 
 ### 漏洞代码示例
 
-![](img/405616e6279047f0a8b81af09c2a96bc_82.png)
 
 假设我们有以下简单的PHP代码（`64.php`）：
 
@@ -165,9 +149,7 @@ $conn = mysqli_connect('localhost', 'root', '123456', 'demo01');
 ?>
 ```
 
-![](img/405616e6279047f0a8b81af09c2a96bc_88.png)
 
-![](img/405616e6279047f0a8b81af09c2a96bc_90.png)
 
 ### 正常访问与攻击演示
 
@@ -204,7 +186,6 @@ $conn = mysqli_connect('localhost', 'root', '123456', 'demo01');
 
 ![](img/405616e6279047f0a8b81af09c2a96bc_102.png)
 
-![](img/405616e6279047f0a8b81af09c2a96bc_104.png)
 
 ![](img/405616e6279047f0a8b81af09c2a96bc_106.png)
 
@@ -323,11 +304,9 @@ $conn = mysqli_connect('localhost', 'root', '123456', 'demo01');
 
 ![](img/405616e6279047f0a8b81af09c2a96bc_166.png)
 
-![](img/405616e6279047f0a8b81af09c2a96bc_168.png)
 
 回顾我们最初讲的架构模式，如果注入点使用的是高权限数据库用户（如`root`），攻击者就可以进行跨库查询。这意味着，通过一个网站的注入点，可以窃取同一MySQL服务器上其他网站数据库的数据。
 
-![](img/405616e6279047f0a8b81af09c2a96bc_170.png)
 
 ![](img/405616e6279047f0a8b81af09c2a96bc_172.png)
 
@@ -352,9 +331,7 @@ $conn = mysqli_connect('localhost', 'root', '123456', 'demo01');
 1.  注入点当前数据库连接用户为高权限用户（如`root`）。
 2.  知道或能猜出目标数据库的名字。
 
-![](img/405616e6279047f0a8b81af09c2a96bc_190.png)
 
-![](img/405616e6279047f0a8b81af09c2a96bc_192.png)
 
 ![](img/405616e6279047f0a8b81af09c2a96bc_194.png)
 
@@ -368,7 +345,6 @@ $conn = mysqli_connect('localhost', 'root', '123456', 'demo01');
 
 ![](img/405616e6279047f0a8b81af09c2a96bc_200.png)
 
-![](img/405616e6279047f0a8b81af09c2a96bc_202.png)
 
 攻击步骤如下：
 
@@ -376,7 +352,6 @@ $conn = mysqli_connect('localhost', 'root', '123456', 'demo01');
 
 ![](img/405616e6279047f0a8b81af09c2a96bc_206.png)
 
-![](img/405616e6279047f0a8b81af09c2a96bc_208.png)
 
 1.  **查询`zblog`数据库下的表名：**
     ```sql
@@ -416,9 +391,7 @@ $conn = mysqli_connect('localhost', 'root', '123456', 'demo01');
 
 ![](img/405616e6279047f0a8b81af09c2a96bc_228.png)
 
-![](img/405616e6279047f0a8b81af09c2a96bc_230.png)
 
-![](img/405616e6279047f0a8b81af09c2a96bc_232.png)
 
 ![](img/405616e6279047f0a8b81af09c2a96bc_234.png)
 
@@ -428,11 +401,8 @@ $conn = mysqli_connect('localhost', 'root', '123456', 'demo01');
 
 ## 文件读写操作 📁
 
-![](img/405616e6279047f0a8b81af09c2a96bc_238.png)
 
-![](img/405616e6279047f0a8b81af09c2a96bc_240.png)
 
-![](img/405616e6279047f0a8b81af09c2a96bc_242.png)
 
 ![](img/405616e6279047f0a8b81af09c2a96bc_244.png)
 
@@ -446,7 +416,6 @@ $conn = mysqli_connect('localhost', 'root', '123456', 'demo01');
 
 ![](img/405616e6279047f0a8b81af09c2a96bc_250.png)
 
-![](img/405616e6279047f0a8b81af09c2a96bc_252.png)
 
 ![](img/405616e6279047f0a8b81af09c2a96bc_254.png)
 
@@ -468,11 +437,9 @@ $conn = mysqli_connect('localhost', 'root', '123456', 'demo01');
 
 ### 相关SQL函数
 
-![](img/405616e6279047f0a8b81af09c2a96bc_268.png)
 
 ![](img/405616e6279047f0a8b81af09c2a96bc_270.png)
 
-![](img/405616e6279047f0a8b81af09c2a96bc_272.png)
 
 *   **读取文件：** `LOAD_FILE(‘文件路径’)`
     ```sql
@@ -485,7 +452,6 @@ $conn = mysqli_connect('localhost', 'root', '123456', 'demo01');
 
 ![](img/405616e6279047f0a8b81af09c2a96bc_274.png)
 
-![](img/405616e6279047f0a8b81af09c2a96bc_276.png)
 
 ![](img/405616e6279047f0a8b81af09c2a96bc_278.png)
 
@@ -510,7 +476,6 @@ $conn = mysqli_connect('localhost', 'root', '123456', 'demo01');
 
 ![](img/405616e6279047f0a8b81af09c2a96bc_292.png)
 
-![](img/405616e6279047f0a8b81af09c2a96bc_294.png)
 
 **文件读写是SQL注入的高危利用方式，一旦成功，攻击者几乎可以完全控制服务器。但现代MySQL版本（如8.0+）默认的`secure_file_priv`设置和独立用户架构极大地降低了此类风险。**
 
@@ -536,17 +501,13 @@ $conn = mysqli_connect('localhost', 'root', '123456', 'demo01');
 
 本节课我们一起学习了SQL注入从原理到高级利用的全过程。我们来总结一下权限的核心作用以及基本的防御思路。
 
-![](img/405616e6279047f0a8b81af09c2a96bc_312.png)
 
-![](img/405616e6279047f0a8b81af09c2a96bc_314.png)
 
-![](img/405616e6279047f0a8b81af09c2a96bc_316.png)
 
 ### 权限的核心影响
 
 ![](img/405616e6279047f0a8b81af09c2a96bc_318.png)
 
-![](img/405616e6279047f0a8b81af09c2a96bc_320.png)
 
 ![](img/405616e6279047f0a8b81af09c2a96bc_322.png)
 
@@ -591,7 +552,6 @@ $conn = mysqli_connect('localhost', 'root', '123456', 'demo01');
 
 ![](img/405616e6279047f0a8b81af09c2a96bc_340.png)
 
-![](img/405616e6279047f0a8b81af09c2a96bc_342.png)
 
 ![](img/405616e6279047f0a8b81af09c2a96bc_344.png)
 

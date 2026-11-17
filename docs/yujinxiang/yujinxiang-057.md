@@ -1,6 +1,5 @@
 #  057：068-获取指定NPC对象GetNpcObjForName 🎯
 
-![](img/456a79a0860a4ba3a5e46e3d2a4c85bd_0.png)
 
 在本节课中，我们将学习如何编写一个名为 `GetNpcObjForName` 的函数，用于根据NPC的名字来获取其在游戏内存中的对象地址。这是实现与特定NPC交互功能的关键步骤。
 
@@ -26,13 +25,11 @@
 
 ## 编写遍历与比较逻辑
 
-![](img/456a79a0860a4ba3a5e46e3d2a4c85bd_2.png)
 
 以下是实现该功能的核心代码逻辑。我们使用一个循环来遍历列表：
 
 ![](img/456a79a0860a4ba3a5e46e3d2a4c85bd_4.png)
 
-![](img/456a79a0860a4ba3a5e46e3d2a4c85bd_5.png)
 
 ```cpp
 DWORD GetNpcObjForName(const char* targetName) {
@@ -72,11 +69,9 @@ DWORD GetNpcObjForName(const char* targetName) {
 5.  如果遍历完整个列表都未找到，则返回 `NULL`。
 > **注意**：使用固定列表大小（如100）的算法可能不够优化。在实际项目中，更科学的方法是使用动态数组（如 `std::vector`）来准确获取列表大小。
 
-![](img/456a79a0860a4ba3a5e46e3d2a4c85bd_9.png)
 
 ---
 
-![](img/456a79a0860a4ba3a5e46e3d2a4c85bd_10.png)
 
 ## 函数测试与调试
 

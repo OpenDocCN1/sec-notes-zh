@@ -1,6 +1,5 @@
 # 025：深度防御策略
 
-![](img/0c9bac97c08ab069a792b6140cc555ef_0.png)
 
 ![](img/0c9bac97c08ab069a792b6140cc555ef_0.png)
 

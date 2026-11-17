@@ -89,7 +89,6 @@ ICANN DNS工作组认为，当前使用的系统提供了太多不准确的信�
 
 幻灯片显示了与域相关的一些记录类型，例如关于邮件服务器和名称服务器的信息。
 
-![](img/6e2cb34ab22ec7da2656a77fc5ba39ea_1.png)
 
 此屏幕显示了针对 `dispatch.com` 和 `google.com` 的交互式 `nslookup` 运行。我以交互方式运行它：启动 `nslookup`，设置记录类型，然后输入域名以获取该记录。
 
@@ -113,7 +112,6 @@ ICANN DNS工作组认为，当前使用的系统提供了太多不准确的信�
 
 ### 其他工具：Dig, Host, Fierce
 
-![](img/6e2cb34ab22ec7da2656a77fc5ba39ea_3.png)
 
 一些用户认为 `dig` 提供了更大的灵活性，更易于使用，并且输出更清晰。`dig` 安装在Kali上，启动时也会尝试从指定的名称服务器获取区域传输。
 
@@ -138,6 +136,5 @@ ICANN DNS工作组认为，当前使用的系统提供了太多不准确的信�
 
 在本小节中，我讨论了域名服务以及两种可用于收集DNS信息的工具：`whois` 和 `nslookup`。`dig`、`host` 和 `fierce` 是在下一个子模块中我将演示使用hosts文件进行DNS毒化攻击之前，提到的其他提供类似功能的工具。
 
-![](img/6e2cb34ab22ec7da2656a77fc5ba39ea_5.png)
 
 ![](img/6e2cb34ab22ec7da2656a77fc5ba39ea_5.png)

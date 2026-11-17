@@ -90,7 +90,6 @@ chmod +s /home/myuser/hack_shell  # 可选，为其也设置Set-UID权限
 
 如果你对这方面感兴趣，互联网上有大量关于黑客技术和安全研究的资源。但请务必谨慎，不建议任何人下载黑客工具并对真实网络进行非法测试。作为学习的一部分，确保只从可靠、合法的资源获取知识，这将有助于你的个人学习计划。
 
-![](img/e2a5f1a1cf0af19defdeb65a99ef29a7_6.png)
 
 ![](img/e2a5f1a1cf0af19defdeb65a99ef29a7_7.png)
 

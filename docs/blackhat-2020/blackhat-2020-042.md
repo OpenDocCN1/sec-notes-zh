@@ -4,7 +4,6 @@
 
 ![](img/1df68eba1fe0bd0f343eb4611ec1ea17_3.png)
 
-![](img/1df68eba1fe0bd0f343eb4611ec1ea17_5.png)
 
 [MUSIC]
 
@@ -14,7 +13,6 @@
 
 ![](img/1df68eba1fe0bd0f343eb4611ec1ea17_11.png)
 
-![](img/1df68eba1fe0bd0f343eb4611ec1ea17_13.png)
 
 ![](img/1df68eba1fe0bd0f343eb4611ec1ea17_15.png)
 
@@ -26,7 +24,6 @@
 
 >> 大家好。欢迎来到本次演讲，便携式文档 101，在奇怪的时代举行的视觉黑帽会议。
 
-![](img/1df68eba1fe0bd0f343eb4611ec1ea17_21.png)
 
 ![](img/1df68eba1fe0bd0f343eb4611ec1ea17_23.png)
 
@@ -36,7 +33,6 @@
 
 ![](img/1df68eba1fe0bd0f343eb4611ec1ea17_3.png)
 
-![](img/1df68eba1fe0bd0f343eb4611ec1ea17_29.png)
 
 ![](img/1df68eba1fe0bd0f343eb4611ec1ea17_31.png)
 

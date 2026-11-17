@@ -78,7 +78,6 @@ IDE左侧的项目视图有多种模式，可以根据个人喜好选择：
 1.  **通过IDE设置**：在 **File > Settings**（或Mac上的 **Android Studio > Preferences**）中，搜索“proxy”，然后在 **HTTP Proxy** 部分手动设置代理地址和端口。推荐使用HTTP/HTTPS代理。
     > **注意**：此设置界面可能不支持SOCKS5代理。
 
-![](img/b7536b8c25d2c23657b4870c97312561_11.png)
 
 2.  **通过配置文件（优先级更高）**：在用户主目录（`~`）下，找到或创建 `gradle.properties` 文件（Windows和Mac路径类似）。在此文件中添加代理配置，例如：
     ```

@@ -20,7 +20,6 @@
 
 ![](img/6d024bf2a8c382c9f13cbb6d870022d3_14.png)
 
-![](img/6d024bf2a8c382c9f13cbb6d870022d3_16.png)
 
 CSRF，全称跨站请求伪造，是一种利用用户已登录状态，诱骗其访问恶意页面从而执行非预期操作的攻击方式。
 
@@ -41,7 +40,6 @@ ticket=xxx&name=小迪&account=471656814@qq.com&money=10000
 
 ![](img/6d024bf2a8c382c9f13cbb6d870022d3_22.png)
 
-![](img/6d024bf2a8c382c9f13cbb6d870022d3_24.png)
 
 攻击者将这个数据包嵌入到自己的网站（例如`www.xiaodi8.com`）中。当受害者登录了支付宝，同时又访问了攻击者的网站时，浏览器就会自动向支付宝发送这个转账请求。由于受害者处于登录状态，这个请求就可能被执行，从而造成资金损失。
 
@@ -73,9 +71,7 @@ ticket=xxx&name=小迪&account=471656814@qq.com&money=10000
 
 ## 🎯 CSRF攻击的三个必要条件
 
-![](img/6d024bf2a8c382c9f13cbb6d870022d3_48.png)
 
-![](img/6d024bf2a8c382c9f13cbb6d870022d3_50.png)
 
 ![](img/6d024bf2a8c382c9f13cbb6d870022d3_52.png)
 
@@ -101,11 +97,8 @@ ticket=xxx&name=小迪&account=471656814@qq.com&money=10000
 
 ![](img/6d024bf2a8c382c9f13cbb6d870022d3_68.png)
 
-![](img/6d024bf2a8c382c9f13cbb6d870022d3_70.png)
 
-![](img/6d024bf2a8c382c9f13cbb6d870022d3_72.png)
 
-![](img/6d024bf2a8c382c9f13cbb6d870022d3_74.png)
 
 ![](img/6d024bf2a8c382c9f13cbb6d870022d3_76.png)
 
@@ -129,15 +122,12 @@ ticket=xxx&name=小迪&account=471656814@qq.com&money=10000
 
 ![](img/6d024bf2a8c382c9f13cbb6d870022d3_91.png)
 
-![](img/6d024bf2a8c382c9f13cbb6d870022d3_93.png)
 
-![](img/6d024bf2a8c382c9f13cbb6d870022d3_95.png)
 
 ![](img/6d024bf2a8c382c9f13cbb6d870022d3_97.png)
 
 上一节我们介绍了CSRF的原理和攻击条件，本节中我们来看看在一个完全没有防护的系统中，如何实现CSRF攻击。
 
-![](img/6d024bf2a8c382c9f13cbb6d870022d3_99.png)
 
 ![](img/6d024bf2a8c382c9f13cbb6d870022d3_101.png)
 
@@ -212,9 +202,7 @@ ticket=xxx&name=小迪&account=471656814@qq.com&money=10000
 
 ![](img/6d024bf2a8c382c9f13cbb6d870022d3_157.png)
 
-![](img/6d024bf2a8c382c9f13cbb6d870022d3_159.png)
 
-![](img/6d024bf2a8c382c9f13cbb6d870022d3_161.png)
 
 ![](img/6d024bf2a8c382c9f13cbb6d870022d3_163.png)
 
@@ -222,7 +210,6 @@ ticket=xxx&name=小迪&account=471656814@qq.com&money=10000
 
 ![](img/6d024bf2a8c382c9f13cbb6d870022d3_165.png)
 
-![](img/6d024bf2a8c382c9f13cbb6d870022d3_167.png)
 
 服务器端代码会验证 `Referer` 值是否来源于自身域名。例如，在PHP中，可以通过 `$_SERVER[‘HTTP_REFERER’]` 获取该值并进行判断。
 
@@ -232,7 +219,6 @@ ticket=xxx&name=小迪&account=471656814@qq.com&money=10000
 
 ### 绕过思路分类
 
-![](img/6d024bf2a8c382c9f13cbb6d870022d3_173.png)
 
 ![](img/6d024bf2a8c382c9f13cbb6d870022d3_175.png)
 
@@ -252,7 +238,6 @@ ticket=xxx&name=小迪&account=471656814@qq.com&money=10000
 
 **以下是几种常见的测试与绕过方法：**
 
-![](img/6d024bf2a8c382c9f13cbb6d870022d3_189.png)
 
 ![](img/6d024bf2a8c382c9f13cbb6d870022d3_191.png)
 
@@ -262,7 +247,6 @@ ticket=xxx&name=小迪&account=471656814@qq.com&money=10000
     *   **文件上传漏洞**：将CSRF的POC文件（如HTML文件）上传到目标服务器本身，然后诱导用户访问 `https://target.com/upload/add.html`。此时请求的 `Referer` 自然是目标域名。
     *   **XSS漏洞**：在目标站点的页面中注入JavaScript代码来发起伪造请求。由于请求是从目标站点页面本身发出的，`Referer` 校验自然通过。
 
-![](img/6d024bf2a8c382c9f13cbb6d870022d3_193.png)
 
 ![](img/6d024bf2a8c382c9f13cbb6d870022d3_195.png)
 
@@ -316,7 +300,6 @@ ticket=xxx&name=小迪&account=471656814@qq.com&money=10000
 
 ![](img/6d024bf2a8c382c9f13cbb6d870022d3_239.png)
 
-![](img/6d024bf2a8c382c9f13cbb6d870022d3_241.png)
 
 ![](img/6d024bf2a8c382c9f13cbb6d870022d3_243.png)
 
@@ -326,7 +309,6 @@ ticket=xxx&name=小迪&account=471656814@qq.com&money=10000
 
 另一种更常见的防护措施是使用CSRF Token。其原理是为每个会话或每个表单生成一个不可预测的随机值（Token），服务器在处理请求时校验该Token是否有效。
 
-![](img/6d024bf2a8c382c9f13cbb6d870022d3_248.png)
 
 ![](img/6d024bf2a8c382c9f13cbb6d870022d3_250.png)
 
@@ -368,29 +350,21 @@ ticket=xxx&name=小迪&account=471656814@qq.com&money=10000
 
 ### Token防护的潜在问题
 
-![](img/6d024bf2a8c382c9f13cbb6d870022d3_277.png)
 
-![](img/6d024bf2a8c382c9f13cbb6d870022d3_279.png)
 
 Token防护的有效性高度依赖于其实现。不严谨的实现可能导致防护被绕过。
 
-![](img/6d024bf2a8c382c9f13cbb6d870022d3_281.png)
 
-![](img/6d024bf2a8c382c9f13cbb6d870022d3_283.png)
 
-![](img/6d024bf2a8c382c9f13cbb6d870022d3_285.png)
 
 **以下是针对Token的几种测试方法：**
 
-![](img/6d024bf2a8c382c9f13cbb6d870022d3_287.png)
 
-![](img/6d024bf2a8c382c9f13cbb6d870022d3_289.png)
 
 ![](img/6d024bf2a8c382c9f13cbb6d870022d3_291.png)
 
 ![](img/6d024bf2a8c382c9f13cbb6d870022d3_293.png)
 
-![](img/6d024bf2a8c382c9f13cbb6d870022d3_295.png)
 
 1.  **Token删除测试**：在生成的CSRF POC中，直接删除Token参数，观察请求是否还能成功。如果成功，说明服务器端没有校验Token。
 2.  **Token置空测试**：将Token参数的值设置为空（如 `csrftoken=`），观察请求是否成功。
@@ -444,18 +418,14 @@ Token防护的有效性高度依赖于其实现。不严谨的实现可能导致
 
 ![](img/6d024bf2a8c382c9f13cbb6d870022d3_329.png)
 
-![](img/6d024bf2a8c382c9f13cbb6d870022d3_331.png)
 
 1.  **使用标准的Anti-CSRF Token**：确保Token足够随机、与用户会话绑定、且一次一用（Critical操作）。
 2.  **校验Referer头**：作为辅助手段，严格校验请求来源是否为本站可信域名。
 3.  **关键操作使用二次验证**：如修改密码、转账等，要求用户再次输入密码或验证码。
 4.  **设置Cookie的SameSite属性**：为Cookie设置 `SameSite=Strict` 或 `Lax`，可以阻止第三方上下文发送Cookie，从根本上缓解CSRF攻击。
 
-![](img/6d024bf2a8c382c9f13cbb6d870022d3_333.png)
 
-![](img/6d024bf2a8c382c9f13cbb6d870022d3_335.png)
 
-![](img/6d024bf2a8c382c9f13cbb6d870022d3_337.png)
 
 ![](img/6d024bf2a8c382c9f13cbb6d870022d3_339.png)
 

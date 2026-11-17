@@ -4,7 +4,6 @@
 
 
 
-![](img/007dcd0de1a2344db305286c7b732a00_1.png)
 
 ![](img/007dcd0de1a2344db305286c7b732a00_1.png)
 
@@ -27,7 +26,6 @@
 
 
 
-![](img/007dcd0de1a2344db305286c7b732a00_3.png)
 
 ![](img/007dcd0de1a2344db305286c7b732a00_3.png)
 

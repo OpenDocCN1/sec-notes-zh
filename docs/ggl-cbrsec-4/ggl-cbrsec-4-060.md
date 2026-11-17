@@ -1,6 +1,5 @@
 # 060：17_01_wrap-up.en_subtitled
 
-![](img/2a62d4897d30ad1503e4036f91b6df64_0.png)
 
 ![](img/2a62d4897d30ad1503e4036f91b6df64_0.png)
 
@@ -30,6 +29,5 @@
 
 让我们继续前进。
 
-![](img/2a62d4897d30ad1503e4036f91b6df64_4.png)
 
 ![](img/2a62d4897d30ad1503e4036f91b6df64_4.png)

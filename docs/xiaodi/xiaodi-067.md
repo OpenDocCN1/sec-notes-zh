@@ -16,7 +16,6 @@
 
 ![](img/d530a3c126cf1e4ed71a17381936fe47_11.png)
 
-![](img/d530a3c126cf1e4ed71a17381936fe47_12.png)
 
 ![](img/d530a3c126cf1e4ed71a17381936fe47_14.png)
 
@@ -34,7 +33,6 @@
 
 ![](img/d530a3c126cf1e4ed71a17381936fe47_26.png)
 
-![](img/d530a3c126cf1e4ed71a17381936fe47_28.png)
 
 ![](img/d530a3c126cf1e4ed71a17381936fe47_30.png)
 
@@ -166,7 +164,6 @@ Java原生反序列化漏洞的利用依赖于环境中存在的特定类库（g
 
 ![](img/d530a3c126cf1e4ed71a17381936fe47_137.png)
 
-![](img/d530a3c126cf1e4ed71a17381936fe47_139.png)
 
 1.  **ysoserial**：经典的命令行工具，需要根据目标环境选择对应的gadget。
     ```bash
@@ -199,9 +196,7 @@ Java原生反序列化漏洞的利用依赖于环境中存在的特定类库（g
 
 ## 二、SpringBoot框架攻防实战 🚀
 
-![](img/d530a3c126cf1e4ed71a17381936fe47_161.png)
 
-![](img/d530a3c126cf1e4ed71a17381936fe47_163.png)
 
 ![](img/d530a3c126cf1e4ed71a17381936fe47_165.png)
 
@@ -231,9 +226,7 @@ SpringBoot的Actuator模块是一个监控和管理应用的工具，配置不�
 
 ![](img/d530a3c126cf1e4ed71a17381936fe47_187.png)
 
-![](img/d530a3c126cf1e4ed71a17381936fe47_189.png)
 
-![](img/d530a3c126cf1e4ed71a17381936fe47_191.png)
 
 ![](img/d530a3c126cf1e4ed71a17381936fe47_193.png)
 
@@ -247,7 +240,6 @@ SpringBoot的Actuator模块是一个监控和管理应用的工具，配置不�
 
 ![](img/d530a3c126cf1e4ed71a17381936fe47_201.png)
 
-![](img/d530a3c126cf1e4ed71a17381936fe47_203.png)
 
 ![](img/d530a3c126cf1e4ed71a17381936fe47_205.png)
 
@@ -255,11 +247,9 @@ SpringBoot的Actuator模块是一个监控和管理应用的工具，配置不�
 
 ![](img/d530a3c126cf1e4ed71a17381936fe47_209.png)
 
-![](img/d530a3c126cf1e4ed71a17381936fe47_211.png)
 
 Actuator模块暴露的端点（如`/env`, `/heapdump`）可能泄露敏感信息。
 
-![](img/d530a3c126cf1e4ed71a17381936fe47_213.png)
 
 ![](img/d530a3c126cf1e4ed71a17381936fe47_215.png)
 
@@ -267,13 +257,10 @@ Actuator模块暴露的端点（如`/env`, `/heapdump`）可能泄露敏感信�
 
 ![](img/d530a3c126cf1e4ed71a17381936fe47_219.png)
 
-![](img/d530a3c126cf1e4ed71a17381936fe47_221.png)
 
 ![](img/d530a3c126cf1e4ed71a17381936fe47_223.png)
 
-![](img/d530a3c126cf1e4ed71a17381936fe47_225.png)
 
-![](img/d530a3c126cf1e4ed71a17381936fe47_227.png)
 
 ![](img/d530a3c126cf1e4ed71a17381936fe47_229.png)
 
@@ -324,7 +311,6 @@ Actuator模块暴露的端点（如`/env`, `/heapdump`）可能泄露敏感信�
 
 ![](img/d530a3c126cf1e4ed71a17381936fe47_266.png)
 
-![](img/d530a3c126cf1e4ed71a17381936fe47_268.png)
 
 ![](img/d530a3c126cf1e4ed71a17381936fe47_270.png)
 
@@ -338,7 +324,6 @@ Actuator模块暴露的端点（如`/env`, `/heapdump`）可能泄露敏感信�
 
 ![](img/d530a3c126cf1e4ed71a17381936fe47_278.png)
 
-![](img/d530a3c126cf1e4ed71a17381936fe47_280.png)
 
 ![](img/d530a3c126cf1e4ed71a17381936fe47_282.png)
 
@@ -354,7 +339,6 @@ Actuator模块暴露的端点（如`/env`, `/heapdump`）可能泄露敏感信�
 
 ![](img/d530a3c126cf1e4ed71a17381936fe47_292.png)
 
-![](img/d530a3c126cf1e4ed71a17381936fe47_294.png)
 
 ![](img/d530a3c126cf1e4ed71a17381936fe47_296.png)
 
@@ -432,11 +416,9 @@ Actuator模块暴露的端点（如`/env`, `/heapdump`）可能泄露敏感信�
 
 ![](img/d530a3c126cf1e4ed71a17381936fe47_360.png)
 
-![](img/d530a3c126cf1e4ed71a17381936fe47_361.png)
 
 ![](img/d530a3c126cf1e4ed71a17381936fe47_363.png)
 
-![](img/d530a3c126cf1e4ed71a17381936fe47_365.png)
 
 ## 三、课程总结与回顾
 
@@ -458,9 +440,7 @@ Actuator模块暴露的端点（如`/env`, `/heapdump`）可能泄露敏感信�
 
 ![](img/d530a3c126cf1e4ed71a17381936fe47_380.png)
 
-![](img/d530a3c126cf1e4ed71a17381936fe47_381.png)
 
-![](img/d530a3c126cf1e4ed71a17381936fe47_383.png)
 
 ![](img/d530a3c126cf1e4ed71a17381936fe47_385.png)
 
@@ -500,7 +480,6 @@ Actuator模块暴露的端点（如`/env`, `/heapdump`）可能泄露敏感信�
 
 ![](img/d530a3c126cf1e4ed71a17381936fe47_415.png)
 
-![](img/d530a3c126cf1e4ed71a17381936fe47_417.png)
 
 ![](img/d530a3c126cf1e4ed71a17381936fe47_419.png)
 

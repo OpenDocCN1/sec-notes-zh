@@ -8,13 +8,10 @@ Metasploit（简称MSF）是一款开源的安全漏洞利用和测试工具。�
 
 Metasploit在Kali Linux中默认安装。其安装路径通常位于 `/usr/share/metasploit-framework/`。我们可以通过终端进入该目录查看框架文件。
 
-![](img/40fdf685c6042e18ac427544d0130cf3_1.png)
 
 ## 目录结构与模块
 
-![](img/40fdf685c6042e18ac427544d0130cf3_2.png)
 
-![](img/40fdf685c6042e18ac427544d0130cf3_4.png)
 
 ![](img/40fdf685c6042e18ac427544d0130cf3_6.png)
 
@@ -49,15 +46,12 @@ Metasploit是高度模块化的框架，由多个模块组成。了解其目录�
 
 Metasploit的体系结构基于核心库文件。用户通过接口（如 `msfconsole`）调用这些库，进而使用基于 `modules/` 的各种功能。
 
-![](img/40fdf685c6042e18ac427544d0130cf3_11.png)
 
 首先，我们需要启动Metasploit的控制台。虽然非必需，但初始化数据库可以更好地保存扫描结果和工作进度。
 
-![](img/40fdf685c6042e18ac427544d0130cf3_13.png)
 
 启动步骤如下：
 
-![](img/40fdf685c6042e18ac427544d0130cf3_15.png)
 
 ![](img/40fdf685c6042e18ac427544d0130cf3_16.png)
 
@@ -80,7 +74,6 @@ Metasploit的体系结构基于核心库文件。用户通过接口（如 `msfco
 
 ![](img/40fdf685c6042e18ac427544d0130cf3_26.png)
 
-![](img/40fdf685c6042e18ac427544d0130cf3_27.png)
 
 信息收集是渗透测试的第一步。Metasploit作为一个全能框架，自然也集成了信息收集功能。
 
@@ -90,7 +83,6 @@ Metasploit的体系结构基于核心库文件。用户通过接口（如 `msfco
 
 例如，执行 `db_nmap -h` 可以查看帮助，其参数与Nmap相同。你可以进行SYN半开扫描、TCP全连接扫描、服务和版本探测等。之前课程中讲解的Nmap所有功能，这里都支持。
 
-![](img/40fdf685c6042e18ac427544d0130cf3_29.png)
 
 ### 利用辅助模块进行扫描
 
@@ -105,7 +97,6 @@ Metasploit的体系结构基于核心库文件。用户通过接口（如 `msfco
 5.  可以设置线程数以加快扫描：`set THREADS 20`
 6.  执行扫描：`run` 或 `exploit`
 
-![](img/40fdf685c6042e18ac427544d0130cf3_31.png)
 
 再例如，进行内网C段主机发现：
 
@@ -114,15 +105,12 @@ Metasploit的体系结构基于核心库文件。用户通过接口（如 `msfco
 3.  查看并设置参数（主要是RHOSTS，可以设置为一个网段，如 `192.168.1.0/24`）：`show options`， `set RHOSTS 192.168.1.0/24`
 4.  执行扫描：`run`
 
-![](img/40fdf685c6042e18ac427544d0130cf3_33.png)
 
 通过以上流程，我们就能利用Metasploit完成初步的信息收集工作。
 
-![](img/40fdf685c6042e18ac427544d0130cf3_35.png)
 
 ## 总结
 
-![](img/40fdf685c6042e18ac427544d0130cf3_36.png)
 
 ![](img/40fdf685c6042e18ac427544d0130cf3_38.png)
 

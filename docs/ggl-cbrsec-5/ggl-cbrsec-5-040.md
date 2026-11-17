@@ -1,6 +1,5 @@
 # 040：数据库中的可利用漏洞
 
-![](img/948f931468c71300a1d925bfc22381c0_0.png)
 
 ![](img/948f931468c71300a1d925bfc22381c0_0.png)
 
@@ -46,7 +45,6 @@ SELECT * FROM users WHERE username = ‘[user_input]’ AND password = ‘[user_
 
 以下是实现输入净化的一种主要方法：
 
-![](img/948f931468c71300a1d925bfc22381c0_2.png)
 
 **使用预编译语句**
 

@@ -2,65 +2,46 @@
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_0.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_2.png)
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_4.png)
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_6.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_8.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_10.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_12.png)
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_14.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_16.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_18.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_20.png)
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_22.png)
 
 在本节课中，我们将学习文件上传漏洞在实战中可能遇到的高级安全防护架构。我们将探讨两种核心的安全方案：**存储方案**和**解析方案**，并分析它们如何影响文件上传漏洞的利用。课程目标是让大家在实战中遇到这些情况时，能够判断漏洞是否可继续利用，以及如何进行分析。
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_24.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_25.png)
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_27.png)
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_29.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_31.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_33.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_35.png)
 
 ## 目录权限控制：解析方案之一
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_37.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_39.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_41.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_43.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_45.png)
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_47.png)
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_49.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_51.png)
 
 上一节我们介绍了课程概述，本节中我们来看看第一种安全方案：**目录权限控制**。这是一种通过控制服务器目录的执行权限，使得上传的恶意文件无法被解析执行的安全措施。
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_53.png)
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_55.png)
 
@@ -68,16 +49,13 @@
 
 其实现原理是，在服务器上对用于存储上传文件的目录（例如 `upload/`）进行权限设置，**拒绝该目录下文件的执行权限**。这意味着，即使攻击者成功上传了WebShell（如 `.php` 文件），当通过URL访问该文件时，服务器也不会执行其中的PHP代码，而可能只返回文件内容（纯文本）或直接报错（如403 Forbidden）。
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_59.png)
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_61.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_63.png)
 
 **核心概念公式：**
 `文件上传成功 + 目录无执行权限 = 漏洞利用失败`
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_65.png)
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_67.png)
 
@@ -99,11 +77,8 @@
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_83.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_85.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_87.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_89.png)
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_91.png)
 
@@ -124,11 +99,8 @@
 
 这种方案本质上是从解析环节进行控制，切断了文件上传到代码执行的路径。
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_103.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_105.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_107.png)
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_109.png)
 
@@ -140,7 +112,6 @@
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_115.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_117.png)
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_119.png)
 
@@ -169,7 +140,6 @@
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_135.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_137.png)
 
 ```php
 // 上传处理代码片段
@@ -193,15 +163,10 @@ echo '<img src="data:image/jpeg;base64,' . $imageData . '">';
 *   **解析方式固定**：显示时，浏览器会严格按照 `data:image/...;base64,` 这个协议头来解析后面的数据。如果数据不是有效的图片格式，则无法正确显示。
 *   **结果**：即使成功上传了WebShell的Base64编码，当网站试图将其作为图片渲染时，只会显示一张破碎的图片图标，而其中的PHP代码**永远不会被服务器执行**。
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_147.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_149.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_151.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_153.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_155.png)
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_157.png)
 
@@ -209,27 +174,17 @@ echo '<img src="data:image/jpeg;base64,' . $imageData . '">';
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_159.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_161.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_163.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_165.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_167.png)
 
 ## 分站存储与OSS对象存储
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_169.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_171.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_173.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_175.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_177.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_179.png)
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_181.png)
 
@@ -237,17 +192,13 @@ echo '<img src="data:image/jpeg;base64,' . $imageData . '">';
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_183.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_185.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_187.png)
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_189.png)
 
 ### 分站存储
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_191.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_193.png)
 
 分站存储是指网站将用户上传的文件**存储到另一个独立的域名或子域名下**，而非主站域名下。
 *   **示例**：主站是 `www.example.com`，上传功能在 `upload.example.com`，但文件最终保存在 `static.example.com` 或 `img.another-cdn.com`。
@@ -259,23 +210,18 @@ echo '<img src="data:image/jpeg;base64,' . $imageData . '">';
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_197.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_199.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_201.png)
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_203.png)
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_205.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_207.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_209.png)
 
 ### OSS对象存储
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_211.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_213.png)
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_215.png)
 
@@ -290,15 +236,11 @@ OSS（对象存储服务，如阿里云OSS、腾讯云COS）是一种云存储�
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_219.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_221.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_223.png)
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_225.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_227.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_229.png)
 
 **核心概念总结：**
 `文件存储位置（分站/云存储） + 存储端禁止脚本执行 = 漏洞利用失败`
@@ -307,7 +249,6 @@ OSS（对象存储服务，如阿里云OSS、腾讯云COS）是一种云存储�
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_233.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_235.png)
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_237.png)
 
@@ -329,9 +270,7 @@ OSS（对象存储服务，如阿里云OSS、腾讯云COS）是一种云存储�
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_251.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_253.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_255.png)
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_257.png)
 
@@ -347,9 +286,7 @@ OSS（对象存储服务，如阿里云OSS、腾讯云COS）是一种云存储�
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_267.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_269.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_271.png)
 
 1.  **目录权限控制**：
     *   **判断**：成功上传脚本文件后，直接访问其URL，返回 **403 Forbidden** 或直接显示源代码而不执行。
@@ -359,7 +296,6 @@ OSS（对象存储服务，如阿里云OSS、腾讯云COS）是一种云存储�
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_275.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_277.png)
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_279.png)
 
@@ -375,15 +311,12 @@ OSS（对象存储服务，如阿里云OSS、腾讯云COS）是一种云存储�
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_287.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_289.png)
 
 3.  **分站存储**：
     *   **判断**：上传文件后，返回的文件访问地址与网站主域名**不同**（如不同子域名或完全不同域名）。
     *   **绕过可能性**：**基本无解**。除非你能在存储分站上找到新的漏洞并获取控制权，这通常超出了文件上传漏洞的范畴。
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_291.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_293.png)
 
 4.  **OSS对象存储**：
     *   **判断**：文件访问链接域名包含云服务商特征（如 `oss-cn-hangzhou.aliyuncs.com`），且访问链接时行为是**下载**而非执行。
@@ -407,7 +340,6 @@ OSS（对象存储服务，如阿里云OSS、腾讯云COS）是一种云存储�
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_300.png)
 
-![](img/ed608405f952f7c5f0a52b719f084cbc_302.png)
 
 ![](img/ed608405f952f7c5f0a52b719f084cbc_304.png)
 

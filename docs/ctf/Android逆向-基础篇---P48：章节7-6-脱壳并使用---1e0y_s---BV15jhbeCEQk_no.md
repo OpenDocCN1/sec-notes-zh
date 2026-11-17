@@ -16,7 +16,6 @@
 
 首先，确保目标APK已在安卓设备上运行，并且设备已通过ADB连接到电脑。
 
-![](img/437e3f0bf7a0e5c65f366be9451ccb82_5.png)
 
 然后，在电脑上启动Frida服务端。进入Frida Server所在目录，并以root权限运行它。
 
@@ -78,11 +77,9 @@ public class SSLVerifier {
 
 这段代码就是应用自定义的证书校验入口。我们的目标就是绕过这个校验方法。
 
-![](img/437e3f0bf7a0e5c65f366be9451ccb82_21.png)
 
 ## 使用Frida绕过校验
 
-![](img/437e3f0bf7a0e5c65f366be9451ccb82_23.png)
 
 分析出关键类和方法后，本节我们将使用Frida框架来动态Hook并绕过SSL证书校验。
 
@@ -104,11 +101,9 @@ Java.perform(function() {
 });
 ```
 
-![](img/437e3f0bf7a0e5c65f366be9451ccb82_25.png)
 
 接下来，我们需要一个Python脚本来将上述JS代码注入到目标应用进程中。
 
-![](img/437e3f0bf7a0e5c65f366be9451ccb82_27.png)
 
 
 ![](img/437e3f0bf7a0e5c65f366be9451ccb82_29.png)

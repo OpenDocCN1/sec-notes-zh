@@ -12,9 +12,7 @@
 
 ## 📖 概述：资产扫描与 NMAP 简介
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_9.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_11.png)
 
 ![](img/a7df427e55f695eab8b0dd8069b1cc49_13.png)
 
@@ -38,11 +36,8 @@
 
 ![](img/a7df427e55f695eab8b0dd8069b1cc49_29.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_31.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_33.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_35.png)
 
 ![](img/a7df427e55f695eab8b0dd8069b1cc49_37.png)
 
@@ -72,11 +67,9 @@
 
 ![](img/a7df427e55f695eab8b0dd8069b1cc49_59.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_61.png)
 
 上一节我们介绍了资产扫描的基本概念，本节中我们来看看 NMAP 这款工具的具体构成。
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_63.png)
 
 ![](img/a7df427e55f695eab8b0dd8069b1cc49_65.png)
 
@@ -108,9 +101,7 @@ NMAP 不仅仅是一个端口扫描器，它的强大源于三个核心部分：
 
 在 Linux 系统中，NMAP 安装后的目录包含多个关键文件：
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_89.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_91.png)
 
 ![](img/a7df427e55f695eab8b0dd8069b1cc49_93.png)
 
@@ -123,11 +114,9 @@ NMAP 不仅仅是一个端口扫描器，它的强大源于三个核心部分：
 
 ![](img/a7df427e55f695eab8b0dd8069b1cc49_95.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_97.png)
 
 ### 基本扫描流程
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_99.png)
 
 NMAP 执行一次扫描，通常遵循以下流程：
 1.  **主机发现**: 判断目标主机是否在线（例如通过 TCP SYN、ACK 包或 ICMP 请求）。
@@ -136,11 +125,9 @@ NMAP 执行一次扫描，通常遵循以下流程：
 4.  **操作系统侦测**: 通过分析 TCP/IP 协议栈的细微差异（如 TTL 值），猜测目标主机的操作系统。
 5.  **脚本扫描**: 根据前面步骤的结果，调用相应的 NSE 脚本进行更深层次的检测或利用。
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_101.png)
 
 ## ⚙️ 深入 NSE 脚本引擎
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_103.png)
 
 ![](img/a7df427e55f695eab8b0dd8069b1cc49_105.png)
 
@@ -230,15 +217,11 @@ NSE 允许用户使用 Lua 语言编写脚本，对发现的主机和端口进�
 
 ![](img/a7df427e55f695eab8b0dd8069b1cc49_169.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_171.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_173.png)
 
 以下是创建一个简单测试脚本的步骤，用于理解执行流程：
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_175.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_177.png)
 
 
 ![](img/a7df427e55f695eab8b0dd8069b1cc49_179.png)
@@ -265,7 +248,6 @@ NSE 允许用户使用 Lua 语言编写脚本，对发现的主机和端口进�
 
 ![](img/a7df427e55f695eab8b0dd8069b1cc49_199.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_201.png)
 
 ![](img/a7df427e55f695eab8b0dd8069b1cc49_203.png)
 
@@ -316,49 +298,31 @@ nmap --script test.nse -p 80 127.0.0.1
 
 ![](img/a7df427e55f695eab8b0dd8069b1cc49_223.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_225.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_227.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_229.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_231.png)
 
 ## 🚀 实战演示：10 秒内 Get Shell
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_233.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_235.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_237.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_239.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_241.png)
 
 ![](img/a7df427e55f695eab8b0dd8069b1cc49_243.png)
 
 ![](img/a7df427e55f695eab8b0dd8069b1cc49_245.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_247.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_249.png)
 
 理论需要实践来验证。本节我们将通过一个真实漏洞案例，演示如何利用 NSE 脚本实现快速检测和利用。
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_251.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_253.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_255.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_257.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_259.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_261.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_263.png)
 
 ![](img/a7df427e55f695eab8b0dd8069b1cc49_265.png)
 
@@ -372,28 +336,21 @@ nmap --script test.nse -p 80 127.0.0.1
 
 **然而，我们可以更进一步**，编写一个自定义的利用脚本，在检测到漏洞的同时，直接上传一个 WebShell，实现“10秒内Get Shell”的目标（实际时间取决于网络和参数）。
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_273.png)
 
 ![](img/a7df427e55f695eab8b0dd8069b1cc49_275.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_277.png)
 
 以下是该利用脚本的核心逻辑简述：
 1.  **漏洞检测**: 向目标发送一个特殊的 HTTP 请求，该请求在 `Content-Type` 头部包含一个带随机字符串的测试载荷。如果响应头中包含相同的字符串，则证明漏洞存在。
 2.  **漏洞利用**: 如果漏洞存在，则构造另一个 HTTP 请求包，其中包含能执行系统命令并写入 WebShell 文件的恶意载荷。
 3.  **执行命令**: 脚本会发送上传 WebShell 的请求，如果成功，攻击者就能通过访问特定的 URL 来执行命令。
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_279.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_281.png)
 
 ![](img/a7df427e55f695eab8b0dd8069b1cc49_283.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_285.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_287.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_289.png)
 
 **演示命令**：
 ```bash
@@ -402,33 +359,23 @@ nmap -p 80 --script struts2-getshell --script-args webshell=colab.jsp 192.168.1.
 ```
 通过这种方式，NMAP 不再是单纯的扫描器，而成为了自动化攻击链中的一环。
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_291.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_293.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_295.png)
 
 ![](img/a7df427e55f695eab8b0dd8069b1cc49_297.png)
 
 ## 💡 高级应用与技巧
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_299.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_301.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_303.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_305.png)
 
 ![](img/a7df427e55f695eab8b0dd8069b1cc49_307.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_309.png)
 
 掌握了脚本编写基础后，我们可以探索 NMAP 更高级的用法，将其集成到自动化工作流中。
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_311.png)
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_313.png)
 
 ![](img/a7df427e55f695eab8b0dd8069b1cc49_315.png)
 
@@ -454,7 +401,6 @@ nmap -p 80 --script struts2-getshell --script-args webshell=colab.jsp 192.168.1.
 
 ## 📚 总结与资源
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_323.png)
 
 本节课中我们一起学习了 NMAP 工具的深度使用方法：
 1.  **资产扫描**的概念和流程，以及 NMAP 在其中扮演的角色。
@@ -463,7 +409,6 @@ nmap -p 80 --script struts2-getshell --script-args webshell=colab.jsp 192.168.1.
 4.  **实战应用**，通过修改 Struts2 漏洞脚本，演示了如何将 NMAP 用于自动化漏洞利用。
 5.  **高级集成**，探讨了将 NMAP 与数据库、自动化平台结合的可能性。
 
-![](img/a7df427e55f695eab8b0dd8069b1cc49_325.png)
 
 **学习资源**：
 *   **官方文档**：[NMAP Official Documentation](https://nmap.org/docs.html) 和 [NSE Documentation](https://nmap.org/nsedoc/)，这是最权威的参考资料，尽管主要是英文。

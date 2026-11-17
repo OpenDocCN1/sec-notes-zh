@@ -6,7 +6,6 @@
 
 ## 登录与查看数据库
 
-![](img/608976779047b6f75236c89b84969d62_3.png)
 
 上一节我们介绍了数据库的基本概念，本节中我们来看看如何操作MySQL。首先需要登录到MySQL服务器。
 
@@ -84,7 +83,6 @@ INSERT INTO student VALUES (‘HK’, 100, ‘M’, ‘123456’);
 *   **删除表**：`DROP TABLE table_name;` （此操作会直接删除表结构和所有数据）
 *   **删除表中特定行**：`DELETE FROM table_name WHERE id = 1;` （此操作仅删除`id`为1的那一行数据）
 
-![](img/608976779047b6f75236c89b84969d62_5.png)
 
 ### 修改数据（Update）
 
@@ -102,11 +100,9 @@ INSERT INTO student VALUES (‘HK’, 100, ‘M’, ‘123456’);
 
 ### 查询数据（Select）
 
-![](img/608976779047b6f75236c89b84969d62_7.png)
 
 查询是数据库最常用的操作，主要通过`SELECT`语句实现。
 
-![](img/608976779047b6f75236c89b84969d62_9.png)
 
 以下是查询操作的常用命令。
 *   **查看表结构**：`DESC table_name;`
@@ -125,7 +121,6 @@ INSERT INTO student VALUES (‘HK’, 100, ‘M’, ‘123456’);
 
 ### 数据排序（ORDER BY）
 
-![](img/608976779047b6f75236c89b84969d62_11.png)
 
 使用`ORDER BY`子句可以对查询结果进行排序。排序可以依据列名或列的序号。
 ```sql

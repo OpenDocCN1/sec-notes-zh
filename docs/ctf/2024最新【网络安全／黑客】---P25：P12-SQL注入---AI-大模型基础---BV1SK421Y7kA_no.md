@@ -1,6 +1,5 @@
 网络安全入门到精通：P12：SQL注入实战
 
-![](img/e80cb71abc2f3d908c063906187eadcb_0.png)
 
 在本节课中，我们将学习SQL注入的实战应用。我们将利用之前课程中学到的知识，对一个目标进行手动SQL注入测试，从判断注入点到最终获取数据，完整地走一遍流程。通过本次实战，旨在巩固所学技能，并掌握一些实用的技巧。
 
@@ -8,7 +7,6 @@
 
 ### 概述
 
-![](img/e80cb71abc2f3d908c063906187eadcb_2.png)
 
 上一节我们介绍了CMS识别与漏洞寻找，并成功进入了后台。本节中，我们来看看如何在没有现成漏洞利用代码（Payload）的情况下，仅凭“存在SQL注入点”的提示，手动完成一次完整的SQL注入攻击。这不仅能加深对SQL注入原理的理解，也能锻炼我们独立分析和解决问题的能力。
 
@@ -42,21 +40,17 @@
 
 执行后，页面在某个位置（例如数字2或7的位置）回显了我们注入的数据。假设数字7的位置可以回显，我们将其替换为数据库函数来获取信息。
 
-![](img/e80cb71abc2f3d908c063906187eadcb_4.png)
 
 例如，获取当前数据库名：
 `id=1 and 1=2 union select 1,2,3,4,5,6,database()`
 页面回显了数据库名称：**bluecms**。
 
-![](img/e80cb71abc2f3d908c063906187eadcb_6.png)
 
-![](img/e80cb71abc2f3d908c063906187eadcb_8.png)
 
 同样，我们可以获取当前数据库用户：
 `id=1 and 1=2 union select 1,2,3,4,5,6,user()`
 回显用户为：**root@localhost**。
 
-![](img/e80cb71abc2f3d908c063906187eadcb_10.png)
 
 ### 获取数据表名
 
@@ -72,14 +66,12 @@
 
 假设我们对 `blue_admin` 表感兴趣，想查看它包含哪些字段（列）。我们需要查询 `information_schema.columns` 表。
 
-![](img/e80cb71abc2f3d908c063906187eadcb_12.png)
 
 构造Payload：
 `id=1 and 1=2 union select 1,2,3,4,5,6,column_name from information_schema.columns where table_schema=database() and table_name=‘blue_admin’`
 同样，使用 `group_concat()` 可以一次性查看所有字段名：
 `id=1 and 1=2 union select 1,2,3,4,5,6,group_concat(column_name) from information_schema.columns where table_schema=database() and table_name=‘blue_admin’`
 
-![](img/e80cb71abc2f3d908c063906187eadcb_14.png)
 
 **技巧：十六进制编码绕过**
 有时，直接使用表名 `‘blue_admin’` 可能会因为引号过滤等问题导致查询失败。此时，可以将表名转换为十六进制格式进行绕过。
@@ -89,7 +81,6 @@
     `... and table_name=0x626C75655F61646D696E`
 这样就能有效避免因引号引起的语法错误。
 
-![](img/e80cb71abc2f3d908c063906187eadcb_15.png)
 
 执行查询后，我们得到了 `blue_admin` 表的字段，例如：`id, admin_name, admin_pwd` 等。
 

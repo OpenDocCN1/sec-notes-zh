@@ -1,8 +1,6 @@
 # 课程1：《网络安全工具与网络攻击简介》：105：威胁防护定义
 
-![](img/bc5b887e3a4b6fcef7809908dadc4ed3_0.png)
 
-![](img/bc5b887e3a4b6fcef7809908dadc4ed3_2.png)
 
 ![](img/bc5b887e3a4b6fcef7809908dadc4ed3_0.png)
 
@@ -10,15 +8,12 @@
 
 
 
-![](img/bc5b887e3a4b6fcef7809908dadc4ed3_4.png)
 
-![](img/bc5b887e3a4b6fcef7809908dadc4ed3_2.png)
 
 上一节我们讨论了恶意软件及其行为。现在，我们来探讨一下如何防范它们。
 
 
 
-![](img/bc5b887e3a4b6fcef7809908dadc4ed3_4.png)
 
 我们如何保护自己？我们拥有多种防护手段。首先是技术控制措施。
 
@@ -36,7 +31,6 @@
 
 
 
-![](img/bc5b887e3a4b6fcef7809908dadc4ed3_6.png)
 
 ![](img/bc5b887e3a4b6fcef7809908dadc4ed3_6.png)
 

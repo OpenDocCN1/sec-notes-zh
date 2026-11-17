@@ -1,12 +1,9 @@
 # 课程3：《网络安全合规框架与系统管理》：30：Windows管理中心概述 🖥️
 
-![](img/28063ae0066a3f8e43ac8819f1a0cb25_0.png)
 
-![](img/28063ae0066a3f8e43ac8819f1a0cb25_2.png)
 
 在本节课程中，我们将学习Windows管理中心的基础知识，并了解如何使用Active Directory组来管理账户和服务器。我们将首先介绍Active Directory中的两种组类型，然后详细探讨Windows管理中心的功能和用途。
 
-![](img/28063ae0066a3f8e43ac8819f1a0cb25_3.png)
 
 ---
 

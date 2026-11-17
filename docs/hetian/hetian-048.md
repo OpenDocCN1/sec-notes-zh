@@ -50,11 +50,9 @@
 
 上一节我们介绍了暴力破解的理论知识，本节中我们来看看如何将其应用于实践，破解一个Tomcat后台。
 
-![](img/49e6d1bd20d878a2a05356eebda0e44e_9.png)
 
 首先，我们访问一个搭建好的Tomcat环境。其默认管理后台路径通常为 `/manager/html`。访问该路径会弹出一个需要用户名和密码的HTTP基本认证对话框。
 
-![](img/49e6d1bd20d878a2a05356eebda0e44e_11.png)
 
 我们没有正确的账号密码，因此需要进行爆破。在爆破之前，需要分析其认证数据的构成。我们尝试输入错误的用户名（test）和密码（test）并抓包。
 
@@ -124,11 +122,9 @@ jar -cvf webshell.war webshell.jsp
 
 工具会快速尝试并列出成功的用户名、密码及服务版本信息。
 
-![](img/49e6d1bd20d878a2a05356eebda0e44e_21.png)
 
 ## 课程总结 📚
 
-![](img/49e6d1bd20d878a2a05356eebda0e44e_23.png)
 
 ![](img/49e6d1bd20d878a2a05356eebda0e44e_25.png)
 
@@ -138,7 +134,6 @@ jar -cvf webshell.war webshell.jsp
 *   在获取后台权限后，我们学习了如何将JSP Webshell打包成WAR文件并部署，从而获得服务器的命令执行能力。
 *   最后，我们简要介绍了另一款高效的弱口令检查工具SNETCracker。
 
-![](img/49e6d1bd20d878a2a05356eebda0e44e_27.png)
 
 ![](img/49e6d1bd20d878a2a05356eebda0e44e_29.png)
 

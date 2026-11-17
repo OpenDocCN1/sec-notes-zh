@@ -7,7 +7,6 @@
 ## 概述
 在本节课中，我们将学习Kr00k漏洞，这是一个严重的安全漏洞，影响了数十亿Wi-Fi设备的加密。
 
-![](img/54f5d38f4afea171fb4f9d669ab013d8_5.png)
 
 ## 1. 受影响的用户
 **Do we have any iPhone or MacBook users listening? What about Samsung Galaxy， Amazon Echo or Raspberry Pi users?**
@@ -49,7 +48,6 @@ ESET的研究团队发现了这个漏洞，并进行了深入研究。
 
 ![](img/54f5d38f4afea171fb4f9d669ab013d8_17.png)
 
-![](img/54f5d38f4afea171fb4f9d669ab013d8_19.png)
 
 ![](img/54f5d38f4afea171fb4f9d669ab013d8_21.png)
 
@@ -70,7 +68,6 @@ ESET的研究团队发现了这个漏洞，并进行了深入研究。
 ### 6.2 攻击场景
 **Let's do the math. Since this issue concerns many Wi-Fi chips, somewhere where there are many of these mobile devices in one place like a workspace for example, there should be a lot of them where, they are vulnerable.**
 
-![](img/54f5d38f4afea171fb4f9d669ab013d8_25.png)
 
 ## 7. 漏洞利用
 **So let's do the math. Since this issue concerns many Wi-Fi chips, somewhere where there are many of these mobile devices in one place like a workspace for example, there should be a lot of them where, they are vulnerable.**

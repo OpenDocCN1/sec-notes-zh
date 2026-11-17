@@ -2,19 +2,15 @@
 
 ![](img/65c3886705f45c0a330e6444d6df10ca_0.png)
 
-![](img/65c3886705f45c0a330e6444d6df10ca_2.png)
 
 在本节课中，我们将要学习CTF中Web安全方向的基础知识，包括HTTP/HTTPS协议、URL结构、以及几种常见的Web漏洞类型（如命令执行、SQL注入、XSS等）的基本概念和简单示例。课程旨在为初学者提供一个清晰、直观的入门指引。
 
-![](img/65c3886705f45c0a330e6444d6df10ca_3.png)
 
 ## 概述：什么是CTF中的Web安全？
 
 Web安全是CTF竞赛中的一个重要门类。其题型通常表现为给出一个Web网站，要求参赛者利用题目中的信息找到隐藏的`flag`字符串。整个过程类似于渗透测试的某个环节。
 
-![](img/65c3886705f45c0a330e6444d6df10ca_5.png)
 
-![](img/65c3886705f45c0a330e6444d6df10ca_6.png)
 
 Web安全涉及的前置知识广泛，包括PHP、Python、JavaScript、SQL数据库查询语言、Apache/Nginx等服务器配置等。本次课程将聚焦于最基础的部分。
 
@@ -22,9 +18,7 @@ Web安全涉及的前置知识广泛，包括PHP、Python、JavaScript、SQL数�
 
 ## HTTP/HTTPS协议基础 🌐
 
-![](img/65c3886705f45c0a330e6444d6df10ca_8.png)
 
-![](img/65c3886705f45c0a330e6444d6df10ca_10.png)
 
 上一节我们介绍了CTF-Web的整体概念，本节中我们来看看Web通信的基石——HTTP/HTTPS协议。
 
@@ -85,9 +79,7 @@ User-Agent: Mozilla/5.0
 
 ![](img/65c3886705f45c0a330e6444d6df10ca_16.png)
 
-![](img/65c3886705f45c0a330e6444d6df10ca_18.png)
 
-![](img/65c3886705f45c0a330e6444d6df10ca_20.png)
 
 了解了Web通信的基础后，我们来看看CTF中常见的几种Web漏洞类型。
 
@@ -108,9 +100,7 @@ SELECT * FROM users WHERE name='admin' --' AND password='xxx'
 ```
 `--`在SQL中表示注释，这使得密码验证条件失效，只要用户名`admin`存在即可登录成功。
 
-![](img/65c3886705f45c0a330e6444d6df10ca_22.png)
 
-![](img/65c3886705f45c0a330e6444d6df10ca_24.png)
 
 ### 2. 跨站脚本攻击（XSS）
 
@@ -141,11 +131,9 @@ system("ping -c 4 " . $ip);
 
 ### 4. 文件上传漏洞
 
-![](img/65c3886705f45c0a330e6444d6df10ca_26.png)
 
 **文件上传漏洞** 指网站对用户上传的文件类型、内容检查不严，导致攻击者可以上传恶意文件（如Webshell），从而获取服务器控制权。
 
-![](img/65c3886705f45c0a330e6444d6df10ca_28.png)
 
 **危害**：攻击者上传一个一句话木马文件，即可通过工具连接，在目标服务器上执行任意命令。
 
@@ -160,25 +148,19 @@ system("ping -c 4 " . $ip);
 
 理论学习后，我们通过DVWA（Damn Vulnerable Web Application）靶场进行简单实践。DVWA是一个专为安全人员练习用的、包含多种漏洞的Web应用。
 
-![](img/65c3886705f45c0a330e6444d6df10ca_30.png)
 
-![](img/65c3886705f45c0a330e6444d6df10ca_32.png)
 
 以下是几个简单的漏洞利用演示：
 
-![](img/65c3886705f45c0a330e6444d6df10ca_34.png)
 
 ### 1. 暴力破解
 在DVWA的Brute Force模块，安全级别设为`Low`。使用Burp Suite工具拦截登录请求，并将其发送到Intruder模块，对用户名和密码字段进行字典爆破，通过响应长度差异判断登录成功与否。
 
-![](img/65c3886705f45c0a330e6444d6df10ca_36.png)
 
-![](img/65c3886705f45c0a330e6444d6df10ca_38.png)
 
 ### 2. 命令注入
 在Command Injection模块，输入`127.0.0.1 && ls`。`&&`表示前一条命令执行成功则执行后一条。这样既能执行`ping`，又能列出当前目录文件，验证命令执行漏洞。
 
-![](img/65c3886705f45c0a330e6444d6df10ca_40.png)
 
 ### 3. 文件上传漏洞
 1.  在桌面创建一个一句话木马文件`shell.php`：
@@ -195,25 +177,18 @@ system("ping -c 4 " . $ip);
 ```
 页面会直接弹出警告框，证明存在XSS漏洞。
 
-![](img/65c3886705f45c0a330e6444d6df10ca_42.png)
 
-![](img/65c3886705f45c0a330e6444d6df10ca_44.png)
 
-![](img/65c3886705f45c0a330e6444d6df10ca_46.png)
 
 ---
 
-![](img/65c3886705f45c0a330e6444d6df10ca_48.png)
 
-![](img/65c3886705f45c0a330e6444d6df10ca_50.png)
 
 ## 总结与作业 📚
 
-![](img/65c3886705f45c0a330e6444d6df10ca_52.png)
 
 本节课中我们一起学习了Web安全的基础知识。我们首先了解了HTTP/HTTPS协议和URL的构成，这是理解Web通信的基础。接着，我们探讨了CTF中几种常见的Web漏洞，包括SQL注入、XSS、命令执行和文件上传漏洞的原理与简单示例。最后，我们通过DVWA靶场进行了初步的实战体验。
 
-![](img/65c3886705f45c0a330e6444d6df10ca_54.png)
 
 **课后作业**：
 1.  **命令执行进阶**：完成NSC平台上的`web01-ping2`题目，尝试绕过简单的过滤。

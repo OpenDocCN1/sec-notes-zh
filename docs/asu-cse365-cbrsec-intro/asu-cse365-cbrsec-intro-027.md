@@ -16,7 +16,6 @@
 
 ![](img/75804cb5970b179db4293f435ee91b0d_7.png)
 
-![](img/75804cb5970b179db4293f435ee91b0d_9.png)
 
 ![](img/75804cb5970b179db4293f435ee91b0d_11.png)
 
@@ -108,9 +107,7 @@ int3   ; 调试断点
 ```
 重新汇编、提取Shellcode并注入。当在GDB中运行目标程序并触发Shellcode时，执行到`int3`就会中断，此时我们可以使用GDB命令（如`info registers`， `x/10i $rip`）进行调试。
 
-![](img/75804cb5970b179db4293f435ee91b0d_21.png)
 
-![](img/75804cb5970b179db4293f435ee91b0d_23.png)
 
 ![](img/75804cb5970b179db4293f435ee91b0d_24.png)
 
@@ -125,11 +122,8 @@ int3   ; 调试断点
 
 ## 应对字符串长度检查
 
-![](img/75804cb5970b179db4293f435ee91b0d_26.png)
 
-![](img/75804cb5970b179db4293f435ee91b0d_28.png)
 
-![](img/75804cb5970b179db4293f435ee91b0d_30.png)
 
 ![](img/75804cb5970b179db4293f435ee91b0d_32.png)
 

@@ -1,6 +1,5 @@
 # 044：3_02_python-and-cybersecurity
 
-![](img/f91d5ac8e39e16986cdde1d8ff27eb08_0.png)
 
 ![](img/f91d5ac8e39e16986cdde1d8ff27eb08_0.png)
 
@@ -90,7 +89,6 @@ Python还拥有一个庞大的内置代码库，我们可以导入并使用它�
 
 ---
 
-![](img/f91d5ac8e39e16986cdde1d8ff27eb08_2.png)
 
 ![](img/f91d5ac8e39e16986cdde1d8ff27eb08_2.png)
 

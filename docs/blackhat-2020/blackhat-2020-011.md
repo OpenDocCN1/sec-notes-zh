@@ -1,6 +1,5 @@
 #  011：面向所有人的定制中国Linux Rootkits - 坤坤武特 - BV1g5411K7fe
 
-![](img/8075fab278c90dc3a1f246bb846c88a6_1.png)
 
 感谢大家的参与。
 

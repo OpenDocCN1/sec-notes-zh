@@ -1,10 +1,7 @@
 #  025：文件管理模块详解
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_1.png)
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_3.png)
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_5.png)
 
 ![](img/904fd02281e1e71091f9fb6d5cca52ae_7.png)
 
@@ -16,13 +13,10 @@
 
 ![](img/904fd02281e1e71091f9fb6d5cca52ae_15.png)
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_17.png)
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_19.png)
 
 在本节课中，我们将深入学习PHP文件管理模块的开发，包括文件包含、写入、删除、下载、上传、目录遍历等核心功能。我们将从开发者的角度编写这些功能，并分析在实现过程中可能引入的安全问题，帮助初学者理解漏洞产生的根源。
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_21.png)
 
 ![](img/904fd02281e1e71091f9fb6d5cca52ae_23.png)
 
@@ -30,7 +24,6 @@
 
 ![](img/904fd02281e1e71091f9fb6d5cca52ae_27.png)
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_29.png)
 
 ![](img/904fd02281e1e71091f9fb6d5cca52ae_31.png)
 
@@ -48,7 +41,6 @@
 
 ![](img/904fd02281e1e71091f9fb6d5cca52ae_43.png)
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_45.png)
 
 ![](img/904fd02281e1e71091f9fb6d5cca52ae_47.png)
 
@@ -66,9 +58,7 @@
 
 ![](img/904fd02281e1e71091f9fb6d5cca52ae_57.png)
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_59.png)
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_61.png)
 
 ![](img/904fd02281e1e71091f9fb6d5cca52ae_63.png)
 
@@ -112,7 +102,6 @@ include $_GET['page'];
 
 ![](img/904fd02281e1e71091f9fb6d5cca52ae_85.png)
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_87.png)
 
 ![](img/904fd02281e1e71091f9fb6d5cca52ae_89.png)
 
@@ -122,9 +111,7 @@ include $_GET['page'];
 
 文件包含的意义在于提高代码复用性和开发效率。例如，可以将文件上传的HTML表单页面（`upload.html`）和PHP处理逻辑（`upload.php`）分开，然后在主文件中包含它们。
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_95.png)
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_97.png)
 
 ![](img/904fd02281e1e71091f9fb6d5cca52ae_99.png)
 
@@ -146,7 +133,6 @@ include $_GET['page'];
 
 ![](img/904fd02281e1e71091f9fb6d5cca52ae_114.png)
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_116.png)
 
 ![](img/904fd02281e1e71091f9fb6d5cca52ae_118.png)
 
@@ -278,11 +264,8 @@ include $_GET['page'];
 
 ![](img/904fd02281e1e71091f9fb6d5cca52ae_209.png)
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_211.png)
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_213.png)
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_215.png)
 
 1.  **获取目标路径：** 通过 `$_GET['path']` 接收用户想要浏览的路径，如果没有传递则默认为当前目录（`.`）。
 2.  **打开并读取目录：** 使用 `opendir()` 和 `readdir()` 函数。
@@ -290,7 +273,6 @@ include $_GET['page'];
 4.  **区分文件与文件夹：** 使用 `filetype()` 函数判断每个条目是文件（`file`）还是目录（`dir`）。
 5.  **组织数据：** 将文件信息（名称、类型、大小、修改时间、完整路径）存储到数组中，便于后续显示。
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_217.png)
 
 ![](img/904fd02281e1e71091f9fb6d5cca52ae_219.png)
 
@@ -323,9 +305,7 @@ if ($handle = opendir($path)) {
 }
 ```
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_227.png)
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_229.png)
 
 ### 第三步：动态生成文件列表
 
@@ -341,9 +321,7 @@ if ($handle = opendir($path)) {
 
 使用 `foreach` 循环遍历我们整理好的 `$fileList['dir']` 和 `$fileList['file']` 数组，将数据填充到HTML表格的行中。
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_241.png)
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_243.png)
 
 ![](img/904fd02281e1e71091f9fb6d5cca52ae_245.png)
 
@@ -374,7 +352,6 @@ if ($handle = opendir($path)) {
 
 ![](img/904fd02281e1e71091f9fb6d5cca52ae_257.png)
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_259.png)
 
 ![](img/904fd02281e1e71091f9fb6d5cca52ae_261.png)
 
@@ -408,7 +385,6 @@ if ($handle = opendir($path)) {
 
 ![](img/904fd02281e1e71091f9fb6d5cca52ae_287.png)
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_289.png)
 
 ![](img/904fd02281e1e71091f9fb6d5cca52ae_291.png)
 
@@ -420,7 +396,6 @@ if ($handle = opendir($path)) {
 
 ![](img/904fd02281e1e71091f9fb6d5cca52ae_297.png)
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_299.png)
 
 ![](img/904fd02281e1e71091f9fb6d5cca52ae_301.png)
 
@@ -490,9 +465,7 @@ if ($handle = opendir($path)) {
 
 ![](img/904fd02281e1e71091f9fb6d5cca52ae_337.png)
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_339.png)
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_341.png)
 
 ![](img/904fd02281e1e71091f9fb6d5cca52ae_343.png)
 
@@ -536,9 +509,7 @@ if ($handle = opendir($path)) {
 
 ![](img/904fd02281e1e71091f9fb6d5cca52ae_377.png)
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_379.png)
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_381.png)
 
 ![](img/904fd02281e1e71091f9fb6d5cca52ae_383.png)
 
@@ -593,11 +564,8 @@ if ($handle = opendir($path)) {
 
 ![](img/904fd02281e1e71091f9fb6d5cca52ae_419.png)
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_421.png)
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_423.png)
 
-![](img/904fd02281e1e71091f9fb6d5cca52ae_425.png)
 
 ![](img/904fd02281e1e71091f9fb6d5cca52ae_427.png)
 

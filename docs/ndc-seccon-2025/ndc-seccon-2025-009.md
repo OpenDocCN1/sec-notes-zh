@@ -1,8 +1,6 @@
 # 009：用不到100行Shell脚本实现Linux容器
 
-![](img/cac19848a3de2b6d3058dde532b385c6_0.png)
 
-![](img/cac19848a3de2b6d3058dde532b385c6_0.png)
 
 在本教程中，我们将学习如何使用不到100行的Shell脚本，从零开始构建一个功能类似于Docker的简易Linux容器。我们将深入理解容器背后的核心技术，包括命名空间、联合文件系统和控制组，并通过实践脚本一步步实现容器的创建与启动。
 
@@ -88,7 +86,6 @@ User命名空间与Linux能力机制共同作用，实现了容器内的特权�
 
 ![](img/cac19848a3de2b6d3058dde532b385c6_15.png)
 
-![](img/cac19848a3de2b6d3058dde532b385c6_17.png)
 
 为了防止容器消耗过多资源而影响宿主机或其他容器，我们需要使用控制组来限制资源。
 
@@ -98,7 +95,6 @@ Cgroups是一个Linux内核特性，用于对进程组进行资源限制、优�
 
 创建一个cgroup非常简单，只需在cgroup文件系统（通常挂载在`/sys/fs/cgroup`）下创建一个目录即可。资源限制通过向该目录下的特定文件（如`cpu.max`， `memory.max`）写入配置值来实现。要将一个进程加入某个cgroup，只需将其PID写入该cgroup目录下的`cgroup.procs`文件。
 
-![](img/cac19848a3de2b6d3058dde532b385c6_19.png)
 
 ![](img/cac19848a3de2b6d3058dde532b385c6_21.png)
 
@@ -106,9 +102,7 @@ Cgroups是一个Linux内核特性，用于对进程组进行资源限制、优�
 
 ### 为非特权用户配置Cgroups
 
-![](img/cac19848a3de2b6d3058dde532b385c6_24.png)
 
-![](img/cac19848a3de2b6d3058dde532b385c6_26.png)
 
 ![](img/cac19848a3de2b6d3058dde532b385c6_28.png)
 
@@ -120,9 +114,7 @@ Cgroups是一个Linux内核特性，用于对进程组进行资源限制、优�
 
 这样，容器内的进程（即使以宿主机上的非特权用户运行）就可以在自己的cgroup子树内设置资源限制了。
 
-![](img/cac19848a3de2b6d3058dde532b385c6_32.png)
 
-![](img/cac19848a3de2b6d3058dde532b385c6_34.png)
 
 ## 第四节：启动容器脚本
 
@@ -161,11 +153,9 @@ Cgroups是一个Linux内核特性，用于对进程组进行资源限制、优�
 *   `/dev`：设备文件。我们可以通过`bind`挂载，从旧的根文件系统的`/dev`目录中挂载`/dev/null`， `/dev/zero`， `/dev/random`等基础设备文件到新容器的`/dev`目录下。
 *   `/tmp`：临时文件系统（可选，可使用`tmpfs`）。
 
-![](img/cac19848a3de2b6d3058dde532b385c6_44.png)
 
 最后，根据环境变量设置容器的主机名。至此，一个功能基本完整的容器环境就准备就绪了。
 
-![](img/cac19848a3de2b6d3058dde532b385c6_46.png)
 
 ![](img/cac19848a3de2b6d3058dde532b385c6_48.png)
 

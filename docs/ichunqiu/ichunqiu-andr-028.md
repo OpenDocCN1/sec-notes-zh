@@ -1,30 +1,20 @@
 #  028：加载SO文件的流程 🧩
 
-![](img/b1eef28fe2ab143112f43965d13f5b65_1.png)
 
-![](img/b1eef28fe2ab143112f43965d13f5b65_2.png)
 
-![](img/b1eef28fe2ab143112f43965d13f5b65_4.png)
 
-![](img/b1eef28fe2ab143112f43965d13f5b65_5.png)
 
 在本节课中，我们将深入分析Android系统如何将一个存储在磁盘上的ELF文件（特别是SO库文件）加载到内存中。我们将通过阅读Android源码中的`linker`程序，来理解整个加载、链接和初始化的流程。
 
-![](img/b1eef28fe2ab143112f43965d13f5b65_7.png)
 
 上一节我们介绍了ELF文件在存储中的两种视图（链接视图和执行视图）。本节中我们来看看Android系统如何具体执行加载操作。
 
-![](img/b1eef28fe2ab143112f43965d13f5b65_9.png)
 
-![](img/b1eef28fe2ab143112f43965d13f5b65_10.png)
 
-![](img/b1eef28fe2ab143112f43965d13f5b65_12.png)
 
-![](img/b1eef28fe2ab143112f43965d13f5b65_14.png)
 
 ## 加载器：Linker程序
 
-![](img/b1eef28fe2ab143112f43965d13f5b65_16.png)
 
 Android系统通过一个名为`linker`的程序来完成ELF文件的加载和链接操作。该程序的源代码位于Android源码的`bionic/linker`目录下。
 
@@ -36,11 +26,8 @@ Android系统通过一个名为`linker`的程序来完成ELF文件的加载和�
 
 我们进入`do_dlopen`函数进行分析。该函数接收两个主要参数：SO文件的路径和打开标志位。
 
-![](img/b1eef28fe2ab143112f43965d13f5b65_18.png)
 
-![](img/b1eef28fe2ab143112f43965d13f5b65_19.png)
 
-![](img/b1eef28fe2ab143112f43965d13f5b65_21.png)
 
 以下是`do_dlopen`函数的关键步骤：
 1.  **检查标志位**：首先判断传入的标志位是否合法，常见的标志如`RTLD_NOW`表示立即加载并完成重定位。
@@ -49,21 +36,17 @@ Android系统通过一个名为`linker`的程序来完成ELF文件的加载和�
     *   `find_library`: 查找或加载SO库。
     *   `call_constructors`: 调用SO库中的初始化构造函数。
 
-![](img/b1eef28fe2ab143112f43965d13f5b65_23.png)
 
-![](img/b1eef28fe2ab143112f43965d13f5b65_25.png)
 
 ## 查找与加载：find_library 函数
 
 `find_library`函数负责查找SO是否已加载，若未加载则从文件系统读取。
 
-![](img/b1eef28fe2ab143112f43965d13f5b65_27.png)
 
 以下是其执行流程：
 1.  **查找现有库**：首先根据SO名称，在已加载的SO列表中查找。如果找到，则增加其引用计数并直接返回，避免重复加载。
 2.  **加载新库**：如果未找到，则调用`load_library`函数执行真正的加载操作。
 
-![](img/b1eef28fe2ab143112f43965d13f5b65_29.png)
 
 `load_library`函数是加载过程的核心：
 *   **打开文件**：获取SO文件的文件描述符（FD）。
@@ -90,7 +73,6 @@ Android系统通过一个名为`linker`的程序来完成ELF文件的加载和�
 
 SO文件被加载和链接后，还需要执行一些初始化代码才能正常工作。这是由`call_constructors`函数完成的。
 
-![](img/b1eef28fe2ab143112f43965d13f5b65_31.png)
 
 以下是初始化函数的调用顺序：
 1.  **调用依赖库的构造函数**：首先，确保所有依赖的SO库都已调用它们自己的构造函数。
@@ -98,7 +80,6 @@ SO文件被加载和链接后，还需要执行一些初始化代码才能正常
     *   `.init`节区中的代码。
     *   `.init_array`数组中的函数指针列表。
 
-![](img/b1eef28fe2ab143112f43965d13f5b65_33.png)
 
 这些初始化函数通常用于设置全局变量、初始化运行时环境等。在一些加固的SO中，解密代码可能就放在这些初始化函数里。
 
@@ -106,15 +87,12 @@ SO文件被加载和链接后，还需要执行一些初始化代码才能正常
 
 本节课我们一起学习了Android系统中ELF（SO）文件的完整加载流程。我们通过分析`linker`源码，了解了从`dlopen`调用开始，到SO文件最终可用的全过程：
 
-![](img/b1eef28fe2ab143112f43965d13f5b65_35.png)
 
 1.  **加载**：通过`find_library`和`load_library`，将SO文件的`PT_LOAD`段映射到内存。
 2.  **链接**：在`soinfo_link_image`函数中，解析动态节区，加载依赖库，并完成复杂的符号查找与重定位工作。
 3.  **初始化**：在`call_constructors`函数中，按顺序调用依赖库和自身的构造函数，完成最后的准备工作。
 
-![](img/b1eef28fe2ab143112f43965d13f5b65_37.png)
 
-![](img/b1eef28fe2ab143112f43965d13f5b65_39.png)
 
 ![](img/b1eef28fe2ab143112f43965d13f5b65_40.png)
 

@@ -8,9 +8,7 @@
 
 ![](img/7c72617545d833af8b538db49948cdde_1.png)
 
-![](img/7c72617545d833af8b538db49948cdde_3.png)
 
-![](img/7c72617545d833af8b538db49948cdde_5.png)
 
 ![](img/7c72617545d833af8b538db49948cdde_6.png)
 

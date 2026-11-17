@@ -29,7 +29,6 @@ adb shell chmod 755 /data/local/tmp/android_server
 
 ### 步骤二：建立端口转发
 
-![](img/9783bbde314256de716769fe5c33c6e4_5.png)
 
 启动手机端的调试服务器，并将手机端口与电脑端口进行转发，以建立通信链路。
 

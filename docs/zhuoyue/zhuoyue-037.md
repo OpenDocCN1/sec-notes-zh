@@ -33,9 +33,7 @@ inurl:keyword
 ```
 这将返回URL中包含指定关键词的页面。
 
-![](img/c152d25242906007fe1e40251d49e1cd_1.png)
 
-![](img/c152d25242906007fe1e40251d49e1cd_3.png)
 
 **使用示例与技巧：**
 *   搜索可能包含账号密码的文件：`inurl:qq.txt`
@@ -69,9 +67,7 @@ keyword filetype:extension
 
 ![](img/c152d25242906007fe1e40251d49e1cd_5.png)
 
-![](img/c152d25242906007fe1e40251d49e1cd_7.png)
 
-![](img/c152d25242906007fe1e40251d49e1cd_9.png)
 
 ![](img/c152d25242906007fe1e40251d49e1cd_11.png)
 
@@ -83,13 +79,10 @@ keyword filetype:extension
 
 此语法有助于快速定位特定格式的学习资料或文件。
 
-![](img/c152d25242906007fe1e40251d49e1cd_15.png)
 
-![](img/c152d25242906007fe1e40251d49e1cd_17.png)
 
 ### 5. `cache:` - 查看网页缓存
 
-![](img/c152d25242906007fe1e40251d49e1cd_19.png)
 
 `cache:` 语法用于查看Google对某个网页的缓存版本。其基本格式为：
 ```
@@ -97,7 +90,6 @@ cache:example.com/page
 ```
 即使目标页面已被删除或无法访问，只要Google存在缓存，就可能通过此方式访问历史内容。
 
-![](img/c152d25242906007fe1e40251d49e1cd_21.png)
 
 ### 6. `intext:` - 在网页正文中搜索关键词
 

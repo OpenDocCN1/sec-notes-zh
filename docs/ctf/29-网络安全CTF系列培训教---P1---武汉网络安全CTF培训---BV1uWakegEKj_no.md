@@ -36,13 +36,10 @@ Python逆向通常指利用技术手段，对由Python编写的软件、应用�
 
 ![](img/23bfcbbe8f0291693aa290668144da9b_7.png)
 
-![](img/23bfcbbe8f0291693aa290668144da9b_9.png)
 
 ## 实战演练：解一道Python逆向题 ⚔️
 
-![](img/23bfcbbe8f0291693aa290668144da9b_10.png)
 
-![](img/23bfcbbe8f0291693aa290668144da9b_12.png)
 
 理论部分已经介绍完毕，接下来我们通过一道安恒8月赛的实战题目，一步步学习Python逆向的解题过程。
 
@@ -50,7 +47,6 @@ Python逆向通常指利用技术手段，对由Python编写的软件、应用�
 
 我们拿到一个名为`exe`的文件。通过查壳工具（如`pyinstxtractor`）分析，发现它是由`PyInstaller`打包生成的EXE程序，这提示我们它内部封装了Python代码。
 
-![](img/23bfcbbe8f0291693aa290668144da9b_15.png)
 
 ![](img/23bfcbbe8f0291693aa290668144da9b_17.png)
 
@@ -80,7 +76,6 @@ uncompyle6 -o output.py extracted_file.pyc
 ```
 这条命令会将`extracted_file.pyc`反编译，并将源代码输出到`output.py`文件中。
 
-![](img/23bfcbbe8f0291693aa290668144da9b_26.png)
 
 ![](img/23bfcbbe8f0291693aa290668144da9b_28.png)
 

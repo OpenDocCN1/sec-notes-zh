@@ -10,7 +10,6 @@
 
 ***
 
-![](img/75c90f0c148b8af42688bbcb18ef788f_7.png)
 
 ## 一、Django的MVC架构与快速入门 🏗️
 
@@ -141,9 +140,7 @@ def user_contacts(request):
 
 ## 三、逻辑漏洞：越权与Python脚本的结合利用 🕵️♂️
 
-![](img/75c90f0c148b8af42688bbcb18ef788f_9.png)
 
-![](img/75c90f0c148b8af42688bbcb18ef788f_11.png)
 
 上一节我们讨论了常见的注入和跨站漏洞，本节中我们来看看逻辑层面的安全问题。
 
@@ -191,7 +188,6 @@ def read_file(request):
 2.  **限定基础目录**：使用 `os.path.join` 将用户输入的文件名拼接到一个安全的、预定义的目录之后。
 3.  **白名单验证**：如果可能，只允许访问已知、安全的文件列表。
 
-![](img/75c90f0c148b8af42688bbcb18ef788f_15.png)
 
 ```python
 import os
@@ -211,7 +207,6 @@ def safe_read_file(request):
     ...
 ```
 
-![](img/75c90f0c148b8af42688bbcb18ef788f_17.png)
 
 **Django安全开发综合建议**：
 以下是构建安全Django应用的关键点：

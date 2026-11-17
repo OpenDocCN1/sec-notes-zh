@@ -1,6 +1,5 @@
 # 040：分析数据库表结构
 
-![](img/92fd6b030cd7fbdd358dd5f863dcd50d_0.png)
 
 ![](img/92fd6b030cd7fbdd358dd5f863dcd50d_0.png)
 

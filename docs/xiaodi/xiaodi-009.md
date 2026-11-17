@@ -4,7 +4,6 @@
 
 ![](img/fb9d3bfbb995b0497730949a719ee5ee_3.png)
 
-![](img/fb9d3bfbb995b0497730949a719ee5ee_5.png)
 
 在本节课中，我们将学习算法逆向、加密解密的基本概念、常见加密算法的分类与识别，以及如何在实际场景中分析和处理加密数据。课程内容涵盖单向散列加密、对称加密、非对称加密，并通过实例演示如何分析前端和后端的加密逻辑。
 
@@ -20,7 +19,6 @@
 
 ## 📚 概述：加密算法概念与分类
 
-![](img/fb9d3bfbb995b0497730949a719ee5ee_15.png)
 
 ![](img/fb9d3bfbb995b0497730949a719ee5ee_17.png)
 
@@ -32,7 +30,6 @@
 
 ![](img/fb9d3bfbb995b0497730949a719ee5ee_23.png)
 
-![](img/fb9d3bfbb995b0497730949a719ee5ee_25.png)
 
 加密算法主要分为三大类：**单向散列加密**、**对称加密**和**非对称加密**。下面我们逐一介绍。
 
@@ -66,7 +63,6 @@
 
 ![](img/fb9d3bfbb995b0497730949a719ee5ee_51.png)
 
-![](img/fb9d3bfbb995b0497730949a719ee5ee_53.png)
 
 ![](img/fb9d3bfbb995b0497730949a719ee5ee_55.png)
 
@@ -74,14 +70,12 @@
 
 ![](img/fb9d3bfbb995b0497730949a719ee5ee_57.png)
 
-![](img/fb9d3bfbb995b0497730949a719ee5ee_59.png)
 
 ### 特点
 - **加密速度快**，对性能影响小。
 - **存储方便**，适合存储密码等敏感信息。
 - **存在暴力破解的可能性**，可以通过“加盐”方式提高安全性。
 
-![](img/fb9d3bfbb995b0497730949a719ee5ee_61.png)
 
 ![](img/fb9d3bfbb995b0497730949a719ee5ee_63.png)
 
@@ -92,7 +86,6 @@
 ### 解密原理
 单向散列加密的解密依赖于“碰撞”原理。攻击者会预先计算常见明文的哈希值，形成彩虹表，然后通过比对密文来推测明文。如果明文足够复杂，未被收录在彩虹表中，则无法破解。
 
-![](img/fb9d3bfbb995b0497730949a719ee5ee_69.png)
 
 ![](img/fb9d3bfbb995b0497730949a719ee5ee_71.png)
 
@@ -235,7 +228,6 @@ print(ciphertext)
 
 ![](img/fb9d3bfbb995b0497730949a719ee5ee_138.png)
 
-![](img/fb9d3bfbb995b0497730949a719ee5ee_140.png)
 
 ---
 
@@ -255,7 +247,6 @@ print(ciphertext)
 - **固定长度**：16位或32位。
 - **字符范围**：仅包含数字 `0-9` 和字母 `a-f`（小写）。
 
-![](img/fb9d3bfbb995b0497730949a719ee5ee_150.png)
 
 ![](img/fb9d3bfbb995b0497730949a719ee5ee_152.png)
 
@@ -281,11 +272,9 @@ print(ciphertext)
 
 ![](img/fb9d3bfbb995b0497730949a719ee5ee_160.png)
 
-![](img/fb9d3bfbb995b0497730949a719ee5ee_162.png)
 
 ## 🛠️ 实战分析：加密算法逆向
 
-![](img/fb9d3bfbb995b0497730949a719ee5ee_164.png)
 
 ![](img/fb9d3bfbb995b0497730949a719ee5ee_166.png)
 
@@ -311,7 +300,6 @@ print(ciphertext)
 
 ![](img/fb9d3bfbb995b0497730949a719ee5ee_174.png)
 
-![](img/fb9d3bfbb995b0497730949a719ee5ee_176.png)
 
 ### 5. 解密尝试
 根据分析结果，使用相应工具或脚本尝试解密。
@@ -320,7 +308,6 @@ print(ciphertext)
 
 ![](img/fb9d3bfbb995b0497730949a719ee5ee_180.png)
 
-![](img/fb9d3bfbb995b0497730949a719ee5ee_182.png)
 
 ![](img/fb9d3bfbb995b0497730949a719ee5ee_184.png)
 
@@ -358,7 +345,6 @@ print(ciphertext)
 
 ![](img/fb9d3bfbb995b0497730949a719ee5ee_206.png)
 
-![](img/fb9d3bfbb995b0497730949a719ee5ee_208.png)
 
 ![](img/fb9d3bfbb995b0497730949a719ee5ee_210.png)
 
@@ -372,7 +358,6 @@ print(ciphertext)
 
 ![](img/fb9d3bfbb995b0497730949a719ee5ee_216.png)
 
-![](img/fb9d3bfbb995b0497730949a719ee5ee_218.png)
 
 ![](img/fb9d3bfbb995b0497730949a719ee5ee_220.png)
 

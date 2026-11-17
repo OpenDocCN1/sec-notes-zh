@@ -16,11 +16,9 @@
 
 解压完成后，您会得到一个包含多个文件的文件夹，其中包含日志文件和以`.vmx`结尾的虚拟机配置文件。
 
-![](img/a2bbc29e7eb73da73813532e51273afb_1.png)
 
 ## 使用VMware加载虚拟机
 
-![](img/a2bbc29e7eb73da73813532e51273afb_2.png)
 
 与安装Kali Linux类似，我们将使用VMware Workstation来打开这个靶场虚拟机。核心步骤是加载`.vmx`配置文件。
 

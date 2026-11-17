@@ -65,7 +65,6 @@ Pwn攻击的核心目标是利用远程服务程序的漏洞，获取该程序�
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_45.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_47.png)
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_49.png)
 
@@ -96,23 +95,16 @@ Pwn攻击的核心目标是利用远程服务程序的漏洞，获取该程序�
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_64.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_66.png)
 
 上一节我们介绍了Pwn的攻击流程，本节中我们来看看如何搭建一个用于Pwn学习的Linux环境。一个纯净、专用的环境可以避免很多依赖冲突问题。
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_68.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_70.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_72.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_73.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_75.png)
 
 我们将使用Ubuntu 24.04 LTS版本，因为它较新，能减少因工具版本过旧导致的兼容性问题。
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_77.png)
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_78.png)
 
@@ -120,23 +112,16 @@ Pwn攻击的核心目标是利用远程服务程序的漏洞，获取该程序�
 
 以下是详细的Ubuntu虚拟机安装步骤：
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_82.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_84.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_85.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_87.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_89.png)
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_91.png)
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_93.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_95.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_96.png)
 
 1.  **下载镜像**：从Ubuntu官网下载Ubuntu 24.04 Desktop版的ISO镜像文件。
 2.  **创建虚拟机**：在VMware中新建虚拟机，选择“典型”安装，并指向下载的ISO文件。
@@ -149,7 +134,6 @@ Pwn攻击的核心目标是利用远程服务程序的漏洞，获取该程序�
 4.  **安装系统**：启动虚拟机，按照向导完成Ubuntu系统的安装。安装语言建议选择英文，以便更准确地搜索错误信息。
 5.  **安装完成**：安装结束后重启系统，使用设置的用户名和密码登录。
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_97.png)
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_99.png)
 
@@ -157,7 +141,6 @@ Pwn攻击的核心目标是利用远程服务程序的漏洞，获取该程序�
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_101.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_103.png)
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_105.png)
 
@@ -167,15 +150,11 @@ Pwn攻击的核心目标是利用远程服务程序的漏洞，获取该程序�
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_111.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_113.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_115.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_117.png)
 
 ## Pwn常用工具介绍与安装 🛠️
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_119.png)
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_121.png)
 
@@ -187,7 +166,6 @@ Pwn攻击的核心目标是利用远程服务程序的漏洞，获取该程序�
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_127.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_129.png)
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_131.png)
 
@@ -195,19 +173,15 @@ Pwn攻击的核心目标是利用远程服务程序的漏洞，获取该程序�
 
 我们将按照以下列表逐一安装和介绍这些工具。
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_135.png)
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_137.png)
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_138.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_140.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_142.png)
 
 ### 基础系统工具与编译器
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_144.png)
 
 *   **`git`**：版本控制工具，用于从代码仓库克隆项目。
 *   **`gcc`**：GNU C编译器，用于将C语言源代码编译成可执行程序。其编译命令基本格式为：`gcc source.c -o executable`。
@@ -215,13 +189,10 @@ Pwn攻击的核心目标是利用远程服务程序的漏洞，获取该程序�
 *   **`qemu`**：处理器模拟器，可以运行不同架构（如ARM、MIPS）的可执行文件。
 *   **`gdb-multiarch`**：支持多架构的GNU调试器，配合Qemu可以调试非x86架构的程序。
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_146.png)
 
 ### Pwn专用工具库
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_148.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_150.png)
 
 *   **`pwntools`**：Pwn领域最核心的Python库。它封装了本地/远程连接、数据打包/解包、shellcode生成、调试等大量功能，极大简化了Exploit编写工作。安装后，在Python中 `from pwn import *` 即可使用。
 *   **`pwndbg`**：一个强大的GDB插件，提供了更直观的界面和更丰富的调试命令（如堆块分析、内存查看），是替代`peda`、`gef`的现代选择。
@@ -229,29 +200,23 @@ Pwn攻击的核心目标是利用远程服务程序的漏洞，获取该程序�
 *   **`seccomp-tools`**：用于分析程序的seccomp沙箱规则，了解程序对系统调用的限制。
 *   **`patchelf`** & `glibc-all-in-one`：用于修改ELF文件的动态链接库或解释器，在本地搭建与题目完全相同的运行环境时非常有用。
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_152.png)
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_154.png)
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_156.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_158.png)
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_160.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_162.png)
 
 ### 终端美化 (可选但推荐)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_163.png)
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_164.png)
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_165.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_167.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_168.png)
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_170.png)
 
@@ -259,11 +224,9 @@ Pwn攻击的核心目标是利用远程服务程序的漏洞，获取该程序�
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_174.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_176.png)
 
 *   **`zsh` & `oh-my-zsh`**：替代默认的bash shell，提供更强大的自动补全、主题插件和更好的用户体验。
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_178.png)
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_180.png)
 
@@ -281,17 +244,12 @@ Pwn攻击的核心目标是利用远程服务程序的漏洞，获取该程序�
 
 ## Linux可执行文件（ELF）简介 📁
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_192.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_194.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_196.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_198.png)
 
 要分析漏洞，首先需要了解被攻击的对象——Linux下的可执行文件格式ELF。ELF文件包含了程序运行所需的所有信息。
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_200.png)
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_202.png)
 
@@ -299,21 +257,16 @@ Pwn攻击的核心目标是利用远程服务程序的漏洞，获取该程序�
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_205.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_207.png)
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_209.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_211.png)
 
 我们可以使用 `file` 命令查看一个文件是否为ELF文件及其架构，使用 `checksec` 命令检查其开启的安全保护。
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_213.png)
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_215.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_217.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_218.png)
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_220.png)
 
@@ -325,7 +278,6 @@ Pwn攻击的核心目标是利用远程服务程序的漏洞，获取该程序�
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_228.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_230.png)
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_231.png)
 
@@ -339,9 +291,7 @@ Pwn攻击的核心目标是利用远程服务程序的漏洞，获取该程序�
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_237.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_239.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_241.png)
 
 一个ELF文件通常包含以下部分：
 *   **ELF头**：标识文件类型、目标架构、入口点地址等元信息。
@@ -365,7 +315,6 @@ Pwn攻击的核心目标是利用远程服务程序的漏洞，获取该程序�
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_252.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_254.png)
 
 在漏洞利用中，我们经常关注程序在内存中的布局，特别是**栈**和**堆**：
 *   **栈**：用于存储函数调用时的局部变量、返回地址等。栈溢出是经典的漏洞类型。
@@ -379,7 +328,6 @@ Pwn攻击的核心目标是利用远程服务程序的漏洞，获取该程序�
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_261.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_262.png)
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_264.png)
 
@@ -393,21 +341,14 @@ Pwn攻击的核心目标是利用远程服务程序的漏洞，获取该程序�
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_268.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_270.png)
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_272.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_273.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_274.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_276.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_278.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_280.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_282.png)
 
 ```c
 #include <stdio.h>
@@ -430,7 +371,6 @@ int main() {
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_286.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_287.png)
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_289.png)
 
@@ -455,7 +395,6 @@ int main() {
     ```
 5.  **获取Shell**：运行脚本，如果成功，我们将获得一个shell，可以执行 `cat flag` 等命令。
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_295.png)
 
 这个演示展示了最基本的**返回地址覆盖**攻击。现代系统有更多保护机制（如ASLR, Canary），需要更复杂的绕过技术，但核心思想相通：**控制程序的执行流**。
 
@@ -483,23 +422,17 @@ int main() {
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_315.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_317.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_319.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_321.png)
 
 本节课中我们一起学习了Pwn入门的基础知识。我们首先了解了Pwn攻击的完整流程，然后一步步搭建了Ubuntu虚拟机和必备的工具环境。接着，我们介绍了ELF文件格式和内存布局的基本概念。最后，通过一个简单的栈溢出漏洞演示，将分析、利用、编写脚本的过程串联起来，实现了第一次“攻破”程序。
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_323.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_325.png)
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_327.png)
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_329.png)
 
-![](img/7aa482f7a9bd4b43feb242ef67567de7_331.png)
 
 ![](img/7aa482f7a9bd4b43feb242ef67567de7_333.png)
 

@@ -2,37 +2,28 @@
 
 在本节课中，我们将学习如何手动脱去一个名为“ASPr”的强壳。整个过程涉及分析变形代码、修复导入地址表（IAT）以及重建程序区段。我们将使用OllyDbg（OD）作为主要调试工具，通过一系列步骤，最终得到一个可运行的、已脱壳的程序文件。
 
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_1.png)
 
 ---
 
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_3.png)
 
 ## 概述与初始设置
 
 首先，我们忽略除“硬件断点”和“内存访问”之外的所有异常。在程序中断两次之后，我们打开了内存镜像，并定位到了一个“假OEP”。
 
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_5.png)
 
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_7.png)
 
 接下来，我们查看调用表。将视图转换为窗口模式，可以看到IAT的起始地址是`0x2500`。这些IAT条目本身并未加密，但调用它们的代码被变形处理了。
 
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_9.png)
 
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_11.png)
 
 我们需要确认API调用是`CALL`类型还是`JUMP`类型。通过查找所有模块间的调用，可以清晰地看到，所有API都是通过`FF15`（CALL）指令来调用的。
 
 
 
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_13.png)
-
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_1.png)
 
 
 
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_15.png)
+
 
 ---
 
@@ -40,66 +31,48 @@
 
 上一节我们确认了API的调用方式。本节中，我们将定位到变形代码的关键位置并进行处理。
 
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_17.png)
 
 我们直接运行到最后一个异常处，然后按`F9`继续。此时不要返回，我们需要查找`+B`位置的代码。
 
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_19.png)
 
 找到目标位置后，我们使用一个插件来申请新的内存空间。申请的内存地址是`0x164`，我们将在此处写入修复代码。
 
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_21.png)
 
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_23.png)
 
 以下是写入`0x164`地址的关键代码及其含义：
 
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_25.png)
 
 *   **`15000`**：这个地址指向我们之前看到的`FF15`调用指令块，即API调用被代码变形处理的位置。
 *   **`42500`**：这是`.code`代码段之后下一个区段的起始地址。同时，它也是IAT的起始地址。注意，这里的`15FF`代表IAT的结束位置。
 
 
 
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_27.png)
-
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_29.png)
-
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_5.png)
 
 
 
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_31.png)
+
+
 
 ---
 
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_33.png)
 
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_35.png)
 
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_37.png)
 
 ## 隐藏OD与获取IAT
 
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_39.png)
 
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_41.png)
 
 写入修复代码后，我们隐藏OllyDbg的调试器状态，以避免被壳检测到。然后运行脚本，程序会开始运行并变得有些卡顿，这是一个正常的现象。
 
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_43.png)
 
 接下来，我们需要获取完整的IAT。由于程序运行缓慢，我们尝试从IAT的提示位置`0x2500`开始查找。如果直接搜索不成功，我们可以换一种方式：在代码起始地址`0x00401000`处搜索`FF15`指令，然后查看所有模块间的调用。此时会发现，原先被变形处理的调用都已经被修复了。
 
 
 
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_45.png)
-
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_25.png)
 
 
 
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_47.png)
+
 
 ---
 
@@ -116,15 +89,12 @@ IAT修复完成后，我们还需要处理被壳分散或变形的程序代码�
 
 
 
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_49.png)
 
 
 
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_49.png)
 
 ---
 
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_51.png)
 
 ## 修复转储文件与最终验证
 
@@ -136,19 +106,14 @@ IAT修复完成后，我们还需要处理被壳分散或变形的程序代码�
 
 
 
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_53.png)
-
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_61.png)
 
 
 
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_55.png)
 
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_57.png)
+
 
 ---
 
-![](img/eeeba419cc2d2e4dc3d0724efc811f5a_59.png)
 
 ## 总结
 

@@ -39,11 +39,9 @@ SELECT COLUMN_NAME FROM information_schema.COLUMNS WHERE TABLE_NAME='users' AND 
 ```
 这条语句会列出`dvwa`数据库中`users`表的所有字段名。为了更精确，我们同时指定了表名(`TABLE_NAME`)和数据库名(`TABLE_SCHEMA`)。
 
-![](img/f33ae9c50b52dd867eb4fd56d6ddf20b_1.png)
 
 上一节我们介绍了三个核心表各自的作用，本节中我们来看看如何在SQL注入中实际应用它们来获取信息。
 
-![](img/f33ae9c50b52dd867eb4fd56d6ddf20b_3.png)
 
 ## 实战应用：绕过限制获取信息 🛠️
 
@@ -60,9 +58,7 @@ SELECT SCHEMA_NAME FROM information_schema.SCHEMATA;
 
 **场景：如何获取某个数据库（例如dvwa）中的所有表名？**
 
-![](img/f33ae9c50b52dd867eb4fd56d6ddf20b_7.png)
 
-![](img/f33ae9c50b52dd867eb4fd56d6ddf20b_8.png)
 
 我们需要从`TABLES`表中查询，并指定数据库名作为条件：
 ```sql
@@ -71,7 +67,6 @@ SELECT TABLE_NAME FROM information_schema.TABLES WHERE TABLE_SCHEMA='dvwa';
 
 **场景：如何获取某个表（例如users表）中的所有字段名？**
 
-![](img/f33ae9c50b52dd867eb4fd56d6ddf20b_10.png)
 
 我们需要从`COLUMNS`表中查询，并同时指定表名和它所属的数据库名：
 ```sql

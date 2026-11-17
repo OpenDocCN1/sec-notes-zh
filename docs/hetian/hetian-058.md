@@ -1,24 +1,18 @@
 #  058：Linux主机信息收集教程
 
-![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_1.png)
 
 在本节课中，我们将学习如何在Linux系统上进行主机信息收集。信息收集是网络安全评估和渗透测试中的关键步骤，它能帮助我们了解目标系统的配置、运行的服务、用户信息以及潜在的安全风险。与Windows系统不同，Linux系统在全球服务器中占据主导地位，掌握其信息收集方法至关重要。
 
-![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_3.png)
 
 ## 🖥️ 系统架构与版本信息
 
-![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_5.png)
 
-![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_7.png)
 
 上一节我们概述了课程目标，本节中我们来看看如何收集Linux系统的基本架构和版本信息。
 
-![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_9.png)
 
 以下是用于收集系统信息的核心命令：
 
-![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_11.png)
 
 *   **`uname -a`**: 打印所有系统相关信息。`-a`参数表示输出全部信息。其他常用参数包括：
     *   `-s`: 输出内核名称（如 Linux）。
@@ -37,7 +31,6 @@
 
 ![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_15.png)
 
-![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_17.png)
 
 ## 🔄 进程信息收集
 
@@ -75,11 +68,9 @@
 
 ## 👥 用户与组信息
 
-![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_41.png)
 
 进程由用户运行，因此了解系统用户和组信息是信息收集的重要一环。
 
-![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_43.png)
 
 以下是用于收集用户和组信息的命令：
 
@@ -103,13 +94,10 @@
 
 ![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_49.png)
 
-![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_51.png)
 
 SSH是远程管理Linux服务器的标准协议，其配置信息至关重要。
 
-![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_53.png)
 
-![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_55.png)
 
 ![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_57.png)
 
@@ -119,7 +107,6 @@ SSH是远程管理Linux服务器的标准协议，其配置信息至关重要。
 
 ![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_61.png)
 
-![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_63.png)
 
 *   **`~/.ssh/authorized_keys`**: 存放用于公钥认证的授权公钥。配置后可以实现免密码登录。
     *   生成密钥对：`ssh-keygen -t rsa`
@@ -132,25 +119,19 @@ SSH是远程管理Linux服务器的标准协议，其配置信息至关重要。
     *   查看服务状态：`service ssh status` 或 `systemctl status ssh`
     *   启动/停止/重启服务：`service ssh start/stop/restart` 或 `systemctl start/stop/restart ssh`
 
-![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_65.png)
 
 ## 🛡️ 防火墙与网络配置
 
-![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_67.png)
 
-![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_69.png)
 
 ![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_71.png)
 
 ![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_73.png)
 
-![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_75.png)
 
 ![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_77.png)
 
-![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_79.png)
 
-![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_81.png)
 
 ![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_83.png)
 
@@ -193,23 +174,18 @@ SSH是远程管理Linux服务器的标准协议，其配置信息至关重要。
 
 ![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_97.png)
 
-![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_98.png)
 
 ## 📝 历史记录与日志文件
 
-![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_100.png)
 
 ![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_102.png)
 
 系统日志和历史命令记录了用户和系统的活动痕迹，是事后分析和取证的关键。
 
-![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_104.png)
 
-![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_106.png)
 
 以下是相关文件和命令：
 
-![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_108.png)
 
 *   **`history`**: 显示当前用户执行过的命令历史记录。这些记录通常保存在 `~/.bash_history` 文件中。
 *   **`/var/log/` 目录**: 系统日志文件集中存放的目录。
@@ -222,15 +198,11 @@ SSH是远程管理Linux服务器的标准协议，其配置信息至关重要。
 
 ## 🔍 文件与目录查找
 
-![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_112.png)
 
-![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_114.png)
 
-![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_116.png)
 
 在Linux中，快速定位特定文件或目录是常见需求。
 
-![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_118.png)
 
 ![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_120.png)
 
@@ -247,9 +219,7 @@ SSH是远程管理Linux服务器的标准协议，其配置信息至关重要。
     *   `-perm -o=w`: 查找其他用户（others）有写权限（`w`）的目录。
 *   **查找特定扩展名的文件**：`find / -name "*.txt" 2>/dev/null`
 
-![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_124.png)
 
-![](img/33b5b92c0e2d0fdf7e7a0dc374229b13_126.png)
 
 ## ⏰ 计划任务
 

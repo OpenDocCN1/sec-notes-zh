@@ -23,7 +23,6 @@
 2.  使用了存在漏洞的第三方组件或编辑器。
 3.  文件上传后的不同存储逻辑（如存放到其他服务器、对象存储等），这会影响攻击的实际效果。
 
-![](img/f56eec4b2eecd255b828fea6faa23268_5.png)
 
 本节课将聚焦于最原始、最常见的文件上传安全架构问题。
 
@@ -92,7 +91,6 @@
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_49.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_51.png)
 
 ---
 
@@ -100,48 +98,35 @@
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_55.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_57.png)
 
 ## 🔓 漏洞类型与利用演示
 
-![](img/f56eec4b2eecd255b828fea6faa23268_59.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_61.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_63.png)
 
 ### 1. 前端JS验证绕过 🎯
 
-![](img/f56eec4b2eecd255b828fea6faa23268_65.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_67.png)
 
 上一节我们介绍了文件上传的基本概念，本节中我们来看看最常见也是最简单的漏洞类型：前端验证绕过。
 
-![](img/f56eec4b2eecd255b828fea6faa23268_69.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_71.png)
 
 **漏洞原理：** 文件格式校验仅由客户端的JavaScript代码完成。攻击者可以禁用浏览器JS、修改前端代码或拦截HTTP请求，绕过校验。
 
-![](img/f56eec4b2eecd255b828fea6faa23268_73.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_75.png)
 
 **如何判断：**
 *   查看网页源代码，寻找校验文件后缀的JavaScript函数。
 *   上传非法文件时，抓包工具未捕获到任何发往服务器的请求，说明验证在请求发出前已被浏览器拦截。
 
-![](img/f56eec4b2eecd255b828fea6faa23268_77.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_79.png)
 
 **利用步骤：**
 1.  先上传一个合法的图片文件（如`.jpg`），并拦截该请求。
 2.  在抓包工具中，将请求中的文件名和后缀修改为恶意脚本（如`shell.php`）。
 3.  将修改后的请求发送到服务器。由于服务器端没有校验或校验不严，恶意文件便上传成功。
 
-![](img/f56eec4b2eecd255b828fea6faa23268_81.png)
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_83.png)
 
@@ -153,9 +138,7 @@
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_89.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_91.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_93.png)
 
 ---
 
@@ -165,9 +148,7 @@
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_97.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_99.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_101.png)
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_103.png)
 
@@ -183,11 +164,8 @@
 
 **漏洞原理：** Apache服务器的`.htaccess`文件可以强制指定特定后缀的文件使用某种解析方式。如果攻击者能上传自定义的`.htaccess`文件，就能操控服务器对文件的解析规则。
 
-![](img/f56eec4b2eecd255b828fea6faa23268_113.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_115.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_117.png)
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_119.png)
 
@@ -211,43 +189,33 @@
 
 **核心要点：** 此漏洞利用了中间件（Apache）的配置特性，与具体编程语言无关。关键在于攻击者能否控制配置文件。
 
-![](img/f56eec4b2eecd255b828fea6faa23268_132.png)
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_133.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_135.png)
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_137.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_139.png)
 
 ---
 
-![](img/f56eec4b2eecd255b828fea6faa23268_141.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_143.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_145.png)
 
 ### 3. Content-Type 校验绕过 📄
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_147.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_149.png)
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_151.png)
 
 服务器端开始介入验证了。首先我们来看基于HTTP请求头中`Content-Type`的校验如何被绕过。
 
-![](img/f56eec4b2eecd255b828fea6faa23268_153.png)
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_155.png)
 
 **漏洞原理：** 服务器通过检查HTTP请求头中的 `Content-Type` 字段（如 `image/jpeg`， `application/x-php`）来判断文件类型。此值可由客户端控制。
 
-![](img/f56eec4b2eecd255b828fea6faa23268_157.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_159.png)
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_161.png)
 
@@ -255,7 +223,6 @@
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_163.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_165.png)
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_167.png)
 
@@ -274,11 +241,9 @@
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_177.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_179.png)
 
 **核心要点：** 单独依赖`Content-Type`进行验证是极不安全的，因为它完全由客户端控制。
 
-![](img/f56eec4b2eecd255b828fea6faa23268_181.png)
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_183.png)
 
@@ -302,29 +267,21 @@
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_199.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_201.png)
 
 既然`Content-Type`不可信，开发者可能会检查文件内容的实际开头字节（魔数）。本节我们看看如何伪造文件头。
 
-![](img/f56eec4b2eecd255b828fea6faa23268_203.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_205.png)
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_207.png)
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_209.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_211.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_213.png)
 
 **漏洞原理：** 每种文件格式在文件开头都有特定的字节序列（魔数），例如`JPEG`是`FF D8 FF`，`PNG`是`89 50 4E 47`。服务器通过检查这些字节来判断文件真实类型。
 
-![](img/f56eec4b2eecd255b828fea6faa23268_215.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_217.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_219.png)
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_220.png)
 
@@ -344,11 +301,9 @@
 
 **核心要点：** 结合文件头和文件后缀进行校验会更安全，但攻击者仍可能通过精心构造文件来绕过。
 
-![](img/f56eec4b2eecd255b828fea6faa23268_230.png)
 
 ---
 
-![](img/f56eec4b2eecd255b828fea6faa23268_232.png)
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_234.png)
 
@@ -356,23 +311,18 @@
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_236.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_238.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_240.png)
 
 从本节开始，我们进入更常见的后缀校验环节。首先看黑名单机制及其一种绕过方式。
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_242.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_244.png)
 
 **漏洞原理：** 黑名单列出禁止上传的后缀（如`.php`， `.asp`）。如果校验逻辑存在缺陷，例如只进行一次字符串替换且未递归处理，则可能被绕过。
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_246.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_248.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_250.png)
 
 **示例缺陷代码：**
 ```php
@@ -380,23 +330,17 @@ $file_name = str_ireplace($blacklist, '', $file_name);
 ```
 这段代码将黑名单中的后缀替换为空。如果上传文件名为`shell.pHp`，替换后变为`shell.`，无效。但如果上传`shell.pphphp`，替换中间的`php`后，文件名变为`shell.php`，成功绕过。
 
-![](img/f56eec4b2eecd255b828fea6faa23268_252.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_254.png)
 
 **利用步骤：**
 1.  将恶意文件命名为类似`shell.pphphp`的形式。
 2.  服务器过滤掉中间的`php`字符串，最终存储的文件名变为`shell.php`。
 
-![](img/f56eec4b2eecd255b828fea6faa23268_256.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_258.png)
 
 **核心要点：** 安全过滤逻辑必须严谨，考虑递归过滤和边界情况。黑名单机制很难穷尽所有危险后缀。
 
-![](img/f56eec4b2eecd255b828fea6faa23268_260.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_262.png)
 
 ---
 
@@ -404,55 +348,41 @@ $file_name = str_ireplace($blacklist, '', $file_name);
 
 继续探讨黑名单的另一种经典绕过方式。
 
-![](img/f56eec4b2eecd255b828fea6faa23268_264.png)
 
 **漏洞原理：** 在Windows服务器上，文件系统不区分大小写。如果后端校验代码是大小写敏感的，且黑名单只包含了小写后缀（如`php`），那么上传大写后缀文件（如`PHP`， `Php`）即可绕过。
 
-![](img/f56eec4b2eecd255b828fea6faa23268_266.png)
 
 **利用步骤：**
 1.  将恶意文件后缀改为大写或大小写混合，如`shell.PHP`。
 2.  在Windows服务器上，该文件仍可被当作`shell.php`访问并执行。
 
-![](img/f56eec4b2eecd255b828fea6faa23268_268.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_270.png)
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_272.png)
 
 **核心要点：** 校验逻辑应使用统一的大小写（如`strtolower`）进行处理。同时需注意，此绕过方式依赖于服务器操作系统。
 
-![](img/f56eec4b2eecd255b828fea6faa23268_274.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_276.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_278.png)
 
 ---
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_280.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_282.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_284.png)
 
 ### 7. 截断上传（%00截断）⛔
 
-![](img/f56eec4b2eecd255b828fea6faa23268_286.png)
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_288.png)
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_290.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_292.png)
 
 这是一种较老但原理重要的漏洞，存在于特定版本的PHP中。
 
-![](img/f56eec4b2eecd255b828fea6faa23268_294.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_296.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_298.png)
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_300.png)
 
@@ -462,7 +392,6 @@ $file_name = str_ireplace($blacklist, '', $file_name);
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_304.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_306.png)
 
 **利用场景：** 当上传路径或文件名用户可控时。
 *   **GET请求截断：** `upload_path=shell.php%00.jpg` （`%00`在URL中会自动解码）
@@ -503,13 +432,11 @@ $file_name = str_ireplace($blacklist, '', $file_name);
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_332.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_334.png)
 
 ### 8. 白名单校验与扩展名Fuzzing 📋
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_336.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_338.png)
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_340.png)
 
@@ -548,7 +475,6 @@ $file_name = str_ireplace($blacklist, '', $file_name);
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_360.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_362.png)
 
 ### 9. 条件竞争漏洞 ⏱️
 
@@ -558,9 +484,7 @@ $file_name = str_ireplace($blacklist, '', $file_name);
 
 这是一种逻辑层面的漏洞，与代码执行顺序密切相关。
 
-![](img/f56eec4b2eecd255b828fea6faa23268_368.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_369.png)
 
 **漏洞原理：** 不安全的代码逻辑可能是“先保存文件，再检查其合法性，不合法则删除”。这会在“保存”和“删除”之间留下一个极短的时间窗口。
 
@@ -587,13 +511,10 @@ $file_name = str_ireplace($blacklist, '', $file_name);
     *   线程B：不断访问该恶意文件预期的URL地址。
 3.  一旦线程B在文件被删除前访问成功，就会触发代码，生成永久的`shell.php`。
 
-![](img/f56eec4b2eecd255b828fea6faa23268_379.png)
 
 **核心要点：** 必须遵循“先校验，后保存”的安全顺序。任何相反的逻辑都可能引入条件竞争漏洞。
 
-![](img/f56eec4b2eecd255b828fea6faa23268_381.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_383.png)
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_385.png)
 
@@ -605,7 +526,6 @@ $file_name = str_ireplace($blacklist, '', $file_name);
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_391.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_393.png)
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_395.png)
 
@@ -617,7 +537,6 @@ $file_name = str_ireplace($blacklist, '', $file_name);
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_399.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_401.png)
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_403.png)
 
@@ -642,9 +561,7 @@ $file_name = str_ireplace($blacklist, '', $file_name);
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_415.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_417.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_419.png)
 
 **核心要点：** 二次渲染是一种有效的安全措施，但并非绝对。攻击者可以通过分析渲染规律，找到“安全区”植入代码。
 
@@ -654,11 +571,9 @@ $file_name = str_ireplace($blacklist, '', $file_name);
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_423.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_425.png)
 
 ### 11. 移动函数缺陷绕过 🚚
 
-![](img/f56eec4b2eecd255b828fea6faa23268_427.png)
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_429.png)
 
@@ -666,9 +581,7 @@ $file_name = str_ireplace($blacklist, '', $file_name);
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_431.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_433.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_435.png)
 
 **漏洞原理：** 当使用`move_uploaded_file($tmp_name, $destination)`函数时，如果`$destination`参数用户部分可控，且服务器PHP版本存在特性或配置问题，可能造成绕过。
 
@@ -697,7 +610,6 @@ $file_name = str_ireplace($blacklist, '', $file_name);
 
 ---
 
-![](img/f56eec4b2eecd255b828fea6faa23268_449.png)
 
 ## 🎓 课程总结
 
@@ -725,7 +637,6 @@ $file_name = str_ireplace($blacklist, '', $file_name);
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_455.png)
 
-![](img/f56eec4b2eecd255b828fea6faa23268_457.png)
 
 ![](img/f56eec4b2eecd255b828fea6faa23268_459.png)
 

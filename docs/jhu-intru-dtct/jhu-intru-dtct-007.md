@@ -1,6 +1,5 @@
 # 007：DARPA战略网络防御技术 🛡️
 
-![](img/55d1bbe6c1e1de89b6f0a68a4fbafb96_1.png)
 
 ![](img/55d1bbe6c1e1de89b6f0a68a4fbafb96_2.png)
 
@@ -15,7 +14,6 @@
 
 ## 场景引入：危机爆发 🌍
 
-![](img/55d1bbe6c1e1de89b6f0a68a4fbafb96_1.png)
 
 ![](img/55d1bbe6c1e1de89b6f0a68a4fbafb96_2.png)
 
@@ -113,7 +111,6 @@
 
 ---
 
-![](img/55d1bbe6c1e1de89b6f0a68a4fbafb96_7.png)
 
 新闻报道为事件画上句号：一系列停电和计算机故障被归因于一个复杂的、基于中东的恐怖组织行动。美军与NIPC合作摧毁了该组织。市场开始反弹。
 
@@ -123,10 +120,8 @@
 
 ---
 
-![](img/55d1bbe6c1e1de89b6f0a68a4fbafb96_9.png)
 
 ![](img/55d1bbe6c1e1de89b6f0a68a4fbafb96_9.png)
 
-![](img/55d1bbe6c1e1de89b6f0a68a4fbafb96_10.png)
 
 ![](img/55d1bbe6c1e1de89b6f0a68a4fbafb96_10.png)

@@ -49,9 +49,7 @@ run autoroute -s 192.168.44.0/24
 
 ![](img/cff22842fb22677b69d868c964f1bf98_7.png)
 
-![](img/cff22842fb22677b69d868c964f1bf98_8.png)
 
-![](img/cff22842fb22677b69d868c964f1bf98_10.png)
 
 ## 第三步：执行哈希传递攻击
 
@@ -71,7 +69,6 @@ use exploit/windows/smb/psexec
 *   `smb`：利用Windows的核心文件共享服务。
 *   `psexec`：一种横向移动的哈希传递方式。
 
-![](img/cff22842fb22677b69d868c964f1bf98_16.png)
 
 使用该模块后，需要进行关键配置：
 
@@ -95,13 +92,10 @@ use exploit/windows/smb/psexec
     set LPORT 12345
     ```
 
-![](img/cff22842fb22677b69d868c964f1bf98_18.png)
 
 完成所有设置后，执行`run`命令开始攻击。如果网络稳定且跳板会话正常，MSF将尝试通过哈希验证，在目标主机上执行代码并建立一个新的Meterpreter会话，从而获得其控制权。
 
-![](img/cff22842fb22677b69d868c964f1bf98_20.png)
 
-![](img/cff22842fb22677b69d868c964f1bf98_22.png)
 
 **注意**：在内网渗透中，跳板机会话可能因网络不稳定或目标系统卡顿而断开。如果攻击失败，可以尝试重启靶场虚拟机，并从头开始重新建立跳板会话和发起攻击。
 
@@ -113,7 +107,6 @@ use exploit/windows/smb/psexec
 2.  **跳板搭建**：在Metasploit中使用`run autoroute`命令，轻松建立通向目标内网的路由。
 3.  **横向移动**：利用`exploit/windows/smb/psexec`模块，通过**哈希传递攻击**成功控制了内网中另一台Windows 7主机。
 
-![](img/cff22842fb22677b69d868c964f1bf98_24.png)
 
 哈希传递攻击的前提是内网中多台机器使用了相同的密码哈希（这在企业域环境中很常见）。如果密码不同，则需要学习更多内网渗透技术，如票据传递、漏洞利用等。内网渗透是一个系统性的知识体系，需要持续学习和实践。
 

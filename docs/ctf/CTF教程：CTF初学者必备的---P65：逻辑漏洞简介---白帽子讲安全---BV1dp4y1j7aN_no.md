@@ -4,15 +4,11 @@
 
 ## 什么是逻辑漏洞？
 
-![](img/688dd15d281c4f4893d0cca994938fe1_1.png)
 
-![](img/688dd15d281c4f4893d0cca994938fe1_2.png)
 
-![](img/688dd15d281c4f4893d0cca994938fe1_3.png)
 
 ![](img/688dd15d281c4f4893d0cca994938fe1_4.png)
 
-![](img/688dd15d281c4f4893d0cca994938fe1_6.png)
 
 上一节我们介绍了课程概述，本节中我们来看看逻辑漏洞的核心概念。
 
@@ -43,7 +39,6 @@
 
 URL跳转漏洞，也称为开放重定向漏洞。其核心是**攻击者能够控制重定向的目标URL，将用户引导至恶意网站**。
 
-![](img/688dd15d281c4f4893d0cca994938fe1_8.png)
 
 例如，一个网站的登录功能在认证成功后，会根据`redirect_url`参数跳转：
 `https://www.example.com/login?redirect_url=https://www.attacker.com/phishing`

@@ -15,11 +15,9 @@
 
 ![](img/ec8ea1b272af7f1d14f00e5065949cdf_1.png)
 
-![](img/ec8ea1b272af7f1d14f00e5065949cdf_2.png)
 
 了解网站指纹至关重要。例如，当我们发现一个文件读取漏洞时，如果想读取 `/etc/passwd` 文件，但目标服务器是 Windows 系统，该文件根本不存在，攻击就会无效。因此，我们必须先识别其操作系统。
 
-![](img/ec8ea1b272af7f1d14f00e5065949cdf_4.png)
 
 ## 如何识别操作系统？💻
 
@@ -61,7 +59,6 @@ nmap -O -Pn -T4 192.168.1.0/24
 
 ### 方法三：利用 URL 大小写敏感性差异
 
-![](img/ec8ea1b272af7f1d14f00e5065949cdf_17.png)
 
 ![](img/ec8ea1b272af7f1d14f00e5065949cdf_19.png)
 
@@ -97,11 +94,9 @@ Windows 和 Linux 系统在文件路径处理上有一个关键区别：
 *   **在线工具**：如 `whatweb`、`Wappalyzer` 的在线版本等。
 *   **浏览器插件**：如 **Wappalyzer**。安装后，在浏览器工具栏点击该插件图标，即可快速显示网站使用的技术，包括服务器、JavaScript 库、前端框架等。
 
-![](img/ec8ea1b272af7f1d14f00e5065949cdf_23.png)
 
 ### 识别脚本语言
 
-![](img/ec8ea1b272af7f1d14f00e5065949cdf_25.png)
 
 识别脚本语言通常可以通过观察网站 URL 的后缀名。
 *   `.php` -> **PHP**

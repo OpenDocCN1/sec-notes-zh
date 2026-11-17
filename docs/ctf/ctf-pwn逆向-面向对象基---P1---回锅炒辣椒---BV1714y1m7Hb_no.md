@@ -8,7 +8,6 @@
 
 ---
 
-![](img/0c827af35c5cd715caeae19b7384fc39_3.png)
 
 ## 1：程序初步分析🔍
 
@@ -40,7 +39,6 @@ v18 = user_input;
 
 ## 3：深入分析对象方法🧩
 
-![](img/0c827af35c5cd715caeae19b7384fc39_5.png)
 
 ![](img/0c827af35c5cd715caeae19b7384fc39_6.png)
 
@@ -83,7 +81,6 @@ print(flag)
 
 运行上述脚本，我们便可以得到能够通过程序验证的正确字符串，也就是本题的Flag。
 
-![](img/0c827af35c5cd715caeae19b7384fc39_8.png)
 
 ---
 

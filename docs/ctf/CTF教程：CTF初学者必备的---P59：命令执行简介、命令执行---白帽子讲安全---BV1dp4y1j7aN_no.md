@@ -21,7 +21,6 @@
 
 命令执行主要分为两种类型：远程代码执行和远程命令执行。它们的区别在于所调用的函数不同。
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_7.png)
 
 ## 远程代码执行相关函数 💻
 
@@ -41,7 +40,6 @@
 
 ![](img/961dcdb42817b6f3cf6036b20679e3ce_18.png)
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_20.png)
 
 ![](img/961dcdb42817b6f3cf6036b20679e3ce_22.png)
 
@@ -49,11 +47,8 @@
 
 ### 1. eval 函数
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_26.png)
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_28.png)
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_29.png)
 
 `eval` 函数会把传入的字符串作为PHP代码执行。其基本形式为：
 ```php
@@ -79,11 +74,8 @@ assert($_POST['cmd']);
 
 ![](img/961dcdb42817b6f3cf6036b20679e3ce_31.png)
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_33.png)
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_35.png)
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_37.png)
 
 ![](img/961dcdb42817b6f3cf6036b20679e3ce_39.png)
 
@@ -91,7 +83,6 @@ assert($_POST['cmd']);
 
 ![](img/961dcdb42817b6f3cf6036b20679e3ce_41.png)
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_43.png)
 
 `preg_replace` 函数用于执行正则表达式的搜索和替换。
 ```php
@@ -118,11 +109,9 @@ array_map($func, array($cmd));
 ```
 这段代码会使用 `assert` 函数来处理 `$cmd` 数组中的值，从而执行 `phpinfo()`。
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_45.png)
 
 ### 5. create_function 函数
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_47.png)
 
 `create_function` 函数用于创建一个匿名函数。
 ```php
@@ -147,19 +136,13 @@ call_user_func($_GET['func'], $_POST['cmd']);
 // 例如：func=assert&cmd=phpinfo();
 ```
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_49.png)
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_51.png)
 
 ### 7. array_filter 函数
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_53.png)
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_54.png)
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_56.png)
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_58.png)
 
 ![](img/961dcdb42817b6f3cf6036b20679e3ce_60.png)
 
@@ -182,17 +165,13 @@ array_filter($array, $func);
 
 ![](img/961dcdb42817b6f3cf6036b20679e3ce_66.png)
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_68.png)
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_70.png)
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_72.png)
 
 ### 关于双引号的特性
 
 ![](img/961dcdb42817b6f3cf6036b20679e3ce_74.png)
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_76.png)
 
 在PHP中，如果双引号包裹的字符串中包含变量，解释器会将其替换为变量解析后的值。如果变量值是一段可执行的PHP代码，就可能造成代码执行。
 ```php
@@ -201,11 +180,9 @@ echo “$code”; // 输出 phpinfo() 的执行结果
 ```
 而单引号中的内容则会被原样输出。
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_78.png)
 
 ![](img/961dcdb42817b6f3cf6036b20679e3ce_80.png)
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_82.png)
 
 ![](img/961dcdb42817b6f3cf6036b20679e3ce_84.png)
 
@@ -213,7 +190,6 @@ echo “$code”; // 输出 phpinfo() 的执行结果
 
 ## 远程系统命令执行相关函数 ⚙️
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_88.png)
 
 上一节我们介绍了远程代码执行，本节中我们来看看远程系统命令执行。这类漏洞常出现在提供远程命令操作接口的应用中，例如路由器的ping测试功能。
 
@@ -223,9 +199,7 @@ echo “$code”; // 输出 phpinfo() 的执行结果
 
 ![](img/961dcdb42817b6f3cf6036b20679e3ce_90.png)
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_92.png)
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_94.png)
 
 `exec` 函数执行一个外部程序，但默认不输出结果，而是返回结果的最后一行。如需获取全部输出，可以使用第二个参数。
 ```php
@@ -235,7 +209,6 @@ exec($command, $output);
 
 ![](img/961dcdb42817b6f3cf6036b20679e3ce_96.png)
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_97.png)
 
 ![](img/961dcdb42817b6f3cf6036b20679e3ce_98.png)
 
@@ -243,16 +216,13 @@ exec($command, $output);
 
 ![](img/961dcdb42817b6f3cf6036b20679e3ce_100.png)
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_102.png)
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_104.png)
 
 `system` 函数执行外部命令，并直接将结果输出到浏览器。这是我们最常用来执行系统命令的函数。
 ```php
 system($command);
 ```
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_106.png)
 
 ![](img/961dcdb42817b6f3cf6036b20679e3ce_108.png)
 
@@ -265,13 +235,10 @@ system($command);
 passthru($command);
 ```
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_112.png)
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_114.png)
 
 ### 4. shell_exec 函数
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_116.png)
 
 ![](img/961dcdb42817b6f3cf6036b20679e3ce_118.png)
 
@@ -296,7 +263,6 @@ shell_exec($command);
 
 ![](img/961dcdb42817b6f3cf6036b20679e3ce_130.png)
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_132.png)
 
 以下是常用的命令连接符：
 *   **`|` (竖线)**：无论前一个命令是否成功，后一个命令都会执行。例如：`a | whoami`
@@ -306,9 +272,7 @@ shell_exec($command);
 *   **`` ` ` `` (反引号) 或 `$()`**：用于执行特定的命令，并将其输出作为值。例如：echo \`whoami\`
 *   **`>` 和 `<` (重定向符号)**：用于重定向命令的输入输出。
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_134.png)
 
-![](img/961dcdb42817b6f3cf6036b20679e3ce_136.png)
 
 ![](img/961dcdb42817b6f3cf6036b20679e3ce_137.png)
 

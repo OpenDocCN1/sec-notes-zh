@@ -14,7 +14,6 @@
 
 
 
-![](img/f777c0baba016529475af125fab8868f_0.png)
 
 在源代码中，我们发现了一段被HTML实体编码的PHP代码。`&lt;` 和 `&gt;` 分别代表 `<` 和 `>` 符号，因此这段内容实际上是有效的PHP代码片段。
 
@@ -24,9 +23,7 @@
 
 
 
-![](img/f777c0baba016529475af125fab8868f_4.png)
 
-![](img/f777c0baba016529475af125fab8868f_4.png)
 
 这段代码的核心逻辑如下：
 1.  定义了一个名为 `login` 的类。
@@ -107,7 +104,6 @@ echo urlencode($serialized_data); // 输出URL编码后的结果
 
 
 
-![](img/f777c0baba016529475af125fab8868f_10.png)
 
 反序列化成功创建了 `$user` 为 `‘admin’` 的 `login` 对象。当脚本执行结束或对象被销毁时，`__destruct()` 方法被触发，判断条件满足，从而输出正确的flag。
 

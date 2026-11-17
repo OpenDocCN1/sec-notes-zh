@@ -4,11 +4,9 @@
 
 上一节我们介绍了手动检查单个程序权限的方法，本节中我们来看看如何利用系统自带工具进行批量查找，提高效率。
 
-![](img/c820d67b8c030833b9428ddedf301a8a_1.png)
 
 ## 概述：使用`findstr`工具批量搜索
 
-![](img/c820d67b8c030833b9428ddedf301a8a_3.png)
 
 ![](img/c820d67b8c030833b9428ddedf301a8a_4.png)
 
@@ -20,7 +18,6 @@
 findstr /S /I “autoElevate” C:\Windows\System32\*.exe
 ```
 
-![](img/c820d67b8c030833b9428ddedf301a8a_6.png)
 
 *   **`findstr`**：调用搜索工具。
 *   **`/S`**：在当前目录和所有子目录中搜索。
@@ -34,9 +31,7 @@ findstr /S /I “autoElevate” C:\Windows\System32\*.exe
 
 我们将通过实际操作来演示命令的使用并验证结果。
 
-![](img/c820d67b8c030833b9428ddedf301a8a_8.png)
 
-![](img/c820d67b8c030833b9428ddedf301a8a_9.png)
 
 首先，在命令提示符（CMD）中运行上述命令。为了便于查看结果，也可以将输出重定向到一个文本文件，命令如下：
 
@@ -46,15 +41,12 @@ findstr /S /I “autoElevate” C:\Windows\System32\*.exe > 1.txt
 
 运行命令后，系统会开始扫描。这个过程可能需要一些时间，请耐心等待。
 
-![](img/c820d67b8c030833b9428ddedf301a8a_11.png)
 
-![](img/c820d67b8c030833b9428ddedf301a8a_12.png)
 
 ![](img/c820d67b8c030833b9428ddedf301a8a_13.png)
 
 扫描完成后，我们会得到一系列结果。结果中会显示包含`autoElevate`属性的程序及其属性值（`True`或`False`）。
 
-![](img/c820d67b8c030833b9428ddedf301a8a_14.png)
 
 ![](img/c820d67b8c030833b9428ddedf301a8a_15.png)
 

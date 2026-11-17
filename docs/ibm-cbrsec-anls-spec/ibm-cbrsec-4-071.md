@@ -1,8 +1,6 @@
 # 课程4：《网络安全与数据库漏洞》：71：地址解析协议
 
-![](img/e51eb34bb5761d11d3c4f09f522dffcf_0.png)
 
-![](img/e51eb34bb5761d11d3c4f09f522dffcf_0.png)
 
 ![](img/e51eb34bb5761d11d3c4f09f522dffcf_2.png)
 

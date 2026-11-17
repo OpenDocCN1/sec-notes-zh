@@ -10,17 +10,13 @@
 
 ## RDP连接记录获取
 
-![](img/a2eaa12119287427cdfd89ca875bd7ad_1.png)
 
-![](img/a2eaa12119287427cdfd89ca875bd7ad_2.png)
 
 首先，我们需要了解如何收集目标主机上有过哪些RDP连接记录。这能帮助我们分析网络结构。
 
-![](img/a2eaa12119287427cdfd89ca875bd7ad_4.png)
 
 ### 使用PowerShell脚本
 
-![](img/a2eaa12119287427cdfd89ca875bd7ad_6.png)
 
 一个常用的方法是使用名为`PowerSploit`或类似功能的PowerShell脚本。以下是操作步骤：
 
@@ -31,7 +27,6 @@
     ```
 3.  **查看结果**：命令执行后，将列出本机所有的RDP连接历史记录，包括目标IP地址和用户名。
 
-![](img/a2eaa12119287427cdfd89ca875bd7ad_8.png)
 
 ![](img/a2eaa12119287427cdfd89ca875bd7ad_9.png)
 
@@ -63,9 +58,7 @@ dir /a %userprofile%\AppData\Local\Microsoft\Credentials\*
 
 ### 使用命令行工具初步读取
 
-![](img/a2eaa12119287427cdfd89ca875bd7ad_13.png)
 
-![](img/a2eaa12119287427cdfd89ca875bd7ad_14.png)
 
 系统自带的`cmdkey`命令可以列出当前用户保存的Windows凭据。
 ```cmd
@@ -73,9 +66,7 @@ cmdkey /list
 ```
 此命令会显示凭据列表，但密码通常以星号（*）或加密形式显示，无法直接获取明文。
 
-![](img/a2eaa12119287427cdfd89ca875bd7ad_15.png)
 
-![](img/a2eaa12119287427cdfd89ca875bd7ad_16.png)
 
 ### 使用Mimikatz进行深度解密
 
@@ -96,7 +87,6 @@ cmdkey /list
     ```
     命令输出中会包含一个关键的`GUIDMasterKey`值，将其复制下来。
 
-![](img/a2eaa12119287427cdfd89ca875bd7ad_18.png)
 
 3.  **查找对应的MasterKey**：
     在Mimikatz中执行以下命令，列出所有MasterKey：

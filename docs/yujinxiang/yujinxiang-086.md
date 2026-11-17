@@ -4,11 +4,9 @@
 
 ---
 
-![](img/ea9607ffebec6a6d28c137ebcf37d782_1.png)
 
 ## 完成上节课作业：统计MP药品数量 💊
 
-![](img/ea9607ffebec6a6d28c137ebcf37d782_2.png)
 
 上一节我们介绍了如何统计金创药的数量，本节中我们来看看如何统计MP药品的数量。
 
@@ -16,9 +14,7 @@
 
 
 
-![](img/ea9607ffebec6a6d28c137ebcf37d782_1.png)
 
-![](img/ea9607ffebec6a6d28c137ebcf37d782_2.png)
 
 然后，我们转到背包的结构单元。在统计金创药数量的代码后面，添加统计MP药品数量的函数。
 
@@ -66,9 +62,7 @@
 
 
 
-![](img/ea9607ffebec6a6d28c137ebcf37d782_4.png)
 
-![](img/ea9607ffebec6a6d28c137ebcf37d782_4.png)
 
 启动测试，查看药品数量的统计结果。
 
@@ -76,7 +70,6 @@
 
 再次执行统计。结果显示：人参数量、雪原参数量、一元参数量、药仙数量等，共计30个。
 
-![](img/ea9607ffebec6a6d28c137ebcf37d782_6.png)
 
 ![](img/ea9607ffebec6a6d28c137ebcf37d782_6.png)
 

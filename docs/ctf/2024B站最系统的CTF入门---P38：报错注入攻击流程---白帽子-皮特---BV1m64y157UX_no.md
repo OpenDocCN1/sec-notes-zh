@@ -16,7 +16,6 @@
 
 如果页面出现类似“You have an error in your SQL syntax”的报错，则说明可能存在注入点。反之，如果页面正常显示，则可能不存在注入点，或者需要尝试其他闭合方式。
 
-![](img/2fea5a1155b1046c35d96af6ff2c0edd_1.png)
 
 ## 判断注入类型
 
@@ -59,7 +58,6 @@ and updatexml(1, concat(0x7e, database(), 0x7e), 3)
 
 执行后，页面可能会报错：“XPATH syntax error: ‘~security~‘”。两个波浪线中间的内容 `security` 就是我们想要的当前数据库名。
 
-![](img/2fea5a1155b1046c35d96af6ff2c0edd_3.png)
 
 **为什么这样构造？**
 *   `updatexml()` 要求第二个参数是合法的XPath字符串，我们故意传入 `concat(0x7e, database(), 0x7e)` 这个非XPath字符串来触发报错。

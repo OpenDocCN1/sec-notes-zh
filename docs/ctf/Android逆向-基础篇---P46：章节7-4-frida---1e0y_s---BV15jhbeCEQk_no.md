@@ -39,7 +39,6 @@ Log.i("TAG", "刷新后的内容: " + getWelcomeText());
 2.  获取root权限（执行`su`命令）。
 3.  在root权限下启动Frida Server。
 
-![](img/30b8c8083e56b69a5b46fa22fb295585_11.png)
 
 启动后，可以使用命令`frida-ps -U`来确认目标应用进程正在运行，并获取其进程ID。通过`adb logcat | grep <进程ID>`可以过滤查看该应用的相关日志，与我们之前在Android Studio中观察到的日志一致。
 
@@ -102,7 +101,6 @@ sys.stdin.read()
 2.  `Java.use`获取到我们要Hook的类`com.banana.MainActivity`。
 3.  通过重写`MainActivity.getWelcomeText.implementation`，我们接管了原方法的执行逻辑。在新逻辑中，我们首先打印一条日志，然后返回一个自定义的字符串。
 
-![](img/30b8c8083e56b69a5b46fa22fb295585_21.png)
 
 Python部分则负责将这段JS代码注入到目标应用进程中：
 1.  连接到USB设备上的安卓系统。

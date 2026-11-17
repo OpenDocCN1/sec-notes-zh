@@ -10,9 +10,7 @@
 
 ## 概述
 
-![](img/b87a3e625cb628f671cfeb1756ced9fa_7.png)
 
-![](img/b87a3e625cb628f671cfeb1756ced9fa_9.png)
 
 本节课是XXE课程的最后一节。我们将首先探讨一种特殊的XXE利用方式——通过上传特定构造的Excel文件触发漏洞。随后，我们将系统地学习在不同编程语言环境下修复XXE漏洞的标准方法。课程最后会布置相关的实战练习。
 
@@ -24,21 +22,15 @@
 
 ## Excel文件上传导致的XXE漏洞
 
-![](img/b87a3e625cb628f671cfeb1756ced9fa_17.png)
 
 上一节我们介绍了XXE的基本利用方式，本节中我们来看看一种特殊的攻击向量：利用Excel文件上传功能触发XXE。
 
-![](img/b87a3e625cb628f671cfeb1756ced9fa_19.png)
 
-![](img/b87a3e625cb628f671cfeb1756ced9fa_20.png)
 
 如果网站存在文件上传功能，并且支持上传XLSX格式的Excel文件，则可能存在XXE漏洞。其原理在于，XLSX文件本质上是一个ZIP压缩包，内部包含多个XML文件。攻击者可以修改这些XML文件，插入恶意的DTD声明和外部实体引用。
 
-![](img/b87a3e625cb628f671cfeb1756ced9fa_22.png)
 
-![](img/b87a3e625cb628f671cfeb1756ced9fa_24.png)
 
-![](img/b87a3e625cb628f671cfeb1756ced9fa_26.png)
 
 以下是攻击流程的核心步骤：
 
@@ -53,19 +45,14 @@
 3.  **重新打包并上传**：将修改后的文件重新打包为ZIP，再改回XLSX后缀，然后通过网站的上传功能提交。
 4.  **接收请求**：如果服务器端解析了该Excel文件，就会向攻击者指定的URL（如 `http://攻击者服务器:9999/xxe-test`）发起HTTP请求，从而证实漏洞存在。
 
-![](img/b87a3e625cb628f671cfeb1756ced9fa_28.png)
 
-![](img/b87a3e625cb628f671cfeb1756ced9fa_30.png)
 
 在CTF比赛和真实场景中，攻击者可以利用此方式，结合无回显技术，将服务器上的敏感文件数据外带出来。
 
 ## XXE漏洞的修复方案
 
-![](img/b87a3e625cb628f671cfeb1756ced9fa_32.png)
 
-![](img/b87a3e625cb628f671cfeb1756ced9fa_34.png)
 
-![](img/b87a3e625cb628f671cfeb1756ced9fa_36.png)
 
 了解了利用方式后，我们来看看如何修复XXE漏洞。修复的核心思想是禁用或严格限制XML解析器处理外部实体的能力。
 
@@ -82,13 +69,10 @@
 
 ![](img/b87a3e625cb628f671cfeb1756ced9fa_40.png)
 
-![](img/b87a3e625cb628f671cfeb1756ced9fa_42.png)
 
 这是最有效、最直接的修复方式。在不同的开发语言中，可以通过配置XML解析器的安全属性来实现。
 
-![](img/b87a3e625cb628f671cfeb1756ced9fa_44.png)
 
-![](img/b87a3e625cb628f671cfeb1756ced9fa_45.png)
 
 ![](img/b87a3e625cb628f671cfeb1756ced9fa_47.png)
 
@@ -106,11 +90,8 @@ dbf.setFeature("http://xml.org/sax/features/external-parameter-entities", false)
 
 ![](img/b87a3e625cb628f671cfeb1756ced9fa_53.png)
 
-![](img/b87a3e625cb628f671cfeb1756ced9fa_55.png)
 
-![](img/b87a3e625cb628f671cfeb1756ced9fa_56.png)
 
-![](img/b87a3e625cb628f671cfeb1756ced9fa_58.png)
 
 **在PHP中**，使用libxml库解析XML时，可以这样设置：
 ```php
@@ -120,9 +101,7 @@ libxml_disable_entity_loader(true);
 
 ![](img/b87a3e625cb628f671cfeb1756ced9fa_59.png)
 
-![](img/b87a3e625cb628f671cfeb1756ced9fa_61.png)
 
-![](img/b87a3e625cb628f671cfeb1756ced9fa_62.png)
 
 **在Python中**，使用lxml库时，可以这样设置解析器：
 ```python
@@ -143,7 +122,6 @@ tree = etree.parse(xml_source, parser)
 
 ![](img/b87a3e625cb628f671cfeb1756ced9fa_70.png)
 
-![](img/b87a3e625cb628f671cfeb1756ced9fa_72.png)
 
 在实际渗透测试中，如果目标服务器无法将数据直接回显到页面上（即无回显XXE），我们需要将数据外带到自己控制的服务器。
 
@@ -151,9 +129,7 @@ tree = etree.parse(xml_source, parser)
 
 ![](img/b87a3e625cb628f671cfeb1756ced9fa_76.png)
 
-![](img/b87a3e625cb628f671cfeb1756ced9fa_78.png)
 
-![](img/b87a3e625cb628f671cfeb1756ced9fa_79.png)
 
 ![](img/b87a3e625cb628f671cfeb1756ced9fa_80.png)
 

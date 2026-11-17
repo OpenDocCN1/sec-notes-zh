@@ -1,44 +1,28 @@
 #  003：课时3 新版本调试方法及Smali函数文件修改 🛠️
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_1.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_3.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_5.png)
 
 在本节课中，我们将学习一款新的反编译工具的使用，并深入掌握Smali代码的调试与静态分析方法。我们将通过一个实际的示例程序，演示如何定位关键函数、动态调试获取关键值，以及如何修改Smali代码来改变程序逻辑。
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_7.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_9.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_10.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_11.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_12.png)
 
 ## 一、 新反编译工具：Apktool的增强版
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_14.png)
 
 上一节我们介绍了APK打包工具。本节中，我们来看看一款基于Apktool改造的、功能更强大的反编译工具。
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_16.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_17.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_18.png)
 
 该工具的使用方法与Apktool基本一致，但功能更强大且Bug更少。以下是其基本命令：
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_20.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_22.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_24.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_26.png)
 
 *   **反编译**：`java -jar <工具名>.jar d -f <apk文件> -o <输出目录>`
 *   **回编译**：`java -jar <工具名>.jar b <反编译目录> -o <输出apk>`
@@ -47,11 +31,8 @@
 
 ![](img/ec6fffeb29c7be7bf9d552347e87ce56_30.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_31.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_32.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_34.png)
 
 其中，`-d` 表示反编译，`-b` 表示回编译。
 
@@ -59,13 +40,10 @@
 
 ![](img/ec6fffeb29c7be7bf9d552347e87ce56_37.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_39.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_40.png)
 
 一个特别重要的参数是 `-df`，它代表使用默认的框架资源文件。Android程序在反编译和回编译时需要引用外部的框架资源，这些资源通常来自Android源码编译。如果框架版本过旧，处理新版程序时可能会出错。工具默认会将框架文件安装在用户目录下的 `.apktool` 文件夹中。若需更新或清除旧框架，只需删除该文件夹下的文件即可。
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_42.png)
 
 ![](img/ec6fffeb29c7be7bf9d552347e87ce56_43.png)
 
@@ -73,19 +51,14 @@
 
 ![](img/ec6fffeb29c7be7bf9d552347e87ce56_46.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_47.png)
 
 ![](img/ec6fffeb29c7be7bf9d552347e87ce56_49.png)
 
 该工具还包含许多其他参数，在处理加壳或混淆的APP时非常有用，大家可以根据工具的说明文档自行测试。
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_51.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_52.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_53.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_55.png)
 
 ## 二、 新版本动态调试方法
 
@@ -95,23 +68,16 @@
 
 ![](img/ec6fffeb29c7be7bf9d552347e87ce56_59.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_61.png)
 
 ![](img/ec6fffeb29c7be7bf9d552347e87ce56_62.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_64.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_65.png)
 
 上一节我们学习了通过修改Smali代码并回编译的方式进行调试。本节介绍一种更为主流、无需修改原程序即可调试的方法。
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_67.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_68.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_70.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_72.png)
 
 ![](img/ec6fffeb29c7be7bf9d552347e87ce56_73.png)
 
@@ -129,7 +95,6 @@
 
 ![](img/ec6fffeb29c7be7bf9d552347e87ce56_81.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_83.png)
 
 安装方法如下：
 1.  打开Android Studio，进入 `File -> Settings -> Plugins`。
@@ -171,9 +136,7 @@
 
 此时，在Android Studio中点击调试按钮（小虫子图标），选择对应的进程，即可附加调试器，程序会在我们下的断点处暂停。
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_98.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_100.png)
 
 ![](img/ec6fffeb29c7be7bf9d552347e87ce56_102.png)
 
@@ -195,9 +158,7 @@
 
 ## 四、 Smali代码静态分析与动态跟踪
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_116.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_118.png)
 
 ![](img/ec6fffeb29c7be7bf9d552347e87ce56_120.png)
 
@@ -219,7 +180,6 @@
 
 首先进行静态分析。在Android Studio中浏览Smali代码，寻找关键字符串（如“恭喜注册码正确”、“抱歉再接再厉”）。我们找到了显示注册成功的方法 `Lcom/example/MainActivity;->showSuccessDialog()`。
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_133.png)
 
 ![](img/ec6fffeb29c7be7bf9d552347e87ce56_134.png)
 
@@ -282,75 +242,47 @@ showDialog(isCorrect);
 
 ![](img/ec6fffeb29c7be7bf9d552347e87ce56_170.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_172.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_174.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_176.png)
 
 ## 五、 修改Smali代码以改变程序逻辑
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_178.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_179.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_181.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_182.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_184.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_186.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_188.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_190.png)
 
 如果不想每次都动态调试获取注册码，我们可以直接修改Smali代码，让程序无论输入什么都显示成功。
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_192.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_194.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_196.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_198.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_199.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_201.png)
 
 在 `onClick` 事件中，找到判断结果并跳转的关键指令。通常是 `if-eqz` 或 `if-nez` 等条件跳转指令。我们的目标是让程序直接跳转到显示成功的分支。
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_203.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_205.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_207.png)
 
 ![](img/ec6fffeb29c7be7bf9d552347e87ce56_208.png)
 
 ![](img/ec6fffeb29c7be7bf9d552347e87ce56_210.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_212.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_213.png)
 
 例如，找到跳转到失败分支的指令 `if-eqz v4, :cond_0`（如果v4为0，则跳转到cond_0标签处，显示失败）。我们可以将这条指令**注释掉**（在Smali中，使用`#`号注释一行），或者直接将其改为无条件跳转到成功标签的指令 `goto :cond_success`。
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_215.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_217.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_219.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_221.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_223.png)
 
 修改完成后，使用反编译工具回编译APK并签名安装。再次运行程序，无论输入什么，都会显示注册成功。
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_225.png)
 
 ![](img/ec6fffeb29c7be7bf9d552347e87ce56_226.png)
 
@@ -358,7 +290,6 @@ showDialog(isCorrect);
 
 此外，我们还可以在Smali代码中插入Log输出语句，方便在Logcat中查看运行时的中间值，例如打印出计算出的正确注册码。这需要调用Android的 `Log` 类，并找到一个空闲的寄存器来传递参数。
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_229.png)
 
 ![](img/ec6fffeb29c7be7bf9d552347e87ce56_230.png)
 
@@ -379,15 +310,10 @@ showDialog(isCorrect);
 4.  学习了通过修改Smali代码中的跳转逻辑，直接改变程序行为。
 5.  了解了插入Log语句辅助分析以及使用Java反编译工具作为参考的方法。
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_233.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_235.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_237.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_238.png)
 
-![](img/ec6fffeb29c7be7bf9d552347e87ce56_239.png)
 
 ![](img/ec6fffeb29c7be7bf9d552347e87ce56_241.png)
 

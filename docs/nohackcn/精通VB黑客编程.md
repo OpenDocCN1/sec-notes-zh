@@ -7270,7 +7270,6 @@ Ado Data 控件名.ConnectionTimeout = [Value]
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_159_1.png)
 
 
-![](img/9a242554fad48ef96d64a3b5154a6d3a_159_2.png)
 
 
 ![](img/9a242554fad48ef96d64a3b5154a6d3a_159_3.png)

@@ -1,6 +1,5 @@
 # CTF入门教学：P24：6、文件上传第十关至第十一关 🛡️
 
-![](img/c8dfa60aa6b261550c671809185b529e_1.png)
 
 ![](img/c8dfa60aa6b261550c671809185b529e_2.png)
 
@@ -14,9 +13,7 @@
 
 首先，我们查看第十关的源代码。关键部分在于使用了一个名为 `str_ireplace` 的函数。
 
-![](img/c8dfa60aa6b261550c671809185b529e_6.png)
 
-![](img/c8dfa60aa6b261550c671809185b529e_8.png)
 
 `str_ireplace` 是PHP中用于字符串替换的函数，其特点是不区分大小写。它的标准语法如下：
 ```php
@@ -32,11 +29,9 @@ str_ireplace($find, $replace, $string)
 
 ![](img/c8dfa60aa6b261550c671809185b529e_12.png)
 
-![](img/c8dfa60aa6b261550c671809185b529e_13.png)
 
 这意味着，如果上传的文件名中包含 `php`，该函数会将其删除。例如，文件名 `shell.php` 会被处理成 `shell.`。
 
-![](img/c8dfa60aa6b261550c671809185b529e_15.png)
 
 那么，如何绕过这种过滤呢？思路是构造一个文件名，使得在 `str_ireplace` 函数执行删除操作后，剩下的部分恰好能组成我们想要的后缀。
 
@@ -65,7 +60,6 @@ str_ireplace($find, $replace, $string)
 
 ![](img/c8dfa60aa6b261550c671809185b529e_21.png)
 
-![](img/c8dfa60aa6b261550c671809185b529e_22.png)
 
 具体到本关：
 *   正常上传路径可能是：`../upload/漏洞.jpg`
@@ -73,11 +67,9 @@ str_ireplace($find, $replace, $string)
 *   代码拼接后缀后，完整路径变为：`../upload/shell.php%00.jpg`
 *   由于%00截断，系统实际保存的文件名是 `../upload/shell.php`，后面的 `.jpg` 被忽略。
 
-![](img/c8dfa60aa6b261550c671809185b529e_23.png)
 
 以下是利用%00截断的具体操作步骤：
 
-![](img/c8dfa60aa6b261550c671809185b529e_25.png)
 
 1.  确保PHP环境配置中 `magic_quotes_gpc` 为关闭状态。
 2.  准备一个图片马（如 `shell.jpg`），用于通过前端检查。
@@ -87,7 +79,6 @@ str_ireplace($find, $replace, $string)
 6.  放行请求。虽然返回的链接可能显示为 `xxx.php%00.jpg`，但实际在服务器上生成的文件是 `shell.php`。
 7.  直接访问 `../upload/shell.php` 即可执行我们的恶意代码。
 
-![](img/c8dfa60aa6b261550c671809185b529e_27.png)
 
 ![](img/c8dfa60aa6b261550c671809185b529e_28.png)
 

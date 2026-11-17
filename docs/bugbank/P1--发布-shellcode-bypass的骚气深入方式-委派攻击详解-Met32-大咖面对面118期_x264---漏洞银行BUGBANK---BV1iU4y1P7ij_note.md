@@ -2,7 +2,6 @@
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_1.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_3.png)
 
 在本节课中，我们将要学习Shellcode的核心原理、如何编写简单的加载器（Loader）、多种绕过安全检测的思路，以及如何利用Shellcode进行权限维持。课程内容由浅入深，旨在让初学者也能理解并掌握这些概念。
 
@@ -16,7 +15,6 @@ Shellcode是一段可以独立执行的机器码，通常用于利用软件漏�
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_9.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_11.png)
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_13.png)
 
@@ -24,55 +22,38 @@ Shellcode是一段可以独立执行的机器码，通常用于利用软件漏�
 
 ---
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_17.png)
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_19.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_21.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_23.png)
 
 ## 第一部分：Shellcode原理分析 🔬
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_25.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_27.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_29.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_31.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_33.png)
 
 上一节我们概述了课程内容，本节中我们来看看Shellcode的基本工作原理。
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_35.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_37.png)
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_39.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_41.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_43.png)
 
 Shellcode的原理类似于摩斯密码。摩斯密码通过敲击的长短组合来转换为特定字符。例如，字符“1”对应的摩斯电码是“一短四长”。接收方翻译这些信号就能得到原始信息。
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_45.png)
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_47.png)
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_49.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_51.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_53.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_55.png)
 
 **Shellcode与此类似，它将特定的字节序列（机器码）翻译为CPU可以直接执行的汇编指令。** 与摩斯密码不同，CPU无需“翻译”，直接执行这些字节。
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_57.png)
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_59.png)
 
@@ -137,17 +118,14 @@ char exploit[] = {
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_83.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_84.png)
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_86.png)
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_88.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_90.png)
 
 这种方法通过`malloc`申请内存，`memcpy`拷贝Shellcode，最后通过函数指针调用。
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_92.png)
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_94.png)
 
@@ -193,9 +171,7 @@ int main() {
 
 **示例代码（使用`jmp`或`call`指令）：**
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_112.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_114.png)
 
 ```c
 unsigned char shellcode[] = "\xfc\x68\x...";
@@ -227,11 +203,9 @@ int main() {
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_126.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_128.png)
 
 ---
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_130.png)
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_132.png)
 
@@ -261,17 +235,13 @@ int main() {
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_148.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_150.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_152.png)
 
 将Shellcode存储在外部文件中，Loader运行时读取并执行。这能有效分离恶意代码与加载器本身。
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_154.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_156.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_158.png)
 
 **以下是两种具体方法：**
 
@@ -306,7 +276,6 @@ for(i = 0; i < shellcode_len; i++) {
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_165.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_167.png)
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_169.png)
 
@@ -325,13 +294,9 @@ NTFS文件系统支持备用数据流（Alternate Data Stream, ADS）。可以�
 2.  **从ADS读取：** Loader使用文件API读取`正常文件.txt:隐藏流名`的内容到内存。
 3.  **执行：** 跳转到内存执行。
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_178.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_180.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_182.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_184.png)
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_186.png)
 
@@ -339,7 +304,6 @@ NTFS文件系统支持备用数据流（Alternate Data Stream, ADS）。可以�
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_188.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_190.png)
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_191.png)
 
@@ -349,11 +313,9 @@ NTFS文件系统支持备用数据流（Alternate Data Stream, ADS）。可以�
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_195.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_197.png)
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_199.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_201.png)
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_203.png)
 
@@ -361,11 +323,9 @@ NTFS文件系统支持备用数据流（Alternate Data Stream, ADS）。可以�
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_205.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_207.png)
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_209.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_211.png)
 
 **流程：**
 1.  服务端监听网络端口。
@@ -382,9 +342,7 @@ NTFS文件系统支持备用数据流（Alternate Data Stream, ADS）。可以�
 
 这种方式下，服务端程序本身不包含任何Shellcode特征，静态检测难以发现。流量分析可能发现异常连接，但Shellcode本身在传输过程中也可能被加密。
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_221.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_223.png)
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_225.png)
 
@@ -407,7 +365,6 @@ NTFS文件系统支持备用数据流（Alternate Data Stream, ADS）。可以�
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_238.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_240.png)
 
 ## 第四部分：利用Shellcode进行权限维持 ⚙️
 
@@ -423,23 +380,18 @@ NTFS文件系统支持备用数据流（Alternate Data Stream, ADS）。可以�
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_250.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_252.png)
 
 一种常见的方法是将Shellcode植入到正常的可执行文件（PE文件）中，使其随原程序启动而执行。
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_254.png)
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_256.png)
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_258.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_260.png)
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_262.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_264.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_266.png)
 
 ### 核心概念：程序入口点（OEP）
 
@@ -461,7 +413,6 @@ OEP是程序被加载执行时第一条指令的地址。它由**映像基址（
 
 ![](img/bb78e449116e217a9a2a5001a0cfd82a_277.png)
 
-![](img/bb78e449116e217a9a2a5001a0cfd82a_279.png)
 
 **a) 利用PE文件空白区域：**
 1.  使用PE编辑工具（如WinHex、PE Tools）查找PE文件的空白区域（通常由00填充）。

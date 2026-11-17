@@ -6,7 +6,6 @@
 
 ## 名称的由来 🏔️
 
-![](img/3dfcb5a143e5e1cc9bbd78976941f567_1.png)
 
 ![](img/3dfcb5a143e5e1cc9bbd78976941f567_2.png)
 

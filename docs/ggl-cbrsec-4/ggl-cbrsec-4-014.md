@@ -30,7 +30,6 @@ Linux是一个高度可定制的操作系统。与其他操作系统不同，Lin
 
 我们之前了解到，Linux是开源的，任何人都可以为源代码的增补做出贡献。这正是新发行版被创建的方式。所有发行版都派生自另一个发行版，但有几个被认为是“父发行版”。例如，Red Hat是CentOS的父发行版，Slackware是SuSE的父发行版。Ubuntu和Kali Linux都派生自Debian。
 
-![](img/9f76eae2a13e45844bd0ed45088ea4ff_2.png)
 
 ## 🛡️ 安全分析师常用的发行版
 
@@ -44,7 +43,6 @@ Linux是一个高度可定制的操作系统。与其他操作系统不同，Lin
 
 ![](img/9f76eae2a13e45844bd0ed45088ea4ff_2.png)
 
-![](img/9f76eae2a13e45844bd0ed45088ea4ff_4.png)
 
 ## 📝 本节总结
 

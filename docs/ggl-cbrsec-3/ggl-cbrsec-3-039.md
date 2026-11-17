@@ -1,6 +1,5 @@
 # 039：1_01_welcome-to-week-1
 
-![](img/80806be381fdad425d2becc4c1c09dd7_0.png)
 
 ![](img/80806be381fdad425d2becc4c1c09dd7_0.png)
 
@@ -8,7 +7,6 @@
 
 
 
-![](img/80806be381fdad425d2becc4c1c09dd7_2.png)
 
 ![](img/80806be381fdad425d2becc4c1c09dd7_2.png)
 

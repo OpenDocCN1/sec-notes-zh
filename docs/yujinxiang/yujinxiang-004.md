@@ -2,7 +2,6 @@
 
 在本节课中，我们将学习如何创建一个名为 `DbgPrintMine` 的自定义调试输出函数，以替代 Windows API 中的 `OutputDebugString` 函数。`OutputDebugString` 使用不便，因为它只能接受一个字符串参数，无法像 C 语言的 `printf` 函数那样格式化输出变量信息。我们将实现一个支持可变参数的函数，使其使用起来更加灵活方便。
 
-![](img/34d1fc2444035e30f39c0555c1cb731d_1.png)
 
 ---
 
@@ -24,7 +23,6 @@
 下面是一个简单的示例函数 `DebugPrintMan`：
 
 
-![](img/34d1fc2444035e30f39c0555c1cb731d_3.png)
 
 ```c
 #include <stdio.h>
@@ -49,9 +47,7 @@ void DebugPrintMan(const char* format, ...)
 }
 ```
 
-![](img/34d1fc2444035e30f39c0555c1cb731d_5.png)
 
-![](img/34d1fc2444035e30f39c0555c1cb731d_7.png)
 
 调用方式如下：
 ```c
@@ -60,9 +56,7 @@ DebugPrintMan("参数：%d, %d, %s\n", 111, 222, "abc");
 
 这种方法需要预先知道参数的个数和类型，并不灵活。
 
-![](img/34d1fc2444035e30f39c0555c1cb731d_9.png)
 
-![](img/34d1fc2444035e30f39c0555c1cb731d_11.png)
 
 ---
 
@@ -73,9 +67,7 @@ DebugPrintMan("参数：%d, %d, %s\n", 111, 222, "abc");
 以下是使用 `vsprintf_s` 的改进版本：
 
 
-![](img/34d1fc2444035e30f39c0555c1cb731d_13.png)
 
-![](img/34d1fc2444035e30f39c0555c1cb731d_15.png)
 
 ```c
 #include <stdio.h>
@@ -95,41 +87,31 @@ void DebugPrintMan(const char* format, ...)
 }
 ```
 
-![](img/34d1fc2444035e30f39c0555c1cb731d_17.png)
 
 现在，这个函数可以接受任意数量、任意类型的参数，只要它们与格式化字符串匹配即可。调用方式与 `printf` 完全相同：
 ```c
 DebugPrintMan("调试信息：%d, %s\n", 123, "测试");
 ```
 
-![](img/34d1fc2444035e30f39c0555c1cb731d_19.png)
 
 ---
 
-![](img/34d1fc2444035e30f39c0555c1cb731d_21.png)
 
-![](img/34d1fc2444035e30f39c0555c1cb731d_23.png)
 
 ## 整合 `OutputDebugString` 并添加前缀 🏷️
 
-![](img/34d1fc2444035e30f39c0555c1cb731d_25.png)
 
 上一节我们实现了一个灵活的格式化输出函数，本节中我们来看看如何将其与实际的调试输出 API 结合。我们的目标是替换 `OutputDebugString`，因此需要将格式化后的字符串传递给 `OutputDebugStringW`（宽字符版本）。
 
-![](img/34d1fc2444035e30f39c0555c1cb731d_27.png)
 
-![](img/34d1fc2444035e30f39c0555c1cb731d_29.png)
 
 同时，为了在调试器（如 DbgView）中过滤出我们自己的调试信息，避免与其他程序的输出混淆，我们为输出的字符串添加一个特定前缀，例如 `[Game]`。
 
-![](img/34d1fc2444035e30f39c0555c1cb731d_31.png)
 
 以下是整合后的 `DbgPrintMine` 函数：
 
-![](img/34d1fc2444035e30f39c0555c1cb731d_33.png)
 
 
-![](img/34d1fc2444035e30f39c0555c1cb731d_35.png)
 
 ```c
 #include <Windows.h>
@@ -159,23 +141,18 @@ void DbgPrintMine(const char* format, ...)
 
 现在，调用 `DbgPrintMine("值：%d", 100);` 将在调试器中输出 `[Game] 值：100`。这样，我们可以在调试器中设置过滤器，只显示包含 `[Game]` 的日志，使输出更加清晰。
 
-![](img/34d1fc2444035e30f39c0555c1cb731d_37.png)
 
 ---
 
-![](img/34d1fc2444035e30f39c0555c1cb731d_39.png)
 
-![](img/34d1fc2444035e30f39c0555c1cb731d_41.png)
 
 ## 区分 Debug 与 Release 版本 🚦
 
-![](img/34d1fc2444035e30f39c0555c1cb731d_43.png)
 
 上一节我们完成了核心功能，本节中我们来做最后一项优化。调试信息通常在开发调试（Debug）版本时需要，而在发布（Release）版本时不需要。我们希望在 Release 版本中彻底移除调试输出代码，以提高性能并防止他人通过调试信息分析我们的程序。
 
 这可以通过预处理器指令 `#ifdef _DEBUG` 来实现。这个宏在 Debug 编译配置下会被定义，在 Release 下则不会。
 
-![](img/34d1fc2444035e30f39c0555c1cb731d_45.png)
 
 以下是最终的 `DbgPrintMine` 函数：
 
@@ -206,7 +183,6 @@ void DbgPrintMine(const char* format, ...)
 #endif
 ```
 
-![](img/34d1fc2444035e30f39c0555c1cb731d_47.png)
 
 **使用方式：**
 *   在 Debug 模式下编译，`DbgPrintMine` 会正常输出信息。
@@ -214,11 +190,9 @@ void DbgPrintMine(const char* format, ...)
 
 将上述函数定义放在公共头文件（如 `common.h`）中，并在所有需要使用的源文件中包含此头文件，即可在整个项目中方便地使用这个增强的调试输出工具。
 
-![](img/34d1fc2444035e30f39c0555c1cb731d_49.png)
 
 ---
 
-![](img/34d1fc2444035e30f39c0555c1cb731d_51.png)
 
 ## 总结 📚
 

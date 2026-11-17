@@ -43,7 +43,6 @@
 
 ## 熵源与PRNG安全性
 
-![](img/ab1b66f232a06472dff3209fe3c59cc3_1.png)
 
 一个好的PRNG应该能够处理你能提供的所有熵源。
 
@@ -63,7 +62,6 @@
 
 ## 总结
 
-![](img/ab1b66f232a06472dff3209fe3c59cc3_3.png)
 
 ![](img/ab1b66f232a06472dff3209fe3c59cc3_4.png)
 

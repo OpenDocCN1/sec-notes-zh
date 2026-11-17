@@ -20,7 +20,6 @@
 
 执行后，我们得到版本信息是`5.5.53`，数据库名称是`DVWA`。
 
-![](img/57bd78d9ef1800b4a1a745bde274e9aa_1.png)
 
 ## 获取数据库中的表名
 
@@ -28,7 +27,6 @@
 
 MySQL数据库有一个系统数据库叫`information_schema`，其中的`tables`表存储了所有表的信息。我们可以从这个表中查询目标数据库的表名。
 
-![](img/57bd78d9ef1800b4a1a745bde274e9aa_3.png)
 
 以下是查询语句：
 ```sql
@@ -49,7 +47,6 @@ MySQL数据库有一个系统数据库叫`information_schema`，其中的`tables
 
 ![](img/57bd78d9ef1800b4a1a745bde274e9aa_6.png)
 
-![](img/57bd78d9ef1800b4a1a745bde274e9aa_7.png)
 
 以下是查询语句：
 ```sql
@@ -57,7 +54,6 @@ MySQL数据库有一个系统数据库叫`information_schema`，其中的`tables
 ```
 这个语句从`information_schema.columns`表中，查询`users`表的所有字段名。
 
-![](img/57bd78d9ef1800b4a1a745bde274e9aa_9.png)
 
 有时，网站可能只回显一行数据。为了将所有字段名在一行内输出，可以使用`group_concat()`函数：
 ```sql
@@ -65,7 +61,6 @@ MySQL数据库有一个系统数据库叫`information_schema`，其中的`tables
 ```
 `group_concat()`函数的作用是将多行查询结果合并为一行字符串输出。
 
-![](img/57bd78d9ef1800b4a1a745bde274e9aa_11.png)
 
 ## 获取表中的数据记录
 

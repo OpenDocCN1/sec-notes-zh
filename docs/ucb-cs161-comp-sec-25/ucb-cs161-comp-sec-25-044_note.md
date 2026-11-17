@@ -1,6 +1,5 @@
 # 044：基本printf漏洞 - 环境搭建 🛠️
 
-![](img/9f80d669b7ca2f2957c2b5e8bfcb1836_0.png)
 
 在本节课中，我们将学习一个具体的例子，展示当攻击者能够控制`printf`函数的第一个参数（格式化字符串）时，如何利用这个漏洞泄露内存中的秘密值。我们将从程序的内存布局开始，逐步分析漏洞的成因。
 
@@ -13,11 +12,8 @@
 我们有一个定义在函数外部的缓冲区`buff`，它位于内存的静态区域。此外，我们有一个名为`vulnerable`的函数。
 
 
-![](img/9f80d669b7ca2f2957c2b5e8bfcb1836_2.png)
 
-![](img/9f80d669b7ca2f2957c2b5e8bfcb1836_3.png)
 
-![](img/9f80d669b7ca2f2957c2b5e8bfcb1836_4.png)
 
 ```c
 char buff[64]; // 定义在函数外部的缓冲区
@@ -29,23 +25,16 @@ void vulnerable() {
 }
 ```
 
-![](img/9f80d669b7ca2f2957c2b5e8bfcb1836_5.png)
 
-![](img/9f80d669b7ca2f2957c2b5e8bfcb1836_6.png)
 
-![](img/9f80d669b7ca2f2957c2b5e8bfcb1836_7.png)
 
 记住，每当调用一个函数时，系统会为其开辟一个新的栈帧。首先被压入栈的是函数的返回地址（RP，即保存的EIP寄存器值）和保存的帧指针（SFP，即保存的EBP寄存器值）。
 
-![](img/9f80d669b7ca2f2957c2b5e8bfcb1836_8.png)
 
-![](img/9f80d669b7ca2f2957c2b5e8bfcb1836_9.png)
 
-![](img/9f80d669b7ca2f2957c2b5e8bfcb1836_10.png)
 
 ## 局部变量在栈上的表示
 
-![](img/9f80d669b7ca2f2957c2b5e8bfcb1836_11.png)
 
 在`vulnerable`函数中，我们有两个局部变量：
 1.  `secret_string`：这是一个`char*`类型的指针，指向字符串"PANCAKE"。
@@ -58,17 +47,12 @@ void vulnerable() {
 
 ## 用户输入与漏洞触发
 
-![](img/9f80d669b7ca2f2957c2b5e8bfcb1836_13.png)
 
-![](img/9f80d669b7ca2f2957c2b5e8bfcb1836_14.png)
 
 程序接下来允许用户（或攻击者）向`buff`缓冲区写入最多64个字节的任意数据。然后，程序会以`buff`作为第一个参数调用`printf`函数。
 
-![](img/9f80d669b7ca2f2957c2b5e8bfcb1836_15.png)
 
-![](img/9f80d669b7ca2f2957c2b5e8bfcb1836_16.png)
 
-![](img/9f80d669b7ca2f2957c2b5e8bfcb1836_17.png)
 
 ```c
 // 模拟用户输入操作，例如使用 gets(buff) 或 scanf
@@ -108,21 +92,15 @@ printf(buff); // 攻击者可以控制buff的内容
 | ... (更低地址) ...  |
 ```
 
-![](img/9f80d669b7ca2f2957c2b5e8bfcb1836_19.png)
 
 **关键点**：`printf`函数期望其第一个参数（格式化字符串）之后的内存位置（即栈上的更高地址处）对应着格式说明符（如`%s`， `%x`， `%n`）所需要的参数。然而，在本例中，我们只传递了一个参数（`buff`的地址）。当`printf`解析`buff`中的内容时，它会将栈上“下一个”位置（即`secret_number`所在的位置）的数据当作第一个格式说明符的参数，将再下一个位置（即`secret_string`所在的位置）当作第二个格式说明符的参数，依此类推。
 
-![](img/9f80d669b7ca2f2957c2b5e8bfcb1836_20.png)
 
-![](img/9f80d669b7ca2f2957c2b5e8bfcb1836_21.png)
 
-![](img/9f80d669b7ca2f2957c2b5e8bfcb1836_22.png)
 
 ## 总结
 
-![](img/9f80d669b7ca2f2957c2b5e8bfcb1836_23.png)
 
-![](img/9f80d669b7ca2f2957c2b5e8bfcb1836_24.png)
 
 ![](img/9f80d669b7ca2f2957c2b5e8bfcb1836_25.png)
 

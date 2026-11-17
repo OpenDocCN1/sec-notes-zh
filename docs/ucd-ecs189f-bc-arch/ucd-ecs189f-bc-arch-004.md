@@ -22,7 +22,6 @@
 
 上一节我们介绍了项目的整体目标，本节中我们来看看实现这个目标所需的技术栈和开发环境。
 
-![](img/42765643d30b926b61467dd8d1f5adec_10.png)
 
 ![](img/42765643d30b926b61467dd8d1f5adec_12.png)
 
@@ -152,9 +151,7 @@ truffle migrate --reset
 
 ![](img/42765643d30b926b61467dd8d1f5adec_36.png)
 
-![](img/42765643d30b926b61467dd8d1f5adec_38.png)
 
-![](img/42765643d30b926b61467dd8d1f5adec_40.png)
 
 ![](img/42765643d30b926b61467dd8d1f5adec_42.png)
 

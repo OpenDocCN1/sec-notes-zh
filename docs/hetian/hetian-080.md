@@ -4,45 +4,32 @@
 
 ![](img/a6be19247068b456aa8c71b93958e237_2.png)
 
-![](img/a6be19247068b456aa8c71b93958e237_4.png)
 
-![](img/a6be19247068b456aa8c71b93958e237_5.png)
 
 ![](img/a6be19247068b456aa8c71b93958e237_7.png)
 
-![](img/a6be19247068b456aa8c71b93958e237_9.png)
 
 在本节课中，我们将学习内网横向移动的几种核心方法，包括使用smbexec、psexec、wmiexec以及sharpRDP等工具。我们将深入探讨这些工具的原理、使用方法，以及在Metasploit（MSF）和Cobalt Strike（CS）平台下的具体操作。课程内容旨在让初学者能够理解并掌握这些技术。
 
 ![](img/a6be19247068b456aa8c71b93958e237_11.png)
 
-![](img/a6be19247068b456aa8c71b93958e237_13.png)
 
 ![](img/a6be19247068b456aa8c71b93958e237_15.png)
 
-![](img/a6be19247068b456aa8c71b93958e237_16.png)
 
-![](img/a6be19247068b456aa8c71b93958e237_17.png)
 
 ![](img/a6be19247068b456aa8c71b93958e237_18.png)
 
-![](img/a6be19247068b456aa8c71b93958e237_19.png)
 
-![](img/a6be19247068b456aa8c71b93958e237_20.png)
 
 ---
 
-![](img/a6be19247068b456aa8c71b93958e237_21.png)
 
 ![](img/a6be19247068b456aa8c71b93958e237_22.png)
 
-![](img/a6be19247068b456aa8c71b93958e237_24.png)
 
-![](img/a6be19247068b456aa8c71b93958e237_26.png)
 
-![](img/a6be19247068b456aa8c71b93958e237_28.png)
 
-![](img/a6be19247068b456aa8c71b93958e237_29.png)
 
 ## 1. WMIExec脚本使用回顾 🔄
 
@@ -68,7 +55,6 @@ python wmiexec.py 域名/用户名:密码@目标IP "执行的命令"
 
 ![](img/a6be19247068b456aa8c71b93958e237_31.png)
 
-![](img/a6be19247068b456aa8c71b93958e237_33.png)
 
 ![](img/a6be19247068b456aa8c71b93958e237_35.png)
 
@@ -127,7 +113,6 @@ Token（令牌）是Windows系统中权限访问控制的核心。掌握Token窃
 
 ![](img/a6be19247068b456aa8c71b93958e237_64.png)
 
-![](img/a6be19247068b456aa8c71b93958e237_66.png)
 
 ### 3.1 Token简介
 Windows主要有两种令牌：
@@ -149,7 +134,6 @@ Windows主要有两种令牌：
 ### 3.2 在MSF中进行Token窃取
 MSF集成了`incognito`模块来实现Token窃取。以下是基本使用步骤：
 
-![](img/a6be19247068b456aa8c71b93958e237_78.png)
 
 首先，加载模块并查看帮助：
 ```
@@ -195,23 +179,18 @@ help incognito
 
 ![](img/a6be19247068b456aa8c71b93958e237_89.png)
 
-![](img/a6be19247068b456aa8c71b93958e237_91.png)
 
-![](img/a6be19247068b456aa8c71b93958e237_92.png)
 
 以下是进行主机探测的步骤：
 1.  使用 `portscan` 功能对目标网段进行扫描（如使用ARP扫描方式），探测存活主机及开放端口（如445， 3389）。
 2.  扫描结果会在 `Targets` 视图中列出，已获得会话的主机会加粗显示。
 
-![](img/a6be19247068b456aa8c71b93958e237_93.png)
 
 ![](img/a6be19247068b456aa8c71b93958e237_95.png)
 
 ![](img/a6be19247068b456aa8c71b93958e237_96.png)
 
-![](img/a6be19247068b456aa8c71b93958e237_98.png)
 
-![](img/a6be19247068b456aa8c71b93958e237_100.png)
 
 ![](img/a6be19247068b456aa8c71b93958e237_102.png)
 
@@ -220,7 +199,6 @@ help incognito
 
 ![](img/a6be19247068b456aa8c71b93958e237_104.png)
 
-![](img/a6be19247068b456aa8c71b93958e237_106.png)
 
 ![](img/a6be19247068b456aa8c71b93958e237_108.png)
 
@@ -235,7 +213,6 @@ help incognito
 ### 4.3 在CS中进行Token窃取
 CS同样支持Token窃取，通常需要上传`incognito`等工具到目标主机执行。
 
-![](img/a6be19247068b456aa8c71b93958e237_112.png)
 
 ![](img/a6be19247068b456aa8c71b93958e237_114.png)
 
@@ -245,9 +222,7 @@ CS同样支持Token窃取，通常需要上传`incognito`等工具到目标主�
 *   **窃取令牌**：`steal_token [PID]` （需先通过 `ps` 命令查看进程PID）
 *   **令牌清除**：`rev2self`
 
-![](img/a6be19247068b456aa8c71b93958e237_116.png)
 
-![](img/a6be19247068b456aa8c71b93958e237_117.png)
 
 ![](img/a6be19247068b456aa8c71b93958e237_118.png)
 
@@ -275,9 +250,7 @@ CS同样支持Token窃取，通常需要上传`incognito`等工具到目标主�
 
 ![](img/a6be19247068b456aa8c71b93958e237_134.png)
 
-![](img/a6be19247068b456aa8c71b93958e237_136.png)
 
-![](img/a6be19247068b456aa8c71b93958e237_138.png)
 
 SharpRDP是一个利用远程桌面协议（RDP）进行身份验证后命令执行的工具。它提供了一种横向移动的替代方法。
 
@@ -286,7 +259,6 @@ SharpRDP是一个利用远程桌面协议（RDP）进行身份验证后命令执
 SharpRDP.exe computername=目标IP command="执行命令" username=域名\用户 password=密码
 ```
 
-![](img/a6be19247068b456aa8c71b93958e237_140.png)
 
 **使用示例**：
 我们可以将`command`参数设置为反弹Shell的命令（例如通过PowerShell或mshta加载CS的Payload），从而在目标主机上执行并获得会话。需要注意的是，该工具本身不提供回显，主要用于在远程主机上执行命令。
@@ -314,11 +286,9 @@ SharpRDP.exe computername=目标IP command="执行命令" username=域名\用户
 
 ---
 
-![](img/a6be19247068b456aa8c71b93958e237_154.png)
 
 ![](img/a6be19247068b456aa8c71b93958e237_156.png)
 
-![](img/a6be19247068b456aa8c71b93958e237_158.png)
 
 ![](img/a6be19247068b456aa8c71b93958e237_160.png)
 

@@ -14,7 +14,6 @@
 
 ![](img/5efacfc93be64dbf29ec67aeac91fecd_11.png)
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_13.png)
 
 ![](img/5efacfc93be64dbf29ec67aeac91fecd_15.png)
 
@@ -24,7 +23,6 @@
 
 ![](img/5efacfc93be64dbf29ec67aeac91fecd_19.png)
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_21.png)
 
 ![](img/5efacfc93be64dbf29ec67aeac91fecd_23.png)
 
@@ -32,7 +30,6 @@
 
 ![](img/5efacfc93be64dbf29ec67aeac91fecd_25.png)
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_27.png)
 
 ![](img/5efacfc93be64dbf29ec67aeac91fecd_29.png)
 
@@ -76,7 +73,6 @@ XML是一种类似于JSON的数据传输和存储格式。它的设计初衷是�
 
 与JSON相比，XML的结构看起来更复杂，这也是其市场份额逐渐被JSON取代的原因之一。然而，许多遗留系统和特定场景仍在使用XML。
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_53.png)
 
 ---
 
@@ -102,31 +98,21 @@ XXE漏洞的产生源于应用程序在解析XML数据时，未对外部实体�
 3.  如果XML数据中包含类似`<!ENTITY xxe SYSTEM "file:///etc/passwd">`的声明，解析器可能会尝试读取指定文件。
 4.  若读取的内容被应用程序输出（回显），则攻击者可以直接看到文件内容。
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_67.png)
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_69.png)
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_71.png)
 
 上一节我们介绍了XML的基本概念，本节中我们来看看XXE漏洞是如何具体产生的。
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_73.png)
 
 ---
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_75.png)
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_77.png)
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_79.png)
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_81.png)
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_83.png)
 
 ## 有回显的XXE攻击 🎯
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_85.png)
 
 ![](img/5efacfc93be64dbf29ec67aeac91fecd_87.png)
 
@@ -154,28 +140,19 @@ XXE漏洞的产生源于应用程序在解析XML数据时，未对外部实体�
 
 上述Payload定义了一个名为`xxe`的外部实体，其内容为`d:/1.txt`文件。在`<username>`标签中引用该实体`&xxe;`，当服务器解析XML时，就会用文件内容替换该实体引用。如果`<username>`的值被回显，攻击者就能看到文件内容。
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_97.png)
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_99.png)
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_101.png)
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_103.png)
 
 **黑盒测试关注点：**
 *   **HTTP请求头：** 观察`Content-Type`是否为`application/xml`或`text/xml`。
 *   **请求体格式：** 请求体数据是否为XML结构。
 *   满足以上任意一点，即可尝试注入XXE Payload进行测试。
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_105.png)
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_107.png)
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_109.png)
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_111.png)
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_113.png)
 
 ![](img/5efacfc93be64dbf29ec67aeac91fecd_115.png)
 
@@ -185,9 +162,7 @@ XXE漏洞的产生源于应用程序在解析XML数据时，未对外部实体�
 
 ![](img/5efacfc93be64dbf29ec67aeac91fecd_119.png)
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_121.png)
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_123.png)
 
 ![](img/5efacfc93be64dbf29ec67aeac91fecd_125.png)
 
@@ -199,9 +174,7 @@ XXE漏洞的产生源于应用程序在解析XML数据时，未对外部实体�
 
 在实际环境中，很多漏洞点并没有直接的回显。这时，我们需要使用“带外”（Out-Of-Band, OOB）技术来检测和利用漏洞，也称为XXE盲注。
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_131.png)
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_133.png)
 
 ![](img/5efacfc93be64dbf29ec67aeac91fecd_135.png)
 
@@ -273,11 +246,9 @@ XXE漏洞的产生源于应用程序在解析XML数据时，未对外部实体�
 
 ![](img/5efacfc93be64dbf29ec67aeac91fecd_153.png)
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_155.png)
 
 这样，`/etc/passwd`文件经过Base64编码后，会作为URL参数`data`的值发送到我们的服务器，从而实现无回显的文件读取。
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_157.png)
 
 ![](img/5efacfc93be64dbf29ec67aeac91fecd_159.png)
 
@@ -338,21 +309,17 @@ XXE漏洞的产生源于应用程序在解析XML数据时，未对外部实体�
 
 ![](img/5efacfc93be64dbf29ec67aeac91fecd_189.png)
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_191.png)
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_192.png)
 
 ---
 
 ![](img/5efacfc93be64dbf29ec67aeac91fecd_194.png)
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_195.png)
 
 ## 实战案例与技巧 🛠️
 
 ![](img/5efacfc93be64dbf29ec67aeac91fecd_197.png)
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_199.png)
 
 ![](img/5efacfc93be64dbf29ec67aeac91fecd_200.png)
 
@@ -368,7 +335,6 @@ XXE漏洞的产生源于应用程序在解析XML数据时，未对外部实体�
 
 ![](img/5efacfc93be64dbf29ec67aeac91fecd_206.png)
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_208.png)
 
 ![](img/5efacfc93be64dbf29ec67aeac91fecd_210.png)
 
@@ -393,13 +359,11 @@ XXE漏洞的产生源于应用程序在解析XML数据时，未对外部实体�
 
 ![](img/5efacfc93be64dbf29ec67aeac91fecd_220.png)
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_222.png)
 
 ![](img/5efacfc93be64dbf29ec67aeac91fecd_224.png)
 
 修复XXE漏洞的根本方法是禁用XML解析器对外部实体的解析能力。
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_226.png)
 
 ![](img/5efacfc93be64dbf29ec67aeac91fecd_228.png)
 
@@ -423,7 +387,6 @@ XXE漏洞的产生源于应用程序在解析XML数据时，未对外部实体�
 
 ---
 
-![](img/5efacfc93be64dbf29ec67aeac91fecd_236.png)
 
 ![](img/5efacfc93be64dbf29ec67aeac91fecd_238.png)
 

@@ -1,6 +1,5 @@
 # 034：应用程序安全
 
-![](img/c0b2484cb19463ddc9e4af8a4e849457_0.png)
 
 ![](img/c0b2484cb19463ddc9e4af8a4e849457_0.png)
 

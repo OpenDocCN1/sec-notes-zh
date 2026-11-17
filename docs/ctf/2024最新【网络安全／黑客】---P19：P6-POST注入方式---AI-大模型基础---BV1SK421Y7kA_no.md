@@ -1,8 +1,6 @@
 网络安全入门到精通：P6：POST注入方式 🎯
 
-![](img/9f1e78c3cb0ea11645aac01c41b800e5_0.png)
 
-![](img/9f1e78c3cb0ea11645aac01c41b800e5_2.png)
 
 ![](img/9f1e78c3cb0ea11645aac01c41b800e5_3.png)
 
@@ -20,9 +18,7 @@ POST注入与GET注入的核心攻击原理相同，都是通过构造恶意SQL�
 
 ![](img/9f1e78c3cb0ea11645aac01c41b800e5_6.png)
 
-![](img/9f1e78c3cb0ea11645aac01c41b800e5_8.png)
 
-![](img/9f1e78c3cb0ea11645aac01c41b800e5_10.png)
 
 ### POST注入实战演示
 我们将在一个已知存在SQL注入漏洞的POST请求登录框中进行演示。
@@ -40,9 +36,7 @@ POST注入与GET注入的核心攻击原理相同，都是通过构造恶意SQL�
 *   如果页面正常显示，则可能存在注入点。
 *   接着输入 `admin' and 1=2 -- `，若页面显示异常（如登录失败、无数据），则基本确认存在SQL注入漏洞。
 
-![](img/9f1e78c3cb0ea11645aac01c41b800e5_19.png)
 
-![](img/9f1e78c3cb0ea11645aac01c41b800e5_21.png)
 
 **核心概念**：通过构造 `and 1=1`（恒真）和 `and 1=2`（恒假）的SQL片段，观察页面返回差异来判断是否存在注入点。
 
@@ -50,9 +44,7 @@ POST注入与GET注入的核心攻击原理相同，都是通过构造恶意SQL�
 
 ![](img/9f1e78c3cb0ea11645aac01c41b800e5_25.png)
 
-![](img/9f1e78c3cb0ea11645aac01c41b800e5_27.png)
 
-![](img/9f1e78c3cb0ea11645aac01c41b800e5_29.png)
 
 #### 第二步：判断字段数
 使用 `order by` 子句来判断当前查询语句的字段数量。
@@ -111,7 +103,6 @@ POST注入与GET注入的核心攻击原理相同，都是通过构造恶意SQL�
 
 ![](img/9f1e78c3cb0ea11645aac01c41b800e5_40.png)
 
-![](img/9f1e78c3cb0ea11645aac01c41b800e5_41.png)
 
 ![](img/9f1e78c3cb0ea11645aac01c41b800e5_43.png)
 

@@ -1,6 +1,5 @@
 # 044：欢迎Nasir Memon教授
 
-![](img/c2002193a926a6c741a691d79eca6df5_0.png)
 
 ![](img/c2002193a926a6c741a691d79eca6df5_0.png)
 

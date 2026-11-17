@@ -1,8 +1,6 @@
 # Black Hat USA 2025 参会指南 🎯
 
-![](img/64bc44ffcadea7b8da3e79ed5fea4c4d_0.png)
 
-![](img/64bc44ffcadea7b8da3e79ed5fea4c4d_0.png)
 
 大家好，欢迎来到Black Hat。我是Black Hat活动的总经理Steve Wiy。
 
@@ -30,7 +28,6 @@
 
 我们祝您前往拉斯维加斯的旅途平安，并期待很快与大家见面。
 
-![](img/64bc44ffcadea7b8da3e79ed5fea4c4d_2.png)
 
 ---
 

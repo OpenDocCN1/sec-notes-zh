@@ -2,9 +2,7 @@
 
 ![](img/8bc65c26d2e77712a960f0abdc45ef0d_0.png)
 
-![](img/8bc65c26d2e77712a960f0abdc45ef0d_2.png)
 
-![](img/8bc65c26d2e77712a960f0abdc45ef0d_4.png)
 
 在本课程中，我们将学习关于Industroyer2恶意软件的知识。这是臭名昭著的Sandworm（沙虫）APT组织对乌克兰电网发起的又一次复杂网络攻击。我们将回顾其前身Industroyer，分析本次攻击事件，并探讨相关的防御策略。
 
@@ -12,7 +10,6 @@
 
 ---
 
-![](img/8bc65c26d2e77712a960f0abdc45ef0d_8.png)
 
 ## 背景与攻击组织
 
@@ -83,7 +80,6 @@ Industroyer与之前手动中断的方式不同，它是**有史以来第一个�
 
 ---
 
-![](img/8bc65c26d2e77712a960f0abdc45ef0d_22.png)
 
 ![](img/8bc65c26d2e77712a960f0abdc45ef0d_24.png)
 
@@ -137,7 +133,6 @@ IEC 104协议是电网中使用的远程控制协议，设计于几十年前，�
 
 ---
 
-![](img/8bc65c26d2e77712a960f0abdc45ef0d_36.png)
 
 ![](img/8bc65c26d2e77712a960f0abdc45ef0d_38.png)
 

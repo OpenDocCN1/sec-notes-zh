@@ -10,9 +10,7 @@
 
 ![](img/67e8f480b552bec790fc1ae259493e3d_7.png)
 
-![](img/67e8f480b552bec790fc1ae259493e3d_9.png)
 
-![](img/67e8f480b552bec790fc1ae259493e3d_11.png)
 
 ![](img/67e8f480b552bec790fc1ae259493e3d_12.png)
 
@@ -26,7 +24,6 @@
 
 ![](img/67e8f480b552bec790fc1ae259493e3d_20.png)
 
-![](img/67e8f480b552bec790fc1ae259493e3d_22.png)
 
 ## 📋 环境配置与问题解答
 
@@ -36,11 +33,9 @@
 
 ![](img/67e8f480b552bec790fc1ae259493e3d_26.png)
 
-![](img/67e8f480b552bec790fc1ae259493e3d_28.png)
 
 为了顺利进行后续的靶场实操，需要确保PHPStudy环境配置正确。以下是关键配置步骤：
 
-![](img/67e8f480b552bec790fc1ae259493e3d_30.png)
 
 ![](img/67e8f480b552bec790fc1ae259493e3d_32.png)
 
@@ -60,21 +55,17 @@
 
 > **注意**：课程提供的靶场压缩包已预先完成上述配置，建议直接使用，以避免环境问题。
 
-![](img/67e8f480b552bec790fc1ae259493e3d_39.png)
 
-![](img/67e8f480b552bec790fc1ae259493e3d_41.png)
 
 ![](img/67e8f480b552bec790fc1ae259493e3d_43.png)
 
 ---
 
-![](img/67e8f480b552bec790fc1ae259493e3d_45.png)
 
 ## 🔍 靶场关卡实操与原理分析
 
 ![](img/67e8f480b552bec790fc1ae259493e3d_47.png)
 
-![](img/67e8f480b552bec790fc1ae259493e3d_48.png)
 
 ![](img/67e8f480b552bec790fc1ae259493e3d_49.png)
 
@@ -86,17 +77,14 @@
 
 ![](img/67e8f480b552bec790fc1ae259493e3d_55.png)
 
-![](img/67e8f480b552bec790fc1ae259493e3d_57.png)
 
 ### 第1关：前端JS检测绕过
 
-![](img/67e8f480b552bec790fc1ae259493e3d_59.png)
 
 ![](img/67e8f480b552bec790fc1ae259493e3d_61.png)
 
 ![](img/67e8f480b552bec790fc1ae259493e3d_63.png)
 
-![](img/67e8f480b552bec790fc1ae259493e3d_65.png)
 
 本关主要考察对前端JavaScript检测的绕过。网站通过JS代码在客户端检查文件后缀，若不符合白名单则阻止上传。
 
@@ -148,15 +136,11 @@ function checkFile() {
 
 ### 第2关：MIME类型检测绕过
 
-![](img/67e8f480b552bec790fc1ae259493e3d_83.png)
 
-![](img/67e8f480b552bec790fc1ae259493e3d_85.png)
 
 本关服务端通过检查HTTP请求头中的 `Content-Type` 字段来验证文件类型。
 
-![](img/67e8f480b552bec790fc1ae259493e3d_87.png)
 
-![](img/67e8f480b552bec790fc1ae259493e3d_89.png)
 
 ![](img/67e8f480b552bec790fc1ae259493e3d_91.png)
 
@@ -204,7 +188,6 @@ if (($_FILES['upload_file']['type'] == 'image/jpeg') || ($_FILES['upload_file'][
 
 ![](img/67e8f480b552bec790fc1ae259493e3d_99.png)
 
-![](img/67e8f480b552bec790fc1ae259493e3d_101.png)
 
 **有效绕过方法**：
 利用黑名单未包含的其他可解析后缀。例如，在特定服务器配置下，`.php3`, `.phtml`, `.phps` 等后缀同样会被当作PHP文件执行。上传 `shell.phtml` 即可绕过。
@@ -253,15 +236,11 @@ if (!in_array($file_ext, $deny_ext)) {
 
 ---
 
-![](img/67e8f480b552bec790fc1ae259493e3d_128.png)
 
-![](img/67e8f480b552bec790fc1ae259493e3d_130.png)
 
-![](img/67e8f480b552bec790fc1ae259493e3d_132.png)
 
 ![](img/67e8f480b552bec790fc1ae259493e3d_134.png)
 
-![](img/67e8f480b552bec790fc1ae259493e3d_136.png)
 
 ### 第4关：黑名单过滤（.htaccess文件利用）
 
@@ -271,7 +250,6 @@ if (!in_array($file_ext, $deny_ext)) {
 
 本关黑名单更加全面，包含了 `.php3`, `.phtml` 等常见变种。此时，可以尝试利用Apache的分布式配置文件 `.htaccess` 来重新定义解析规则。
 
-![](img/67e8f480b552bec790fc1ae259493e3d_142.png)
 
 ![](img/67e8f480b552bec790fc1ae259493e3d_144.png)
 
@@ -291,7 +269,6 @@ if (!in_array($file_ext, $deny_ext)) {
 
 ![](img/67e8f480b552bec790fc1ae259493e3d_146.png)
 
-![](img/67e8f480b552bec790fc1ae259493e3d_148.png)
 
 ![](img/67e8f480b552bec790fc1ae259493e3d_150.png)
 
@@ -301,7 +278,6 @@ if (!in_array($file_ext, $deny_ext)) {
 
 本关过滤了 `.htaccess` 文件的上传，但我们可以利用Windows系统的文件命名特性。
 
-![](img/67e8f480b552bec790fc1ae259493e3d_152.png)
 
 **绕过方法**：
 构造一个特殊的文件名，例如 `shell.php. .`（点+空格+点）。
@@ -314,7 +290,6 @@ if (!in_array($file_ext, $deny_ext)) {
 
 ![](img/67e8f480b552bec790fc1ae259493e3d_154.png)
 
-![](img/67e8f480b552bec790fc1ae259493e3d_156.png)
 
 ---
 
@@ -339,9 +314,7 @@ if (!in_array($file_ext, $deny_ext)) {
 
 ![](img/67e8f480b552bec790fc1ae259493e3d_166.png)
 
-![](img/67e8f480b552bec790fc1ae259493e3d_168.png)
 
-![](img/67e8f480b552bec790fc1ae259493e3d_170.png)
 
 ![](img/67e8f480b552bec790fc1ae259493e3d_172.png)
 
@@ -353,9 +326,7 @@ if (!in_array($file_ext, $deny_ext)) {
 
 ![](img/67e8f480b552bec790fc1ae259493e3d_174.png)
 
-![](img/67e8f480b552bec790fc1ae259493e3d_176.png)
 
-![](img/67e8f480b552bec790fc1ae259493e3d_177.png)
 
 **第12关（GET型截断）**：
 1.  正常上传一个图片，用Burp抓包。
@@ -389,7 +360,6 @@ if (!in_array($file_ext, $deny_ext)) {
 
 **绕过方法**：在PHP木马文件的开头，添加对应的图片文件头。例如，制作一个内容为 `GIF89a<?php phpinfo();?>` 的文件，并命名为 `shell.gif`。上传时，文件头检测通过，但后缀仍需通过其他方式（如配合文件包含漏洞）才能解析。
 
-![](img/67e8f480b552bec790fc1ae259493e3d_185.png)
 
 ![](img/67e8f480b552bec790fc1ae259493e3d_187.png)
 
@@ -456,7 +426,6 @@ PHP的 `getimagesize()` 函数会读取图片的尺寸等信息，如果不是�
 
 ---
 
-![](img/67e8f480b552bec790fc1ae259493e3d_225.png)
 
 ## 📝 总结与考核预告
 
@@ -483,7 +452,6 @@ PHP的 `getimagesize()` 函数会读取图片的尺寸等信息，如果不是�
 
 **下节课预告**：下周将进行文件上传漏洞的实战考核。我们将在综合靶机环境中，对多个存在上传漏洞的CMS系统进行实战攻击。请大家提前尝试，将遇到的问题带到课堂，我们共同讨论解决。
 
-![](img/67e8f480b552bec790fc1ae259493e3d_239.png)
 
 ![](img/67e8f480b552bec790fc1ae259493e3d_241.png)
 

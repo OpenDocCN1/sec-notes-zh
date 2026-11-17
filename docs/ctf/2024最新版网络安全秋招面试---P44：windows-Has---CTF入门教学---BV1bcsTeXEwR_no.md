@@ -94,7 +94,6 @@ Windows身份认证主要分为三种方式：
 
 ## NTLM哈希的加密与解密演示 🧪
 
-![](img/c62cf0de17be9a400b12d6c5f659fc48_11.png)
 
 了解理论后，我们通过Python进行一个简单的NTLM哈希加密解密演示，直观感受其过程。
 
@@ -113,17 +112,12 @@ from passlib.hash import nthash
 print(nthash.hash("hello"))
 ```
 
-![](img/c62cf0de17be9a400b12d6c5f659fc48_13.png)
 
-![](img/c62cf0de17be9a400b12d6c5f659fc48_14.png)
 
 执行后会输出一串哈希值，例如：`6f6e0b4c4b8e0c6f6e0b4c4b8e0c6f6e`。这就是“hello”的NTLM哈希值。
 
-![](img/c62cf0de17be9a400b12d6c5f659fc48_15.png)
 
-![](img/c62cf0de17be9a400b12d6c5f659fc48_16.png)
 
-![](img/c62cf0de17be9a400b12d6c5f659fc48_17.png)
 
 **步骤3：尝试在线解密**
 我们可以使用在线哈希解密网站（如 `cmd5.com`）尝试破解。将上一步得到的哈希值粘贴到网站搜索框，网站会自动识别哈希类型（NTLM）并尝试反向查询。对于简单密码，很可能查询到原文“hello”。
@@ -132,11 +126,9 @@ print(nthash.hash("hello"))
 
 ## 本地认证流程回顾 🔄
 
-![](img/c62cf0de17be9a400b12d6c5f659fc48_19.png)
 
 现在，让我们结合新学的哈希知识，回顾本地认证的完整流程：
 
-![](img/c62cf0de17be9a400b12d6c5f659fc48_21.png)
 
 1.  用户在登录界面输入用户名和密码。
 2.  系统接收密码后，由 `lsass.exe` 进程将其计算成NTLM哈希值。

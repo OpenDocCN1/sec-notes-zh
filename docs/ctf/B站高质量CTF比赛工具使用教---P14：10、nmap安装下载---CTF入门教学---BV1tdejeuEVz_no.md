@@ -14,7 +14,6 @@ Nmap支持多种平台，包括Windows、macOS和Linux。其主要运行方式�
 
 ## Nmap的安装方式 💾
 
-![](img/913324d299e52c0bfceabced61bd2583_1.png)
 
 了解了Nmap的基本概念后，接下来我们看看如何在不同的操作系统上安装它。
 
@@ -31,19 +30,15 @@ Nmap支持多种平台，包括Windows、macOS和Linux。其主要运行方式�
     *   等待安装完成，点击“完成”。
 4.  **验证安装**：安装成功后，桌面会生成Nmap的快捷方式。双击即可打开图形化界面（Zenmap）。同时，你也可以打开命令提示符（CMD），输入 `nmap` 命令来启动命令行工具。
 
-![](img/913324d299e52c0bfceabced61bd2583_3.png)
 
 ### Linux系统安装
 
 在基于Debian的Linux发行版（如Kali Linux）中，安装Nmap非常简单，因为其通常已预装或可通过包管理器直接安装。
 
-![](img/913324d299e52c0bfceabced61bd2583_5.png)
 
-![](img/913324d299e52c0bfceabced61bd2583_6.png)
 
 打开终端，输入以下命令进行安装或验证：
 
-![](img/913324d299e52c0bfceabced61bd2583_8.png)
 
 ```bash
 # 对于已预装Nmap的系统（如Kali），直接运行即可
@@ -54,7 +49,6 @@ sudo apt install nmap
 ```
 运行 `nmap` 命令后，终端会显示Nmap的版本信息和使用帮助，这表明安装成功。
 
-![](img/913324d299e52c0bfceabced61bd2583_10.png)
 
 ### macOS系统安装
 

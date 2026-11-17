@@ -8,7 +8,6 @@
 
 在本节课中，我们将学习沙箱逃逸（Sandbox Escapes）这一主题。沙箱是一种安全机制，用于隔离运行程序，限制其对系统资源的访问。然而，攻击者有时能找到方法“逃出”沙箱的限制。我们将探讨几种关键的沙箱技术，包括 `chroot`、`seccomp` 和命名空间，并了解如何利用它们的设计特性或绕过其限制。
 
-![](img/96cca2f2ebf89308eed8ed11ce5e283b_5.png)
 
 ![](img/96cca2f2ebf89308eed8ed11ce5e283b_6.png)
 
@@ -16,7 +15,6 @@
 
 ---
 
-![](img/96cca2f2ebf89308eed8ed11ce5e283b_10.png)
 
 ## 沙箱技术核心概念
 
@@ -31,7 +29,6 @@
 int chroot(const char *path); // 系统调用，将根目录更改为 `path`
 ```
 
-![](img/96cca2f2ebf89308eed8ed11ce5e283b_12.png)
 
 然而，仅仅调用 `chroot` 并不足以创建完整的“监狱”（jail）。你通常还需要使用 `chdir(“/”)` 将当前工作目录切换到新的根目录下，否则进程可能仍能通过相对路径访问外部文件。
 
@@ -100,7 +97,6 @@ prctl(PR_SET_SECCOMP, SECCOMP_MODE_FILTER, filter); // 设置 seccomp 过滤器
 
 ![](img/96cca2f2ebf89308eed8ed11ce5e283b_43.png)
 
-![](img/96cca2f2ebf89308eed8ed11ce5e283b_45.png)
 
 程序结束时必须返回一个退出码。我们可以利用这个机制来传递信息。
 

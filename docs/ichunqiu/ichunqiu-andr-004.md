@@ -1,6 +1,5 @@
 #  004：课时4 使用JD-GUI进行代码快速阅读分析 🧰
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_1.png)
 
 在本节课中，我们将学习如何利用工具快速阅读和分析反编译后的代码，并掌握在复杂程序中定位关键代码的技巧。
 
@@ -8,34 +7,26 @@
 
 上一节我们介绍了如何将Smali代码转换为更易读的形式。然而，手动转换非常耗时。因此，本节将介绍两款能自动完成此过程的优秀工具：JD-GUI和JEB。我们还将学习如何利用日志（Logcat）在大量代码中快速定位关键点，并通过一个游戏内购破解的实例来实践这些技巧。
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_3.png)
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_4.png)
 
 ## 两款反编译工具介绍
 
 在开始分析前，我们先来认识两款能帮助我们快速阅读代码的工具。
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_6.png)
 
 ### JD-GUI：轻量级源码查看器 🖥️
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_8.png)
 
 JD-GUI是一款轻量级的Java源码查看工具。它本身并不直接进行反编译，而是依赖于`dex2jar`等工具先将Dex文件转换为Java文件，再打开查看结果。
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_10.png)
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_11.png)
 
 **特点如下：**
 *   工具小巧，使用方便。
 *   与APK文件的契合度高，通常右键点击APK选择“查看源码”即可使用。
 *   反编译出的代码可读性较强，非常接近原始Java代码。
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_13.png)
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_14.png)
 
 在JD-GUI中，你可以通过搜索类名或字符串来定位代码。例如，搜索特定方法名就能直接看到对应的反编译结果。
 
@@ -50,9 +41,7 @@ JD-GUI是一款轻量级的Java源码查看工具。它本身并不直接进行�
 
 在JEB中，你可以直接打开APK文件，它会自动进行分析和反编译。通过快捷键（如`Tab`键）可以在字节码和反编译的Java代码视图间切换。
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_16.png)
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_18.png)
 
 **建议：** 两款工具都非常优秀，建议大家都能熟悉和使用。
 
@@ -64,31 +53,21 @@ JD-GUI是一款轻量级的Java源码查看工具。它本身并不直接进行�
 
 面对反编译后的大量代码，寻找关键点主要依靠经验。例如，熟悉内购流程的开发者会知道，这种购买提示通常调用了移动运营商提供的SDK。但假设我们不了解具体实现，该如何入手呢？
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_20.png)
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_22.png)
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_23.png)
 
 这时，我们需要引入另一款强大的工具：Android Monitor（或Logcat）。
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_25.png)
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_27.png)
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_28.png)
 
 ### 利用Android Monitor监控日志
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_30.png)
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_32.png)
 
 Android Monitor是一款功能全面的安卓系统监控工具，其日志（Logcat）功能尤为有用。
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_34.png)
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_36.png)
 
 在实际开发中，开发者常会将程序关键步骤的信息打印到日志中。通过查看日志，我们很容易定位到程序执行流。
 
@@ -120,17 +99,13 @@ Android Monitor是一款功能全面的安卓系统监控工具，其日志（Lo
 1.  **修改判断逻辑**：在判断处强制让条件成立。
 2.  **直接调用成功方法**：在支付发起后，直接跳转到支付成功的处理代码。
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_38.png)
 
 ![](img/aeda791155c3ba4b4ad08e2ea3c48e65_40.png)
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_42.png)
 
 我们尝试第一种方法，找到对应的方法在Smali文件中的位置。
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_44.png)
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_45.png)
 
 ![](img/aeda791155c3ba4b4ad08e2ea3c48e65_47.png)
 
@@ -139,31 +114,21 @@ Android Monitor是一款功能全面的安卓系统监控工具，其日志（Lo
 
 ![](img/aeda791155c3ba4b4ad08e2ea3c48e65_49.png)
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_51.png)
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_53.png)
 
 **修改后，重新打包并安装APK进行测试。** 如果修改正确，触发购买时会直接成功，不再弹出支付框。
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_55.png)
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_57.png)
 
 **重要提示：** 修改Smali代码必须非常小心。任何细微的错误都可能导致程序编译失败、运行时崩溃或验证出错。因此，熟练掌握Smali语法至关重要。
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_59.png)
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_60.png)
 
 ## 两种调试方法的回顾与对比 🐛
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_62.png)
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_64.png)
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_65.png)
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_67.png)
 
 在之前的课程中，我们介绍了两种调试方法。现在我们来回顾并对比它们的差异。
 
@@ -181,7 +146,6 @@ Android Monitor是一款功能全面的安卓系统监控工具，其日志（Lo
 
 ![](img/aeda791155c3ba4b4ad08e2ea3c48e65_72.png)
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_74.png)
 
 **方法二（插件/工具直接附加）：**
 1.  在JEB或某些插件中直接附加（Attach）到正在运行的进程。
@@ -189,11 +153,8 @@ Android Monitor是一款功能全面的安卓系统监控工具，其日志（Lo
 **优点：** 操作快捷方便。
 **缺点：** 通常只能进行只读的调试和分析，修改代码或寄存器值的能力可能有限。
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_76.png)
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_78.png)
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_80.png)
 
 两种方法各有适用场景。方法一虽然步骤多，但功能更强大，尤其在需要动态修改数据时；方法二则适合快速查看和分析程序逻辑。
 
@@ -201,11 +162,9 @@ Android Monitor是一款功能全面的安卓系统监控工具，其日志（Lo
 
 ![](img/aeda791155c3ba4b4ad08e2ea3c48e65_84.png)
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_85.png)
 
 ## 总结
 
-![](img/aeda791155c3ba4b4ad08e2ea3c48e65_87.png)
 
 本节课我们一起学习了以下内容：
 1.  **工具使用**：介绍了JD-GUI和JEB两款反编译工具，用于快速阅读和分析代码。

@@ -1,6 +1,5 @@
 # 037：课程概述与学习资源 📚
 
-![](img/21da3ac0987903f43a7af74e7fb0d16f_0.png)
 
 ![](img/21da3ac0987903f43a7af74e7fb0d16f_1.png)
 

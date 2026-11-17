@@ -21,7 +21,6 @@
 
 接下来，我们详细介绍如何使用Docker来启动DVWA靶场。请确保你的系统已经安装了Docker。
 
-![](img/ddcb2dc47bbe3c98954c6257b30e6440_1.png)
 
 执行以下命令来拉取DVWA镜像并启动一个容器：
 
@@ -35,7 +34,6 @@ docker run -d -p 2333:80 vulnerables/web-dvwa
 *   `-p 2333:80`： 进行端口映射。将容器内部的80端口映射到宿主机的2333端口。这意味着我们通过访问本机的`2333`端口就能访问到容器内的DVWA应用。
 *   `vulnerables/web-dvwa`： 这是DVWA的官方Docker镜像名称。
 
-![](img/ddcb2dc47bbe3c98954c6257b30e6440_1.png)
 
 执行命令后，Docker会从仓库拉取镜像（首次运行需要一些时间），然后启动容器。你可以使用以下命令查看正在运行的容器：
 
@@ -47,7 +45,6 @@ docker ps
 
 ---
 
-![](img/ddcb2dc47bbe3c98954c6257b30e6440_3.png)
 
 ## 初始化与访问靶场
 
@@ -56,13 +53,10 @@ docker ps
 1.  打开浏览器，访问地址：`http://localhost:2333` 或 `http://你的服务器IP:2333`。
 2.  页面加载后，你会看到DVWA的安装界面。首先需要点击 **“Create / Reset Database”** 按钮来初始化数据库。因为这是一个全新的环境，数据库尚未建立。
 
-![](img/ddcb2dc47bbe3c98954c6257b30e6440_3.png)
 
-![](img/ddcb2dc47bbe3c98954c6257b30e6440_5.png)
 
 3.  数据库创建成功后，页面会自动跳转到登录界面。
 
-![](img/ddcb2dc47bbe3c98954c6257b30e6440_6.png)
 
 ![](img/ddcb2dc47bbe3c98954c6257b30e6440_5.png)
 
@@ -82,7 +76,6 @@ DVWA提供了默认的登录凭证：
 
 在左侧菜单栏找到并点击 **“DVWA Security”**。
 
-![](img/ddcb2dc47bbe3c98954c6257b30e6440_8.png)
 
 你会看到 **“Security Level”** 选项，它默认设置为 **“Impossible”**。DVWA提供了四种安全等级：
 *   **Low**： 安全防护极低，漏洞利用非常简单。

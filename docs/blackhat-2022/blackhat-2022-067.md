@@ -4,7 +4,6 @@
 
 ![](img/f88d78632b7fd672a0c10e3779b4c245_2.png)
 
-![](img/f88d78632b7fd672a0c10e3779b4c245_4.png)
 
 ![](img/f88d78632b7fd672a0c10e3779b4c245_6.png)
 

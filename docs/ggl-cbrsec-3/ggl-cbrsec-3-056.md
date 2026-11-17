@@ -1,6 +1,5 @@
 # 056：虚拟专用网络（VPN）
 
-![](img/0a074d201115f6c049cdedb903b5ab29_0.png)
 
 ![](img/0a074d201115f6c049cdedb903b5ab29_0.png)
 

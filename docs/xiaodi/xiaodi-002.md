@@ -1,6 +1,5 @@
 #  002：第2天 - Web架构与建站方式详解
 
-![](img/67a86e9ea94c69769dae42399aff995c_1.png)
 
 ![](img/67a86e9ea94c69769dae42399aff995c_3.png)
 
@@ -42,7 +41,6 @@
 
 ![](img/67a86e9ea94c69769dae42399aff995c_29.png)
 
-![](img/67a86e9ea94c69769dae42399aff995c_31.png)
 
 ![](img/67a86e9ea94c69769dae42399aff995c_33.png)
 
@@ -66,22 +64,17 @@
 
 ![](img/67a86e9ea94c69769dae42399aff995c_47.png)
 
-![](img/67a86e9ea94c69769dae42399aff995c_49.png)
 
 ![](img/67a86e9ea94c69769dae42399aff995c_50.png)
 
-![](img/67a86e9ea94c69769dae42399aff995c_52.png)
 
 **核心概念公式**：
 `前端 (JS框架) <-- API (JSON/XML) --> 后端 (PHP/Java/Python等)`
 
 ![](img/67a86e9ea94c69769dae42399aff995c_54.png)
 
-![](img/67a86e9ea94c69769dae42399aff995c_56.png)
 
-![](img/67a86e9ea94c69769dae42399aff995c_58.png)
 
-![](img/67a86e9ea94c69769dae42399aff995c_60.png)
 
 ### 🔍 对安全测试的影响
 
@@ -119,7 +112,6 @@
 2.  **后台地址隐蔽**：后端管理地址可能与前端主站域名完全不同（例如，`admin.another-domain.com`），传统的目录扫描方法可能无法发现真实后台。
 3.  **攻击面转移**：安全测试的重点应放在**后端API接口**上。漏洞可能存在于API的身份验证、参数处理、业务逻辑等方面。即使通过前端漏洞获取了部分权限，也可能无法直接影响后端服务器或数据库。
 
-![](img/67a86e9ea94c69769dae42399aff995c_90.png)
 
 ![](img/67a86e9ea94c69769dae42399aff995c_92.png)
 
@@ -129,9 +121,7 @@
 
 ![](img/67a86e9ea94c69769dae42399aff995c_97.png)
 
-![](img/67a86e9ea94c69769dae42399aff995c_99.png)
 
-![](img/67a86e9ea94c69769dae42399aff995c_101.png)
 
 ![](img/67a86e9ea94c69769dae42399aff995c_103.png)
 
@@ -147,9 +137,7 @@
 
 ![](img/67a86e9ea94c69769dae42399aff995c_113.png)
 
-![](img/67a86e9ea94c69769dae42399aff995c_115.png)
 
-![](img/67a86e9ea94c69769dae42399aff995c_117.png)
 
 ![](img/67a86e9ea94c69769dae42399aff995c_119.png)
 
@@ -175,15 +163,11 @@
 
 这类方式使用集成的环境软件（如宝塔面板、PHPStudy）来快速搭建网站环境。其原理是：**软件将Web服务器（如Apache/Nginx）、数据库（如MySQL）、编程语言环境（如PHP）等打包，提供图形化界面进行一键安装和管理**。
 
-![](img/67a86e9ea94c69769dae42399aff995c_139.png)
 
-![](img/67a86e9ea94c69769dae42399aff995c_141.png)
 
-![](img/67a86e9ea94c69769dae42399aff995c_143.png)
 
 ![](img/67a86e9ea94c69769dae42399aff995c_145.png)
 
-![](img/67a86e9ea94c69769dae42399aff995c_147.png)
 
 ![](img/67a86e9ea94c69769dae42399aff995c_149.png)
 
@@ -201,7 +185,6 @@
 
 ![](img/67a86e9ea94c69769dae42399aff995c_161.png)
 
-![](img/67a86e9ea94c69769dae42399aff995c_163.png)
 
 ![](img/67a86e9ea94c69769dae42399aff995c_165.png)
 
@@ -209,9 +192,7 @@
 
 ![](img/67a86e9ea94c69769dae42399aff995c_167.png)
 
-![](img/67a86e9ea94c69769dae42399aff995c_169.png)
 
-![](img/67a86e9ea94c69769dae42399aff995c_171.png)
 
 | 建站方式 | 命令执行能力 | 文件目录访问权限 | 默认用户权限 | 安全性分析 |
 | :--- | :--- | :--- | :--- | :--- |
@@ -219,7 +200,6 @@
 | **PHPStudy搭建** | **通常可以执行** | **可访问服务器其他目录** | 较高权限用户（如Administrator） | 默认安全设置较弱，获取WebShell后权限较高。 |
 | **手动安装环境（常规）** | **取决于配置** | **取决于配置** | 取决于Web服务运行账户 | 安全性完全由搭建者控制，可能很强也可能很弱。 |
 
-![](img/67a86e9ea94c69769dae42399aff995c_173.png)
 
 ![](img/67a86e9ea94c69769dae42399aff995c_175.png)
 
@@ -229,7 +209,6 @@
 
 ![](img/67a86e9ea94c69769dae42399aff995c_179.png)
 
-![](img/67a86e9ea94c69769dae42399aff995c_181.png)
 
 ![](img/67a86e9ea94c69769dae42399aff995c_183.png)
 
@@ -299,7 +278,6 @@ docker run -d -p 8080:8080 --name my_tomcat tomcat:8.0
 2.  **影响范围**：即使拿到容器内的root权限，也无法直接访问宿主机上的其他应用或敏感文件。
 3.  **新的攻击路径**：安全测试的目标可能从“获取服务器权限”转变为“实现**容器逃逸**”，即突破容器隔离，获取宿主机权限。这需要利用Docker或宿主机系统的特定漏洞。
 
-![](img/67a86e9ea94c69769dae42399aff995c_232.png)
 
 ![](img/67a86e9ea94c69769dae42399aff995c_234.png)
 
@@ -325,9 +303,7 @@ docker run -d -p 8080:8080 --name my_tomcat tomcat:8.0
 
 ![](img/67a86e9ea94c69769dae42399aff995c_248.png)
 
-![](img/67a86e9ea94c69769dae42399aff995c_250.png)
 
-![](img/67a86e9ea94c69769dae42399aff995c_252.png)
 
 ![](img/67a86e9ea94c69769dae42399aff995c_254.png)
 
@@ -341,7 +317,6 @@ docker run -d -p 8080:8080 --name my_tomcat tomcat:8.0
 2.  **测试目标偏差**：针对这类站点的渗透测试，实际上是在测试**建站平台的安全性**。如果目标是某个具体公司，那么在此类站点上花费精力可能是徒劳的。
 3.  **信息收集关键**：通过**域名Whois查询、备案信息**等手段，对比网站宣称的主体和域名注册/备案主体，可以快速识别出此类“分配站”。
 
-![](img/67a86e9ea94c69769dae42399aff995c_261.png)
 
 ![](img/67a86e9ea94c69769dae42399aff995c_263.png)
 
@@ -363,17 +338,14 @@ docker run -d -p 8080:8080 --name my_tomcat tomcat:8.0
 
 ![](img/67a86e9ea94c69769dae42399aff995c_278.png)
 
-![](img/67a86e9ea94c69769dae42399aff995c_279.png)
 
 ## 📝 课程总结
 
-![](img/67a86e9ea94c69769dae42399aff995c_281.png)
 
 ![](img/67a86e9ea94c69769dae42399aff995c_283.png)
 
 ![](img/67a86e9ea94c69769dae42399aff995c_284.png)
 
-![](img/67a86e9ea94c69769dae42399aff995c_286.png)
 
 ![](img/67a86e9ea94c69769dae42399aff995c_287.png)
 
@@ -389,9 +361,7 @@ docker run -d -p 8080:8080 --name my_tomcat tomcat:8.0
 
 ![](img/67a86e9ea94c69769dae42399aff995c_291.png)
 
-![](img/67a86e9ea94c69769dae42399aff995c_293.png)
 
-![](img/67a86e9ea94c69769dae42399aff995c_295.png)
 
 ![](img/67a86e9ea94c69769dae42399aff995c_297.png)
 

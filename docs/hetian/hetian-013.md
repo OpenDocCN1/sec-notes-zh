@@ -35,7 +35,6 @@ git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git sqlmap-dev
 
 ## sqlmap基础使用 🚀
 
-![](img/155a20681598ba0e71ba588653cd80fc_17.png)
 
 上一节我们介绍了sqlmap是什么，本节中我们来看看它的基本使用方法。我们将通过一个简单的靶场来演示。
 
@@ -60,7 +59,6 @@ python sqlmap.py -u "http://target.com/page.php?id=1"
 *   **`-D database_name -T table_name --columns`**: 枚举指定表中的所有列。
 *   **`-D database_name -T table_name -C column1,column2 --dump`**: 导出指定列的数据。
 
-![](img/155a20681598ba0e71ba588653cd80fc_25.png)
 
 ![](img/155a20681598ba0e71ba588653cd80fc_27.png)
 
@@ -133,7 +131,6 @@ python sqlmap.py -u “http://target.com?id=1” --tamper=my_tamper.py
 
 ![](img/155a20681598ba0e71ba588653cd80fc_56.png)
 
-![](img/155a20681598ba0e71ba588653cd80fc_58.png)
 
 ![](img/155a20681598ba0e71ba588653cd80fc_60.png)
 
@@ -144,7 +141,6 @@ sqlmap自带了许多tamper脚本（位于`tamper/`目录），我们可以参�
 
 ![](img/155a20681598ba0e71ba588653cd80fc_64.png)
 
-![](img/155a20681598ba0e71ba588653cd80fc_66.png)
 
 ![](img/155a20681598ba0e71ba588653cd80fc_68.png)
 

@@ -14,7 +14,6 @@ JavaScript开发的Web应用与PHP、Java等后端语言开发的应用存在显
 
 以下是JavaScript应用渗透测试中总结出的四大攻击面：
 
-![](img/0c46cc952feccdcc1d76eb30c1d2e237_4.png)
 
 1.  **敏感信息泄露**：从JS代码中提取接口地址、API密钥、账号密码等敏感信息。
 2.  **代码逻辑分析与绕过**：通过分析前端JS代码的执行逻辑，发现并绕过验证机制。
@@ -27,17 +26,13 @@ JavaScript开发的Web应用与PHP、Java等后端语言开发的应用存在显
 
 接下来，我们将通过具体案例逐一分析这些攻击面。
 
-![](img/0c46cc952feccdcc1d76eb30c1d2e237_10.png)
 
-![](img/0c46cc952feccdcc1d76eb30c1d2e237_12.png)
 
-![](img/0c46cc952feccdcc1d76eb30c1d2e237_14.png)
 
 ---
 
 ## 🔓 案例一：敏感信息泄露 - 云服务AK/SK泄露
 
-![](img/0c46cc952feccdcc1d76eb30c1d2e237_16.png)
 
 ![](img/0c46cc952feccdcc1d76eb30c1d2e237_18.png)
 
@@ -83,7 +78,6 @@ const config = {
 
 ### 漏洞利用与影响
 
-![](img/0c46cc952feccdcc1d76eb30c1d2e237_44.png)
 
 ![](img/0c46cc952feccdcc1d76eb30c1d2e237_46.png)
 
@@ -107,7 +101,6 @@ const config = {
 
 在实际的互联网资产中，此类问题并不少见。通过使用浏览器插件（如 `FindSomething`）或全局搜索关键词（如 `access_key`, `secret`, `password`），可以快速在JS文件中发现此类硬编码的敏感信息。
 
-![](img/0c46cc952feccdcc1d76eb30c1d2e237_54.png)
 
 ![](img/0c46cc952feccdcc1d76eb30c1d2e237_56.png)
 
@@ -132,7 +125,6 @@ const config = {
 
 **漏洞产生的根本原因**：当关键业务逻辑（如密码重置、支付确认）的**最终判断依赖于前端JS代码时**，攻击者可以通过修改浏览器本地执行环境（如使用代理工具篡改服务器返回数据）来欺骗JS代码，使其认为验证已通过。
 
-![](img/0c46cc952feccdcc1d76eb30c1d2e237_64.png)
 
 ### 实战演示：密码重置绕过
 
@@ -149,7 +141,6 @@ const config = {
     ```
 3.  **漏洞利用**：使用代理工具（如Burp Suite）拦截服务器返回的响应包，将状态码 `406` 修改为 `200`。当这个被篡改的响应到达浏览器时，JS代码会认为验证成功，从而自动跳转到密码重置页面，绕过了验证码校验。
 
-![](img/0c46cc952feccdcc1d76eb30c1d2e237_66.png)
 
 ### 安全建议
 
@@ -217,7 +208,6 @@ const config = {
 
 现代Web应用大量使用前端框架和第三方JS库。这些框架和库本身可能存在已知的安全漏洞。
 
-![](img/0c46cc952feccdcc1d76eb30c1d2e237_102.png)
 
 ![](img/0c46cc952feccdcc1d76eb30c1d2e237_104.png)
 

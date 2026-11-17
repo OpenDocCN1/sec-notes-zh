@@ -39,7 +39,6 @@
 
 该项目进一步测试了三种简单的干预策略，以降低模型的妄想确认风险：
 
-![](img/263463097f9f72d838d4a3a81af13cf1_3.png)
 
 ![](img/263463097f9f72d838d4a3a81af13cf1_5.png)
 
@@ -113,7 +112,6 @@ for iteration in range(max_iterations):
 
 ![](img/263463097f9f72d838d4a3a81af13cf1_7.png)
 
-![](img/263463097f9f72d838d4a3a81af13cf1_9.png)
 
 ![](img/263463097f9f72d838d4a3a81af13cf1_10.png)
 
@@ -165,7 +163,6 @@ for iteration in range(max_iterations):
 
 ![](img/263463097f9f72d838d4a3a81af13cf1_12.png)
 
-![](img/263463097f9f72d838d4a3a81af13cf1_14.png)
 
 **结果**：
 *   **激活引导GCG**：在某些设置下显示出比原始GCG更强的攻击信号，但整体成功率仍受限于迭代次数。
@@ -223,7 +220,6 @@ for iteration in range(max_iterations):
 
 ![](img/263463097f9f72d838d4a3a81af13cf1_18.png)
 
-![](img/263463097f9f72d838d4a3a81af13cf1_19.png)
 
 ![](img/263463097f9f72d838d4a3a81af13cf1_21.png)
 
@@ -261,7 +257,6 @@ for iteration in range(max_iterations):
 
 ![](img/263463097f9f72d838d4a3a81af13cf1_23.png)
 
-![](img/263463097f9f72d838d4a3a81af13cf1_25.png)
 
 本节我们研究一个更微妙的现象：**潜意识学习**。即学生模型可以从看似无意义的、由教师模型生成的数字序列中，学习到教师模型在上下文中的偏好。
 
@@ -306,7 +301,6 @@ for iteration in range(max_iterations):
 
 ![](img/263463097f9f72d838d4a3a81af13cf1_29.png)
 
-![](img/263463097f9f72d838d4a3a81af13cf1_30.png)
 
 ### 进化策略简介
 

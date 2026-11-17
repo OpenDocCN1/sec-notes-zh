@@ -108,9 +108,7 @@ jmp edx
 
 最后，根据伪代码逻辑编写Python脚本进行解密，即可得到本题的答案`flag`。
 
-![](img/088eae49efeaa8eea9bf72e4311adaee_7.png)
 
-![](img/088eae49efeaa8eea9bf72e4311adaee_9.png)
 
 ![](img/088eae49efeaa8eea9bf72e4311adaee_9.png)
 

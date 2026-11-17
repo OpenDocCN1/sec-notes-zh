@@ -54,7 +54,6 @@ while (num_args > 0) {
 
 ![](img/cc2417c31d648339e7093c49cead1f1e_13.png)
 
-![](img/cc2417c31d648339e7093c49cead1f1e_15.png)
 
 ## 修复Bug：使用被保留的寄存器
 
@@ -64,7 +63,6 @@ while (num_args > 0) {
 
 ![](img/cc2417c31d648339e7093c49cead1f1e_19.png)
 
-![](img/cc2417c31d648339e7093c49cead1f1e_21.png)
 
 以下是修改的核心部分：
 

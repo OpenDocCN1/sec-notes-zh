@@ -111,11 +111,9 @@ EAT下标从0开始，因为C++数组下标从0开始
 
 - 12个字节分成三个4字节地址，这三个地址就是三个函数的RVA。
 
-![](img/6fba5a7b9f825eac82673fec3e329fbc_1.png)
 
 - 如果要查看它们的代码，可以借助DBJ调试分析，用RVA加上ImageBase得到实际地址。
 
-![](img/6fba5a7b9f825eac82673fec3e329fbc_2.png)
 
 - 比如基地址是100000，加上某个RVA后得到100110F，去这个地址查看，就发现它的确是这个函数。
 
@@ -137,11 +135,9 @@ AddressOfFunctions = 0x19038 -> FOA = 0x7A38
 
 - 实验程序NumberOfNames是3，等于NumberOfFunctions，说明这三个函数都是按照名字去导出的。
 
-![](img/6fba5a7b9f825eac82673fec3e329fbc_4.png)
 
 - 名字的数量有了，名字的表格就在第十个成员AddressOfNames。
 
-![](img/6fba5a7b9f825eac82673fec3e329fbc_5.png)
 
 - NumberOfNames和AddressOfNames相对应，NumberOfFunctions和AddressOfFunctions相对应。
 

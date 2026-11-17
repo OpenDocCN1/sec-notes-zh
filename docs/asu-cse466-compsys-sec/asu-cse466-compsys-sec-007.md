@@ -14,7 +14,6 @@
 
 ![](img/32c33b593efe4f0ac16aa7c0af02932f_5.png)
 
-![](img/32c33b593efe4f0ac16aa7c0af02932f_7.png)
 
 ![](img/32c33b593efe4f0ac16aa7c0af02932f_8.png)
 
@@ -118,19 +117,15 @@
 
 ![](img/32c33b593efe4f0ac16aa7c0af02932f_36.png)
 
-![](img/32c33b593efe4f0ac16aa7c0af02932f_38.png)
 
-![](img/32c33b593efe4f0ac16aa7c0af02932f_39.png)
 
 ## 深入分析：比较指令与动态取值
 
 ![](img/32c33b593efe4f0ac16aa7c0af02932f_41.png)
 
-![](img/32c33b593efe4f0ac16aa7c0af02932f_43.png)
 
 为了理解程序如何检查输入是否正确，我们需要分析比较指令。
 
-![](img/32c33b593efe4f0ac16aa7c0af02932f_45.png)
 
 1.  **定位比较逻辑**：在 `17.0` 的IDA中，找到 `interpret_compare` 函数。它调用 `read_register` 获取两个寄存器的值进行比较。
 2.  **使用GDB检查比较值**：我们可以在 `interpret_compare` 函数中，`read_register` 调用之后的位置设置断点，以捕获实际参与比较的数值。

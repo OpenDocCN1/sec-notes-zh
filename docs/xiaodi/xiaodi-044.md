@@ -2,9 +2,7 @@
 
 ![](img/19d87e8a5f5e717373ed04be707b3b3c_1.png)
 
-![](img/19d87e8a5f5e717373ed04be707b3b3c_3.png)
 
-![](img/19d87e8a5f5e717373ed04be707b3b3c_5.png)
 
 在本节课中，我们将学习SQL注入中的盲注技术，以及如何针对数据库的增、删、改、查四种操作方式进行注入。我们将从基本概念入手，通过案例演示，逐步理解盲注的原理、分类及其应用场景。
 
@@ -144,7 +142,6 @@ and if(1=1,sleep(5),0)
 
 ![](img/19d87e8a5f5e717373ed04be707b3b3c_90.png)
 
-![](img/19d87e8a5f5e717373ed04be707b3b3c_92.png)
 
 **使用条件**：无需页面回显，只需观察响应时间即可。
 
@@ -154,9 +151,7 @@ and if(1=1,sleep(5),0)
 
 ![](img/19d87e8a5f5e717373ed04be707b3b3c_98.png)
 
-![](img/19d87e8a5f5e717373ed04be707b3b3c_100.png)
 
-![](img/19d87e8a5f5e717373ed04be707b3b3c_102.png)
 
 ---
 
@@ -184,7 +179,6 @@ and if(1=1,sleep(5),0)
 
 ![](img/19d87e8a5f5e717373ed04be707b3b3c_123.png)
 
-![](img/19d87e8a5f5e717373ed04be707b3b3c_125.png)
 
 基于报错的盲注通过触发数据库报错信息，将查询结果直接显示在错误信息中。常用的报错函数包括 `updatexml()` 和 `extractvalue()`。
 
@@ -196,9 +190,7 @@ and if(1=1,sleep(5),0)
 
 ![](img/19d87e8a5f5e717373ed04be707b3b3c_133.png)
 
-![](img/19d87e8a5f5e717373ed04be707b3b3c_135.png)
 
-![](img/19d87e8a5f5e717373ed04be707b3b3c_137.png)
 
 ![](img/19d87e8a5f5e717373ed04be707b3b3c_139.png)
 
@@ -212,7 +204,6 @@ and if(1=1,sleep(5),0)
 
 ![](img/19d87e8a5f5e717373ed04be707b3b3c_147.png)
 
-![](img/19d87e8a5f5e717373ed04be707b3b3c_149.png)
 
 ![](img/19d87e8a5f5e717373ed04be707b3b3c_151.png)
 
@@ -238,11 +229,9 @@ and updatexml(1,concat(0x7e,(select database()),0x7e),1)
 
 ![](img/19d87e8a5f5e717373ed04be707b3b3c_167.png)
 
-![](img/19d87e8a5f5e717373ed04be707b3b3c_169.png)
 
 **使用条件**：需要目标网站开启了数据库报错信息回显。
 
-![](img/19d87e8a5f5e717373ed04be707b3b3c_171.png)
 
 ![](img/19d87e8a5f5e717373ed04be707b3b3c_173.png)
 
@@ -276,9 +265,7 @@ and updatexml(1,concat(0x7e,(select database()),0x7e),1)
 
 ![](img/19d87e8a5f5e717373ed04be707b3b3c_197.png)
 
-![](img/19d87e8a5f5e717373ed04be707b3b3c_199.png)
 
-![](img/19d87e8a5f5e717373ed04be707b3b3c_201.png)
 
 ### 1. 查询（SELECT）注入
 查询操作通常伴随数据回显，因此可以直接使用联合查询（UNION）或基于布尔的盲注。
@@ -286,11 +273,9 @@ and updatexml(1,concat(0x7e,(select database()),0x7e),1)
 ### 2. 增加（INSERT）注入
 增加操作通常用于用户注册、新闻发布等功能。由于不直接回显数据，适合使用基于时间或报错的盲注。
 
-![](img/19d87e8a5f5e717373ed04be707b3b3c_203.png)
 
 ![](img/19d87e8a5f5e717373ed04be707b3b3c_205.png)
 
-![](img/19d87e8a5f5e717373ed04be707b3b3c_207.png)
 
 ![](img/19d87e8a5f5e717373ed04be707b3b3c_209.png)
 
@@ -298,23 +283,18 @@ and updatexml(1,concat(0x7e,(select database()),0x7e),1)
 
 ![](img/19d87e8a5f5e717373ed04be707b3b3c_213.png)
 
-![](img/19d87e8a5f5e717373ed04be707b3b3c_215.png)
 
 ### 3. 修改（UPDATE）注入
 修改操作常用于用户信息更新。同样不直接回显数据，适合使用基于时间或报错的盲注。
 
-![](img/19d87e8a5f5e717373ed04be707b3b3c_217.png)
 
-![](img/19d87e8a5f5e717373ed04be707b3b3c_219.png)
 
-![](img/19d87e8a5f5e717373ed04be707b3b3c_221.png)
 
 ![](img/19d87e8a5f5e717373ed04be707b3b3c_223.png)
 
 ### 4. 删除（DELETE）注入
 删除操作用于删除用户或文章。由于只返回操作结果，适合使用基于时间或报错的盲注。
 
-![](img/19d87e8a5f5e717373ed04be707b3b3c_225.png)
 
 ![](img/19d87e8a5f5e717373ed04be707b3b3c_227.png)
 
@@ -326,9 +306,7 @@ and updatexml(1,concat(0x7e,(select database()),0x7e),1)
 
 ![](img/19d87e8a5f5e717373ed04be707b3b3c_233.png)
 
-![](img/19d87e8a5f5e717373ed04be707b3b3c_235.png)
 
-![](img/19d87e8a5f5e717373ed04be707b3b3c_237.png)
 
 ![](img/19d87e8a5f5e717373ed04be707b3b3c_239.png)
 
@@ -340,9 +318,7 @@ and updatexml(1,concat(0x7e,(select database()),0x7e),1)
 
 ![](img/19d87e8a5f5e717373ed04be707b3b3c_245.png)
 
-![](img/19d87e8a5f5e717373ed04be707b3b3c_247.png)
 
-![](img/19d87e8a5f5e717373ed04be707b3b3c_249.png)
 
 ![](img/19d87e8a5f5e717373ed04be707b3b3c_251.png)
 
@@ -369,7 +345,6 @@ and updatexml(1,concat(0x7e,(select database()),0x7e),1)
 
 ![](img/19d87e8a5f5e717373ed04be707b3b3c_263.png)
 
-![](img/19d87e8a5f5e717373ed04be707b3b3c_265.png)
 
 **注入语句**：
 ```sql

@@ -4,7 +4,6 @@
 
 ![](img/7b957fca6b8ad4c58c4ad990e3f0e20d_2.png)
 
-![](img/7b957fca6b8ad4c58c4ad990e3f0e20d_3.png)
 
 ## 概述
 

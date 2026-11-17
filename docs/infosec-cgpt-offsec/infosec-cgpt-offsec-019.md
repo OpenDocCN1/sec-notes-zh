@@ -32,7 +32,6 @@
 
 让我们进入另一个演示，看看这些概念的实际应用。
 
-![](img/770f837f4ea331b72d2b6aba438aadcf_6.png)
 
 ![](img/770f837f4ea331b72d2b6aba438aadcf_6.png)
 

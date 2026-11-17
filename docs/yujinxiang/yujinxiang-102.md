@@ -1,8 +1,6 @@
 #  102：113-回城补给设计-封装商店买卖函数 GotoShopForSupply() 🛒
 
-![](img/7128a38cb47713143ae4dc39af023700_1.png)
 
-![](img/7128a38cb47713143ae4dc39af023700_2.png)
 
 在本节课中，我们将学习如何封装一个完整的商店补给函数 `GotoShopForSupply()`。这个函数不仅会从商店购买所需物品，还会将背包中不需要的物品出售给商店。我们将基于之前编写的回城补给函数进行修改和扩展。
 
@@ -90,15 +88,12 @@ for (Item item : itemList) {
 }
 ```
 
-![](img/7128a38cb47713143ae4dc39af023700_4.png)
 
 ---
 
-![](img/7128a38cb47713143ae4dc39af023700_6.png)
 
 ## 第四步：封装出售物品函数
 
-![](img/7128a38cb47713143ae4dc39af023700_8.png)
 
 我们发现，现有的背包操作函数中可能缺少直接出售物品给商店的功能。因此，需要封装一个新的函数 `SellItemToShop`。
 
@@ -143,7 +138,6 @@ if (item.destination == DESTINATION_BUY_FROM_SHOP) {
 }
 ```
 
-![](img/7128a38cb47713143ae4dc39af023700_10.png)
 
 ---
 
@@ -151,9 +145,7 @@ if (item.destination == DESTINATION_BUY_FROM_SHOP) {
 
 将以上所有步骤整合到 `GotoShopForSupply()` 函数中。完整的函数流程如下：
 
-![](img/7128a38cb47713143ae4dc39af023700_12.png)
 
-![](img/7128a38cb47713143ae4dc39af023700_14.png)
 
 1.  寻路至商店NPC“平四指”。
 2.  打开与“平四指”的对话并进入商店界面。
@@ -185,7 +177,6 @@ if (item.destination == DESTINATION_BUY_FROM_SHOP) {
 3.  **买卖逻辑**：实现了向商店出售物品和从商店购买物品的双向逻辑。
 4.  **线程安全**：强调了将核心操作封装成主线程消息的重要性，以确保稳定性。
 
-![](img/7128a38cb47713143ae4dc39af023700_16.png)
 
 ![](img/7128a38cb47713143ae4dc39af023700_18.png)
 

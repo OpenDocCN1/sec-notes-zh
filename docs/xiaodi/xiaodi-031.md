@@ -40,9 +40,7 @@ WebPack是一个模块打包器。在WebPack中，前端的所有资源文件（
 
 ### 为什么需要打包器？
 
-![](img/e90e96ef59b334500d0ec0f65bc6619c_28.png)
 
-![](img/e90e96ef59b334500d0ec0f65bc6619c_30.png)
 
 在传统开发中，如果项目有多个JavaScript文件，我们需要在HTML中逐一引用它们，并且必须注意引用的顺序（例如，函数声明必须在调用之前）。当文件数量很多时，这会变得非常繁琐且容易出错。
 
@@ -50,9 +48,7 @@ WebPack是一个模块打包器。在WebPack中，前端的所有资源文件（
 
 ![](img/e90e96ef59b334500d0ec0f65bc6619c_34.png)
 
-![](img/e90e96ef59b334500d0ec0f65bc6619c_36.png)
 
-![](img/e90e96ef59b334500d0ec0f65bc6619c_38.png)
 
 WebPack可以解决这个问题。它能够分析模块间的依赖关系，将多个有依赖关系的模块打包成一个或多个文件。这样做的好处是：
 1.  **简化引用**：只需在HTML中引用最终打包好的文件。
@@ -61,17 +57,13 @@ WebPack可以解决这个问题。它能够分析模块间的依赖关系，将�
 
 ### WebPack简单使用演示
 
-![](img/e90e96ef59b334500d0ec0f65bc6619c_40.png)
 
 以下是使用WebPack的基本步骤：
 
-![](img/e90e96ef59b334500d0ec0f65bc6619c_42.png)
 
-![](img/e90e96ef59b334500d0ec0f65bc6619c_44.png)
 
 ![](img/e90e96ef59b334500d0ec0f65bc6619c_46.png)
 
-![](img/e90e96ef59b334500d0ec0f65bc6619c_47.png)
 
 1.  **创建项目文件结构**
     我们创建两个模块文件和一个入口文件来演示依赖关系。
@@ -121,9 +113,7 @@ WebPack可以解决这个问题。它能够分析模块间的依赖关系，将�
 
 ![](img/e90e96ef59b334500d0ec0f65bc6619c_61.png)
 
-![](img/e90e96ef59b334500d0ec0f65bc6619c_63.png)
 
-![](img/e90e96ef59b334500d0ec0f65bc6619c_65.png)
 
 ![](img/e90e96ef59b334500d0ec0f65bc6619c_67.png)
 
@@ -158,9 +148,7 @@ WebPack可以解决这个问题。它能够分析模块间的依赖关系，将�
 
 ![](img/e90e96ef59b334500d0ec0f65bc6619c_77.png)
 
-![](img/e90e96ef59b334500d0ec0f65bc6619c_79.png)
 
-![](img/e90e96ef59b334500d0ec0f65bc6619c_81.png)
 
 4.  **运行打包命令**
     执行以下命令，WebPack会根据配置进行打包。
@@ -169,15 +157,12 @@ WebPack可以解决这个问题。它能够分析模块间的依赖关系，将�
     ```
     打包完成后，会在 `dist` 目录下生成 `bundle.js` 文件。在HTML中只需引用这一个文件即可。
 
-![](img/e90e96ef59b334500d0ec0f65bc6619c_83.png)
 
 ![](img/e90e96ef59b334500d0ec0f65bc6619c_85.png)
 
 ![](img/e90e96ef59b334500d0ec0f65bc6619c_86.png)
 
-![](img/e90e96ef59b334500d0ec0f65bc6619c_88.png)
 
-![](img/e90e96ef59b334500d0ec0f65bc6619c_90.png)
 
 ![](img/e90e96ef59b334500d0ec0f65bc6619c_92.png)
 
@@ -266,11 +251,9 @@ WebPack的 `mode` 配置直接影响输出代码的形态和安全性。
 
 ![](img/e90e96ef59b334500d0ec0f65bc6619c_149.png)
 
-![](img/e90e96ef59b334500d0ec0f65bc6619c_151.png)
 
 ![](img/e90e96ef59b334500d0ec0f65bc6619c_153.png)
 
-![](img/e90e96ef59b334500d0ec0f65bc6619c_155.png)
 
 ![](img/e90e96ef59b334500d0ec0f65bc6619c_157.png)
 
@@ -338,19 +321,14 @@ WebPack的 `mode` 配置直接影响输出代码的形态和安全性。
 
 ![](img/e90e96ef59b334500d0ec0f65bc6619c_210.png)
 
-![](img/e90e96ef59b334500d0ec0f65bc6619c_212.png)
 
 JQuery是一个快速、简洁的JavaScript库，它简化了HTML文档遍历、事件处理、动画和Ajax交互。许多网站都会直接引用公共CDN或本地存储的JQuery文件。
 
-![](img/e90e96ef59b334500d0ec0f65bc6619c_214.png)
 
-![](img/e90e96ef59b334500d0ec0f65bc6619c_216.png)
 
-![](img/e90e96ef59b334500d0ec0f65bc6619c_218.png)
 
 ![](img/e90e96ef59b334500d0ec0f65bc6619c_220.png)
 
-![](img/e90e96ef59b334500d0ec0f65bc6619c_222.png)
 
 ### 第三方库的通用风险
 
@@ -358,18 +336,14 @@ JQuery是一个快速、简洁的JavaScript库，它简化了HTML文档遍历、
 
 ![](img/e90e96ef59b334500d0ec0f65bc6619c_226.png)
 
-![](img/e90e96ef59b334500d0ec0f65bc6619c_228.png)
 
-![](img/e90e96ef59b334500d0ec0f65bc6619c_230.png)
 
-![](img/e90e96ef59b334500d0ec0f65bc6619c_232.png)
 
 第三方库的安全风险主要来自：
 1.  **库本身存在已知漏洞**：库的某个版本被披露存在安全漏洞（如XSS、CSRF等）。
 2.  **使用过时的有漏洞版本**：项目引用了存在漏洞的旧版本，未及时更新。
 3.  **不安全的调用方式**：即使库本身安全，开发者以不安全的方式调用其API（例如，将未过滤的用户输入直接传递给某些方法），也会引入风险。
 
-![](img/e90e96ef59b334500d0ec0f65bc6619c_234.png)
 
 ![](img/e90e96ef59b334500d0ec0f65bc6619c_236.png)
 
@@ -389,15 +363,12 @@ JQuery是一个快速、简洁的JavaScript库，它简化了HTML文档遍历、
 
 ![](img/e90e96ef59b334500d0ec0f65bc6619c_250.png)
 
-![](img/e90e96ef59b334500d0ec0f65bc6619c_252.png)
 
 JQuery历史上多个版本存在XSS（跨站脚本）漏洞。例如，在特定版本范围内（如1.x至3.x的某些子版本），其`.html()`、`.append()`等方法在处理用户可控的输入时，可能绕过内部的安全过滤，导致XSS攻击。
 
-![](img/e90e96ef59b334500d0ec0f65bc6619c_254.png)
 
 ![](img/e90e96ef59b334500d0ec0f65bc6619c_256.png)
 
-![](img/e90e96ef59b334500d0ec0f65bc6619c_258.png)
 
 ![](img/e90e96ef59b334500d0ec0f65bc6619c_260.png)
 
@@ -425,7 +396,6 @@ JQuery历史上多个版本存在XSS（跨站脚本）漏洞。例如，在特�
 
 ![](img/e90e96ef59b334500d0ec0f65bc6619c_268.png)
 
-![](img/e90e96ef59b334500d0ec0f65bc6619c_270.png)
 
 ![](img/e90e96ef59b334500d0ec0f65bc6619c_272.png)
 

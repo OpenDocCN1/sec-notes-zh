@@ -1,8 +1,6 @@
 # 017：BARGs 蕴含 SNARGs 及与非信号 PCPs 的联系（第二部分）
 
-![](img/26ee5353db30f4fe4d8e577d317b0f70_0.png)
 
-![](img/26ee5353db30f4fe4d8e577d317b0f70_1.png)
 
 ![](img/26ee5353db30f4fe4d8e577d317b0f70_2.png)
 

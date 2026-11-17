@@ -30,11 +30,9 @@ checksec ret2text
 
 检查结果显示，这是一个64位程序，并且没有开启栈保护（Canary）和地址空间布局随机化（PIE）。这为我们利用栈溢出漏洞提供了便利。
 
-![](img/14f8144c37a015ef90052a3ad22fbb9f_7.png)
 
 接下来，我们使用反汇编工具IDA Pro（64位版本）打开这个程序，进行静态分析。
 
-![](img/14f8144c37a015ef90052a3ad22fbb9f_8.png)
 
 ---
 
@@ -58,7 +56,6 @@ int main() {
 
 继续分析程序，我们发现程序中还存在一个名为 `get_shell` 的函数。
 
-![](img/14f8144c37a015ef90052a3ad22fbb9f_12.png)
 
 ```c
 void get_shell() {

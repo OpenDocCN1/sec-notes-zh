@@ -116,7 +116,6 @@ r2 = sr1(IP(dst=“192.168.1.54”)/TCP(dport=45, flags=“SA”), timeout=2, ve
 
 手动扫描比较繁琐，Nmap工具内置了僵尸扫描功能。首先，我们需要寻找可用的僵尸主机。
 
-![](img/d9a1f2044803b96c8fb75d0f06934fda_17.png)
 
 ![](img/d9a1f2044803b96c8fb75d0f06934fda_18.png)
 

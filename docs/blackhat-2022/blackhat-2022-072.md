@@ -2,7 +2,6 @@
 
 ![](img/c2a01279fd0a848ae62ad4e10b1eecc8_0.png)
 
-![](img/c2a01279fd0a848ae62ad4e10b1eecc8_2.png)
 
 ![](img/c2a01279fd0a848ae62ad4e10b1eecc8_4.png)
 

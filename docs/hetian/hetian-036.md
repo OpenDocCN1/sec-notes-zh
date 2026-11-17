@@ -54,19 +54,14 @@ SSRF，全称 Server-Side Request Forgery，即服务端请求伪造。攻击者
 
 ## SSRF与CSRF的区别 ⚖️
 
-![](img/77e0765b4691c75db3dabec028e17de8_35.png)
 
 上一节我们介绍了SSRF的基本概念，本节中我们来看看它与另一个常见漏洞CSRF的区别。
 
 ![](img/77e0765b4691c75db3dabec028e17de8_37.png)
 
-![](img/77e0765b4691c75db3dabec028e17de8_39.png)
 
-![](img/77e0765b4691c75db3dabec028e17de8_40.png)
 
-![](img/77e0765b4691c75db3dabec028e17de8_42.png)
 
-![](img/77e0765b4691c75db3dabec028e17de8_43.png)
 
 ![](img/77e0765b4691c75db3dabec028e17de8_44.png)
 
@@ -83,7 +78,6 @@ SSRF，全称 Server-Side Request Forgery，即服务端请求伪造。攻击者
 
 ![](img/77e0765b4691c75db3dabec028e17de8_54.png)
 
-![](img/77e0765b4691c75db3dabec028e17de8_56.png)
 
 ![](img/77e0765b4691c75db3dabec028e17de8_58.png)
 
@@ -105,15 +99,10 @@ SSRF漏洞的危害主要体现在以下几个方面：
 
 以下是SSRF漏洞的主要危害：
 
-![](img/77e0765b4691c75db3dabec028e17de8_71.png)
 
-![](img/77e0765b4691c75db3dabec028e17de8_73.png)
 
-![](img/77e0765b4691c75db3dabec028e17de8_75.png)
 
-![](img/77e0765b4691c75db3dabec028e17de8_77.png)
 
-![](img/77e0765b4691c75db3dabec028e17de8_79.png)
 
 1.  **信息收集**：攻击者可以利用SSRF漏洞获取Web应用可达服务器的Banner信息，收集内网服务的指纹信息，以及探测内部网络结构和开放的端口。
 2.  **攻击内网服务**：攻击者可以攻击运行在内网的系统或应用程序。由于内网服务的安全防护可能不如外网严格，可能存在未授权访问等漏洞。通过SSRF攻击这些漏洞，可能直接获取Web Shell，从而绕过防火墙进入目标内网。
@@ -123,7 +112,6 @@ SSRF漏洞的危害主要体现在以下几个方面：
 
 了解了SSRF的危害后，我们来看看在哪些地方可能找到这种漏洞。
 
-![](img/77e0765b4691c75db3dabec028e17de8_81.png)
 
 ![](img/77e0765b4691c75db3dabec028e17de8_83.png)
 
@@ -168,7 +156,6 @@ SSRF漏洞的危害主要体现在以下几个方面：
 
 ![](img/77e0765b4691c75db3dabec028e17de8_111.png)
 
-![](img/77e0765b4691c75db3dabec028e17de8_113.png)
 
 ## SSRF漏洞的利用与测试 🛠️
 
@@ -192,13 +179,10 @@ SSRF漏洞的危害主要体现在以下几个方面：
 3.  **`gopher://` 协议**：一个功能强大的协议，堪称“万金油”。它可以发送预先构造好的数据包，常用于攻击内网服务，如Redis未授权访问。
     *   **利用示例**：`curl “gopher://127.0.0.1:6789/_HI%20Everyone%0AThis%20is%20just%20a%20test”` 会向本地的6789端口发送一段文本数据。
 
-![](img/77e0765b4691c75db3dabec028e17de8_123.png)
 
 ## PHP中易导致SSRF的函数 ⚙️
 
-![](img/77e0765b4691c75db3dabec028e17de8_125.png)
 
-![](img/77e0765b4691c75db3dabec028e17de8_127.png)
 
 ![](img/77e0765b4691c75db3dabec028e17de8_129.png)
 
@@ -214,7 +198,6 @@ SSRF漏洞的危害主要体现在以下几个方面：
 
 ![](img/77e0765b4691c75db3dabec028e17de8_139.png)
 
-![](img/77e0765b4691c75db3dabec028e17de8_141.png)
 
 ![](img/77e0765b4691c75db3dabec028e17de8_143.png)
 
@@ -319,9 +302,7 @@ SSRF漏洞的危害主要体现在以下几个方面：
 
 ![](img/77e0765b4691c75db3dabec028e17de8_219.png)
 
-![](img/77e0765b4691c75db3dabec028e17de8_221.png)
 
-![](img/77e0765b4691c75db3dabec028e17de8_223.png)
 
 ![](img/77e0765b4691c75db3dabec028e17de8_225.png)
 
@@ -337,15 +318,11 @@ SSRF漏洞的危害主要体现在以下几个方面：
 
 ![](img/77e0765b4691c75db3dabec028e17de8_235.png)
 
-![](img/77e0765b4691c75db3dabec028e17de8_237.png)
 
-![](img/77e0765b4691c75db3dabec028e17de8_239.png)
 
 以下是几种常见的SSRF限制绕过方法：
 
-![](img/77e0765b4691c75db3dabec028e17de8_241.png)
 
-![](img/77e0765b4691c75db3dabec028e17de8_243.png)
 
 ![](img/77e0765b4691c75db3dabec028e17de8_245.png)
 
@@ -353,9 +330,7 @@ SSRF漏洞的危害主要体现在以下几个方面：
 
 ![](img/77e0765b4691c75db3dabec028e17de8_249.png)
 
-![](img/77e0765b4691c75db3dabec028e17de8_251.png)
 
-![](img/77e0765b4691c75db3dabec028e17de8_253.png)
 
 1.  **利用 `@` 符号**：URL格式 `http://example.com@192.168.1.1`。实际请求的是`@`符号后的IP地址，但前端显示的是`@`前的域名，可用于绕过一些基于域名的过滤。
 2.  **IP地址转换进制**：将IP地址转换为八进制、十进制或十六进制格式。例如，`192.168.1.1` 可转换为：
@@ -367,19 +342,14 @@ SSRF漏洞的危害主要体现在以下几个方面：
 4.  **利用短地址/重定向服务**：使用 `xip.io`、`nip.io` 或URL短链接服务。例如 `192.168.1.1.xip.io` 会解析到 `192.168.1.1`，可以绕过对直接IP地址的过滤。
 5.  **利用句号替代点**：在某些解析场景下，`127。0。0。1`（使用中文句号）可能被等价解析为 `127.0.0.1`。
 
-![](img/77e0765b4691c75db3dabec028e17de8_255.png)
 
-![](img/77e0765b4691c75db3dabec028e17de8_257.png)
 
 ## SSRF漏洞的防御 🛡️
 
-![](img/77e0765b4691c75db3dabec028e17de8_259.png)
 
 ![](img/77e0765b4691c75db3dabec028e17de8_261.png)
 
-![](img/77e0765b4691c75db3dabec028e17de8_263.png)
 
-![](img/77e0765b4691c75db3dabec028e17de8_265.png)
 
 ![](img/77e0765b4691c75db3dabec028e17de8_267.png)
 
@@ -387,7 +357,6 @@ SSRF漏洞的危害主要体现在以下几个方面：
 
 最后，我们从防御角度总结一下应对SSRF漏洞的措施。
 
-![](img/77e0765b4691c75db3dabec028e17de8_271.png)
 
 ![](img/77e0765b4691c75db3dabec028e17de8_272.png)
 
@@ -395,7 +364,6 @@ SSRF漏洞的危害主要体现在以下几个方面：
 
 ![](img/77e0765b4691c75db3dabec028e17de8_275.png)
 
-![](img/77e0765b4691c75db3dabec028e17de8_277.png)
 
 以下是防御SSRF漏洞的几种有效方法：
 
@@ -410,7 +378,6 @@ SSRF漏洞的危害主要体现在以下几个方面：
 
 ![](img/77e0765b4691c75db3dabec028e17de8_281.png)
 
-![](img/77e0765b4691c75db3dabec028e17de8_283.png)
 
 ![](img/77e0765b4691c75db3dabec028e17de8_285.png)
 
@@ -420,9 +387,7 @@ SSRF漏洞的危害主要体现在以下几个方面：
 
 ![](img/77e0765b4691c75db3dabec028e17de8_289.png)
 
-![](img/77e0765b4691c75db3dabec028e17de8_291.png)
 
-![](img/77e0765b4691c75db3dabec028e17de8_293.png)
 
 ![](img/77e0765b4691c75db3dabec028e17de8_295.png)
 
@@ -430,11 +395,8 @@ SSRF漏洞的危害主要体现在以下几个方面：
 
 ![](img/77e0765b4691c75db3dabec028e17de8_299.png)
 
-![](img/77e0765b4691c75db3dabec028e17de8_301.png)
 
-![](img/77e0765b4691c75db3dabec028e17de8_303.png)
 
-![](img/77e0765b4691c75db3dabec028e17de8_305.png)
 
 ![](img/77e0765b4691c75db3dabec028e17de8_307.png)
 

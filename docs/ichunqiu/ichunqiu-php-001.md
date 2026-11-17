@@ -34,13 +34,11 @@
 
 ---
 
-![](img/c821ae87cd5f5355551c8215ae4e8256_3.png)
 
 ## 3. 浏览器与辅助工具 🔧
 
 审计工作不仅限于代码编辑器，浏览器和相关辅助工具同样至关重要。
 
-![](img/c821ae87cd5f5355551c8215ae4e8256_5.png)
 
 以下是需要准备的浏览器插件和外部工具：
 
@@ -50,27 +48,22 @@
 *   **Web编码转换工具**：这款工具集成了多种编码（如Base64、URL编码）的转换与加解密功能，也包含一些常见的绕过技巧配置，是处理各种编码问题的好帮手。
 *   **Notepad++**：这是一款轻量且功能强大的文本编辑器，可以作为Sublime Text的补充，在某些场景下配合使用。
 
-![](img/c821ae87cd5f5355551c8215ae4e8256_7.png)
 
 ---
 
-![](img/c821ae87cd5f5355551c8215ae4e8256_8.png)
 
 ## 4. 环境搭建演示 🎬
 
 现在，我将为大家演示如何一步步部署上述环境。
 
-![](img/c821ae87cd5f5355551c8215ae4e8256_10.png)
 
 ### 4.1 安装与配置PHPStudy
 
-![](img/c821ae87cd5f5355551c8215ae4e8256_12.png)
 
 首先安装PHPStudy。安装过程简单，一直点击“确定”即可。因为是首次安装，程序会进行初始化。
 
 ![](img/c821ae87cd5f5355551c8215ae4e8256_1.png)
 
-![](img/c821ae87cd5f5355551c8215ae4e8256_14.png)
 
 初始化完成后，PHP环境启动成功。接下来，我们需要添加一个虚拟站点用于测试。
 1.  打开PHPStudy的“站点管理”。
@@ -85,11 +78,9 @@
 
 ![](img/c821ae87cd5f5355551c8215ae4e8256_18.png)
 
-![](img/c821ae87cd5f5355551c8215ae4e8256_5.png)
 
 在PHPStudy的“数据库”面板中，我们可以方便地创建和管理MySQL数据库。例如，新建一个名为 `test` 的数据库。
 
-![](img/c821ae87cd5f5355551c8215ae4e8256_7.png)
 ![](img/c821ae87cd5f5355551c8215ae4e8256_8.png)
 
 ### 4.2 配置浏览器插件
@@ -100,11 +91,9 @@
 
 ![](img/c821ae87cd5f5355551c8215ae4e8256_10.png)
 
-![](img/c821ae87cd5f5355551c8215ae4e8256_22.png)
 
 ### 4.3 配置Sublime Text 2
 
-![](img/c821ae87cd5f5355551c8215ae4e8256_24.png)
 
 **第一步：安装Package Control。**
 使用快捷键 `Ctrl + `` 调出Sublime Text的命令行，粘贴安装Package Control的代码并执行。安装完成后需要重启编辑器。
@@ -112,41 +101,29 @@
 ![](img/c821ae87cd5f5355551c8215ae4e8256_26.png)
 
 ![](img/c821ae87cd5f5355551c8215ae4e821.png)
-![](img/c821ae87cd5f5355551c8215ae4e8256_16.png)
 
-![](img/c821ae87cd5f5355551c8215ae4e8256_28.png)
 
 **第二步：通过Package Control安装其他插件。**
 重启后，使用快捷键 `Ctrl + Shift + P` 调出命令面板，输入 `Package Control: Install Package`，然后依次搜索并安装 `CTags`、`PHP-Tidy`、`ConvertToUTF8` 这三个插件。
 
-![](img/c821ae87cd5f5355551c8215ae4e8256_18.png)
-![](img/c821ae87cd5f5355551c8215ae4e8256_20.png)
 
 **第三步：配置CTags。**
 CTags插件依赖于外部的 `ctags.exe` 程序。我们需要将 `ctags.exe` 文件放置到系统的环境变量路径下，例如 `C:\Windows` 目录。
 
-![](img/c821ae87cd5f5355551c8215ae4e8256_22.png)
 
 配置完成后，在Sublime Text中打开项目源码根目录，右键选择 `CTags: Rebuild Tags` 为整个项目建立函数索引。
 
-![](img/c821ae87cd5f5355551c8215ae4e8256_30.png)
 
 ![](img/c821ae87cd5f5355551c8215ae4e8256_32.png)
 
-![](img/c821ae87cd5f5355551c8215ae4e8256_24.png)
-![](img/c821ae87cd5f5355551c8215ae4e8256_26.png)
-![](img/c821ae87cd5f5355551c8215ae4e8256_28.png)
 
-![](img/c821ae87cd5f5355551c8215ae4e8256_33.png)
 
 建立索引后，在代码中选中任意函数名，右键选择 `Navigate to Definition` 即可快速跳转到该函数的定义文件。
 
-![](img/c821ae87cd5f5355551c8215ae4e8256_35.png)
 
 **第四步：配置PHP Build System。**
 默认的Build System没有PHP选项，我们需要手动创建。打开 `Tools -> Build System -> New Build System...`，输入以下配置并保存为 `PHP.sublime-build`。
 
-![](img/c821ae87cd5f5355551c8215ae4e8256_37.png)
 
 ```json
 {
@@ -156,12 +133,7 @@ CTags插件依赖于外部的 `ctags.exe` 程序。我们需要将 `ctags.exe` �
 }
 ```
 
-![](img/c821ae87cd5f5355551c8215ae4e8256_39.png)
 
-![](img/c821ae87cd5f5355551c8215ae4e8256_30.png)
-![](img/c821ae87cd5f5355551c8215ae4e8256_32.png)
-![](img/c821ae87cd5f5355551c8215ae4e8256_33.png)
-![](img/c821ae87cd5f5355551c8215ae4e8256_35.png)
 
 ![](img/c821ae87cd5f5355551c8215ae4e8256_41.png)
 
@@ -169,42 +141,30 @@ CTags插件依赖于外部的 `ctags.exe` 程序。我们需要将 `ctags.exe` �
 
 ![](img/c821ae87cd5f5355551c8215ae4e8256_43.png)
 
-![](img/c821ae87cd5f5355551c8215ae4e8256_37.png)
-![](img/c821ae87cd5f5355551c8215ae4e8256_39.png)
 ![](img/c821ae87cd5f5355551c8215ae4e8256_41.png)
 ![](img/c821ae87cd5f5355551c8215ae4e8256_43.png)
-![](img/c821ae87cd5f5355551c8215ae4e8256_45.png)
 
 ![](img/c821ae87cd5f5355551c8215ae4e8256_45.png)
 
 添加后可能需要重启Sublime Text。配置完成后，新建一个PHP测试文件，输入 `<?php echo “test”; ?>`，然后按 `Ctrl + B` 运行，即可在编辑器底部看到脚本的输出结果。
 
-![](img/c821ae87cd5f5355551c8215ae4e8256_47.png)
 
 ![](img/c821ae87cd5f5355551c8215ae4e8256_47.png)
-![](img/c821ae87cd5f5355551c8215ae4e8256_49.png)
-![](img/c821ae87cd5f5355551c8215ae4e8256_51.png)
-![](img/c821ae87cd5f5355551c8215ae4e8256_53.png)
 
-![](img/c821ae87cd5f5355551c8215ae4e8256_49.png)
 
 ### 4.4 使用Burp Suite与MySQL监控
 
-![](img/c821ae87cd5f5355551c8215ae4e8256_51.png)
 
 **MySQL语句监控：**
 打开监控工具，配置好数据库连接信息（用户名、密码）。当我们在网站上进行操作时（例如搜索“ABC”），该工具会实时显示后端执行的所有SQL语句，这对于分析SQL注入漏洞非常有帮助。
 
-![](img/c821ae87cd5f5355551c8215ae4e8256_53.png)
 
-![](img/c821ae87cd5f5355551c8215ae4e8256_55.png)
 
 ![](img/c821ae87cd5f5355551c8215ae4e8256_55.png)
 
 **Burp Suite抓包与改包：**
 首先，配置Burp Suite监听本地的8080端口作为代理。
 
-![](img/c821ae87cd5f5355551c8215ae4e8256_57.png)
 
 ![](img/c821ae87cd5f5355551c8215ae4e8256_57.png)
 
@@ -218,7 +178,6 @@ CTags插件依赖于外部的 `ctags.exe` 程序。我们需要将 `ctags.exe` �
 最后，我们来看一下Web编码转换工具。它界面简洁，功能集中。例如，输入字符串“ABC”，可以快速进行Base64编码或解码，也可以尝试其他多种编码和加密方式，是审计过程中处理数据的一个实用工具。
 
 ![](img/c821ae87cd5f5355551c8215ae4e8256_63.png)
-![](img/c821ae87cd5f5355551c8215ae4e8256_65.png)
 
 ![](img/c821ae87cd5f5355551c8215ae4e8256_59.png)
 

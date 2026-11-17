@@ -62,9 +62,7 @@ PHP伪协议是PHP支持并封装的一些协议。这里我们只涉及在CTF�
 具体用法我们来看一个示例。
 访问题目URL，看到一个“click me”链接。点击后，发现URL中多了一个`file`参数，可以判断此处可能存在文件包含漏洞。如果无法查看`php.ini`文件，可以尝试读取`index.php`页面的源代码。由于不知道文件的绝对路径，`file`协议无法使用，应使用`php://filter`读取网页源代码。
 
-![](img/10eac49c77b01cd53e87b63ce0160b61_3.png)
 
-![](img/10eac49c77b01cd53e87b63ce0160b61_5.png)
 
 构造Payload：`php://filter/read=convert.base64-encode/resource=index.php`
 其中，`resource`指定要筛选的数据流，`read`设定过滤器的名称。简单来说，就是读取`index.php`的内容，并将输入流进行Base64编码后输出。使用这种方式读到的是Base64编码后的内容。之所以进行编码，是因为不编码内容会被当作PHP执行，我们就看不到源码了。将得到的Base64字符串解码，即可看到源码内容及其中包含的Flag值。

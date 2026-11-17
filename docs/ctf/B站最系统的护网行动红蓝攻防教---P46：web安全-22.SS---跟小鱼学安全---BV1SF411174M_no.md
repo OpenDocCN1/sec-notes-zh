@@ -4,7 +4,6 @@
 
 在本节课中，我们将要学习服务端请求伪造（SSRF）漏洞。这是一种攻击者能够诱使服务器向任意地址发起网络请求的漏洞，常被用作攻击内网服务的跳板。我们将从基本概念、漏洞成因、常见场景、利用方法以及PHP中的相关函数等方面进行系统介绍。
 
-![](img/ca1281ffca33d8bf60a85b197d3035f7_3.png)
 
 ## 什么是SSRF漏洞？
 
@@ -23,7 +22,6 @@ SSRF是Server-Side Request Forgery的缩写，中文译为服务端请求伪造�
 
 ## SSRF与CSRF的区别
 
-![](img/ca1281ffca33d8bf60a85b197d3035f7_9.png)
 
 ![](img/ca1281ffca33d8bf60a85b197d3035f7_11.png)
 
@@ -35,9 +33,7 @@ SSRF是Server-Side Request Forgery的缩写，中文译为服务端请求伪造�
 
 了解了SSRF的基本概念后，我们来看看它和另一个常见漏洞CSRF有何不同。
 
-![](img/ca1281ffca33d8bf60a85b197d3035f7_19.png)
 
-![](img/ca1281ffca33d8bf60a85b197d3035f7_21.png)
 
 ![](img/ca1281ffca33d8bf60a85b197d3035f7_22.png)
 
@@ -51,13 +47,9 @@ SSRF与CSRF（跨站请求伪造）名称相似，但有本质区别：
 
 ## SSRF的攻击危害
 
-![](img/ca1281ffca33d8bf60a85b197d3035f7_26.png)
 
-![](img/ca1281ffca33d8bf60a85b197d3035f7_28.png)
 
-![](img/ca1281ffca33d8bf60a85b197d3035f7_30.png)
 
-![](img/ca1281ffca33d8bf60a85b197d3035f7_32.png)
 
 SSRF漏洞的危害性很大，主要体现在以下几个方面：
 
@@ -73,11 +65,8 @@ SSRF漏洞的危害性很大，主要体现在以下几个方面：
 3.  **读取本地文件**：利用`file://`等协议，读取服务器本地的敏感文件（如`/etc/passwd`）。
 4.  **绕过访问控制**：作为穿越网络防火墙的“通行证”，访问原本受保护的内网资源。
 
-![](img/ca1281ffca33d8bf60a85b197d3035f7_40.png)
 
-![](img/ca1281ffca33d8bf60a85b197d3035f7_41.png)
 
-![](img/ca1281ffca33d8bf60a85b197d3035f7_43.png)
 
 ![](img/ca1281ffca33d8bf60a85b197d3035f7_45.png)
 
@@ -93,15 +82,11 @@ SSRF漏洞的危害性很大，主要体现在以下几个方面：
 
 ![](img/ca1281ffca33d8bf60a85b197d3035f7_55.png)
 
-![](img/ca1281ffca33d8bf60a85b197d3035f7_56.png)
 
-![](img/ca1281ffca33d8bf60a85b197d3035f7_58.png)
 
-![](img/ca1281ffca33d8bf60a85b197d3035f7_60.png)
 
 那么，在实际的Web应用中，我们可以在哪些功能点寻找SSRF漏洞呢？
 
-![](img/ca1281ffca33d8bf60a85b197d3035f7_62.png)
 
 ![](img/ca1281ffca33d8bf60a85b197d3035f7_64.png)
 
@@ -120,9 +105,7 @@ SSRF漏洞的危害性很大，主要体现在以下几个方面：
 
 ## SSRF漏洞的利用
 
-![](img/ca1281ffca33d8bf60a85b197d3035f7_70.png)
 
-![](img/ca1281ffca33d8bf60a85b197d3035f7_72.png)
 
 上一节我们介绍了漏洞可能出现的场景，本节中我们来看看如何利用这些漏洞，以及会用到哪些关键协议。
 
@@ -143,9 +126,7 @@ SSRF漏洞的危害性很大，主要体现在以下几个方面：
 
 ### PHP中易导致SSRF的函数
 
-![](img/ca1281ffca33d8bf60a85b197d3035f7_76.png)
 
-![](img/ca1281ffca33d8bf60a85b197d3035f7_77.png)
 
 ![](img/ca1281ffca33d8bf60a85b197d3035f7_79.png)
 
@@ -166,7 +147,6 @@ SSRF漏洞的危害性很大，主要体现在以下几个方面：
 
 ![](img/ca1281ffca33d8bf60a85b197d3035f7_86.png)
 
-![](img/ca1281ffca33d8bf60a85b197d3035f7_88.png)
 
 ![](img/ca1281ffca33d8bf60a85b197d3035f7_90.png)
 
@@ -184,7 +164,6 @@ SSRF漏洞的危害性很大，主要体现在以下几个方面：
 
 ![](img/ca1281ffca33d8bf60a85b197d3035f7_99.png)
 
-![](img/ca1281ffca33d8bf60a85b197d3035f7_101.png)
 
 以下是两种探测盲SSRF的常用方法：
 1.  **HTTP带外通道 (OAST)**：利用外部平台接收请求记录。
@@ -194,11 +173,9 @@ SSRF漏洞的危害性很大，主要体现在以下几个方面：
 
 ![](img/ca1281ffca33d8bf60a85b197d3035f7_103.png)
 
-![](img/ca1281ffca33d8bf60a85b197d3035f7_105.png)
 
 ## 本节课总结
 
-![](img/ca1281ffca33d8bf60a85b197d3035f7_107.png)
 
 ![](img/ca1281ffca33d8bf60a85b197d3035f7_109.png)
 

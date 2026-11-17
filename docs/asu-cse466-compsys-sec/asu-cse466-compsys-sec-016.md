@@ -5,15 +5,11 @@
 
 ---
 
-![](img/d9d9f6dd0999d96cffa62174be64fb5d_1.png)
 
-![](img/d9d9f6dd0999d96cffa62174be64fb5d_3.png)
 
-![](img/d9d9f6dd0999d96cffa62174be64fb5d_5.png)
 
 ![](img/d9d9f6dd0999d96cffa62174be64fb5d_7.png)
 
-![](img/d9d9f6dd0999d96cffa62174be64fb5d_9.png)
 
 ![](img/d9d9f6dd0999d96cffa62174be64fb5d_11.png)
 
@@ -39,7 +35,6 @@
 
 ![](img/d9d9f6dd0999d96cffa62174be64fb5d_13.png)
 
-![](img/d9d9f6dd0999d96cffa62174be64fb5d_15.png)
 
 假设我们有一个分配，允许写入`分配大小 + 1`字节。如果我们分配了40字节（`malloc(40)`），我们实际上可以写入41字节。这多出的1字节会溢出到紧邻分配区域之后的内存。
 

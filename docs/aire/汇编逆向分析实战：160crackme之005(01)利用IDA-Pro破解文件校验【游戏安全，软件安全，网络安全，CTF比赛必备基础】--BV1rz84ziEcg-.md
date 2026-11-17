@@ -119,7 +119,6 @@ Assign(FileVariable, FilePath);
 
 其逻辑可以表示为：
 
-![](img/7f3beb546b925074f2313250afa32661_3.png)
 
 ```pascal
 Assign(FileVariable, FilePath);
@@ -196,7 +195,6 @@ begin
 end;
 ```
 
-![](img/7f3beb546b925074f2313250afa32661_5.png)
 
 由此可以看出，破解方法已经比较明确：需要创建程序要求的文件，并在文件中写入指定字符串。
 

@@ -207,7 +207,6 @@ BOOL MyHook::ReHook()
 
 ---
 
-![](img/8f22fa9d4c0c005becdc89b788b2d8de_14.png)
 
 ![](img/8f22fa9d4c0c005becdc89b788b2d8de_15.png)
 
@@ -217,13 +216,10 @@ BOOL MyHook::ReHook()
 
 我们已经拥有了一个强大的Hook类，现在让我们用它来做点有趣的事情：拦截一个程序创建进程的请求。
 
-![](img/8f22fa9d4c0c005becdc89b788b2d8de_19.png)
 
 ![](img/8f22fa9d4c0c005becdc89b788b2d8de_21.png)
 
-![](img/8f22fa9d4c0c005becdc89b788b2d8de_23.png)
 
-![](img/8f22fa9d4c0c005becdc89b788b2d8de_24.png)
 
 ### 编写Hook处理函数
 
@@ -277,7 +273,6 @@ BOOL WINAPI MyCreateProcessW(
 
 ### 在DLL入口点进行挂钩
 
-![](img/8f22fa9d4c0c005becdc89b788b2d8de_30.png)
 
 最后，我们需要在DLL被加载时自动完成挂钩操作。这需要在DLL的主函数 `DllMain` 中实现。
 

@@ -1,6 +1,5 @@
 #  021：6.1-【Kali渗透系列】Kali Linux简介 🐧
 
-![](img/4e3755a24566cf82f68e9753e2e96d0d_1.png)
 
 在本节课中，我们将要学习Kali Linux的基础知识，包括其定义、历史、核心特性与优势，为后续的安装与配置打下基础。
 
@@ -8,19 +7,16 @@
 
 上一节我们介绍了课程目标，本节中我们来看看Kali Linux究竟是什么。
 
-![](img/4e3755a24566cf82f68e9753e2e96d0d_3.png)
 
 Kali Linux是一个基于Debian的Linux发行版。它的主要目的是进行高级渗透测试和安全审计。Kali Linux包含了数百种工具，适用于各种信息安全任务，例如渗透测试、安全研究、计算机取证和逆向工程。简单来说，Kali Linux只是一个集成了很多渗透测试工具的Linux系统，其核心是基于Debian。
 
 Kali Linux由Offensive Security公司开发、资助和维护。“Offensive”翻译过来是“攻击性的”，因此Offensive Security即“进攻性安全”。
 
-![](img/4e3755a24566cf82f68e9753e2e96d0d_5.png)
 
 ## Kali Linux的历史 📜
 
 了解了Kali Linux的定义后，我们来看看它的发展历程。
 
-![](img/4e3755a24566cf82f68e9753e2e96d0d_7.png)
 
 Kali Linux于2013年3月13日发布。它的前身是基于BackTrack Linux自上而下进行重建的，并且完全符合Debian开发标准。
 

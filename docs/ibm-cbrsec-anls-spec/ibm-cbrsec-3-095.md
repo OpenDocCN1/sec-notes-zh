@@ -1,18 +1,14 @@
 # 课程3：《网络安全合规框架与系统管理》：95：Samba安装与配置演示
 
-![](img/b33e83d54a4d553b5afab9b556140b3f_0.png)
 
 ## 概述
 
-![](img/b33e83d54a4d553b5afab9b556140b3f_2.png)
 
 在本节课程中，我们将学习如何在Linux系统上安装和配置Samba服务。Samba是一个开源软件套件，它允许Linux系统与Windows系统之间共享文件和打印机。我们将通过一系列步骤，完成从安装到基础配置的整个过程，最终实现在Windows主机上访问Linux共享文件夹。
 
 ## 什么是Samba？ 🤔
 
-![](img/b33e83d54a4d553b5afab9b556140b3f_4.png)
 
-![](img/b33e83d54a4d553b5afab9b556140b3f_6.png)
 
 上一节我们介绍了课程目标，本节中我们来看看Samba是什么。
 
@@ -22,7 +18,6 @@ Samba是一个开源免费软件套件，它能够提供无缝的文件和打印
 
 了解了Samba的基本概念后，我们现在来看看具体的安装步骤。以下是安装Samba所需执行的基本命令。
 
-![](img/b33e83d54a4d553b5afab9b556140b3f_8.png)
 
 *   首先，在你的Linux发行版上运行以下命令来安装Samba软件包：
     `sudo apt-get install samba`
@@ -31,11 +26,9 @@ Samba是一个开源免费软件套件，它能够提供无缝的文件和打印
 *   在修改此配置文件之前，建议先进行备份。可以使用 `cp` 命令创建备份：
     `sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.backup`
 
-![](img/b33e83d54a4d553b5afab9b556140b3f_10.png)
 
 ## 配置匿名共享文件夹
 
-![](img/b33e83d54a4d553b5afab9b556140b3f_11.png)
 
 安装并备份配置文件后，接下来我们需要编辑配置文件以设置一个共享。我们将首先配置一个允许匿名访问的共享文件夹。
 
@@ -52,7 +45,6 @@ Samba是一个开源免费软件套件，它能够提供无缝的文件和打印
 
 配置信息添加完毕后，需要执行以下操作来创建共享目录并设置权限。
 
-![](img/b33e83d54a4d553b5afab9b556140b3f_13.png)
 
 *   使用 `mkdir` 命令创建在配置中指定的目录：
     `sudo mkdir -p /samba/anonymous`
@@ -101,7 +93,6 @@ Samba是一个开源免费软件套件，它能够提供无缝的文件和打印
 *   最后，再次重启Samba服务：
     `sudo service smbd restart`
 
-![](img/b33e83d54a4d553b5afab9b556140b3f_15.png)
 
 完成以上步骤后，在Windows网络文件夹中输入Linux服务器的IP地址，你将能看到名为“secured”的文件夹。尝试双击访问时，系统会提示你输入之前设置的用户名（`secureuser`）和密码。
 
@@ -109,7 +100,6 @@ Samba是一个开源免费软件套件，它能够提供无缝的文件和打印
 
 本节课中，我们一起学习了Samba服务的安装与配置。我们首先了解了Samba的作用是连接Linux与Windows系统以实现文件共享。然后，我们分步完成了Samba软件的安装、配置文件的编辑、匿名共享和安全共享文件夹的创建与权限设置，并最终在Windows主机上成功访问了这些共享。
 
-![](img/b33e83d54a4d553b5afab9b556140b3f_17.png)
 
 ![](img/b33e83d54a4d553b5afab9b556140b3f_18.png)
 

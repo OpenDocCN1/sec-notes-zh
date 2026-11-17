@@ -1,6 +1,5 @@
 # 网络安全：P35：CSRF漏洞原理、利用与防御
 
-![](img/0b3e302561ae8f0f9c910dbcac668b06_1.png)
 
 ## 概述
 在本节课中，我们将要学习CSRF（跨站请求伪造）漏洞。这是一种攻击者诱导用户在已登录的Web应用中执行非本意操作的攻击方式。我们将从漏洞的基本概念讲起，逐步深入到其成因、利用方法、寻找技巧以及防御措施，并通过实例帮助初学者理解。
@@ -45,9 +44,7 @@ http://vulnerable-site.com/change_password?new_password=attacker123
 ## CSRF漏洞的利用方式 ⚙️
 上一节我们了解了CSRF的攻击模型，本节中我们来看看如何具体构造利用代码。
 
-![](img/0b3e302561ae8f0f9c910dbcac668b06_10.png)
 
-![](img/0b3e302561ae8f0f9c910dbcac668b06_12.png)
 
 CSRF的利用方式主要取决于目标操作使用的是GET请求还是POST请求。
 
@@ -80,7 +77,6 @@ CSRF的利用方式主要取决于目标操作使用的是GET请求还是POST请
 
 ![](img/0b3e302561ae8f0f9c910dbcac668b06_17.png)
 
-![](img/0b3e302561ae8f0f9c910dbcac668b06_19.png)
 
 寻找CSRF漏洞的核心是分析关键功能点的HTTP请求数据包。关键步骤如下：
 

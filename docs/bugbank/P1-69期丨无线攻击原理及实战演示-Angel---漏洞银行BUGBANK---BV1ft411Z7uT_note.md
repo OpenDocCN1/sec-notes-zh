@@ -135,11 +135,9 @@ OSI参考模型（Open System Interconnection）是国际标准化组织于1985�
 
 ## 第三讲：取消验证洪水攻击原理 🚫
 
-![](img/5746d3fa5ca5f09789455a3cafeaae35_17.png)
 
 上一节我们探讨了中间人攻击，本节中我们来看看另一种针对无线网络的攻击——取消验证洪水攻击。
 
-![](img/5746d3fa5ca5f09789455a3cafeaae35_19.png)
 
 ### 取消验证洪水攻击原理
 
@@ -188,7 +186,6 @@ OSI参考模型（Open System Interconnection）是国际标准化组织于1985�
     *   焊接一个IPX天线座到ESP-07模块的预留位置。
     *   将OLED屏幕装回。
 
-![](img/5746d3fa5ca5f09789455a3cafeaae35_21.png)
 
 3.  **刷写固件与测试**：
     *   使用Arduino IDE或PlatformIO刷写专用的“WiFi Deauther”固件（注意配置正确的开发板型号、Flash大小等参数）。

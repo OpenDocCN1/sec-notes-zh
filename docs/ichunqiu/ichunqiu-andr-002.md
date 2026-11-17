@@ -1,36 +1,27 @@
 #  002：课时2 调试方法及Smali文件结构 📱
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_1.png)
 
 在本节课中，我们将学习Android开发的基础知识，并重点介绍如何调试Android应用以及理解Smali文件的结构。我们将从创建一个简单的“Hello World”应用开始，逐步深入到代码的反编译、修改和调试过程。
 
 ## 概述
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_3.png)
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_4.png)
 
 本节课将分为几个部分：首先，我们将解决上节课遗留的Android SDK安装问题；接着，我们将通过Android Studio创建一个基础的应用程序；然后，我们会分析APK文件的构成，并介绍Smali语言；最后，我们将学习如何对应用进行反编译、修改和调试。
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_6.png)
 
 ---
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_8.png)
 
 ## Android SDK安装问题解决 🛠️
 
 ![](img/cf495bfa417e2038cf8bee4cba13d2a2_10.png)
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_12.png)
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_13.png)
 
 上一节我们介绍了课程概述，本节中我们来看看如何解决Android SDK安装过程中可能遇到的问题。
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_14.png)
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_15.png)
 
 安装Android SDK时，并非所有包都需要安装。通常，只需安装默认选中的包即可。等待绿色进度条完成后，系统会自动检测并勾选缺失的组件，点击安装即可。
 
@@ -46,23 +37,18 @@
 
 ## 创建第一个Android应用：Hello World 🌍
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_23.png)
 
 ![](img/cf495bfa417e2038cf8bee4cba13d2a2_24.png)
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_26.png)
 
 现在，我们正式开始教程。绝大多数程序员的第一个程序都是“Hello World”。本节我们将使用Android Studio来创建它。
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_28.png)
 
 我们统一使用Android Studio进行开发。请确保网络环境良好，以便顺利下载依赖包。
 
 ![](img/cf495bfa417e2038cf8bee4cba13d2a2_30.png)
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_32.png)
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_33.png)
 
 ![](img/cf495bfa417e2038cf8bee4cba13d2a2_35.png)
 
@@ -87,13 +73,10 @@
 
 上一节我们创建了第一个应用，本节中我们来分析一下Android项目的目录结构。
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_41.png)
 
 一个Android项目主要由以下几个部分组成：
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_43.png)
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_45.png)
 
 *   **`java` 目录**：存放项目的Java源代码。
 *   **`res` 目录**：存放资源文件，如布局（`layout`）、字符串（`values`）、图片（`drawable`）等。
@@ -130,7 +113,6 @@ Activity代表一个应用窗口。一个Activity要运行，必须在 `AndroidM
 
 ![](img/cf495bfa417e2038cf8bee4cba13d2a2_59.png)
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_61.png)
 
 注册Activity的格式如下：
 ```xml
@@ -155,7 +137,6 @@ Activity的界面布局由 `res/layout` 目录下的XML文件定义。在Activit
 
 ---
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_71.png)
 
 ## 动手实践：创建与修改Activity ✨
 
@@ -167,7 +148,6 @@ Activity的界面布局由 `res/layout` 目录下的XML文件定义。在Activit
 
 以下是创建一个新Activity的步骤：
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_77.png)
 
 1.  在 `res/layout` 目录下右键，创建新的布局文件（如 `activity_hello.xml`）。
 2.  在 `java` 目录下创建对应的Java类（如 `HelloActivity`），并继承 `AppCompatActivity`。
@@ -215,19 +195,13 @@ Smali文件有固定的格式。我们以之前创建的 `HelloActivity` 对应�
 
 一个典型的Smali文件结构如下：
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_90.png)
 
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_91.png)
-
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_93.png)
 
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_95.png)
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_97.png)
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_99.png)
+
 
 ```
 .class <访问权限> <类名>;
@@ -242,13 +216,11 @@ Smali文件有固定的格式。我们以之前创建的 `HelloActivity` 对应�
 .end method
 ```
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_101.png)
 
 **关键元素解析：**
 
 ![](img/cf495bfa417e2038cf8bee4cba13d2a2_103.png)
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_105.png)
 
 *   **`.class`**：定义类，例如 `.class public Lcom/example/HelloActivity;`。在Smali中，类名以 `L` 开头，包名中的点用 `/` 代替，最后以 `;` 结尾。
 *   **`.super`**：指定父类。
@@ -260,17 +232,13 @@ Smali文件有固定的格式。我们以之前创建的 `HelloActivity` 对应�
     *   对象类型：`Lpackage/name/ObjectName;` (例如 `Ljava/lang/String;`)
     *   数组类型：`[` (一维数组，例如 `[I` 表示 `int[]`)
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_107.png)
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_109.png)
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_110.png)
 
 **方法调用示例：**
 `invoke-virtual {v0}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V`
 这行代码表示调用 `v0` 寄存器所指向对象（一个TextView）的 `setText` 方法，参数类型为 `CharSequence`，返回类型为 `void`。
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_112.png)
 
 ---
 
@@ -280,34 +248,26 @@ Smali文件有固定的格式。我们以之前创建的 `HelloActivity` 对应�
 
 ## 修改与调试Smali代码 🔧
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_118.png)
 
 理解了Smali结构后，本节我们学习如何修改并调试它，这是逆向工程的关键步骤。
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_120.png)
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_122.png)
 
 **1. 修改Smali代码**
 我们可以直接修改反编译后的Smali文件。例如，找到设置文本的代码，修改其字符串常量。字符串在Smali中通常以UTF-8编码形式存在。可以使用工具（如Android Killer内的字符串转换工具）进行编码和解码。
 修改后，需要回编译并签名APK才能安装测试。
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_124.png)
 
 ![](img/cf495bfa417e2038cf8bee4cba13d2a2_126.png)
 
 **2. 调试Smali代码（传统方法）**
 调试允许我们动态跟踪代码执行流程。一个经典的方法是使用 `apktool` 对APK进行反编译并注入调试等待代码。
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_128.png)
 
 以下是调试步骤概要：
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_130.png)
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_132.png)
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_134.png)
 
 *   **反编译**：`apktool d -d target.apk -o output_dir` (使用 `-d` 参数生成可调试的Smali)。
 *   **修改清单文件**：在 `AndroidManifest.xml` 的 `<application>` 标签内添加 `android:debuggable="true"`。
@@ -322,7 +282,6 @@ Smali文件有固定的格式。我们以之前创建的 `HelloActivity` 对应�
 
 连接成功后，就可以在Smali代码中设置断点，单步执行（F8），观察寄存器值的变化，从而深入理解程序逻辑。
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_139.png)
 
 ---
 
@@ -334,9 +293,7 @@ Smali文件有固定的格式。我们以之前创建的 `HelloActivity` 对应�
 
 本节课我们一起学习了Android开发的基础、项目结构、Smali语法以及如何对APK进行反编译、修改和调试。
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_145.png)
 
-![](img/cf495bfa417e2038cf8bee4cba13d2a2_146.png)
 
 **核心要点总结：**
 1.  Android应用由Java代码、资源文件和清单文件构成，编译后生成APK。

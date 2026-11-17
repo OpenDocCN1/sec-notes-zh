@@ -25,17 +25,14 @@
 *   **特殊文件 .swp**：这是 Vim 编辑器的临时交换文件。如果存在，可能通过访问 `index.php.swp` 或 `index.php~` 来获取源码。若只能下载 `.swp` 文件，可使用 Vim 命令恢复：`vim -r index.php.swp`。
 *   **SVN 泄漏**：Subversion (SVN) 是另一个版本控制系统。可通过访问 `/.svn` 目录来探测是否存在泄漏，工具如 `DVCS Ripper` 和 `Seay-SVN` 可辅助发现。
 
-![](img/e79ac0638ddb9eb427a935f12f964f40_3.png)
 
 ## 应用服务层信息泄漏 ⚙️
 
-![](img/e79ac0638ddb9eb427a935f12f964f40_4.png)
 
 上一节我们讨论了文件层面的泄漏，本节将关注运行中的应用服务可能产生的信息泄漏。
 
 以下是几个典型的应用层泄漏案例：
 
-![](img/e79ac0638ddb9eb427a935f12f964f40_6.png)
 
 *   **DNS 域传送漏洞**：DNS 服务器主从同步时使用“域传送”功能。如果配置不当（`allow-transfer` 设置过于宽松），攻击者可能获取域名的所有子域名记录。利用方式如下：
     ```bash
@@ -57,11 +54,9 @@
     save
     ```
 
-![](img/e79ac0638ddb9eb427a935f12f964f40_8.png)
 
 ## GitHub 信息泄漏 💻
 
-![](img/e79ac0638ddb9eb427a935f12f964f40_10.png)
 
 在代码托管平台如 GitHub 上，开发者可能无意间提交了包含敏感信息的文件，例如配置文件、数据库连接字符串、API密钥、SSH私钥等。
 
@@ -93,11 +88,9 @@
 
 ![](img/e79ac0638ddb9eb427a935f12f964f40_14.png)
 
-![](img/e79ac0638ddb9eb427a935f12f964f40_16.png)
 
 ## 总结 📝
 
-![](img/e79ac0638ddb9eb427a935f12f964f40_18.png)
 
 ![](img/e79ac0638ddb9eb427a935f12f964f40_20.png)
 

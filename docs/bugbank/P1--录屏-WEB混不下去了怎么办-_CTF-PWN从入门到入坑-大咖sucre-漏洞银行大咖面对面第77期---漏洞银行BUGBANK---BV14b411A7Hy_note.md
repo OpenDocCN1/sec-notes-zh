@@ -238,7 +238,6 @@ int main() {
 
 **Shellcode**是一段用于完成特定功能的机器码，通常用汇编语言编写。最常见的目的是启动一个Shell（`/bin/sh`）。
 
-![](img/5f7c83ada2108fd6aa3b4e455a873944_66.png)
 
 以下是一个Linux x86系统调用执行 `execve(“/bin/sh”, 0, 0)` 的汇编Shellcode示例：
 ```asm
@@ -324,7 +323,6 @@ int 0x80; ret
 
 ![](img/5f7c83ada2108fd6aa3b4e455a873944_84.png)
 
-![](img/5f7c83ada2108fd6aa3b4e455a873944_86.png)
 
 **关键要点回顾**：
 *   理解程序如何从代码变为进程是基础。
